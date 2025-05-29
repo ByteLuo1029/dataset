@@ -1,0 +1,170 @@
+##[group]Run <:*:>
+with:
+repository: <:*:>
+token: ***
+ssh-strict: true
+ssh-user: git
+persist-credentials: <:*:>
+clean: true
+sparse-checkout-cone-mode: true
+fetch-depth: <:NUM:>
+fetch-tags: false
+show-progress: true
+lfs: false
+submodules: <:*:>
+set-safe-directory: true
+env:
+CARGO_INCREMENTAL: 0
+CARGO_NET_RETRY: 10
+CARGO_TERM_COLOR: always
+RUSTUP_MAX_RETRIES: 10
+PYTHON_VERSION: 3.12
+##[endgroup]
+Syncing repository: <:*:>
+##[group]Getting Git version info
+Working directory is <:*:>
+[command]"C:\Program Files\Git\bin\git.exe" version
+git version 2.49.0.windows.1
+##[endgroup]
+Temporarily overriding HOME='C:\a\_temp\6247a6ea-d261-450c-82a0-038305fdb944' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+[command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory C:\a\uv\uv
+Deleting the contents of <:*:>
+##[group]Initializing the repository
+[command]"C:\Program Files\Git\bin\git.exe" init C:\a\uv\uv
+Initialized empty Git repository in <:*:>
+[command]"C:\Program Files\Git\bin\git.exe" remote add origin https://github.com/astral-sh/uv
+##[endgroup]
+##[group]Disabling automatic garbage collection
+[command]"C:\Program Files\Git\bin\git.exe" config --local gc.auto 0
+##[endgroup]
+##[group]Setting up auth
+[command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+[command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+[command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+[command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+[command]"C:\Program Files\Git\bin\git.exe" config --local http.https://github.com/.extraheader "AUTHORIZATION: basic ***"
+##[endgroup]
+##[group]Fetching the repository
+[command]"C:\Program Files\Git\bin\git.exe" -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +74358f9f6cbd65ea7933a1558cb8f3551386da2e:refs/remotes/pull/12892/merge
+From <:*:>
+* [new ref] <:SEQ:>-> <:*:>
+##[endgroup]
+##[group]Determining the checkout info
+##[endgroup]
+[command]"C:\Program Files\Git\bin\git.exe" sparse-checkout disable
+[command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all extensions.worktreeConfig
+##[group]Checking out the ref
+[command]"C:\Program Files\Git\bin\git.exe" checkout --progress --force refs/remotes/pull/12892/merge
+Updating files:  17% (178/1010)
+Updating files:  18% (182/1010)
+Updating files:  19% (192/1010)
+Updating files:  20% (202/1010)
+Updating files:  21% (213/1010)
+Updating files:  22% (223/1010)
+Updating files:  23% (233/1010)
+Updating files:  24% (243/1010)
+Updating files:  25% (253/1010)
+Updating files:  26% (263/1010)
+Updating files:  26% (268/1010)
+Updating files:  27% (273/1010)
+Updating files:  28% (283/1010)
+Updating files:  29% (293/1010)
+Updating files:  30% (303/1010)
+Updating files:  31% (314/1010)
+Updating files:  32% (324/1010)
+Updating files:  33% (334/1010)
+Updating files:  34% (344/1010)
+Updating files:  35% (354/1010)
+Updating files:  36% (364/1010)
+Updating files:  36% (370/1010)
+Updating files:  37% (374/1010)
+Updating files:  38% (384/1010)
+Updating files:  39% (394/1010)
+Updating files:  40% (404/1010)
+Updating files:  41% (415/1010)
+Updating files:  42% (425/1010)
+Updating files:  43% (435/1010)
+Updating files:  44% (445/1010)
+Updating files:  45% (455/1010)
+Updating files:  46% (465/1010)
+Updating files:  47% (475/1010)
+Updating files:  48% (485/1010)
+Updating files:  49% (495/1010)
+Updating files:  50% (505/1010)
+Updating files:  50% (506/1010)
+Updating files:  51% (516/1010)
+Updating files:  52% (526/1010)
+Updating files:  53% (536/1010)
+Updating files:  54% (546/1010)
+Updating files:  55% (556/1010)
+Updating files:  56% (566/1010)
+Updating files:  57% (576/1010)
+Updating files:  58% (586/1010)
+Updating files:  59% (596/1010)
+Updating files:  60% (606/1010)
+Updating files:  61% (617/1010)
+Updating files:  62% (627/1010)
+Updating files:  62% (636/1010)
+Updating files:  63% (637/1010)
+Updating files:  64% (647/1010)
+Updating files:  65% (657/1010)
+Updating files:  66% (667/1010)
+Updating files:  67% (677/1010)
+Updating files:  68% (687/1010)
+Updating files:  69% (697/1010)
+Updating files:  70% (707/1010)
+Updating files:  71% (718/1010)
+Updating files:  72% (728/1010)
+Updating files:  73% (738/1010)
+Updating files:  74% (748/1010)
+Updating files:  75% (758/1010)
+Updating files:  76% (768/1010)
+Updating files:  76% (775/1010)
+Updating files:  77% (778/1010)
+Updating files:  78% (788/1010)
+Updating files:  79% (798/1010)
+Updating files:  80% (808/1010)
+Updating files:  81% (819/1010)
+Updating files:  82% (829/1010)
+Updating files:  83% (839/1010)
+Updating files:  84% (849/1010)
+Updating files:  85% (859/1010)
+Updating files:  86% (869/1010)
+Updating files:  87% (879/1010)
+Updating files:  88% (889/1010)
+Updating files:  89% (899/1010)
+Updating files:  89% (901/1010)
+Updating files:  90% (909/1010)
+Updating files:  91% (920/1010)
+Updating files:  92% (930/1010)
+Updating files:  93% (940/1010)
+Updating files:  94% (950/1010)
+Updating files:  95% (960/1010)
+Updating files:  96% (970/1010)
+Updating files:  97% (980/1010)
+Updating files:  98% (990/1010)
+Updating files:  99% (1000/1010)
+Updating files: 100% (1010/1010)
+Updating files: 100% (1010/1010), done.
+Note: switching to 'refs/remotes/pull/<:NUM:>/merge'.
+2025-04-15T08:55:35.4036428Z
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+2025-04-15T08:55:35.4037925Z
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+2025-04-15T08:55:35.4038745Z
+git switch -c <new-branch-name>
+2025-04-15T08:55:35.4039028Z
+Or undo this operation with:
+2025-04-15T08:55:35.4039292Z
+git switch -
+2025-04-15T08:55:35.4039495Z
+Turn off this advice by setting config variable advice.detachedHead to false
+2025-04-15T08:55:35.4039983Z
+HEAD is now at <:*:> Merge <:SEQ:> into <:SEQ:>
+##[endgroup]
+[command]"C:\Program Files\Git\bin\git.exe" log -1 --format=%H
+<:SEQ:>

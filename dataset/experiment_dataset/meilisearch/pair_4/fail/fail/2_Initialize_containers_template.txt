@@ -1,0 +1,40 @@
+##[group]Checking docker version
+##[command]/usr/bin/docker version --format '{{.Server.APIVersion}}'
+'1.45'
+Docker daemon API version: '1.45'
+##[command]/usr/bin/docker version --format '{{.Client.APIVersion}}'
+'1.45'
+Docker client API version: '1.45'
+##[endgroup]
+##[group]Clean up resources from previous jobs
+##[command]/usr/bin/docker ps --all --quiet --no-trunc --filter "label=65ff30"
+##[command]/usr/bin/docker network prune --force --filter "label=65ff30"
+##[endgroup]
+##[group]Create local container network
+##[command]/usr/bin/docker network create --label 65ff30 github_network_ad68078f7202437a839267697b6aeea1
+<:SEQ:>
+##[endgroup]
+##[group]Starting job container
+##[command]/usr/bin/docker pull ubuntu:22.04
+22.04: Pulling from library/ubuntu
+30a9c22ae099: Pulling fs layer
+30a9c22ae099: Verifying Checksum
+30a9c22ae099: Download complete
+30a9c22ae099: Pull complete
+Digest: sha256:<:SEQ:>
+Status: Downloaded newer image for ubuntu:22.04
+docker.io/library/ubuntu:22.04
+##[command]/usr/bin/docker create --name b71c9d5901034762851806c9488615ad_ubuntu2204_a9e407 --label 65ff30 --workdir /__w/meilisearch/meilisearch --network github_network_ad68078f7202437a839267697b6aeea1  -e "HOME=/github/home" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work":"/__w" -v "/home/runner/runners/2.323.0/externals":"/__e":ro -v "/home/runner/work/_temp":"/__w/_temp" -v "/home/runner/work/_actions":"/__w/_actions" -v "/opt/hostedtoolcache":"/__t" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" --entrypoint "tail" ubuntu:22.04 "-f" "/dev/null"
+<:SEQ:>
+##[command]/usr/bin/docker start 7b366bf24383b60ce6c6cb2cd41c265f903ae3c865e1b687622540a47ce9ca95
+<:SEQ:>
+##[command]/usr/bin/docker ps --all --filter id=7b366bf24383b60ce6c6cb2cd41c265f903ae3c865e1b687622540a47ce9ca95 --filter status=running --no-trunc --format "{{.ID}} {{.Status}}"
+7b366bf24383b60ce6c6cb2cd41c265f903ae3c865e1b687622540a47ce9ca95 Up Less than a second
+##[command]/usr/bin/docker inspect --format "{{range .Config.Env}}{{println .}}{{end}}" 7b366bf24383b60ce6c6cb2cd41c265f903ae3c865e1b687622540a47ce9ca95
+HOME=/github/home
+GITHUB_ACTIONS=true
+CI=true
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+##[endgroup]
+##[group]Waiting for all services to be ready
+##[endgroup]

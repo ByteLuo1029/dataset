@@ -1,0 +1,65 @@
+2025-04-15T08:46:01.6953911Z ##[group]Run # Get the changed files
+2025-04-15T08:46:01.6954437Z [36;1m# Get the changed files[0m
+2025-04-15T08:46:01.6954977Z [36;1mCHANGED_FILES=$(pants list --changed-since=origin/main)[0m
+2025-04-15T08:46:01.6955386Z [36;1m[0m
+2025-04-15T08:46:01.6955687Z [36;1m# Find which roots contain changed files[0m
+2025-04-15T08:46:01.6956154Z [36;1mCHANGED_ROOTS=""[0m
+2025-04-15T08:46:01.6956481Z [36;1mFILTER_PATTERNS="["[0m
+2025-04-15T08:46:01.6956849Z [36;1mfor file in $CHANGED_FILES; do[0m
+2025-04-15T08:46:01.6957209Z [36;1m  # Start with the full path[0m
+2025-04-15T08:46:01.6957563Z [36;1m  root="$file"[0m
+2025-04-15T08:46:01.6958051Z [36;1m  # Keep going up the directory tree until we find a directory containing a marker file[0m
+2025-04-15T08:46:01.6958618Z [36;1m  # (e.g., 'pyproject.toml' for python projects)[0m
+2025-04-15T08:46:01.6959155Z [36;1m  while [[ ! -f "$root/pyproject.toml" && "$root" != "." && "$root" != "/" && "$root" != "./" ]]; do[0m
+2025-04-15T08:46:01.6959907Z [36;1m    root=$(dirname "$root")[0m
+2025-04-15T08:46:01.6960307Z [36;1m  done[0m
+2025-04-15T08:46:01.6960618Z [36;1m[0m
+2025-04-15T08:46:01.6961014Z [36;1m  if [[ "$root" != "." && "$root" != "/" && "$root" != "./" && ! "$FILTER_PATTERNS" =~ "$root" ]]; then[0m
+2025-04-15T08:46:01.6961523Z [36;1m    FILTER_PATTERNS="${FILTER_PATTERNS}'${root}/llama_index',"[0m
+2025-04-15T08:46:01.6962052Z [36;1m    CHANGED_ROOTS="${CHANGED_ROOTS} ${root}/::"[0m
+2025-04-15T08:46:01.6962396Z [36;1m  fi[0m
+2025-04-15T08:46:01.6962675Z [36;1mdone[0m
+2025-04-15T08:46:01.6963010Z [36;1m[0m
+2025-04-15T08:46:01.6963326Z [36;1m# remove the last comma and close the bracket[0m
+2025-04-15T08:46:01.6963780Z [36;1mFILTER_PATTERNS="${FILTER_PATTERNS%,}]"[0m
+2025-04-15T08:46:01.6964228Z [36;1m[0m
+2025-04-15T08:46:01.6964545Z [36;1mecho "Coverage filter patterns: $FILTER_PATTERNS"[0m
+2025-04-15T08:46:01.6964967Z [36;1mecho "Changed roots: $CHANGED_ROOTS"[0m
+2025-04-15T08:46:01.6965389Z [36;1m[0m
+2025-04-15T08:46:01.6965713Z [36;1mpants --level=error --no-local-cache test \[0m
+2025-04-15T08:46:01.6966355Z [36;1m  --test-use-coverage \[0m
+2025-04-15T08:46:01.6966720Z [36;1m  --coverage-py-filter="${FILTER_PATTERNS}" \[0m
+2025-04-15T08:46:01.6967120Z [36;1m  ${CHANGED_ROOTS}[0m
+2025-04-15T08:46:01.7013664Z shell: /usr/bin/bash -e {0}
+2025-04-15T08:46:01.7013984Z env:
+2025-04-15T08:46:01.7014322Z   POETRY_VERSION: 1.8.3
+2025-04-15T08:46:01.7014668Z   SYSTEM_VERSION_COMPAT: 1
+2025-04-15T08:46:01.7015070Z   pythonLocation: /opt/hostedtoolcache/Python/3.9.22/x64
+2025-04-15T08:46:01.7015797Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.9.22/x64/lib/pkgconfig
+2025-04-15T08:46:01.7016442Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.9.22/x64
+2025-04-15T08:46:01.7016937Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.9.22/x64
+2025-04-15T08:46:01.7017384Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.9.22/x64
+2025-04-15T08:46:01.7017835Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.9.22/x64/lib
+2025-04-15T08:46:01.7018281Z ##[endgroup]
+2025-04-15T08:46:05.1095954Z Coverage filter patterns: ['llama-index-integrations/graph_stores/llama-index-graph-stores-nebula/llama_index']
+2025-04-15T08:46:05.1097021Z Changed roots:  llama-index-integrations/graph_stores/llama-index-graph-stores-nebula/::
+2025-04-15T08:46:49.3142742Z 
+2025-04-15T08:46:49.3144205Z ✓ llama-index-integrations/graph_stores/llama-index-graph-stores-nebula/tests/test_graph_stores_nebula.py succeeded in 13.19s.
+2025-04-15T08:46:49.3146143Z ✓ llama-index-integrations/graph_stores/llama-index-graph-stores-nebula/tests/test_property_graph.py succeeded in 13.20s.
+2025-04-15T08:46:55.3140369Z 
+2025-04-15T08:46:55.3141085Z Name                                                                                                                             Stmts   Miss  Cover
+2025-04-15T08:46:55.3142084Z ----------------------------------------------------------------------------------------------------------------------------------------------------
+2025-04-15T08:46:55.3143952Z llama-index-integrations/graph_stores/llama-index-graph-stores-nebula/llama_index/graph_stores/nebula/__init__.py                    3      0   100%
+2025-04-15T08:46:55.3145744Z llama-index-integrations/graph_stores/llama-index-graph-stores-nebula/llama_index/graph_stores/nebula/nebula_graph_store.py        254    212    17%
+2025-04-15T08:46:55.3147602Z llama-index-integrations/graph_stores/llama-index-graph-stores-nebula/llama_index/graph_stores/nebula/nebula_property_graph.py     269    223    17%
+2025-04-15T08:46:55.3149925Z llama-index-integrations/graph_stores/llama-index-graph-stores-nebula/llama_index/graph_stores/nebula/utils.py                     140    120    14%
+2025-04-15T08:46:55.3151355Z ----------------------------------------------------------------------------------------------------------------------------------------------------
+2025-04-15T08:46:55.3152206Z TOTAL                                                                                                                              666    555    17%
+2025-04-15T08:46:55.3152878Z Coverage failure: total of 17 is less than fail-under=50
+2025-04-15T08:46:55.3153279Z 
+2025-04-15T08:46:55.3975810Z 
+2025-04-15T08:46:55.3976489Z Wrote html coverage report to `dist/coverage/python`
+2025-04-15T08:46:55.4046038Z 
+2025-04-15T08:46:55.4046540Z Wrote xml coverage report to `dist/coverage/python`
+2025-04-15T08:46:55.4056207Z 08:46:55.40 [ERROR] Test goal failed due to insufficient coverage. See coverage reports for details.
+2025-04-15T08:46:55.5010514Z ##[error]Process completed with exit code 2.

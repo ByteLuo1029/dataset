@@ -1,0 +1,86 @@
+﻿2025-04-08T20:10:10.8772528Z ##[group]Run actions/checkout@v4
+2025-04-08T20:10:10.8772816Z with:
+2025-04-08T20:10:10.8773004Z   repository: coolsnowwolf/lede
+2025-04-08T20:10:10.8773377Z   token: ***
+2025-04-08T20:10:10.8773553Z   ssh-strict: true
+2025-04-08T20:10:10.8773731Z   ssh-user: git
+2025-04-08T20:10:10.8773924Z   persist-credentials: true
+2025-04-08T20:10:10.8774133Z   clean: true
+2025-04-08T20:10:10.8774311Z   sparse-checkout-cone-mode: true
+2025-04-08T20:10:10.8774537Z   fetch-depth: 1
+2025-04-08T20:10:10.8774704Z   fetch-tags: false
+2025-04-08T20:10:10.8774893Z   show-progress: true
+2025-04-08T20:10:10.8775074Z   lfs: false
+2025-04-08T20:10:10.8775239Z   submodules: false
+2025-04-08T20:10:10.8775417Z   set-safe-directory: true
+2025-04-08T20:10:10.8775641Z ##[endgroup]
+2025-04-08T20:10:11.0564823Z Syncing repository: coolsnowwolf/lede
+2025-04-08T20:10:11.0566362Z ##[group]Getting Git version info
+2025-04-08T20:10:11.0567268Z Working directory is '/home/runner/work/lede/lede'
+2025-04-08T20:10:11.0567920Z [command]/usr/bin/git version
+2025-04-08T20:10:11.0625457Z git version 2.49.0
+2025-04-08T20:10:11.0654043Z ##[endgroup]
+2025-04-08T20:10:11.0670406Z Temporarily overriding HOME='/home/runner/work/_temp/0f616166-94b2-487a-8238-3f89c18c3bcf' before making global git config changes
+2025-04-08T20:10:11.0671413Z Adding repository directory to the temporary git global config as a safe directory
+2025-04-08T20:10:11.0684129Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/lede/lede
+2025-04-08T20:10:11.0728754Z Deleting the contents of '/home/runner/work/lede/lede'
+2025-04-08T20:10:11.0732747Z ##[group]Initializing the repository
+2025-04-08T20:10:11.0736771Z [command]/usr/bin/git init /home/runner/work/lede/lede
+2025-04-08T20:10:11.0801449Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-04-08T20:10:11.0802440Z hint: is subject to change. To configure the initial branch name to use in all
+2025-04-08T20:10:11.0803106Z hint: of your new repositories, which will suppress this warning, call:
+2025-04-08T20:10:11.0803581Z hint:
+2025-04-08T20:10:11.0803902Z hint: 	git config --global init.defaultBranch <name>
+2025-04-08T20:10:11.0804278Z hint:
+2025-04-08T20:10:11.0804632Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-04-08T20:10:11.0805249Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-04-08T20:10:11.0805735Z hint:
+2025-04-08T20:10:11.0805959Z hint: 	git branch -m <name>
+2025-04-08T20:10:11.0809773Z Initialized empty Git repository in /home/runner/work/lede/lede/.git/
+2025-04-08T20:10:11.0821175Z [command]/usr/bin/git remote add origin https://github.com/coolsnowwolf/lede
+2025-04-08T20:10:11.0854003Z ##[endgroup]
+2025-04-08T20:10:11.0854698Z ##[group]Disabling automatic garbage collection
+2025-04-08T20:10:11.0859600Z [command]/usr/bin/git config --local gc.auto 0
+2025-04-08T20:10:11.0887933Z ##[endgroup]
+2025-04-08T20:10:11.0888496Z ##[group]Setting up auth
+2025-04-08T20:10:11.0895572Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-04-08T20:10:11.0925984Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-04-08T20:10:11.1223186Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-08T20:10:11.1255304Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-04-08T20:10:11.1491605Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-04-08T20:10:11.1534404Z ##[endgroup]
+2025-04-08T20:10:11.1535025Z ##[group]Fetching the repository
+2025-04-08T20:10:11.1544255Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +a7a67072131bbbc19993fc8a68718b1d72da2389:refs/remotes/origin/master
+2025-04-08T20:10:15.0601718Z From https://github.com/coolsnowwolf/lede
+2025-04-08T20:10:15.0602811Z  * [new ref]           a7a67072131bbbc19993fc8a68718b1d72da2389 -> origin/master
+2025-04-08T20:10:15.0633331Z ##[endgroup]
+2025-04-08T20:10:15.0634020Z ##[group]Determining the checkout info
+2025-04-08T20:10:15.0636814Z ##[endgroup]
+2025-04-08T20:10:15.0642279Z [command]/usr/bin/git sparse-checkout disable
+2025-04-08T20:10:15.0682243Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-04-08T20:10:15.0712175Z ##[group]Checking out the ref
+2025-04-08T20:10:15.0714921Z [command]/usr/bin/git checkout --progress --force -B master refs/remotes/origin/master
+2025-04-08T20:10:16.1248595Z Updating files:  83% (12974/15592)
+2025-04-08T20:10:16.1334129Z Updating files:  84% (13098/15592)
+2025-04-08T20:10:16.1432585Z Updating files:  85% (13254/15592)
+2025-04-08T20:10:16.1517025Z Updating files:  86% (13410/15592)
+2025-04-08T20:10:16.1579948Z Updating files:  87% (13566/15592)
+2025-04-08T20:10:16.1641266Z Updating files:  88% (13721/15592)
+2025-04-08T20:10:16.1722754Z Updating files:  89% (13877/15592)
+2025-04-08T20:10:16.1822590Z Updating files:  90% (14033/15592)
+2025-04-08T20:10:16.1895747Z Updating files:  91% (14189/15592)
+2025-04-08T20:10:16.2005327Z Updating files:  92% (14345/15592)
+2025-04-08T20:10:16.2071106Z Updating files:  93% (14501/15592)
+2025-04-08T20:10:16.2157481Z Updating files:  94% (14657/15592)
+2025-04-08T20:10:16.2235969Z Updating files:  95% (14813/15592)
+2025-04-08T20:10:16.2348571Z Updating files:  96% (14969/15592)
+2025-04-08T20:10:16.2417317Z Updating files:  97% (15125/15592)
+2025-04-08T20:10:16.2510313Z Updating files:  98% (15281/15592)
+2025-04-08T20:10:16.2609449Z Updating files:  99% (15437/15592)
+2025-04-08T20:10:16.2610127Z Updating files: 100% (15592/15592)
+2025-04-08T20:10:16.2610857Z Updating files: 100% (15592/15592), done.
+2025-04-08T20:10:16.2797709Z Reset branch 'master'
+2025-04-08T20:10:16.2800691Z branch 'master' set up to track 'origin/master'.
+2025-04-08T20:10:16.2864315Z ##[endgroup]
+2025-04-08T20:10:16.2907469Z [command]/usr/bin/git log -1 --format=%H
+2025-04-08T20:10:16.2931007Z a7a67072131bbbc19993fc8a68718b1d72da2389

@@ -1,0 +1,740 @@
+2025-04-14T07:45:49.3848591Z ##[group]Run # Get the changed files
+2025-04-14T07:45:49.3849195Z [36;1m# Get the changed files[0m
+2025-04-14T07:45:49.3849776Z [36;1mCHANGED_FILES=$(pants list --changed-since=origin/main)[0m
+2025-04-14T07:45:49.3850336Z [36;1m[0m
+2025-04-14T07:45:49.3850716Z [36;1m# Find which roots contain changed files[0m
+2025-04-14T07:45:49.3851221Z [36;1mCHANGED_ROOTS=""[0m
+2025-04-14T07:45:49.3851630Z [36;1mFILTER_PATTERNS="["[0m
+2025-04-14T07:45:49.3852050Z [36;1mfor file in $CHANGED_FILES; do[0m
+2025-04-14T07:45:49.3852502Z [36;1m  # Start with the full path[0m
+2025-04-14T07:45:49.3852948Z [36;1m  root="$file"[0m
+2025-04-14T07:45:49.3853568Z [36;1m  # Keep going up the directory tree until we find a directory containing a marker file[0m
+2025-04-14T07:45:49.3854352Z [36;1m  # (e.g., 'pyproject.toml' for python projects)[0m
+2025-04-14T07:45:49.3855346Z [36;1m  while [[ ! -f "$root/pyproject.toml" && "$root" != "." && "$root" != "/" && "$root" != "./" ]]; do[0m
+2025-04-14T07:45:49.3856041Z [36;1m    root=$(dirname "$root")[0m
+2025-04-14T07:45:49.3856474Z [36;1m  done[0m
+2025-04-14T07:45:49.3856781Z [36;1m[0m
+2025-04-14T07:45:49.3857246Z [36;1m  if [[ "$root" != "." && "$root" != "/" && "$root" != "./" && ! "$FILTER_PATTERNS" =~ "$root" ]]; then[0m
+2025-04-14T07:45:49.3857980Z [36;1m    FILTER_PATTERNS="${FILTER_PATTERNS}'${root}/llama_index',"[0m
+2025-04-14T07:45:49.3858672Z [36;1m    CHANGED_ROOTS="${CHANGED_ROOTS} ${root}/::"[0m
+2025-04-14T07:45:49.3859172Z [36;1m  fi[0m
+2025-04-14T07:45:49.3859485Z [36;1mdone[0m
+2025-04-14T07:45:49.3859833Z [36;1m[0m
+2025-04-14T07:45:49.3860220Z [36;1m# remove the last comma and close the bracket[0m
+2025-04-14T07:45:49.3860759Z [36;1mFILTER_PATTERNS="${FILTER_PATTERNS%,}]"[0m
+2025-04-14T07:45:49.3861225Z [36;1m[0m
+2025-04-14T07:45:49.3861633Z [36;1mecho "Coverage filter patterns: $FILTER_PATTERNS"[0m
+2025-04-14T07:45:49.3862218Z [36;1mecho "Changed roots: $CHANGED_ROOTS"[0m
+2025-04-14T07:45:49.3862952Z [36;1m[0m
+2025-04-14T07:45:49.3863361Z [36;1mpants --level=error --no-local-cache test \[0m
+2025-04-14T07:45:49.3863885Z [36;1m  --test-use-coverage \[0m
+2025-04-14T07:45:49.3864401Z [36;1m  --coverage-py-filter="${FILTER_PATTERNS}" \[0m
+2025-04-14T07:45:49.3865164Z [36;1m  ${CHANGED_ROOTS}[0m
+2025-04-14T07:45:49.3933706Z shell: /usr/bin/bash -e {0}
+2025-04-14T07:45:49.3934116Z env:
+2025-04-14T07:45:49.3934454Z   POETRY_VERSION: 1.8.3
+2025-04-14T07:45:49.3935125Z   SYSTEM_VERSION_COMPAT: 1
+2025-04-14T07:45:49.3935667Z   pythonLocation: /opt/hostedtoolcache/Python/3.9.22/x64
+2025-04-14T07:45:49.3936400Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.9.22/x64/lib/pkgconfig
+2025-04-14T07:45:49.3937118Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.9.22/x64
+2025-04-14T07:45:49.3937785Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.9.22/x64
+2025-04-14T07:45:49.3938454Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.9.22/x64
+2025-04-14T07:45:49.3939110Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.9.22/x64/lib
+2025-04-14T07:45:49.3939680Z ##[endgroup]
+2025-04-14T07:45:52.2763065Z Coverage filter patterns: ['llama-index-core/llama_index','llama-index-integrations/storage/chat_store/llama-index-storage-chat-store-postgres/llama_index']
+2025-04-14T07:45:52.2764251Z Changed roots:  llama-index-core/:: llama-index-integrations/storage/chat_store/llama-index-storage-chat-store-postgres/::
+2025-04-14T07:59:41.8684049Z 
+2025-04-14T07:59:41.8692618Z ✓ llama-index-core/tests/agent/custom/test_query_pipeline.py:tests succeeded in 12.98s.
+2025-04-14T07:59:41.8693808Z ✓ llama-index-core/tests/agent/custom/test_simple_function.py:tests succeeded in 12.56s.
+2025-04-14T07:59:41.8695222Z ✓ llama-index-core/tests/agent/function_calling/test_step.py:tests succeeded in 12.68s.
+2025-04-14T07:59:41.8696410Z ✓ llama-index-core/tests/agent/memory/test_simple_composable.py:tests succeeded in 11.27s.
+2025-04-14T07:59:41.8697530Z ✓ llama-index-core/tests/agent/memory/test_vector_memory.py:tests succeeded in 11.95s.
+2025-04-14T07:59:41.8698616Z ✓ llama-index-core/tests/agent/react/test_react_agent.py:tests succeeded in 13.61s.
+2025-04-14T07:59:41.8700104Z ✓ llama-index-core/tests/agent/react/test_react_output_parser.py:tests succeeded in 11.94s.
+2025-04-14T07:59:41.8701057Z ✓ llama-index-core/tests/agent/runner/test_base.py:tests succeeded in 12.71s.
+2025-04-14T07:59:41.8702003Z ✓ llama-index-core/tests/agent/runner/test_planner.py:tests succeeded in 12.15s.
+2025-04-14T07:59:41.8703085Z ✓ llama-index-core/tests/agent/workflow/test_code_act_agent.py:tests succeeded in 11.99s.
+2025-04-14T07:59:41.8704241Z ✓ llama-index-core/tests/agent/workflow/test_multi_agent_workflow.py:tests succeeded in 12.97s.
+2025-04-14T07:59:41.8705609Z ✓ llama-index-core/tests/agent/workflow/test_single_agent_workflow.py:tests succeeded in 13.41s.
+2025-04-14T07:59:41.8706633Z ✓ llama-index-core/tests/base/llms/test_types.py:tests succeeded in 11.24s.
+2025-04-14T07:59:41.8707578Z ✓ llama-index-core/tests/callbacks/test_llama_debug.py:tests succeeded in 11.02s.
+2025-04-14T07:59:41.8708601Z ✓ llama-index-core/tests/callbacks/test_token_counter.py:tests succeeded in 12.47s.
+2025-04-14T07:59:41.8709661Z ✓ llama-index-core/tests/chat_engine/test_condense_plus_context.py:tests succeeded in 13.67s.
+2025-04-14T07:59:41.8710741Z ✓ llama-index-core/tests/chat_engine/test_condense_question.py:tests succeeded in 11.86s.
+2025-04-14T07:59:41.8711732Z ✓ llama-index-core/tests/chat_engine/test_context.py:tests succeeded in 9.73s.
+2025-04-14T07:59:41.8712659Z ✓ llama-index-core/tests/chat_engine/test_simple.py:tests succeeded in 12.54s.
+2025-04-14T07:59:41.8713582Z ✓ llama-index-core/tests/embeddings/test_base.py:tests succeeded in 11.02s.
+2025-04-14T07:59:41.8714627Z ✓ llama-index-core/tests/embeddings/test_utils.py:tests succeeded in 11.43s.
+2025-04-14T07:59:41.8715560Z ✓ llama-index-core/tests/evaluation/test_base.py:tests succeeded in 10.85s.
+2025-04-14T07:59:41.8716517Z ✓ llama-index-core/tests/evaluation/test_batch_runner.py:tests succeeded in 11.21s.
+2025-04-14T07:59:41.8717888Z ✓ llama-index-core/tests/evaluation/test_dataset_generation.py:tests succeeded in 11.92s.
+2025-04-14T07:59:41.8718915Z ✓ llama-index-core/tests/evaluation/test_metrics.py:tests succeeded in 11.21s.
+2025-04-14T07:59:41.8719897Z ✓ llama-index-core/tests/evaluation/test_platform_eval.py:tests succeeded in 10.44s.
+2025-04-14T07:59:41.8721004Z ✓ llama-index-core/tests/extractors/test_document_context_extractor.py:tests succeeded in 12.55s.
+2025-04-14T07:59:41.8722077Z ✓ llama-index-core/tests/graph_stores/test_simple_lpg.py:tests succeeded in 11.03s.
+2025-04-14T07:59:41.8723155Z ✓ llama-index-core/tests/indices/document_summary/test_index.py:tests succeeded in 11.08s.
+2025-04-14T07:59:41.8724295Z ✓ llama-index-core/tests/indices/document_summary/test_retrievers.py:tests succeeded in 11.97s.
+2025-04-14T07:59:41.8725480Z ✓ llama-index-core/tests/indices/empty/test_base.py:tests succeeded in 12.11s.
+2025-04-14T07:59:41.8726480Z ✓ llama-index-core/tests/indices/keyword_table/test_base.py:tests succeeded in 12.08s.
+2025-04-14T07:59:41.8727582Z ✓ llama-index-core/tests/indices/keyword_table/test_retrievers.py:tests succeeded in 12.09s.
+2025-04-14T07:59:41.8728660Z ✓ llama-index-core/tests/indices/keyword_table/test_utils.py:tests succeeded in 11.97s.
+2025-04-14T07:59:41.8729713Z ✓ llama-index-core/tests/indices/knowledge_graph/test_base.py:tests succeeded in 12.21s.
+2025-04-14T07:59:41.8730830Z ✓ llama-index-core/tests/indices/knowledge_graph/test_retrievers.py:tests succeeded in 12.88s.
+2025-04-14T07:59:41.8731875Z ✓ llama-index-core/tests/indices/list/test_index.py:tests succeeded in 11.37s.
+2025-04-14T07:59:41.8732862Z ✓ llama-index-core/tests/indices/list/test_retrievers.py:tests succeeded in 12.01s.
+2025-04-14T07:59:41.8733984Z ✓ llama-index-core/tests/indices/property_graph/test_property_graph.py:tests succeeded in 12.14s.
+2025-04-14T07:59:41.8735171Z ✓ llama-index-core/tests/indices/query/query_transform/test_base.py:tests succeeded in 11.19s.
+2025-04-14T07:59:41.8735819Z ✓ llama-index-core/tests/indices/query/test_compose.py:tests succeeded in 12.95s.
+2025-04-14T07:59:41.8736631Z ✓ llama-index-core/tests/indices/query/test_compose_vector.py:tests succeeded in 10.06s.
+2025-04-14T07:59:41.8737277Z ✓ llama-index-core/tests/indices/query/test_embedding_utils.py:tests succeeded in 11.57s.
+2025-04-14T07:59:41.8737910Z ✓ llama-index-core/tests/indices/query/test_query_bundle.py:tests succeeded in 11.96s.
+2025-04-14T07:59:41.8738571Z ✓ llama-index-core/tests/indices/response/test_response_builder.py:tests succeeded in 12.03s.
+2025-04-14T07:59:41.8739241Z ✓ llama-index-core/tests/indices/response/test_tree_summarize.py:tests succeeded in 10.91s.
+2025-04-14T07:59:41.8739881Z ✓ llama-index-core/tests/indices/struct_store/test_base.py:tests succeeded in 12.31s.
+2025-04-14T07:59:41.8740523Z ✓ llama-index-core/tests/indices/struct_store/test_json_query.py:tests succeeded in 11.05s.
+2025-04-14T07:59:41.8741172Z ✓ llama-index-core/tests/indices/struct_store/test_sql_query.py:tests succeeded in 12.01s.
+2025-04-14T07:59:41.8741775Z ✓ llama-index-core/tests/indices/test_loading.py:tests succeeded in 12.19s.
+2025-04-14T07:59:41.8742354Z ✓ llama-index-core/tests/indices/test_loading_graph.py:tests succeeded in 12.10s.
+2025-04-14T07:59:41.8742931Z ✓ llama-index-core/tests/indices/test_prompt_helper.py:tests succeeded in 12.15s.
+2025-04-14T07:59:41.8743484Z ✓ llama-index-core/tests/indices/test_utils.py:tests succeeded in 11.56s.
+2025-04-14T07:59:41.8744103Z ✓ llama-index-core/tests/indices/tree/test_embedding_retriever.py:tests succeeded in 12.20s.
+2025-04-14T07:59:41.8744957Z ✓ llama-index-core/tests/indices/tree/test_index.py:tests succeeded in 11.70s.
+2025-04-14T07:59:41.8745552Z ✓ llama-index-core/tests/indices/tree/test_retrievers.py:tests succeeded in 12.04s.
+2025-04-14T07:59:41.8746263Z ✓ llama-index-core/tests/indices/vector_store/auto_retriever/test_output_parser.py:tests succeeded in 10.95s.
+2025-04-14T07:59:41.8746986Z ✓ llama-index-core/tests/indices/vector_store/test_retrievers.py:tests succeeded in 11.72s.
+2025-04-14T07:59:41.8747770Z ✓ llama-index-core/tests/indices/vector_store/test_simple.py:tests succeeded in 12.47s.
+2025-04-14T07:59:41.8748371Z ✓ llama-index-core/tests/ingestion/test_cache.py:tests succeeded in 10.49s.
+2025-04-14T07:59:41.8748938Z ✓ llama-index-core/tests/ingestion/test_data_sinks.py:tests succeeded in 10.75s.
+2025-04-14T07:59:41.8749522Z ✓ llama-index-core/tests/ingestion/test_data_sources.py:tests succeeded in 11.59s.
+2025-04-14T07:59:41.8750098Z ✓ llama-index-core/tests/ingestion/test_pipeline.py:tests succeeded in 21.14s.
+2025-04-14T07:59:41.8750693Z ✓ llama-index-core/tests/ingestion/test_transformations.py:tests succeeded in 24.96s.
+2025-04-14T07:59:41.8751318Z ✓ llama-index-core/tests/instrumentation/test_dispatcher.py:tests succeeded in 12.03s.
+2025-04-14T07:59:41.8751947Z ✓ llama-index-core/tests/instrumentation/test_manager.py:tests succeeded in 11.05s.
+2025-04-14T07:59:41.8752520Z ✓ llama-index-core/tests/llms/test_callbacks.py:tests succeeded in 11.42s.
+2025-04-14T07:59:41.8753093Z ✓ llama-index-core/tests/llms/test_custom.py:tests succeeded in 10.76s.
+2025-04-14T07:59:41.8753658Z ✓ llama-index-core/tests/llms/test_function_calling.py:tests succeeded in 11.54s.
+2025-04-14T07:59:41.8754257Z ✓ llama-index-core/tests/memory/test_chat_memory_buffer.py:tests succeeded in 11.93s.
+2025-04-14T07:59:41.8755073Z ✓ llama-index-core/tests/memory/test_chat_summary_memory_buffer.py:tests succeeded in 12.89s.
+2025-04-14T07:59:41.8755780Z ✓ llama-index-core/tests/multi_modal_llms/test_base_multi_modal_llm_metadata.py:tests succeeded in 11.17s.
+2025-04-14T07:59:41.8756461Z ✓ llama-index-core/tests/multi_modal_llms/test_generic_utils.py:tests succeeded in 11.19s.
+2025-04-14T07:59:41.8757051Z ✓ llama-index-core/tests/node_parser/test_file.py:tests succeeded in 11.08s.
+2025-04-14T07:59:41.8757621Z ✓ llama-index-core/tests/node_parser/test_hierarchical.py:tests succeeded in 12.74s.
+2025-04-14T07:59:41.8758190Z ✓ llama-index-core/tests/node_parser/test_html.py:tests succeeded in 11.79s.
+2025-04-14T07:59:41.8758731Z ✓ llama-index-core/tests/node_parser/test_json.py:tests succeeded in 11.13s.
+2025-04-14T07:59:41.8759454Z ✓ llama-index-core/tests/node_parser/test_markdown.py:tests succeeded in 11.08s.
+2025-04-14T07:59:41.8760052Z ✓ llama-index-core/tests/node_parser/test_markdown_element.py:tests succeeded in 16.09s.
+2025-04-14T07:59:41.8760658Z ✓ llama-index-core/tests/node_parser/test_node_parser.py:tests succeeded in 10.56s.
+2025-04-14T07:59:41.8761325Z ✓ llama-index-core/tests/node_parser/test_semantic_double_merging_splitter.py:tests succeeded in 12.85s.
+2025-04-14T07:59:41.8762006Z ✓ llama-index-core/tests/node_parser/test_semantic_splitter.py:tests succeeded in 12.08s.
+2025-04-14T07:59:41.8762924Z ✓ llama-index-core/tests/node_parser/test_unstructured.py:tests succeeded in 11.21s.
+2025-04-14T07:59:41.8763763Z ✓ llama-index-core/tests/objects/test_base.py:tests succeeded in 24.90s.
+2025-04-14T07:59:41.8764320Z ✓ llama-index-core/tests/objects/test_node_mapping.py:tests succeeded in 24.43s.
+2025-04-14T07:59:41.8765115Z ✓ llama-index-core/tests/output_parsers/test_base.py:tests succeeded in 10.78s.
+2025-04-14T07:59:41.8765724Z ✓ llama-index-core/tests/output_parsers/test_pydantic.py:tests succeeded in 11.24s.
+2025-04-14T07:59:41.8766325Z ✓ llama-index-core/tests/output_parsers/test_selection.py:tests succeeded in 10.73s.
+2025-04-14T07:59:41.8766909Z ✓ llama-index-core/tests/output_parsers/test_utils.py:tests succeeded in 11.01s.
+2025-04-14T07:59:41.8767473Z ✓ llama-index-core/tests/playground/test_base.py:tests succeeded in 12.25s.
+2025-04-14T07:59:41.8768032Z ✓ llama-index-core/tests/postprocessor/test_base.py:tests succeeded in 15.56s.
+2025-04-14T07:59:41.8768620Z ✓ llama-index-core/tests/postprocessor/test_llm_rerank.py:tests succeeded in 8.25s.
+2025-04-14T07:59:41.8769277Z ✓ llama-index-core/tests/postprocessor/test_metadata_replacement.py:tests succeeded in 10.55s.
+2025-04-14T07:59:41.8769925Z ✓ llama-index-core/tests/postprocessor/test_optimizer.py:tests succeeded in 11.42s.
+2025-04-14T07:59:41.8770550Z ✓ llama-index-core/tests/postprocessor/test_rankgpt_rerank.py:tests succeeded in 12.18s.
+2025-04-14T07:59:41.8771394Z ✓ llama-index-core/tests/postprocessor/test_structured_llm_rerank.py:tests succeeded in 11.07s.
+2025-04-14T07:59:41.8772053Z ✓ llama-index-core/tests/program/test_function_program.py:tests succeeded in 11.18s.
+2025-04-14T07:59:41.8772645Z ✓ llama-index-core/tests/program/test_llm_program.py:tests succeeded in 10.96s.
+2025-04-14T07:59:41.8773273Z ✓ llama-index-core/tests/program/test_multi_modal_llm_program.py:tests succeeded in 11.43s.
+2025-04-14T07:59:41.8773864Z ✓ llama-index-core/tests/program/test_utils.py:tests succeeded in 10.78s.
+2025-04-14T07:59:41.8774395Z ✓ llama-index-core/tests/prompts/test_base.py:tests succeeded in 10.75s.
+2025-04-14T07:59:41.8775141Z ✓ llama-index-core/tests/prompts/test_guidance_utils.py:tests succeeded in 10.91s.
+2025-04-14T07:59:41.8775704Z ✓ llama-index-core/tests/prompts/test_mixin.py:tests succeeded in 11.08s.
+2025-04-14T07:59:41.8776231Z ✓ llama-index-core/tests/prompts/test_rich.py:tests succeeded in 10.66s.
+2025-04-14T07:59:41.8776781Z ✓ llama-index-core/tests/prompts/test_utils.py:tests succeeded in 10.72s.
+2025-04-14T07:59:41.8777418Z ✓ llama-index-core/tests/query_engine/test_cogniswitch_query_engine.py:tests succeeded in 11.03s.
+2025-04-14T07:59:41.8778108Z ✓ llama-index-core/tests/query_engine/test_retriever_query_engine.py:tests succeeded in 11.87s.
+2025-04-14T07:59:41.8778753Z ✓ llama-index-core/tests/query_pipeline/test_components.py:tests succeeded in 11.53s.
+2025-04-14T07:59:41.8779340Z ✓ llama-index-core/tests/query_pipeline/test_query.py:tests succeeded in 25.16s.
+2025-04-14T07:59:41.8779914Z ✓ llama-index-core/tests/query_pipeline/test_utils.py:tests succeeded in 10.97s.
+2025-04-14T07:59:41.8780520Z ✓ llama-index-core/tests/question_gen/test_llm_generators.py:tests succeeded in 10.78s.
+2025-04-14T07:59:41.8781113Z ✓ llama-index-core/tests/readers/file/test_base.py:tests succeeded in 25.27s.
+2025-04-14T07:59:41.8781657Z ✓ llama-index-core/tests/readers/test_json.py:tests succeeded in 10.76s.
+2025-04-14T07:59:41.8782352Z ✓ llama-index-core/tests/readers/test_load_reader.py:tests succeeded in 10.79s.
+2025-04-14T07:59:41.8782939Z ✓ llama-index-core/tests/readers/test_string_iterable.py:tests succeeded in 10.76s.
+2025-04-14T07:59:41.8783570Z ✓ llama-index-core/tests/response_synthesizers/test_generate.py:tests succeeded in 11.57s.
+2025-04-14T07:59:41.8784213Z ✓ llama-index-core/tests/response_synthesizers/test_refine.py:tests succeeded in 12.17s.
+2025-04-14T07:59:41.8785081Z ✓ llama-index-core/tests/retrievers/test_composable_retriever.py:tests succeeded in 11.87s.
+2025-04-14T07:59:41.8785705Z ✓ llama-index-core/tests/schema/test_base_component.py:tests succeeded in 11.15s.
+2025-04-14T07:59:41.8786273Z ✓ llama-index-core/tests/schema/test_base_node.py:tests succeeded in 11.02s.
+2025-04-14T07:59:41.8786837Z ✓ llama-index-core/tests/schema/test_media_resource.py:tests succeeded in 11.38s.
+2025-04-14T07:59:41.8787389Z ✓ llama-index-core/tests/schema/test_node.py:tests succeeded in 10.98s.
+2025-04-14T07:59:41.8787934Z ✓ llama-index-core/tests/schema/test_schema.py:tests succeeded in 10.75s.
+2025-04-14T07:59:41.8788504Z ✓ llama-index-core/tests/selectors/test_llm_selectors.py:tests succeeded in 11.07s.
+2025-04-14T07:59:41.8789173Z ✓ llama-index-core/tests/sparse_embeddings/test_mock_sparse_embeddings.py:tests succeeded in 11.48s.
+2025-04-14T07:59:41.8789881Z ✓ llama-index-core/tests/storage/chat_store/test_simple_chat_store.py:tests succeeded in 11.07s.
+2025-04-14T07:59:41.8790565Z ✓ llama-index-core/tests/storage/docstore/test_simple_docstore.py:tests succeeded in 11.28s.
+2025-04-14T07:59:41.8791265Z ✓ llama-index-core/tests/storage/index_store/test_simple_index_store.py:tests succeeded in 10.95s.
+2025-04-14T07:59:41.8791946Z ✓ llama-index-core/tests/storage/kvstore/test_simple_kvstore.py:tests succeeded in 10.72s.
+2025-04-14T07:59:41.8792571Z ✓ llama-index-core/tests/storage/test_storage_context.py:tests succeeded in 11.14s.
+2025-04-14T07:59:41.8793106Z ✓ llama-index-core/tests/test_async_utils.py succeeded in 10.69s.
+2025-04-14T07:59:41.8793707Z ✓ llama-index-core/tests/test_utils.py succeeded in 11.98s.
+2025-04-14T07:59:41.8794233Z ✓ llama-index-core/tests/text_splitter/test_code_splitter.py:tests succeeded in 24.99s.
+2025-04-14T07:59:41.8795091Z ✓ llama-index-core/tests/text_splitter/test_sentence_splitter.py:tests succeeded in 13.84s.
+2025-04-14T07:59:41.8795727Z ✓ llama-index-core/tests/text_splitter/test_token_splitter.py:tests succeeded in 13.40s.
+2025-04-14T07:59:41.8796333Z ✓ llama-index-core/tests/token_predictor/test_base.py:tests succeeded in 12.83s.
+2025-04-14T07:59:41.8796873Z ✓ llama-index-core/tests/tools/test_base.py:tests succeeded in 12.32s.
+2025-04-14T07:59:41.8797444Z ✓ llama-index-core/tests/tools/test_eval_query_engine_tool.py:tests succeeded in 10.86s.
+2025-04-14T07:59:41.8798033Z ✓ llama-index-core/tests/tools/test_ondemand_loader.py:tests succeeded in 12.05s.
+2025-04-14T07:59:41.8798621Z ✓ llama-index-core/tests/tools/test_query_engine_tool.py:tests succeeded in 10.63s.
+2025-04-14T07:59:41.8799249Z ✓ llama-index-core/tests/tools/test_retriever_tool.py:tests succeeded in 10.83s.
+2025-04-14T07:59:41.8799791Z ✓ llama-index-core/tests/tools/test_types.py:tests succeeded in 10.85s.
+2025-04-14T07:59:41.8800303Z ✓ llama-index-core/tests/tools/test_utils.py:tests succeeded in 10.89s.
+2025-04-14T07:59:41.8800842Z ✓ llama-index-core/tests/tools/tool_spec/test_base.py:tests succeeded in 11.21s.
+2025-04-14T07:59:41.8801453Z ✓ llama-index-core/tests/tools/tool_spec/test_load_and_search.py:tests succeeded in 11.75s.
+2025-04-14T07:59:41.8802069Z ✓ llama-index-core/tests/utilities/test_sql_wrapper.py:tests succeeded in 11.11s.
+2025-04-14T07:59:41.8802652Z ✓ llama-index-core/tests/vector_stores/test_simple.py:tests succeeded in 12.06s.
+2025-04-14T07:59:41.8803228Z ✓ llama-index-core/tests/workflow/test_checkpointer.py:tests succeeded in 11.51s.
+2025-04-14T07:59:41.8803794Z ✓ llama-index-core/tests/workflow/test_context.py:tests succeeded in 11.05s.
+2025-04-14T07:59:41.8804374Z ✓ llama-index-core/tests/workflow/test_decorator.py:tests succeeded in 23.50s.
+2025-04-14T07:59:41.8805254Z ✓ llama-index-core/tests/workflow/test_event.py:tests succeeded in 11.41s.
+2025-04-14T07:59:41.8805796Z ✓ llama-index-core/tests/workflow/test_handler.py:tests succeeded in 11.11s.
+2025-04-14T07:59:41.8806360Z ✓ llama-index-core/tests/workflow/test_retry_policy.py:tests succeeded in 11.78s.
+2025-04-14T07:59:41.8806929Z ✓ llama-index-core/tests/workflow/test_service.py:tests succeeded in 11.00s.
+2025-04-14T07:59:41.8807488Z ✓ llama-index-core/tests/workflow/test_stepwise.py:tests succeeded in 11.32s.
+2025-04-14T07:59:41.8808049Z ✓ llama-index-core/tests/workflow/test_streaming.py:tests succeeded in 11.97s.
+2025-04-14T07:59:41.8808593Z ✓ llama-index-core/tests/workflow/test_utils.py:tests succeeded in 11.14s.
+2025-04-14T07:59:41.8809138Z ✓ llama-index-core/tests/workflow/test_workflow.py:tests succeeded in 15.76s.
+2025-04-14T07:59:41.8809780Z ✓ llama-index-core/tests/workflow/test_workflow_postponed_annotations.py:tests succeeded in 10.89s.
+2025-04-14T07:59:41.8810760Z ✓ llama-index-integrations/storage/chat_store/llama-index-storage-chat-store-postgres/tests/test_chat_store_postgres_chat_store.py succeeded in 148.40s.
+2025-04-14T07:59:58.5982385Z 
+2025-04-14T07:59:58.5982965Z Name                                                                                                                                      Stmts   Miss  Cover
+2025-04-14T07:59:58.5983878Z -------------------------------------------------------------------------------------------------------------------------------------------------------------
+2025-04-14T07:59:58.5985167Z llama-index-core/llama_index/core/__init__.py                                                                                                30      2    93%
+2025-04-14T07:59:58.5986188Z llama-index-core/llama_index/core/agent/__init__.py                                                                                          16      0   100%
+2025-04-14T07:59:58.5987597Z llama-index-core/llama_index/core/agent/custom/__init__.py                                                                                    0      0   100%
+2025-04-14T07:59:58.5988828Z llama-index-core/llama_index/core/agent/custom/pipeline_worker.py                                                                            97     11    89%
+2025-04-14T07:59:58.5989986Z llama-index-core/llama_index/core/agent/custom/simple.py                                                                                     86     42    51%
+2025-04-14T07:59:58.5991058Z llama-index-core/llama_index/core/agent/custom/simple_function.py                                                                            57      2    96%
+2025-04-14T07:59:58.5992315Z llama-index-core/llama_index/core/agent/function_calling/__init__.py                                                                          3      0   100%
+2025-04-14T07:59:58.5993738Z llama-index-core/llama_index/core/agent/function_calling/base.py                                                                             25     12    52%
+2025-04-14T07:59:58.5995254Z llama-index-core/llama_index/core/agent/function_calling/step.py                                                                            173     40    77%
+2025-04-14T07:59:58.5996448Z llama-index-core/llama_index/core/agent/legacy/__init__.py                                                                                    0      0   100%
+2025-04-14T07:59:58.5997615Z llama-index-core/llama_index/core/agent/legacy/react/__init__.py                                                                              0      0   100%
+2025-04-14T07:59:58.5998824Z llama-index-core/llama_index/core/agent/legacy/react/base.py                                                                                213    213     0%
+2025-04-14T07:59:58.5999988Z llama-index-core/llama_index/core/agent/react/__init__.py                                                                                     5      0   100%
+2025-04-14T07:59:58.6001116Z llama-index-core/llama_index/core/agent/react/agent.py                                                                                        0      0   100%
+2025-04-14T07:59:58.6002491Z llama-index-core/llama_index/core/agent/react/base.py                                                                                        32      4    88%
+2025-04-14T07:59:58.6003655Z llama-index-core/llama_index/core/agent/react/formatter.py                                                                                   45      2    96%
+2025-04-14T07:59:58.6005050Z llama-index-core/llama_index/core/agent/react/output_parser.py                                                                               48      9    81%
+2025-04-14T07:59:58.6006255Z llama-index-core/llama_index/core/agent/react/prompts.py                                                                                      5      0   100%
+2025-04-14T07:59:58.6007421Z llama-index-core/llama_index/core/agent/react/step.py                                                                                       307     37    88%
+2025-04-14T07:59:58.6008676Z llama-index-core/llama_index/core/agent/react/types.py                                                                                       37      2    95%
+2025-04-14T07:59:58.6009857Z llama-index-core/llama_index/core/agent/react_multimodal/__init__.py                                                                          0      0   100%
+2025-04-14T07:59:58.6011118Z llama-index-core/llama_index/core/agent/react_multimodal/prompts.py                                                                           1      0   100%
+2025-04-14T07:59:58.6012368Z llama-index-core/llama_index/core/agent/react_multimodal/step.py                                                                            193    144    25%
+2025-04-14T07:59:58.6013543Z llama-index-core/llama_index/core/agent/runner/__init__.py                                                                                    0      0   100%
+2025-04-14T07:59:58.6015050Z llama-index-core/llama_index/core/agent/runner/base.py                                                                                      361     85    76%
+2025-04-14T07:59:58.6016229Z llama-index-core/llama_index/core/agent/runner/parallel.py                                                                                  186     94    49%
+2025-04-14T07:59:58.6017408Z llama-index-core/llama_index/core/agent/runner/planner.py                                                                                   195     62    68%
+2025-04-14T07:59:58.6018538Z llama-index-core/llama_index/core/agent/types.py                                                                                              2      0   100%
+2025-04-14T07:59:58.6019593Z llama-index-core/llama_index/core/agent/utils.py                                                                                              8      1    88%
+2025-04-14T07:59:58.6020700Z llama-index-core/llama_index/core/agent/workflow/__init__.py                                                                                  7      0   100%
+2025-04-14T07:59:58.6021922Z llama-index-core/llama_index/core/agent/workflow/base_agent.py                                                                               52      4    92%
+2025-04-14T07:59:58.6023181Z llama-index-core/llama_index/core/agent/workflow/codeact_agent.py                                                                           116     27    77%
+2025-04-14T07:59:58.6024739Z llama-index-core/llama_index/core/agent/workflow/function_agent.py                                                                           42      3    93%
+2025-04-14T07:59:58.6026057Z llama-index-core/llama_index/core/agent/workflow/multi_agent_workflow.py                                                                    247     37    85%
+2025-04-14T07:59:58.6027352Z llama-index-core/llama_index/core/agent/workflow/react_agent.py                                                                              91     15    84%
+2025-04-14T07:59:58.6028871Z llama-index-core/llama_index/core/agent/workflow/single_agent_workflow.py                                                                    17      0   100%
+2025-04-14T07:59:58.6030214Z llama-index-core/llama_index/core/agent/workflow/workflow_events.py                                                                          30      1    97%
+2025-04-14T07:59:58.6031393Z llama-index-core/llama_index/core/async_utils.py                                                                                             71     24    66%
+2025-04-14T07:59:58.6032435Z llama-index-core/llama_index/core/base/__init__.py                                                                                            0      0   100%
+2025-04-14T07:59:58.6033502Z llama-index-core/llama_index/core/base/agent/__init__.py                                                                                      0      0   100%
+2025-04-14T07:59:58.6034801Z llama-index-core/llama_index/core/base/agent/types.py                                                                                        87     13    85%
+2025-04-14T07:59:58.6035989Z llama-index-core/llama_index/core/base/base_auto_retriever.py                                                                                23      9    61%
+2025-04-14T07:59:58.6037215Z llama-index-core/llama_index/core/base/base_multi_modal_retriever.py                                                                         19      0   100%
+2025-04-14T07:59:58.6038431Z llama-index-core/llama_index/core/base/base_query_engine.py                                                                                  72     16    78%
+2025-04-14T07:59:58.6039573Z llama-index-core/llama_index/core/base/base_retriever.py                                                                                    158     59    63%
+2025-04-14T07:59:58.6040716Z llama-index-core/llama_index/core/base/base_selector.py                                                                                      63     14    78%
+2025-04-14T07:59:58.6042084Z llama-index-core/llama_index/core/base/embeddings/__init__.py                                                                                 0      0   100%
+2025-04-14T07:59:58.6043280Z llama-index-core/llama_index/core/base/embeddings/base.py                                                                                   165     21    87%
+2025-04-14T07:59:58.6044698Z llama-index-core/llama_index/core/base/embeddings/base_sparse.py                                                                            146     12    92%
+2025-04-14T07:59:58.6045882Z llama-index-core/llama_index/core/base/llms/__init__.py                                                                                       0      0   100%
+2025-04-14T07:59:58.6046954Z llama-index-core/llama_index/core/base/llms/base.py                                                                                          50     14    72%
+2025-04-14T07:59:58.6048077Z llama-index-core/llama_index/core/base/llms/generic_utils.py                                                                                119     72    39%
+2025-04-14T07:59:58.6049241Z llama-index-core/llama_index/core/base/llms/types.py                                                                                        179     17    91%
+2025-04-14T07:59:58.6050403Z llama-index-core/llama_index/core/base/query_pipeline/__init__.py                                                                             0      0   100%
+2025-04-14T07:59:58.6051622Z llama-index-core/llama_index/core/base/query_pipeline/query.py                                                                              144     28    81%
+2025-04-14T07:59:58.6052831Z llama-index-core/llama_index/core/base/response/__init__.py                                                                                   0      0   100%
+2025-04-14T07:59:58.6054031Z llama-index-core/llama_index/core/base/response/schema.py                                                                                   130     70    46%
+2025-04-14T07:59:58.6055553Z llama-index-core/llama_index/core/bridge/__init__.py                                                                                          0      0   100%
+2025-04-14T07:59:58.6056679Z llama-index-core/llama_index/core/bridge/langchain.py                                                                                        23     22     4%
+2025-04-14T07:59:58.6057833Z llama-index-core/llama_index/core/bridge/pydantic.py                                                                                          5      0   100%
+2025-04-14T07:59:58.6059007Z llama-index-core/llama_index/core/bridge/pydantic_core.py                                                                                     3      0   100%
+2025-04-14T07:59:58.6060211Z llama-index-core/llama_index/core/bridge/pydantic_settings.py                                                                                 3      3     0%
+2025-04-14T07:59:58.6061417Z llama-index-core/llama_index/core/callbacks/__init__.py                                                                                       7      0   100%
+2025-04-14T07:59:58.6062552Z llama-index-core/llama_index/core/callbacks/base.py                                                                                         139     12    91%
+2025-04-14T07:59:58.6063718Z llama-index-core/llama_index/core/callbacks/base_handler.py                                                                                  19      0   100%
+2025-04-14T07:59:58.6065104Z llama-index-core/llama_index/core/callbacks/global_handlers.py                                                                               80     75     6%
+2025-04-14T07:59:58.6066322Z llama-index-core/llama_index/core/callbacks/llama_debug.py                                                                                   88     23    74%
+2025-04-14T07:59:58.6067645Z llama-index-core/llama_index/core/callbacks/pythonically_printing_base_handler.py                                                            12      3    75%
+2025-04-14T07:59:58.6069190Z llama-index-core/llama_index/core/callbacks/schema.py                                                                                        62      0   100%
+2025-04-14T07:59:58.6070418Z llama-index-core/llama_index/core/callbacks/simple_llm_handler.py                                                                            35     24    31%
+2025-04-14T07:59:58.6071651Z llama-index-core/llama_index/core/callbacks/token_counting.py                                                                               111     45    59%
+2025-04-14T07:59:58.6072838Z llama-index-core/llama_index/core/callbacks/utils.py                                                                                         30      0   100%
+2025-04-14T07:59:58.6073969Z llama-index-core/llama_index/core/chat_engine/__init__.py                                                                                     5      0   100%
+2025-04-14T07:59:58.6075366Z llama-index-core/llama_index/core/chat_engine/condense_plus_context.py                                                                      159      8    95%
+2025-04-14T07:59:58.6076726Z llama-index-core/llama_index/core/chat_engine/condense_question.py                                                                          142     71    50%
+2025-04-14T07:59:58.6077963Z llama-index-core/llama_index/core/chat_engine/context.py                                                                                    142     13    91%
+2025-04-14T07:59:58.6079121Z llama-index-core/llama_index/core/chat_engine/simple.py                                                                                      82     29    65%
+2025-04-14T07:59:58.6080280Z llama-index-core/llama_index/core/chat_engine/types.py                                                                                      264     52    80%
+2025-04-14T07:59:58.6081402Z llama-index-core/llama_index/core/chat_engine/utils.py                                                                                       22      8    64%
+2025-04-14T07:59:58.6082756Z llama-index-core/llama_index/core/command_line/__init__.py                                                                                    0      0   100%
+2025-04-14T07:59:58.6083919Z llama-index-core/llama_index/core/command_line/upgrade.py                                                                                   173    173     0%
+2025-04-14T07:59:58.6085310Z llama-index-core/llama_index/core/composability/__init__.py                                                                                   3      3     0%
+2025-04-14T07:59:58.6086577Z llama-index-core/llama_index/core/composability/base.py                                                                                       1      1     0%
+2025-04-14T07:59:58.6087810Z llama-index-core/llama_index/core/composability/joint_qa_summary.py                                                                          31     31     0%
+2025-04-14T07:59:58.6088981Z llama-index-core/llama_index/core/constants.py                                                                                               24      0   100%
+2025-04-14T07:59:58.6090121Z llama-index-core/llama_index/core/data_structs/__init__.py                                                                                    3      0   100%
+2025-04-14T07:59:58.6091305Z llama-index-core/llama_index/core/data_structs/data_structs.py                                                                              140      7    95%
+2025-04-14T07:59:58.6092549Z llama-index-core/llama_index/core/data_structs/document_summary.py                                                                           41      1    98%
+2025-04-14T07:59:58.6093787Z llama-index-core/llama_index/core/data_structs/registry.py                                                                                    6      0   100%
+2025-04-14T07:59:58.6095147Z llama-index-core/llama_index/core/data_structs/struct_type.py                                                                                35      0   100%
+2025-04-14T07:59:58.6096520Z llama-index-core/llama_index/core/data_structs/table.py                                                                                      21      1    95%
+2025-04-14T07:59:58.6097643Z llama-index-core/llama_index/core/download/__init__.py                                                                                        0      0   100%
+2025-04-14T07:59:58.6098758Z llama-index-core/llama_index/core/download/dataset.py                                                                                        89     71    20%
+2025-04-14T07:59:58.6099963Z llama-index-core/llama_index/core/download/integration.py                                                                                    19     13    32%
+2025-04-14T07:59:58.6101153Z llama-index-core/llama_index/core/download/module.py                                                                                        116     90    22%
+2025-04-14T07:59:58.6102281Z llama-index-core/llama_index/core/download/pack.py                                                                                           57     57     0%
+2025-04-14T07:59:58.6103417Z llama-index-core/llama_index/core/download/utils.py                                                                                          67     51    24%
+2025-04-14T07:59:58.6104703Z llama-index-core/llama_index/core/embeddings/__init__.py                                                                                      6      0   100%
+2025-04-14T07:59:58.6105846Z llama-index-core/llama_index/core/embeddings/loading.py                                                                                      28     28     0%
+2025-04-14T07:59:58.6107055Z llama-index-core/llama_index/core/embeddings/mock_embed_model.py                                                                             19      0   100%
+2025-04-14T07:59:58.6108262Z llama-index-core/llama_index/core/embeddings/multi_modal_base.py                                                                             63     45    29%
+2025-04-14T07:59:58.6109646Z llama-index-core/llama_index/core/embeddings/pooling.py                                                                                      34     16    53%
+2025-04-14T07:59:58.6110752Z llama-index-core/llama_index/core/embeddings/utils.py                                                                                        70     40    43%
+2025-04-14T07:59:58.6111841Z llama-index-core/llama_index/core/evaluation/__init__.py                                                                                     19      0   100%
+2025-04-14T07:59:58.6113001Z llama-index-core/llama_index/core/evaluation/answer_relevancy.py                                                                             53     36    32%
+2025-04-14T07:59:58.6114211Z llama-index-core/llama_index/core/evaluation/base.py                                                                                         39      2    95%
+2025-04-14T07:59:58.6115599Z llama-index-core/llama_index/core/evaluation/batch_runner.py                                                                                114     17    85%
+2025-04-14T07:59:58.6116884Z llama-index-core/llama_index/core/evaluation/benchmarks/__init__.py                                                                           3      3     0%
+2025-04-14T07:59:58.6118220Z llama-index-core/llama_index/core/evaluation/benchmarks/beir.py                                                                              59     59     0%
+2025-04-14T07:59:58.6119475Z llama-index-core/llama_index/core/evaluation/benchmarks/hotpotqa.py                                                                         124    124     0%
+2025-04-14T07:59:58.6120727Z llama-index-core/llama_index/core/evaluation/context_relevancy.py                                                                            64     45    30%
+2025-04-14T07:59:58.6121929Z llama-index-core/llama_index/core/evaluation/correctness.py                                                                                  34     18    47%
+2025-04-14T07:59:58.6123411Z llama-index-core/llama_index/core/evaluation/dataset_generation.py                                                                          132     38    71%
+2025-04-14T07:59:58.6124842Z llama-index-core/llama_index/core/evaluation/eval_utils.py                                                                                   91     73    20%
+2025-04-14T07:59:58.6126044Z llama-index-core/llama_index/core/evaluation/faithfulness.py                                                                                 53     33    38%
+2025-04-14T07:59:58.6127203Z llama-index-core/llama_index/core/evaluation/guideline.py                                                                                    45     24    47%
+2025-04-14T07:59:58.6128350Z llama-index-core/llama_index/core/evaluation/multi_modal/__init__.py                                                                          3      3     0%
+2025-04-14T07:59:58.6129602Z llama-index-core/llama_index/core/evaluation/multi_modal/faithfulness.py                                                                     72     72     0%
+2025-04-14T07:59:58.6130899Z llama-index-core/llama_index/core/evaluation/multi_modal/relevancy.py                                                                        72     72     0%
+2025-04-14T07:59:58.6132102Z llama-index-core/llama_index/core/evaluation/notebook_utils.py                                                                               46     39    15%
+2025-04-14T07:59:58.6133264Z llama-index-core/llama_index/core/evaluation/pairwise.py                                                                                     83     60    28%
+2025-04-14T07:59:58.6134390Z llama-index-core/llama_index/core/evaluation/relevancy.py                                                                                    49     31    37%
+2025-04-14T07:59:58.6135748Z llama-index-core/llama_index/core/evaluation/retrieval/__init__.py                                                                            0      0   100%
+2025-04-14T07:59:58.6137240Z llama-index-core/llama_index/core/evaluation/retrieval/base.py                                                                               67     31    54%
+2025-04-14T07:59:58.6138577Z llama-index-core/llama_index/core/evaluation/retrieval/evaluator.py                                                                          37     22    41%
+2025-04-14T07:59:58.6139891Z llama-index-core/llama_index/core/evaluation/retrieval/metrics.py                                                                           126     27    79%
+2025-04-14T07:59:58.6141173Z llama-index-core/llama_index/core/evaluation/retrieval/metrics_base.py                                                                       15      2    87%
+2025-04-14T07:59:58.6142464Z llama-index-core/llama_index/core/evaluation/semantic_similarity.py                                                                          27     17    37%
+2025-04-14T07:59:58.6143598Z llama-index-core/llama_index/core/exec_utils.py                                                                                              56     56     0%
+2025-04-14T07:59:58.6144802Z llama-index-core/llama_index/core/extractors/__init__.py                                                                                      4      0   100%
+2025-04-14T07:59:58.6145942Z llama-index-core/llama_index/core/extractors/document_context.py                                                                            113     29    74%
+2025-04-14T07:59:58.6147090Z llama-index-core/llama_index/core/extractors/interface.py                                                                                    61     20    67%
+2025-04-14T07:59:58.6148197Z llama-index-core/llama_index/core/extractors/loading.py                                                                                      16     16     0%
+2025-04-14T07:59:58.6149334Z llama-index-core/llama_index/core/extractors/metadata_extractors.py                                                                         172     89    48%
+2025-04-14T07:59:58.6150672Z llama-index-core/llama_index/core/graph_stores/__init__.py                                                                                    4      0   100%
+2025-04-14T07:59:58.6151716Z llama-index-core/llama_index/core/graph_stores/prompts.py                                                                                     3      0   100%
+2025-04-14T07:59:58.6152813Z llama-index-core/llama_index/core/graph_stores/simple.py                                                                                     94     16    83%
+2025-04-14T07:59:58.6154033Z llama-index-core/llama_index/core/graph_stores/simple_labelled.py                                                                           127     62    51%
+2025-04-14T07:59:58.6155457Z llama-index-core/llama_index/core/graph_stores/types.py                                                                                     229     56    76%
+2025-04-14T07:59:58.6156620Z llama-index-core/llama_index/core/graph_stores/utils.py                                                                                      24     24     0%
+2025-04-14T07:59:58.6157769Z llama-index-core/llama_index/core/image_retriever.py                                                                                         31     12    61%
+2025-04-14T07:59:58.6158851Z llama-index-core/llama_index/core/img_utils.py                                                                                               12     12     0%
+2025-04-14T07:59:58.6159916Z llama-index-core/llama_index/core/indices/__init__.py                                                                                        18      0   100%
+2025-04-14T07:59:58.6161009Z llama-index-core/llama_index/core/indices/base.py                                                                                           179     50    72%
+2025-04-14T07:59:58.6162158Z llama-index-core/llama_index/core/indices/base_retriever.py                                                                                   2      0   100%
+2025-04-14T07:59:58.6163581Z llama-index-core/llama_index/core/indices/common/__init__.py                                                                                  0      0   100%
+2025-04-14T07:59:58.6165037Z llama-index-core/llama_index/core/indices/common/struct_store/__init__.py                                                                     0      0   100%
+2025-04-14T07:59:58.6166381Z llama-index-core/llama_index/core/indices/common/struct_store/base.py                                                                       104     11    89%
+2025-04-14T07:59:58.6167738Z llama-index-core/llama_index/core/indices/common/struct_store/schema.py                                                                       7      0   100%
+2025-04-14T07:59:58.6169078Z llama-index-core/llama_index/core/indices/common/struct_store/sql.py                                                                         29      2    93%
+2025-04-14T07:59:58.6170376Z llama-index-core/llama_index/core/indices/common_tree/__init__.py                                                                             0      0   100%
+2025-04-14T07:59:58.6171583Z llama-index-core/llama_index/core/indices/common_tree/base.py                                                                                96     18    81%
+2025-04-14T07:59:58.6172824Z llama-index-core/llama_index/core/indices/composability/__init__.py                                                                           2      0   100%
+2025-04-14T07:59:58.6174114Z llama-index-core/llama_index/core/indices/composability/graph.py                                                                             51      8    84%
+2025-04-14T07:59:58.6175601Z llama-index-core/llama_index/core/indices/document_summary/__init__.py                                                                        3      0   100%
+2025-04-14T07:59:58.6176558Z llama-index-core/llama_index/core/indices/document_summary/base.py                                                                          121     11    91%
+2025-04-14T07:59:58.6178140Z llama-index-core/llama_index/core/indices/document_summary/retrievers.py                                                                     75      3    96%
+2025-04-14T07:59:58.6179412Z llama-index-core/llama_index/core/indices/empty/__init__.py                                                                                   3      0   100%
+2025-04-14T07:59:58.6180550Z llama-index-core/llama_index/core/indices/empty/base.py                                                                                      33     11    67%
+2025-04-14T07:59:58.6181767Z llama-index-core/llama_index/core/indices/empty/retrievers.py                                                                                15      0   100%
+2025-04-14T07:59:58.6183008Z llama-index-core/llama_index/core/indices/keyword_table/__init__.py                                                                           5      0   100%
+2025-04-14T07:59:58.6184257Z llama-index-core/llama_index/core/indices/keyword_table/base.py                                                                              95      7    93%
+2025-04-14T07:59:58.6185713Z llama-index-core/llama_index/core/indices/keyword_table/rake_base.py                                                                         10      2    80%
+2025-04-14T07:59:58.6187010Z llama-index-core/llama_index/core/indices/keyword_table/retrievers.py                                                                        59      3    95%
+2025-04-14T07:59:58.6188327Z llama-index-core/llama_index/core/indices/keyword_table/simple_base.py                                                                       12      0   100%
+2025-04-14T07:59:58.6189573Z llama-index-core/llama_index/core/indices/keyword_table/utils.py                                                                             39     14    64%
+2025-04-14T07:59:58.6190825Z llama-index-core/llama_index/core/indices/knowledge_graph/__init__.py                                                                         3      0   100%
+2025-04-14T07:59:58.6192276Z llama-index-core/llama_index/core/indices/knowledge_graph/base.py                                                                           165     59    64%
+2025-04-14T07:59:58.6193611Z llama-index-core/llama_index/core/indices/knowledge_graph/retrievers.py                                                                     331    192    42%
+2025-04-14T07:59:58.6195082Z llama-index-core/llama_index/core/indices/list/__init__.py                                                                                    3      0   100%
+2025-04-14T07:59:58.6196240Z llama-index-core/llama_index/core/indices/list/base.py                                                                                       60      3    95%
+2025-04-14T07:59:58.6197433Z llama-index-core/llama_index/core/indices/list/retrievers.py                                                                                 81      0   100%
+2025-04-14T07:59:58.6198623Z llama-index-core/llama_index/core/indices/loading.py                                                                                         39      3    92%
+2025-04-14T07:59:58.6199797Z llama-index-core/llama_index/core/indices/managed/__init__.py                                                                                 2      2     0%
+2025-04-14T07:59:58.6200967Z llama-index-core/llama_index/core/indices/managed/base.py                                                                                    30     30     0%
+2025-04-14T07:59:58.6202134Z llama-index-core/llama_index/core/indices/managed/types.py                                                                                    4      4     0%
+2025-04-14T07:59:58.6203369Z llama-index-core/llama_index/core/indices/multi_modal/__init__.py                                                                             3      0   100%
+2025-04-14T07:59:58.6204771Z llama-index-core/llama_index/core/indices/multi_modal/base.py                                                                               176    136    23%
+2025-04-14T07:59:58.6206263Z llama-index-core/llama_index/core/indices/multi_modal/retriever.py                                                                          154    113    27%
+2025-04-14T07:59:58.6207496Z llama-index-core/llama_index/core/indices/postprocessor.py                                                                                    5      5     0%
+2025-04-14T07:59:58.6208703Z llama-index-core/llama_index/core/indices/prompt_helper.py                                                                                   91      6    93%
+2025-04-14T07:59:58.6209897Z llama-index-core/llama_index/core/indices/property_graph/__init__.py                                                                         14      0   100%
+2025-04-14T07:59:58.6211162Z llama-index-core/llama_index/core/indices/property_graph/base.py                                                                            130     21    84%
+2025-04-14T07:59:58.6212455Z llama-index-core/llama_index/core/indices/property_graph/retriever.py                                                                        33     22    33%
+2025-04-14T07:59:58.6213835Z llama-index-core/llama_index/core/indices/property_graph/sub_retrievers/__init__.py                                                           0      0   100%
+2025-04-14T07:59:58.6215432Z llama-index-core/llama_index/core/indices/property_graph/sub_retrievers/base.py                                                              72     53    26%
+2025-04-14T07:59:58.6216881Z llama-index-core/llama_index/core/indices/property_graph/sub_retrievers/custom.py                                                            43     25    42%
+2025-04-14T07:59:58.6218356Z llama-index-core/llama_index/core/indices/property_graph/sub_retrievers/cypher_template.py                                                   26     14    46%
+2025-04-14T07:59:58.6219837Z llama-index-core/llama_index/core/indices/property_graph/sub_retrievers/llm_synonym.py                                                       40     25    38%
+2025-04-14T07:59:58.6221489Z llama-index-core/llama_index/core/indices/property_graph/sub_retrievers/text_to_cypher.py                                                    73     58    21%
+2025-04-14T07:59:58.6222919Z llama-index-core/llama_index/core/indices/property_graph/sub_retrievers/vector.py                                                           103     85    17%
+2025-04-14T07:59:58.6224376Z llama-index-core/llama_index/core/indices/property_graph/transformations/__init__.py                                                          5      0   100%
+2025-04-14T07:59:58.6226082Z llama-index-core/llama_index/core/indices/property_graph/transformations/dynamic_llm.py                                                     135    105    22%
+2025-04-14T07:59:58.6227604Z llama-index-core/llama_index/core/indices/property_graph/transformations/implicit.py                                                         33     24    27%
+2025-04-14T07:59:58.6229107Z llama-index-core/llama_index/core/indices/property_graph/transformations/schema_llm.py                                                      138    106    23%
+2025-04-14T07:59:58.6230625Z llama-index-core/llama_index/core/indices/property_graph/transformations/simple_llm.py                                                       50     29    42%
+2025-04-14T07:59:58.6232129Z llama-index-core/llama_index/core/indices/property_graph/transformations/utils.py                                                            14      6    57%
+2025-04-14T07:59:58.6233459Z llama-index-core/llama_index/core/indices/property_graph/utils.py                                                                            19     17    11%
+2025-04-14T07:59:58.6234857Z llama-index-core/llama_index/core/indices/query/__init__.py                                                                                   0      0   100%
+2025-04-14T07:59:58.6236012Z llama-index-core/llama_index/core/indices/query/base.py                                                                                       2      0   100%
+2025-04-14T07:59:58.6237407Z llama-index-core/llama_index/core/indices/query/embedding_utils.py                                                                           82     26    68%
+2025-04-14T07:59:58.6238729Z llama-index-core/llama_index/core/indices/query/query_transform/__init__.py                                                                   2      0   100%
+2025-04-14T07:59:58.6240028Z llama-index-core/llama_index/core/indices/query/query_transform/base.py                                                                     128     58    55%
+2025-04-14T07:59:58.6241491Z llama-index-core/llama_index/core/indices/query/query_transform/feedback_transform.py                                                        49     29    41%
+2025-04-14T07:59:58.6242888Z llama-index-core/llama_index/core/indices/query/query_transform/prompts.py                                                                   11      0   100%
+2025-04-14T07:59:58.6244171Z llama-index-core/llama_index/core/indices/query/schema.py                                                                                     2      0   100%
+2025-04-14T07:59:58.6245552Z llama-index-core/llama_index/core/indices/registry.py                                                                                        15      0   100%
+2025-04-14T07:59:58.6246786Z llama-index-core/llama_index/core/indices/struct_store/__init__.py                                                                            5      0   100%
+2025-04-14T07:59:58.6248013Z llama-index-core/llama_index/core/indices/struct_store/base.py                                                                               30      2    93%
+2025-04-14T07:59:58.6249296Z llama-index-core/llama_index/core/indices/struct_store/container_builder.py                                                                  58      2    97%
+2025-04-14T07:59:58.6250608Z llama-index-core/llama_index/core/indices/struct_store/json_query.py                                                                         98     25    74%
+2025-04-14T07:59:58.6252012Z llama-index-core/llama_index/core/indices/struct_store/pandas.py                                                                              5      1    80%
+2025-04-14T07:59:58.6253248Z llama-index-core/llama_index/core/indices/struct_store/sql.py                                                                                61     11    82%
+2025-04-14T07:59:58.6254455Z llama-index-core/llama_index/core/indices/struct_store/sql_query.py                                                                         211     19    91%
+2025-04-14T07:59:58.6255944Z llama-index-core/llama_index/core/indices/struct_store/sql_retriever.py                                                                     193     58    70%
+2025-04-14T07:59:58.6257152Z llama-index-core/llama_index/core/indices/tree/__init__.py                                                                                    6      0   100%
+2025-04-14T07:59:58.6258361Z llama-index-core/llama_index/core/indices/tree/all_leaf_retriever.py                                                                         22      0   100%
+2025-04-14T07:59:58.6259553Z llama-index-core/llama_index/core/indices/tree/base.py                                                                                       72      4    94%
+2025-04-14T07:59:58.6260698Z llama-index-core/llama_index/core/indices/tree/inserter.py                                                                                   78      4    95%
+2025-04-14T07:59:58.6262015Z llama-index-core/llama_index/core/indices/tree/select_leaf_embedding_retriever.py                                                            47     17    64%
+2025-04-14T07:59:58.6263363Z llama-index-core/llama_index/core/indices/tree/select_leaf_retriever.py                                                                     163     86    47%
+2025-04-14T07:59:58.6265005Z llama-index-core/llama_index/core/indices/tree/tree_root_retriever.py                                                                        20      0   100%
+2025-04-14T07:59:58.6266153Z llama-index-core/llama_index/core/indices/tree/utils.py                                                                                      15      0   100%
+2025-04-14T07:59:58.6267203Z llama-index-core/llama_index/core/indices/utils.py                                                                                          121     39    68%
+2025-04-14T07:59:58.6268272Z llama-index-core/llama_index/core/indices/vector_store/__init__.py                                                                            3      0   100%
+2025-04-14T07:59:58.6269385Z llama-index-core/llama_index/core/indices/vector_store/base.py                                                                              173     43    75%
+2025-04-14T07:59:58.6270585Z llama-index-core/llama_index/core/indices/vector_store/retrievers/__init__.py                                                                 3      0   100%
+2025-04-14T07:59:58.6271890Z llama-index-core/llama_index/core/indices/vector_store/retrievers/auto_retriever/__init__.py                                                  2      0   100%
+2025-04-14T07:59:58.6273442Z llama-index-core/llama_index/core/indices/vector_store/retrievers/auto_retriever/auto_retriever.py                                           83     55    34%
+2025-04-14T07:59:58.6275126Z llama-index-core/llama_index/core/indices/vector_store/retrievers/auto_retriever/output_parser.py                                            12      1    92%
+2025-04-14T07:59:58.6276655Z llama-index-core/llama_index/core/indices/vector_store/retrievers/auto_retriever/prompts.py                                                  15      0   100%
+2025-04-14T07:59:58.6278125Z llama-index-core/llama_index/core/indices/vector_store/retrievers/retriever.py                                                               81      9    89%
+2025-04-14T07:59:58.6279394Z llama-index-core/llama_index/core/ingestion/__init__.py                                                                                       3      0   100%
+2025-04-14T07:59:58.6280701Z llama-index-core/llama_index/core/ingestion/api_utils.py                                                                                     18     11    39%
+2025-04-14T07:59:58.6281851Z llama-index-core/llama_index/core/ingestion/cache.py                                                                                         36      1    97%
+2025-04-14T07:59:58.6283021Z llama-index-core/llama_index/core/ingestion/data_sinks.py                                                                                    59     16    73%
+2025-04-14T07:59:58.6284189Z llama-index-core/llama_index/core/ingestion/data_sources.py                                                                                 156     27    83%
+2025-04-14T07:59:58.6285589Z llama-index-core/llama_index/core/ingestion/pipeline.py                                                                                     274    132    52%
+2025-04-14T07:59:58.6286825Z llama-index-core/llama_index/core/ingestion/transformations.py                                                                               94      8    91%
+2025-04-14T07:59:58.6288039Z llama-index-core/llama_index/core/instrumentation/__init__.py                                                                                39      1    97%
+2025-04-14T07:59:58.6289253Z llama-index-core/llama_index/core/instrumentation/base_handler.py                                                                             5      5     0%
+2025-04-14T07:59:58.6290533Z llama-index-core/llama_index/core/instrumentation/dispatcher.py                                                                             185     16    91%
+2025-04-14T07:59:58.6291872Z llama-index-core/llama_index/core/instrumentation/event_handlers/__init__.py                                                                  3      0   100%
+2025-04-14T07:59:58.6293370Z llama-index-core/llama_index/core/instrumentation/event_handlers/base.py                                                                     11      1    91%
+2025-04-14T07:59:58.6294919Z llama-index-core/llama_index/core/instrumentation/event_handlers/null.py                                                                      9      1    89%
+2025-04-14T07:59:58.6296267Z llama-index-core/llama_index/core/instrumentation/events/__init__.py                                                                          2      0   100%
+2025-04-14T07:59:58.6297557Z llama-index-core/llama_index/core/instrumentation/events/agent.py                                                                            51      9    82%
+2025-04-14T07:59:58.6298827Z llama-index-core/llama_index/core/instrumentation/events/base.py                                                                             20      5    75%
+2025-04-14T07:59:58.6300126Z llama-index-core/llama_index/core/instrumentation/events/chat_engine.py                                                                      19      4    79%
+2025-04-14T07:59:58.6301432Z llama-index-core/llama_index/core/instrumentation/events/embedding.py                                                                        27      4    85%
+2025-04-14T07:59:58.6302562Z llama-index-core/llama_index/core/instrumentation/events/exception.py                                                                         6      1    83%
+2025-04-14T07:59:58.6303337Z llama-index-core/llama_index/core/instrumentation/events/llm.py                                                                              73     11    85%
+2025-04-14T07:59:58.6304091Z llama-index-core/llama_index/core/instrumentation/events/query.py                                                                            14      2    86%
+2025-04-14T07:59:58.6305077Z llama-index-core/llama_index/core/instrumentation/events/rerank.py                                                                           18      2    89%
+2025-04-14T07:59:58.6305886Z llama-index-core/llama_index/core/instrumentation/events/retrieval.py                                                                        14      2    86%
+2025-04-14T07:59:58.6306821Z llama-index-core/llama_index/core/instrumentation/events/span.py                                                                              6      1    83%
+2025-04-14T07:59:58.6307593Z llama-index-core/llama_index/core/instrumentation/events/synthesis.py                                                                        25      4    84%
+2025-04-14T07:59:58.6308733Z llama-index-core/llama_index/core/instrumentation/span/__init__.py                                                                            7      0   100%
+2025-04-14T07:59:58.6309900Z llama-index-core/llama_index/core/instrumentation/span/base.py                                                                                8      0   100%
+2025-04-14T07:59:58.6311128Z llama-index-core/llama_index/core/instrumentation/span/simple.py                                                                              9      0   100%
+2025-04-14T07:59:58.6312356Z llama-index-core/llama_index/core/instrumentation/span_handlers/__init__.py                                                                   4      0   100%
+2025-04-14T07:59:58.6313542Z llama-index-core/llama_index/core/instrumentation/span_handlers/base.py                                                                      50     14    72%
+2025-04-14T07:59:58.6314998Z llama-index-core/llama_index/core/instrumentation/span_handlers/null.py                                                                      18      3    83%
+2025-04-14T07:59:58.6316368Z llama-index-core/llama_index/core/instrumentation/span_handlers/simple.py                                                                    77     60    22%
+2025-04-14T07:59:58.6317374Z llama-index-core/llama_index/core/langchain_helpers/__init__.py                                                                               4      4     0%
+2025-04-14T07:59:58.6318262Z llama-index-core/llama_index/core/langchain_helpers/agents/__init__.py                                                                        4      4     0%
+2025-04-14T07:59:58.6319026Z llama-index-core/llama_index/core/langchain_helpers/agents/agents.py                                                                          9      9     0%
+2025-04-14T07:59:58.6319801Z llama-index-core/llama_index/core/langchain_helpers/agents/toolkits.py                                                                       10     10     0%
+2025-04-14T07:59:58.6320563Z llama-index-core/llama_index/core/langchain_helpers/agents/tools.py                                                                          42     42     0%
+2025-04-14T07:59:58.6321324Z llama-index-core/llama_index/core/langchain_helpers/memory_wrapper.py                                                                       106    106     0%
+2025-04-14T07:59:58.6322075Z llama-index-core/llama_index/core/langchain_helpers/streaming.py                                                                             28     28     0%
+2025-04-14T07:59:58.6322830Z llama-index-core/llama_index/core/langchain_helpers/text_splitter.py                                                                          1      1     0%
+2025-04-14T07:59:58.6323536Z llama-index-core/llama_index/core/llama_dataset/__init__.py                                                                                   5      0   100%
+2025-04-14T07:59:58.6324192Z llama-index-core/llama_index/core/llama_dataset/base.py                                                                                     126     63    50%
+2025-04-14T07:59:58.6325077Z llama-index-core/llama_index/core/llama_dataset/download.py                                                                                  26     15    42%
+2025-04-14T07:59:58.6325813Z llama-index-core/llama_index/core/llama_dataset/evaluator_evaluation.py                                                                     175    105    40%
+2025-04-14T07:59:58.6326672Z llama-index-core/llama_index/core/llama_dataset/generator.py                                                                                 94     94     0%
+2025-04-14T07:59:58.6327377Z llama-index-core/llama_index/core/llama_dataset/legacy/__init__.py                                                                            0      0   100%
+2025-04-14T07:59:58.6328106Z llama-index-core/llama_index/core/llama_dataset/legacy/embedding.py                                                                          46     24    48%
+2025-04-14T07:59:58.6328809Z llama-index-core/llama_index/core/llama_dataset/rag.py                                                                                       70     36    49%
+2025-04-14T07:59:58.6329475Z llama-index-core/llama_index/core/llama_dataset/simple.py                                                                                    56     56     0%
+2025-04-14T07:59:58.6330129Z llama-index-core/llama_index/core/llama_pack/__init__.py                                                                                      3      3     0%
+2025-04-14T07:59:58.6330765Z llama-index-core/llama_index/core/llama_pack/base.py                                                                                          7      7     0%
+2025-04-14T07:59:58.6331414Z llama-index-core/llama_index/core/llama_pack/download.py                                                                                     24     24     0%
+2025-04-14T07:59:58.6332053Z llama-index-core/llama_index/core/llms/__init__.py                                                                                            5      0   100%
+2025-04-14T07:59:58.6332677Z llama-index-core/llama_index/core/llms/callbacks.py                                                                                         196     23    88%
+2025-04-14T07:59:58.6333333Z llama-index-core/llama_index/core/llms/chatml_utils.py                                                                                       28     28     0%
+2025-04-14T07:59:58.6334094Z llama-index-core/llama_index/core/llms/custom.py                                                                                             41      0   100%
+2025-04-14T07:59:58.6334912Z llama-index-core/llama_index/core/llms/function_calling.py                                                                                   72     17    76%
+2025-04-14T07:59:58.6335557Z llama-index-core/llama_index/core/llms/llm.py                                                                                               329    153    53%
+2025-04-14T07:59:58.6336174Z llama-index-core/llama_index/core/llms/loading.py                                                                                            28     28     0%
+2025-04-14T07:59:58.6336793Z llama-index-core/llama_index/core/llms/mock.py                                                                                               37      4    89%
+2025-04-14T07:59:58.6337426Z llama-index-core/llama_index/core/llms/structured_llm.py                                                                                     89     44    51%
+2025-04-14T07:59:58.6338080Z llama-index-core/llama_index/core/llms/utils.py                                                                                              98     72    27%
+2025-04-14T07:59:58.6338702Z llama-index-core/llama_index/core/memory/__init__.py                                                                                          6      0   100%
+2025-04-14T07:59:58.6339367Z llama-index-core/llama_index/core/memory/chat_memory_buffer.py                                                                               80      5    94%
+2025-04-14T07:59:58.6340096Z llama-index-core/llama_index/core/memory/chat_summary_memory_buffer.py                                                                      141     10    93%
+2025-04-14T07:59:58.6340848Z llama-index-core/llama_index/core/memory/simple_composable_memory.py                                                                         65     12    82%
+2025-04-14T07:59:58.6341669Z llama-index-core/llama_index/core/memory/types.py                                                                                            75     11    85%
+2025-04-14T07:59:58.6342328Z llama-index-core/llama_index/core/memory/vector_memory.py                                                                                    77      9    88%
+2025-04-14T07:59:58.6343006Z llama-index-core/llama_index/core/multi_modal_llms/__init__.py                                                                                2      0   100%
+2025-04-14T07:59:58.6343672Z llama-index-core/llama_index/core/multi_modal_llms/base.py                                                                                   92     36    61%
+2025-04-14T07:59:58.6344370Z llama-index-core/llama_index/core/multi_modal_llms/generic_utils.py                                                                          53      1    98%
+2025-04-14T07:59:58.6345236Z llama-index-core/llama_index/core/node_parser/__init__.py                                                                                    18      0   100%
+2025-04-14T07:59:58.6345907Z llama-index-core/llama_index/core/node_parser/file/__init__.py                                                                                5      0   100%
+2025-04-14T07:59:58.6346584Z llama-index-core/llama_index/core/node_parser/file/html.py                                                                                   70     42    40%
+2025-04-14T07:59:58.6347258Z llama-index-core/llama_index/core/node_parser/file/json.py                                                                                   50      5    90%
+2025-04-14T07:59:58.6347953Z llama-index-core/llama_index/core/node_parser/file/markdown.py                                                                               55      2    96%
+2025-04-14T07:59:58.6348670Z llama-index-core/llama_index/core/node_parser/file/simple_file.py                                                                            29      5    83%
+2025-04-14T07:59:58.6349520Z llama-index-core/llama_index/core/node_parser/interface.py                                                                                  106     14    87%
+2025-04-14T07:59:58.6350205Z llama-index-core/llama_index/core/node_parser/loading.py                                                                                     21     21     0%
+2025-04-14T07:59:58.6350891Z llama-index-core/llama_index/core/node_parser/node_utils.py                                                                                  30      4    87%
+2025-04-14T07:59:58.6351603Z llama-index-core/llama_index/core/node_parser/relational/__init__.py                                                                          5      0   100%
+2025-04-14T07:59:58.6352374Z llama-index-core/llama_index/core/node_parser/relational/base_element.py                                                                    232     66    72%
+2025-04-14T07:59:58.6353161Z llama-index-core/llama_index/core/node_parser/relational/hierarchical.py                                                                     95      9    91%
+2025-04-14T07:59:58.6353983Z llama-index-core/llama_index/core/node_parser/relational/llama_parse_json_element.py                                                        108     97    10%
+2025-04-14T07:59:58.6354980Z llama-index-core/llama_index/core/node_parser/relational/markdown_element.py                                                                 99     21    79%
+2025-04-14T07:59:58.6355798Z llama-index-core/llama_index/core/node_parser/relational/unstructured_element.py                                                             59     44    25%
+2025-04-14T07:59:58.6356577Z llama-index-core/llama_index/core/node_parser/relational/utils.py                                                                            41     26    37%
+2025-04-14T07:59:58.6357273Z llama-index-core/llama_index/core/node_parser/text/__init__.py                                                                                8      0   100%
+2025-04-14T07:59:58.6358083Z llama-index-core/llama_index/core/node_parser/text/code.py                                                                                   64      8    88%
+2025-04-14T07:59:58.6358790Z llama-index-core/llama_index/core/node_parser/text/langchain.py                                                                              16      5    69%
+2025-04-14T07:59:58.6359575Z llama-index-core/llama_index/core/node_parser/text/semantic_double_merging_splitter.py                                                      139     93    33%
+2025-04-14T07:59:58.6360387Z llama-index-core/llama_index/core/node_parser/text/semantic_splitter.py                                                                     119     30    75%
+2025-04-14T07:59:58.6361122Z llama-index-core/llama_index/core/node_parser/text/sentence.py                                                                              134      7    95%
+2025-04-14T07:59:58.6361857Z llama-index-core/llama_index/core/node_parser/text/sentence_window.py                                                                        46     24    48%
+2025-04-14T07:59:58.6362579Z llama-index-core/llama_index/core/node_parser/text/token.py                                                                                  90      6    93%
+2025-04-14T07:59:58.6363262Z llama-index-core/llama_index/core/node_parser/text/utils.py                                                                                  36      3    92%
+2025-04-14T07:59:58.6363926Z llama-index-core/llama_index/core/objects/__init__.py                                                                                         5      0   100%
+2025-04-14T07:59:58.6364723Z llama-index-core/llama_index/core/objects/base.py                                                                                           116     33    72%
+2025-04-14T07:59:58.6365408Z llama-index-core/llama_index/core/objects/base_node_mapping.py                                                                               86     16    81%
+2025-04-14T07:59:58.6366231Z llama-index-core/llama_index/core/objects/fn_node_mapping.py                                                                                 23      3    87%
+2025-04-14T07:59:58.6366932Z llama-index-core/llama_index/core/objects/table_node_mapping.py                                                                              39      8    79%
+2025-04-14T07:59:58.6367644Z llama-index-core/llama_index/core/objects/tool_node_mapping.py                                                                               67     20    70%
+2025-04-14T07:59:58.6368319Z llama-index-core/llama_index/core/objects/utils.py                                                                                           13      1    92%
+2025-04-14T07:59:58.6368979Z llama-index-core/llama_index/core/output_parsers/__init__.py                                                                                  5      0   100%
+2025-04-14T07:59:58.6369657Z llama-index-core/llama_index/core/output_parsers/base.py                                                                                     32      8    75%
+2025-04-14T07:59:58.6370348Z llama-index-core/llama_index/core/output_parsers/langchain.py                                                                                20     12    40%
+2025-04-14T07:59:58.6371048Z llama-index-core/llama_index/core/output_parsers/pydantic.py                                                                                 31      3    90%
+2025-04-14T07:59:58.6371754Z llama-index-core/llama_index/core/output_parsers/selection.py                                                                                61      5    92%
+2025-04-14T07:59:58.6372449Z llama-index-core/llama_index/core/output_parsers/utils.py                                                                                    56     26    54%
+2025-04-14T07:59:58.6373117Z llama-index-core/llama_index/core/playground/__init__.py                                                                                      2      0   100%
+2025-04-14T07:59:58.6373901Z llama-index-core/llama_index/core/playground/base.py                                                                                         76     10    87%
+2025-04-14T07:59:58.6374748Z llama-index-core/llama_index/core/postprocessor/__init__.py                                                                                   9      0   100%
+2025-04-14T07:59:58.6375455Z llama-index-core/llama_index/core/postprocessor/llm_rerank.py                                                                                48      6    88%
+2025-04-14T07:59:58.6376236Z llama-index-core/llama_index/core/postprocessor/metadata_replacement.py                                                                      15      1    93%
+2025-04-14T07:59:58.6376980Z llama-index-core/llama_index/core/postprocessor/node.py                                                                                     194     62    68%
+2025-04-14T07:59:58.6377682Z llama-index-core/llama_index/core/postprocessor/node_recency.py                                                                              91     12    87%
+2025-04-14T07:59:58.6378729Z llama-index-core/llama_index/core/postprocessor/optimizer.py                                                                                 63     15    76%
+2025-04-14T07:59:58.6379445Z llama-index-core/llama_index/core/postprocessor/pii.py                                                                                       64     42    34%
+2025-04-14T07:59:58.6380161Z llama-index-core/llama_index/core/postprocessor/rankGPT_rerank.py                                                                           104     11    89%
+2025-04-14T07:59:58.6380902Z llama-index-core/llama_index/core/postprocessor/sbert_rerank.py                                                                              41     23    44%
+2025-04-14T07:59:58.6381668Z llama-index-core/llama_index/core/postprocessor/structured_llm_rerank.py                                                                     81      7    91%
+2025-04-14T07:59:58.6382560Z llama-index-core/llama_index/core/postprocessor/types.py                                                                                     66     28    58%
+2025-04-14T07:59:58.6383230Z llama-index-core/llama_index/core/program/__init__.py                                                                                         5      0   100%
+2025-04-14T07:59:58.6383908Z llama-index-core/llama_index/core/program/function_program.py                                                                               124     60    52%
+2025-04-14T07:59:58.6384796Z llama-index-core/llama_index/core/program/llm_program.py                                                                                     67     16    76%
+2025-04-14T07:59:58.6385498Z llama-index-core/llama_index/core/program/llm_prompt_program.py                                                                              10     10     0%
+2025-04-14T07:59:58.6386233Z llama-index-core/llama_index/core/program/multi_modal_llm_program.py                                                                         60     21    65%
+2025-04-14T07:59:58.6386925Z llama-index-core/llama_index/core/program/utils.py                                                                                          117     33    72%
+2025-04-14T07:59:58.6387564Z llama-index-core/llama_index/core/prompts/__init__.py                                                                                         5      0   100%
+2025-04-14T07:59:58.6388198Z llama-index-core/llama_index/core/prompts/base.py                                                                                           266     83    69%
+2025-04-14T07:59:58.6388854Z llama-index-core/llama_index/core/prompts/chat_prompts.py                                                                                    11      0   100%
+2025-04-14T07:59:58.6389577Z llama-index-core/llama_index/core/prompts/default_prompt_selectors.py                                                                        27      4    85%
+2025-04-14T07:59:58.6390443Z llama-index-core/llama_index/core/prompts/default_prompts.py                                                                                 51      0   100%
+2025-04-14T07:59:58.6391143Z llama-index-core/llama_index/core/prompts/display_utils.py                                                                                    8      6    25%
+2025-04-14T07:59:58.6391836Z llama-index-core/llama_index/core/prompts/guidance_utils.py                                                                                  70     30    57%
+2025-04-14T07:59:58.6392516Z llama-index-core/llama_index/core/prompts/mixin.py                                                                                           44      3    93%
+2025-04-14T07:59:58.6393178Z llama-index-core/llama_index/core/prompts/prompt_type.py                                                                                     29      0   100%
+2025-04-14T07:59:58.6393874Z llama-index-core/llama_index/core/prompts/prompt_utils.py                                                                                    11      0   100%
+2025-04-14T07:59:58.6394754Z llama-index-core/llama_index/core/prompts/prompts.py                                                                                         17     17     0%
+2025-04-14T07:59:58.6395409Z llama-index-core/llama_index/core/prompts/rich.py                                                                                            62     14    77%
+2025-04-14T07:59:58.6396054Z llama-index-core/llama_index/core/prompts/system.py                                                                                           7      7     0%
+2025-04-14T07:59:58.6396704Z llama-index-core/llama_index/core/prompts/utils.py                                                                                           34      1    97%
+2025-04-14T07:59:58.6397357Z llama-index-core/llama_index/core/query_engine/__init__.py                                                                                   21      0   100%
+2025-04-14T07:59:58.6398188Z llama-index-core/llama_index/core/query_engine/citation_query_engine.py                                                                      86     52    40%
+2025-04-14T07:59:58.6398970Z llama-index-core/llama_index/core/query_engine/cogniswitch_query_engine.py                                                                   27      3    89%
+2025-04-14T07:59:58.6399698Z llama-index-core/llama_index/core/query_engine/custom.py                                                                                     36     11    69%
+2025-04-14T07:59:58.6400381Z llama-index-core/llama_index/core/query_engine/flare/__init__.py                                                                              0      0   100%
+2025-04-14T07:59:58.6401120Z llama-index-core/llama_index/core/query_engine/flare/answer_inserter.py                                                                      37     15    59%
+2025-04-14T07:59:58.6401858Z llama-index-core/llama_index/core/query_engine/flare/base.py                                                                                 86     57    34%
+2025-04-14T07:59:58.6402598Z llama-index-core/llama_index/core/query_engine/flare/output_parser.py                                                                        32     20    38%
+2025-04-14T07:59:58.6403331Z llama-index-core/llama_index/core/query_engine/flare/schema.py                                                                                6      0   100%
+2025-04-14T07:59:58.6404059Z llama-index-core/llama_index/core/query_engine/graph_query_engine.py                                                                         52      2    96%
+2025-04-14T07:59:58.6404952Z llama-index-core/llama_index/core/query_engine/jsonalyze/__init__.py                                                                          2      0   100%
+2025-04-14T07:59:58.6405736Z llama-index-core/llama_index/core/query_engine/jsonalyze/jsonalyze_query_engine.py                                                            4      1    75%
+2025-04-14T07:59:58.6406678Z llama-index-core/llama_index/core/query_engine/knowledge_graph_query_engine.py                                                               91     62    32%
+2025-04-14T07:59:58.6407423Z llama-index-core/llama_index/core/query_engine/multi_modal.py                                                                                98     69    30%
+2025-04-14T07:59:58.6408153Z llama-index-core/llama_index/core/query_engine/multistep_query_engine.py                                                                     74     58    22%
+2025-04-14T07:59:58.6408889Z llama-index-core/llama_index/core/query_engine/pandas/__init__.py                                                                             3      0   100%
+2025-04-14T07:59:58.6409626Z llama-index-core/llama_index/core/query_engine/pandas/output_parser.py                                                                        4      1    75%
+2025-04-14T07:59:58.6410420Z llama-index-core/llama_index/core/query_engine/pandas/pandas_query_engine.py                                                                  6      1    83%
+2025-04-14T07:59:58.6411197Z llama-index-core/llama_index/core/query_engine/retriever_query_engine.py                                                                     66      6    91%
+2025-04-14T07:59:58.6411938Z llama-index-core/llama_index/core/query_engine/retry_query_engine.py                                                                         65     44    32%
+2025-04-14T07:59:58.6412687Z llama-index-core/llama_index/core/query_engine/retry_source_query_engine.py                                                                  49     31    37%
+2025-04-14T07:59:58.6413453Z llama-index-core/llama_index/core/query_engine/router_query_engine.py                                                                       194    152    22%
+2025-04-14T07:59:58.6414216Z llama-index-core/llama_index/core/query_engine/sql_join_query_engine.py                                                                     109     71    35%
+2025-04-14T07:59:58.6415286Z llama-index-core/llama_index/core/query_engine/sql_vector_query_engine.py                                                                    38     15    61%
+2025-04-14T07:59:58.6416056Z llama-index-core/llama_index/core/query_engine/sub_question_query_engine.py                                                                 119     86    28%
+2025-04-14T07:59:58.6416827Z llama-index-core/llama_index/core/query_engine/transform_query_engine.py                                                                     30     15    50%
+2025-04-14T07:59:58.6417550Z llama-index-core/llama_index/core/query_pipeline/__init__.py                                                                                 11      0   100%
+2025-04-14T07:59:58.6418263Z llama-index-core/llama_index/core/query_pipeline/components/__init__.py                                                                       9      0   100%
+2025-04-14T07:59:58.6419028Z llama-index-core/llama_index/core/query_pipeline/components/agent.py                                                                        147     28    81%
+2025-04-14T07:59:58.6419798Z llama-index-core/llama_index/core/query_pipeline/components/argpacks.py                                                                      55     10    82%
+2025-04-14T07:59:58.6420590Z llama-index-core/llama_index/core/query_pipeline/components/function.py                                                                      55      3    95%
+2025-04-14T07:59:58.6421362Z llama-index-core/llama_index/core/query_pipeline/components/input.py                                                                         22      3    86%
+2025-04-14T07:59:58.6422121Z llama-index-core/llama_index/core/query_pipeline/components/loop.py                                                                          46     10    78%
+2025-04-14T07:59:58.6422880Z llama-index-core/llama_index/core/query_pipeline/components/router.py                                                                        91     22    76%
+2025-04-14T07:59:58.6423781Z llama-index-core/llama_index/core/query_pipeline/components/stateful.py                                                                      26      4    85%
+2025-04-14T07:59:58.6424745Z llama-index-core/llama_index/core/query_pipeline/components/tool_runner.py                                                                   47     28    40%
+2025-04-14T07:59:58.6425485Z llama-index-core/llama_index/core/query_pipeline/query.py                                                                                   435     71    84%
+2025-04-14T07:59:58.6426152Z llama-index-core/llama_index/core/question_gen/__init__.py                                                                                    3      0   100%
+2025-04-14T07:59:58.6426841Z llama-index-core/llama_index/core/question_gen/llm_generators.py                                                                             50     14    72%
+2025-04-14T07:59:58.6427569Z llama-index-core/llama_index/core/question_gen/output_parser.py                                                                              16      3    81%
+2025-04-14T07:59:58.6428270Z llama-index-core/llama_index/core/question_gen/prompts.py                                                                                    20      0   100%
+2025-04-14T07:59:58.6428952Z llama-index-core/llama_index/core/question_gen/types.py                                                                                      21      3    86%
+2025-04-14T07:59:58.6429601Z llama-index-core/llama_index/core/readers/__init__.py                                                                                         6      0   100%
+2025-04-14T07:59:58.6430236Z llama-index-core/llama_index/core/readers/base.py                                                                                             8      0   100%
+2025-04-14T07:59:58.6430888Z llama-index-core/llama_index/core/readers/download.py                                                                                         6      0   100%
+2025-04-14T07:59:58.6431744Z llama-index-core/llama_index/core/readers/file/__init__.py                                                                                    0      0   100%
+2025-04-14T07:59:58.6432509Z llama-index-core/llama_index/core/readers/file/base.py                                                                                      286     30    90%
+2025-04-14T07:59:58.6433409Z llama-index-core/llama_index/core/readers/json.py                                                                                            53      0   100%
+2025-04-14T07:59:58.6434174Z llama-index-core/llama_index/core/readers/loading.py                                                                                         14      0   100%
+2025-04-14T07:59:58.6435179Z llama-index-core/llama_index/core/readers/string_iterable.py                                                                                 13      0   100%
+2025-04-14T07:59:58.6436209Z llama-index-core/llama_index/core/response/__init__.py                                                                                        2      0   100%
+2025-04-14T07:59:58.6436993Z llama-index-core/llama_index/core/response/notebook_utils.py                                                                                 85     85     0%
+2025-04-14T07:59:58.6438022Z llama-index-core/llama_index/core/response/pprint_utils.py                                                                                   24     24     0%
+2025-04-14T07:59:58.6438902Z llama-index-core/llama_index/core/response/utils.py                                                                                          11      8    27%
+2025-04-14T07:59:58.6453805Z llama-index-core/llama_index/core/response_synthesizers/__init__.py                                                                          10      0   100%
+2025-04-14T07:59:58.6454801Z llama-index-core/llama_index/core/response_synthesizers/accumulate.py                                                                        53      7    87%
+2025-04-14T07:59:58.6455798Z llama-index-core/llama_index/core/response_synthesizers/base.py                                                                             143     45    69%
+2025-04-14T07:59:58.6456593Z llama-index-core/llama_index/core/response_synthesizers/compact_and_accumulate.py                                                            15      4    73%
+2025-04-14T07:59:58.6457425Z llama-index-core/llama_index/core/response_synthesizers/compact_and_refine.py                                                                20      0   100%
+2025-04-14T07:59:58.6458211Z llama-index-core/llama_index/core/response_synthesizers/context_only.py                                                                      12      3    75%
+2025-04-14T07:59:58.6458969Z llama-index-core/llama_index/core/response_synthesizers/factory.py                                                                           48      8    83%
+2025-04-14T07:59:58.6459733Z llama-index-core/llama_index/core/response_synthesizers/generation.py                                                                        60      3    95%
+2025-04-14T07:59:58.6460481Z llama-index-core/llama_index/core/response_synthesizers/no_text.py                                                                           12      3    75%
+2025-04-14T07:59:58.6461217Z llama-index-core/llama_index/core/response_synthesizers/refine.py                                                                           216     44    80%
+2025-04-14T07:59:58.6461986Z llama-index-core/llama_index/core/response_synthesizers/simple_summarize.py                                                                  40     25    38%
+2025-04-14T07:59:58.6462775Z llama-index-core/llama_index/core/response_synthesizers/tree_summarize.py                                                                    66     13    80%
+2025-04-14T07:59:58.6463648Z llama-index-core/llama_index/core/response_synthesizers/type.py                                                                              12      0   100%
+2025-04-14T07:59:58.6464355Z llama-index-core/llama_index/core/retrievers/__init__.py                                                                                     19     19     0%
+2025-04-14T07:59:58.6465277Z llama-index-core/llama_index/core/retrievers/auto_merging_retriever.py                                                                       81     81     0%
+2025-04-14T07:59:58.6466039Z llama-index-core/llama_index/core/retrievers/fusion_retriever.py                                                                            165    165     0%
+2025-04-14T07:59:58.6466786Z llama-index-core/llama_index/core/retrievers/recursive_retriever.py                                                                          99     99     0%
+2025-04-14T07:59:58.6467535Z llama-index-core/llama_index/core/retrievers/router_retriever.py                                                                             68     68     0%
+2025-04-14T07:59:58.6468290Z llama-index-core/llama_index/core/retrievers/transform_retriever.py                                                                          17     17     0%
+2025-04-14T07:59:58.6468961Z llama-index-core/llama_index/core/schema.py                                                                                                 682     79    88%
+2025-04-14T07:59:58.6469584Z llama-index-core/llama_index/core/selectors/__init__.py                                                                                       5      0   100%
+2025-04-14T07:59:58.6470285Z llama-index-core/llama_index/core/selectors/embedding_selectors.py                                                                           32     16    50%
+2025-04-14T07:59:58.6471009Z llama-index-core/llama_index/core/selectors/llm_selectors.py                                                                                 89     19    79%
+2025-04-14T07:59:58.6471704Z llama-index-core/llama_index/core/selectors/prompts.py                                                                                       10      0   100%
+2025-04-14T07:59:58.6472598Z llama-index-core/llama_index/core/selectors/pydantic_selectors.py                                                                            65     39    40%
+2025-04-14T07:59:58.6473299Z llama-index-core/llama_index/core/selectors/utils.py                                                                                         18     12    33%
+2025-04-14T07:59:58.6473956Z llama-index-core/llama_index/core/service_context.py                                                                                          9      3    67%
+2025-04-14T07:59:58.6474826Z llama-index-core/llama_index/core/service_context_elements/__init__.py                                                                        0      0   100%
+2025-04-14T07:59:58.6475611Z llama-index-core/llama_index/core/service_context_elements/llama_logger.py                                                                   19     19     0%
+2025-04-14T07:59:58.6476418Z llama-index-core/llama_index/core/service_context_elements/llm_predictor.py                                                                  43      9    79%
+2025-04-14T07:59:58.6477119Z llama-index-core/llama_index/core/settings.py                                                                                               146     42    71%
+2025-04-14T07:59:58.6477775Z llama-index-core/llama_index/core/sparse_embeddings/__init__.py                                                                               0      0   100%
+2025-04-14T07:59:58.6478542Z llama-index-core/llama_index/core/sparse_embeddings/mock_sparse_embedding.py                                                                 21      1    95%
+2025-04-14T07:59:58.6479273Z llama-index-core/llama_index/core/storage/__init__.py                                                                                         2      0   100%
+2025-04-14T07:59:58.6480085Z llama-index-core/llama_index/core/storage/chat_store/__init__.py                                                                              3      0   100%
+2025-04-14T07:59:58.6480809Z llama-index-core/llama_index/core/storage/chat_store/base.py                                                                                 44     13    70%
+2025-04-14T07:59:58.6481518Z llama-index-core/llama_index/core/storage/chat_store/loading.py                                                                              10      2    80%
+2025-04-14T07:59:58.6482263Z llama-index-core/llama_index/core/storage/chat_store/simple_chat_store.py                                                                    63     21    67%
+2025-04-14T07:59:58.6483002Z llama-index-core/llama_index/core/storage/docstore/__init__.py                                                                                3      0   100%
+2025-04-14T07:59:58.6483750Z llama-index-core/llama_index/core/storage/docstore/keyval_docstore.py                                                                       270    105    61%
+2025-04-14T07:59:58.6484694Z llama-index-core/llama_index/core/storage/docstore/registry.py                                                                               11      1    91%
+2025-04-14T07:59:58.6485465Z llama-index-core/llama_index/core/storage/docstore/simple_docstore.py                                                                        33      1    97%
+2025-04-14T07:59:58.6486214Z llama-index-core/llama_index/core/storage/docstore/types.py                                                                                  99     24    76%
+2025-04-14T07:59:58.6486932Z llama-index-core/llama_index/core/storage/docstore/utils.py                                                                                  41     23    44%
+2025-04-14T07:59:58.6487641Z llama-index-core/llama_index/core/storage/index_store/__init__.py                                                                             2      0   100%
+2025-04-14T07:59:58.6488391Z llama-index-core/llama_index/core/storage/index_store/keyval_index_store.py                                                                  31      5    84%
+2025-04-14T07:59:58.6489299Z llama-index-core/llama_index/core/storage/index_store/simple_index_store.py                                                                  33      1    97%
+2025-04-14T07:59:58.6490044Z llama-index-core/llama_index/core/storage/index_store/types.py                                                                               22      4    82%
+2025-04-14T07:59:58.6490754Z llama-index-core/llama_index/core/storage/index_store/utils.py                                                                               13      2    85%
+2025-04-14T07:59:58.6491460Z llama-index-core/llama_index/core/storage/kvstore/__init__.py                                                                                 2      0   100%
+2025-04-14T07:59:58.6492190Z llama-index-core/llama_index/core/storage/kvstore/simple_kvstore.py                                                                          57      3    95%
+2025-04-14T07:59:58.6492940Z llama-index-core/llama_index/core/storage/kvstore/types.py                                                                                   47     14    70%
+2025-04-14T07:59:58.6493655Z llama-index-core/llama_index/core/storage/storage_context.py                                                                                105     13    88%
+2025-04-14T07:59:58.6494342Z llama-index-core/llama_index/core/text_splitter/__init__.py                                                                                   4      0   100%
+2025-04-14T07:59:58.6495149Z llama-index-core/llama_index/core/tools/__init__.py                                                                                           8      0   100%
+2025-04-14T07:59:58.6495783Z llama-index-core/llama_index/core/tools/calling.py                                                                                           57     21    63%
+2025-04-14T07:59:58.6496559Z llama-index-core/llama_index/core/tools/download.py                                                                                          22     14    36%
+2025-04-14T07:59:58.6497235Z llama-index-core/llama_index/core/tools/eval_query_engine.py                                                                                 31      3    90%
+2025-04-14T07:59:58.6497922Z llama-index-core/llama_index/core/tools/function_tool.py                                                                                    129     31    76%
+2025-04-14T07:59:58.6498619Z llama-index-core/llama_index/core/tools/ondemand_loader_tool.py                                                                              60     17    72%
+2025-04-14T07:59:58.6499313Z llama-index-core/llama_index/core/tools/query_engine.py                                                                                      45      8    82%
+2025-04-14T07:59:58.6499967Z llama-index-core/llama_index/core/tools/query_plan.py                                                                                        78     49    37%
+2025-04-14T07:59:58.6500641Z llama-index-core/llama_index/core/tools/retriever_tool.py                                                                                    64      5    92%
+2025-04-14T07:59:58.6501328Z llama-index-core/llama_index/core/tools/tool_spec/__init__.py                                                                                 0      0   100%
+2025-04-14T07:59:58.6502005Z llama-index-core/llama_index/core/tools/tool_spec/base.py                                                                                    63     17    73%
+2025-04-14T07:59:58.6502715Z llama-index-core/llama_index/core/tools/tool_spec/load_and_search/__init__.py                                                                 2      0   100%
+2025-04-14T07:59:58.6503481Z llama-index-core/llama_index/core/tools/tool_spec/load_and_search/base.py                                                                    61      0   100%
+2025-04-14T07:59:58.6504287Z llama-index-core/llama_index/core/tools/types.py                                                                                             98     29    70%
+2025-04-14T07:59:58.6505122Z llama-index-core/llama_index/core/tools/utils.py                                                                                             40      5    88%
+2025-04-14T07:59:58.6505730Z llama-index-core/llama_index/core/types.py                                                                                                   72      9    88%
+2025-04-14T07:59:58.6506346Z llama-index-core/llama_index/core/utilities/__init__.py                                                                                       0      0   100%
+2025-04-14T07:59:58.6507014Z llama-index-core/llama_index/core/utilities/aws_utils.py                                                                                     21     21     0%
+2025-04-14T07:59:58.6507701Z llama-index-core/llama_index/core/utilities/gemini_utils.py                                                                                  21     21     0%
+2025-04-14T07:59:58.6508404Z llama-index-core/llama_index/core/utilities/sql_wrapper.py                                                                                  104     22    79%
+2025-04-14T07:59:58.6509102Z llama-index-core/llama_index/core/utilities/token_counting.py                                                                                37     13    65%
+2025-04-14T07:59:58.6509756Z llama-index-core/llama_index/core/utils.py                                                                                                  277     67    76%
+2025-04-14T07:59:58.6510384Z llama-index-core/llama_index/core/vector_stores/__init__.py                                                                                   3      0   100%
+2025-04-14T07:59:58.6511057Z llama-index-core/llama_index/core/vector_stores/simple.py                                                                                   200     22    89%
+2025-04-14T07:59:58.6511860Z llama-index-core/llama_index/core/vector_stores/types.py                                                                                    154     29    81%
+2025-04-14T07:59:58.6512536Z llama-index-core/llama_index/core/vector_stores/utils.py                                                                                     69     39    43%
+2025-04-14T07:59:58.6513191Z llama-index-core/llama_index/core/workflow/__init__.py                                                                                       10      0   100%
+2025-04-14T07:59:58.6513866Z llama-index-core/llama_index/core/workflow/checkpointer.py                                                                                   70      8    89%
+2025-04-14T07:59:58.6514678Z llama-index-core/llama_index/core/workflow/context.py                                                                                       301     10    97%
+2025-04-14T07:59:58.6515605Z llama-index-core/llama_index/core/workflow/context_serializers.py                                                                            58      6    90%
+2025-04-14T07:59:58.6516331Z llama-index-core/llama_index/core/workflow/decorators.py                                                                                     33      0   100%
+2025-04-14T07:59:58.6517016Z llama-index-core/llama_index/core/workflow/drawing.py                                                                                        51     41    20%
+2025-04-14T07:59:58.6517683Z llama-index-core/llama_index/core/workflow/errors.py                                                                                         16      0   100%
+2025-04-14T07:59:58.6518349Z llama-index-core/llama_index/core/workflow/events.py                                                                                         75      0   100%
+2025-04-14T07:59:58.6519015Z llama-index-core/llama_index/core/workflow/handler.py                                                                                        71      2    97%
+2025-04-14T07:59:58.6519824Z llama-index-core/llama_index/core/workflow/retry_policy.py                                                                                   12      0   100%
+2025-04-14T07:59:58.6520510Z llama-index-core/llama_index/core/workflow/service.py                                                                                        15      0   100%
+2025-04-14T07:59:58.6521175Z llama-index-core/llama_index/core/workflow/types.py                                                                                           4      0   100%
+2025-04-14T07:59:58.6521828Z llama-index-core/llama_index/core/workflow/utils.py                                                                                         110      8    93%
+2025-04-14T07:59:58.6522487Z llama-index-core/llama_index/core/workflow/workflow.py                                                                                      244     16    93%
+2025-04-14T07:59:58.6523379Z llama-index-integrations/storage/chat_store/llama-index-storage-chat-store-postgres/llama_index/storage/chat_store/postgres/__init__.py       2      0   100%
+2025-04-14T07:59:58.6524470Z llama-index-integrations/storage/chat_store/llama-index-storage-chat-store-postgres/llama_index/storage/chat_store/postgres/base.py         172     16    91%
+2025-04-14T07:59:58.6525421Z -------------------------------------------------------------------------------------------------------------------------------------------------------------
+2025-04-14T07:59:58.6525901Z TOTAL                                                                                                                                     30751  10602    66%
+2025-04-14T07:59:58.6526136Z 
+2025-04-14T07:59:58.6836248Z 
+2025-04-14T07:59:58.6836994Z Wrote html coverage report to `dist/coverage/python`
+2025-04-14T07:59:58.6898520Z 
+2025-04-14T07:59:58.6898834Z Wrote xml coverage report to `dist/coverage/python`

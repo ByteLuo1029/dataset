@@ -1,0 +1,342 @@
+2025-04-15T08:30:58.5020065Z Requested labels: ubuntu-latest
+2025-04-15T08:30:58.5020268Z Job defined at: grafana/grafana/.github/workflows/go-lint.yml@refs/pull/99916/merge
+2025-04-15T08:30:58.5020360Z Waiting for a runner to pick up this job...
+2025-04-15T08:31:01.1449000Z Job is waiting for a hosted runner to come online.
+2025-04-15T08:31:02.7198916Z Job is about to start running on the hosted runner: GitHub Actions 125 (hosted)
+2025-04-15T08:31:05.5829945Z Current runner version: '2.323.0'
+2025-04-15T08:31:05.5856733Z ##[group]Operating System
+2025-04-15T08:31:05.5857632Z Ubuntu
+2025-04-15T08:31:05.5858120Z 24.04.2
+2025-04-15T08:31:05.5858620Z LTS
+2025-04-15T08:31:05.5859154Z ##[endgroup]
+2025-04-15T08:31:05.5859687Z ##[group]Runner Image
+2025-04-15T08:31:05.5860281Z Image: ubuntu-24.04
+2025-04-15T08:31:05.5860841Z Version: 20250406.1.0
+2025-04-15T08:31:05.5861898Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250406.1/images/ubuntu/Ubuntu2404-Readme.md
+2025-04-15T08:31:05.5863287Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250406.1
+2025-04-15T08:31:05.5864251Z ##[endgroup]
+2025-04-15T08:31:05.5864782Z ##[group]Runner Image Provisioner
+2025-04-15T08:31:05.5865417Z 2.0.422.1
+2025-04-15T08:31:05.5866112Z ##[endgroup]
+2025-04-15T08:31:05.5867159Z ##[group]GITHUB_TOKEN Permissions
+2025-04-15T08:31:05.5869250Z Contents: read
+2025-04-15T08:31:05.5869829Z Metadata: read
+2025-04-15T08:31:05.5870609Z ##[endgroup]
+2025-04-15T08:31:05.5873870Z Secret source: Actions
+2025-04-15T08:31:05.5875000Z Prepare workflow directory
+2025-04-15T08:31:05.6279898Z Prepare all required actions
+2025-04-15T08:31:05.6316628Z Getting action download info
+2025-04-15T08:31:05.8893561Z ##[group]Download immutable action package 'actions/checkout@v4'
+2025-04-15T08:31:05.8894468Z Version: 4.2.2
+2025-04-15T08:31:05.8895295Z Digest: sha256:ccb2698953eaebd21c7bf6268a94f9c26518a7e38e27e0b83c1fe1ad049819b1
+2025-04-15T08:31:05.8896584Z Source commit SHA: 11bd71901bbe5b1630ceea73d27597364c9af683
+2025-04-15T08:31:05.8897229Z ##[endgroup]
+2025-04-15T08:31:05.9713047Z ##[group]Download immutable action package 'actions/setup-go@v5'
+2025-04-15T08:31:05.9713749Z Version: 5.4.0
+2025-04-15T08:31:05.9714376Z Digest: sha256:68311848b287a7a775bcca80210326f9164ee98b401194794a22edeb87320ac9
+2025-04-15T08:31:05.9715213Z Source commit SHA: 0aaccfd150d50ccaeb58ebd88d36e91967a5f35b
+2025-04-15T08:31:05.9716028Z ##[endgroup]
+2025-04-15T08:31:06.2848107Z Download action repository 'golangci/golangci-lint-action@v7' (SHA:1481404843c368bc19ca9406f87d6e0fc97bdcfd)
+2025-04-15T08:31:06.8872938Z Complete job name: lint-go
+2025-04-15T08:31:06.9623636Z ##[group]Run actions/checkout@v4
+2025-04-15T08:31:06.9624558Z with:
+2025-04-15T08:31:06.9625017Z   repository: grafana/grafana
+2025-04-15T08:31:06.9625744Z   token: ***
+2025-04-15T08:31:06.9626364Z   ssh-strict: true
+2025-04-15T08:31:06.9626806Z   ssh-user: git
+2025-04-15T08:31:06.9627246Z   persist-credentials: true
+2025-04-15T08:31:06.9627753Z   clean: true
+2025-04-15T08:31:06.9628207Z   sparse-checkout-cone-mode: true
+2025-04-15T08:31:06.9628735Z   fetch-depth: 1
+2025-04-15T08:31:06.9629171Z   fetch-tags: false
+2025-04-15T08:31:06.9629613Z   show-progress: true
+2025-04-15T08:31:06.9630062Z   lfs: false
+2025-04-15T08:31:06.9630498Z   submodules: false
+2025-04-15T08:31:06.9630945Z   set-safe-directory: true
+2025-04-15T08:31:06.9631761Z ##[endgroup]
+2025-04-15T08:31:07.1337574Z Syncing repository: grafana/grafana
+2025-04-15T08:31:07.1339847Z ##[group]Getting Git version info
+2025-04-15T08:31:07.1340617Z Working directory is '/home/runner/work/grafana/grafana'
+2025-04-15T08:31:07.1341717Z [command]/usr/bin/git version
+2025-04-15T08:31:07.1428211Z git version 2.49.0
+2025-04-15T08:31:07.1456562Z ##[endgroup]
+2025-04-15T08:31:07.1471301Z Temporarily overriding HOME='/home/runner/work/_temp/56a1c9b0-a96c-432d-ba44-7697ad2c490d' before making global git config changes
+2025-04-15T08:31:07.1472766Z Adding repository directory to the temporary git global config as a safe directory
+2025-04-15T08:31:07.1476919Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/grafana/grafana
+2025-04-15T08:31:07.1521666Z Deleting the contents of '/home/runner/work/grafana/grafana'
+2025-04-15T08:31:07.1526424Z ##[group]Initializing the repository
+2025-04-15T08:31:07.1531541Z [command]/usr/bin/git init /home/runner/work/grafana/grafana
+2025-04-15T08:31:07.1601833Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-04-15T08:31:07.1603266Z hint: is subject to change. To configure the initial branch name to use in all
+2025-04-15T08:31:07.1604254Z hint: of your new repositories, which will suppress this warning, call:
+2025-04-15T08:31:07.1604983Z hint:
+2025-04-15T08:31:07.1605504Z hint: 	git config --global init.defaultBranch <name>
+2025-04-15T08:31:07.1606365Z hint:
+2025-04-15T08:31:07.1606975Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-04-15T08:31:07.1608024Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-04-15T08:31:07.1609470Z hint:
+2025-04-15T08:31:07.1609943Z hint: 	git branch -m <name>
+2025-04-15T08:31:07.1611248Z Initialized empty Git repository in /home/runner/work/grafana/grafana/.git/
+2025-04-15T08:31:07.1622948Z [command]/usr/bin/git remote add origin https://github.com/grafana/grafana
+2025-04-15T08:31:07.1661044Z ##[endgroup]
+2025-04-15T08:31:07.1662432Z ##[group]Disabling automatic garbage collection
+2025-04-15T08:31:07.1666177Z [command]/usr/bin/git config --local gc.auto 0
+2025-04-15T08:31:07.1696441Z ##[endgroup]
+2025-04-15T08:31:07.1697886Z ##[group]Setting up auth
+2025-04-15T08:31:07.1704502Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-04-15T08:31:07.1736838Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-04-15T08:31:07.2077384Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-15T08:31:07.2110506Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-04-15T08:31:07.2340987Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-04-15T08:31:07.2381827Z ##[endgroup]
+2025-04-15T08:31:07.2382786Z ##[group]Fetching the repository
+2025-04-15T08:31:07.2392674Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +d3e24cc00b061f2a856e51fb07d8448cdb3c03ee:refs/remotes/pull/99916/merge
+2025-04-15T08:31:11.9956398Z From https://github.com/grafana/grafana
+2025-04-15T08:31:11.9958210Z  * [new ref]           d3e24cc00b061f2a856e51fb07d8448cdb3c03ee -> pull/99916/merge
+2025-04-15T08:31:12.0235685Z ##[endgroup]
+2025-04-15T08:31:12.0236814Z ##[group]Determining the checkout info
+2025-04-15T08:31:12.0237965Z ##[endgroup]
+2025-04-15T08:31:12.0243570Z [command]/usr/bin/git sparse-checkout disable
+2025-04-15T08:31:12.0286402Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-04-15T08:31:12.0315222Z ##[group]Checking out the ref
+2025-04-15T08:31:12.0319852Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/99916/merge
+2025-04-15T08:31:13.0527251Z Updating files:  97% (16784/17143)
+2025-04-15T08:31:13.0843403Z Updating files:  98% (16801/17143)
+2025-04-15T08:31:13.1288582Z Updating files:  99% (16972/17143)
+2025-04-15T08:31:13.1289893Z Updating files: 100% (17143/17143)
+2025-04-15T08:31:13.1290794Z Updating files: 100% (17143/17143), done.
+2025-04-15T08:31:13.1490099Z Note: switching to 'refs/remotes/pull/99916/merge'.
+2025-04-15T08:31:13.1490955Z 
+2025-04-15T08:31:13.1491409Z You are in 'detached HEAD' state. You can look around, make experimental
+2025-04-15T08:31:13.1492131Z changes and commit them, and you can discard any commits you make in this
+2025-04-15T08:31:13.1492836Z state without impacting any branches by switching back to a branch.
+2025-04-15T08:31:13.1493274Z 
+2025-04-15T08:31:13.1493532Z If you want to create a new branch to retain commits you create, you may
+2025-04-15T08:31:13.1494137Z do so (now or later) by using -c with the switch command. Example:
+2025-04-15T08:31:13.1494524Z 
+2025-04-15T08:31:13.1494689Z   git switch -c <new-branch-name>
+2025-04-15T08:31:13.1495364Z 
+2025-04-15T08:31:13.1495521Z Or undo this operation with:
+2025-04-15T08:31:13.1496028Z 
+2025-04-15T08:31:13.1496139Z   git switch -
+2025-04-15T08:31:13.1496314Z 
+2025-04-15T08:31:13.1496633Z Turn off this advice by setting config variable advice.detachedHead to false
+2025-04-15T08:31:13.1497066Z 
+2025-04-15T08:31:13.1497543Z HEAD is now at d3e24cc0 Merge 6f4e718f121ea32c832c580d3c23b1dbe6a7dae2 into 8e63782e5b58f4a0323ef73b747778e88e639abf
+2025-04-15T08:31:13.1521980Z ##[endgroup]
+2025-04-15T08:31:13.1563051Z [command]/usr/bin/git log -1 --format=%H
+2025-04-15T08:31:13.1587025Z d3e24cc00b061f2a856e51fb07d8448cdb3c03ee
+2025-04-15T08:31:13.1830103Z ##[group]Run actions/setup-go@v5
+2025-04-15T08:31:13.1830412Z with:
+2025-04-15T08:31:13.1830635Z   go-version-file: ./go.mod
+2025-04-15T08:31:13.1830867Z   check-latest: false
+2025-04-15T08:31:13.1831213Z   token: ***
+2025-04-15T08:31:13.1831397Z   cache: true
+2025-04-15T08:31:13.1831585Z ##[endgroup]
+2025-04-15T08:31:13.3446054Z Setup go version spec 1.24.2
+2025-04-15T08:31:13.3456196Z Attempting to download 1.24.2...
+2025-04-15T08:31:13.8727877Z matching 1.24.2...
+2025-04-15T08:31:13.8757241Z Acquiring 1.24.2 from https://github.com/actions/go-versions/releases/download/1.24.2-14210955142/go-1.24.2-linux-x64.tar.gz
+2025-04-15T08:31:14.8008533Z Extracting Go...
+2025-04-15T08:31:14.8120762Z [command]/usr/bin/tar xz --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/823c8f19-8d55-424e-a6ec-6638f7fb9e14 -f /home/runner/work/_temp/8ee898ac-30ef-4964-ba06-5d520ee949dd
+2025-04-15T08:31:16.5539796Z Successfully extracted go to /home/runner/work/_temp/823c8f19-8d55-424e-a6ec-6638f7fb9e14
+2025-04-15T08:31:16.5540606Z Adding to the cache ...
+2025-04-15T08:31:21.1240066Z Successfully cached go to /opt/hostedtoolcache/go/1.24.2/x64
+2025-04-15T08:31:21.1243422Z Added go to the path
+2025-04-15T08:31:21.1246217Z Successfully set up Go version 1.24.2
+2025-04-15T08:31:21.1569062Z [command]/opt/hostedtoolcache/go/1.24.2/x64/bin/go env GOMODCACHE
+2025-04-15T08:31:21.1603093Z [command]/opt/hostedtoolcache/go/1.24.2/x64/bin/go env GOCACHE
+2025-04-15T08:31:21.1636004Z /home/runner/go/pkg/mod
+2025-04-15T08:31:21.1651291Z /home/runner/.cache/go-build
+2025-04-15T08:31:21.4356011Z Cache hit for: setup-go-Linux-x64-ubuntu24-go-1.24.2-4d63517195dacf30a5e924b0697e28c502f672c1f0f8eab897c99d9c09cd77cc
+2025-04-15T08:31:22.7376962Z Received 4194304 of 1788651755 (0.2%), 4.0 MBs/sec
+2025-04-15T08:31:23.7379682Z Received 130023424 of 1788651755 (7.3%), 62.0 MBs/sec
+2025-04-15T08:31:24.7415609Z Received 251658240 of 1788651755 (14.1%), 79.9 MBs/sec
+2025-04-15T08:31:25.7409597Z Received 356515840 of 1788651755 (19.9%), 84.9 MBs/sec
+2025-04-15T08:31:26.7415345Z Received 457179136 of 1788651755 (25.6%), 87.1 MBs/sec
+2025-04-15T08:31:27.7411725Z Received 553648128 of 1788651755 (31.0%), 88.0 MBs/sec
+2025-04-15T08:31:28.7419595Z Received 671088640 of 1788651755 (37.5%), 91.4 MBs/sec
+2025-04-15T08:31:29.7414064Z Received 780140544 of 1788651755 (43.6%), 93.0 MBs/sec
+2025-04-15T08:31:30.7413012Z Received 876609536 of 1788651755 (49.0%), 92.9 MBs/sec
+2025-04-15T08:31:31.7413970Z Received 960495616 of 1788651755 (53.7%), 91.6 MBs/sec
+2025-04-15T08:31:32.7417062Z Received 1069547520 of 1788651755 (59.8%), 92.7 MBs/sec
+2025-04-15T08:31:33.7416886Z Received 1145044992 of 1788651755 (64.0%), 91.0 MBs/sec
+2025-04-15T08:31:34.7427193Z Received 1207959552 of 1788651755 (67.5%), 88.6 MBs/sec
+2025-04-15T08:31:35.7428545Z Received 1321205760 of 1788651755 (73.9%), 90.0 MBs/sec
+2025-04-15T08:31:36.7432050Z Received 1396703232 of 1788651755 (78.1%), 88.8 MBs/sec
+2025-04-15T08:31:37.7438715Z Received 1476395008 of 1788651755 (82.5%), 88.0 MBs/sec
+2025-04-15T08:31:38.7446104Z Received 1568669696 of 1788651755 (87.7%), 88.0 MBs/sec
+2025-04-15T08:31:39.7443170Z Received 1648361472 of 1788651755 (92.2%), 87.3 MBs/sec
+2025-04-15T08:31:40.7791030Z Received 1744830464 of 1788651755 (97.6%), 87.4 MBs/sec
+2025-04-15T08:31:41.5466450Z Received 1788651755 of 1788651755 (100.0%), 86.1 MBs/sec
+2025-04-15T08:31:41.5467948Z Cache Size: ~1706 MB (1788651755 B)
+2025-04-15T08:31:41.5508241Z [command]/usr/bin/tar -xf /home/runner/work/_temp/baf44198-9f8e-4e2a-8a90-fafd6917a09f/cache.tzst -P -C /home/runner/work/grafana/grafana --use-compress-program unzstd
+2025-04-15T08:31:55.3350258Z Cache restored successfully
+2025-04-15T08:31:55.6424419Z Cache restored from key: setup-go-Linux-x64-ubuntu24-go-1.24.2-4d63517195dacf30a5e924b0697e28c502f672c1f0f8eab897c99d9c09cd77cc
+2025-04-15T08:31:55.6448107Z go version go1.24.2 linux/amd64
+2025-04-15T08:31:55.6448307Z 
+2025-04-15T08:31:55.6448580Z ##[group]go env
+2025-04-15T08:31:55.8469600Z AR='ar'
+2025-04-15T08:31:55.8470438Z CC='gcc'
+2025-04-15T08:31:55.8470849Z CGO_CFLAGS='-O2 -g'
+2025-04-15T08:31:55.8471218Z CGO_CPPFLAGS=''
+2025-04-15T08:31:55.8471699Z CGO_CXXFLAGS='-O2 -g'
+2025-04-15T08:31:55.8472081Z CGO_ENABLED='1'
+2025-04-15T08:31:55.8472417Z CGO_FFLAGS='-O2 -g'
+2025-04-15T08:31:55.8472751Z CGO_LDFLAGS='-O2 -g'
+2025-04-15T08:31:55.8473108Z CXX='g++'
+2025-04-15T08:31:55.8473424Z GCCGO='gccgo'
+2025-04-15T08:31:55.8473776Z GO111MODULE=''
+2025-04-15T08:31:55.8474087Z GOAMD64='v1'
+2025-04-15T08:31:55.8474407Z GOARCH='amd64'
+2025-04-15T08:31:55.8474727Z GOAUTH='netrc'
+2025-04-15T08:31:55.8475042Z GOBIN=''
+2025-04-15T08:31:55.8475403Z GOCACHE='/home/runner/.cache/go-build'
+2025-04-15T08:31:55.8476120Z GOCACHEPROG=''
+2025-04-15T08:31:55.8476442Z GODEBUG=''
+2025-04-15T08:31:55.8476786Z GOENV='/home/runner/.config/go/env'
+2025-04-15T08:31:55.8477212Z GOEXE=''
+2025-04-15T08:31:55.8477516Z GOEXPERIMENT=''
+2025-04-15T08:31:55.8477833Z GOFIPS140='off'
+2025-04-15T08:31:55.8478163Z GOFLAGS=''
+2025-04-15T08:31:55.8479245Z GOGCCFLAGS='-fPIC -m64 -pthread -Wl,--no-gc-sections -fmessage-length=0 -ffile-prefix-map=/tmp/go-build3496586963=/tmp/go-build -gno-record-gcc-switches'
+2025-04-15T08:31:55.8480368Z GOHOSTARCH='amd64'
+2025-04-15T08:31:55.8480715Z GOHOSTOS='linux'
+2025-04-15T08:31:55.8481045Z GOINSECURE=''
+2025-04-15T08:31:55.8481518Z GOMOD='/home/runner/work/grafana/grafana/go.mod'
+2025-04-15T08:31:55.8482083Z GOMODCACHE='/home/runner/go/pkg/mod'
+2025-04-15T08:31:55.8482517Z GONOPROXY=''
+2025-04-15T08:31:55.8482816Z GONOSUMDB=''
+2025-04-15T08:31:55.8483108Z GOOS='linux'
+2025-04-15T08:31:55.8483438Z GOPATH='/home/runner/go'
+2025-04-15T08:31:55.8483801Z GOPRIVATE=''
+2025-04-15T08:31:55.8484206Z GOPROXY='https://proxy.golang.org,direct'
+2025-04-15T08:31:55.8484740Z GOROOT='/opt/hostedtoolcache/go/1.24.2/x64'
+2025-04-15T08:31:55.8485191Z GOSUMDB='sum.golang.org'
+2025-04-15T08:31:55.8485561Z GOTELEMETRY='local'
+2025-04-15T08:31:55.8486238Z GOTELEMETRYDIR='/home/runner/.config/go/telemetry'
+2025-04-15T08:31:55.8486736Z GOTMPDIR=''
+2025-04-15T08:31:55.8487054Z GOTOOLCHAIN='auto'
+2025-04-15T08:31:55.8487604Z GOTOOLDIR='/opt/hostedtoolcache/go/1.24.2/x64/pkg/tool/linux_amd64'
+2025-04-15T08:31:55.8488213Z GOVCS=''
+2025-04-15T08:31:55.8488524Z GOVERSION='go1.24.2'
+2025-04-15T08:31:55.8488953Z GOWORK='/home/runner/work/grafana/grafana/go.work'
+2025-04-15T08:31:55.8489502Z PKG_CONFIG='pkg-config'
+2025-04-15T08:31:55.8489728Z 
+2025-04-15T08:31:55.8490183Z ##[endgroup]
+2025-04-15T08:31:55.8625467Z ##[group]Run make gen-go
+2025-04-15T08:31:55.8625772Z [36;1mmake gen-go[0m
+2025-04-15T08:31:55.8681119Z shell: /usr/bin/bash -e {0}
+2025-04-15T08:31:55.8681386Z ##[endgroup]
+2025-04-15T08:31:56.1765486Z generate go files
+2025-04-15T08:31:56.1766708Z go run  ./pkg/build/wire/cmd/wire/main.go gen -tags "oss" ./pkg/server
+2025-04-15T08:32:15.1876957Z wire: github.com/grafana/grafana/pkg/server: wrote /home/runner/work/grafana/grafana/pkg/server/wire_gen.go
+2025-04-15T08:32:15.4224099Z ##[group]Run golangci/golangci-lint-action@v7
+2025-04-15T08:32:15.4224409Z with:
+2025-04-15T08:32:15.4224588Z   version: v2.0.2
+2025-04-15T08:32:15.4224933Z   args: --verbose $(go list -m -f '{{.Dir}}' | xargs -I{} sh -c 'test ! -f {}/.nolint && echo {}/...')
+
+2025-04-15T08:32:15.4225352Z   install-mode: binary
+2025-04-15T08:32:15.4225696Z   github-token: ***
+2025-04-15T08:32:15.4226099Z   verify: true
+2025-04-15T08:32:15.4226298Z   only-new-issues: false
+2025-04-15T08:32:15.4226737Z   skip-cache: false
+2025-04-15T08:32:15.4226924Z   skip-save-cache: false
+2025-04-15T08:32:15.4227140Z   problem-matchers: false
+2025-04-15T08:32:15.4227374Z   cache-invalidation-interval: 7
+2025-04-15T08:32:15.4227609Z ##[endgroup]
+2025-04-15T08:32:15.5989042Z ##[group]prepare environment
+2025-04-15T08:32:15.5993619Z Checking for go.mod: go.mod
+2025-04-15T08:32:15.8773481Z Cache hit for: golangci-lint.cache-Linux-2884-70ff253f8fa610b4e12e03d77837ed9a37aa2582
+2025-04-15T08:32:17.1587000Z Received 4194304 of 11474847 (36.6%), 4.0 MBs/sec
+2025-04-15T08:32:17.1907549Z Received 11474847 of 11474847 (100.0%), 10.6 MBs/sec
+2025-04-15T08:32:17.1908377Z Cache Size: ~11 MB (11474847 B)
+2025-04-15T08:32:17.1938822Z [command]/usr/bin/tar -xf /home/runner/work/_temp/4a255fa3-e7a1-484e-baa8-a8ad44561e2d/cache.tzst -P -C /home/runner/work/grafana/grafana --use-compress-program unzstd
+2025-04-15T08:32:20.0313686Z Cache restored successfully
+2025-04-15T08:32:20.0344105Z Restored cache for golangci-lint from key 'golangci-lint.cache-Linux-2884-70ff253f8fa610b4e12e03d77837ed9a37aa2582' in 4435ms
+2025-04-15T08:32:20.0345732Z Finding needed golangci-lint version...
+2025-04-15T08:32:20.0349334Z Installation mode: binary
+2025-04-15T08:32:20.0350455Z Installing golangci-lint binary v2.0.2...
+2025-04-15T08:32:20.0351784Z Downloading binary https://github.com/golangci/golangci-lint/releases/download/v2.0.2/golangci-lint-2.0.2-linux-amd64.tar.gz ...
+2025-04-15T08:32:20.6552662Z [command]/usr/bin/tar xz --overwrite --warning=no-unknown-keyword --overwrite -C /home/runner -f /home/runner/work/_temp/9fb74d11-a66a-4986-863a-c9478a8508fa
+2025-04-15T08:32:20.8747025Z Installed golangci-lint into /home/runner/golangci-lint-2.0.2-linux-amd64/golangci-lint in 839ms
+2025-04-15T08:32:20.8748053Z Prepared env in 5276ms
+2025-04-15T08:32:20.8749407Z ##[endgroup]
+2025-04-15T08:32:20.8751915Z ##[group]run golangci-lint
+2025-04-15T08:32:20.8759341Z Running [/home/runner/golangci-lint-2.0.2-linux-amd64/golangci-lint config path] in [/home/runner/work/grafana/grafana] ...
+2025-04-15T08:32:20.9721982Z Running [/home/runner/golangci-lint-2.0.2-linux-amd64/golangci-lint config verify] in [/home/runner/work/grafana/grafana] ...
+2025-04-15T08:32:21.1474207Z Running [/home/runner/golangci-lint-2.0.2-linux-amd64/golangci-lint run  --verbose $(go list -m -f '{{.Dir}}' | xargs -I{} sh -c 'test ! -f {}/.nolint && echo {}/...')] in [/home/runner/work/grafana/grafana] ...
+2025-04-15T08:42:35.4782347Z 0 issues.
+2025-04-15T08:42:35.4782684Z 
+2025-04-15T08:42:35.4783547Z level=info msg="golangci-lint has version 2.0.2 built with go1.24.1 from 2b224c2c on 2025-03-25T21:36:18Z"
+2025-04-15T08:42:35.4785018Z level=info msg="[config_reader] Config search paths: [./ /home/runner/work/grafana/grafana /home/runner/work/grafana /home/runner/work /home/runner /home /]"
+2025-04-15T08:42:35.4786728Z level=info msg="[config_reader] Used config file .golangci.yml"
+2025-04-15T08:42:35.4788087Z level=info msg="[goenv] Read go env for 3.028234ms: map[string]string{\"GOCACHE\":\"/home/runner/.cache/go-build\", \"GOROOT\":\"/opt/hostedtoolcache/go/1.24.2/x64\"}"
+2025-04-15T08:42:35.4790686Z level=info msg="[lintersdb] Active 21 linters: [asciicheck bodyclose depguard dogsled errcheck errorlint exhaustive gocyclo goimports goprintffuncname gosec govet ineffassign misspell nakedret prealloc revive staticcheck unconvert unused whitespace]"
+2025-04-15T08:42:35.4796432Z level=info msg="[loader] Go packages loading at mode 8767 (deps|imports|name|compiled_files|exports_file|files|types_sizes) took 6m41.246922108s"
+2025-04-15T08:42:35.4797279Z level=info msg="[runner/filename_unadjuster] Pre-built 0 adjustments in 462.820829ms"
+2025-04-15T08:42:35.4798671Z level=info msg="[linters_context/goanalysis] analyzers took 49m2.325440843s with top 10 stages: buildir: 26m25.940219721s, goimports: 4m56.879663109s, unconvert: 1m47.696127126s, the_only_name: 1m41.16755424s, nilness: 1m27.345448709s, gosec: 1m20.07865692s, exhaustive: 37.120932345s, buildssa: 31.618327336s, fact_deprecated: 30.779769756s, S1038: 30.219796384s"
+2025-04-15T08:42:35.4800289Z level=info msg="[runner/exclusion_paths] Skipped 0 issues by pattern \"builtin$\""
+2025-04-15T08:42:35.4800830Z level=info msg="[runner/exclusion_paths] Skipped 0 issues by pattern \"examples$\""
+2025-04-15T08:42:35.4801351Z level=info msg="[runner/exclusion_paths] Skipped 19 issues by pattern \"devenv\""
+2025-04-15T08:42:35.4801854Z level=info msg="[runner/exclusion_paths] Skipped 19 issues by pattern \"scripts\""
+2025-04-15T08:42:35.4802384Z level=info msg="[runner/exclusion_paths] Skipped 0 issues by pattern \"third_party$\""
+2025-04-15T08:42:35.4803006Z level=info msg="[runner/exclusion_rules] Skipped 0 issues by rules: [Text: \"ST1020\", Linters: \"staticcheck\"]"
+2025-04-15T08:42:35.4803748Z level=info msg="[runner/exclusion_rules] Skipped 0 issues by rules: [Text: \"G601\", Path: \"(.+)_test\\\\.go\", Linters: \"gosec\"]"
+2025-04-15T08:42:35.4804479Z level=info msg="[runner/exclusion_rules] Skipped 0 issues by rules: [Path: \"builtin$\", Linters: \"goimports\"]"
+2025-04-15T08:42:35.4805161Z level=info msg="[runner/exclusion_rules] Skipped 34 issues by rules: [Text: \"401\", Linters: \"gosec\"]"
+2025-04-15T08:42:35.4806013Z level=info msg="[runner/exclusion_rules] Skipped 16 issues by rules: [Text: \"501\", Linters: \"gosec\"]"
+2025-04-15T08:42:35.4806818Z level=info msg="[runner/exclusion_rules] Skipped 185 issues by rules: [Text: \"non-wrapping format verb for fmt.Errorf\", Linters: \"errorlint\"]"
+2025-04-15T08:42:35.4807593Z level=info msg="[runner/exclusion_rules] Skipped 0 issues by rules: [Text: \"ST1000\", Linters: \"staticcheck\"]"
+2025-04-15T08:42:35.4808275Z level=info msg="[runner/exclusion_rules] Skipped 0 issues by rules: [Text: \"ST1021\", Linters: \"staticcheck\"]"
+2025-04-15T08:42:35.4809111Z level=info msg="[runner/exclusion_rules] Skipped 54 issues by rules: [Text: \"use fake service and real access control evaluator instead\", Linters: \"staticcheck\"]"
+2025-04-15T08:42:35.4809927Z level=info msg="[runner/exclusion_rules] Skipped 1 issues by rules: [Text: \"G108\", Linters: \"gosec\"]"
+2025-04-15T08:42:35.4810587Z level=info msg="[runner/exclusion_rules] Skipped 103 issues by rules: [Text: \"G115\", Linters: \"gosec\"]"
+2025-04-15T08:42:35.4811218Z level=info msg="[runner/exclusion_rules] Skipped 0 issues by rules: [Text: \"G202\", Linters: \"gosec\"]"
+2025-04-15T08:42:35.4811829Z level=info msg="[runner/exclusion_rules] Skipped 23 issues by rules: [Text: \"402\", Linters: \"gosec\"]"
+2025-04-15T08:42:35.4812476Z level=info msg="[runner/exclusion_rules] Skipped 0 issues by rules: [Path: \"devenv\", Linters: \"goimports\"]"
+2025-04-15T08:42:35.4813164Z level=info msg="[runner/exclusion_rules] Skipped 0 issues by rules: [Path: \"examples$\", Linters: \"goimports\"]"
+2025-04-15T08:42:35.4813869Z level=info msg="[runner/exclusion_rules] Skipped 0 issues by rules: [Text: \"ST1003\", Linters: \"staticcheck\"]"
+2025-04-15T08:42:35.4814596Z level=info msg="[runner/exclusion_rules] Skipped 2 issues by rules: [Text: \"SA1019: http.CloseNotifier\", Linters: \"staticcheck\"]"
+2025-04-15T08:42:35.4815303Z level=info msg="[runner/exclusion_rules] Skipped 2 issues by rules: [Text: \"G110\", Linters: \"gosec\"]"
+2025-04-15T08:42:35.4816109Z level=info msg="[runner/exclusion_rules] Skipped 0 issues by rules: [Text: \"G201\", Linters: \"gosec\"]"
+2025-04-15T08:42:35.4816785Z level=info msg="[runner/exclusion_rules] Skipped 24 issues by rules: [Text: \"G306\", Linters: \"gosec\"]"
+2025-04-15T08:42:35.4817574Z level=info msg="[runner/exclusion_rules] Skipped 267 issues by rules: [Text: \"404\", Linters: \"gosec\"]"
+2025-04-15T08:42:35.4818260Z level=info msg="[runner/exclusion_rules] Skipped 0 issues by rules: [Path: \"scripts\", Linters: \"goimports\"]"
+2025-04-15T08:42:35.4818963Z level=info msg="[runner/exclusion_rules] Skipped 0 issues by rules: [Path: \"third_party$\", Linters: \"goimports\"]"
+2025-04-15T08:42:35.4819649Z level=info msg="[runner/exclusion_rules] Skipped 45 issues by rules: [Text: \"ST1001\", Linters: \"staticcheck\"]"
+2025-04-15T08:42:35.4820494Z level=info msg="[runner/exclusion_rules] Skipped 8 issues by rules: [Text: \"SA1019: strings.Title\", Linters: \"staticcheck\"]"
+2025-04-15T08:42:35.4821373Z level=info msg="[runner/exclusion_rules] Skipped 2 issues by rules: [Text: \"SA1019: \\\"go.opentelemetry.io/otel/exporters/jaeger\\\"\", Linters: \"staticcheck\"]"
+2025-04-15T08:42:35.4822159Z level=warning msg="[runner/nolint_filter] Found unknown linters in //nolint directives: deadcode"
+2025-04-15T08:42:35.4822702Z level=info msg="[runner] Issues before processing: 2295, after processing: 0"
+2025-04-15T08:42:35.4823847Z level=info msg="[runner] Processors filtering stat (in/out): exclusion_paths: 2295/2257, path_absoluter: 2295/2295, invalid_issue: 2295/2295, generated_file_filter: 2257/1501, exclusion_rules: 1501/735, path_relativity: 2295/2295, nolint_filter: 735/0, cgo: 2295/2295, filename_unadjuster: 2295/2295"
+2025-04-15T08:42:35.4831531Z level=info msg="[runner] processing took 175.904426ms with stages: nolint_filter: 156.507435ms, generated_file_filter: 13.718473ms, exclusion_rules: 3.094218ms, path_relativity: 1.299611ms, exclusion_paths: 723.813µs, invalid_issue: 183.493µs, cgo: 150.311µs, path_absoluter: 141.905µs, filename_unadjuster: 80.039µs, sort_results: 1.503µs, max_same_issues: 1.202µs, fixer: 501ns, uniq_by_line: 340ns, diff: 290ns, max_per_file_from_linter: 281ns, max_from_linter: 261ns, severity-rules: 240ns, source_code: 230ns, path_prettifier: 140ns, path_shortener: 140ns"
+2025-04-15T08:42:35.4834405Z level=info msg="[runner] linters took 3m31.910649455s with stages: goanalysis_metalinter: 3m31.734563135s"
+2025-04-15T08:42:35.4834942Z level=info msg="File cache stats: 0 entries of total size 0B"
+2025-04-15T08:42:35.4835363Z level=info msg="Memory: 5303 samples, avg is 1578.1MB, max is 9571.3MB"
+2025-04-15T08:42:35.4835730Z level=info msg="Execution took 10m13.629837263s"
+2025-04-15T08:42:35.4836578Z 
+2025-04-15T08:42:35.4836687Z golangci-lint found no issues
+2025-04-15T08:42:35.4836933Z Ran golangci-lint in 614331ms
+2025-04-15T08:42:35.4837401Z ##[endgroup]
+2025-04-15T08:42:35.4965168Z Post job cleanup.
+2025-04-15T08:42:35.6955589Z Cache hit occurred on the primary key golangci-lint.cache-Linux-2884-70ff253f8fa610b4e12e03d77837ed9a37aa2582, not saving cache.
+2025-04-15T08:42:35.7078371Z Post job cleanup.
+2025-04-15T08:42:35.8772351Z [command]/opt/hostedtoolcache/go/1.24.2/x64/bin/go env GOMODCACHE
+2025-04-15T08:42:35.8811840Z [command]/opt/hostedtoolcache/go/1.24.2/x64/bin/go env GOCACHE
+2025-04-15T08:42:35.8836694Z /home/runner/go/pkg/mod
+2025-04-15T08:42:35.8867057Z /home/runner/.cache/go-build
+2025-04-15T08:42:35.8871695Z Cache hit occurred on the primary key setup-go-Linux-x64-ubuntu24-go-1.24.2-4d63517195dacf30a5e924b0697e28c502f672c1f0f8eab897c99d9c09cd77cc, not saving cache.
+2025-04-15T08:42:35.9015061Z Post job cleanup.
+2025-04-15T08:42:36.0084801Z [command]/usr/bin/git version
+2025-04-15T08:42:36.0137250Z git version 2.49.0
+2025-04-15T08:42:36.0187858Z Temporarily overriding HOME='/home/runner/work/_temp/30d69127-db72-4694-971a-c4a5b6015e1d' before making global git config changes
+2025-04-15T08:42:36.0189291Z Adding repository directory to the temporary git global config as a safe directory
+2025-04-15T08:42:36.0194637Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/grafana/grafana
+2025-04-15T08:42:36.0244462Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-04-15T08:42:36.0285656Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-04-15T08:42:36.0631883Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-15T08:42:36.0657584Z http.https://github.com/.extraheader
+2025-04-15T08:42:36.0670723Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2025-04-15T08:42:36.0708231Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-04-15T08:42:36.1077690Z Cleaning up orphan processes

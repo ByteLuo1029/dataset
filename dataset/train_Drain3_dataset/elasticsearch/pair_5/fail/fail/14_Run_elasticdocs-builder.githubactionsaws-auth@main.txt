@@ -1,0 +1,36 @@
+2025-04-14T20:24:58.2094809Z ##[group]Run elastic/docs-builder/.github/actions/aws-auth@main
+2025-04-14T20:24:58.2095173Z with:
+2025-04-14T20:24:58.2095358Z   aws_account_id: 197730964718
+2025-04-14T20:24:58.2095585Z   aws_region: us-east-1
+2025-04-14T20:24:58.2095831Z   aws_role_name_prefix: elastic-docs-v3-preview-
+2025-04-14T20:24:58.2096109Z env:
+2025-04-14T20:24:58.2096348Z   GITHUB_PR_REF_NAME: data-stream-settings-api-experiment
+2025-04-14T20:24:58.2096697Z   PATH_PREFIX: /elastic/elasticsearch/pull/126344
+2025-04-14T20:24:58.2096970Z ##[endgroup]
+2025-04-14T20:24:58.2111826Z ##[group]Run import hashlib
+2025-04-14T20:24:58.2112074Z [36;1mimport hashlib[0m
+2025-04-14T20:24:58.2112274Z [36;1mimport os[0m
+2025-04-14T20:24:58.2112499Z [36;1mprefix = os.environ["ROLE_NAME_PREFIX"][0m
+2025-04-14T20:24:58.2112779Z [36;1mm = hashlib.sha256()[0m
+2025-04-14T20:24:58.2113085Z [36;1mm.update(os.environ["GITHUB_REPOSITORY"].encode('utf-8'))[0m
+2025-04-14T20:24:58.2113437Z [36;1mhash = m.hexdigest()[:64-len(prefix)][0m
+2025-04-14T20:24:58.2113771Z [36;1mwith open(os.environ["GITHUB_OUTPUT"], "a") as f:[0m
+2025-04-14T20:24:58.2114193Z [36;1m  f.write(f"result=arn:aws:iam::{os.environ["AWS_ACCOUNT_ID"]}:role/{prefix}{hash}")[0m
+2025-04-14T20:24:58.2164320Z shell: /usr/bin/python {0}
+2025-04-14T20:24:58.2164738Z env:
+2025-04-14T20:24:58.2164989Z   GITHUB_PR_REF_NAME: data-stream-settings-api-experiment
+2025-04-14T20:24:58.2165369Z   PATH_PREFIX: /elastic/elasticsearch/pull/126344
+2025-04-14T20:24:58.2165658Z   AWS_ACCOUNT_ID: 197730964718
+2025-04-14T20:24:58.2165908Z   ROLE_NAME_PREFIX: elastic-docs-v3-preview-
+2025-04-14T20:24:58.2166162Z ##[endgroup]
+2025-04-14T20:24:58.2446869Z ##[group]Run aws-actions/configure-aws-credentials@ececac1a45f3b08a01d2dd070d28d111c5fe6722
+2025-04-14T20:24:58.2447295Z with:
+2025-04-14T20:24:58.2447702Z   role-to-assume: arn:aws:iam::197730964718:role/elastic-docs-v3-preview-15d28e2042b09184f1b1957600e8a99d4bb88e3d
+2025-04-14T20:24:58.2448452Z   aws-region: us-east-1
+2025-04-14T20:24:58.2448685Z   audience: sts.amazonaws.com
+2025-04-14T20:24:58.2448922Z env:
+2025-04-14T20:24:58.2449160Z   GITHUB_PR_REF_NAME: data-stream-settings-api-experiment
+2025-04-14T20:24:58.2449522Z   PATH_PREFIX: /elastic/elasticsearch/pull/126344
+2025-04-14T20:24:58.2449791Z ##[endgroup]
+2025-04-14T20:24:58.4410953Z Assuming role with OIDC
+2025-04-14T20:24:58.5432033Z Authenticated as assumedRoleId AROAS4CNPCTXHQYQAKTVA:GitHubActions

@@ -1,0 +1,84 @@
+2025-04-11T02:45:36.5148043Z ##[group]Run actions/checkout@v2
+2025-04-11T02:45:36.5148316Z with:
+2025-04-11T02:45:36.5148616Z   repository: hpcaitech/ColossalAI
+2025-04-11T02:45:36.5148976Z   token: ***
+2025-04-11T02:45:36.5149180Z   ssh-strict: true
+2025-04-11T02:45:36.5149388Z   persist-credentials: true
+2025-04-11T02:45:36.5149621Z   clean: true
+2025-04-11T02:45:36.5149820Z   fetch-depth: 1
+2025-04-11T02:45:36.5150024Z   lfs: false
+2025-04-11T02:45:36.5150220Z   submodules: false
+2025-04-11T02:45:36.5150450Z   set-safe-directory: true
+2025-04-11T02:45:36.5150689Z ##[endgroup]
+2025-04-11T02:45:36.5154182Z ##[command]/usr/bin/docker exec  f5e9724142d2602874b72fe2c9e714ee4cf78e54fd0110da3a216c97ae205480 sh -c "cat /etc/*release | grep ^ID"
+2025-04-11T02:45:36.7105241Z Syncing repository: hpcaitech/ColossalAI
+2025-04-11T02:45:36.7108758Z ##[group]Getting Git version info
+2025-04-11T02:45:36.7109402Z Working directory is '/__w/ColossalAI/ColossalAI'
+2025-04-11T02:45:36.7133546Z [command]/usr/bin/git version
+2025-04-11T02:45:36.7162340Z git version 2.25.1
+2025-04-11T02:45:36.7182562Z ##[endgroup]
+2025-04-11T02:45:36.7193221Z Temporarily overriding HOME='/__w/_temp/fc2f98dc-f753-4690-9811-06b021eca682' before making global git config changes
+2025-04-11T02:45:36.7193826Z Adding repository directory to the temporary git global config as a safe directory
+2025-04-11T02:45:36.7196219Z [command]/usr/bin/git config --global --add safe.directory /__w/ColossalAI/ColossalAI
+2025-04-11T02:45:36.7223021Z [command]/usr/bin/git config --local --get remote.origin.url
+2025-04-11T02:45:36.7238433Z https://github.com/hpcaitech/ColossalAI
+2025-04-11T02:45:36.7246756Z ##[group]Removing previously created refs, to avoid conflicts
+2025-04-11T02:45:36.7249499Z [command]/usr/bin/git rev-parse --symbolic-full-name --verify --quiet HEAD
+2025-04-11T02:45:36.7264330Z HEAD
+2025-04-11T02:45:36.7271340Z [command]/usr/bin/git rev-parse --symbolic-full-name --branches
+2025-04-11T02:45:36.7288968Z ##[endgroup]
+2025-04-11T02:45:36.7289301Z ##[group]Cleaning the repository
+2025-04-11T02:45:36.7292075Z [command]/usr/bin/git clean -ffdx
+2025-04-11T02:45:36.7438373Z Removing TensorNVMe/
+2025-04-11T02:45:36.7443908Z [command]/usr/bin/git reset --hard HEAD
+2025-04-11T02:45:36.7544732Z HEAD is now at 0950b07a [pre-commit.ci] auto fixes from pre-commit.com hooks
+2025-04-11T02:45:36.7549289Z ##[endgroup]
+2025-04-11T02:45:36.7550630Z ##[group]Disabling automatic garbage collection
+2025-04-11T02:45:36.7553223Z [command]/usr/bin/git config --local gc.auto 0
+2025-04-11T02:45:36.7570445Z ##[endgroup]
+2025-04-11T02:45:36.7570778Z ##[group]Setting up auth
+2025-04-11T02:45:36.7576143Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-04-11T02:45:36.7597332Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-04-11T02:45:36.7767387Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-11T02:45:36.7786353Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-04-11T02:45:36.7949285Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-04-11T02:45:36.7975524Z ##[endgroup]
+2025-04-11T02:45:36.7975919Z ##[group]Fetching the repository
+2025-04-11T02:45:36.7980843Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --progress --no-recurse-submodules --depth=1 origin +6f94bf4ca860b2a64be2bb167fbcd4cdaf3efe45:refs/remotes/pull/6254/merge
+2025-04-11T02:45:37.7939076Z remote: Enumerating objects: 7, done.        
+2025-04-11T02:45:37.7939421Z remote: Counting objects:  14% (1/7)        
+2025-04-11T02:45:37.7939695Z remote: Counting objects:  28% (2/7)        
+2025-04-11T02:45:37.7939963Z remote: Counting objects:  42% (3/7)        
+2025-04-11T02:45:37.7940555Z remote: Counting objects:  57% (4/7)        
+2025-04-11T02:45:37.7940822Z remote: Counting objects:  71% (5/7)        
+2025-04-11T02:45:37.7941084Z remote: Counting objects:  85% (6/7)        
+2025-04-11T02:45:37.7941345Z remote: Counting objects: 100% (7/7)        
+2025-04-11T02:45:37.7941615Z remote: Counting objects: 100% (7/7), done.        
+2025-04-11T02:45:37.7941910Z remote: Compressing objects: 100% (1/1)        
+2025-04-11T02:45:37.7942216Z remote: Compressing objects: 100% (1/1), done.        
+2025-04-11T02:45:37.8643353Z remote: Total 3 (delta 2), reused 2 (delta 2), pack-reused 0 (from 0)        
+2025-04-11T02:45:37.9034931Z From https://github.com/hpcaitech/ColossalAI
+2025-04-11T02:45:37.9035366Z  + 40c00c29...6f94bf4c 6f94bf4ca860b2a64be2bb167fbcd4cdaf3efe45 -> pull/6254/merge  (forced update)
+2025-04-11T02:45:37.9053082Z ##[endgroup]
+2025-04-11T02:45:37.9053456Z ##[group]Determining the checkout info
+2025-04-11T02:45:37.9054804Z ##[endgroup]
+2025-04-11T02:45:37.9055133Z ##[group]Checking out the ref
+2025-04-11T02:45:37.9058096Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/6254/merge
+2025-04-11T02:45:37.9141694Z Warning: you are leaving 41 commits behind, not connected to
+2025-04-11T02:45:37.9142001Z any of your branches:
+2025-04-11T02:45:37.9142131Z 
+2025-04-11T02:45:37.9142305Z   0950b07a [pre-commit.ci] auto fixes from pre-commit.com hooks
+2025-04-11T02:45:37.9142605Z   910433f0 fix
+2025-04-11T02:45:37.9142787Z   21707a77 fix
+2025-04-11T02:45:37.9143189Z   c37107ce Merge branch 'upgrade-transformers' of github.com:flybird11111/ColossalAI into upgrade-transformers
+2025-04-11T02:45:37.9143608Z  ... and 37 more.
+2025-04-11T02:45:37.9143718Z 
+2025-04-11T02:45:37.9143886Z If you want to keep them by creating a new branch, this may be a good time
+2025-04-11T02:45:37.9144193Z to do so with:
+2025-04-11T02:45:37.9144297Z 
+2025-04-11T02:45:37.9144411Z  git branch <new-branch-name> 0950b07a
+2025-04-11T02:45:37.9144570Z 
+2025-04-11T02:45:37.9144869Z HEAD is now at 6f94bf4c Merge 0950b07a328809335470812959341c585f1a9e2a into 44d4053fec005fe0b06b6bc755fdc962463145df
+2025-04-11T02:45:37.9148718Z ##[endgroup]
+2025-04-11T02:45:37.9173605Z [command]/usr/bin/git log -1 --format='%H'
+2025-04-11T02:45:37.9190111Z '6f94bf4ca860b2a64be2bb167fbcd4cdaf3efe45'

@@ -1,0 +1,12 @@
+##[group]Run if [ "pull_request" == "pull_request" ]; then
+[36;1mif [ "pull_request" == "pull_request" ]; then[0m
+[36;1m  files=$(git diff-tree --no-commit-id --name-only -r HEAD^1..HEAD 2> /dev/null || true)[0m
+[36;1melif [ "pull_request" == "push" -a "" == "false" -a "" == "false" ]; then[0m
+[36;1m  files=$(git diff-tree --no-commit-id --name-only -r a2e8c395ea8a21c6e5f062c2e1ee4745d621d3af..bb2703abae3c1586a95efa886d01654bd471ef58 2> /dev/null || true)[0m
+[<:NUM:>;1mfi[0m
+[36;1mfiles=$(echo "$files" | xargs -I {} sh -c 'echo "\"./{}\""' | tr '\n' ' ')[0m
+[36;1mecho "CHANGED_FILES=$files" >> $GITHUB_ENV[0m
+shell: /usr/bin/bash -e {<:NUM:>}
+env:
+GITHUB TOKEN: ***
+##[endgroup]

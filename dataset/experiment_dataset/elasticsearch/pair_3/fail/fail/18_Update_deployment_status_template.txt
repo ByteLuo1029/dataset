@@ -1,0 +1,27 @@
+##[group]Run <:*:>
+with:
+script: await github.rest.repos.createDeploymentStatus({
+context.repo.owner,
+context.repo.repo,
+2404941453,
+"success",
+`https://docs-v3-preview.elastic.dev${process.env.LANDING_PAGE_PATH}`,
+`https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+})
+github-token: ***
+debug: false
+user-agent: actions/github-script
+result-encoding: json
+retries: 0
+retry-exempt-status-codes: 400,401,403,404,422
+env:
+GITHUB_PR_REF_NAME: markjhoy/default_token_pruning_sparse_vector
+PATH_PREFIX: /elastic/elasticsearch/pull/126739
+AWS_DEFAULT_REGION: us-east-1
+AWS_REGION: us-east-1
+AWS_ACCESS_KEY_ID: ***
+AWS_SECRET_ACCESS_KEY: ***
+AWS_SESSION_TOKEN: ***
+PR_NUMBER: 126739
+LANDING_PAGE_PATH: /elastic/elasticsearch/pull/126739/reference/
+##[endgroup]

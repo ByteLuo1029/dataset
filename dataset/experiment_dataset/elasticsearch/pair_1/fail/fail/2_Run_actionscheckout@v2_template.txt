@@ -1,0 +1,551 @@
+##[group]Run <:*:>
+with:
+repository: <:*:>
+token: ***
+ssh-strict: true
+persist-credentials: <:*:>
+clean: true
+fetch-depth: <:NUM:>
+lfs: false
+submodules: <:*:>
+set-safe-directory: true
+##[endgroup]
+Syncing repository: <:*:>
+##[group]Getting Git version info
+Working directory is <:*:>
+[command]/usr/bin/git version
+git version <:NUM:>.<:NUM:>.<:NUM:>
+##[endgroup]
+Temporarily overriding HOME='/home/runner/work/_temp/2ce4f1c7-82e3-4cf4-b550-216e758ddfbc' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+[command]/usr/bin/git config --global --add safe.directory /home/runner/work/elasticsearch/elasticsearch
+Deleting the contents of <:*:>
+##[group]Initializing the repository
+[command]/usr/bin/git init <:*:>
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint:
+hint: git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint: git branch -m <name>
+Initialized empty Git repository in <:*:>
+[command]/usr/bin/git remote add origin <:*:>
+##[endgroup]
+##[group]Disabling automatic garbage collection
+[command]/usr/bin/git config --local gc.auto 0
+##[endgroup]
+##[group]Setting up auth
+[command]/usr/bin/git config --local --name-only --get-regexp <:*:>
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp <:*:> && git config --local --unset-all <:*:> || :"
+[command]/usr/bin/git config --local --name-only --get-regexp <:*:>
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp <:*:> && git config --local --unset-all <:*:> || :"
+[command]/usr/bin/git config <:*:> http.https://github.com/.extraheader AUTHORIZATION: basic ***
+##[endgroup]
+##[group]Fetching the repository
+[command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --progress --no-recurse-submodules --depth=1 origin +bde06d0ab8517733538416dd7e12ad3b3c5e2960:refs/remotes/origin/8.16
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:NUM:>% (<:NUM:>/<:NUM:>), done.
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:NUM:>% (<:NUM:>/<:NUM:>), done.
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>)
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>)
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>)
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>)
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>)
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>)
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>)
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>)
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>)
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+remote: Total <:NUM:> (delta <:NUM:>), reused <:NUM:> (delta <:NUM:>), pack-reused <:NUM:> (from <:NUM:>)
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s
+Receiving objects: <:NUM:>% (<:NUM:>/<:NUM:>), <:NUM:>.<:NUM:> MiB | <:NUM:>.<:NUM:> MiB/s, done.
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>)
+Resolving deltas: <:NUM:>% (<:NUM:>/<:NUM:>), done.
+From <:*:>
+* [new ref] <:SEQ:>-> <:*:>
+##[endgroup]
+##[group]Determining the checkout info
+##[endgroup]
+##[group]Checking out the ref
+[command]/usr/bin/git checkout --progress --force -B <:*:> <:*:>
+Updating files:  32% (10239/31579)
+Updating files:  33% (10422/31579)
+Updating files:  34% (10737/31579)
+Updating files:  35% (11053/31579)
+Updating files:  36% (11369/31579)
+Updating files:  37% (11685/31579)
+Updating files:  38% (12001/31579)
+Updating files:  39% (12316/31579)
+Updating files:  40% (12632/31579)
+Updating files:  41% (12948/31579)
+Updating files:  42% (13264/31579)
+Updating files:  43% (13579/31579)
+Updating files:  44% (13895/31579)
+Updating files:  45% (14211/31579)
+Updating files:  46% (14527/31579)
+Updating files:  47% (14843/31579)
+Updating files:  48% (15158/31579)
+Updating files:  49% (15474/31579)
+Updating files:  50% (15790/31579)
+Updating files:  51% (16106/31579)
+Updating files:  52% (16422/31579)
+Updating files:  53% (16737/31579)
+Updating files:  54% (17053/31579)
+Updating files:  55% (17369/31579)
+Updating files:  56% (17685/31579)
+Updating files:  57% (18001/31579)
+Updating files:  58% (18316/31579)
+Updating files:  59% (18632/31579)
+Updating files:  60% (18948/31579)
+Updating files:  61% (19264/31579)
+Updating files:  62% (19579/31579)
+Updating files:  63% (19895/31579)
+Updating files:  64% (20211/31579)
+Updating files:  65% (20527/31579)
+Updating files:  66% (20843/31579)
+Updating files:  67% (21158/31579)
+Updating files:  68% (21474/31579)
+Updating files:  69% (21790/31579)
+Updating files:  70% (22106/31579)
+Updating files:  71% (22422/31579)
+Updating files:  72% (22737/31579)
+Updating files:  73% (23053/31579)
+Updating files:  74% (23369/31579)
+Updating files:  75% (23685/31579)
+Updating files:  76% (24001/31579)
+Updating files:  77% (24316/31579)
+Updating files:  77% (24369/31579)
+Updating files:  78% (24632/31579)
+Updating files:  79% (24948/31579)
+Updating files:  80% (25264/31579)
+Updating files:  81% (25579/31579)
+Updating files:  82% (25895/31579)
+Updating files:  83% (26211/31579)
+Updating files:  84% (26527/31579)
+Updating files:  85% (26843/31579)
+Updating files:  86% (27158/31579)
+Updating files:  87% (27474/31579)
+Updating files:  88% (27790/31579)
+Updating files:  89% (28106/31579)
+Updating files:  90% (28422/31579)
+Updating files:  91% (28737/31579)
+Updating files:  92% (29053/31579)
+Updating files:  93% (29369/31579)
+Updating files:  94% (29685/31579)
+Updating files:  95% (30001/31579)
+Updating files:  96% (30316/31579)
+Updating files:  97% (30632/31579)
+Updating files:  98% (30948/31579)
+Updating files:  99% (31264/31579)
+Updating files: 100% (31579/31579)
+Updating files: 100% (31579/31579), done.
+Switched to a new branch '8.16'
+branch <:*:> set up to track <:*:>
+##[endgroup]
+[command]/usr/bin/git log <:NUM:> <:*:>
+'<:SEQ:>'

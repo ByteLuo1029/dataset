@@ -1,0 +1,13 @@
+2025-04-15T07:37:22.2170447Z ##[group]Run recent_commit_sha=$(git rev-parse HEAD)
+2025-04-15T07:37:22.2171017Z [36;1mrecent_commit_sha=$(git rev-parse HEAD)[0m
+2025-04-15T07:37:22.2171429Z [36;1msecond_recent_commit_sha=$(git rev-parse HEAD~1)[0m
+2025-04-15T07:37:22.2172042Z [36;1mchanged_files=$(git diff --name-only $recent_commit_sha $second_recent_commit_sha -- 'i18n/en-US/*.ts')[0m
+2025-04-15T07:37:22.2172589Z [36;1mecho "Changed files: $changed_files"[0m
+2025-04-15T07:37:22.2172927Z [36;1mif [ -n "$changed_files" ]; then[0m
+2025-04-15T07:37:22.2173270Z [36;1m  echo "FILES_CHANGED=true" >> $GITHUB_ENV[0m
+2025-04-15T07:37:22.2173606Z [36;1melse[0m
+2025-04-15T07:37:22.2173894Z [36;1m  echo "FILES_CHANGED=false" >> $GITHUB_ENV[0m
+2025-04-15T07:37:22.2174204Z [36;1mfi[0m
+2025-04-15T07:37:22.2225913Z shell: /usr/bin/bash -e {0}
+2025-04-15T07:37:22.2226256Z ##[endgroup]
+2025-04-15T07:37:22.2372659Z Changed files: web/i18n/en-US/common.ts

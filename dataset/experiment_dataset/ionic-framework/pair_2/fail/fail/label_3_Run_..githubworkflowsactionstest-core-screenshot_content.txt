@@ -1,0 +1,548 @@
+
+
+'actions/setup-node@v4'
+Version: 4.3.0
+9f9f8171ffc89cb7f6897e615e2b43b46bb55176fd279129eb0088157eace9b2
+cdca7365b2dadb8aad0a33bc7601856ffabcc48e
+##[endgroup]
+'actions/upload-artifact@v4'
+Version: 4.6.2
+290722aa3281d5caf23d0acdc3dbeb3424786a1a01a9cc97e72f147225e37c38
+ea165f8d65b6e75b540449e92b4886f43607fa02
+##[endgroup]
+./.github/workflows/actions/test-core-screenshot
+
+shard: 7
+totalShards: 20
+##[endgroup]
+actions/setup-node@v4
+
+node-version: 20.x
+always-auth: false
+
+
+##[endgroup]
+Found in cache @ /opt/hostedtoolcache/node/20.19.0/x64
+##[group]Environment details
+node: v20.19.0
+npm: 10.8.2
+yarn: 1.22.22
+##[endgroup]
+
+
+'actions/download-artifact@v4'
+Version: 4.2.1
+dc468d5aa7f2038c97563f0fd51a6d40150fe504eef54e24f5ac75983c6666de
+95815c38cf2ff2164869cbab79da8d1f422bc89e
+##[endgroup]
+./.github/workflows/actions/download-archive
+
+name: ionic-core
+./core
+filename: CoreBuild.zip
+##[endgroup]
+actions/download-artifact@v4
+
+name: ionic-core
+./core
+merge-multiple:
+ionic-team/ionic-framework
+run-id: 14410612100
+##[endgroup]
+Downloading single artifact
+Preparing to download the following artifacts:
+- ionic-core (ID: 2930047942, Size: 5154771, Expected Digest: sha256:b111f6e027d6488d3503c3898ca1851a4d6ba65252dce4184c3d1aac69532dba)
+Redirecting to blob download url: https://productionresultssa12.blob.core.windows.net/actions-results/10900e3f-7af9-4c42-8501-21369fdf32d9/workflow-job-run-60360e90-de33-5e95-9d3a-c6e4b95a6c9b/artifacts/8b195ff755a0fb0e432f914b9dafce014f6a2ae37c056d7e9cf4114538aaf978.zip
+Starting download of artifact to: /home/runner/work/ionic-framework/ionic-framework/core
+(node:1898) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+SHA256 digest of downloaded artifact is b111f6e027d6488d3503c3898ca1851a4d6ba65252dce4184c3d1aac69532dba
+Artifact download completed successfully.
+Total of 1 artifact(s) downloaded
+Download artifact has finished successfully
+##[group]Run unzip -q -o ./core/CoreBuild.zip
+[36;1munzip -q -o ./core/CoreBuild.zip[0m
+0
+##[endgroup]
+##[group]Run npm install
+[36;1mnpm install[0m
+0
+##[endgroup]
+npm warn deprecated ini@1.3.5: Please update to ini >=1.3.6 to avoid a prototype pollution issue
+npm warn deprecated @stylelint/postcss-markdown@0.36.2: Use the original unforked package instead: postcss-markdown
+2025-04-11T19:29:40.8194450Z
+added 843 packages, and audited 845 packages in 9s
+2025-04-11T19:29:40.8195657Z
+161 packages are looking for funding
+run `npm fund` for details
+2025-04-11T19:29:40.8334750Z
+16 vulnerabilities (5 moderate, 10 high, 1 critical)
+2025-04-11T19:29:40.8335767Z
+To address all issues, run:
+npm audit fix
+2025-04-11T19:29:40.8336340Z
+Run `npm audit` for details.
+##[group]Run npm run test.e2e.docker.ci  -- --shard=7/20
+[36;1mnpm run test.e2e.docker.ci  -- --shard=7/20[0m
+0
+##[endgroup]
+2025-04-11T19:29:40.9832577Z
+> @ionic/core@8.5.4 test.e2e.docker.ci
+> npm run docker.build && CI=true node ./scripts/docker.mjs --shard=7/20
+2025-04-11T19:29:40.9834442Z
+2025-04-11T19:29:41.0912735Z
+> @ionic/core@8.5.4 docker.build
+> docker build -t ionic-playwright .
+2025-04-11T19:29:41.0913934Z
+#0 building with "default" instance using docker driver
+2025-04-11T19:29:41.6902245Z
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 140B done
+#1 DONE 0.0s
+2025-04-11T19:29:41.6904110Z
+#2 [internal] load metadata for mcr.microsoft.com/playwright:v1.51.1
+#2 DONE 0.2s
+2025-04-11T19:29:41.8489257Z
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+2025-04-11T19:29:41.8502901Z
+#4 [1/2] FROM mcr.microsoft.com/playwright:v1.51.1@sha256:146d046a8d79a1b3a87596c4457b0b1c47f811bf4fc2cc1b99e873ae7f1cbbbd
+#4 resolve mcr.microsoft.com/playwright:v1.51.1@sha256:146d046a8d79a1b3a87596c4457b0b1c47f811bf4fc2cc1b99e873ae7f1cbbbd done
+#4 sha256:07625bb0f130786b63a5f8d0a01ae8366633f044fdd1d322f4e17d891e40eb38 4.35kB / 4.35kB done
+#4 sha256:107a4fb0af3829758fca8bb809bb86ccb87dd630e4d61110103466886f7b0746 4.19MB / 30.62MB 0.1s
+#4 sha256:8c401718c9840101a765a463ac914fdc601eac9168514e5b99d9790d3e9314d9 9.44MB / 103.79MB 0.1s
+#4 sha256:39224aba52ceadd68846f4be54e0a32c959024f2bc3273ccf55759f25fc23fc9 1.94MB / 1.94MB 0.0s done
+#4 sha256:08d1cdd3adadca7e4ef993b1b833978ce34bb0fe025ef2e00cea37c7fdb746d8 1.05MB / 759.82MB 0.1s
+#4 sha256:146d046a8d79a1b3a87596c4457b0b1c47f811bf4fc2cc1b99e873ae7f1cbbbd 743B / 743B done
+#4 sha256:daa1690ea366d2d6b52ea085a59a221a6e954cd9d9c13c89bd7eccb0673e8961 1.17kB / 1.17kB done
+#4 sha256:107a4fb0af3829758fca8bb809bb86ccb87dd630e4d61110103466886f7b0746 24.12MB / 30.62MB 0.2s
+#4 sha256:8c401718c9840101a765a463ac914fdc601eac9168514e5b99d9790d3e9314d9 32.51MB / 103.79MB 0.2s
+#4 sha256:107a4fb0af3829758fca8bb809bb86ccb87dd630e4d61110103466886f7b0746 30.62MB / 30.62MB 0.3s done
+#4 sha256:8c401718c9840101a765a463ac914fdc601eac9168514e5b99d9790d3e9314d9 56.62MB / 103.79MB 0.3s
+#4 extracting sha256:107a4fb0af3829758fca8bb809bb86ccb87dd630e4d61110103466886f7b0746
+#4 sha256:8c401718c9840101a765a463ac914fdc601eac9168514e5b99d9790d3e9314d9 78.41MB / 103.79MB 0.4s
+#4 sha256:08d1cdd3adadca7e4ef993b1b833978ce34bb0fe025ef2e00cea37c7fdb746d8 41.94MB / 759.82MB 0.4s
+#4 sha256:8c401718c9840101a765a463ac914fdc601eac9168514e5b99d9790d3e9314d9 100.84MB / 103.79MB 0.5s
+#4 sha256:8c401718c9840101a765a463ac914fdc601eac9168514e5b99d9790d3e9314d9 103.79MB / 103.79MB 0.6s done
+#4 sha256:08d1cdd3adadca7e4ef993b1b833978ce34bb0fe025ef2e00cea37c7fdb746d8 87.03MB / 759.82MB 0.9s
+#4 sha256:08d1cdd3adadca7e4ef993b1b833978ce34bb0fe025ef2e00cea37c7fdb746d8 136.31MB / 759.82MB 1.3s
+#4 extracting sha256:107a4fb0af3829758fca8bb809bb86ccb87dd630e4d61110103466886f7b0746 0.9s done
+#4 extracting sha256:8c401718c9840101a765a463ac914fdc601eac9168514e5b99d9790d3e9314d9 0.1s
+#4 sha256:08d1cdd3adadca7e4ef993b1b833978ce34bb0fe025ef2e00cea37c7fdb746d8 177.95MB / 759.82MB 1.7s
+#4 sha256:08d1cdd3adadca7e4ef993b1b833978ce34bb0fe025ef2e00cea37c7fdb746d8 224.40MB / 759.82MB 2.1s
+#4 sha256:08d1cdd3adadca7e4ef993b1b833978ce34bb0fe025ef2e00cea37c7fdb746d8 267.39MB / 759.82MB 2.6s
+#4 sha256:08d1cdd3adadca7e4ef993b1b833978ce34bb0fe025ef2e00cea37c7fdb746d8 307.93MB / 759.82MB 3.0s
+#4 sha256:08d1cdd3adadca7e4ef993b1b833978ce34bb0fe025ef2e00cea37c7fdb746d8 356.52MB / 759.82MB 3.4s
+#4 sha256:08d1cdd3adadca7e4ef993b1b833978ce34bb0fe025ef2e00cea37c7fdb746d8 408.94MB / 759.82MB 3.8s
+#4 sha256:08d1cdd3adadca7e4ef993b1b833978ce34bb0fe025ef2e00cea37c7fdb746d8 451.94MB / 759.82MB 4.2s
+#4 sha256:08d1cdd3adadca7e4ef993b1b833978ce34bb0fe025ef2e00cea37c7fdb746d8 490.73MB / 759.82MB 4.5s
+#4 sha256:08d1cdd3adadca7e4ef993b1b833978ce34bb0fe025ef2e00cea37c7fdb746d8 536.87MB / 759.82MB 4.8s
+#4 sha256:08d1cdd3adadca7e4ef993b1b833978ce34bb0fe025ef2e00cea37c7fdb746d8 591.40MB / 759.82MB 5.2s
+#4 extracting sha256:8c401718c9840101a765a463ac914fdc601eac9168514e5b99d9790d3e9314d9 4.1s done
+#4 sha256:08d1cdd3adadca7e4ef993b1b833978ce34bb0fe025ef2e00cea37c7fdb746d8 648.02MB / 759.82MB 5.6s
+#4 sha256:08d1cdd3adadca7e4ef993b1b833978ce34bb0fe025ef2e00cea37c7fdb746d8 699.40MB / 759.82MB 6.2s
+#4 sha256:08d1cdd3adadca7e4ef993b1b833978ce34bb0fe025ef2e00cea37c7fdb746d8 741.34MB / 759.82MB 6.5s
+#4 sha256:08d1cdd3adadca7e4ef993b1b833978ce34bb0fe025ef2e00cea37c7fdb746d8 759.82MB / 759.82MB 7.7s done
+#4 extracting sha256:39224aba52ceadd68846f4be54e0a32c959024f2bc3273ccf55759f25fc23fc9
+#4 extracting sha256:39224aba52ceadd68846f4be54e0a32c959024f2bc3273ccf55759f25fc23fc9 0.0s done
+#4 extracting sha256:08d1cdd3adadca7e4ef993b1b833978ce34bb0fe025ef2e00cea37c7fdb746d8 0.1s
+#4 extracting sha256:08d1cdd3adadca7e4ef993b1b833978ce34bb0fe025ef2e00cea37c7fdb746d8 5.2s
+#4 extracting sha256:08d1cdd3adadca7e4ef993b1b833978ce34bb0fe025ef2e00cea37c7fdb746d8 10.3s
+#4 extracting sha256:08d1cdd3adadca7e4ef993b1b833978ce34bb0fe025ef2e00cea37c7fdb746d8 12.5s done
+#4 DONE 23.3s
+2025-04-11T19:30:05.2125939Z
+#5 [2/2] WORKDIR /ionic
+#5 DONE 0.0s
+2025-04-11T19:30:05.2127305Z
+#6 exporting to image
+#6 exporting layers
+#6 exporting layers 1.3s done
+#6 writing image sha256:6e70fd4c6828ec85695ed6a27bf1397e567f1d48d5e3099a56c2e2915d41f3e7 done
+#6 naming to docker.io/library/ionic-playwright done
+#6 DONE 1.3s
+2025-04-11T19:30:06.7951426Z
+> @ionic/core@8.5.4 test.e2e
+> npx playwright test --shard=7/20
+2025-04-11T19:30:06.7953360Z
+[WebServer] [35mINFO: Accepting connections at http://localhost:3333.[39m
+2025-04-11T19:30:11.8507821Z
+Running 445 tests using 1 worker, shard 7 of 20
+·············································°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+°°°··············°°°°°°°°°°·················°°°°·············××F················
+··········································································°··°°·
+·°·············································
+2025-04-11T19:32:22.2727031Z
+1) [Mobile Chrome] › src/components/accordion/test/multiple/accordion.e2e.ts:6:9 › accordion: multiple - ios/ltr › should update value and visually expand items
+2025-04-11T19:32:22.2745231Z
+Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoHaveScreenshot[2m([22m[32mexpected[39m[2m)[22m
+2025-04-11T19:32:22.2746823Z
+15135 pixels (ratio 0.10 of all image pixels) are different.
+2025-04-11T19:32:22.2747895Z
+Expected: [33m/ionic/src/components/accordion/test/multiple/accordion.e2e.ts-snapshots/accordion-two-open-ios-ltr-Mobile-Chrome-linux.png[39m
+Received: [33m/ionic/test-results/src-components-accordion-t-26450-e-and-visually-expand-items-Mobile-Chrome/accordion-two-open-ios-ltr-actual.png[39m
+Diff: [33m/ionic/test-results/src-components-accordion-t-26450-e-and-visually-expand-items-Mobile-Chrome/accordion-two-open-ios-ltr-diff.png[39m
+2025-04-11T19:32:22.2755109Z
+Call log:
+[2m  - expect.toHaveScreenshot(accordion-two-open-ios-ltr.png) with timeout 5000ms[22m
+[2m    - verifying given screenshot expectation[22m
+[2m  - waiting for locator('ion-accordion-group')[22m
+[2m    - locator resolved to <ion-accordion-group multiple="true" value="attractions" role="presentation" class="ios accordion-group-expand-compact hydrated">…</ion-accordion-group>[22m
+[2m  - taking element screenshot[22m
+[2m    - disabled all CSS animations[22m
+[2m  - waiting for fonts to load...[22m
+[2m  - fonts loaded[22m
+[2m  - attempting scroll into view action[22m
+[2m    - waiting for element to be stable[22m
+[2m  - 15135 pixels (ratio 0.10 of all image pixels) are different.[22m
+[2m  - waiting 100ms before taking screenshot[22m
+[2m  - waiting for locator('ion-accordion-group')[22m
+[2m    - locator resolved to <ion-accordion-group multiple="true" value="attractions" role="presentation" class="ios accordion-group-expand-compact hydrated">…</ion-accordion-group>[22m
+[2m  - taking element screenshot[22m
+[2m    - disabled all CSS animations[22m
+[2m  - waiting for fonts to load...[22m
+[2m  - fonts loaded[22m
+[2m  - attempting scroll into view action[22m
+[2m    - waiting for element to be stable[22m
+[2m  - captured a stable screenshot[22m
+[2m  - 15135 pixels (ratio 0.10 of all image pixels) are different.[22m
+2025-04-11T19:32:22.2777023Z
+2025-04-11T19:32:22.2777035Z
+19 |       await expect(accordionGroup).toHaveJSProperty('value', ['attractions', 'dining']);
+20 |
+> 21 |       await expect(accordionGroup).toHaveScreenshot(screenshot('accordion-two-open'));
+^
+22 |
+23 |       await diningHeader.click();
+24 |       await attractionsHeader.click();
+at /ionic/src/components/accordion/test/multiple/accordion.e2e.ts:21:36
+2025-04-11T19:32:22.2782680Z
+attachment #1: accordion-two-open-ios-ltr-expected.png (image/png) ─────────────────────────────
+src/components/accordion/test/multiple/accordion.e2e.ts-snapshots/accordion-two-open-ios-ltr-Mobile-Chrome-linux.png
+────────────────────────────────────────────────────────────────────────────────────────────────
+2025-04-11T19:32:22.2786809Z
+attachment #2: accordion-two-open-ios-ltr-actual.png (image/png) ───────────────────────────────
+test-results/src-components-accordion-t-26450-e-and-visually-expand-items-Mobile-Chrome/accordion-two-open-ios-ltr-actual.png
+────────────────────────────────────────────────────────────────────────────────────────────────
+2025-04-11T19:32:22.2793006Z
+attachment #3: accordion-two-open-ios-ltr-diff.png (image/png) ─────────────────────────────────
+test-results/src-components-accordion-t-26450-e-and-visually-expand-items-Mobile-Chrome/accordion-two-open-ios-ltr-diff.png
+────────────────────────────────────────────────────────────────────────────────────────────────
+2025-04-11T19:32:22.2797462Z
+attachment #5: trace (application/zip) ─────────────────────────────────────────────────────────
+test-results/src-components-accordion-t-26450-e-and-visually-expand-items-Mobile-Chrome/trace.zip
+Usage:
+2025-04-11T19:32:22.2800742Z
+npx playwright show-trace test-results/src-components-accordion-t-26450-e-and-visually-expand-items-Mobile-Chrome/trace.zip
+2025-04-11T19:32:22.2802435Z
+────────────────────────────────────────────────────────────────────────────────────────────────
+2025-04-11T19:32:22.2803418Z
+Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+2025-04-11T19:32:22.2804500Z
+Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoHaveScreenshot[2m([22m[32mexpected[39m[2m)[22m
+2025-04-11T19:32:22.2805815Z
+15135 pixels (ratio 0.10 of all image pixels) are different.
+2025-04-11T19:32:22.2806576Z
+Expected: [33m/ionic/src/components/accordion/test/multiple/accordion.e2e.ts-snapshots/accordion-two-open-ios-ltr-Mobile-Chrome-linux.png[39m
+Received: [33m/ionic/test-results/src-components-accordion-t-26450-e-and-visually-expand-items-Mobile-Chrome-retry1/accordion-two-open-ios-ltr-actual.png[39m
+Diff: [33m/ionic/test-results/src-components-accordion-t-26450-e-and-visually-expand-items-Mobile-Chrome-retry1/accordion-two-open-ios-ltr-diff.png[39m
+2025-04-11T19:32:22.2813914Z
+Call log:
+[2m  - expect.toHaveScreenshot(accordion-two-open-ios-ltr.png) with timeout 5000ms[22m
+[2m    - verifying given screenshot expectation[22m
+[2m  - waiting for locator('ion-accordion-group')[22m
+[2m    - locator resolved to <ion-accordion-group multiple="true" value="attractions" role="presentation" class="ios accordion-group-expand-compact hydrated">…</ion-accordion-group>[22m
+[2m  - taking element screenshot[22m
+[2m    - disabled all CSS animations[22m
+[2m  - waiting for fonts to load...[22m
+[2m  - fonts loaded[22m
+[2m  - attempting scroll into view action[22m
+[2m    - waiting for element to be stable[22m
+[2m  - 15135 pixels (ratio 0.10 of all image pixels) are different.[22m
+[2m  - waiting 100ms before taking screenshot[22m
+[2m  - waiting for locator('ion-accordion-group')[22m
+[2m    - locator resolved to <ion-accordion-group multiple="true" value="attractions" role="presentation" class="ios accordion-group-expand-compact hydrated">…</ion-accordion-group>[22m
+[2m  - taking element screenshot[22m
+[2m    - disabled all CSS animations[22m
+[2m  - waiting for fonts to load...[22m
+[2m  - fonts loaded[22m
+[2m  - attempting scroll into view action[22m
+[2m    - waiting for element to be stable[22m
+[2m  - captured a stable screenshot[22m
+[2m  - 15135 pixels (ratio 0.10 of all image pixels) are different.[22m
+2025-04-11T19:32:22.2833859Z
+2025-04-11T19:32:22.2834063Z
+19 |       await expect(accordionGroup).toHaveJSProperty('value', ['attractions', 'dining']);
+20 |
+> 21 |       await expect(accordionGroup).toHaveScreenshot(screenshot('accordion-two-open'));
+^
+22 |
+23 |       await diningHeader.click();
+24 |       await attractionsHeader.click();
+at /ionic/src/components/accordion/test/multiple/accordion.e2e.ts:21:36
+2025-04-11T19:32:22.2839460Z
+attachment #1: accordion-two-open-ios-ltr-expected.png (image/png) ─────────────────────────────
+src/components/accordion/test/multiple/accordion.e2e.ts-snapshots/accordion-two-open-ios-ltr-Mobile-Chrome-linux.png
+────────────────────────────────────────────────────────────────────────────────────────────────
+2025-04-11T19:32:22.2843470Z
+attachment #2: accordion-two-open-ios-ltr-actual.png (image/png) ───────────────────────────────
+test-results/src-components-accordion-t-26450-e-and-visually-expand-items-Mobile-Chrome-retry1/accordion-two-open-ios-ltr-actual.png
+────────────────────────────────────────────────────────────────────────────────────────────────
+2025-04-11T19:32:22.2847829Z
+attachment #3: accordion-two-open-ios-ltr-diff.png (image/png) ─────────────────────────────────
+test-results/src-components-accordion-t-26450-e-and-visually-expand-items-Mobile-Chrome-retry1/accordion-two-open-ios-ltr-diff.png
+────────────────────────────────────────────────────────────────────────────────────────────────
+2025-04-11T19:32:22.2852034Z
+attachment #5: trace (application/zip) ─────────────────────────────────────────────────────────
+test-results/src-components-accordion-t-26450-e-and-visually-expand-items-Mobile-Chrome-retry1/trace.zip
+Usage:
+2025-04-11T19:32:22.2855025Z
+npx playwright show-trace test-results/src-components-accordion-t-26450-e-and-visually-expand-items-Mobile-Chrome-retry1/trace.zip
+2025-04-11T19:32:22.2857019Z
+────────────────────────────────────────────────────────────────────────────────────────────────
+2025-04-11T19:32:22.2858207Z
+Retry #2 ───────────────────────────────────────────────────────────────────────────────────────
+2025-04-11T19:32:22.2859262Z
+Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoHaveScreenshot[2m([22m[32mexpected[39m[2m)[22m
+2025-04-11T19:32:22.2860846Z
+15135 pixels (ratio 0.10 of all image pixels) are different.
+2025-04-11T19:32:22.2861597Z
+Expected: [33m/ionic/src/components/accordion/test/multiple/accordion.e2e.ts-snapshots/accordion-two-open-ios-ltr-Mobile-Chrome-linux.png[39m
+Received: [33m/ionic/test-results/src-components-accordion-t-26450-e-and-visually-expand-items-Mobile-Chrome-retry2/accordion-two-open-ios-ltr-actual.png[39m
+Diff: [33m/ionic/test-results/src-components-accordion-t-26450-e-and-visually-expand-items-Mobile-Chrome-retry2/accordion-two-open-ios-ltr-diff.png[39m
+2025-04-11T19:32:22.2868876Z
+Call log:
+[2m  - expect.toHaveScreenshot(accordion-two-open-ios-ltr.png) with timeout 5000ms[22m
+[2m    - verifying given screenshot expectation[22m
+[2m  - waiting for locator('ion-accordion-group')[22m
+[2m    - locator resolved to <ion-accordion-group multiple="true" value="attractions" role="presentation" class="ios accordion-group-expand-compact hydrated">…</ion-accordion-group>[22m
+[2m  - taking element screenshot[22m
+[2m    - disabled all CSS animations[22m
+[2m  - waiting for fonts to load...[22m
+[2m  - fonts loaded[22m
+[2m  - attempting scroll into view action[22m
+[2m    - waiting for element to be stable[22m
+[2m  - 15135 pixels (ratio 0.10 of all image pixels) are different.[22m
+[2m  - waiting 100ms before taking screenshot[22m
+[2m  - waiting for locator('ion-accordion-group')[22m
+[2m    - locator resolved to <ion-accordion-group multiple="true" value="attractions" role="presentation" class="ios accordion-group-expand-compact hydrated">…</ion-accordion-group>[22m
+[2m  - taking element screenshot[22m
+[2m    - disabled all CSS animations[22m
+[2m  - waiting for fonts to load...[22m
+[2m  - fonts loaded[22m
+[2m  - attempting scroll into view action[22m
+[2m    - waiting for element to be stable[22m
+[2m  - captured a stable screenshot[22m
+[2m  - 15135 pixels (ratio 0.10 of all image pixels) are different.[22m
+2025-04-11T19:32:22.2888326Z
+2025-04-11T19:32:22.2888337Z
+19 |       await expect(accordionGroup).toHaveJSProperty('value', ['attractions', 'dining']);
+20 |
+> 21 |       await expect(accordionGroup).toHaveScreenshot(screenshot('accordion-two-open'));
+^
+22 |
+23 |       await diningHeader.click();
+24 |       await attractionsHeader.click();
+at /ionic/src/components/accordion/test/multiple/accordion.e2e.ts:21:36
+2025-04-11T19:32:22.2893897Z
+attachment #1: accordion-two-open-ios-ltr-expected.png (image/png) ─────────────────────────────
+src/components/accordion/test/multiple/accordion.e2e.ts-snapshots/accordion-two-open-ios-ltr-Mobile-Chrome-linux.png
+────────────────────────────────────────────────────────────────────────────────────────────────
+2025-04-11T19:32:22.2898181Z
+attachment #2: accordion-two-open-ios-ltr-actual.png (image/png) ───────────────────────────────
+test-results/src-components-accordion-t-26450-e-and-visually-expand-items-Mobile-Chrome-retry2/accordion-two-open-ios-ltr-actual.png
+────────────────────────────────────────────────────────────────────────────────────────────────
+2025-04-11T19:32:22.2902715Z
+attachment #3: accordion-two-open-ios-ltr-diff.png (image/png) ─────────────────────────────────
+test-results/src-components-accordion-t-26450-e-and-visually-expand-items-Mobile-Chrome-retry2/accordion-two-open-ios-ltr-diff.png
+────────────────────────────────────────────────────────────────────────────────────────────────
+2025-04-11T19:32:22.2907000Z
+attachment #5: trace (application/zip) ─────────────────────────────────────────────────────────
+test-results/src-components-accordion-t-26450-e-and-visually-expand-items-Mobile-Chrome-retry2/trace.zip
+Usage:
+2025-04-11T19:32:22.2910395Z
+npx playwright show-trace test-results/src-components-accordion-t-26450-e-and-visually-expand-items-Mobile-Chrome-retry2/trace.zip
+2025-04-11T19:32:22.2912267Z
+────────────────────────────────────────────────────────────────────────────────────────────────
+2025-04-11T19:32:22.2913306Z
+1 failed
+[Mobile Chrome] › src/components/accordion/test/multiple/accordion.e2e.ts:6:9 › accordion: multiple - ios/ltr › should update value and visually expand items
+216 skipped
+228 passed (2.2m)
+##[error]  1) [Mobile Chrome] › src/components/accordion/test/multiple/accordion.e2e.ts:6:9 › accordion: multiple - ios/ltr › should update value and visually expand items
+expect(locator).toHaveScreenshot(expected)
+      15135 pixels (ratio 0.10 of all image pixels) are different.
+/ionic/src/components/accordion/test/multiple/accordion.e2e.ts-snapshots/accordion-two-open-ios-ltr-Mobile-Chrome-linux.png
+/ionic/test-results/src-components-accordion-t-26450-e-and-visually-expand-items-Mobile-Chrome/accordion-two-open-ios-ltr-actual.png
+/ionic/test-results/src-components-accordion-t-26450-e-and-visually-expand-items-Mobile-Chrome/accordion-two-open-ios-ltr-diff.png
+    Call log:
+      - expect.toHaveScreenshot(accordion-two-open-ios-ltr.png) with timeout 5000ms
+        - verifying given screenshot expectation
+      - waiting for locator('ion-accordion-group')
+        - locator resolved to <ion-accordion-group multiple="true" value="attractions" role="presentation" class="ios accordion-group-expand-compact hydrated">…</ion-accordion-group>
+      - taking element screenshot
+        - disabled all CSS animations
+      - waiting for fonts to load...
+      - fonts loaded
+      - attempting scroll into view action
+        - waiting for element to be stable
+      - 15135 pixels (ratio 0.10 of all image pixels) are different.
+      - waiting 100ms before taking screenshot
+      - waiting for locator('ion-accordion-group')
+        - locator resolved to <ion-accordion-group multiple="true" value="attractions" role="presentation" class="ios accordion-group-expand-compact hydrated">…</ion-accordion-group>
+      - taking element screenshot
+        - disabled all CSS animations
+      - waiting for fonts to load...
+      - fonts loaded
+      - attempting scroll into view action
+        - waiting for element to be stable
+      - captured a stable screenshot
+      - 15135 pixels (ratio 0.10 of all image pixels) are different.
+      19 |       await expect(accordionGroup).toHaveJSProperty('value', ['attractions', 'dining']);
+      20 |
+    > 21 |       await expect(accordionGroup).toHaveScreenshot(screenshot('accordion-two-open'));
+
+      22 |
+      23 |       await diningHeader.click();
+      24 |       await attractionsHeader.click();
+        at /ionic/src/components/accordion/test/multiple/accordion.e2e.ts:21:36
+##[error]  1) [Mobile Chrome] › src/components/accordion/test/multiple/accordion.e2e.ts:6:9 › accordion: multiple - ios/ltr › should update value and visually expand items
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+expect(locator).toHaveScreenshot(expected)
+      15135 pixels (ratio 0.10 of all image pixels) are different.
+/ionic/src/components/accordion/test/multiple/accordion.e2e.ts-snapshots/accordion-two-open-ios-ltr-Mobile-Chrome-linux.png
+/ionic/test-results/src-components-accordion-t-26450-e-and-visually-expand-items-Mobile-Chrome-retry1/accordion-two-open-ios-ltr-actual.png
+/ionic/test-results/src-components-accordion-t-26450-e-and-visually-expand-items-Mobile-Chrome-retry1/accordion-two-open-ios-ltr-diff.png
+    Call log:
+      - expect.toHaveScreenshot(accordion-two-open-ios-ltr.png) with timeout 5000ms
+        - verifying given screenshot expectation
+      - waiting for locator('ion-accordion-group')
+        - locator resolved to <ion-accordion-group multiple="true" value="attractions" role="presentation" class="ios accordion-group-expand-compact hydrated">…</ion-accordion-group>
+      - taking element screenshot
+        - disabled all CSS animations
+      - waiting for fonts to load...
+      - fonts loaded
+      - attempting scroll into view action
+        - waiting for element to be stable
+      - 15135 pixels (ratio 0.10 of all image pixels) are different.
+      - waiting 100ms before taking screenshot
+      - waiting for locator('ion-accordion-group')
+        - locator resolved to <ion-accordion-group multiple="true" value="attractions" role="presentation" class="ios accordion-group-expand-compact hydrated">…</ion-accordion-group>
+      - taking element screenshot
+        - disabled all CSS animations
+      - waiting for fonts to load...
+      - fonts loaded
+      - attempting scroll into view action
+        - waiting for element to be stable
+      - captured a stable screenshot
+      - 15135 pixels (ratio 0.10 of all image pixels) are different.
+      19 |       await expect(accordionGroup).toHaveJSProperty('value', ['attractions', 'dining']);
+      20 |
+    > 21 |       await expect(accordionGroup).toHaveScreenshot(screenshot('accordion-two-open'));
+
+      22 |
+      23 |       await diningHeader.click();
+      24 |       await attractionsHeader.click();
+        at /ionic/src/components/accordion/test/multiple/accordion.e2e.ts:21:36
+##[error]  1) [Mobile Chrome] › src/components/accordion/test/multiple/accordion.e2e.ts:6:9 › accordion: multiple - ios/ltr › should update value and visually expand items
+    Retry #2 ───────────────────────────────────────────────────────────────────────────────────────
+expect(locator).toHaveScreenshot(expected)
+      15135 pixels (ratio 0.10 of all image pixels) are different.
+/ionic/src/components/accordion/test/multiple/accordion.e2e.ts-snapshots/accordion-two-open-ios-ltr-Mobile-Chrome-linux.png
+/ionic/test-results/src-components-accordion-t-26450-e-and-visually-expand-items-Mobile-Chrome-retry2/accordion-two-open-ios-ltr-actual.png
+/ionic/test-results/src-components-accordion-t-26450-e-and-visually-expand-items-Mobile-Chrome-retry2/accordion-two-open-ios-ltr-diff.png
+    Call log:
+      - expect.toHaveScreenshot(accordion-two-open-ios-ltr.png) with timeout 5000ms
+        - verifying given screenshot expectation
+      - waiting for locator('ion-accordion-group')
+        - locator resolved to <ion-accordion-group multiple="true" value="attractions" role="presentation" class="ios accordion-group-expand-compact hydrated">…</ion-accordion-group>
+      - taking element screenshot
+        - disabled all CSS animations
+      - waiting for fonts to load...
+      - fonts loaded
+      - attempting scroll into view action
+        - waiting for element to be stable
+      - 15135 pixels (ratio 0.10 of all image pixels) are different.
+      - waiting 100ms before taking screenshot
+      - waiting for locator('ion-accordion-group')
+        - locator resolved to <ion-accordion-group multiple="true" value="attractions" role="presentation" class="ios accordion-group-expand-compact hydrated">…</ion-accordion-group>
+      - taking element screenshot
+        - disabled all CSS animations
+      - waiting for fonts to load...
+      - fonts loaded
+      - attempting scroll into view action
+        - waiting for element to be stable
+      - captured a stable screenshot
+      - 15135 pixels (ratio 0.10 of all image pixels) are different.
+      19 |       await expect(accordionGroup).toHaveJSProperty('value', ['attractions', 'dining']);
+      20 |
+    > 21 |       await expect(accordionGroup).toHaveScreenshot(screenshot('accordion-two-open'));
+
+      22 |
+      23 |       await diningHeader.click();
+      24 |       await attractionsHeader.click();
+        at /ionic/src/components/accordion/test/multiple/accordion.e2e.ts:21:36
+##[notice]  1 failed
+multiple - ios/ltr › should update value and visually expand items
+  216 skipped
+  228 passed (2.2m)
+file:///home/runner/work/ionic-framework/ionic-framework/core/node_modules/execa/lib/error.js:60
+error = new Error(message);
+
+2025-04-11T19:32:22.5616079Z
+Error: Command failed with exit code 1: docker run -e CI=true --rm --init -e DISPLAY= -v  --ipc=host --mount=type=bind,source=/home/runner/work/ionic-framework/ionic-framework/core,target=/ionic ionic-playwright npm run test.e2e -- --shard=7/20
+at makeError (file:///home/runner/work/ionic-framework/ionic-framework/core/node_modules/execa/lib/error.js:60:11)
+at handlePromise (file:///home/runner/work/ionic-framework/ionic-framework/core/node_modules/execa/index.js:124:26)
+at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+at async file:///home/runner/work/ionic-framework/ionic-framework/core/scripts/docker.mjs:56:13 {
+shortMessage: 'Command failed with exit code 1: docker run -e CI=true --rm --init -e DISPLAY= -v  --ipc=host --mount=type=bind,source=/home/runner/work/ionic-framework/ionic-framework/core,target=/ionic ionic-playwright npm run test.e2e -- --shard=7/20',
+command: 'docker run -e CI=true --rm --init -e DISPLAY= -v  --ipc=host --mount=type=bind,source=/home/runner/work/ionic-framework/ionic-framework/core,target=/ionic ionic-playwright npm run test.e2e -- --shard=7/20',
+escapedCommand: 'docker run "-e CI=true" --rm --init "-e DISPLAY=" "-v " "--ipc=host" "--mount=type=bind,source=/home/runner/work/ionic-framework/ionic-framework/core,target=/ionic" ionic-playwright "npm run test.e2e --" "--shard=7/20"',
+exitCode: 1,
+signal: undefined,
+signalDescription: undefined,
+stdout: undefined,
+stderr: undefined,
+cwd: '/home/runner/work/ionic-framework/ionic-framework/core',
+failed: true,
+timedOut: false,
+isCanceled: false,
+killed:
+}
+2025-04-11T19:32:22.5632659Z
+Node.js v20.19.0
+##[error]Process completed with exit code 1.
+
+
+./.github/workflows/actions/upload-archive
+
+name: test-results-7-20
+output: core/TestResults-7-20.zip
+paths: core/playwright-report
+##[endgroup]
+##[group]Run zip -q -r core/TestResults-7-20.zip core/playwright-report
+[36;1mzip -q -r core/TestResults-7-20.zip core/playwright-report[0m
+0
+##[endgroup]
+actions/upload-artifact@v4
+
+name: test-results-7-20
+core/TestResults-7-20.zip
+if-no-files-found: warn
+compression-level: 6
+overwrite:
+include-hidden-files:
+##[endgroup]
+With the provided path, there will be 1 file uploaded
+Artifact name is valid!
+Root directory input is valid!
+Beginning upload of artifact content to blob storage
+Uploaded bytes 2511979
+Finished uploading artifact content to blob storage!
+SHA256 digest of uploaded artifact zip is 851375f486389e976f44674558cca35cc102c799144f0615e08513ae7a5c1bfc
+Finalizing artifact upload
+Artifact test-results-7-20.zip successfully finalized. Artifact ID 2930064816
+Artifact test-results-7-20 has been successfully uploaded! Final size is 2511979 bytes. Artifact ID is 2930064816
+Artifact download URL: https://github.com/ionic-team/ionic-framework/actions/runs/14410612100/artifacts/2930064816

@@ -1,0 +1,31 @@
+2025-04-15T09:00:40.1260693Z ##[group]Run actions/github-script@v7.0.1
+2025-04-15T09:00:40.1262230Z with:
+2025-04-15T09:00:40.1271232Z   script: var artifacts = await github.rest.actions.listWorkflowRunArtifacts({
+   owner: context.repo.owner,
+   repo: context.repo.repo,
+   run_id: 14465470601,
+});
+var matchArtifact = artifacts.data.artifacts.filter((artifact) => {
+  return artifact.name == "cover"
+})[0];
+var download = await github.rest.actions.downloadArtifact({
+   owner: context.repo.owner,
+   repo: context.repo.repo,
+   artifact_id: matchArtifact.id,
+   archive_format: 'zip',
+});
+var fs = require('fs');
+fs.writeFileSync('/home/runner/work/cockroach/cockroach/cover.zip', Buffer.from(download.data));
+
+2025-04-15T09:00:40.1279453Z   github-token: ***
+2025-04-15T09:00:40.1280360Z   debug: false
+2025-04-15T09:00:40.1281283Z   user-agent: actions/github-script
+2025-04-15T09:00:40.1282406Z   result-encoding: json
+2025-04-15T09:00:40.1283319Z   retries: 0
+2025-04-15T09:00:40.1284679Z   retry-exempt-status-codes: 400,401,403,404,422
+2025-04-15T09:00:40.1286272Z ##[endgroup]
+2025-04-15T09:00:40.5228351Z TypeError: Cannot read properties of undefined (reading 'id')
+2025-04-15T09:00:40.5232940Z     at eval (eval at callAsyncFunction (/home/runner/work/_actions/actions/github-script/v7.0.1/dist/index.js:35424:16), <anonymous>:14:31)
+2025-04-15T09:00:40.5237834Z     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-15T09:00:40.5241626Z     at async main (/home/runner/work/_actions/actions/github-script/v7.0.1/dist/index.js:35522:20)
+2025-04-15T09:00:40.5286849Z ##[error]Unhandled error: TypeError: Cannot read properties of undefined (reading 'id')

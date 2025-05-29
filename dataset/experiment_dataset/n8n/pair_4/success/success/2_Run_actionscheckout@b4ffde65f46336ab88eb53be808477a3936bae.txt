@@ -1,0 +1,82 @@
+2025-04-15T01:01:19.4818843Z ##[group]Run actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+2025-04-15T01:01:19.4820253Z with:
+2025-04-15T01:01:19.4820697Z   repository: n8n-io/n8n
+2025-04-15T01:01:19.4821740Z   token: ***
+2025-04-15T01:01:19.4822200Z   ssh-strict: true
+2025-04-15T01:01:19.4822724Z   persist-credentials: true
+2025-04-15T01:01:19.4823331Z   clean: true
+2025-04-15T01:01:19.4823826Z   sparse-checkout-cone-mode: true
+2025-04-15T01:01:19.4824507Z   fetch-depth: 1
+2025-04-15T01:01:19.4824991Z   fetch-tags: false
+2025-04-15T01:01:19.4825495Z   show-progress: true
+2025-04-15T01:01:19.4826014Z   lfs: false
+2025-04-15T01:01:19.4826449Z   submodules: false
+2025-04-15T01:01:19.4826972Z   set-safe-directory: true
+2025-04-15T01:01:19.4827791Z env:
+2025-04-15T01:01:19.4828252Z   DB_MYSQLDB_PASSWORD: password
+2025-04-15T01:01:19.4828858Z ##[endgroup]
+2025-04-15T01:01:19.6202608Z Syncing repository: n8n-io/n8n
+2025-04-15T01:01:19.6204792Z ##[group]Getting Git version info
+2025-04-15T01:01:19.6205919Z Working directory is '/home/runner/work/n8n/n8n'
+2025-04-15T01:01:19.6207382Z [command]/usr/bin/git version
+2025-04-15T01:01:19.6242022Z git version 2.49.0
+2025-04-15T01:01:19.6269809Z ##[endgroup]
+2025-04-15T01:01:19.6284554Z Temporarily overriding HOME='/home/runner/work/_temp/4f49e962-42b4-42c5-987b-69aea95ad2a6' before making global git config changes
+2025-04-15T01:01:19.6287689Z Adding repository directory to the temporary git global config as a safe directory
+2025-04-15T01:01:19.6289449Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/n8n/n8n
+2025-04-15T01:01:19.6320266Z Deleting the contents of '/home/runner/work/n8n/n8n'
+2025-04-15T01:01:19.6324258Z ##[group]Initializing the repository
+2025-04-15T01:01:19.6326958Z [command]/usr/bin/git init /home/runner/work/n8n/n8n
+2025-04-15T01:01:19.6385806Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-04-15T01:01:19.6387540Z hint: is subject to change. To configure the initial branch name to use in all
+2025-04-15T01:01:19.6389039Z hint: of your new repositories, which will suppress this warning, call:
+2025-04-15T01:01:19.6390666Z hint:
+2025-04-15T01:01:19.6391282Z hint: 	git config --global init.defaultBranch <name>
+2025-04-15T01:01:19.6392363Z hint:
+2025-04-15T01:01:19.6393139Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-04-15T01:01:19.6394594Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-04-15T01:01:19.6395874Z hint:
+2025-04-15T01:01:19.6396355Z hint: 	git branch -m <name>
+2025-04-15T01:01:19.6397307Z Initialized empty Git repository in /home/runner/work/n8n/n8n/.git/
+2025-04-15T01:01:19.6399752Z [command]/usr/bin/git remote add origin https://github.com/n8n-io/n8n
+2025-04-15T01:01:19.6429417Z ##[endgroup]
+2025-04-15T01:01:19.6430375Z ##[group]Disabling automatic garbage collection
+2025-04-15T01:01:19.6431986Z [command]/usr/bin/git config --local gc.auto 0
+2025-04-15T01:01:19.6458375Z ##[endgroup]
+2025-04-15T01:01:19.6459227Z ##[group]Setting up auth
+2025-04-15T01:01:19.6463977Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-04-15T01:01:19.6495332Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-04-15T01:01:19.6762593Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-15T01:01:19.6791777Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-04-15T01:01:19.7010443Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-04-15T01:01:19.7065984Z ##[endgroup]
+2025-04-15T01:01:19.7067517Z ##[group]Fetching the repository
+2025-04-15T01:01:19.7076375Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +111199eb3b74ffa85a6e0c33a4fb96be4c3e19ba:refs/remotes/pull/14176/merge
+2025-04-15T01:01:20.5270656Z From https://github.com/n8n-io/n8n
+2025-04-15T01:01:20.5272771Z  * [new ref]         111199eb3b74ffa85a6e0c33a4fb96be4c3e19ba -> pull/14176/merge
+2025-04-15T01:01:20.5391273Z ##[endgroup]
+2025-04-15T01:01:20.5394608Z ##[group]Determining the checkout info
+2025-04-15T01:01:20.5396445Z ##[endgroup]
+2025-04-15T01:01:20.5397846Z ##[group]Checking out the ref
+2025-04-15T01:01:20.5399953Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/14176/merge
+2025-04-15T01:01:21.1075881Z Note: switching to 'refs/remotes/pull/14176/merge'.
+2025-04-15T01:01:21.1078127Z 
+2025-04-15T01:01:21.1078588Z You are in 'detached HEAD' state. You can look around, make experimental
+2025-04-15T01:01:21.1079534Z changes and commit them, and you can discard any commits you make in this
+2025-04-15T01:01:21.1080461Z state without impacting any branches by switching back to a branch.
+2025-04-15T01:01:21.1081023Z 
+2025-04-15T01:01:21.1081379Z If you want to create a new branch to retain commits you create, you may
+2025-04-15T01:01:21.1082391Z do so (now or later) by using -c with the switch command. Example:
+2025-04-15T01:01:21.1082894Z 
+2025-04-15T01:01:21.1083106Z   git switch -c <new-branch-name>
+2025-04-15T01:01:21.1083756Z 
+2025-04-15T01:01:21.1083965Z Or undo this operation with:
+2025-04-15T01:01:21.1084288Z 
+2025-04-15T01:01:21.1084468Z   git switch -
+2025-04-15T01:01:21.1084722Z 
+2025-04-15T01:01:21.1085156Z Turn off this advice by setting config variable advice.detachedHead to false
+2025-04-15T01:01:21.1085731Z 
+2025-04-15T01:01:21.1086440Z HEAD is now at 111199e Merge 148be9365dc1c63f9aebabf5c0a223eb12aa0007 into 390c5089463ed7aada32a32b1fb34ddf454f7faa
+2025-04-15T01:01:21.1097999Z ##[endgroup]
+2025-04-15T01:01:21.1137957Z [command]/usr/bin/git log -1 --format='%H'
+2025-04-15T01:01:21.1162293Z '111199eb3b74ffa85a6e0c33a4fb96be4c3e19ba'

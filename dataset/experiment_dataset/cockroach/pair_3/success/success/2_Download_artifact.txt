@@ -1,0 +1,26 @@
+2025-04-15T09:00:22.7283476Z ##[group]Run actions/github-script@v7.0.1
+2025-04-15T09:00:22.7285314Z with:
+2025-04-15T09:00:22.7292120Z   script: var artifacts = await github.rest.actions.listWorkflowRunArtifacts({
+   owner: context.repo.owner,
+   repo: context.repo.repo,
+   run_id: 14465463519,
+});
+var matchArtifact = artifacts.data.artifacts.filter((artifact) => {
+  return artifact.name == "cover"
+})[0];
+var download = await github.rest.actions.downloadArtifact({
+   owner: context.repo.owner,
+   repo: context.repo.repo,
+   artifact_id: matchArtifact.id,
+   archive_format: 'zip',
+});
+var fs = require('fs');
+fs.writeFileSync('/home/runner/work/cockroach/cockroach/cover.zip', Buffer.from(download.data));
+
+2025-04-15T09:00:22.7299760Z   github-token: ***
+2025-04-15T09:00:22.7300638Z   debug: false
+2025-04-15T09:00:22.7301535Z   user-agent: actions/github-script
+2025-04-15T09:00:22.7302615Z   result-encoding: json
+2025-04-15T09:00:22.7303517Z   retries: 0
+2025-04-15T09:00:22.7304966Z   retry-exempt-status-codes: 400,401,403,404,422
+2025-04-15T09:00:22.7306511Z ##[endgroup]

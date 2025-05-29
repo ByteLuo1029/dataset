@@ -1,0 +1,82 @@
+##[group]Run # Check if there is a diff in the changelog directory.
+[36;1m# Check if there is a diff in the changelog directory.[0m
+[36;1m#[0m
+[36;1m# Try to identify the expected changelog file name based on PR[0m
+[36;1m# number. This won't work for Go version updates though.[0m
+[36;1mif [ vault == "vault-enterprise" ]; then[0m
+[36;1m  expected_changelog_file=changelog/_30257.txt[0m
+36
+[36;1m  expected_changelog_file=changelog/30257.txt[0m
+36
+[36;1m[0m
+[36;1mecho "looking for changelog file ${expected_changelog_file}"[0m
+[36;1mchangelog_files=$(git --no-pager diff --name-only HEAD "$(git merge-base HEAD "origin/main")" -- ${expected_changelog_file})[0m
+[36;1m[0m
+[36;1mif [ -z "$changelog_files" ]; then[0m
+[36;1m  echo "Not found."[0m
+[36;1m  echo "looking for changelog file matching changelog/_go-ver-*.txt"[0m
+[36;1m  # If we do not find a file matching the PR # in changelog/, we fail the check[0m
+[36;1m  # unless we did a Go toolchain version update, in which case we check the[0m
+[36;1m  # alternative name.[0m
+[36;1m  toolchain_files=$(git --no-pager diff --name-only HEAD "$(git merge-base HEAD "origin/main")" -- 'changelog/_go-ver-*.txt')[0m
+[36;1m  if [ -z "$toolchain_files" ]; then[0m
+[36;1m    echo "Not found."[0m
+[36;1m    echo ""[0m
+[36;1m    echo "Did not find a changelog entry named ${expected_changelog_file}"[0m
+[36;1m    echo "If your changelog file is correct, or this change does not need a changelog, skip this check with the 'pr/no-changelog' label"[0m
+[36;1m    echo "Reference - https://github.com/hashicorp/vault/blob/main/CONTRIBUTING.md#changelog-entries"[0m
+36 1
+[36;1m  fi[0m
+[36;1m[0m
+[36;1m  # Else, we found some toolchain files. Let's make sure the contents are correct.[0m
+[36;1m  if ! grep -q 'release-note:change' "$toolchain_files" || ! grep -q '^core: Bump Go version to' "$toolchain_files"; then[0m
+[36;1m    echo "Invalid format for changelog. Expected format:"[0m
+[36;1m    echo '```release-note:change'[0m
+[36;1m    echo "core: Bump Go version to x.y.z."[0m
+[36;1m    echo '```'[0m
+36 1
+[36;1m  else[0m
+[36;1m    echo "Found Go toolchain changelog entry in PR!"[0m
+[36;1m  fi[0m
+[36;1melif grep -q ':enhancement$' "$changelog_files"; then[0m
+[36;1m  # "Enhancement is not a valid type of changelog entry, but it's a common mistake.[0m
+[36;1m  echo "Found invalid type (enhancement) in changelog - did you mean improvement?"[0m
+36 1
+[36;1melif grep -q ':changes$' "$changelog_files"; then[0m
+[36;1m  echo "Found invalid type (changes) in changelog - did you mean change?"[0m
+36 1
+[36;1melif grep -q ':bugs$' "$changelog_files"; then[0m
+[36;1m  echo "Found invalid type (bugs) in changelog - did you mean bug?"[0m
+36 1
+[36;1melif grep -q ':fix$' "$changelog_files"; then[0m
+[36;1m  echo "Found invalid type (fix) in changelog - did you mean bug?"[0m
+36 1
+[36;1melif grep -q ':feature$' "$changelog_files"; then[0m
+[36;1m  if ! grep -q '^\*\*' "$changelog_files"; then[0m
+[36;1m    echo "Feature changelogs must be formatted like the following:"[0m
+[36;1m    echo "**Feature Name**: Feature description"[0m
+36 1
+[36;1m  fi[0m
+[36;1melif ! grep -q '```release-note:' "$changelog_files"; then[0m
+[36;1m  # People often make changelog files like ```changelog:, which is incorrect.[0m
+[36;1m  echo "Changelog file did not contain 'release-note' heading - check formatting."[0m
+36 1
+[36;1melif grep -q '^core: Bump Go version' "$changelog_files"; then[0m
+[36;1m  echo "Don't use PR numbered changelog entries for Go version bumps!"[0m
+[36;1m  echo "Please use the format changelog/_go-ver-<VAULT_VERSION_WITHOUT_DOTS>.txt instead."[0m
+[36;1m  echo "Example: _go-ver-1110.txt for Vault 1.11.0"[0m
+36 1
+36
+[36;1m  echo "Found changelog entry in PR!"[0m
+36
+0
+##[endgroup]
+looking for changelog file changelog/30257.txt
+Not found.
+looking for changelog file matching changelog/_go-ver-*.txt
+Not found.
+2025-04-14T23:38:13.6813679Z
+Did not find a changelog entry named changelog/30257.txt
+If your changelog file is correct, or this change does not need a changelog, skip this check with the 'pr/no-changelog' label
+Reference - https://github.com/hashicorp/vault/blob/main/CONTRIBUTING.md#changelog-entries
+##[error]Process completed with exit code 1.

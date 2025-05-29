@@ -1,0 +1,75 @@
+2025-04-10T17:36:45.8465733Z ##[group]Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+2025-04-10T17:36:45.8467543Z with:
+2025-04-10T17:36:45.8468539Z   sparse-checkout: version/VERSION
+.changie.yaml
+.changes/
+
+2025-04-10T17:36:45.8469884Z   sparse-checkout-cone-mode: false
+2025-04-10T17:36:45.8470891Z   ref: refs/heads/main
+2025-04-10T17:36:45.8471826Z   repository: hashicorp/terraform
+2025-04-10T17:36:45.8473107Z   token: ***
+2025-04-10T17:36:45.8473888Z   ssh-strict: true
+2025-04-10T17:36:45.8474951Z   ssh-user: git
+2025-04-10T17:36:45.8475784Z   persist-credentials: true
+2025-04-10T17:36:45.8476984Z   clean: true
+2025-04-10T17:36:45.8477786Z   fetch-depth: 1
+2025-04-10T17:36:45.8478598Z   fetch-tags: false
+2025-04-10T17:36:45.8479427Z   show-progress: true
+2025-04-10T17:36:45.8480569Z   lfs: false
+2025-04-10T17:36:45.8481771Z   submodules: false
+2025-04-10T17:36:45.8483130Z   set-safe-directory: true
+2025-04-10T17:36:45.8484061Z ##[endgroup]
+2025-04-10T17:36:45.9537855Z Syncing repository: hashicorp/terraform
+2025-04-10T17:36:45.9539956Z ##[group]Getting Git version info
+2025-04-10T17:36:45.9541269Z Working directory is '/home/runner/work/terraform/terraform'
+2025-04-10T17:36:45.9543128Z [command]/usr/bin/git version
+2025-04-10T17:36:45.9611356Z git version 2.49.0
+2025-04-10T17:36:45.9639931Z ##[endgroup]
+2025-04-10T17:36:45.9656823Z Temporarily overriding HOME='/home/runner/work/_temp/ff2dc8db-c22b-440a-a8e3-26a8b7e4a781' before making global git config changes
+2025-04-10T17:36:45.9661576Z Adding repository directory to the temporary git global config as a safe directory
+2025-04-10T17:36:45.9665314Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/terraform/terraform
+2025-04-10T17:36:45.9702790Z Deleting the contents of '/home/runner/work/terraform/terraform'
+2025-04-10T17:36:45.9707007Z ##[group]Initializing the repository
+2025-04-10T17:36:45.9712147Z [command]/usr/bin/git init /home/runner/work/terraform/terraform
+2025-04-10T17:36:45.9786141Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-04-10T17:36:45.9788588Z hint: is subject to change. To configure the initial branch name to use in all
+2025-04-10T17:36:45.9791036Z hint: of your new repositories, which will suppress this warning, call:
+2025-04-10T17:36:45.9793519Z hint:
+2025-04-10T17:36:45.9794998Z hint: 	git config --global init.defaultBranch <name>
+2025-04-10T17:36:45.9796204Z hint:
+2025-04-10T17:36:45.9797532Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-04-10T17:36:45.9799446Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-04-10T17:36:45.9801315Z hint:
+2025-04-10T17:36:45.9802164Z hint: 	git branch -m <name>
+2025-04-10T17:36:45.9803613Z Initialized empty Git repository in /home/runner/work/terraform/terraform/.git/
+2025-04-10T17:36:45.9807848Z [command]/usr/bin/git remote add origin https://github.com/hashicorp/terraform
+2025-04-10T17:36:45.9842488Z ##[endgroup]
+2025-04-10T17:36:45.9844081Z ##[group]Disabling automatic garbage collection
+2025-04-10T17:36:45.9845909Z [command]/usr/bin/git config --local gc.auto 0
+2025-04-10T17:36:45.9876870Z ##[endgroup]
+2025-04-10T17:36:45.9878253Z ##[group]Setting up auth
+2025-04-10T17:36:45.9883527Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-04-10T17:36:45.9915002Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-04-10T17:36:46.0243837Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-10T17:36:46.0281757Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-04-10T17:36:46.0535760Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-04-10T17:36:46.0584158Z ##[endgroup]
+2025-04-10T17:36:46.0586783Z ##[group]Fetching the repository
+2025-04-10T17:36:46.0596009Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --filter=blob:none --depth=1 origin +refs/heads/main:refs/remotes/origin/main
+2025-04-10T17:36:46.4773261Z From https://github.com/hashicorp/terraform
+2025-04-10T17:36:46.4775477Z  * [new branch]      main       -> origin/main
+2025-04-10T17:36:46.4813976Z ##[endgroup]
+2025-04-10T17:36:46.4815992Z ##[group]Determining the checkout info
+2025-04-10T17:36:46.4818281Z ##[endgroup]
+2025-04-10T17:36:46.4819758Z ##[group]Setting up sparse checkout
+2025-04-10T17:36:46.4821388Z [command]/usr/bin/git config core.sparseCheckout true
+2025-04-10T17:36:46.4857062Z [command]/usr/bin/git rev-parse --git-path info/sparse-checkout
+2025-04-10T17:36:46.4876986Z .git/info/sparse-checkout
+2025-04-10T17:36:46.4887430Z ##[endgroup]
+2025-04-10T17:36:46.4889692Z ##[group]Checking out the ref
+2025-04-10T17:36:46.4891937Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2025-04-10T17:36:46.7570107Z Switched to a new branch 'main'
+2025-04-10T17:36:46.7585887Z branch 'main' set up to track 'origin/main'.
+2025-04-10T17:36:46.7590564Z ##[endgroup]
+2025-04-10T17:36:46.7626324Z [command]/usr/bin/git log -1 --format=%H
+2025-04-10T17:36:46.7652603Z bc87cdf48d2884ca902e364be0d323ab1855ebfe

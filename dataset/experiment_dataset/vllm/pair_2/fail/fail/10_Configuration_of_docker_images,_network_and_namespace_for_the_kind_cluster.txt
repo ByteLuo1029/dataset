@@ -1,0 +1,45 @@
+﻿2025-04-15T09:30:31.7473438Z ##[group]Run docker pull amazon/aws-cli:2.6.4
+2025-04-15T09:30:31.7473824Z [36;1mdocker pull amazon/aws-cli:2.6.4[0m
+2025-04-15T09:30:31.7474261Z [36;1mkind load docker-image  amazon/aws-cli:2.6.4 --name chart-testing[0m
+2025-04-15T09:30:31.7474720Z [36;1mkind load docker-image vllm-cpu-env:latest --name chart-testing[0m
+2025-04-15T09:30:31.7475322Z [36;1mdocker network connect vllm-net "$(docker ps -aqf "name=chart-testing-control-plane")"[0m
+2025-04-15T09:30:31.7475727Z [36;1mkubectl create ns ns-vllm[0m
+2025-04-15T09:30:31.7563208Z shell: /usr/bin/bash -e {0}
+2025-04-15T09:30:31.7563459Z env:
+2025-04-15T09:30:31.7563736Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T09:30:31.7564204Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.2/x64/lib/pkgconfig
+2025-04-15T09:30:31.7564670Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T09:30:31.7565063Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T09:30:31.7565464Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T09:30:31.7565890Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.2/x64/lib
+2025-04-15T09:30:31.7566280Z   CT_CONFIG_DIR: /opt/hostedtoolcache/ct/3.10.1/amd64/etc
+2025-04-15T09:30:31.7566646Z   VIRTUAL_ENV: /opt/hostedtoolcache/ct/3.10.1/amd64/venv
+2025-04-15T09:30:31.7566963Z ##[endgroup]
+2025-04-15T09:30:31.9709659Z 2.6.4: Pulling from amazon/aws-cli
+2025-04-15T09:30:32.0506590Z 8de5b65bd171: Pulling fs layer
+2025-04-15T09:30:32.0507510Z 52c1276ba2f7: Pulling fs layer
+2025-04-15T09:30:32.0508182Z 2cc68806787a: Pulling fs layer
+2025-04-15T09:30:32.0508944Z 7760795c8e61: Pulling fs layer
+2025-04-15T09:30:32.0509372Z 6b444cec0504: Pulling fs layer
+2025-04-15T09:30:32.0509881Z 7760795c8e61: Waiting
+2025-04-15T09:30:32.0510202Z 6b444cec0504: Waiting
+2025-04-15T09:30:32.1238689Z 52c1276ba2f7: Verifying Checksum
+2025-04-15T09:30:32.1241077Z 52c1276ba2f7: Download complete
+2025-04-15T09:30:32.1787880Z 7760795c8e61: Verifying Checksum
+2025-04-15T09:30:32.1790052Z 7760795c8e61: Download complete
+2025-04-15T09:30:32.2394067Z 6b444cec0504: Download complete
+2025-04-15T09:30:32.4097335Z 2cc68806787a: Verifying Checksum
+2025-04-15T09:30:32.4097832Z 2cc68806787a: Download complete
+2025-04-15T09:30:32.4263149Z 8de5b65bd171: Verifying Checksum
+2025-04-15T09:30:32.4263803Z 8de5b65bd171: Download complete
+2025-04-15T09:30:34.7516776Z 8de5b65bd171: Pull complete
+2025-04-15T09:30:35.3261049Z 52c1276ba2f7: Pull complete
+2025-04-15T09:30:37.6757354Z 2cc68806787a: Pull complete
+2025-04-15T09:30:37.6855315Z 7760795c8e61: Pull complete
+2025-04-15T09:30:37.6964576Z 6b444cec0504: Pull complete
+2025-04-15T09:30:37.7011177Z Digest: sha256:3b008553458e9822fb716cf1e4ce264c69190d2623c652f6abafb2ea9686802f
+2025-04-15T09:30:37.7025528Z Status: Downloaded newer image for amazon/aws-cli:2.6.4
+2025-04-15T09:30:37.7032390Z docker.io/amazon/aws-cli:2.6.4
+2025-04-15T09:30:37.9251864Z Image: "amazon/aws-cli:2.6.4" with ID "sha256:a098b2d4870a4bb5a83519b6a05804580a92c75620c467b928f472ce08f236b0" not yet present on node "chart-testing-control-plane", loading...
+2025-04-15T09:30:45.3546363Z Image: "vllm-cpu-env:latest" with ID "sha256:d96d25ebd7e9d38a2b52e56c54d582895ca52032ce542926ba2bf6d67deabd66" not yet present on node "chart-testing-control-plane", loading...
+2025-04-15T09:31:42.2055779Z namespace/ns-vllm created

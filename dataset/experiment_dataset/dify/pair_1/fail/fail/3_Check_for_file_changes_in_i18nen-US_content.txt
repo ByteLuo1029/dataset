@@ -1,0 +1,13 @@
+##[group]Run recent_commit_sha=$(git rev-parse HEAD)
+[36;1mrecent_commit_sha=$(git rev-parse HEAD)[0m
+[36;1msecond_recent_commit_sha=$(git rev-parse HEAD~1)[0m
+[36;1mchanged_files=$(git diff --name-only $recent_commit_sha $second_recent_commit_sha -- 'i18n/en-US/*.ts')[0m
+[36;1mecho "Changed files: $changed_files"[0m
+[36;1mif [ -n "$changed_files" ]; then[0m
+[36;1m  echo "FILES_CHANGED=true" >> $GITHUB_ENV[0m
+36
+[36;1m  echo "FILES_CHANGED=false" >> $GITHUB_ENV[0m
+36
+0
+##[endgroup]
+Changed files: web/i18n/en-US/common.ts

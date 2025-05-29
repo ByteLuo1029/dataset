@@ -1,0 +1,247 @@
+Requested labels: ubuntu-latest
+Job defined at: PowerShell/PowerShell/.github/workflows/windows-ci.yml@refs/heads/master
+Waiting for a runner to pick up this job...
+Job is waiting for a hosted runner to come online.
+Job is about to start running on the hosted runner: GitHub Actions 991 (hosted)
+Current runner version: '2.323.0'
+##[group]Operating System
+Ubuntu
+24.04.2
+LTS
+##[endgroup]
+##[group]Runner Image
+Image: ubuntu-24.04
+Version: 20250406.1.0
+Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250406.1/images/ubuntu/Ubuntu2404-Readme.md
+Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250406.1
+##[endgroup]
+##[group]Runner Image Provisioner
+2.0.422.1
+##[endgroup]
+##[group]GITHUB_TOKEN Permissions
+read
+
+read
+##[endgroup]
+Actions
+
+
+
+'actions/checkout@v4'
+Version: 4.2.2
+ccb2698953eaebd21c7bf6268a94f9c26518a7e38e27e0b83c1fe1ad049819b1
+11bd71901bbe5b1630ceea73d27597364c9af683
+##[endgroup]
+Complete job name: Change Detection
+actions/checkout@v4
+
+PowerShell/PowerShell
+
+
+
+true
+
+
+1
+
+
+
+false
+
+
+DOTNET_CLI_TELEMETRY_OPTOUT: 1
+DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
+GIT_CONFIG_PARAMETERS: 'core.autocrlf=false'
+NugetSecurityAnalysisWarningLevel: none
+POWERSHELL_TELEMETRY_OPTOUT: 1
+__SuppressAnsiEscapeSequences: 1
+nugetMultiFeedWarnLevel: none
+##[endgroup]
+PowerShell/PowerShell
+
+'/home/runner/work/PowerShell/PowerShell'
+
+2 49 0
+##[endgroup]
+Temporarily overriding HOME='/home/runner/work/_temp/c3f7de01-f886-4a2f-8120-4a309e9258c3' before making global git config changes
+
+[command]/usr/bin/git config --global --add safe.directory /home/runner/work/PowerShell/PowerShell
+'/home/runner/work/PowerShell/PowerShell'
+
+/home/runner/work/PowerShell/PowerShell
+
+
+
+
+
+
+
+
+
+
+/home/runner/work/PowerShell/PowerShell/.git/
+https://github.com/PowerShell/PowerShell
+##[endgroup]
+
+[command]/usr/bin/git config --local gc.auto 0
+##[endgroup]
+
+core\.sshCommand
+'core\.sshCommand' 'core.sshCommand'
+http\.https\:\/\/github\.com\/\.extraheader
+'http\.https\:\/\/github\.com\/\.extraheader' 'http.https://github.com/.extraheader'
+--local
+##[endgroup]
+
+2 --no-tags --prune --no-recurse-submodules --depth=1 origin +4e3875c3780b288371602f0028d4271be5fc75df:refs/remotes/origin/master
+https://github.com/PowerShell/PowerShell
+4e3875c3780b288371602f0028d4271be5fc75df  origin/master
+##[endgroup]
+
+##[endgroup]
+
+[command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+
+master refs/remotes/origin/master
+Reset branch 'master'
+'master' 'origin/master'.
+##[endgroup]
+-1 --format=%H
+4e3875c3780b288371602f0028d4271be5fc75df
+
+
+'actions/github-script@v7.0.1'
+Version: 7.0.1
+bce02966afe3a75123f766b765abe432fac5464b74976015dc06b811ac9054c7
+60a0d83039c74a4aee543508d2ffcb1c3799cdea
+##[endgroup]
+./.github/actions/infrastructure/path-filters
+
+
+
+DOTNET_CLI_TELEMETRY_OPTOUT: 1
+DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
+GIT_CONFIG_PARAMETERS: 'core.autocrlf=false'
+NugetSecurityAnalysisWarningLevel: none
+POWERSHELL_TELEMETRY_OPTOUT: 1
+__SuppressAnsiEscapeSequences: 1
+nugetMultiFeedWarnLevel: none
+##[endgroup]
+actions/github-script@v7.0.1
+
+github-token: ***
+script: // Fetch the list of files changed in the PR
+let files = [];
+let page = 1;
+let fetchedFiles;
+do {
+  fetchedFiles = await github.rest.pulls.listFiles({
+context.repo.owner,
+context.repo.repo,
+context.issue.number,
+100,
+page++
+  });
+  files = files.concat(fetchedFiles.data);
+} while (fetchedFiles.data.length > 0);
+const actionsChanged = files.some(file => file.filename.startsWith('.github/actions'));
+const workflowsChanged = files.some(file => file.filename.startsWith('.github/workflows'));
+const githubChanged = actionsChanged || workflowsChanged;
+const toolsCiPsm1Changed = files.some(file => file.filename.startsWith('tools/ci.psm1'));
+const toolsBuildCommonChanged = files.some(file => file.filename.startsWith('tools/buildCommon/'));
+const toolsChanged = toolsCiPsm1Changed || toolsBuildCommonChanged;
+const propsChanged = files.some(file => file.filename.endsWith('.props'));
+const testsChanged = files.some(file => file.filename.startsWith('test/powershell/') || file.filename.startsWith('test/tools/') || file.filename.startsWith('test/xUnit/'));
+const mainSourceChanged = files.some(file => file.filename.startsWith('src/'));
+const buildModuleChanged = files.some(file => file.filename.startsWith('build.psm1'));
+const source = mainSourceChanged || toolsChanged || githubChanged || propsChanged || testsChanged;
+core.setOutput('toolsChanged', toolsChanged);
+core.setOutput('githubChanged', githubChanged);
+core.setOutput('propsChanged', propsChanged);
+core.setOutput('testsChanged', testsChanged);
+core.setOutput('mainSourceChanged', mainSourceChanged);
+core.setOutput('buildModuleChanged', buildModuleChanged);
+core.setOutput('source', source);
+debug: false
+user-agent: actions/github-script
+result-encoding: json
+retries: 0
+retry-exempt-status-codes: 400,401,403,404,422
+
+DOTNET_CLI_TELEMETRY_OPTOUT: 1
+DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
+GIT_CONFIG_PARAMETERS: 'core.autocrlf=false'
+NugetSecurityAnalysisWarningLevel: none
+POWERSHELL_TELEMETRY_OPTOUT: 1
+__SuppressAnsiEscapeSequences: 1
+nugetMultiFeedWarnLevel: none
+##[endgroup]
+RequestError [HttpError]: Not Found
+at /home/runner/work/_actions/actions/github-script/v7.0.1/dist/index.js:9537:21
+at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+at async eval (eval at callAsyncFunction (/home/runner/work/_actions/actions/github-script/v7.0.1/dist/index.js:35424:16), <anonymous>:8:18)
+at async main (/home/runner/work/_actions/actions/github-script/v7.0.1/dist/index.js:35522:20) {
+status: 404,
+response: {
+url: 'https://api.github.com/repos/PowerShell/PowerShell/pulls//files?per_page=100&page=1',
+status: 404,
+headers: {
+'access-control-allow-origin': '*',
+'access-control-expose-headers': 'ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset',
+'content-encoding': 'gzip',
+'content-security-policy': "default-src 'none'",
+'content-type': 'application/json; charset=utf-8',
+date: 'Tue, 15 Apr 2025 01:52:17 GMT',
+'referrer-policy': 'origin-when-cross-origin, strict-origin-when-cross-origin',
+server: 'github.com',
+'strict-transport-security': 'max-age=31536000; includeSubdomains; preload',
+'transfer-encoding': 'chunked',
+vary: 'Accept-Encoding, Accept, X-Requested-With',
+'x-content-type-options': 'nosniff',
+'x-frame-options': 'deny',
+'x-github-api-version-selected': '2022-11-28',
+'x-github-media-type': 'github.v3; format=json',
+'x-github-request-id': '8781:E489C:6301254:C5E2B78:67FDBBD1',
+'x-ratelimit-limit': '15000',
+'x-ratelimit-remaining': '14997',
+'x-ratelimit-reset': '1744682855',
+'x-ratelimit-resource': 'core',
+'x-ratelimit-used': '3',
+'x-xss-protection': '0'
+},
+data: {
+message: 'Not Found',
+documentation_url: 'https://docs.github.com/rest',
+status: '404'
+}
+},
+request: {
+method: 'GET',
+url: 'https://api.github.com/repos/PowerShell/PowerShell/pulls//files?per_page=100&page=1',
+headers: {
+accept: 'application/vnd.github.v3+json',
+'user-agent': 'actions/github-script octokit-core.js/5.0.1 Node.js/20.19.0 (linux; x64)',
+authorization: 'token [REDACTED]'
+},
+request: {
+agent: [Agent],
+fetch: [Function: proxyFetch],
+hook: [Function: bound bound register]
+}
+}
+}
+##[error]Unhandled error: HttpError: Not Found
+
+
+2 49 0
+Temporarily overriding HOME='/home/runner/work/_temp/dcc5a61a-a816-4c6d-ad6e-fb39fa7169d0' before making global git config changes
+
+[command]/usr/bin/git config --global --add safe.directory /home/runner/work/PowerShell/PowerShell
+core\.sshCommand
+'core\.sshCommand' 'core.sshCommand'
+http\.https\:\/\/github\.com\/\.extraheader
+
+
+'http\.https\:\/\/github\.com\/\.extraheader' 'http.https://github.com/.extraheader'
+Evaluate and set job outputs
+

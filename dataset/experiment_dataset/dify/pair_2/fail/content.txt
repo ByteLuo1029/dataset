@@ -1,0 +1,1244 @@
+Requested labels: ubuntu-latest
+Job defined at: langgenius/dify/.github/workflows/build-push.yml@refs/heads/main
+Waiting for a runner to pick up this job...
+Job is waiting for a hosted runner to come online.
+Job is about to start running on the hosted runner: GitHub Actions 40 (hosted)
+Current runner version: '2.323.0'
+##[group]Operating System
+Ubuntu
+24.04.2
+LTS
+##[endgroup]
+##[group]Runner Image
+Image: ubuntu-24.04
+Version: 20250406.1.0
+Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250406.1/images/ubuntu/Ubuntu2404-Readme.md
+Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250406.1
+##[endgroup]
+##[group]Runner Image Provisioner
+2.0.422.1
+##[endgroup]
+##[group]GITHUB_TOKEN Permissions
+Actions: write
+write
+write
+write
+write
+write
+write
+
+
+write
+write
+write
+write
+write
+write
+##[endgroup]
+Actions
+
+
+
+'docker/login-action@v3'
+Version: 3.4.0
+864ebd28db095e1602e6ef999f46a4f575083ea874918fbccf0994c2a7680450
+74a5d142397b4f367a81961eba4e8cd7edddf772
+##[endgroup]
+'docker/setup-qemu-action@v3'
+Version: 3.6.0
+4513eecc5584a4dfb57869cf6f5b99dbce1b4db36ad9aa8f26d6a399d2b7fe78
+29109295f81e9208d7d86ff1c6c12d2833863392
+##[endgroup]
+'docker/setup-buildx-action@v3'
+Version: 3.10.0
+6377aa62314fdde26434bd58e12019ae489ebac6c72d541f3b1723362eeca7cd
+b5ca514318bd6ebac0fb2aedd5d36ec1b5c232a2
+##[endgroup]
+'docker/metadata-action@v5'
+Version: 5.7.0
+07ef16ad6d6bb14f4186160e0ea33483a4bf26e4bab63c08b3d5fc5049c11b4e
+902fa8ec7d6ecbf8d84d538b9b233a880e428804
+##[endgroup]
+'docker/build-push-action@v6'
+Version: 6.15.0
+2d196dae36b30221f1f8e19fe21c3aaa725a8a8641887cf3fd832e59ddaa7c04
+471d1dc4e07e5cdedd4c2171150001c434f0b7a4
+##[endgroup]
+'actions/upload-artifact@v4'
+Version: 4.6.2
+290722aa3281d5caf23d0acdc3dbeb3424786a1a01a9cc97e72f147225e37c38
+ea165f8d65b6e75b540449e92b4886f43607fa02
+##[endgroup]
+Complete job name: build (build-web-amd64, DIFY_WEB_IMAGE_NAME, web, linux/amd64)
+platform=linux/amd64
+[36;1mplatform=linux/amd64[0m
+[36;1mecho "PLATFORM_PAIR=${platform//\//-}" >> $GITHUB_ENV[0m
+0
+
+DOCKERHUB_USER: ***
+DOCKERHUB_TOKEN: ***
+DIFY_WEB_IMAGE_NAME: langgenius/dify-web
+DIFY_API_IMAGE_NAME: langgenius/dify-api
+##[endgroup]
+docker/login-action@v3
+
+username: ***
+password: ***
+ecr: auto
+logout:
+
+DOCKERHUB_USER: ***
+DOCKERHUB_TOKEN: ***
+DIFY_WEB_IMAGE_NAME: langgenius/dify-web
+DIFY_API_IMAGE_NAME: langgenius/dify-api
+PLATFORM_PAIR: linux-amd64
+##[endgroup]
+Logging into Docker Hub...
+Login Succeeded!
+docker/setup-qemu-action@v3
+
+image: docker.io/tonistiigi/binfmt:latest
+platforms: all
+cache-image:
+
+DOCKERHUB_USER: ***
+DOCKERHUB_TOKEN: ***
+DIFY_WEB_IMAGE_NAME: langgenius/dify-web
+DIFY_API_IMAGE_NAME: langgenius/dify-api
+PLATFORM_PAIR: linux-amd64
+##[endgroup]
+##[group]Docker info
+[command]/usr/bin/docker version
+Client: Docker Engine - Community
+Version:           26.1.3
+API version:       1.45
+Go version:        go1.21.10
+Git commit:        b72abbb
+Built:             Thu May 16 08:33:35 2024
+OS/Arch:           linux/amd64
+Context:           default
+2025-04-15T03:35:50.5145942Z
+Server: Docker Engine - Community
+Engine:
+Version:          26.1.3
+API version:      1.45 (minimum version 1.24)
+Go version:       go1.21.10
+Git commit:       8e96db1
+Built:            Thu May 16 08:33:35 2024
+OS/Arch:          linux/amd64
+Experimental:
+containerd:
+Version:          1.7.27
+GitCommit:        05044ec0a9a75232cad458027ca83437aae3f4da
+runc:
+Version:          1.2.5
+GitCommit:        v1.2.5-0-g59923ef
+docker-init:
+Version:          0.19.0
+GitCommit:        de40ad0
+[command]/usr/bin/docker info
+Client: Docker Engine - Community
+Version:    26.1.3
+Context:    default
+Debug Mode: false
+Plugins:
+buildx: Docker Buildx (Docker Inc.)
+Version:  v0.22.0
+Path:     /usr/libexec/docker/cli-plugins/docker-buildx
+compose: Docker Compose (Docker Inc.)
+Version:  v2.27.1
+Path:     /usr/libexec/docker/cli-plugins/docker-compose
+2025-04-15T03:35:54.4142514Z
+Server:
+Containers: 0
+Running: 0
+Paused: 0
+Stopped: 0
+Images: 0
+Server Version: 26.1.3
+Storage Driver: overlay2
+Backing Filesystem: extfs
+Supports d_type: true
+Using metacopy: false
+Native Overlay Diff: false
+userxattr:
+Logging Driver: json-file
+Cgroup Driver: systemd
+Cgroup Version: 2
+Plugins:
+Volume: local
+Network: bridge host ipvlan macvlan null overlay
+Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+Swarm: inactive
+Runtimes: io.containerd.runc.v2 runc
+Default Runtime: runc
+Init Binary: docker-init
+containerd version: 05044ec0a9a75232cad458027ca83437aae3f4da
+runc version: v1.2.5-0-g59923ef
+init version: de40ad0
+Security Options:
+apparmor
+seccomp
+Profile: builtin
+cgroupns
+Kernel Version: 6.8.0-1021-azure
+Operating System: Ubuntu 24.04.2 LTS
+OSType: linux
+Architecture: x86_64
+CPUs: 4
+Total Memory: 15.62GiB
+Name: fv-az1937-561
+ID: 2430cf04-e79a-44be-a222-15247e834da3
+Docker Root Dir: /var/lib/docker
+Debug Mode: false
+Username: ***
+Experimental:
+Insecure Registries:
+127.0.0.0/8
+Live Restore Enabled: false
+2025-04-15T03:35:54.4160882Z
+##[endgroup]
+##[group]Pulling binfmt Docker image
+Cache hit for: docker.io--tonistiigi--binfmt-latest-linux-x64
+Received 30680737 of 30680737 (100.0%), 73.3 MBs/sec
+Cache Size: ~29 MB (30680737 B)
+[command]/usr/bin/tar -xf /home/runner/work/_temp/9b62bcf3-1c5e-4660-87d1-609eae449097/cache.tzst -P -C /home/runner/work/dify/dify --use-compress-program unzstd
+Cache restored successfully
+Restored docker.io--tonistiigi--binfmt-latest-linux-x64 from GitHub Actions cache
+Cached to hosted tool cache /opt/hostedtoolcache/docker.io--tonistiigi--binfmt/latest/linux-x64
+Image found from cache in /home/runner/.docker/.cache/images/docker.io--tonistiigi--binfmt/latest/linux-x64/image.tar
+[command]/usr/bin/docker load -i /home/runner/.docker/.cache/images/docker.io--tonistiigi--binfmt/latest/linux-x64/image.tar
+Loaded image: tonistiigi/binfmt:latest
+[command]/usr/bin/docker pull docker.io/tonistiigi/binfmt:latest
+latest: Pulling from tonistiigi/binfmt
+1b804311fe87047a4c96d38b4b3ef6f62fca8cd125265917a9e3dc3c996c39e6
+Status: Image is up to date for tonistiigi/binfmt:latest
+docker.io/tonistiigi/binfmt:latest
+[command]/usr/bin/docker save -o /home/runner/work/_temp/docker-actions-toolkit-WtnRfT/749e64100d3fa0c09bdbc8a02e4fb9cb3ee64266f7f661c98371040689abacb3.tar docker.io/tonistiigi/binfmt:latest
+Image cached to /home/runner/.docker/.cache/images/docker.io--tonistiigi--binfmt/latest/linux-x64/image.tar
+##[endgroup]
+##[group]Image info
+[command]/usr/bin/docker image inspect docker.io/tonistiigi/binfmt:latest
+[
+{
+"Id": "sha256:69b92b14f1ebdc33c46dec2d21e4e306fde34da0f227cf3cf0564045c020f6ed",
+"RepoTags": [
+"tonistiigi/binfmt:latest"
+],
+"RepoDigests": [
+"tonistiigi/binfmt@sha256:1b804311fe87047a4c96d38b4b3ef6f62fca8cd125265917a9e3dc3c996c39e6"
+],
+"Parent": "",
+"Comment": "buildkit.dockerfile.v0",
+"Created": "2025-02-27T23:22:54.503419179Z",
+"DockerVersion": "",
+"Author": "",
+"Config": {
+"Hostname": "",
+"Domainname": "",
+"User": "",
+"AttachStdin": false,
+"AttachStdout": false,
+"AttachStderr": false,
+"Tty": false,
+"OpenStdin": false,
+"StdinOnce": false,
+"Env": [
+"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+"QEMU_PRESERVE_ARGV0=1"
+],
+"Cmd": null,
+"Image": "",
+"Volumes": {
+"/tmp": {}
+},
+"WorkingDir": "/",
+"Entrypoint": [
+"/usr/bin/binfmt"
+],
+"OnBuild": null,
+"Labels": {
+"org.opencontainers.image.created": "2025-02-27T22:44:05.618Z",
+"org.opencontainers.image.description": "Cross-platform emulator collection distributed with Docker images",
+"org.opencontainers.image.licenses": "MIT",
+"org.opencontainers.image.revision": "b900248fe6d88370074a844ae6af4eef380ceceb",
+"org.opencontainers.image.source": "https://github.com/tonistiigi/binfmt",
+"org.opencontainers.image.title": "Binfmt",
+"org.opencontainers.image.url": "https://github.com/tonistiigi/binfmt",
+"org.opencontainers.image.version": "qemu-v9.2.2-52"
+}
+},
+"Architecture": "amd64",
+"Os": "linux",
+"Size": 80865298,
+"GraphDriver": {
+"Data": {
+"LowerDir": "/var/lib/docker/overlay2/cf98a0439a640d5d517162b610ab0191421cd6597049bda6e6ef1868d88c5f78/diff",
+"MergedDir": "/var/lib/docker/overlay2/947b10f5a5598d09de02d38faa868c3b5d0d1db0e7125fd3bafbd4fbd0968bef/merged",
+"UpperDir": "/var/lib/docker/overlay2/947b10f5a5598d09de02d38faa868c3b5d0d1db0e7125fd3bafbd4fbd0968bef/diff",
+"WorkDir": "/var/lib/docker/overlay2/947b10f5a5598d09de02d38faa868c3b5d0d1db0e7125fd3bafbd4fbd0968bef/work"
+},
+"Name": "overlay2"
+},
+"RootFS": {
+"Type": "layers",
+"Layers": [
+"sha256:b6245b272dd4c758751019654c7b4cac55ea5624168ef3839c1c974e15a9aae0",
+"sha256:d5059a526abb6347af9f8e21b71fb238e355f84fdb4cc556cb3f1522abb09a06"
+]
+},
+"Metadata": {
+"LastTagTime": "0001-01-01T00:00:00Z"
+}
+}
+]
+##[endgroup]
+##[group]Binfmt version
+[command]/usr/bin/docker run --rm --privileged docker.io/tonistiigi/binfmt:latest --version
+binfmt/b900248 qemu/v9.2.2 go/1.23.6
+##[endgroup]
+##[group]Installing QEMU static binaries
+[command]/usr/bin/docker run --rm --privileged docker.io/tonistiigi/binfmt:latest --install all
+installing: s390x OK
+installing: ppc64le OK
+installing: mips64 OK
+installing: loong64 OK
+installing: arm64 OK
+installing: arm OK
+installing: riscv64 OK
+installing: mips64le OK
+{
+"supported": [
+"linux/amd64",
+"linux/amd64/v2",
+"linux/amd64/v3",
+"linux/arm64",
+"linux/riscv64",
+"linux/ppc64le",
+"linux/s390x",
+"linux/386",
+"linux/mips64le",
+"linux/mips64",
+"linux/loong64",
+"linux/arm/v7",
+"linux/arm/v6"
+],
+"emulators": [
+"llvm-16-runtime.binfmt",
+"llvm-17-runtime.binfmt",
+"llvm-18-runtime.binfmt",
+"python3.12",
+"qemu-aarch64",
+"qemu-arm",
+"qemu-loongarch64",
+"qemu-mips64",
+"qemu-mips64el",
+"qemu-ppc64le",
+"qemu-riscv64",
+"qemu-s390x"
+]
+}
+##[endgroup]
+##[group]Extracting available platforms
+linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/arm64,linux/riscv64,linux/ppc64le,linux/s390x,linux/386,linux/mips64le,linux/mips64,linux/loong64,linux/arm/v7,linux/arm/v6
+##[endgroup]
+docker/setup-buildx-action@v3
+
+driver: docker-container
+install:
+use:
+cache-binary:
+cleanup:
+
+DOCKERHUB_USER: ***
+DOCKERHUB_TOKEN: ***
+DIFY_WEB_IMAGE_NAME: langgenius/dify-web
+DIFY_API_IMAGE_NAME: langgenius/dify-api
+PLATFORM_PAIR: linux-amd64
+##[endgroup]
+##[group]Docker info
+[command]/usr/bin/docker version
+Client: Docker Engine - Community
+Version:           26.1.3
+API version:       1.45
+Go version:        go1.21.10
+Git commit:        b72abbb
+Built:             Thu May 16 08:33:35 2024
+OS/Arch:           linux/amd64
+Context:           default
+2025-04-15T03:35:59.3724629Z
+Server: Docker Engine - Community
+Engine:
+Version:          26.1.3
+API version:      1.45 (minimum version 1.24)
+Go version:       go1.21.10
+Git commit:       8e96db1
+Built:            Thu May 16 08:33:35 2024
+OS/Arch:          linux/amd64
+Experimental:
+containerd:
+Version:          1.7.27
+GitCommit:        05044ec0a9a75232cad458027ca83437aae3f4da
+runc:
+Version:          1.2.5
+GitCommit:        v1.2.5-0-g59923ef
+docker-init:
+Version:          0.19.0
+GitCommit:        de40ad0
+[command]/usr/bin/docker info
+Client: Docker Engine - Community
+Version:    26.1.3
+Context:    default
+Debug Mode: false
+Plugins:
+buildx: Docker Buildx (Docker Inc.)
+Version:  v0.22.0
+Path:     /usr/libexec/docker/cli-plugins/docker-buildx
+compose: Docker Compose (Docker Inc.)
+Version:  v2.27.1
+Path:     /usr/libexec/docker/cli-plugins/docker-compose
+2025-04-15T03:35:59.4408606Z
+Server:
+Containers: 0
+Running: 0
+Paused: 0
+Stopped: 0
+Images: 1
+Server Version: 26.1.3
+Storage Driver: overlay2
+Backing Filesystem: extfs
+Supports d_type: true
+Using metacopy: false
+Native Overlay Diff: false
+userxattr:
+Logging Driver: json-file
+Cgroup Driver: systemd
+Cgroup Version: 2
+Plugins:
+Volume: local
+Network: bridge host ipvlan macvlan null overlay
+Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+Swarm: inactive
+Runtimes: io.containerd.runc.v2 runc
+Default Runtime: runc
+Init Binary: docker-init
+containerd version: 05044ec0a9a75232cad458027ca83437aae3f4da
+runc version: v1.2.5-0-g59923ef
+init version: de40ad0
+Security Options:
+apparmor
+seccomp
+Profile: builtin
+cgroupns
+Kernel Version: 6.8.0-1021-azure
+Operating System: Ubuntu 24.04.2 LTS
+OSType: linux
+Architecture: x86_64
+CPUs: 4
+Total Memory: 15.62GiB
+Name: fv-az1937-561
+ID: 2430cf04-e79a-44be-a222-15247e834da3
+Docker Root Dir: /var/lib/docker
+Debug Mode: false
+Username: ***
+Experimental:
+Insecure Registries:
+127.0.0.0/8
+Live Restore Enabled: false
+2025-04-15T03:35:59.4429099Z
+##[endgroup]
+##[group]Buildx version
+[command]/usr/bin/docker buildx version
+github.com/docker/buildx v0.22.0 18ccba072076ddbfb0aeedd6746d7719b0729b58
+##[endgroup]
+##[group]Inspecting default docker context
+[
+{
+"Name": "default",
+"Metadata": {},
+"Endpoints": {
+"docker": {
+"Host": "unix:///var/run/docker.sock",
+"SkipTLSVerify":
+}
+},
+"TLSMaterial": {},
+"Storage": {
+"MetadataPath": "<IN MEMORY>",
+"TLSPath": "<IN MEMORY>"
+}
+}
+]
+##[endgroup]
+##[group]Creating a new builder instance
+[command]/usr/bin/docker buildx create --name builder-88056c97-599c-43eb-bb0e-3cc46bf441bb --driver docker-container --buildkitd-flags --allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host --use
+builder-88056c97-599c-43eb-bb0e-3cc46bf441bb
+##[endgroup]
+##[group]Booting builder
+[command]/usr/bin/docker buildx inspect --bootstrap --builder builder-88056c97-599c-43eb-bb0e-3cc46bf441bb
+#1 [internal] booting buildkit
+#1 pulling image moby/buildkit:buildx-stable-1
+#1 pulling image moby/buildkit:buildx-stable-1 2.0s done
+#1 creating container buildx_buildkit_builder-88056c97-599c-43eb-bb0e-3cc46bf441bb0
+#1 creating container buildx_buildkit_builder-88056c97-599c-43eb-bb0e-3cc46bf441bb0 0.4s done
+#1 DONE 2.4s
+Name:          builder-88056c97-599c-43eb-bb0e-3cc46bf441bb
+Driver:        docker-container
+Last Activity: 2025-04-15 03:35:59 +0000 UTC
+2025-04-15T03:36:02.3177598Z
+Nodes:
+Name:                  builder-88056c97-599c-43eb-bb0e-3cc46bf441bb0
+Endpoint:              unix:///var/run/docker.sock
+Status:                running
+BuildKit daemon flags: --allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host
+BuildKit version:      v0.20.2
+Platforms:             linux/amd64, linux/amd64/v2, linux/amd64/v3, linux/arm64, linux/riscv64, linux/ppc64le, linux/s390x, linux/386, linux/mips64le, linux/mips64, linux/loong64, linux/arm/v7, linux/arm/v6
+Labels:
+org.mobyproject.buildkit.worker.executor:         oci
+org.mobyproject.buildkit.worker.hostname:         36634772c3b2
+org.mobyproject.buildkit.worker.network:          host
+org.mobyproject.buildkit.worker.oci.process-mode: sandbox
+org.mobyproject.buildkit.worker.selinux.enabled:
+org.mobyproject.buildkit.worker.snapshotter:      overlayfs
+GC Policy rule#0:
+All:
+Filters:        type==source.local,type==exec.cachemount,type==source.git.checkout
+Keep Duration:  48h0m0s
+Max Used Space: 488.3MiB
+GC Policy rule#1:
+All:
+Keep Duration:  1440h0m0s
+Reserved Space: 7.451GiB
+Max Used Space: 54.02GiB
+Min Free Space: 13.97GiB
+GC Policy rule#2:
+All:
+Reserved Space: 7.451GiB
+Max Used Space: 54.02GiB
+Min Free Space: 13.97GiB
+GC Policy rule#3:
+All:
+Reserved Space: 7.451GiB
+Max Used Space: 54.02GiB
+Min Free Space: 13.97GiB
+##[endgroup]
+##[group]Inspect builder
+{
+"nodes": [
+{
+"name": "builder-88056c97-599c-43eb-bb0e-3cc46bf441bb0",
+"endpoint": "unix:///var/run/docker.sock",
+"status": "running",
+"buildkitd-flags": "--allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host",
+"buildkit": "v0.20.2",
+"platforms": "linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/arm64,linux/riscv64,linux/ppc64le,linux/s390x,linux/386,linux/mips64le,linux/mips64,linux/loong64,linux/arm/v7,linux/arm/v6",
+"features": {
+"Automatically load images to the Docker Engine image store": true,
+"Cache export": true,
+"Direct push": true,
+"Docker exporter": true,
+"Multi-platform build": true,
+"OCI exporter": true
+},
+"labels": {
+"org.mobyproject.buildkit.worker.executor": "oci",
+"org.mobyproject.buildkit.worker.hostname": "36634772c3b2",
+"org.mobyproject.buildkit.worker.network": "host",
+"org.mobyproject.buildkit.worker.oci.process-mode": "sandbox",
+"org.mobyproject.buildkit.worker.selinux.enabled": "false",
+"org.mobyproject.buildkit.worker.snapshotter": "overlayfs"
+},
+"gcPolicy": [
+{
+"all": false,
+"filter": [
+"type==source.local",
+"type==exec.cachemount",
+"type==source.git.checkout"
+],
+"keepDuration": "48h0m0s"
+},
+{
+"all": false,
+"keepDuration": "1440h0m0s"
+},
+{
+"all":
+},
+{
+"all":
+}
+]
+}
+],
+"name": "builder-88056c97-599c-43eb-bb0e-3cc46bf441bb",
+"driver": "docker-container",
+"lastActivity": "2025-04-15T03:35:59.000Z"
+}
+##[endgroup]
+##[group]BuildKit version
+builder-88056c97-599c-43eb-bb0e-3cc46bf441bb0: v0.20.2
+##[endgroup]
+docker/metadata-action@v5
+
+images: langgenius/dify-web
+context: workflow
+github-token: ***
+
+DOCKERHUB_USER: ***
+DOCKERHUB_TOKEN: ***
+DIFY_WEB_IMAGE_NAME: langgenius/dify-web
+DIFY_API_IMAGE_NAME: langgenius/dify-api
+PLATFORM_PAIR: linux-amd64
+##[endgroup]
+##[group]Context info
+eventName: push
+sha: 6c167038af2b0c20bc85c9fd54bfdb31480bc267
+ref: refs/heads/main
+workflow: Build and Push API & Web
+action: meta
+actor: crazywoola
+runNumber: 6765
+runId: 14460695870
+commitDate: Tue Apr 15 2025 03:35:34 GMT+0000 (Coordinated Universal Time)
+##[endgroup]
+##[group]Processing images input
+name=langgenius/dify-web,enable=true
+##[endgroup]
+##[group]Processing tags input
+type=schedule,pattern=nightly,enable=true,priority=1000
+type=ref,event=branch,enable=true,priority=600
+type=ref,event=tag,enable=true,priority=600
+type=ref,event=pr,prefix=pr-,enable=true,priority=600
+##[endgroup]
+##[group]Processing flavor input
+latest=auto
+prefix=
+prefixLatest=false
+suffix=
+suffixLatest=false
+##[endgroup]
+##[group]Docker image version
+main
+##[endgroup]
+##[group]Docker tags
+langgenius/dify-web:main
+##[endgroup]
+##[group]Docker labels
+org.opencontainers.image.created=2025-04-15T03:36:03.027Z
+org.opencontainers.image.description=Dify is an open-source LLM app development platform. Dify's intuitive interface combines AI workflow, RAG pipeline, agent capabilities, model management, observability features and more, letting you quickly go from prototype to production.
+org.opencontainers.image.licenses=NOASSERTION
+org.opencontainers.image.revision=6c167038af2b0c20bc85c9fd54bfdb31480bc267
+org.opencontainers.image.source=https://github.com/langgenius/dify
+org.opencontainers.image.title=dify
+org.opencontainers.image.url=https://github.com/langgenius/dify
+org.opencontainers.image.version=main
+##[endgroup]
+##[group]Annotations
+manifest:org.opencontainers.image.created=2025-04-15T03:36:03.027Z
+manifest:org.opencontainers.image.description=Dify is an open-source LLM app development platform. Dify's intuitive interface combines AI workflow, RAG pipeline, agent capabilities, model management, observability features and more, letting you quickly go from prototype to production.
+manifest:org.opencontainers.image.licenses=NOASSERTION
+manifest:org.opencontainers.image.revision=6c167038af2b0c20bc85c9fd54bfdb31480bc267
+manifest:org.opencontainers.image.source=https://github.com/langgenius/dify
+manifest:org.opencontainers.image.title=dify
+manifest:org.opencontainers.image.url=https://github.com/langgenius/dify
+manifest:org.opencontainers.image.version=main
+##[endgroup]
+##[group]JSON output
+{
+"tags": [
+"langgenius/dify-web:main"
+],
+"labels": {
+"org.opencontainers.image.created": "2025-04-15T03:36:03.027Z",
+"org.opencontainers.image.description": "Dify is an open-source LLM app development platform. Dify's intuitive interface combines AI workflow, RAG pipeline, agent capabilities, model management, observability features and more, letting you quickly go from prototype to production.",
+"org.opencontainers.image.licenses": "NOASSERTION",
+"org.opencontainers.image.revision": "6c167038af2b0c20bc85c9fd54bfdb31480bc267",
+"org.opencontainers.image.source": "https://github.com/langgenius/dify",
+"org.opencontainers.image.title": "dify",
+"org.opencontainers.image.url": "https://github.com/langgenius/dify",
+"org.opencontainers.image.version": "main"
+},
+"annotations": [
+"manifest:org.opencontainers.image.created=2025-04-15T03:36:03.027Z",
+"manifest:org.opencontainers.image.description=Dify is an open-source LLM app development platform. Dify's intuitive interface combines AI workflow, RAG pipeline, agent capabilities, model management, observability features and more, letting you quickly go from prototype to production.",
+"manifest:org.opencontainers.image.licenses=NOASSERTION",
+"manifest:org.opencontainers.image.revision=6c167038af2b0c20bc85c9fd54bfdb31480bc267",
+"manifest:org.opencontainers.image.source=https://github.com/langgenius/dify",
+"manifest:org.opencontainers.image.title=dify",
+"manifest:org.opencontainers.image.url=https://github.com/langgenius/dify",
+"manifest:org.opencontainers.image.version=main"
+]
+}
+##[endgroup]
+##[group]Bake file definition (tags)
+{
+"target": {
+"docker-metadata-action": {
+"tags": [
+"langgenius/dify-web:main"
+],
+"args": {
+"DOCKER_META_IMAGES": "langgenius/dify-web",
+"DOCKER_META_VERSION": "main"
+}
+}
+}
+}
+##[endgroup]
+##[group]Bake file definition (labels)
+{
+"target": {
+"docker-metadata-action": {
+"labels": {
+"org.opencontainers.image.created": "2025-04-15T03:36:03.027Z",
+"org.opencontainers.image.description": "Dify is an open-source LLM app development platform. Dify's intuitive interface combines AI workflow, RAG pipeline, agent capabilities, model management, observability features and more, letting you quickly go from prototype to production.",
+"org.opencontainers.image.licenses": "NOASSERTION",
+"org.opencontainers.image.revision": "6c167038af2b0c20bc85c9fd54bfdb31480bc267",
+"org.opencontainers.image.source": "https://github.com/langgenius/dify",
+"org.opencontainers.image.title": "dify",
+"org.opencontainers.image.url": "https://github.com/langgenius/dify",
+"org.opencontainers.image.version": "main"
+}
+}
+}
+}
+##[endgroup]
+##[group]Bake file definition (annotations)
+{
+"target": {
+"docker-metadata-action": {
+"annotations": [
+"manifest:org.opencontainers.image.created=2025-04-15T03:36:03.027Z",
+"manifest:org.opencontainers.image.description=Dify is an open-source LLM app development platform. Dify's intuitive interface combines AI workflow, RAG pipeline, agent capabilities, model management, observability features and more, letting you quickly go from prototype to production.",
+"manifest:org.opencontainers.image.licenses=NOASSERTION",
+"manifest:org.opencontainers.image.revision=6c167038af2b0c20bc85c9fd54bfdb31480bc267",
+"manifest:org.opencontainers.image.source=https://github.com/langgenius/dify",
+"manifest:org.opencontainers.image.title=dify",
+"manifest:org.opencontainers.image.url=https://github.com/langgenius/dify",
+"manifest:org.opencontainers.image.version=main"
+]
+}
+}
+}
+##[endgroup]
+docker/build-push-action@v6
+
+context: {{defaultContext}}:web
+platforms: linux/amd64
+build-args: COMMIT_SHA=6c167038af2b0c20bc85c9fd54bfdb31480bc267
+labels: org.opencontainers.image.created=2025-04-15T03:36:03.027Z
+org.opencontainers.image.description=Dify is an open-source LLM app development platform. Dify's intuitive interface combines AI workflow, RAG pipeline, agent capabilities, model management, observability features and more, letting you quickly go from prototype to production.
+org.opencontainers.image.licenses=NOASSERTION
+org.opencontainers.image.revision=6c167038af2b0c20bc85c9fd54bfdb31480bc267
+org.opencontainers.image.source=https://github.com/langgenius/dify
+org.opencontainers.image.title=dify
+org.opencontainers.image.url=https://github.com/langgenius/dify
+org.opencontainers.image.version=main
+outputs: type=image,name=langgenius/dify-web,push-by-digest=true,name-canonical=true,push=true
+cache-from: type=gha,scope=build-web-amd64
+cache-to: type=gha,mode=max,scope=build-web-amd64
+load:
+no-cache:
+pull:
+push:
+github-token: ***
+
+DOCKERHUB_USER: ***
+DOCKERHUB_TOKEN: ***
+DIFY_WEB_IMAGE_NAME: langgenius/dify-web
+DIFY_API_IMAGE_NAME: langgenius/dify-api
+PLATFORM_PAIR: linux-amd64
+DOCKER_METADATA_OUTPUT_VERSION: main
+DOCKER_METADATA_OUTPUT_TAGS: langgenius/dify-web:main
+DOCKER_METADATA_OUTPUT_LABELS: org.opencontainers.image.created=2025-04-15T03:36:03.027Z
+org.opencontainers.image.description=Dify is an open-source LLM app development platform. Dify's intuitive interface combines AI workflow, RAG pipeline, agent capabilities, model management, observability features and more, letting you quickly go from prototype to production.
+org.opencontainers.image.licenses=NOASSERTION
+org.opencontainers.image.revision=6c167038af2b0c20bc85c9fd54bfdb31480bc267
+org.opencontainers.image.source=https://github.com/langgenius/dify
+org.opencontainers.image.title=dify
+org.opencontainers.image.url=https://github.com/langgenius/dify
+org.opencontainers.image.version=main
+DOCKER_METADATA_OUTPUT_ANNOTATIONS: manifest:org.opencontainers.image.created=2025-04-15T03:36:03.027Z
+manifest:org.opencontainers.image.description=Dify is an open-source LLM app development platform. Dify's intuitive interface combines AI workflow, RAG pipeline, agent capabilities, model management, observability features and more, letting you quickly go from prototype to production.
+manifest:org.opencontainers.image.licenses=NOASSERTION
+manifest:org.opencontainers.image.revision=6c167038af2b0c20bc85c9fd54bfdb31480bc267
+manifest:org.opencontainers.image.source=https://github.com/langgenius/dify
+manifest:org.opencontainers.image.title=dify
+manifest:org.opencontainers.image.url=https://github.com/langgenius/dify
+manifest:org.opencontainers.image.version=main
+DOCKER_METADATA_OUTPUT_JSON: {"tags":["langgenius/dify-web:main"],"labels":{"org.opencontainers.image.created":"2025-04-15T03:36:03.027Z","org.opencontainers.image.description":"Dify is an open-source LLM app development platform. Dify's intuitive interface combines AI workflow, RAG pipeline, agent capabilities, model management, observability features and more, letting you quickly go from prototype to production.","org.opencontainers.image.licenses":"NOASSERTION","org.opencontainers.image.revision":"6c167038af2b0c20bc85c9fd54bfdb31480bc267","org.opencontainers.image.source":"https://github.com/langgenius/dify","org.opencontainers.image.title":"dify","org.opencontainers.image.url":"https://github.com/langgenius/dify","org.opencontainers.image.version":"main"},"annotations":["manifest:org.opencontainers.image.created=2025-04-15T03:36:03.027Z","manifest:org.opencontainers.image.description=Dify is an open-source LLM app development platform. Dify's intuitive interface combines AI workflow, RAG pipeline, agent capabilities, model management, observability features and more, letting you quickly go from prototype to production.","manifest:org.opencontainers.image.licenses=NOASSERTION","manifest:org.opencontainers.image.revision=6c167038af2b0c20bc85c9fd54bfdb31480bc267","manifest:org.opencontainers.image.source=https://github.com/langgenius/dify","manifest:org.opencontainers.image.title=dify","manifest:org.opencontainers.image.url=https://github.com/langgenius/dify","manifest:org.opencontainers.image.version=main"]}
+DOCKER_METADATA_OUTPUT_BAKE_FILE_TAGS: /home/runner/work/_temp/docker-actions-toolkit-Ha0RQz/docker-metadata-action-bake-tags.json
+DOCKER_METADATA_OUTPUT_BAKE_FILE_LABELS: /home/runner/work/_temp/docker-actions-toolkit-Ha0RQz/docker-metadata-action-bake-labels.json
+DOCKER_METADATA_OUTPUT_BAKE_FILE_ANNOTATIONS: /home/runner/work/_temp/docker-actions-toolkit-Ha0RQz/docker-metadata-action-bake-annotations.json
+DOCKER_METADATA_OUTPUT_BAKE_FILE: /home/runner/work/_temp/docker-actions-toolkit-Ha0RQz/docker-metadata-action-bake.json
+##[endgroup]
+##[group]GitHub Actions runtime token ACs
+refs/heads/main: read/write
+##[endgroup]
+##[group]Docker info
+[command]/usr/bin/docker version
+Client: Docker Engine - Community
+Version:           26.1.3
+API version:       1.45
+Go version:        go1.21.10
+Git commit:        b72abbb
+Built:             Thu May 16 08:33:35 2024
+OS/Arch:           linux/amd64
+Context:           default
+2025-04-15T03:36:03.3966813Z
+Server: Docker Engine - Community
+Engine:
+Version:          26.1.3
+API version:      1.45 (minimum version 1.24)
+Go version:       go1.21.10
+Git commit:       8e96db1
+Built:            Thu May 16 08:33:35 2024
+OS/Arch:          linux/amd64
+Experimental:
+containerd:
+Version:          1.7.27
+GitCommit:        05044ec0a9a75232cad458027ca83437aae3f4da
+runc:
+Version:          1.2.5
+GitCommit:        v1.2.5-0-g59923ef
+docker-init:
+Version:          0.19.0
+GitCommit:        de40ad0
+[command]/usr/bin/docker info
+Client: Docker Engine - Community
+Version:    26.1.3
+Context:    default
+Debug Mode: false
+Plugins:
+buildx: Docker Buildx (Docker Inc.)
+Version:  v0.22.0
+Path:     /usr/libexec/docker/cli-plugins/docker-buildx
+compose: Docker Compose (Docker Inc.)
+Version:  v2.27.1
+Path:     /usr/libexec/docker/cli-plugins/docker-compose
+2025-04-15T03:36:03.4515459Z
+Server:
+Containers: 1
+Running: 1
+Paused: 0
+Stopped: 0
+Images: 2
+Server Version: 26.1.3
+Storage Driver: overlay2
+Backing Filesystem: extfs
+Supports d_type: true
+Using metacopy: false
+Native Overlay Diff: false
+userxattr:
+Logging Driver: json-file
+Cgroup Driver: systemd
+Cgroup Version: 2
+Plugins:
+Volume: local
+Network: bridge host ipvlan macvlan null overlay
+Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+Swarm: inactive
+Runtimes: io.containerd.runc.v2 runc
+Default Runtime: runc
+Init Binary: docker-init
+containerd version: 05044ec0a9a75232cad458027ca83437aae3f4da
+runc version: v1.2.5-0-g59923ef
+init version: de40ad0
+Security Options:
+apparmor
+seccomp
+Profile: builtin
+cgroupns
+Kernel Version: 6.8.0-1021-azure
+Operating System: Ubuntu 24.04.2 LTS
+OSType: linux
+Architecture: x86_64
+CPUs: 4
+Total Memory: 15.62GiB
+Name: fv-az1937-561
+ID: 2430cf04-e79a-44be-a222-15247e834da3
+Docker Root Dir: /var/lib/docker
+Debug Mode: false
+Username: ***
+Experimental:
+Insecure Registries:
+127.0.0.0/8
+Live Restore Enabled: false
+2025-04-15T03:36:03.4527908Z
+##[endgroup]
+##[group]Proxy configuration
+No proxy configuration found
+##[endgroup]
+##[group]Buildx version
+[command]/usr/bin/docker buildx version
+github.com/docker/buildx v0.22.0 18ccba072076ddbfb0aeedd6746d7719b0729b58
+##[endgroup]
+##[group]Builder info
+{
+"nodes": [
+{
+"name": "builder-88056c97-599c-43eb-bb0e-3cc46bf441bb0",
+"endpoint": "unix:///var/run/docker.sock",
+"status": "running",
+"buildkitd-flags": "--allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host",
+"buildkit": "v0.20.2",
+"platforms": "linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/arm64,linux/riscv64,linux/ppc64le,linux/s390x,linux/386,linux/mips64le,linux/mips64,linux/loong64,linux/arm/v7,linux/arm/v6",
+"features": {
+"Automatically load images to the Docker Engine image store": true,
+"Cache export": true,
+"Direct push": true,
+"Docker exporter": true,
+"Multi-platform build": true,
+"OCI exporter": true
+},
+"labels": {
+"org.mobyproject.buildkit.worker.executor": "oci",
+"org.mobyproject.buildkit.worker.hostname": "36634772c3b2",
+"org.mobyproject.buildkit.worker.network": "host",
+"org.mobyproject.buildkit.worker.oci.process-mode": "sandbox",
+"org.mobyproject.buildkit.worker.selinux.enabled": "false",
+"org.mobyproject.buildkit.worker.snapshotter": "overlayfs"
+},
+"gcPolicy": [
+{
+"all": false,
+"filter": [
+"type==source.local",
+"type==exec.cachemount",
+"type==source.git.checkout"
+],
+"keepDuration": "48h0m0s"
+},
+{
+"all": false,
+"keepDuration": "1440h0m0s"
+},
+{
+"all":
+},
+{
+"all":
+}
+]
+}
+],
+"name": "builder-88056c97-599c-43eb-bb0e-3cc46bf441bb",
+"driver": "docker-container",
+"lastActivity": "2025-04-15T03:35:59.000Z"
+}
+##[endgroup]
+[command]/usr/bin/docker buildx build --build-arg COMMIT_SHA=6c167038af2b0c20bc85c9fd54bfdb31480bc267 --cache-from type=gha,scope=build-web-amd64 --cache-to type=gha,mode=max,scope=build-web-amd64 --iidfile /home/runner/work/_temp/docker-actions-toolkit-MPxgyo/build-iidfile-e2cf6ed22c.txt --label org.opencontainers.image.created=2025-04-15T03:36:03.027Z --label org.opencontainers.image.description=Dify is an open-source LLM app development platform. Dify's intuitive interface combines AI workflow, RAG pipeline, agent capabilities, model management, observability features and more, letting you quickly go from prototype to production. --label org.opencontainers.image.licenses=NOASSERTION --label org.opencontainers.image.revision=6c167038af2b0c20bc85c9fd54bfdb31480bc267 --label org.opencontainers.image.source=https://github.com/langgenius/dify --label org.opencontainers.image.title=dify --label org.opencontainers.image.url=https://github.com/langgenius/dify --label org.opencontainers.image.version=main --output type=image,name=langgenius/dify-web,push-by-digest=true,name-canonical=true,push=true --platform linux/amd64 --attest type=provenance,mode=max,builder-id=https://github.com/langgenius/dify/actions/runs/14460695870/attempts/1 --secret id=GIT_AUTH_TOKEN,src=/home/runner/work/_temp/docker-actions-toolkit-MPxgyo/tmp-2762-EPLWOru1frdA --metadata-file /home/runner/work/_temp/docker-actions-toolkit-MPxgyo/build-metadata-59f7083e31.json https://github.com/langgenius/dify.git#6c167038af2b0c20bc85c9fd54bfdb31480bc267:web
+#0 building with "builder-88056c97-599c-43eb-bb0e-3cc46bf441bb" instance using docker-container driver
+2025-04-15T03:36:04.1015024Z
+#1 [internal] load git source https://github.com/langgenius/dify.git#6c167038af2b0c20bc85c9fd54bfdb31480bc267:web
+#1 0.017 Initialized empty Git repository in /var/lib/buildkit/runc-overlayfs/snapshots/snapshots/1/fs/
+#1 0.021 fatal: Not a valid object name 6c167038af2b0c20bc85c9fd54bfdb31480bc267^{commit}
+#1 6.275 From https://github.com/langgenius/dify
+#1 6.275  * branch                6c167038af2b0c20bc85c9fd54bfdb31480bc267 -> FETCH_HEAD
+#1 6.278  * [new tag]             0.10.0                   -> 0.10.0
+#1 6.278  * [new tag]             0.10.0-beta1             -> 0.10.0-beta1
+#1 6.278  * [new tag]             0.10.0-beta2             -> 0.10.0-beta2
+#1 6.279  * [new tag]             0.10.0-beta3             -> 0.10.0-beta3
+#1 6.279  * [new tag]             0.10.1                   -> 0.10.1
+#1 6.279  * [new tag]             0.10.2                   -> 0.10.2
+#1 6.279  * [new tag]             0.10.2-fix1              -> 0.10.2-fix1
+#1 6.279  * [new tag]             0.11.0                   -> 0.11.0
+#1 6.279  * [new tag]             0.11.1                   -> 0.11.1
+#1 6.280  * [new tag]             0.11.2                   -> 0.11.2
+#1 6.280  * [new tag]             0.12.0                   -> 0.12.0
+#1 6.280  * [new tag]             0.12.1                   -> 0.12.1
+#1 6.280  * [new tag]             0.13.0                   -> 0.13.0
+#1 6.280  * [new tag]             0.13.1                   -> 0.13.1
+#1 6.281  * [new tag]             0.13.2                   -> 0.13.2
+#1 6.281  * [new tag]             0.14.0                   -> 0.14.0
+#1 6.281  * [new tag]             0.14.1                   -> 0.14.1
+#1 6.281  * [new tag]             0.14.2                   -> 0.14.2
+#1 6.281  * [new tag]             0.15.0                   -> 0.15.0
+#1 6.281  * [new tag]             0.15.1                   -> 0.15.1
+#1 6.282  * [new tag]             0.15.2                   -> 0.15.2
+#1 6.282  * [new tag]             0.15.3                   -> 0.15.3
+#1 6.282  * [new tag]             0.15.4                   -> 0.15.4
+#1 6.282  * [new tag]             0.15.5                   -> 0.15.5
+#1 6.282  * [new tag]             0.15.6-alpha.1           -> 0.15.6-alpha.1
+#1 6.283  * [new tag]             0.2.1                    -> 0.2.1
+#1 6.283  * [new tag]             0.2.2                    -> 0.2.2
+#1 6.283  * [new tag]             0.3.0                    -> 0.3.0
+#1 6.283  * [new tag]             0.3.1                    -> 0.3.1
+#1 6.283  * [new tag]             0.3.10                   -> 0.3.10
+#1 6.283  * [new tag]             0.3.11                   -> 0.3.11
+#1 6.284  * [new tag]             0.3.12                   -> 0.3.12
+#1 6.284  * [new tag]             0.3.13                   -> 0.3.13
+#1 6.284  * [new tag]             0.3.14                   -> 0.3.14
+#1 6.284  * [new tag]             0.3.15                   -> 0.3.15
+#1 6.284  * [new tag]             0.3.16                   -> 0.3.16
+#1 6.284  * [new tag]             0.3.17                   -> 0.3.17
+#1 6.285  * [new tag]             0.3.18                   -> 0.3.18
+#1 6.285  * [new tag]             0.3.19                   -> 0.3.19
+#1 6.285  * [new tag]             0.3.2                    -> 0.3.2
+#1 6.285  * [new tag]             0.3.20                   -> 0.3.20
+#1 6.285  * [new tag]             0.3.21                   -> 0.3.21
+#1 6.286  * [new tag]             0.3.22                   -> 0.3.22
+#1 6.286  * [new tag]             0.3.23                   -> 0.3.23
+#1 6.286  * [new tag]             0.3.24                   -> 0.3.24
+#1 6.286  * [new tag]             0.3.25                   -> 0.3.25
+#1 6.286  * [new tag]             0.3.26                   -> 0.3.26
+#1 6.286  * [new tag]             0.3.27                   -> 0.3.27
+#1 6.287  * [new tag]             0.3.28                   -> 0.3.28
+#1 6.287  * [new tag]             0.3.29                   -> 0.3.29
+#1 6.287  * [new tag]             0.3.3                    -> 0.3.3
+#1 6.287  * [new tag]             0.3.30                   -> 0.3.30
+#1 6.287  * [new tag]             0.3.31                   -> 0.3.31
+#1 6.287  * [new tag]             0.3.31-fix1              -> 0.3.31-fix1
+#1 6.288  * [new tag]             0.3.31-fix2              -> 0.3.31-fix2
+#1 6.288  * [new tag]             0.3.31-fix3              -> 0.3.31-fix3
+#1 6.288  * [new tag]             0.3.32                   -> 0.3.32
+#1 6.288  * [new tag]             0.3.33                   -> 0.3.33
+#1 6.288  * [new tag]             0.3.34                   -> 0.3.34
+#1 6.289  * [new tag]             0.3.4                    -> 0.3.4
+#1 6.289  * [new tag]             0.3.5                    -> 0.3.5
+#1 6.289  * [new tag]             0.3.6                    -> 0.3.6
+#1 6.289  * [new tag]             0.3.7                    -> 0.3.7
+#1 6.289  * [new tag]             0.3.8                    -> 0.3.8
+#1 6.289  * [new tag]             0.3.9                    -> 0.3.9
+#1 6.290  * [new tag]             0.4.0                    -> 0.4.0
+#1 6.290  * [new tag]             0.4.1                    -> 0.4.1
+#1 6.290  * [new tag]             0.4.2                    -> 0.4.2
+#1 6.290  * [new tag]             0.4.3                    -> 0.4.3
+#1 6.290  * [new tag]             0.4.4                    -> 0.4.4
+#1 6.291  * [new tag]             0.4.5                    -> 0.4.5
+#1 6.291  * [new tag]             0.4.6                    -> 0.4.6
+#1 6.291  * [new tag]             0.4.7                    -> 0.4.7
+#1 6.291  * [new tag]             0.4.8                    -> 0.4.8
+#1 6.291  * [new tag]             0.4.9                    -> 0.4.9
+#1 6.292  * [new tag]             0.5.0                    -> 0.5.0
+#1 6.292  * [new tag]             0.5.1                    -> 0.5.1
+#1 6.292  * [new tag]             0.5.10                   -> 0.5.10
+#1 6.292  * [new tag]             0.5.11                   -> 0.5.11
+#1 6.292  * [new tag]             0.5.11-fix1              -> 0.5.11-fix1
+#1 6.292  * [new tag]             0.5.2                    -> 0.5.2
+#1 6.293  * [new tag]             0.5.3                    -> 0.5.3
+#1 6.293  * [new tag]             0.5.4                    -> 0.5.4
+#1 6.293  * [new tag]             0.5.5                    -> 0.5.5
+#1 6.293  * [new tag]             0.5.6                    -> 0.5.6
+#1 6.293  * [new tag]             0.5.7                    -> 0.5.7
+#1 6.294  * [new tag]             0.5.8                    -> 0.5.8
+#1 6.294  * [new tag]             0.5.9                    -> 0.5.9
+#1 6.294  * [new tag]             0.6.0                    -> 0.6.0
+#1 6.294  * [new tag]             0.6.0-fix1               -> 0.6.0-fix1
+#1 6.294  * [new tag]             0.6.0-preview-workflow.1 -> 0.6.0-preview-workflow.1
+#1 6.295  * [new tag]             0.6.0-preview-workflow.2 -> 0.6.0-preview-workflow.2
+#1 6.295  * [new tag]             0.6.1                    -> 0.6.1
+#1 6.295  * [new tag]             0.6.10                   -> 0.6.10
+#1 6.295  * [new tag]             0.6.11                   -> 0.6.11
+#1 6.295  * [new tag]             0.6.12                   -> 0.6.12
+#1 6.296  * [new tag]             0.6.12-fix1              -> 0.6.12-fix1
+#1 6.296  * [new tag]             0.6.13                   -> 0.6.13
+#1 6.296  * [new tag]             0.6.14                   -> 0.6.14
+#1 6.296  * [new tag]             0.6.15                   -> 0.6.15
+#1 6.296  * [new tag]             0.6.16                   -> 0.6.16
+#1 6.296  * [new tag]             0.6.2                    -> 0.6.2
+#1 6.297  * [new tag]             0.6.3                    -> 0.6.3
+#1 6.297  * [new tag]             0.6.4                    -> 0.6.4
+#1 6.297  * [new tag]             0.6.5                    -> 0.6.5
+#1 6.297  * [new tag]             0.6.6                    -> 0.6.6
+#1 6.297  * [new tag]             0.6.7                    -> 0.6.7
+#1 6.298  * [new tag]             0.6.8                    -> 0.6.8
+#1 6.298  * [new tag]             0.6.9                    -> 0.6.9
+#1 6.298  * [new tag]             0.7.0                    -> 0.7.0
+#1 6.298  * [new tag]             0.7.1                    -> 0.7.1
+#1 6.298  * [new tag]             0.7.2                    -> 0.7.2
+#1 6.299  * [new tag]             0.7.3                    -> 0.7.3
+#1 6.299  * [new tag]             0.8.0                    -> 0.8.0
+#1 6.299  * [new tag]             0.8.0-beta1              -> 0.8.0-beta1
+#1 6.299  * [new tag]             0.8.1                    -> 0.8.1
+#1 6.299  * [new tag]             0.8.2                    -> 0.8.2
+#1 6.300  * [new tag]             0.8.3                    -> 0.8.3
+#1 6.300  * [new tag]             0.9.0                    -> 0.9.0
+#1 6.300  * [new tag]             0.9.1                    -> 0.9.1
+#1 6.300  * [new tag]             0.9.1-fix1               -> 0.9.1-fix1
+#1 6.300  * [new tag]             0.9.2                    -> 0.9.2
+#1 6.301  * [new tag]             1.0.0                    -> 1.0.0
+#1 6.301  * [new tag]             1.0.0-beta.1             -> 1.0.0-beta.1
+#1 6.301  * [new tag]             1.0.1                    -> 1.0.1
+#1 6.301  * [new tag]             1.1.0                    -> 1.1.0
+#1 6.301  * [new tag]             1.1.1                    -> 1.1.1
+#1 6.301  * [new tag]             1.1.2                    -> 1.1.2
+#1 6.302  * [new tag]             1.1.3                    -> 1.1.3
+#1 6.302  * [new tag]             1.2.0                    -> 1.2.0
+#1 6.302  * [new tag]             v0.8.3-fix1              -> v0.8.3-fix1
+#1 DONE 7.4s
+2025-04-15T03:36:11.4791453Z
+#2 [auth] library/node:pull token for registry-1.docker.io
+#2 DONE 0.0s
+2025-04-15T03:36:11.6303122Z
+#3 [internal] load metadata for docker.io/library/node:22-alpine3.21
+#3 DONE 0.5s
+2025-04-15T03:36:12.0467866Z
+#4 [base 1/3] FROM docker.io/library/node:22-alpine3.21@sha256:9bef0ef1e268f60627da9ba7d7605e8831d5b56ad07487d24d1aa386336d1944
+#4 resolve docker.io/library/node:22-alpine3.21@sha256:9bef0ef1e268f60627da9ba7d7605e8831d5b56ad07487d24d1aa386336d1944 done
+#4 DONE 0.0s
+2025-04-15T03:36:12.0472022Z
+#5 importing cache manifest from gha:15781313451853606990
+#5 DONE 0.2s
+2025-04-15T03:36:12.2540337Z
+#6 [production 5/7] COPY --from=builder /app/web/.next/static ./.next/static
+#6 CACHED
+2025-04-15T03:36:12.2543282Z
+#7 [base 2/3] RUN apk add --no-cache tzdata
+#7 CACHED
+2025-04-15T03:36:12.2544104Z
+#8 [builder 4/4] RUN pnpm build
+#8 CACHED
+2025-04-15T03:36:12.2544943Z
+#9 [packages 2/4] COPY package.json .
+#9 CACHED
+2025-04-15T03:36:12.2545694Z
+#10 [packages 1/4] WORKDIR /app/web
+#10 CACHED
+2025-04-15T03:36:12.2546665Z
+#11 [base 3/3] RUN npm install -g pnpm@10.8.0
+#11 CACHED
+2025-04-15T03:36:12.2547917Z
+#12 [production 1/7] RUN ln -s /usr/share/zoneinfo/UTC /etc/localtime     && echo UTC > /etc/timezone
+#12 CACHED
+2025-04-15T03:36:12.2549409Z
+#13 [packages 3/4] COPY pnpm-lock.yaml .
+#13 CACHED
+2025-04-15T03:36:12.2550224Z
+#14 [production 4/7] COPY --from=builder /app/web/.next/standalone ./
+#14 CACHED
+2025-04-15T03:36:12.2551442Z
+#15 [builder 2/4] COPY --from=packages /app/web/ .
+#15 CACHED
+2025-04-15T03:36:12.2552836Z
+#16 [production 2/7] WORKDIR /app/web
+#16 CACHED
+2025-04-15T03:36:12.2553645Z
+#17 [production 3/7] COPY --from=builder /app/web/public ./public
+#17 CACHED
+2025-04-15T03:36:12.2555746Z
+#18 [builder 3/4] COPY . .
+#18 CACHED
+2025-04-15T03:36:12.2556745Z
+#19 [production 6/7] COPY docker/entrypoint.sh ./entrypoint.sh
+#19 CACHED
+2025-04-15T03:36:12.2557500Z
+#20 [packages 4/4] RUN pnpm install --frozen-lockfile
+#20 CACHED
+2025-04-15T03:36:12.2558388Z
+#21 [production 7/7] RUN pnpm add -g pm2     && mkdir /.pm2     && chown -R 1001:0 /.pm2 /app/web     && chmod -R g=u /.pm2 /app/web
+#21 CACHED
+2025-04-15T03:36:12.4561458Z
+#22 [auth] langgenius/dify-web:pull,push token for registry-1.docker.io
+#22 DONE 0.0s
+2025-04-15T03:36:12.4562584Z
+#23 exporting to image
+#23 exporting layers done
+#23 exporting manifest sha256:fcd5b5d18d8d788eb229c67af5b81007174c48e053b1dddc4036746926d3437e done
+#23 exporting config sha256:fcac5841e00d707105d5b77dd9e8eeca5f4e8ec22c9a2e57b8e0b766c357961e done
+#23 exporting attestation manifest sha256:551f91027f8b62cd065eac7af8bd610bd9877229f2bf59b54d4cdf991e9a46d4 done
+#23 exporting manifest list sha256:33f3c7c60cc04aa657d89d690cd82b23f8c7eee351b900046045e1b1a2adf1d0 done
+#23 pushing layers
+#23 pushing layers 0.8s done
+#23 pushing manifest for docker.io/langgenius/dify-web
+#23 pushing manifest for docker.io/langgenius/dify-web 1.3s done
+#23 DONE 2.1s
+2025-04-15T03:36:14.3704044Z
+#24 exporting to GitHub Actions Cache
+#24 preparing build cache for export
+#24 writing layer sha256:b86ac71543e30e2298236f21a824b1921b79f69b303013d26f8765e0bbb5c8b3
+#24 preparing build cache for export 0.4s done
+#24 writing layer sha256:b86ac71543e30e2298236f21a824b1921b79f69b303013d26f8765e0bbb5c8b3 0.1s done
+#24 ERROR: error writing layer blob: GET https://productionresultssa10.blob.core.windows.net/actions-cache/2d3-196644794
+--------------------------------------------------------------------------------
+RESPONSE 404: 404 The specified blob does not exist.
+ERROR CODE: BlobNotFound
+--------------------------------------------------------------------------------
+﻿<?xml version="1.0" encoding="utf-8"?><Error><Code>BlobNotFound</Code><Message>The specified blob does not exist.
+RequestId:510cc04e-501e-0039-1db7-ad6398000000
+Time:2025-04-15T03:36:14.7441833Z</Message></Error>
+--------------------------------------------------------------------------------
+2025-04-15T03:36:14.7559474Z
+------
+> exporting to GitHub Actions Cache:
+------
+ERROR: failed to solve: error writing layer blob: GET https://productionresultssa10.blob.core.windows.net/actions-cache/2d3-196644794
+--------------------------------------------------------------------------------
+RESPONSE 404: 404 The specified blob does not exist.
+ERROR CODE: BlobNotFound
+--------------------------------------------------------------------------------
+﻿<?xml version="1.0" encoding="utf-8"?><Error><Code>BlobNotFound</Code><Message>The specified blob does not exist.
+RequestId:510cc04e-501e-0039-1db7-ad6398000000
+Time:2025-04-15T03:36:14.7441833Z</Message></Error>
+--------------------------------------------------------------------------------
+2025-04-15T03:36:14.7977944Z
+##[group]Reference
+builder-88056c97-599c-43eb-bb0e-3cc46bf441bb/builder-88056c97-599c-43eb-bb0e-3cc46bf441bb0/pfkb2tcnj68da8891uoj1g9hi
+##[endgroup]
+##[group]Check build summary support
+Build summary supported!
+##[endgroup]
+##[error]buildx failed with: --------------------------------------------------------------------------------
+
+##[group]Generating build summary
+exporting build record to /home/runner/work/_temp/docker-actions-toolkit-bDGwEn/export
+[command]/usr/bin/mkfifo /home/runner/work/_temp/docker-actions-toolkit-bDGwEn/buildx-in-UW1r3K.fifo
+[command]/usr/bin/mkfifo /home/runner/work/_temp/docker-actions-toolkit-bDGwEn/buildx-out-LIKsGt.fifo
+[command]docker buildx --builder builder-88056c97-599c-43eb-bb0e-3cc46bf441bb dial-stdio
+[command]docker run --rm -i -v /home/runner/.docker/buildx/refs:/buildx-refs -v /home/runner/work/_temp/docker-actions-toolkit-bDGwEn/export:/out docker.io/dockereng/export-build:latest --ref-state-dir=/buildx-refs --node=builder-88056c97-599c-43eb-bb0e-3cc46bf441bb/builder-88056c97-599c-43eb-bb0e-3cc46bf441bb0 --ref=pfkb2tcnj68da8891uoj1g9hi --uid=1001 --gid=118
+Unable to find image 'dockereng/export-build:latest' locally
+latest: Pulling from dockereng/export-build
+5f398fcfd265: Pulling fs layer
+152e015ae384: Pulling fs layer
+152e015ae384: Verifying Checksum
+152e015ae384: Download complete
+5f398fcfd265: Verifying Checksum
+5f398fcfd265: Download complete
+5f398fcfd265: Pull complete
+152e015ae384: Pull complete
+8a8d92fc2d7cc8a8855400970bb971436fc117bd39366595f55f7e1283a1e961
+Status: Downloaded newer image for dockereng/export-build:latest
+Process "docker run" exited with code 0
+Parsing /home/runner/work/_temp/docker-actions-toolkit-bDGwEn/export/summary.json
+Build record written to /home/runner/work/_temp/docker-actions-toolkit-bDGwEn/export/langgenius~dify~PFKB2T.dockerbuild (44.8 KB)
+Uploading langgenius~dify~PFKB2T.dockerbuild to blob storage
+ERROR: read unix @->/run/docker.sock: use of closed network connection
+Process "buildx dial-stdio" was killed with signal SIGKILL
+Beginning upload of artifact content to blob storage
+Uploaded bytes 45874
+Finished uploading artifact content to blob storage!
+SHA256 hash of uploaded artifact is 4066c49eb7fe90ec564e0b43cab7a072fcd76fbba2af9e13b7e345086a233587
+Finalizing artifact upload
+Artifact successfully finalized (2944877190)
+Artifact download URL: https://github.com/langgenius/dify/actions/runs/14460695870/artifacts/2944877190
+Writing summary
+##[endgroup]
+##[group]Removing temp folder /home/runner/work/_temp/docker-actions-toolkit-MPxgyo
+##[endgroup]
+##[group]Post cache
+State not set
+##[endgroup]
+
+##[group]Removing builder
+[command]/usr/bin/docker buildx rm builder-88056c97-599c-43eb-bb0e-3cc46bf441bb
+builder-88056c97-599c-43eb-bb0e-3cc46bf441bb removed
+##[endgroup]
+##[group]Cleaning up certificates
+##[endgroup]
+##[group]Post cache
+State not set
+##[endgroup]
+
+##[group]Post cache
+Caching docker.io--tonistiigi--binfmt-latest-linux-x64 to GitHub Actions cache
+[command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/dify/dify --files-from manifest.txt --use-compress-program zstdmt
+30680756 30680756 100 0 40 6
+##[endgroup]
+
+[command]/usr/bin/docker logout
+Removing login credentials for https://index.docker.io/v1/
+##[group]Post cache
+State not set
+##[endgroup]
+

@@ -1,0 +1,65 @@
+##[group]Run # Get the changed files
+[36;1m# Get the changed files[0m
+[36;1mCHANGED_FILES=$(pants list --changed-since=origin/main)[0m
+[36;1m[0m
+[36;1m# Find which roots contain changed files[0m
+[36;1mCHANGED_ROOTS=""[0m
+[36;1mFILTER_PATTERNS="["[0m
+[36;1mfor file in $CHANGED_FILES; do[0m
+[36;1m  # Start with the full path[0m
+[36;1m  root="$file"[0m
+[36;1m  # Keep going up the directory tree until we find a directory containing a marker file[0m
+[36;1m  # (e.g., 'pyproject.toml' for python projects)[0m
+[36;1m  while [[ ! -f "$root/pyproject.toml" && "$root" != "." && "$root" != "/" && "$root" != "./" ]]; do[0m
+[36;1m    root=$(dirname "$root")[0m
+[36;1m  done[0m
+[36;1m[0m
+[36;1m  if [[ "$root" != "." && "$root" != "/" && "$root" != "./" && ! "$FILTER_PATTERNS" =~ "$root" ]]; then[0m
+[36;1m    FILTER_PATTERNS="${FILTER_PATTERNS}'${root}/llama_index',"[0m
+[36;1m    CHANGED_ROOTS="${CHANGED_ROOTS} ${root}/::"[0m
+[36;1m  fi[0m
+[36;1mdone[0m
+[36;1m[0m
+[36;1m# remove the last comma and close the bracket[0m
+[36;1mFILTER_PATTERNS="${FILTER_PATTERNS%,}]"[0m
+[36;1m[0m
+[36;1mecho "Coverage filter patterns: $FILTER_PATTERNS"[0m
+[36;1mecho "Changed roots: $CHANGED_ROOTS"[0m
+[36;1m[0m
+[36;1mpants --level=error --no-local-cache test \[0m
+[36;1m  --test-use-coverage \[0m
+[36;1m  --coverage-py-filter="${FILTER_PATTERNS}" \[0m
+[36;1m  ${CHANGED_ROOTS}[0m
+shell: /usr/bin/bash -e {<:NUM:>}
+env:
+POETRY_VERSION: 1.8.3
+SYSTEM_VERSION_COMPAT: 1
+pythonLocation: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+PKG CONFIG PATH: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64/lib/pkgconfig
+Python ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+<:*:> ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+<:*:> ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+LD LIBRARY PATH: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64/lib
+##[endgroup]
+Coverage filter patterns: ['llama-index-integrations/graph_stores/llama-index-graph-stores-nebula/llama_index']
+Changed roots:  llama-index-integrations/graph_stores/llama-index-graph-stores-nebula/::
+2025-04-15T08:46:49.3142742Z
+✓ llama-index-integrations/graph_stores/llama-index-graph-stores-nebula/tests/test_graph_stores_nebula.py succeeded in 13.19s.
+✓ llama-index-integrations/graph_stores/llama-index-graph-stores-nebula/tests/test_property_graph.py succeeded in 13.20s.
+2025-04-15T08:46:55.3140369Z
+Name                                                                                                                             Stmts   Miss  Cover
+----------------------------------------------------------------------------------------------------------------------------------------------------
+llama-index-integrations/graph_stores/llama-index-graph-stores-nebula/llama_index/graph_stores/nebula/__init__.py                    3      0   100%
+llama-index-integrations/graph_stores/llama-index-graph-stores-nebula/llama_index/graph_stores/nebula/nebula_graph_store.py        254    212    17%
+llama-index-integrations/graph_stores/llama-index-graph-stores-nebula/llama_index/graph_stores/nebula/nebula_property_graph.py     269    223    17%
+llama-index-integrations/graph_stores/llama-index-graph-stores-nebula/llama_index/graph_stores/nebula/utils.py                     140    120    14%
+----------------------------------------------------------------------------------------------------------------------------------------------------
+TOTAL                                                                                                                              666    555    17%
+Coverage failure: total of 17 is less than fail-under=50
+2025-04-15T08:46:55.3153279Z
+2025-04-15T08:46:55.3975810Z
+Wrote html coverage report to `dist/coverage/python`
+2025-04-15T08:46:55.4046038Z
+Wrote xml coverage report to `dist/coverage/python`
+08:46:55.40 [ERROR] Test goal failed due to insufficient coverage. See coverage reports for details.
+##[error]Process completed with exit code 2.

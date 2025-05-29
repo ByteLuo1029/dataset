@@ -1,0 +1,23 @@
+2025-04-14T13:25:10.5461541Z ##[group]Run if [[ "" == *-* ]]; then
+2025-04-14T13:25:10.5461931Z [36;1mif [[ "" == *-* ]]; then[0m
+2025-04-14T13:25:10.5462319Z [36;1m    echo "override_git_describe : provide either vX.Y.Z or empty string"[0m
+2025-04-14T13:25:10.5462688Z [36;1m    exit 1[0m
+2025-04-14T13:25:10.5462893Z [36;1melif [[ -z "" ]]; then[0m
+2025-04-14T13:25:10.5463154Z [36;1m    echo "No override_git_describe provided"[0m
+2025-04-14T13:25:10.5463429Z [36;1melse[0m
+2025-04-14T13:25:10.5463751Z [36;1m    echo "UPLOAD_ASSETS_TO_STAGING_TARGET=$(git log -1 --format=%h)" >> "$GITHUB_ENV"[0m
+2025-04-14T13:25:10.5464183Z [36;1m    echo "override_git_describe : add tag"[0m
+2025-04-14T13:25:10.5464449Z [36;1m    git tag [0m
+2025-04-14T13:25:10.5464626Z [36;1mfi[0m
+2025-04-14T13:25:10.5562202Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-04-14T13:25:10.5562568Z env:
+2025-04-14T13:25:10.5562747Z   GH_TOKEN: 
+2025-04-14T13:25:10.5562949Z   OVERRIDE_GIT_DESCRIBE: 
+2025-04-14T13:25:10.5563187Z   CIBW_TEST_SKIP: {cp37,cp38}-*
+2025-04-14T13:25:10.5563519Z   CIBW_BUILD: cp310-manylinux_2_28_x86_64
+2025-04-14T13:25:10.5564451Z   CIBW_TEST_COMMAND: python -m pytest {project}/tests --verbose && USE_ACTUAL_SPARK=true JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java)))) SPARK_HOME={project}/spark_installation/spark python -m pytest {project}/tests/fast/spark --verbose
+2025-04-14T13:25:10.5565335Z   PYTEST_TIMEOUT: 600
+2025-04-14T13:25:10.5565560Z   CIBW_ENVIRONMENT: OVERRIDE_GIT_DESCRIBE=
+2025-04-14T13:25:10.5565982Z   CIBW_BEFORE_ALL: cd {project} && ./scripts/install_spark_in_cibuildwheels_linux_container.sh
+2025-04-14T13:25:10.5566395Z ##[endgroup]
+2025-04-14T13:25:10.5674795Z No override_git_describe provided

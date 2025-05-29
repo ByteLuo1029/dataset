@@ -1,0 +1,80 @@
+##[group]Run <:*:>
+with:
+repository: <:*:>
+token: ***
+ssh-strict: true
+ssh-user: git
+persist-credentials: <:*:>
+clean: true
+sparse-checkout-cone-mode: true
+fetch-depth: <:NUM:>
+fetch-tags: false
+show-progress: true
+lfs: false
+submodules: <:*:>
+set-safe-directory: true
+env:
+GOPROXY: https://proxy.golang.org
+GO111MODULE: on
+SASS_VERSION: 1.80.3
+DART_SASS_SHA_LINUX: 7c933edbad0a7d389192c5b79393485c088bd2c4398e32f5754c32af006a9ffd
+DART_SASS_SHA_MACOS: 79e060b0e131c3bb3c16926bafc371dc33feab122bfa8c01aa337a072097967b
+DART_SASS_SHA_WINDOWS: 0bc4708b37cd1bac4740e83ac5e3176e66b774f77fd5dd364da5b5cfc9bfb469
+##[endgroup]
+Syncing repository: <:*:>
+##[group]Getting Git version info
+Working directory is <:*:>
+[command]"C:\Program Files\Git\bin\git.exe" version
+git version 2.49.0.windows.1
+##[endgroup]
+Temporarily overriding HOME='D:\a\_temp\e0d35151-5c64-45c8-808f-2ec4b6d90f65' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+[command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\hugo\hugo
+Deleting the contents of <:*:>
+##[group]Initializing the repository
+[command]"C:\Program Files\Git\bin\git.exe" init D:\a\hugo\hugo
+Initialized empty Git repository in <:*:>
+[command]"C:\Program Files\Git\bin\git.exe" remote add origin https://github.com/gohugoio/hugo
+##[endgroup]
+##[group]Disabling automatic garbage collection
+[command]"C:\Program Files\Git\bin\git.exe" config --local gc.auto 0
+##[endgroup]
+##[group]Setting up auth
+[command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+[command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+[command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+[command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+[command]"C:\Program Files\Git\bin\git.exe" config --local http.https://github.com/.extraheader "AUTHORIZATION: basic ***"
+##[endgroup]
+##[group]Fetching the repository
+[command]"C:\Program Files\Git\bin\git.exe" -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +36b1cdf379073d40e03b89d640838dc925fade08:refs/remotes/pull/13608/merge
+From <:*:>
+* [new ref] <:SEQ:>-> <:*:>
+##[endgroup]
+##[group]Determining the checkout info
+##[endgroup]
+[command]"C:\Program Files\Git\bin\git.exe" sparse-checkout disable
+[command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all extensions.worktreeConfig
+##[group]Checking out the ref
+[command]"C:\Program Files\Git\bin\git.exe" checkout --progress --force refs/remotes/pull/13608/merge
+Note: switching to 'refs/remotes/pull/<:NUM:>/merge'.
+2025-04-14T11:43:02.1715417Z
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+2025-04-14T11:43:02.1718155Z
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+2025-04-14T11:43:02.1719796Z
+git switch -c <new-branch-name>
+2025-04-14T11:43:02.1720357Z
+Or undo this operation with:
+2025-04-14T11:43:02.1721860Z
+git switch -
+2025-04-14T11:43:02.1722330Z
+Turn off this advice by setting config variable advice.detachedHead to false
+2025-04-14T11:43:02.1723472Z
+HEAD is now at <:*:> Merge <:SEQ:> into <:SEQ:>
+##[endgroup]
+[command]"C:\Program Files\Git\bin\git.exe" log -1 --format='%H'
+'<:SEQ:>'

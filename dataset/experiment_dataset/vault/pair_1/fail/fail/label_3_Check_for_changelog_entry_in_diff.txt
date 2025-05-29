@@ -1,0 +1,82 @@
+2025-04-14T23:38:13.6562339Z ##[group]Run # Check if there is a diff in the changelog directory.
+2025-04-14T23:38:13.6562890Z [36;1m# Check if there is a diff in the changelog directory.[0m
+2025-04-14T23:38:13.6563205Z [36;1m#[0m
+2025-04-14T23:38:13.6563476Z [36;1m# Try to identify the expected changelog file name based on PR[0m
+2025-04-14T23:38:13.6563886Z [36;1m# number. This won't work for Go version updates though.[0m
+2025-04-14T23:38:13.6564229Z [36;1mif [ vault == "vault-enterprise" ]; then[0m
+2025-04-14T23:38:13.6564781Z [36;1m  expected_changelog_file=changelog/_30257.txt[0m
+2025-04-14T23:38:13.6565057Z [36;1melse[0m
+2025-04-14T23:38:13.6565275Z [36;1m  expected_changelog_file=changelog/30257.txt[0m
+2025-04-14T23:38:13.6565540Z [36;1mfi[0m
+2025-04-14T23:38:13.6565707Z [36;1m[0m
+2025-04-14T23:38:13.6565965Z [36;1mecho "looking for changelog file ${expected_changelog_file}"[0m
+2025-04-14T23:38:13.6566780Z [36;1mchangelog_files=$(git --no-pager diff --name-only HEAD "$(git merge-base HEAD "origin/main")" -- ${expected_changelog_file})[0m
+2025-04-14T23:38:13.6567299Z [36;1m[0m
+2025-04-14T23:38:13.6567488Z [36;1mif [ -z "$changelog_files" ]; then[0m
+2025-04-14T23:38:13.6567744Z [36;1m  echo "Not found."[0m
+2025-04-14T23:38:13.6568058Z [36;1m  echo "looking for changelog file matching changelog/_go-ver-*.txt"[0m
+2025-04-14T23:38:13.6568511Z [36;1m  # If we do not find a file matching the PR # in changelog/, we fail the check[0m
+2025-04-14T23:38:13.6568970Z [36;1m  # unless we did a Go toolchain version update, in which case we check the[0m
+2025-04-14T23:38:13.6569322Z [36;1m  # alternative name.[0m
+2025-04-14T23:38:13.6569796Z [36;1m  toolchain_files=$(git --no-pager diff --name-only HEAD "$(git merge-base HEAD "origin/main")" -- 'changelog/_go-ver-*.txt')[0m
+2025-04-14T23:38:13.6570308Z [36;1m  if [ -z "$toolchain_files" ]; then[0m
+2025-04-14T23:38:13.6570567Z [36;1m    echo "Not found."[0m
+2025-04-14T23:38:13.6570778Z [36;1m    echo ""[0m
+2025-04-14T23:38:13.6571090Z [36;1m    echo "Did not find a changelog entry named ${expected_changelog_file}"[0m
+2025-04-14T23:38:13.6571708Z [36;1m    echo "If your changelog file is correct, or this change does not need a changelog, skip this check with the 'pr/no-changelog' label"[0m
+2025-04-14T23:38:13.6572469Z [36;1m    echo "Reference - https://github.com/hashicorp/vault/blob/main/CONTRIBUTING.md#changelog-entries"[0m
+2025-04-14T23:38:13.6572937Z [36;1m    exit 1[0m
+2025-04-14T23:38:13.6573119Z [36;1m  fi[0m
+2025-04-14T23:38:13.6573286Z [36;1m[0m
+2025-04-14T23:38:13.6573576Z [36;1m  # Else, we found some toolchain files. Let's make sure the contents are correct.[0m
+2025-04-14T23:38:13.6574159Z [36;1m  if ! grep -q 'release-note:change' "$toolchain_files" || ! grep -q '^core: Bump Go version to' "$toolchain_files"; then[0m
+2025-04-14T23:38:13.6574882Z [36;1m    echo "Invalid format for changelog. Expected format:"[0m
+2025-04-14T23:38:13.6575210Z [36;1m    echo '```release-note:change'[0m
+2025-04-14T23:38:13.6575489Z [36;1m    echo "core: Bump Go version to x.y.z."[0m
+2025-04-14T23:38:13.6575751Z [36;1m    echo '```'[0m
+2025-04-14T23:38:13.6575940Z [36;1m    exit 1[0m
+2025-04-14T23:38:13.6576121Z [36;1m  else[0m
+2025-04-14T23:38:13.6576354Z [36;1m    echo "Found Go toolchain changelog entry in PR!"[0m
+2025-04-14T23:38:13.6576638Z [36;1m  fi[0m
+2025-04-14T23:38:13.6576875Z [36;1melif grep -q ':enhancement$' "$changelog_files"; then[0m
+2025-04-14T23:38:13.6577302Z [36;1m  # "Enhancement is not a valid type of changelog entry, but it's a common mistake.[0m
+2025-04-14T23:38:13.6577797Z [36;1m  echo "Found invalid type (enhancement) in changelog - did you mean improvement?"[0m
+2025-04-14T23:38:13.6578166Z [36;1m  exit 1[0m
+2025-04-14T23:38:13.6578400Z [36;1melif grep -q ':changes$' "$changelog_files"; then[0m
+2025-04-14T23:38:13.6578803Z [36;1m  echo "Found invalid type (changes) in changelog - did you mean change?"[0m
+2025-04-14T23:38:13.6579152Z [36;1m  exit 1[0m
+2025-04-14T23:38:13.6579377Z [36;1melif grep -q ':bugs$' "$changelog_files"; then[0m
+2025-04-14T23:38:13.6579916Z [36;1m  echo "Found invalid type (bugs) in changelog - did you mean bug?"[0m
+2025-04-14T23:38:13.6580240Z [36;1m  exit 1[0m
+2025-04-14T23:38:13.6580458Z [36;1melif grep -q ':fix$' "$changelog_files"; then[0m
+2025-04-14T23:38:13.6580813Z [36;1m  echo "Found invalid type (fix) in changelog - did you mean bug?"[0m
+2025-04-14T23:38:13.6581131Z [36;1m  exit 1[0m
+2025-04-14T23:38:13.6581352Z [36;1melif grep -q ':feature$' "$changelog_files"; then[0m
+2025-04-14T23:38:13.6581669Z [36;1m  if ! grep -q '^\*\*' "$changelog_files"; then[0m
+2025-04-14T23:38:13.6582031Z [36;1m    echo "Feature changelogs must be formatted like the following:"[0m
+2025-04-14T23:38:13.6582401Z [36;1m    echo "**Feature Name**: Feature description"[0m
+2025-04-14T23:38:13.6582684Z [36;1m    exit 1[0m
+2025-04-14T23:38:13.6582983Z [36;1m  fi[0m
+2025-04-14T23:38:13.6583225Z [36;1melif ! grep -q '```release-note:' "$changelog_files"; then[0m
+2025-04-14T23:38:13.6583657Z [36;1m  # People often make changelog files like ```changelog:, which is incorrect.[0m
+2025-04-14T23:38:13.6584189Z [36;1m  echo "Changelog file did not contain 'release-note' heading - check formatting."[0m
+2025-04-14T23:38:13.6584712Z [36;1m  exit 1[0m
+2025-04-14T23:38:13.6584983Z [36;1melif grep -q '^core: Bump Go version' "$changelog_files"; then[0m
+2025-04-14T23:38:13.6585397Z [36;1m  echo "Don't use PR numbered changelog entries for Go version bumps!"[0m
+2025-04-14T23:38:13.6585879Z [36;1m  echo "Please use the format changelog/_go-ver-<VAULT_VERSION_WITHOUT_DOTS>.txt instead."[0m
+2025-04-14T23:38:13.6586329Z [36;1m  echo "Example: _go-ver-1110.txt for Vault 1.11.0"[0m
+2025-04-14T23:38:13.6586609Z [36;1m  exit 1[0m
+2025-04-14T23:38:13.6586786Z [36;1melse[0m
+2025-04-14T23:38:13.6586986Z [36;1m  echo "Found changelog entry in PR!"[0m
+2025-04-14T23:38:13.6587244Z [36;1mfi[0m
+2025-04-14T23:38:13.6636803Z shell: /usr/bin/bash -e {0}
+2025-04-14T23:38:13.6637066Z ##[endgroup]
+2025-04-14T23:38:13.6720503Z looking for changelog file changelog/30257.txt
+2025-04-14T23:38:13.6770347Z Not found.
+2025-04-14T23:38:13.6770778Z looking for changelog file matching changelog/_go-ver-*.txt
+2025-04-14T23:38:13.6813474Z Not found.
+2025-04-14T23:38:13.6813679Z 
+2025-04-14T23:38:13.6813904Z Did not find a changelog entry named changelog/30257.txt
+2025-04-14T23:38:13.6814710Z If your changelog file is correct, or this change does not need a changelog, skip this check with the 'pr/no-changelog' label
+2025-04-14T23:38:13.6815417Z Reference - https://github.com/hashicorp/vault/blob/main/CONTRIBUTING.md#changelog-entries
+2025-04-14T23:38:13.6828124Z ##[error]Process completed with exit code 1.

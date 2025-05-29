@@ -1,0 +1,70 @@
+2025-04-13T15:29:52.6264896Z Requested labels: ubuntu-latest
+2025-04-13T15:29:52.6265126Z Job defined at: menloresearch/jan/.github/workflows/auto-assign-milestone.yml@refs/pull/3891/merge
+2025-04-13T15:29:52.6265205Z Waiting for a runner to pick up this job...
+2025-04-13T15:29:53.2003824Z Job is waiting for a hosted runner to come online.
+2025-04-13T15:29:56.4531152Z Job is about to start running on the hosted runner: GitHub Actions 339 (hosted)
+2025-04-13T15:29:58.0922483Z Current runner version: '2.323.0'
+2025-04-13T15:29:58.0947421Z ##[group]Operating System
+2025-04-13T15:29:58.0948162Z Ubuntu
+2025-04-13T15:29:58.0948726Z 24.04.2
+2025-04-13T15:29:58.0949252Z LTS
+2025-04-13T15:29:58.0949733Z ##[endgroup]
+2025-04-13T15:29:58.0950333Z ##[group]Runner Image
+2025-04-13T15:29:58.0950883Z Image: ubuntu-24.04
+2025-04-13T15:29:58.0951413Z Version: 20250406.1.0
+2025-04-13T15:29:58.0952499Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250406.1/images/ubuntu/Ubuntu2404-Readme.md
+2025-04-13T15:29:58.0954077Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250406.1
+2025-04-13T15:29:58.0954975Z ##[endgroup]
+2025-04-13T15:29:58.0955591Z ##[group]Runner Image Provisioner
+2025-04-13T15:29:58.0956173Z 2.0.422.1
+2025-04-13T15:29:58.0956665Z ##[endgroup]
+2025-04-13T15:29:58.0957810Z ##[group]GITHUB_TOKEN Permissions
+2025-04-13T15:29:58.0959585Z Issues: write
+2025-04-13T15:29:58.0960363Z Metadata: read
+2025-04-13T15:29:58.0961105Z PullRequests: write
+2025-04-13T15:29:58.0961768Z ##[endgroup]
+2025-04-13T15:29:58.0963967Z Secret source: Actions
+2025-04-13T15:29:58.0964788Z Prepare workflow directory
+2025-04-13T15:29:58.1355151Z Prepare all required actions
+2025-04-13T15:29:58.1391733Z Getting action download info
+2025-04-13T15:29:58.2882984Z ##[group]Download immutable action package 'actions/github-script@v3'
+2025-04-13T15:29:58.2884368Z Version: 3.2.0
+2025-04-13T15:29:58.2885253Z Digest: sha256:f246dac657d5f386a0245d3dd84af024aa07a75050074ebd2526b43df8d6f793
+2025-04-13T15:29:58.2886335Z Source commit SHA: ffc2c79a5b2490bd33e0a41c1de74b877714d736
+2025-04-13T15:29:58.2886996Z ##[endgroup]
+2025-04-13T15:29:58.5210926Z Complete job name: assign_milestone
+2025-04-13T15:29:58.5920094Z ##[group]Run actions/github-script@v3
+2025-04-13T15:29:58.5921315Z with:
+2025-04-13T15:29:58.5922126Z   github-token: ***
+2025-04-13T15:29:58.5925983Z   script: const { owner, repo } = context.repo;
+const { number, merged } = context.payload.pull_request;
+if (merged) {
+  const { data: milestones } = await github.issues.listMilestones({
+    owner,
+    repo,
+    state: 'open',
+  });
+
+  const mergedDate = new Date(context.payload.pull_request.merged_at);
+  const currentMilestone = milestones
+  .filter(milestone => milestone.due_on !== null)
+  .find((milestone) => {
+    const dueDate = new Date(milestone.due_on);
+    return mergedDate <= dueDate;
+  });
+
+  if (currentMilestone) {
+    await github.issues.update({
+      owner,
+      repo,
+      issue_number: number,
+      milestone: currentMilestone.number
+    });
+  }
+}
+
+2025-04-13T15:29:58.5931229Z   debug: true
+2025-04-13T15:29:58.5931700Z   user-agent: actions/github-script
+2025-04-13T15:29:58.5932231Z   result-encoding: json
+2025-04-13T15:29:58.5933145Z ##[endgroup]
+2025-04-13T15:29:58.7442068Z Cleaning up orphan processes

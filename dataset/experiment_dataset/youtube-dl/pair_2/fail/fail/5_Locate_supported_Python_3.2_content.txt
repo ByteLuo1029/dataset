@@ -1,0 +1,47 @@
+##[group]Run echo "PYTHONHOME=${pythonLocation}" >> "$GITHUB_ENV"
+[36;1mecho "PYTHONHOME=${pythonLocation}" >> "$GITHUB_ENV"[0m
+[36;1mexport expected="/opt/hostedtoolcache/Python/3.2.6/x64/bin/python"[0m
+[36;1mdirname() { printf '%s\n' \[0m
+[36;1m    'import os, sys' \[0m
+[36;1m    'print(os.path.dirname(sys.argv[1]))' \[0m
+[36;1m    | ${expected} - "$1"; }[0m
+[36;1mexpd="$(dirname "$expected")"[0m
+[36;1mexport python="$(command -v python)"[0m
+[36;1m[ "$expd" = "$(dirname "$python")" ] || echo "PATH=$expd:${PATH}" >> "$GITHUB_ENV"[0m
+[36;1m[ -x "$python" ] || printf '%s\n' \[0m
+[36;1m    'import os' \[0m
+[36;1m    'exp = os.environ["expected"]' \[0m
+[36;1m    'python = os.environ["python"]' \[0m
+[36;1m    'exps = os.path.split(exp)' \[0m
+[36;1m    'if python and (os.path.dirname(python) == exp[0]):' \[0m
+[36;1m    '    exit(0)' \[0m
+[36;1m    'exps[1] = "python" + os.path.splitext(exps[1])[1]' \[0m
+[36;1m    'python = os.path.join(*exps)' \[0m
+[36;1m    'try:' \[0m
+[36;1m    '    os.symlink(exp, python)' \[0m
+[36;1m    'except AttributeError:' \[0m
+[36;1m    '    os.rename(exp, python)' \[0m
+[36;1m    | ${expected} -[0m
+[36;1mprintf '%s\n' \[0m
+[36;1m    'import sys' \[0m
+[36;1m    'print(sys.path)' \[0m
+[36;1m    | ${expected} -[0m
+0
+
+all-cpython-versions: 2.6, 2.7, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 3.10, 3.11, 3.12
+main-cpython-versions: 2.7, 3.2, 3.5, 3.9, 3.11
+pypy-versions: pypy-2.7, pypy-3.6, pypy-3.7
+cpython-versions: main
+test-set: core
+next: 3.13
+PIP: python -m pip
+PIP_DISABLE_PIP_VERSION_CHECK: true
+PIP_NO_PYTHON_VERSION_WARNING: true
+3 2 6
+3 2 6
+3 2 6
+Python2 3 2 6
+Python3 3 2 6
+3 2 6
+##[endgroup]
+['', '/opt/hostedtoolcache/Python/3.2.6/x64/lib/python32.zip', '/opt/hostedtoolcache/Python/3.2.6/x64/lib/python3.2', '/opt/hostedtoolcache/Python/3.2.6/x64/lib/python3.2/plat-linux2', '/opt/hostedtoolcache/Python/3.2.6/x64/lib/python3.2/lib-dynload', '/opt/hostedtoolcache/Python/3.2.6/x64/lib/python3.2/site-packages']

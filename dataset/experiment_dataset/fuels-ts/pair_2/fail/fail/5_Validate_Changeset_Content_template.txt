@@ -1,0 +1,58 @@
+##[group]Run CHANGESET_FILE=$(git diff --diff-filter=A --name-only origin/st/feat/assemble-tx .changeset/*.md)
+[36;1mCHANGESET_FILE=$(git diff --diff-filter=A --name-only origin/st/feat/assemble-tx .changeset/*.md)[0m
+[36;1m[0m
+[36;1mif [ -z "$CHANGESET_FILE" ]; then[0m
+[36;1m  # A PR doesn't have to have a changeset when packages aren't affected[0m
+[36;1m  # e.g. when a script is added in the scripts folder[0m
+[<:NUM:>;1m exit <:NUM:>[0m
+[<:NUM:>;1mfi[0m
+[36;1mecho "CHANGESET_FILE=$(echo "$CHANGESET_FILE")" >> $GITHUB_ENV[0m
+[36;1m[0m
+[36;1mAFFECTED_PACKAGES=$(sed -n '/---/,/---/p' "$CHANGESET_FILE" | sed '/---/d')[0m
+[36;1m[0m
+[36;1mif [ -z "$AFFECTED_PACKAGES" ]; then[0m
+[36;1m  # The changelog logic ignores changesets that don't affect any packages so we can ignore them here as well,[0m
+[36;1m  # because this changeset linting logic is only for changesets who's PRs will be referenced in the changelog.[0m
+[36;1m[0m
+[36;1m  # The relevant changelog logic is here:[0m
+[36;1m  # https://github.com/FuelLabs/fuels-ts/blob/155b6f2fe28e988b277dac231af6d6a0cff1df0c/scripts/changeset/get-full-changelog.mts#L77[0m
+[36;1m[0m
+[<:NUM:>;1m exit <:NUM:>[0m
+[<:NUM:>;1mfi[0m
+[36;1m# TODO: Remove once v1.0.0 is released.[0m
+[36;1m# Minor changes are treated as breaking until v1.0.0 is released.[0m
+[36;1mif echo "$AFFECTED_PACKAGES" | grep -q 'minor'; then[0m
+[36;1m  if ! echo "$PR_TITLE" | grep -q '!'; then[0m
+[36;1m    echo "Changeset has `minor` changes. Please mark the PR as breaking by adding an exclamation mark to its title (e.g. fix!: xxx) or use a `patch` instead."[0m
+[<:NUM:>;1m exit <:NUM:>[0m
+[36;1m  fi[0m
+[<:NUM:>;1mfi[0m
+[36;1m[0m
+[36;1m# Check if the PR title contains an exclamation mark (breaking)[0m
+[36;1mif echo "$PR_TITLE" | grep -q '!'; then[0m
+[36;1m  # If the PR is breaking, ensure that the changeset contains minor changes[0m
+[36;1m  if ! echo "$AFFECTED_PACKAGES" | grep -q 'minor'; then[0m
+[36;1m    echo "PR is marked as breaking but changeset does not contain minor changes."[0m
+[36;1m    echo "Changeset file: $CHANGESET_FILE"[0m
+[36;1m    echo "Changeset content:"[0m
+[36;1m    cat "$CHANGESET_FILE"[0m
+[<:NUM:>;1m exit <:NUM:>[0m
+[36;1m  fi[0m
+[<:NUM:>;1mfi[0m
+[36;1m[0m
+[36;1mCHANGESET_DESCRIPTION=$(sed 's/^\s*\|\s*$//g' "$CHANGESET_FILE" | tail -n1)[0m
+[36;1m[0m
+[36;1mif [ "$CHANGESET_DESCRIPTION" != "$PR_TITLE" ]; then[0m
+[36;1m  echo "Changeset content does not match PR title. Please update the changeset to match the PR title."[0m
+[36;1m  echo "Changeset file: $CHANGESET_FILE"[0m
+[36;1m  echo "Changeset content:"[0m
+[36;1m  cat "$CHANGESET_FILE"[0m
+[<:NUM:>;1m exit <:NUM:>[0m
+[<:NUM:>;1mfi[0m
+shell: /usr/bin/bash -e {<:NUM:>}
+env:
+NPM_CONFIG_USERCONFIG: /home/runner/work/_temp/.npmrc
+NODE_AUTH_TOKEN: XXXXX-XXXXX-XXXXX-XXXXX
+PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+PR_TITLE: feat: sdk-connectors optimizations
+##[endgroup]

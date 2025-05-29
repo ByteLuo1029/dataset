@@ -1,0 +1,67 @@
+##[group]Run <:*:>
+with:
+repository: <:*:>
+token: ***
+ssh-strict: true
+ssh-user: git
+persist-credentials: <:*:>
+clean: true
+sparse-checkout-cone-mode: true
+fetch-depth: <:NUM:>
+fetch-tags: false
+show-progress: true
+lfs: false
+submodules: <:*:>
+set-safe-directory: true
+##[endgroup]
+Syncing repository: <:*:>
+##[group]Getting Git version info
+Working directory is <:*:>
+[command]/usr/bin/git version
+git version <:NUM:>.<:NUM:>.<:NUM:>
+##[endgroup]
+Temporarily overriding HOME='/home/runner/work/_temp/36c4418a-ae34-46cb-aa2d-613fff6dab28' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+[command]/usr/bin/git config --global --add safe.directory /home/runner/work/slate/slate
+Deleting the contents of <:*:>
+##[group]Initializing the repository
+[command]/usr/bin/git init <:*:>
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint:
+hint: git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint: git branch -m <name>
+Initialized empty Git repository in <:*:>
+[command]/usr/bin/git remote add origin <:*:>
+##[endgroup]
+##[group]Disabling automatic garbage collection
+[command]/usr/bin/git config --local gc.auto 0
+##[endgroup]
+##[group]Setting up auth
+[command]/usr/bin/git config --local --name-only --get-regexp <:*:>
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp <:*:> && git config --local --unset-all <:*:> || :"
+[command]/usr/bin/git config --local --name-only --get-regexp <:*:>
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp <:*:> && git config --local --unset-all <:*:> || :"
+[command]/usr/bin/git config <:*:> http.https://github.com/.extraheader AUTHORIZATION: basic ***
+##[endgroup]
+##[group]Fetching the repository
+[command]/usr/bin/git -c protocol.version=<:NUM:> fetch <:*:> <:*:> <:*:> <:*:> <:*:> <:*:>
+From <:*:>
+* [new ref] <:SEQ:>-> <:*:>
+##[endgroup]
+##[group]Determining the checkout info
+##[endgroup]
+[command]/usr/bin/git sparse-checkout disable
+[command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+##[group]Checking out the ref
+[command]/usr/bin/git checkout --progress --force -B <:*:> <:*:>
+Switched to a new branch 'main'
+branch <:*:> set up to track <:*:>
+##[endgroup]
+[command]/usr/bin/git log <:NUM:> <:*:>
+<:SEQ:>

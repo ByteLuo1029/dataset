@@ -1,0 +1,34 @@
+2025-04-13T15:29:58.5920058Z ##[group]Run actions/github-script@v3
+2025-04-13T15:29:58.5921296Z with:
+2025-04-13T15:29:58.5922118Z   github-token: ***
+2025-04-13T15:29:58.5925900Z   script: const { owner, repo } = context.repo;
+const { number, merged } = context.payload.pull_request;
+if (merged) {
+  const { data: milestones } = await github.issues.listMilestones({
+    owner,
+    repo,
+    state: 'open',
+  });
+
+  const mergedDate = new Date(context.payload.pull_request.merged_at);
+  const currentMilestone = milestones
+  .filter(milestone => milestone.due_on !== null)
+  .find((milestone) => {
+    const dueDate = new Date(milestone.due_on);
+    return mergedDate <= dueDate;
+  });
+
+  if (currentMilestone) {
+    await github.issues.update({
+      owner,
+      repo,
+      issue_number: number,
+      milestone: currentMilestone.number
+    });
+  }
+}
+
+2025-04-13T15:29:58.5931206Z   debug: true
+2025-04-13T15:29:58.5931694Z   user-agent: actions/github-script
+2025-04-13T15:29:58.5932227Z   result-encoding: json
+2025-04-13T15:29:58.5933073Z ##[endgroup]

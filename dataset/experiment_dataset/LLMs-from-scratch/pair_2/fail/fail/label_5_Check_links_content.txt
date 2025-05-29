@@ -1,0 +1,75 @@
+##[group]Run source .venv/bin/activate
+[36;1msource .venv/bin/activate[0m
+[36;1mpytest --ruff --check-links ./ \[0m
+[36;1m  --check-links-ignore "https://platform.openai.com/*" \[0m
+[36;1m  --check-links-ignore "https://openai.com/*" \[0m
+[36;1m  --check-links-ignore "https://arena.lmsys.org" \[0m
+[36;1m  --check-links-ignore "https://unsloth.ai/blog/gradient" \[0m
+[36;1m  --check-links-ignore "https://www.reddit.com/r/*" \[0m
+[36;1m  --check-links-ignore "https://code.visualstudio.com/*" \[0m
+[36;1m  --check-links-ignore "https://arxiv.org/*" \[0m
+[36;1m  --check-links-ignore "https://ai.stanford.edu/~amaas/data/sentiment/" \[0m
+[36;1m  --check-links-ignore "https://x.com/*" \[0m
+[36;1m  --check-links-ignore "https://scholar.google.com/*"[0m
+0
+
+3 10 16
+3 10 16
+3 10 16
+Python2 3 10 16
+Python3 3 10 16
+3 10 16
+##[endgroup]
+============================= test session starts ==============================
+platform linux -- Python 3.10.16, pytest-8.3.5, pluggy-1.5.0
+rootdir: /home/runner/work/LLMs-from-scratch/LLMs-from-scratch
+configfile: pyproject.toml
+plugins: ruff-0.4.1, anyio-4.9.0, pytest_check_links-0.10.1
+collected 1004 items / 1 error
+2025-04-13T17:44:30.5105636Z
+==================================== ERRORS ====================================
+_____ ERROR collecting ch05/01_main-chapter-code/exercise-solutions.ipynb ______
+.venv/lib/python3.10/site-packages/nbformat/__init__.py:169: in read
+buf = fp.read()
+E   AttributeError: 'str' object has no attribute 'read'
+2025-04-13T17:44:30.5108963Z
+During handling of the above exception, another exception occurred:
+.venv/lib/python3.10/site-packages/nbformat/reader.py:19: in parse_json
+nb_dict = json.loads(s, **kwargs)
+/opt/hostedtoolcache/Python/3.10.16/x64/lib/python3.10/json/__init__.py:346: in loads
+return _default_decoder.decode(s)
+/opt/hostedtoolcache/Python/3.10.16/x64/lib/python3.10/json/decoder.py:337: in decode
+obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+/opt/hostedtoolcache/Python/3.10.16/x64/lib/python3.10/json/decoder.py:353: in raw_decode
+obj, end = self.scan_once(s, idx)
+E   json.decoder.JSONDecodeError: Expecting ',' delimiter: line 272 column 5 (char 8182)
+2025-04-13T17:44:30.5115732Z
+The above exception was the direct cause of the following exception:
+.venv/lib/python3.10/site-packages/pytest_check_links/plugin.py:206: in collect
+for item in self._items_from_notebook():
+.venv/lib/python3.10/site-packages/pytest_check_links/plugin.py:183: in _items_from_notebook
+nb = nbformat.read(str(self.path), as_version=4)  # type:ignore[no-untyped-call]
+.venv/lib/python3.10/site-packages/nbformat/__init__.py:172: in read
+return reads(f.read(), as_version, capture_validation_error, **kwargs)
+.venv/lib/python3.10/site-packages/nbformat/__init__.py:92: in reads
+nb = reader.reads(s, **kwargs)
+.venv/lib/python3.10/site-packages/nbformat/reader.py:75: in reads
+nb_dict = parse_json(s, **kwargs)
+.venv/lib/python3.10/site-packages/nbformat/reader.py:25: in parse_json
+raise NotJSONError(message) from e
+E   nbformat.reader.NotJSONError: Notebook does not appear to be JSON: '{\n "cells": [\n  {\n   "cell_type": "m...
+=============================== warnings summary ===============================
+.venv/lib/python3.10/site-packages/jupyter_client/connect.py:22
+/home/runner/work/LLMs-from-scratch/LLMs-from-scratch/.venv/lib/python3.10/site-packages/jupyter_client/connect.py:22: DeprecationWarning: Jupyter is migrating its paths to use standard platformdirs
+given by the platformdirs library.  To remove this warning and
+see the appropriate new directories, set the environment variable
+`JUPYTER_PLATFORM_DIRS=1` and then run `jupyter --paths`.
+The use of platformdirs will be the default in `jupyter_core` v6
+from jupyter_core.paths import jupyter_data_dir, jupyter_runtime_dir, secure_write
+2025-04-13T17:44:30.5132937Z
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+ERROR ch05/01_main-chapter-code/exercise-solutions.ipynb - nbformat.reader.NotJSONError: Notebook does not appear to be JSON: '{\n "cells": [\n  {\n   "cell_type": "m...
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+========================= 1 warning, 1 error in 8.68s ==========================
+##[error]Process completed with exit code 2.

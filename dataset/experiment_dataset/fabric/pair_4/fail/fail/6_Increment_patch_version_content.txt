@@ -1,0 +1,19 @@
+##[group]Run latest_tag=v1.4.155
+[36;1mlatest_tag=v1.4.155[0m
+[36;1mmajor=$(echo "$latest_tag" | cut -d. -f1 | sed 's/v//')[0m
+[36;1mminor=$(echo "$latest_tag" | cut -d. -f2)[0m
+[36;1mpatch=$(echo "$latest_tag" | cut -d. -f3)[0m
+[36;1mnew_patch=$((patch + 1))[0m
+[36;1mnew_version="${major}.${minor}.${new_patch}"[0m
+[36;1mnew_tag="v${new_version}"[0m
+[36;1mecho "New version is: $new_version"[0m
+[36;1mecho "new_version=$new_version" >> $GITHUB_ENV  # Save the new version to environment file[0m
+[36;1mecho "New tag is: $new_tag"[0m
+[36;1mecho "new_tag=$new_tag" >> $GITHUB_ENV  # Save the new tag to environment file[0m
+0
+
+DETERMINATE_NIX_KVM: 1
+tag: v1.4.155
+##[endgroup]
+New version is: 1.4.156
+New tag is: v1.4.156

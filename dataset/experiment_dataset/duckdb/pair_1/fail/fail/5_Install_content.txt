@@ -1,0 +1,53 @@
+##[group]Run pip install 'cibuildwheel>=2.16.2' build
+[36;1mpip install 'cibuildwheel>=2.16.2' build[0m
+0
+
+GH_TOKEN:
+OVERRIDE_GIT_DESCRIBE:
+CIBW_TEST_SKIP: {cp37,cp38}-*
+CIBW_BUILD: cp310-*
+CIBW_TEST_COMMAND: python -m pytest {project}/tests --verbose && USE_ACTUAL_SPARK=true JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java)))) SPARK_HOME={project}/spark_installation/spark python -m pytest {project}/tests/fast/spark --verbose
+PYTEST_TIMEOUT: 600
+CIBW_ENVIRONMENT: OVERRIDE_GIT_DESCRIBE=
+CIBW_BEFORE_ALL: cd {project} && ./scripts/install_spark_in_cibuildwheels_linux_container.sh
+CIBW_MANYLINUX_X86_64_IMAGE: manylinux_2_28
+CIBW_MANYLINUX_PYPY_X86_64_IMAGE: manylinux_2_28
+3 11 11
+3 11 11
+3 11 11
+Python2 3 11 11
+Python3 3 11 11
+3 11 11
+##[endgroup]
+cibuildwheel>=2.16.2
+cibuildwheel-2.23.2-py3-none-any.whl.metadata (22
+build
+build-1.2.2.post1-py3-none-any.whl.metadata (6.5
+bashlex!=0.13 cibuildwheel>=2.16.2)
+bashlex-0.18-py2.py3-none-any.whl.metadata (1.1
+bracex cibuildwheel>=2.16.2)
+bracex-2.5.post1-py3-none-any.whl.metadata (3.5
+certifi cibuildwheel>=2.16.2)
+certifi-2025.1.31-py3-none-any.whl.metadata (2.5
+dependency-groups>=1.2 cibuildwheel>=2.16.2)
+dependency groups-1.3.0-py3-none-any.whl.metadata (2.2
+filelock cibuildwheel>=2.16.2)
+filelock-3.18.0-py3-none-any.whl.metadata (2.9
+packaging>=20.9 cibuildwheel>=2.16.2)
+packaging-24.2-py3-none-any.whl.metadata (3.2
+platformdirs cibuildwheel>=2.16.2)
+platformdirs-4.3.7-py3-none-any.whl.metadata (11
+Collecting pyproject_hooks (from build)
+pyproject hooks-1.2.0-py3-none-any.whl.metadata (1.3
+cibuildwheel-2.23.2-py3-none-any.whl (91
+build-1.2.2.post1-py3-none-any.whl (22
+bashlex-0.18-py2.py3-none-any.whl (69
+dependency groups-1.3.0-py3-none-any.whl (8.6
+packaging-24.2-py3-none-any.whl (65
+bracex-2.5.post1-py3-none-any.whl (11
+certifi-2025.1.31-py3-none-any.whl (166
+filelock-3.18.0-py3-none-any.whl (16
+platformdirs-4.3.7-py3-none-any.whl (18
+pyproject hooks-1.2.0-py3-none-any.whl (10
+Installing collected packages: pyproject_hooks, platformdirs, packaging, filelock, certifi, bracex, bashlex, dependency-groups, build, cibuildwheel
+Successfully installed bashlex-0.18 bracex-2.5.post1 build-1.2.2.post1 certifi-2025.1.31 cibuildwheel-2.23.2 dependency-groups-1.3.0 filelock-3.18.0 packaging-24.2 platformdirs-4.3.7 pyproject_hooks-1.2.0

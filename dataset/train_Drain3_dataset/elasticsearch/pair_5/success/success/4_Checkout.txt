@@ -1,0 +1,129 @@
+2025-04-14T20:09:26.9159758Z ##[group]Run actions/checkout@v4
+2025-04-14T20:09:26.9161051Z with:
+2025-04-14T20:09:26.9161800Z   ref: refs/heads/main
+2025-04-14T20:09:26.9162674Z   repository: elastic/elasticsearch
+2025-04-14T20:09:26.9163933Z   token: ***
+2025-04-14T20:09:26.9164673Z   ssh-strict: true
+2025-04-14T20:09:26.9165441Z   ssh-user: git
+2025-04-14T20:09:26.9166389Z   persist-credentials: true
+2025-04-14T20:09:26.9167274Z   clean: true
+2025-04-14T20:09:26.9168060Z   sparse-checkout-cone-mode: true
+2025-04-14T20:09:26.9168997Z   fetch-depth: 1
+2025-04-14T20:09:26.9169765Z   fetch-tags: false
+2025-04-14T20:09:26.9170592Z   show-progress: true
+2025-04-14T20:09:26.9171404Z   lfs: false
+2025-04-14T20:09:26.9172144Z   submodules: false
+2025-04-14T20:09:26.9172939Z   set-safe-directory: true
+2025-04-14T20:09:26.9174031Z env:
+2025-04-14T20:09:26.9174751Z   GITHUB_PR_REF_NAME: 
+2025-04-14T20:09:26.9175550Z ##[endgroup]
+2025-04-14T20:09:27.1043106Z Syncing repository: elastic/elasticsearch
+2025-04-14T20:09:27.1045899Z ##[group]Getting Git version info
+2025-04-14T20:09:27.1047553Z Working directory is '/home/runner/work/elasticsearch/elasticsearch'
+2025-04-14T20:09:27.1049455Z [command]/usr/bin/git version
+2025-04-14T20:09:27.1097571Z git version 2.49.0
+2025-04-14T20:09:27.1127842Z ##[endgroup]
+2025-04-14T20:09:27.1152355Z Temporarily overriding HOME='/home/runner/work/_temp/44db98d4-0bcb-4f54-bbd5-4c7ba4b146fd' before making global git config changes
+2025-04-14T20:09:27.1155831Z Adding repository directory to the temporary git global config as a safe directory
+2025-04-14T20:09:27.1159262Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/elasticsearch/elasticsearch
+2025-04-14T20:09:27.1195370Z Deleting the contents of '/home/runner/work/elasticsearch/elasticsearch'
+2025-04-14T20:09:27.1203033Z ##[group]Initializing the repository
+2025-04-14T20:09:27.1207717Z [command]/usr/bin/git init /home/runner/work/elasticsearch/elasticsearch
+2025-04-14T20:09:27.1275988Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-04-14T20:09:27.1279411Z hint: is subject to change. To configure the initial branch name to use in all
+2025-04-14T20:09:27.1282138Z hint: of your new repositories, which will suppress this warning, call:
+2025-04-14T20:09:27.1284412Z hint:
+2025-04-14T20:09:27.1285731Z hint: 	git config --global init.defaultBranch <name>
+2025-04-14T20:09:27.1287819Z hint:
+2025-04-14T20:09:27.1289647Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-04-14T20:09:27.1292382Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-04-14T20:09:27.1294767Z hint:
+2025-04-14T20:09:27.1295973Z hint: 	git branch -m <name>
+2025-04-14T20:09:27.1298710Z Initialized empty Git repository in /home/runner/work/elasticsearch/elasticsearch/.git/
+2025-04-14T20:09:27.1303891Z [command]/usr/bin/git remote add origin https://github.com/elastic/elasticsearch
+2025-04-14T20:09:27.1335336Z ##[endgroup]
+2025-04-14T20:09:27.1337661Z ##[group]Disabling automatic garbage collection
+2025-04-14T20:09:27.1339801Z [command]/usr/bin/git config --local gc.auto 0
+2025-04-14T20:09:27.1369379Z ##[endgroup]
+2025-04-14T20:09:27.1371342Z ##[group]Setting up auth
+2025-04-14T20:09:27.1378022Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-04-14T20:09:27.1415740Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-04-14T20:09:27.1731404Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-14T20:09:27.1771320Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-04-14T20:09:27.2029713Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-04-14T20:09:27.2076113Z ##[endgroup]
+2025-04-14T20:09:27.2078601Z ##[group]Fetching the repository
+2025-04-14T20:09:27.2087560Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +refs/heads/main:refs/remotes/origin/main
+2025-04-14T20:09:39.6741760Z From https://github.com/elastic/elasticsearch
+2025-04-14T20:09:39.6742576Z  * [new branch]        main       -> origin/main
+2025-04-14T20:09:39.6773014Z ##[endgroup]
+2025-04-14T20:09:39.6775547Z ##[group]Determining the checkout info
+2025-04-14T20:09:39.6776136Z ##[endgroup]
+2025-04-14T20:09:39.6781531Z [command]/usr/bin/git sparse-checkout disable
+2025-04-14T20:09:39.6824684Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-04-14T20:09:39.6851348Z ##[group]Checking out the ref
+2025-04-14T20:09:39.6855489Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2025-04-14T20:09:40.7427718Z Updating files:  44% (14147/31929)
+2025-04-14T20:09:40.7660261Z Updating files:  45% (14369/31929)
+2025-04-14T20:09:40.7900335Z Updating files:  46% (14688/31929)
+2025-04-14T20:09:40.8115105Z Updating files:  47% (15007/31929)
+2025-04-14T20:09:40.8457185Z Updating files:  48% (15326/31929)
+2025-04-14T20:09:40.8751603Z Updating files:  49% (15646/31929)
+2025-04-14T20:09:40.8979830Z Updating files:  50% (15965/31929)
+2025-04-14T20:09:40.9212777Z Updating files:  51% (16284/31929)
+2025-04-14T20:09:40.9446637Z Updating files:  52% (16604/31929)
+2025-04-14T20:09:40.9679706Z Updating files:  53% (16923/31929)
+2025-04-14T20:09:40.9874060Z Updating files:  54% (17242/31929)
+2025-04-14T20:09:41.0077118Z Updating files:  55% (17561/31929)
+2025-04-14T20:09:41.0237117Z Updating files:  56% (17881/31929)
+2025-04-14T20:09:41.0439730Z Updating files:  57% (18200/31929)
+2025-04-14T20:09:41.0638963Z Updating files:  58% (18519/31929)
+2025-04-14T20:09:41.0843737Z Updating files:  59% (18839/31929)
+2025-04-14T20:09:41.1067967Z Updating files:  60% (19158/31929)
+2025-04-14T20:09:41.1228873Z Updating files:  61% (19477/31929)
+2025-04-14T20:09:41.1472111Z Updating files:  62% (19796/31929)
+2025-04-14T20:09:41.1630063Z Updating files:  63% (20116/31929)
+2025-04-14T20:09:41.1819206Z Updating files:  64% (20435/31929)
+2025-04-14T20:09:41.2035372Z Updating files:  65% (20754/31929)
+2025-04-14T20:09:41.2212413Z Updating files:  66% (21074/31929)
+2025-04-14T20:09:41.2363834Z Updating files:  67% (21393/31929)
+2025-04-14T20:09:41.2546557Z Updating files:  68% (21712/31929)
+2025-04-14T20:09:41.2806013Z Updating files:  69% (22032/31929)
+2025-04-14T20:09:41.2943525Z Updating files:  70% (22351/31929)
+2025-04-14T20:09:41.3116798Z Updating files:  71% (22670/31929)
+2025-04-14T20:09:41.3316465Z Updating files:  72% (22989/31929)
+2025-04-14T20:09:41.3476061Z Updating files:  73% (23309/31929)
+2025-04-14T20:09:41.3677258Z Updating files:  74% (23628/31929)
+2025-04-14T20:09:41.3927085Z Updating files:  75% (23947/31929)
+2025-04-14T20:09:41.4924832Z Updating files:  76% (24267/31929)
+2025-04-14T20:09:41.5080215Z Updating files:  77% (24586/31929)
+2025-04-14T20:09:41.5292611Z Updating files:  78% (24905/31929)
+2025-04-14T20:09:41.5548233Z Updating files:  79% (25224/31929)
+2025-04-14T20:09:41.5831453Z Updating files:  80% (25544/31929)
+2025-04-14T20:09:41.6046516Z Updating files:  81% (25863/31929)
+2025-04-14T20:09:41.6325026Z Updating files:  82% (26182/31929)
+2025-04-14T20:09:41.6552027Z Updating files:  83% (26502/31929)
+2025-04-14T20:09:41.6805001Z Updating files:  84% (26821/31929)
+2025-04-14T20:09:41.6974718Z Updating files:  85% (27140/31929)
+2025-04-14T20:09:41.7257116Z Updating files:  86% (27459/31929)
+2025-04-14T20:09:41.7257754Z Updating files:  87% (27779/31929)
+2025-04-14T20:09:41.7536636Z Updating files:  87% (27780/31929)
+2025-04-14T20:09:41.7773141Z Updating files:  88% (28098/31929)
+2025-04-14T20:09:41.8007336Z Updating files:  89% (28417/31929)
+2025-04-14T20:09:41.8249149Z Updating files:  90% (28737/31929)
+2025-04-14T20:09:41.8512480Z Updating files:  91% (29056/31929)
+2025-04-14T20:09:41.8743526Z Updating files:  92% (29375/31929)
+2025-04-14T20:09:41.8925641Z Updating files:  93% (29694/31929)
+2025-04-14T20:09:41.9166393Z Updating files:  94% (30014/31929)
+2025-04-14T20:09:41.9386640Z Updating files:  95% (30333/31929)
+2025-04-14T20:09:41.9639063Z Updating files:  96% (30652/31929)
+2025-04-14T20:09:41.9873175Z Updating files:  97% (30972/31929)
+2025-04-14T20:09:42.0150261Z Updating files:  98% (31291/31929)
+2025-04-14T20:09:42.0403352Z Updating files:  99% (31610/31929)
+2025-04-14T20:09:42.0403832Z Updating files: 100% (31929/31929)
+2025-04-14T20:09:42.0404209Z Updating files: 100% (31929/31929), done.
+2025-04-14T20:09:42.0916726Z Switched to a new branch 'main'
+2025-04-14T20:09:42.0917968Z branch 'main' set up to track 'origin/main'.
+2025-04-14T20:09:42.0998199Z ##[endgroup]
+2025-04-14T20:09:42.1043676Z [command]/usr/bin/git log -1 --format=%H
+2025-04-14T20:09:42.1067306Z f9f3defe92ea78c7b0403987d0de435b70720def

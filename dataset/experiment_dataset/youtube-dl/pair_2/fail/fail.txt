@@ -1,0 +1,1183 @@
+2025-02-06T20:45:21.9091850Z Requested labels: ubuntu-20.04
+2025-02-06T20:45:21.9092191Z Job defined at: ytdl-org/youtube-dl/.github/workflows/ci.yml@refs/pull/33049/merge
+2025-02-06T20:45:21.9092338Z Waiting for a runner to pick up this job...
+2025-02-06T20:45:23.3407146Z Job is waiting for a hosted runner to come online.
+2025-02-06T20:45:24.5196792Z Job is about to start running on the hosted runner: GitHub Actions 15 (hosted)
+2025-02-06T20:45:26.2309138Z Current runner version: '2.322.0'
+2025-02-06T20:45:26.2333241Z ##[group]Operating System
+2025-02-06T20:45:26.2333956Z Ubuntu
+2025-02-06T20:45:26.2334447Z 20.04.6
+2025-02-06T20:45:26.2334945Z LTS
+2025-02-06T20:45:26.2335378Z ##[endgroup]
+2025-02-06T20:45:26.2335912Z ##[group]Runner Image
+2025-02-06T20:45:26.2336482Z Image: ubuntu-20.04
+2025-02-06T20:45:26.2336956Z Version: 20250202.1.0
+2025-02-06T20:45:26.2337960Z Included Software: https://github.com/actions/runner-images/blob/ubuntu20/20250202.1/images/ubuntu/Ubuntu2004-Readme.md
+2025-02-06T20:45:26.2339333Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu20%2F20250202.1
+2025-02-06T20:45:26.2340178Z ##[endgroup]
+2025-02-06T20:45:26.2340701Z ##[group]Runner Image Provisioner
+2025-02-06T20:45:26.2341301Z 2.0.422.1
+2025-02-06T20:45:26.2341717Z ##[endgroup]
+2025-02-06T20:45:26.2342737Z ##[group]GITHUB_TOKEN Permissions
+2025-02-06T20:45:26.2344471Z Contents: read
+2025-02-06T20:45:26.2345019Z Metadata: read
+2025-02-06T20:45:26.2345709Z Packages: read
+2025-02-06T20:45:26.2346274Z ##[endgroup]
+2025-02-06T20:45:26.2348973Z Secret source: None
+2025-02-06T20:45:26.2349662Z Prepare workflow directory
+2025-02-06T20:45:26.2777079Z Prepare all required actions
+2025-02-06T20:45:26.2813275Z Getting action download info
+2025-02-06T20:45:26.5309220Z Download action repository 'actions/checkout@v3' (SHA:f43a0e5ff2bd294095638e18286ca9a3d1956744)
+2025-02-06T20:45:26.6202625Z Download action repository 'ytdl-org/setup-python@v1' (SHA:721f2cd130736a528673de59e74be6fb0d0a8784)
+2025-02-06T20:45:26.8637098Z Download action repository 'actions/cache@v3' (SHA:f4b3439a656ba812b8cb417d2d49f9c810103092)
+2025-02-06T20:45:26.9765696Z Download action repository 'actions/setup-java@v3' (SHA:0ab4596768b603586c0de567f2430c30f5b0d2b0)
+2025-02-06T20:45:27.2989492Z Getting action download info
+2025-02-06T20:45:27.4337916Z Download action repository 'MatteoH2O1999/build-and-install-python@004dc2989b38616af18eb8aba45fe49d5f813264' (SHA:004dc2989b38616af18eb8aba45fe49d5f813264)
+2025-02-06T20:45:27.7007199Z Download action repository 'actions/setup-python@bd6b4b6205c4dbad673328db7b31b7fab9e241c0' (SHA:bd6b4b6205c4dbad673328db7b31b7fab9e241c0)
+2025-02-06T20:45:27.8847835Z Complete job name: Run tests (ubuntu-20.04, 3.2, cpython, core, sh)
+2025-02-06T20:45:27.9649177Z ##[group]Run # apt in runner, if needed, may not be up-to-date
+2025-02-06T20:45:27.9650644Z [36;1m# apt in runner, if needed, may not be up-to-date[0m
+2025-02-06T20:45:27.9651771Z [36;1msudo apt-get update[0m
+2025-02-06T20:45:27.9914481Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-02-06T20:45:27.9917228Z env:
+2025-02-06T20:45:27.9919132Z   all-cpython-versions: 2.6, 2.7, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 3.10, 3.11, 3.12
+2025-02-06T20:45:27.9921884Z   main-cpython-versions: 2.7, 3.2, 3.5, 3.9, 3.11
+2025-02-06T20:45:27.9923873Z   pypy-versions: pypy-2.7, pypy-3.6, pypy-3.7
+2025-02-06T20:45:27.9925712Z   cpython-versions: main
+2025-02-06T20:45:27.9927129Z   test-set: core
+2025-02-06T20:45:27.9928440Z   next: 3.13
+2025-02-06T20:45:27.9929649Z   PIP: python -m pip
+2025-02-06T20:45:27.9931050Z   PIP_DISABLE_PIP_VERSION_CHECK: true
+2025-02-06T20:45:27.9932774Z   PIP_NO_PYTHON_VERSION_WARNING: true
+2025-02-06T20:45:27.9934420Z ##[endgroup]
+2025-02-06T20:45:28.0971359Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [142 B]
+2025-02-06T20:45:28.1252743Z Hit:2 http://azure.archive.ubuntu.com/ubuntu focal InRelease
+2025-02-06T20:45:28.1298276Z Get:3 http://azure.archive.ubuntu.com/ubuntu focal-updates InRelease [128 kB]
+2025-02-06T20:45:28.1331279Z Get:4 http://azure.archive.ubuntu.com/ubuntu focal-backports InRelease [128 kB]
+2025-02-06T20:45:28.1334762Z Hit:6 https://packages.microsoft.com/repos/azure-cli focal InRelease
+2025-02-06T20:45:28.1359276Z Get:5 http://azure.archive.ubuntu.com/ubuntu focal-security InRelease [128 kB]
+2025-02-06T20:45:28.1437667Z Get:7 https://packages.microsoft.com/ubuntu/20.04/prod focal InRelease [3632 B]
+2025-02-06T20:45:28.3507535Z Get:8 http://azure.archive.ubuntu.com/ubuntu focal-updates/main amd64 Packages [3772 kB]
+2025-02-06T20:45:28.3924539Z Get:9 http://azure.archive.ubuntu.com/ubuntu focal-updates/main Translation-en [576 kB]
+2025-02-06T20:45:28.3992325Z Get:10 http://azure.archive.ubuntu.com/ubuntu focal-updates/restricted amd64 Packages [3547 kB]
+2025-02-06T20:45:28.4349704Z Get:11 http://azure.archive.ubuntu.com/ubuntu focal-updates/restricted Translation-en [496 kB]
+2025-02-06T20:45:28.4411110Z Get:12 http://azure.archive.ubuntu.com/ubuntu focal-updates/universe amd64 Packages [1254 kB]
+2025-02-06T20:45:28.4539224Z Get:13 http://azure.archive.ubuntu.com/ubuntu focal-updates/universe Translation-en [301 kB]
+2025-02-06T20:45:28.6244840Z Get:14 http://azure.archive.ubuntu.com/ubuntu focal-security/main amd64 Packages [3393 kB]
+2025-02-06T20:45:28.6582152Z Get:15 http://azure.archive.ubuntu.com/ubuntu focal-security/main Translation-en [496 kB]
+2025-02-06T20:45:28.6651980Z Get:16 http://azure.archive.ubuntu.com/ubuntu focal-security/restricted amd64 Packages [3400 kB]
+2025-02-06T20:45:28.7018351Z Get:17 http://azure.archive.ubuntu.com/ubuntu focal-security/restricted Translation-en [476 kB]
+2025-02-06T20:45:28.7271385Z Get:20 https://packages.microsoft.com/ubuntu/20.04/prod focal/main amd64 Packages [332 kB]
+2025-02-06T20:45:28.7392584Z Get:21 https://packages.microsoft.com/ubuntu/20.04/prod focal/main arm64 Packages [71.2 kB]
+2025-02-06T20:45:28.7586850Z Get:18 http://azure.archive.ubuntu.com/ubuntu focal-security/universe amd64 Packages [1032 kB]
+2025-02-06T20:45:28.7671700Z Get:19 http://azure.archive.ubuntu.com/ubuntu focal-security/universe Translation-en [218 kB]
+2025-02-06T20:45:32.9027715Z Fetched 19.8 MB in 3s (7146 kB/s)
+2025-02-06T20:45:33.8375331Z Reading package lists...
+2025-02-06T20:45:33.8725603Z ##[group]Run actions/checkout@v3
+2025-02-06T20:45:33.8725903Z with:
+2025-02-06T20:45:33.8726124Z   repository: ytdl-org/youtube-dl
+2025-02-06T20:45:33.8726506Z   token: ***
+2025-02-06T20:45:33.8726695Z   ssh-strict: true
+2025-02-06T20:45:33.8726896Z   persist-credentials: true
+2025-02-06T20:45:33.8727131Z   clean: true
+2025-02-06T20:45:33.8727327Z   sparse-checkout-cone-mode: true
+2025-02-06T20:45:33.8727559Z   fetch-depth: 1
+2025-02-06T20:45:33.8727732Z   fetch-tags: false
+2025-02-06T20:45:33.8727912Z   lfs: false
+2025-02-06T20:45:33.8728076Z   submodules: false
+2025-02-06T20:45:33.8728262Z   set-safe-directory: true
+2025-02-06T20:45:33.8728489Z env:
+2025-02-06T20:45:33.8728764Z   all-cpython-versions: 2.6, 2.7, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 3.10, 3.11, 3.12
+2025-02-06T20:45:33.8729135Z   main-cpython-versions: 2.7, 3.2, 3.5, 3.9, 3.11
+2025-02-06T20:45:33.8729423Z   pypy-versions: pypy-2.7, pypy-3.6, pypy-3.7
+2025-02-06T20:45:33.8729693Z   cpython-versions: main
+2025-02-06T20:45:33.8729920Z   test-set: core
+2025-02-06T20:45:33.8730087Z   next: 3.13
+2025-02-06T20:45:33.8730260Z   PIP: python -m pip
+2025-02-06T20:45:33.8730480Z   PIP_DISABLE_PIP_VERSION_CHECK: true
+2025-02-06T20:45:33.8730721Z   PIP_NO_PYTHON_VERSION_WARNING: true
+2025-02-06T20:45:33.8730956Z ##[endgroup]
+2025-02-06T20:45:34.0398911Z Syncing repository: ytdl-org/youtube-dl
+2025-02-06T20:45:34.0400171Z ##[group]Getting Git version info
+2025-02-06T20:45:34.0400579Z Working directory is '/home/runner/work/youtube-dl/youtube-dl'
+2025-02-06T20:45:34.0401128Z [command]/usr/bin/git version
+2025-02-06T20:45:34.0486644Z git version 2.48.1
+2025-02-06T20:45:34.0513330Z ##[endgroup]
+2025-02-06T20:45:34.0530175Z Temporarily overriding HOME='/home/runner/work/_temp/c9c4e385-0ffe-4511-9482-e28a647f4b07' before making global git config changes
+2025-02-06T20:45:34.0531535Z Adding repository directory to the temporary git global config as a safe directory
+2025-02-06T20:45:34.0535113Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/youtube-dl/youtube-dl
+2025-02-06T20:45:34.0571501Z Deleting the contents of '/home/runner/work/youtube-dl/youtube-dl'
+2025-02-06T20:45:34.0574858Z ##[group]Initializing the repository
+2025-02-06T20:45:34.0577971Z [command]/usr/bin/git init /home/runner/work/youtube-dl/youtube-dl
+2025-02-06T20:45:34.0656716Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-02-06T20:45:34.0657632Z hint: is subject to change. To configure the initial branch name to use in all
+2025-02-06T20:45:34.0658518Z hint: of your new repositories, which will suppress this warning, call:
+2025-02-06T20:45:34.0659097Z hint:
+2025-02-06T20:45:34.0659373Z hint: 	git config --global init.defaultBranch <name>
+2025-02-06T20:45:34.0659871Z hint:
+2025-02-06T20:45:34.0660379Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-02-06T20:45:34.0661232Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-02-06T20:45:34.0661934Z hint:
+2025-02-06T20:45:34.0662289Z hint: 	git branch -m <name>
+2025-02-06T20:45:34.0663042Z Initialized empty Git repository in /home/runner/work/youtube-dl/youtube-dl/.git/
+2025-02-06T20:45:34.0668909Z [command]/usr/bin/git remote add origin https://github.com/ytdl-org/youtube-dl
+2025-02-06T20:45:34.0699374Z ##[endgroup]
+2025-02-06T20:45:34.0700074Z ##[group]Disabling automatic garbage collection
+2025-02-06T20:45:34.0703447Z [command]/usr/bin/git config --local gc.auto 0
+2025-02-06T20:45:34.0727969Z ##[endgroup]
+2025-02-06T20:45:34.0728335Z ##[group]Setting up auth
+2025-02-06T20:45:34.0733623Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-02-06T20:45:34.0758774Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-02-06T20:45:34.1095655Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-02-06T20:45:34.1120342Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-02-06T20:45:34.1322266Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-02-06T20:45:34.1386561Z ##[endgroup]
+2025-02-06T20:45:34.1387293Z ##[group]Fetching the repository
+2025-02-06T20:45:34.1395186Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --progress --no-recurse-submodules --depth=1 origin +5bfc995b3128866a93307fdfc9c3d9c4f33dd8df:refs/remotes/pull/33049/merge
+2025-02-06T20:45:34.3942687Z remote: Enumerating objects: 1003, done.        
+2025-02-06T20:45:34.3943275Z remote: Counting objects:   0% (1/1003)        
+2025-02-06T20:45:34.3943839Z remote: Counting objects:   1% (11/1003)        
+2025-02-06T20:45:34.3944443Z remote: Counting objects:   2% (21/1003)        
+2025-02-06T20:45:34.3944830Z remote: Counting objects:   3% (31/1003)        
+2025-02-06T20:45:34.3945174Z remote: Counting objects:   4% (41/1003)        
+2025-02-06T20:45:34.3945507Z remote: Counting objects:   5% (51/1003)        
+2025-02-06T20:45:34.3945839Z remote: Counting objects:   6% (61/1003)        
+2025-02-06T20:45:34.3946200Z remote: Counting objects:   7% (71/1003)        
+2025-02-06T20:45:34.3946526Z remote: Counting objects:   8% (81/1003)        
+2025-02-06T20:45:34.3946853Z remote: Counting objects:   9% (91/1003)        
+2025-02-06T20:45:34.3947193Z remote: Counting objects:  10% (101/1003)        
+2025-02-06T20:45:34.3947529Z remote: Counting objects:  11% (111/1003)        
+2025-02-06T20:45:34.3947857Z remote: Counting objects:  12% (121/1003)        
+2025-02-06T20:45:34.3948182Z remote: Counting objects:  13% (131/1003)        
+2025-02-06T20:45:34.3948507Z remote: Counting objects:  14% (141/1003)        
+2025-02-06T20:45:34.3948836Z remote: Counting objects:  15% (151/1003)        
+2025-02-06T20:45:34.3949180Z remote: Counting objects:  16% (161/1003)        
+2025-02-06T20:45:34.3949500Z remote: Counting objects:  17% (171/1003)        
+2025-02-06T20:45:34.3949827Z remote: Counting objects:  18% (181/1003)        
+2025-02-06T20:45:34.3995151Z remote: Counting objects:  19% (191/1003)        
+2025-02-06T20:45:34.3996640Z remote: Counting objects:  20% (201/1003)        
+2025-02-06T20:45:34.3997375Z remote: Counting objects:  21% (211/1003)        
+2025-02-06T20:45:34.3998071Z remote: Counting objects:  22% (221/1003)        
+2025-02-06T20:45:34.3998731Z remote: Counting objects:  23% (231/1003)        
+2025-02-06T20:45:34.3999451Z remote: Counting objects:  24% (241/1003)        
+2025-02-06T20:45:34.4000114Z remote: Counting objects:  25% (251/1003)        
+2025-02-06T20:45:34.4000714Z remote: Counting objects:  26% (261/1003)        
+2025-02-06T20:45:34.4001494Z remote: Counting objects:  27% (271/1003)        
+2025-02-06T20:45:34.4002258Z remote: Counting objects:  28% (281/1003)        
+2025-02-06T20:45:34.4002896Z remote: Counting objects:  29% (291/1003)        
+2025-02-06T20:45:34.4003299Z remote: Counting objects:  30% (301/1003)        
+2025-02-06T20:45:34.4003681Z remote: Counting objects:  31% (311/1003)        
+2025-02-06T20:45:34.4004037Z remote: Counting objects:  32% (321/1003)        
+2025-02-06T20:45:34.4004457Z remote: Counting objects:  33% (331/1003)        
+2025-02-06T20:45:34.4004818Z remote: Counting objects:  34% (342/1003)        
+2025-02-06T20:45:34.4005195Z remote: Counting objects:  35% (352/1003)        
+2025-02-06T20:45:34.4005540Z remote: Counting objects:  36% (362/1003)        
+2025-02-06T20:45:34.4005836Z remote: Counting objects:  37% (372/1003)        
+2025-02-06T20:45:34.4006137Z remote: Counting objects:  38% (382/1003)        
+2025-02-06T20:45:34.4006423Z remote: Counting objects:  39% (392/1003)        
+2025-02-06T20:45:34.4006714Z remote: Counting objects:  40% (402/1003)        
+2025-02-06T20:45:34.4007003Z remote: Counting objects:  41% (412/1003)        
+2025-02-06T20:45:34.4007535Z remote: Counting objects:  42% (422/1003)        
+2025-02-06T20:45:34.4007855Z remote: Counting objects:  43% (432/1003)        
+2025-02-06T20:45:34.4008155Z remote: Counting objects:  44% (442/1003)        
+2025-02-06T20:45:34.4008442Z remote: Counting objects:  45% (452/1003)        
+2025-02-06T20:45:34.4008737Z remote: Counting objects:  46% (462/1003)        
+2025-02-06T20:45:34.4009025Z remote: Counting objects:  47% (472/1003)        
+2025-02-06T20:45:34.4009309Z remote: Counting objects:  48% (482/1003)        
+2025-02-06T20:45:34.4009597Z remote: Counting objects:  49% (492/1003)        
+2025-02-06T20:45:34.4009887Z remote: Counting objects:  50% (502/1003)        
+2025-02-06T20:45:34.4010175Z remote: Counting objects:  51% (512/1003)        
+2025-02-06T20:45:34.4010458Z remote: Counting objects:  52% (522/1003)        
+2025-02-06T20:45:34.4010747Z remote: Counting objects:  53% (532/1003)        
+2025-02-06T20:45:34.4011042Z remote: Counting objects:  54% (542/1003)        
+2025-02-06T20:45:34.4011329Z remote: Counting objects:  55% (552/1003)        
+2025-02-06T20:45:34.4011620Z remote: Counting objects:  56% (562/1003)        
+2025-02-06T20:45:34.4011911Z remote: Counting objects:  57% (572/1003)        
+2025-02-06T20:45:34.4012194Z remote: Counting objects:  58% (582/1003)        
+2025-02-06T20:45:34.4012490Z remote: Counting objects:  59% (592/1003)        
+2025-02-06T20:45:34.4012779Z remote: Counting objects:  60% (602/1003)        
+2025-02-06T20:45:34.4013064Z remote: Counting objects:  61% (612/1003)        
+2025-02-06T20:45:34.4013372Z remote: Counting objects:  62% (622/1003)        
+2025-02-06T20:45:34.4013660Z remote: Counting objects:  63% (632/1003)        
+2025-02-06T20:45:34.4013961Z remote: Counting objects:  64% (642/1003)        
+2025-02-06T20:45:34.4014260Z remote: Counting objects:  65% (652/1003)        
+2025-02-06T20:45:34.4014552Z remote: Counting objects:  66% (662/1003)        
+2025-02-06T20:45:34.4014841Z remote: Counting objects:  67% (673/1003)        
+2025-02-06T20:45:34.4015147Z remote: Counting objects:  68% (683/1003)        
+2025-02-06T20:45:34.4015442Z remote: Counting objects:  69% (693/1003)        
+2025-02-06T20:45:34.4015728Z remote: Counting objects:  70% (703/1003)        
+2025-02-06T20:45:34.4016020Z remote: Counting objects:  71% (713/1003)        
+2025-02-06T20:45:34.4016469Z remote: Counting objects:  72% (723/1003)        
+2025-02-06T20:45:34.4016761Z remote: Counting objects:  73% (733/1003)        
+2025-02-06T20:45:34.4017056Z remote: Counting objects:  74% (743/1003)        
+2025-02-06T20:45:34.4017359Z remote: Counting objects:  75% (753/1003)        
+2025-02-06T20:45:34.4017642Z remote: Counting objects:  76% (763/1003)        
+2025-02-06T20:45:34.4017931Z remote: Counting objects:  77% (773/1003)        
+2025-02-06T20:45:34.4018220Z remote: Counting objects:  78% (783/1003)        
+2025-02-06T20:45:34.4018504Z remote: Counting objects:  79% (793/1003)        
+2025-02-06T20:45:34.4018799Z remote: Counting objects:  80% (803/1003)        
+2025-02-06T20:45:34.4019104Z remote: Counting objects:  81% (813/1003)        
+2025-02-06T20:45:34.4019391Z remote: Counting objects:  82% (823/1003)        
+2025-02-06T20:45:34.4019691Z remote: Counting objects:  83% (833/1003)        
+2025-02-06T20:45:34.4019984Z remote: Counting objects:  84% (843/1003)        
+2025-02-06T20:45:34.4020276Z remote: Counting objects:  85% (853/1003)        
+2025-02-06T20:45:34.4020563Z remote: Counting objects:  86% (863/1003)        
+2025-02-06T20:45:34.4020868Z remote: Counting objects:  87% (873/1003)        
+2025-02-06T20:45:34.4021166Z remote: Counting objects:  88% (883/1003)        
+2025-02-06T20:45:34.4021452Z remote: Counting objects:  89% (893/1003)        
+2025-02-06T20:45:34.4021744Z remote: Counting objects:  90% (903/1003)        
+2025-02-06T20:45:34.4022030Z remote: Counting objects:  91% (913/1003)        
+2025-02-06T20:45:34.4022309Z remote: Counting objects:  92% (923/1003)        
+2025-02-06T20:45:34.4022718Z remote: Counting objects:  93% (933/1003)        
+2025-02-06T20:45:34.4023012Z remote: Counting objects:  94% (943/1003)        
+2025-02-06T20:45:34.4023294Z remote: Counting objects:  95% (953/1003)        
+2025-02-06T20:45:34.4023582Z remote: Counting objects:  96% (963/1003)        
+2025-02-06T20:45:34.4023869Z remote: Counting objects:  97% (973/1003)        
+2025-02-06T20:45:34.4024157Z remote: Counting objects:  98% (983/1003)        
+2025-02-06T20:45:34.4024442Z remote: Counting objects:  99% (993/1003)        
+2025-02-06T20:45:34.4024735Z remote: Counting objects: 100% (1003/1003)        
+2025-02-06T20:45:34.4025061Z remote: Counting objects: 100% (1003/1003), done.        
+2025-02-06T20:45:34.4025397Z remote: Compressing objects:   0% (1/985)        
+2025-02-06T20:45:34.4025713Z remote: Compressing objects:   1% (10/985)        
+2025-02-06T20:45:34.4035549Z remote: Compressing objects:   2% (20/985)        
+2025-02-06T20:45:34.4064709Z remote: Compressing objects:   3% (30/985)        
+2025-02-06T20:45:34.4087854Z remote: Compressing objects:   4% (40/985)        
+2025-02-06T20:45:34.4113136Z remote: Compressing objects:   5% (50/985)        
+2025-02-06T20:45:34.4124972Z remote: Compressing objects:   6% (60/985)        
+2025-02-06T20:45:34.4153820Z remote: Compressing objects:   7% (69/985)        
+2025-02-06T20:45:34.4183139Z remote: Compressing objects:   8% (79/985)        
+2025-02-06T20:45:34.4209537Z remote: Compressing objects:   9% (89/985)        
+2025-02-06T20:45:34.4237813Z remote: Compressing objects:  10% (99/985)        
+2025-02-06T20:45:34.4278031Z remote: Compressing objects:  11% (109/985)        
+2025-02-06T20:45:34.4305312Z remote: Compressing objects:  12% (119/985)        
+2025-02-06T20:45:34.4324131Z remote: Compressing objects:  13% (129/985)        
+2025-02-06T20:45:34.4349510Z remote: Compressing objects:  14% (138/985)        
+2025-02-06T20:45:34.4373379Z remote: Compressing objects:  15% (148/985)        
+2025-02-06T20:45:34.4395948Z remote: Compressing objects:  16% (158/985)        
+2025-02-06T20:45:34.4414116Z remote: Compressing objects:  17% (168/985)        
+2025-02-06T20:45:34.4444748Z remote: Compressing objects:  18% (178/985)        
+2025-02-06T20:45:34.4479225Z remote: Compressing objects:  19% (188/985)        
+2025-02-06T20:45:34.4498857Z remote: Compressing objects:  20% (197/985)        
+2025-02-06T20:45:34.4513704Z remote: Compressing objects:  21% (207/985)        
+2025-02-06T20:45:34.4550918Z remote: Compressing objects:  22% (217/985)        
+2025-02-06T20:45:34.4591153Z remote: Compressing objects:  23% (227/985)        
+2025-02-06T20:45:34.4610802Z remote: Compressing objects:  24% (237/985)        
+2025-02-06T20:45:34.4634481Z remote: Compressing objects:  25% (247/985)        
+2025-02-06T20:45:34.4651974Z remote: Compressing objects:  26% (257/985)        
+2025-02-06T20:45:34.4689311Z remote: Compressing objects:  27% (266/985)        
+2025-02-06T20:45:34.4705388Z remote: Compressing objects:  28% (276/985)        
+2025-02-06T20:45:34.4734736Z remote: Compressing objects:  29% (286/985)        
+2025-02-06T20:45:34.4765085Z remote: Compressing objects:  30% (296/985)        
+2025-02-06T20:45:34.4799649Z remote: Compressing objects:  31% (306/985)        
+2025-02-06T20:45:34.4825500Z remote: Compressing objects:  32% (316/985)        
+2025-02-06T20:45:34.4862454Z remote: Compressing objects:  33% (326/985)        
+2025-02-06T20:45:34.4887563Z remote: Compressing objects:  34% (335/985)        
+2025-02-06T20:45:34.4908566Z remote: Compressing objects:  35% (345/985)        
+2025-02-06T20:45:34.4942354Z remote: Compressing objects:  36% (355/985)        
+2025-02-06T20:45:34.4972033Z remote: Compressing objects:  37% (365/985)        
+2025-02-06T20:45:34.4998775Z remote: Compressing objects:  38% (375/985)        
+2025-02-06T20:45:34.5031120Z remote: Compressing objects:  39% (385/985)        
+2025-02-06T20:45:34.5087840Z remote: Compressing objects:  40% (394/985)        
+2025-02-06T20:45:34.5133285Z remote: Compressing objects:  41% (404/985)        
+2025-02-06T20:45:34.5143375Z remote: Compressing objects:  42% (414/985)        
+2025-02-06T20:45:34.5169259Z remote: Compressing objects:  43% (424/985)        
+2025-02-06T20:45:34.5190899Z remote: Compressing objects:  44% (434/985)        
+2025-02-06T20:45:34.5219839Z remote: Compressing objects:  45% (444/985)        
+2025-02-06T20:45:34.5235166Z remote: Compressing objects:  46% (454/985)        
+2025-02-06T20:45:34.5248860Z remote: Compressing objects:  47% (463/985)        
+2025-02-06T20:45:34.5277262Z remote: Compressing objects:  48% (473/985)        
+2025-02-06T20:45:34.5294752Z remote: Compressing objects:  49% (483/985)        
+2025-02-06T20:45:34.5331503Z remote: Compressing objects:  50% (493/985)        
+2025-02-06T20:45:34.5353822Z remote: Compressing objects:  51% (503/985)        
+2025-02-06T20:45:34.5385573Z remote: Compressing objects:  52% (513/985)        
+2025-02-06T20:45:34.5410940Z remote: Compressing objects:  53% (523/985)        
+2025-02-06T20:45:34.5438294Z remote: Compressing objects:  54% (532/985)        
+2025-02-06T20:45:34.5470333Z remote: Compressing objects:  55% (542/985)        
+2025-02-06T20:45:34.5504395Z remote: Compressing objects:  56% (552/985)        
+2025-02-06T20:45:34.5540266Z remote: Compressing objects:  57% (562/985)        
+2025-02-06T20:45:34.5574978Z remote: Compressing objects:  58% (572/985)        
+2025-02-06T20:45:34.5593324Z remote: Compressing objects:  59% (582/985)        
+2025-02-06T20:45:34.5639734Z remote: Compressing objects:  60% (591/985)        
+2025-02-06T20:45:34.5664964Z remote: Compressing objects:  61% (601/985)        
+2025-02-06T20:45:34.5686923Z remote: Compressing objects:  62% (611/985)        
+2025-02-06T20:45:34.5720606Z remote: Compressing objects:  63% (621/985)        
+2025-02-06T20:45:34.5748198Z remote: Compressing objects:  64% (631/985)        
+2025-02-06T20:45:34.5773462Z remote: Compressing objects:  65% (641/985)        
+2025-02-06T20:45:34.5805517Z remote: Compressing objects:  66% (651/985)        
+2025-02-06T20:45:34.5815156Z remote: Compressing objects:  67% (660/985)        
+2025-02-06T20:45:34.5833889Z remote: Compressing objects:  68% (670/985)        
+2025-02-06T20:45:34.5850242Z remote: Compressing objects:  69% (680/985)        
+2025-02-06T20:45:34.5875100Z remote: Compressing objects:  70% (690/985)        
+2025-02-06T20:45:34.5894346Z remote: Compressing objects:  71% (700/985)        
+2025-02-06T20:45:34.5919317Z remote: Compressing objects:  72% (710/985)        
+2025-02-06T20:45:34.5961232Z remote: Compressing objects:  73% (720/985)        
+2025-02-06T20:45:34.5978696Z remote: Compressing objects:  74% (729/985)        
+2025-02-06T20:45:34.6012654Z remote: Compressing objects:  75% (739/985)        
+2025-02-06T20:45:34.6049096Z remote: Compressing objects:  76% (749/985)        
+2025-02-06T20:45:34.6072151Z remote: Compressing objects:  77% (759/985)        
+2025-02-06T20:45:34.6103405Z remote: Compressing objects:  78% (769/985)        
+2025-02-06T20:45:34.6116929Z remote: Compressing objects:  79% (779/985)        
+2025-02-06T20:45:34.6152670Z remote: Compressing objects:  80% (788/985)        
+2025-02-06T20:45:34.6178214Z remote: Compressing objects:  81% (798/985)        
+2025-02-06T20:45:34.6196566Z remote: Compressing objects:  82% (808/985)        
+2025-02-06T20:45:34.6222767Z remote: Compressing objects:  83% (818/985)        
+2025-02-06T20:45:34.6259774Z remote: Compressing objects:  84% (828/985)        
+2025-02-06T20:45:34.6288707Z remote: Compressing objects:  85% (838/985)        
+2025-02-06T20:45:34.6317865Z remote: Compressing objects:  86% (848/985)        
+2025-02-06T20:45:34.6370626Z remote: Compressing objects:  87% (857/985)        
+2025-02-06T20:45:34.6397553Z remote: Compressing objects:  88% (867/985)        
+2025-02-06T20:45:34.6420996Z remote: Compressing objects:  89% (877/985)        
+2025-02-06T20:45:34.6439139Z remote: Compressing objects:  90% (887/985)        
+2025-02-06T20:45:34.6452982Z remote: Compressing objects:  91% (897/985)        
+2025-02-06T20:45:34.6453959Z remote: Compressing objects:  92% (907/985)        
+2025-02-06T20:45:34.6454863Z remote: Compressing objects:  93% (917/985)        
+2025-02-06T20:45:34.6455994Z remote: Compressing objects:  94% (926/985)        
+2025-02-06T20:45:34.6459549Z remote: Compressing objects:  95% (936/985)        
+2025-02-06T20:45:34.6468865Z remote: Compressing objects:  96% (946/985)        
+2025-02-06T20:45:34.6483980Z remote: Compressing objects:  97% (956/985)        
+2025-02-06T20:45:34.6484587Z remote: Compressing objects:  98% (966/985)        
+2025-02-06T20:45:34.6486702Z remote: Compressing objects:  99% (976/985)        
+2025-02-06T20:45:34.6487307Z remote: Compressing objects: 100% (985/985)        
+2025-02-06T20:45:34.6487913Z remote: Compressing objects: 100% (985/985), done.        
+2025-02-06T20:45:34.6530239Z Receiving objects:   0% (1/1003)
+2025-02-06T20:45:34.6533154Z Receiving objects:   1% (11/1003)
+2025-02-06T20:45:34.6719163Z Receiving objects:   2% (21/1003)
+2025-02-06T20:45:34.6767642Z Receiving objects:   3% (31/1003)
+2025-02-06T20:45:34.6770297Z Receiving objects:   4% (41/1003)
+2025-02-06T20:45:34.6773847Z Receiving objects:   5% (51/1003)
+2025-02-06T20:45:34.6776578Z Receiving objects:   6% (61/1003)
+2025-02-06T20:45:34.6824853Z Receiving objects:   7% (71/1003)
+2025-02-06T20:45:34.6827001Z Receiving objects:   8% (81/1003)
+2025-02-06T20:45:34.6836389Z Receiving objects:   9% (91/1003)
+2025-02-06T20:45:34.6877997Z Receiving objects:  10% (101/1003)
+2025-02-06T20:45:34.6885564Z Receiving objects:  11% (111/1003)
+2025-02-06T20:45:34.6933333Z Receiving objects:  12% (121/1003)
+2025-02-06T20:45:34.6935708Z Receiving objects:  13% (131/1003)
+2025-02-06T20:45:34.6938931Z Receiving objects:  14% (141/1003)
+2025-02-06T20:45:34.6993993Z Receiving objects:  15% (151/1003)
+2025-02-06T20:45:34.7056814Z Receiving objects:  16% (161/1003)
+2025-02-06T20:45:34.7104569Z Receiving objects:  17% (171/1003)
+2025-02-06T20:45:34.7112983Z Receiving objects:  18% (181/1003)
+2025-02-06T20:45:34.7161245Z Receiving objects:  19% (191/1003)
+2025-02-06T20:45:34.7170357Z Receiving objects:  20% (201/1003)
+2025-02-06T20:45:34.7211137Z Receiving objects:  21% (211/1003)
+2025-02-06T20:45:34.7223720Z Receiving objects:  22% (221/1003)
+2025-02-06T20:45:34.7228026Z Receiving objects:  23% (231/1003)
+2025-02-06T20:45:34.7265601Z Receiving objects:  24% (241/1003)
+2025-02-06T20:45:34.7279651Z Receiving objects:  25% (251/1003)
+2025-02-06T20:45:34.7288765Z Receiving objects:  26% (261/1003)
+2025-02-06T20:45:34.7320926Z Receiving objects:  27% (271/1003)
+2025-02-06T20:45:34.7337419Z Receiving objects:  28% (281/1003)
+2025-02-06T20:45:34.7341733Z Receiving objects:  29% (291/1003)
+2025-02-06T20:45:34.7393365Z Receiving objects:  30% (301/1003)
+2025-02-06T20:45:34.7402860Z Receiving objects:  31% (311/1003)
+2025-02-06T20:45:34.7410706Z Receiving objects:  32% (321/1003)
+2025-02-06T20:45:34.7443771Z Receiving objects:  33% (331/1003)
+2025-02-06T20:45:34.7452585Z Receiving objects:  34% (342/1003)
+2025-02-06T20:45:34.7458588Z Receiving objects:  35% (352/1003)
+2025-02-06T20:45:34.7464429Z Receiving objects:  36% (362/1003)
+2025-02-06T20:45:34.7506861Z Receiving objects:  37% (372/1003)
+2025-02-06T20:45:34.7509808Z Receiving objects:  38% (382/1003)
+2025-02-06T20:45:34.7517155Z Receiving objects:  39% (392/1003)
+2025-02-06T20:45:34.7522981Z Receiving objects:  40% (402/1003)
+2025-02-06T20:45:34.7570899Z Receiving objects:  41% (412/1003)
+2025-02-06T20:45:34.7578772Z Receiving objects:  42% (422/1003)
+2025-02-06T20:45:34.7584613Z Receiving objects:  43% (432/1003)
+2025-02-06T20:45:34.7589254Z Receiving objects:  44% (442/1003)
+2025-02-06T20:45:34.7618092Z Receiving objects:  45% (452/1003)
+2025-02-06T20:45:34.7626073Z Receiving objects:  46% (462/1003)
+2025-02-06T20:45:34.7636181Z Receiving objects:  47% (472/1003)
+2025-02-06T20:45:34.7642786Z Receiving objects:  48% (482/1003)
+2025-02-06T20:45:34.7662915Z Receiving objects:  49% (492/1003)
+2025-02-06T20:45:34.7674890Z Receiving objects:  50% (502/1003)
+2025-02-06T20:45:34.7681656Z Receiving objects:  51% (512/1003)
+2025-02-06T20:45:34.7687094Z Receiving objects:  52% (522/1003)
+2025-02-06T20:45:34.7690728Z Receiving objects:  53% (532/1003)
+2025-02-06T20:45:34.7728867Z Receiving objects:  54% (542/1003)
+2025-02-06T20:45:34.7734964Z Receiving objects:  55% (552/1003)
+2025-02-06T20:45:34.7738794Z Receiving objects:  56% (562/1003)
+2025-02-06T20:45:34.7743985Z Receiving objects:  57% (572/1003)
+2025-02-06T20:45:34.7772765Z Receiving objects:  58% (582/1003)
+2025-02-06T20:45:34.7790489Z Receiving objects:  59% (592/1003)
+2025-02-06T20:45:34.7793878Z Receiving objects:  60% (602/1003)
+2025-02-06T20:45:34.7802195Z Receiving objects:  61% (612/1003)
+2025-02-06T20:45:34.7806878Z Receiving objects:  62% (622/1003)
+2025-02-06T20:45:34.7837027Z Receiving objects:  63% (632/1003)
+2025-02-06T20:45:34.7848714Z Receiving objects:  64% (642/1003)
+2025-02-06T20:45:34.7853216Z Receiving objects:  65% (652/1003)
+2025-02-06T20:45:34.7858219Z Receiving objects:  66% (662/1003)
+2025-02-06T20:45:34.7884984Z Receiving objects:  67% (673/1003)
+2025-02-06T20:45:34.7899405Z Receiving objects:  68% (683/1003)
+2025-02-06T20:45:34.7903073Z Receiving objects:  69% (693/1003)
+2025-02-06T20:45:34.7906012Z Receiving objects:  70% (703/1003)
+2025-02-06T20:45:34.7910757Z Receiving objects:  71% (713/1003)
+2025-02-06T20:45:34.7916221Z Receiving objects:  72% (723/1003)
+2025-02-06T20:45:34.7937131Z Receiving objects:  73% (733/1003)
+2025-02-06T20:45:34.7952707Z Receiving objects:  74% (743/1003)
+2025-02-06T20:45:34.7959454Z Receiving objects:  75% (753/1003)
+2025-02-06T20:45:34.7964055Z Receiving objects:  76% (763/1003)
+2025-02-06T20:45:34.7968254Z Receiving objects:  77% (773/1003)
+2025-02-06T20:45:34.7972455Z Receiving objects:  78% (783/1003)
+2025-02-06T20:45:34.7992494Z Receiving objects:  79% (793/1003)
+2025-02-06T20:45:34.7997131Z Receiving objects:  80% (803/1003)
+2025-02-06T20:45:34.8008839Z Receiving objects:  81% (813/1003)
+2025-02-06T20:45:34.8013024Z Receiving objects:  82% (823/1003)
+2025-02-06T20:45:34.8016810Z Receiving objects:  83% (833/1003)
+2025-02-06T20:45:34.8021799Z Receiving objects:  84% (843/1003)
+2025-02-06T20:45:34.8025350Z Receiving objects:  85% (853/1003)
+2025-02-06T20:45:34.8031201Z Receiving objects:  86% (863/1003)
+2025-02-06T20:45:34.8065193Z Receiving objects:  87% (873/1003)
+2025-02-06T20:45:34.8068744Z Receiving objects:  88% (883/1003)
+2025-02-06T20:45:34.8075335Z Receiving objects:  89% (893/1003)
+2025-02-06T20:45:34.8082140Z Receiving objects:  90% (903/1003)
+2025-02-06T20:45:34.8093419Z Receiving objects:  91% (913/1003)
+2025-02-06T20:45:34.8117777Z Receiving objects:  92% (923/1003)
+2025-02-06T20:45:34.8125386Z Receiving objects:  93% (933/1003)
+2025-02-06T20:45:34.8129562Z Receiving objects:  94% (943/1003)
+2025-02-06T20:45:34.8134492Z Receiving objects:  95% (953/1003)
+2025-02-06T20:45:34.8140858Z Receiving objects:  96% (963/1003)
+2025-02-06T20:45:34.8182066Z Receiving objects:  97% (973/1003)
+2025-02-06T20:45:34.8192296Z Receiving objects:  98% (983/1003)
+2025-02-06T20:45:34.8196693Z Receiving objects:  99% (993/1003)
+2025-02-06T20:45:34.8197317Z remote: Total 1003 (delta 21), reused 225 (delta 10), pack-reused 0 (from 0)        
+2025-02-06T20:45:34.8216911Z Receiving objects: 100% (1003/1003)
+2025-02-06T20:45:34.8217510Z Receiving objects: 100% (1003/1003), 2.01 MiB | 11.91 MiB/s, done.
+2025-02-06T20:45:34.8220394Z Resolving deltas:   0% (0/21)
+2025-02-06T20:45:34.8221269Z Resolving deltas:   4% (1/21)
+2025-02-06T20:45:34.8221936Z Resolving deltas:   9% (2/21)
+2025-02-06T20:45:34.8224872Z Resolving deltas:  14% (3/21)
+2025-02-06T20:45:34.8225248Z Resolving deltas:  19% (4/21)
+2025-02-06T20:45:34.8225513Z Resolving deltas:  23% (5/21)
+2025-02-06T20:45:34.8225741Z Resolving deltas:  28% (6/21)
+2025-02-06T20:45:34.8226103Z Resolving deltas:  33% (7/21)
+2025-02-06T20:45:34.8226471Z Resolving deltas:  47% (10/21)
+2025-02-06T20:45:34.8226836Z Resolving deltas:  52% (11/21)
+2025-02-06T20:45:34.8227205Z Resolving deltas:  57% (12/21)
+2025-02-06T20:45:34.8227603Z Resolving deltas:  66% (14/21)
+2025-02-06T20:45:34.8227977Z Resolving deltas:  71% (15/21)
+2025-02-06T20:45:34.8228573Z Resolving deltas:  76% (16/21)
+2025-02-06T20:45:34.8228967Z Resolving deltas:  80% (17/21)
+2025-02-06T20:45:34.8229307Z Resolving deltas:  85% (18/21)
+2025-02-06T20:45:34.8229581Z Resolving deltas:  90% (19/21)
+2025-02-06T20:45:34.8230304Z Resolving deltas: 100% (21/21)
+2025-02-06T20:45:34.8230577Z Resolving deltas: 100% (21/21), done.
+2025-02-06T20:45:34.8321848Z From https://github.com/ytdl-org/youtube-dl
+2025-02-06T20:45:34.8322389Z  * [new ref]         5bfc995b3128866a93307fdfc9c3d9c4f33dd8df -> pull/33049/merge
+2025-02-06T20:45:34.8345983Z ##[endgroup]
+2025-02-06T20:45:34.8346350Z ##[group]Determining the checkout info
+2025-02-06T20:45:34.8348310Z ##[endgroup]
+2025-02-06T20:45:34.8348649Z ##[group]Checking out the ref
+2025-02-06T20:45:34.8352540Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/33049/merge
+2025-02-06T20:45:34.9014755Z Note: switching to 'refs/remotes/pull/33049/merge'.
+2025-02-06T20:45:34.9015310Z 
+2025-02-06T20:45:34.9015598Z You are in 'detached HEAD' state. You can look around, make experimental
+2025-02-06T20:45:34.9016100Z changes and commit them, and you can discard any commits you make in this
+2025-02-06T20:45:34.9016592Z state without impacting any branches by switching back to a branch.
+2025-02-06T20:45:34.9016884Z 
+2025-02-06T20:45:34.9017070Z If you want to create a new branch to retain commits you create, you may
+2025-02-06T20:45:34.9017523Z do so (now or later) by using -c with the switch command. Example:
+2025-02-06T20:45:34.9017908Z 
+2025-02-06T20:45:34.9018014Z   git switch -c <new-branch-name>
+2025-02-06T20:45:34.9018192Z 
+2025-02-06T20:45:34.9018298Z Or undo this operation with:
+2025-02-06T20:45:34.9018463Z 
+2025-02-06T20:45:34.9018546Z   git switch -
+2025-02-06T20:45:34.9018674Z 
+2025-02-06T20:45:34.9018891Z Turn off this advice by setting config variable advice.detachedHead to false
+2025-02-06T20:45:34.9019197Z 
+2025-02-06T20:45:34.9019566Z HEAD is now at 5bfc995 Merge 004a07f4edf2edbfe04bcc61f395dac84e2365fa into 5975d7bb96095fae7c35e7cfcd819255a5b57087
+2025-02-06T20:45:34.9027874Z ##[endgroup]
+2025-02-06T20:45:34.9059450Z [command]/usr/bin/git log -1 --format='%H'
+2025-02-06T20:45:34.9079094Z '5bfc995b3128866a93307fdfc9c3d9c4f33dd8df'
+2025-02-06T20:45:34.9304433Z ##[group]Run ytdl-org/setup-python@v1
+2025-02-06T20:45:34.9304722Z with:
+2025-02-06T20:45:34.9305102Z   python-version: 3.2
+2025-02-06T20:45:34.9305300Z   cache-build: true
+2025-02-06T20:45:34.9305476Z   allow-build: info
+2025-02-06T20:45:34.9305654Z   check-latest: false
+2025-02-06T20:45:34.9305975Z   token: ***
+2025-02-06T20:45:34.9306162Z   update-environment: true
+2025-02-06T20:45:34.9306385Z   allow-prereleases: false
+2025-02-06T20:45:34.9306592Z env:
+2025-02-06T20:45:34.9306859Z   all-cpython-versions: 2.6, 2.7, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 3.10, 3.11, 3.12
+2025-02-06T20:45:34.9307230Z   main-cpython-versions: 2.7, 3.2, 3.5, 3.9, 3.11
+2025-02-06T20:45:34.9307516Z   pypy-versions: pypy-2.7, pypy-3.6, pypy-3.7
+2025-02-06T20:45:34.9307769Z   cpython-versions: main
+2025-02-06T20:45:34.9307980Z   test-set: core
+2025-02-06T20:45:34.9308153Z   next: 3.13
+2025-02-06T20:45:34.9308317Z   PIP: python -m pip
+2025-02-06T20:45:34.9308522Z   PIP_DISABLE_PIP_VERSION_CHECK: true
+2025-02-06T20:45:34.9308793Z   PIP_NO_PYTHON_VERSION_WARNING: true
+2025-02-06T20:45:34.9309109Z   PIP_TRUSTED_HOST: pypi.python.org pypi.org files.pythonhosted.org
+2025-02-06T20:45:34.9309423Z ##[endgroup]
+2025-02-06T20:45:34.9390505Z ##[group]Run MatteoH2O1999/build-and-install-python@004dc2989b38616af18eb8aba45fe49d5f813264
+2025-02-06T20:45:34.9390928Z with:
+2025-02-06T20:45:34.9391098Z   python-version: 3.2
+2025-02-06T20:45:34.9391292Z   check-latest: false
+2025-02-06T20:45:34.9391477Z   cache-build: true
+2025-02-06T20:45:34.9391653Z   allow-build: info
+2025-02-06T20:45:34.9391950Z   token: ***
+2025-02-06T20:45:34.9392145Z   allow-prereleases: false
+2025-02-06T20:45:34.9392348Z env:
+2025-02-06T20:45:34.9392610Z   all-cpython-versions: 2.6, 2.7, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 3.10, 3.11, 3.12
+2025-02-06T20:45:34.9392978Z   main-cpython-versions: 2.7, 3.2, 3.5, 3.9, 3.11
+2025-02-06T20:45:34.9393264Z   pypy-versions: pypy-2.7, pypy-3.6, pypy-3.7
+2025-02-06T20:45:34.9393516Z   cpython-versions: main
+2025-02-06T20:45:34.9393728Z   test-set: core
+2025-02-06T20:45:34.9393903Z   next: 3.13
+2025-02-06T20:45:34.9394071Z   PIP: python -m pip
+2025-02-06T20:45:34.9394286Z   PIP_DISABLE_PIP_VERSION_CHECK: true
+2025-02-06T20:45:34.9394530Z   PIP_NO_PYTHON_VERSION_WARNING: true
+2025-02-06T20:45:34.9394841Z   PIP_TRUSTED_HOST: pypi.python.org pypi.org files.pythonhosted.org
+2025-02-06T20:45:34.9395188Z ##[endgroup]
+2025-02-06T20:45:35.3139135Z CPython version 3.2.x is not supported by actions/setup-python.
+2025-02-06T20:45:35.3139805Z CPython version 3.2.x will be built from source.
+2025-02-06T20:45:35.3318018Z Version range 3.2.x resolved to 3.2.6. Source code uri: https://api.github.com/repos/python/cpython/zipball/refs/tags/v3.2.6
+2025-02-06T20:45:35.3319184Z ##[group]Trying to use cached built version
+2025-02-06T20:45:35.3319486Z Restoring cached version with key CPython3.2.6x64nix...
+2025-02-06T20:45:35.7167433Z Received 28364778 of 28364778 (100.0%), 106.1 MBs/sec
+2025-02-06T20:45:35.7168464Z Cache Size: ~27 MB (28364778 B)
+2025-02-06T20:45:35.7197440Z [command]/usr/bin/tar -xf /home/runner/work/_temp/cb0a6109-f6eb-415b-85f0-d85163a9db99/cache.tzst -P -C /home/runner/work/youtube-dl/youtube-dl --use-compress-program unzstd
+2025-02-06T20:45:36.1561715Z Cache restored successfully
+2025-02-06T20:45:36.1625541Z CPython 3.2.6 restored from cache.
+2025-02-06T20:45:36.1626675Z ##[endgroup]
+2025-02-06T20:45:36.1626877Z Copying built folder into tool cache.
+2025-02-06T20:45:37.4307525Z CPython 3.2.6 for arch x64 successfully installed.
+2025-02-06T20:45:37.4308955Z ##[group]Performing post-install operations
+2025-02-06T20:45:37.4310022Z Installing libssl and libssl-dev version 1.0.2...
+2025-02-06T20:45:38.2034545Z [command]/usr/bin/sudo dpkg -i --force-confold /home/runner/work/_temp/6a89e235-0264-4266-8210-4b545d865687
+2025-02-06T20:45:38.2444755Z Selecting previously unselected package libssl1.0.0:amd64.
+2025-02-06T20:45:38.6733854Z (Reading database ... 275438 files and directories currently installed.)
+2025-02-06T20:45:38.6787758Z Preparing to unpack .../6a89e235-0264-4266-8210-4b545d865687 ...
+2025-02-06T20:45:38.6811897Z Unpacking libssl1.0.0:amd64 (1.0.2g-1ubuntu4.20) ...
+2025-02-06T20:45:38.7569967Z Setting up libssl1.0.0:amd64 (1.0.2g-1ubuntu4.20) ...
+2025-02-06T20:45:38.8507821Z Processing triggers for libc-bin (2.31-0ubuntu9.16) ...
+2025-02-06T20:45:39.2984671Z [command]/usr/bin/sudo dpkg -i --force-confold /home/runner/work/_temp/8415d9d0-d513-482d-9e59-15f6c5adfb7b
+2025-02-06T20:45:39.3290791Z dpkg: warning: downgrading libssl-dev:amd64 from 1.1.1f-1ubuntu2.23 to 1.0.2g-1ubuntu4.20
+2025-02-06T20:45:39.4349561Z (Reading database ... 275457 files and directories currently installed.)
+2025-02-06T20:45:39.4406212Z Preparing to unpack .../8415d9d0-d513-482d-9e59-15f6c5adfb7b ...
+2025-02-06T20:45:39.4439600Z Unpacking libssl-dev:amd64 (1.0.2g-1ubuntu4.20) over (1.1.1f-1ubuntu2.23) ...
+2025-02-06T20:45:39.5841638Z Setting up libssl-dev:amd64 (1.0.2g-1ubuntu4.20) ...
+2025-02-06T20:45:39.6084196Z Cleanup .deb installers...
+2025-02-06T20:45:39.6094227Z Creating python symlinks...
+2025-02-06T20:45:39.6094930Z Creating symlink from /opt/hostedtoolcache/Python/3.2.6/x64/bin/python3.2 to /opt/hostedtoolcache/Python/3.2.6/x64/python
+2025-02-06T20:45:39.6097345Z Creating symlink from /opt/hostedtoolcache/Python/3.2.6/x64/bin/python3.2 to /opt/hostedtoolcache/Python/3.2.6/x64/bin/python32
+2025-02-06T20:45:39.6098917Z Creating symlink from /opt/hostedtoolcache/Python/3.2.6/x64/bin/python3.2 to /opt/hostedtoolcache/Python/3.2.6/x64/bin/python
+2025-02-06T20:45:39.6100263Z Adding executable bit to /opt/hostedtoolcache/Python/3.2.6/x64/bin/python3.2
+2025-02-06T20:45:39.6113648Z [command]/usr/bin/chmod +x /opt/hostedtoolcache/Python/3.2.6/x64/bin/python3.2
+2025-02-06T20:45:39.6144455Z Adding executable bit to /opt/hostedtoolcache/Python/3.2.6/x64/python
+2025-02-06T20:45:39.6153854Z [command]/usr/bin/chmod +x /opt/hostedtoolcache/Python/3.2.6/x64/python
+2025-02-06T20:45:39.6180619Z Adding executable bit to /opt/hostedtoolcache/Python/3.2.6/x64/bin/python32
+2025-02-06T20:45:39.6190015Z [command]/usr/bin/chmod +x /opt/hostedtoolcache/Python/3.2.6/x64/bin/python32
+2025-02-06T20:45:39.6217541Z Adding executable bit to /opt/hostedtoolcache/Python/3.2.6/x64/bin/python
+2025-02-06T20:45:39.6226606Z [command]/usr/bin/chmod +x /opt/hostedtoolcache/Python/3.2.6/x64/bin/python
+2025-02-06T20:45:39.6253007Z Adding executable bit to /opt/hostedtoolcache/Python/3.2.6/x64/bin/python3
+2025-02-06T20:45:39.6263308Z [command]/usr/bin/chmod +x /opt/hostedtoolcache/Python/3.2.6/x64/bin/python3
+2025-02-06T20:45:39.6290958Z ##[endgroup]
+2025-02-06T20:45:39.6293309Z Removing temporary build directories...
+2025-02-06T20:45:39.7217312Z Build directories successfully removed.
+2025-02-06T20:45:39.7417378Z ##[group]Run actions/setup-python@bd6b4b6205c4dbad673328db7b31b7fab9e241c0
+2025-02-06T20:45:39.7417808Z with:
+2025-02-06T20:45:39.7418071Z   python-version: 3.2.6
+2025-02-06T20:45:39.7418377Z   architecture: x64
+2025-02-06T20:45:39.7418653Z   check-latest: false
+2025-02-06T20:45:39.7419230Z   token: ***
+2025-02-06T20:45:39.7419517Z   update-environment: true
+2025-02-06T20:45:39.7419792Z   allow-prereleases: false
+2025-02-06T20:45:39.7420127Z env:
+2025-02-06T20:45:39.7420477Z   all-cpython-versions: 2.6, 2.7, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 3.10, 3.11, 3.12
+2025-02-06T20:45:39.7420927Z   main-cpython-versions: 2.7, 3.2, 3.5, 3.9, 3.11
+2025-02-06T20:45:39.7421304Z   pypy-versions: pypy-2.7, pypy-3.6, pypy-3.7
+2025-02-06T20:45:39.7440211Z   cpython-versions: main
+2025-02-06T20:45:39.7440445Z   test-set: core
+2025-02-06T20:45:39.7440648Z   next: 3.13
+2025-02-06T20:45:39.7440838Z   PIP: python -m pip
+2025-02-06T20:45:39.7441061Z   PIP_DISABLE_PIP_VERSION_CHECK: true
+2025-02-06T20:45:39.7441511Z   PIP_NO_PYTHON_VERSION_WARNING: true
+2025-02-06T20:45:39.7441855Z   PIP_TRUSTED_HOST: pypi.python.org pypi.org files.pythonhosted.org
+2025-02-06T20:45:39.7442174Z ##[endgroup]
+2025-02-06T20:45:39.8607669Z ##[group]Installed versions
+2025-02-06T20:45:39.8636663Z Successfully set up CPython (3.2.6)
+2025-02-06T20:45:39.8637402Z ##[endgroup]
+2025-02-06T20:45:39.8717264Z ##[group]Run /home/runner/work/_actions/ytdl-org/setup-python/v1/setup_pip.ps1
+2025-02-06T20:45:39.8717961Z [36;1m/home/runner/work/_actions/ytdl-org/setup-python/v1/setup_pip.ps1[0m
+2025-02-06T20:45:39.8747153Z shell: /usr/bin/pwsh -command ". '{0}'"
+2025-02-06T20:45:39.8747407Z env:
+2025-02-06T20:45:39.8747682Z   all-cpython-versions: 2.6, 2.7, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 3.10, 3.11, 3.12
+2025-02-06T20:45:39.8748053Z   main-cpython-versions: 2.7, 3.2, 3.5, 3.9, 3.11
+2025-02-06T20:45:39.8748345Z   pypy-versions: pypy-2.7, pypy-3.6, pypy-3.7
+2025-02-06T20:45:39.8748617Z   cpython-versions: main
+2025-02-06T20:45:39.8748826Z   test-set: core
+2025-02-06T20:45:39.8748990Z   next: 3.13
+2025-02-06T20:45:39.8749166Z   PIP: python -m pip
+2025-02-06T20:45:39.8749374Z   PIP_DISABLE_PIP_VERSION_CHECK: true
+2025-02-06T20:45:39.8749615Z   PIP_NO_PYTHON_VERSION_WARNING: true
+2025-02-06T20:45:39.8749912Z   pythonLocation: /opt/hostedtoolcache/Python/3.2.6/x64
+2025-02-06T20:45:39.8750309Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.2.6/x64/lib/pkgconfig
+2025-02-06T20:45:39.8750690Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.2.6/x64
+2025-02-06T20:45:39.8751015Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.2.6/x64
+2025-02-06T20:45:39.8751341Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.2.6/x64
+2025-02-06T20:45:39.8751670Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.2.6/x64/lib
+2025-02-06T20:45:39.8752034Z   PIP_TRUSTED_HOST: pypi.python.org pypi.org files.pythonhosted.org
+2025-02-06T20:45:39.8752351Z   PYTHON_VERSION: 3.2.6
+2025-02-06T20:45:39.8752630Z   SETUP_PYTHON_PATH: /opt/hostedtoolcache/Python/3.2.6/x64/bin/python
+2025-02-06T20:45:39.8752937Z ##[endgroup]
+2025-02-06T20:45:44.8913263Z Setting up pip for python 3.2.6 in path /opt/hostedtoolcache/Python/3.2.6/x64/bin/python
+2025-02-06T20:45:44.8982623Z Pip is not available for version 3.2.6
+2025-02-06T20:45:44.8983737Z Proceed with manual installation at own risk
+2025-02-06T20:45:45.1649978Z ##[group]Run echo "PYTHONHOME=${pythonLocation}" >> "$GITHUB_ENV"
+2025-02-06T20:45:45.1650468Z [36;1mecho "PYTHONHOME=${pythonLocation}" >> "$GITHUB_ENV"[0m
+2025-02-06T20:45:45.1650888Z [36;1mexport expected="/opt/hostedtoolcache/Python/3.2.6/x64/bin/python"[0m
+2025-02-06T20:45:45.1651248Z [36;1mdirname() { printf '%s\n' \[0m
+2025-02-06T20:45:45.1651495Z [36;1m    'import os, sys' \[0m
+2025-02-06T20:45:45.1651745Z [36;1m    'print(os.path.dirname(sys.argv[1]))' \[0m
+2025-02-06T20:45:45.1652019Z [36;1m    | ${expected} - "$1"; }[0m
+2025-02-06T20:45:45.1652270Z [36;1mexpd="$(dirname "$expected")"[0m
+2025-02-06T20:45:45.1652540Z [36;1mexport python="$(command -v python)"[0m
+2025-02-06T20:45:45.1652912Z [36;1m[ "$expd" = "$(dirname "$python")" ] || echo "PATH=$expd:${PATH}" >> "$GITHUB_ENV"[0m
+2025-02-06T20:45:45.1653266Z [36;1m[ -x "$python" ] || printf '%s\n' \[0m
+2025-02-06T20:45:45.1653507Z [36;1m    'import os' \[0m
+2025-02-06T20:45:45.1653765Z [36;1m    'exp = os.environ["expected"]' \[0m
+2025-02-06T20:45:45.1654028Z [36;1m    'python = os.environ["python"]' \[0m
+2025-02-06T20:45:45.1654581Z [36;1m    'exps = os.path.split(exp)' \[0m
+2025-02-06T20:45:45.1654907Z [36;1m    'if python and (os.path.dirname(python) == exp[0]):' \[0m
+2025-02-06T20:45:45.1655204Z [36;1m    '    exit(0)' \[0m
+2025-02-06T20:45:45.1655586Z [36;1m    'exps[1] = "python" + os.path.splitext(exps[1])[1]' \[0m
+2025-02-06T20:45:45.1655935Z [36;1m    'python = os.path.join(*exps)' \[0m
+2025-02-06T20:45:45.1656177Z [36;1m    'try:' \[0m
+2025-02-06T20:45:45.1656388Z [36;1m    '    os.symlink(exp, python)' \[0m
+2025-02-06T20:45:45.1656654Z [36;1m    'except AttributeError:' \[0m
+2025-02-06T20:45:45.1656911Z [36;1m    '    os.rename(exp, python)' \[0m
+2025-02-06T20:45:45.1657156Z [36;1m    | ${expected} -[0m
+2025-02-06T20:45:45.1657520Z [36;1mprintf '%s\n' \[0m
+2025-02-06T20:45:45.1657730Z [36;1m    'import sys' \[0m
+2025-02-06T20:45:45.1657951Z [36;1m    'print(sys.path)' \[0m
+2025-02-06T20:45:45.1658175Z [36;1m    | ${expected} -[0m
+2025-02-06T20:45:45.1717069Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-02-06T20:45:45.1717566Z env:
+2025-02-06T20:45:45.1717837Z   all-cpython-versions: 2.6, 2.7, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 3.10, 3.11, 3.12
+2025-02-06T20:45:45.1718226Z   main-cpython-versions: 2.7, 3.2, 3.5, 3.9, 3.11
+2025-02-06T20:45:45.1718511Z   pypy-versions: pypy-2.7, pypy-3.6, pypy-3.7
+2025-02-06T20:45:45.1718781Z   cpython-versions: main
+2025-02-06T20:45:45.1718986Z   test-set: core
+2025-02-06T20:45:45.1719160Z   next: 3.13
+2025-02-06T20:45:45.1719331Z   PIP: python -m pip
+2025-02-06T20:45:45.1719534Z   PIP_DISABLE_PIP_VERSION_CHECK: true
+2025-02-06T20:45:45.1719780Z   PIP_NO_PYTHON_VERSION_WARNING: true
+2025-02-06T20:45:45.1720067Z   pythonLocation: /opt/hostedtoolcache/Python/3.2.6/x64
+2025-02-06T20:45:45.1720445Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.2.6/x64/lib/pkgconfig
+2025-02-06T20:45:45.1720823Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.2.6/x64
+2025-02-06T20:45:45.1721145Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.2.6/x64
+2025-02-06T20:45:45.1721685Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.2.6/x64
+2025-02-06T20:45:45.1722031Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.2.6/x64/lib
+2025-02-06T20:45:45.1722316Z ##[endgroup]
+2025-02-06T20:45:45.2909205Z ['', '/opt/hostedtoolcache/Python/3.2.6/x64/lib/python32.zip', '/opt/hostedtoolcache/Python/3.2.6/x64/lib/python3.2', '/opt/hostedtoolcache/Python/3.2.6/x64/lib/python3.2/plat-linux2', '/opt/hostedtoolcache/Python/3.2.6/x64/lib/python3.2/lib-dynload', '/opt/hostedtoolcache/Python/3.2.6/x64/lib/python3.2/site-packages']
+2025-02-06T20:45:45.3027228Z ##[group]Run python -m pip --version || { \
+2025-02-06T20:45:45.3027594Z [36;1mpython -m pip --version || { \[0m
+2025-02-06T20:45:45.3027964Z [36;1m  curl -L -O "https://bootstrap.pypa.io/pip/3.2/get-pip.py"; \[0m
+2025-02-06T20:45:45.3028770Z [36;1m  curl -L -O "https://files.pythonhosted.org/packages/b2/d0/cd115fe345dd6f07ec1c780020a7dfe74966fceeb171e0f20d1d4905b0b7/pip-7.1.2-py2.py3-none-any.whl"; \[0m
+2025-02-06T20:45:45.3029637Z [36;1m  python get-pip.py --no-setuptools --no-wheel pip-7.1.2-py2.py3-none-any.whl; }[0m
+2025-02-06T20:45:45.3088388Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-02-06T20:45:45.3088701Z env:
+2025-02-06T20:45:45.3088974Z   all-cpython-versions: 2.6, 2.7, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 3.10, 3.11, 3.12
+2025-02-06T20:45:45.3089346Z   main-cpython-versions: 2.7, 3.2, 3.5, 3.9, 3.11
+2025-02-06T20:45:45.3089642Z   pypy-versions: pypy-2.7, pypy-3.6, pypy-3.7
+2025-02-06T20:45:45.3089911Z   cpython-versions: main
+2025-02-06T20:45:45.3090153Z   test-set: core
+2025-02-06T20:45:45.3090330Z   next: 3.13
+2025-02-06T20:45:45.3090500Z   PIP: python -m pip
+2025-02-06T20:45:45.3090716Z   PIP_DISABLE_PIP_VERSION_CHECK: true
+2025-02-06T20:45:45.3090973Z   PIP_NO_PYTHON_VERSION_WARNING: true
+2025-02-06T20:45:45.3091276Z   pythonLocation: /opt/hostedtoolcache/Python/3.2.6/x64
+2025-02-06T20:45:45.3091704Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.2.6/x64/lib/pkgconfig
+2025-02-06T20:45:45.3092079Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.2.6/x64
+2025-02-06T20:45:45.3092410Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.2.6/x64
+2025-02-06T20:45:45.3092742Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.2.6/x64
+2025-02-06T20:45:45.3093074Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.2.6/x64/lib
+2025-02-06T20:45:45.3093396Z   PYTHONHOME: /opt/hostedtoolcache/Python/3.2.6/x64
+2025-02-06T20:45:45.3093658Z ##[endgroup]
+2025-02-06T20:45:45.3422186Z /opt/hostedtoolcache/Python/3.2.6/x64/bin/python: No module named pip
+2025-02-06T20:45:45.3506256Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2025-02-06T20:45:45.3507141Z                                  Dload  Upload   Total   Spent    Left  Speed
+2025-02-06T20:45:45.3507615Z 
+2025-02-06T20:45:45.6235745Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2025-02-06T20:45:45.6236555Z 100 1363k  100 1363k    0     0  4995k      0 --:--:-- --:--:-- --:--:-- 4995k
+2025-02-06T20:45:45.6313404Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2025-02-06T20:45:45.6314080Z                                  Dload  Upload   Total   Spent    Left  Speed
+2025-02-06T20:45:45.6314443Z 
+2025-02-06T20:45:45.6886755Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2025-02-06T20:45:45.6887261Z 100 1085k  100 1085k    0     0  18.5M      0 --:--:-- --:--:-- --:--:-- 18.5M
+2025-02-06T20:45:46.7627951Z Processing ./pip-7.1.2-py2.py3-none-any.whl
+2025-02-06T20:45:46.8069427Z Installing collected packages: pip
+2025-02-06T20:45:47.1930713Z Successfully installed pip-7.1.2
+2025-02-06T20:45:47.2279858Z ##[group]Run $PIP -qq show nose || { \
+2025-02-06T20:45:47.2280188Z [36;1m$PIP -qq show nose || { \[0m
+2025-02-06T20:45:47.2280872Z [36;1m  curl -L -O "https://files.pythonhosted.org/packages/15/d8/dd071918c040f50fa1cf80da16423af51ff8ce4a0f2399b7bf8de45ac3d9/nose-1.3.7-py3-none-any.whl"; \[0m
+2025-02-06T20:45:47.2281950Z [36;1m  $PIP install nose-1.3.7-py3-none-any.whl; }[0m
+2025-02-06T20:45:47.2340652Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-02-06T20:45:47.2340963Z env:
+2025-02-06T20:45:47.2341232Z   all-cpython-versions: 2.6, 2.7, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 3.10, 3.11, 3.12
+2025-02-06T20:45:47.2341595Z   main-cpython-versions: 2.7, 3.2, 3.5, 3.9, 3.11
+2025-02-06T20:45:47.2341882Z   pypy-versions: pypy-2.7, pypy-3.6, pypy-3.7
+2025-02-06T20:45:47.2342141Z   cpython-versions: main
+2025-02-06T20:45:47.2342345Z   test-set: core
+2025-02-06T20:45:47.2342520Z   next: 3.13
+2025-02-06T20:45:47.2342690Z   PIP: python -m pip
+2025-02-06T20:45:47.2342941Z   PIP_DISABLE_PIP_VERSION_CHECK: true
+2025-02-06T20:45:47.2343198Z   PIP_NO_PYTHON_VERSION_WARNING: true
+2025-02-06T20:45:47.2343486Z   pythonLocation: /opt/hostedtoolcache/Python/3.2.6/x64
+2025-02-06T20:45:47.2343853Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.2.6/x64/lib/pkgconfig
+2025-02-06T20:45:47.2344216Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.2.6/x64
+2025-02-06T20:45:47.2344551Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.2.6/x64
+2025-02-06T20:45:47.2344878Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.2.6/x64
+2025-02-06T20:45:47.2345209Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.2.6/x64/lib
+2025-02-06T20:45:47.2345521Z   PYTHONHOME: /opt/hostedtoolcache/Python/3.2.6/x64
+2025-02-06T20:45:47.2345785Z ##[endgroup]
+2025-02-06T20:45:47.4119689Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2025-02-06T20:45:47.4120540Z                                  Dload  Upload   Total   Spent    Left  Speed
+2025-02-06T20:45:47.4120988Z 
+2025-02-06T20:45:47.4471166Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2025-02-06T20:45:47.4471785Z 100  151k  100  151k    0     0  4317k      0 --:--:-- --:--:-- --:--:-- 4317k
+2025-02-06T20:45:48.0427853Z Processing ./nose-1.3.7-py3-none-any.whl
+2025-02-06T20:45:48.0546827Z Installing collected packages: nose
+2025-02-06T20:45:48.1282621Z Successfully installed nose-1.3.7
+2025-02-06T20:45:48.1473742Z ##[group]Run # set PYTHON_VER
+2025-02-06T20:45:48.1474049Z [36;1m# set PYTHON_VER[0m
+2025-02-06T20:45:48.1474263Z [36;1mPYTHON_VER=3.2[0m
+2025-02-06T20:45:48.1474563Z [36;1m[ "${PYTHON_VER#*-}" != "$PYTHON_VER" ] || PYTHON_VER="cpython-${PYTHON_VER}"[0m
+2025-02-06T20:45:48.1474940Z [36;1mecho "PYTHON_VER=$PYTHON_VER" >> "$GITHUB_ENV"[0m
+2025-02-06T20:45:48.1475241Z [36;1mecho "PYTHON_IMPL=cpython" >> "$GITHUB_ENV"[0m
+2025-02-06T20:45:48.1475596Z [36;1m# define a test to validate the Python version used by nosetests[0m
+2025-02-06T20:45:48.1475915Z [36;1mprintf '%s\n' \[0m
+2025-02-06T20:45:48.1476153Z [36;1m  'from __future__ import unicode_literals' \[0m
+2025-02-06T20:45:48.1476431Z [36;1m  'import sys, os, platform' \[0m
+2025-02-06T20:45:48.1476658Z [36;1m  'try:' \[0m
+2025-02-06T20:45:48.1476866Z [36;1m  '    import unittest2 as unittest' \[0m
+2025-02-06T20:45:48.1477126Z [36;1m  'except ImportError:' \[0m
+2025-02-06T20:45:48.1477604Z [36;1m  '    import unittest' \[0m
+2025-02-06T20:45:48.1477850Z [36;1m  'class TestPython(unittest.TestCase):' \[0m
+2025-02-06T20:45:48.1478111Z [36;1m  '    def setUp(self):' \[0m
+2025-02-06T20:45:48.1478388Z [36;1m  '        self.ver = os.environ["PYTHON_VER"].split("-")' \[0m
+2025-02-06T20:45:48.1478690Z [36;1m  '    def test_python_ver(self):' \[0m
+2025-02-06T20:45:48.1479077Z [36;1m  '        self.assertEqual(["%d" % v for v in sys.version_info[:2]], self.ver[-1].split(".")[:2])' \[0m
+2025-02-06T20:45:48.1479523Z [36;1m  '        self.assertTrue(sys.version.startswith(self.ver[-1]))' \[0m
+2025-02-06T20:45:48.1479998Z [36;1m  '        self.assertIn(self.ver[0], ",".join((sys.version, platform.python_implementation())).lower())' \[0m
+2025-02-06T20:45:48.1480408Z [36;1m  '    def test_python_impl(self):' \[0m
+2025-02-06T20:45:48.1480855Z [36;1m  '        self.assertIn(platform.python_implementation().lower(), (os.environ["PYTHON_IMPL"], self.ver[0]))' \[0m
+2025-02-06T20:45:48.1481552Z [36;1m  > test/test_python.py[0m
+2025-02-06T20:45:48.1538980Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-02-06T20:45:48.1539288Z env:
+2025-02-06T20:45:48.1539559Z   all-cpython-versions: 2.6, 2.7, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 3.10, 3.11, 3.12
+2025-02-06T20:45:48.1539923Z   main-cpython-versions: 2.7, 3.2, 3.5, 3.9, 3.11
+2025-02-06T20:45:48.1540214Z   pypy-versions: pypy-2.7, pypy-3.6, pypy-3.7
+2025-02-06T20:45:48.1540477Z   cpython-versions: main
+2025-02-06T20:45:48.1540679Z   test-set: core
+2025-02-06T20:45:48.1540853Z   next: 3.13
+2025-02-06T20:45:48.1541023Z   PIP: python -m pip
+2025-02-06T20:45:48.1541226Z   PIP_DISABLE_PIP_VERSION_CHECK: true
+2025-02-06T20:45:48.1541473Z   PIP_NO_PYTHON_VERSION_WARNING: true
+2025-02-06T20:45:48.1541764Z   pythonLocation: /opt/hostedtoolcache/Python/3.2.6/x64
+2025-02-06T20:45:48.1542143Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.2.6/x64/lib/pkgconfig
+2025-02-06T20:45:48.1542512Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.2.6/x64
+2025-02-06T20:45:48.1542846Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.2.6/x64
+2025-02-06T20:45:48.1543174Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.2.6/x64
+2025-02-06T20:45:48.1543506Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.2.6/x64/lib
+2025-02-06T20:45:48.1543830Z   PYTHONHOME: /opt/hostedtoolcache/Python/3.2.6/x64
+2025-02-06T20:45:48.1544090Z ##[endgroup]
+2025-02-06T20:45:48.1646382Z ##[group]Run ./devscripts/run_tests.sh
+2025-02-06T20:45:48.1646680Z [36;1m./devscripts/run_tests.sh[0m
+2025-02-06T20:45:48.1696281Z shell: /usr/bin/bash -e {0}
+2025-02-06T20:45:48.1696501Z env:
+2025-02-06T20:45:48.1696781Z   all-cpython-versions: 2.6, 2.7, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 3.10, 3.11, 3.12
+2025-02-06T20:45:48.1697151Z   main-cpython-versions: 2.7, 3.2, 3.5, 3.9, 3.11
+2025-02-06T20:45:48.1697445Z   pypy-versions: pypy-2.7, pypy-3.6, pypy-3.7
+2025-02-06T20:45:48.1697714Z   cpython-versions: main
+2025-02-06T20:45:48.1697925Z   test-set: core
+2025-02-06T20:45:48.1698107Z   next: 3.13
+2025-02-06T20:45:48.1698271Z   PIP: python -m pip
+2025-02-06T20:45:48.1698480Z   PIP_DISABLE_PIP_VERSION_CHECK: true
+2025-02-06T20:45:48.1698727Z   PIP_NO_PYTHON_VERSION_WARNING: true
+2025-02-06T20:45:48.1699014Z   pythonLocation: /opt/hostedtoolcache/Python/3.2.6/x64
+2025-02-06T20:45:48.1699384Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.2.6/x64/lib/pkgconfig
+2025-02-06T20:45:48.1699775Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.2.6/x64
+2025-02-06T20:45:48.1700101Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.2.6/x64
+2025-02-06T20:45:48.1700424Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.2.6/x64
+2025-02-06T20:45:48.1700756Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.2.6/x64/lib
+2025-02-06T20:45:48.1701078Z   PYTHONHOME: /opt/hostedtoolcache/Python/3.2.6/x64
+2025-02-06T20:45:48.1701352Z   PYTHON_VER: cpython-3.2
+2025-02-06T20:45:48.1701550Z   PYTHON_IMPL: cpython
+2025-02-06T20:45:48.1701738Z   YTDL_TEST_SET: core
+2025-02-06T20:45:48.1702116Z ##[endgroup]
+2025-02-06T20:45:49.3149774Z test_download_json (test.test_InfoExtractor.TestInfoExtractor) ... WARNING: [Dummy] None: Failed to parse JSON No JSON object could be decoded
+2025-02-06T20:45:49.3150817Z ok
+2025-02-06T20:45:49.3230022Z test_extract_jwplayer_data_realworld (test.test_InfoExtractor.TestInfoExtractor) ... ok
+2025-02-06T20:45:49.3288281Z test_html_search_meta (test.test_InfoExtractor.TestInfoExtractor) ... ok
+2025-02-06T20:45:49.3300009Z test_html_search_regex (test.test_InfoExtractor.TestInfoExtractor) ... ok
+2025-02-06T20:45:49.3309950Z test_ie_key (test.test_InfoExtractor.TestInfoExtractor) ... ok
+2025-02-06T20:45:49.3410339Z test_opengraph (test.test_InfoExtractor.TestInfoExtractor) ... ok
+2025-02-06T20:45:49.3442209Z test_parse_f4m_formats (test.test_InfoExtractor.TestInfoExtractor) ... ok
+2025-02-06T20:45:49.3482809Z test_parse_html5_media_entries (test.test_InfoExtractor.TestInfoExtractor) ... ok
+2025-02-06T20:45:49.3530434Z test_parse_m3u8_formats (test.test_InfoExtractor.TestInfoExtractor) ... ok
+2025-02-06T20:45:49.3956897Z test_parse_mpd_formats (test.test_InfoExtractor.TestInfoExtractor) ... WARNING: Unknown codec stpp
+2025-02-06T20:45:49.3999076Z ok
+2025-02-06T20:45:49.4019616Z test_parse_xspf (test.test_InfoExtractor.TestInfoExtractor) ... ok
+2025-02-06T20:45:49.4046331Z test_response_with_expected_status_returns_content (test.test_InfoExtractor.TestInfoExtractor) ... ok
+2025-02-06T20:45:49.4285515Z test_search_json_ld_realworld (test.test_InfoExtractor.TestInfoExtractor) ... ok
+2025-02-06T20:45:49.4298773Z test_search_nextjs_data (test.test_InfoExtractor.TestInfoExtractor) ... ok
+2025-02-06T20:45:49.4317123Z test_search_nuxt_data (test.test_InfoExtractor.TestInfoExtractor) ... ok
+2025-02-06T20:45:49.4353280Z test_audio_only_extractor_format_selection (test.test_YoutubeDL.TestFormatSelection) ... ok
+2025-02-06T20:45:49.4397425Z test_default_format_spec (test.test_YoutubeDL.TestFormatSelection) ... ok
+2025-02-06T20:45:49.4636350Z test_format_filtering (test.test_YoutubeDL.TestFormatSelection) ... ok
+2025-02-06T20:45:49.4655396Z test_format_not_available (test.test_YoutubeDL.TestFormatSelection) ... ok
+2025-02-06T20:45:49.4776898Z test_format_selection (test.test_YoutubeDL.TestFormatSelection) ... ok
+2025-02-06T20:45:49.4833361Z test_format_selection_audio (test.test_YoutubeDL.TestFormatSelection) ... ok
+2025-02-06T20:45:49.4900657Z test_format_selection_audio_exts (test.test_YoutubeDL.TestFormatSelection) ... ok
+2025-02-06T20:45:49.4921659Z test_format_selection_issue_10083 (test.test_YoutubeDL.TestFormatSelection) ... ok
+2025-02-06T20:45:49.5144946Z test_format_selection_string_ops (test.test_YoutubeDL.TestFormatSelection) ... ok
+2025-02-06T20:45:49.5214511Z test_format_selection_video (test.test_YoutubeDL.TestFormatSelection) ... ok
+2025-02-06T20:45:49.5291813Z test_invalid_format_specs (test.test_YoutubeDL.TestFormatSelection) ... ok
+2025-02-06T20:45:49.5361192Z test_prefer_free_formats (test.test_YoutubeDL.TestFormatSelection) ... ok
+2025-02-06T20:45:49.7274195Z test_youtube_format_selection (test.test_YoutubeDL.TestFormatSelection) ... ok
+2025-02-06T20:45:49.7275095Z test_add_extra_info (test.test_YoutubeDL.TestYoutubeDL) ... ok
+2025-02-06T20:45:49.7593347Z Test addition of missing upload/release/_date from /release_/timestamp ... ok
+2025-02-06T20:45:49.7614950Z test_do_not_override_ie_key_in_url_transparent (test.test_YoutubeDL.TestYoutubeDL) ... ok
+2025-02-06T20:45:49.7628400Z test_format_note (test.test_YoutubeDL.TestYoutubeDL) ... ok
+2025-02-06T20:45:49.7656703Z test_ignoreerrors_for_playlist_with_url_transparent_iterable_entries (test.test_YoutubeDL.TestYoutubeDL) ... ok
+2025-02-06T20:45:49.7961506Z test_match_filter (test.test_YoutubeDL.TestYoutubeDL) ... ok
+2025-02-06T20:45:49.8285092Z test_playlist_items_selection (test.test_YoutubeDL.TestYoutubeDL) ... ok
+2025-02-06T20:45:49.8328291Z test_postprocessors (test.test_YoutubeDL.TestYoutubeDL) ... ok
+2025-02-06T20:45:49.8590001Z test_prepare_filename (test.test_YoutubeDL.TestYoutubeDL) ... ok
+2025-02-06T20:45:49.8683646Z test_subtitles (test.test_YoutubeDL.TestYoutubeDL) ... ok
+2025-02-06T20:45:49.8694933Z test_urlopen_no_file_protocol (test.test_YoutubeDL.TestYoutubeDL) ... ok
+2025-02-06T20:45:49.8700689Z test_add_headers_cookie (test.test_YoutubeDL.TestYoutubeDLCookies) ... WARNING: Passing cookies as a header is a potential security risk; they will be scoped to the domain of the downloaded urls. Please consider loading cookies from a file or browser instead.
+2025-02-06T20:45:49.8726857Z ok
+2025-02-06T20:45:49.8755562Z test_header_cookies (test.test_YoutubeDL.TestYoutubeDLCookies) ... ok
+2025-02-06T20:45:49.8769402Z test_infojson_cookies (test.test_YoutubeDL.TestYoutubeDLCookies) ... WARNING: The extractor result contains an unscoped cookie as an HTTP header. If you are specifying an input URL, ; please report this issue on https://github.com/ytdl-org/youtube-dl/issues , using the appropriate issue template. Make sure you are using the latest version; see  https://github.com/ytdl-org/youtube-dl/#user-content-installation  on how to update. Be sure to call youtube-dl with the --verbose option and include the complete output.
+2025-02-06T20:45:49.8964120Z ok
+2025-02-06T20:45:49.8967790Z test_get_cookie_header (test.test_YoutubeDLCookieJar.TestYoutubeDLCookieJar) ... ok
+2025-02-06T20:45:49.8971811Z test_get_cookies_for_url (test.test_YoutubeDLCookieJar.TestYoutubeDLCookieJar) ... ok
+2025-02-06T20:45:49.8982348Z test_keep_session_cookies (test.test_YoutubeDLCookieJar.TestYoutubeDLCookieJar) ... ok
+2025-02-06T20:45:49.8984031Z test_malformed_cookies (test.test_YoutubeDLCookieJar.TestYoutubeDLCookieJar) ... WARNING: skipping cookie file entry due to invalid length 6: 'www.foobar.foobar\tFALSE\t/\tFALSE\t0\tCOOKIE\n'
+2025-02-06T20:45:49.8986025Z WARNING: skipping cookie file entry due to invalid expires at 1.7976931348623157e+308: 'www.foobar.foobar\tFALSE\t/\tFALSE\t1.7976931348623157e+308\tCOOKIE\tVALUE\n'
+2025-02-06T20:45:49.8987095Z ok
+2025-02-06T20:45:49.8987684Z test_strip_httponly_prefix (test.test_YoutubeDLCookieJar.TestYoutubeDLCookieJar) ... ok
+2025-02-06T20:45:49.8996298Z test_cbc_decrypt (test.test_aes.TestAES) ... ok
+2025-02-06T20:45:49.9004723Z test_cbc_encrypt (test.test_aes.TestAES) ... ok
+2025-02-06T20:45:49.9030913Z test_decrypt_text (test.test_aes.TestAES) ... ok
+2025-02-06T20:45:49.9038942Z test_ecb_encrypt (test.test_aes.TestAES) ... ok
+2025-02-06T20:45:49.9040958Z test_encrypt (test.test_aes.TestAES) ... ok
+2025-02-06T20:45:49.9082168Z test_facebook_matching (test.test_all_urls.TestAllURLsMatching) ... ok
+2025-02-06T20:45:50.3966832Z test_keywords (test.test_all_urls.TestAllURLsMatching) ... ok
+2025-02-06T20:45:50.4006175Z test_no_duplicated_ie_names (test.test_all_urls.TestAllURLsMatching) ... ok
+2025-02-06T20:46:01.2863176Z test_no_duplicates (test.test_all_urls.TestAllURLsMatching) ... ok
+2025-02-06T20:46:01.2901232Z test_pbs (test.test_all_urls.TestAllURLsMatching) ... ok
+2025-02-06T20:46:01.2926529Z test_soundcloud_not_matching_sets (test.test_all_urls.TestAllURLsMatching) ... ok
+2025-02-06T20:46:01.2963830Z test_tumblr (test.test_all_urls.TestAllURLsMatching) ... ok
+2025-02-06T20:46:01.3052192Z test_vimeo_matching (test.test_all_urls.TestAllURLsMatching) ... ok
+2025-02-06T20:46:01.3107125Z test_youtube_channel_matching (test.test_all_urls.TestAllURLsMatching) ... ok
+2025-02-06T20:46:01.3171578Z test_youtube_feeds (test.test_all_urls.TestAllURLsMatching) ... ok
+2025-02-06T20:46:01.3235914Z test_youtube_matching (test.test_all_urls.TestAllURLsMatching) ... ok
+2025-02-06T20:46:01.3361645Z test_youtube_playlist_matching (test.test_all_urls.TestAllURLsMatching) ... ok
+2025-02-06T20:46:01.3402735Z test_youtube_search_matching (test.test_all_urls.TestAllURLsMatching) ... ok
+2025-02-06T20:46:01.3429973Z test_youtube_user_matching (test.test_all_urls.TestAllURLsMatching) ... ok
+2025-02-06T20:46:01.3452437Z test_cache (test.test_cache.TestCache) ... ok
+2025-02-06T20:46:01.3468891Z test_cache_validation (test.test_cache.TestCache) ... ok
+2025-02-06T20:46:01.3471376Z test_all_present (test.test_compat.TestCompat) ... ok
+2025-02-06T20:46:01.3472445Z test_compat_casefold (test.test_compat.TestCompat) ... ok
+2025-02-06T20:46:01.3473101Z test_compat_etree_Element (test.test_compat.TestCompat) ... ok
+2025-02-06T20:46:01.3475886Z test_compat_etree_fromstring (test.test_compat.TestCompat) ... ok
+2025-02-06T20:46:01.3477217Z test_compat_etree_fromstring_doctype (test.test_compat.TestCompat) ... ok
+2025-02-06T20:46:01.3478284Z test_compat_expanduser (test.test_compat.TestCompat) ... ok
+2025-02-06T20:46:01.3479210Z test_compat_getenv (test.test_compat.TestCompat) ... ok
+2025-02-06T20:46:01.3480096Z test_compat_setenv (test.test_compat.TestCompat) ... ok
+2025-02-06T20:46:01.3482716Z test_compat_shlex_split (test.test_compat.TestCompat) ... ok
+2025-02-06T20:46:01.3483433Z test_compat_struct_unpack (test.test_compat.TestCompat) ... ok
+2025-02-06T20:46:01.3485850Z test_compat_urllib_parse_unquote (test.test_compat.TestCompat) ... ok
+2025-02-06T20:46:01.3486675Z test_compat_urllib_parse_unquote_plus (test.test_compat.TestCompat) ... ok
+2025-02-06T20:46:01.3488309Z test_compat_urllib_parse_urlencode (test.test_compat.TestCompat) ... ok
+2025-02-06T20:46:01.3491419Z test_compat_urllib_request_Request (test.test_compat.TestCompat) ... ok
+2025-02-06T20:46:01.3510705Z test_make_cmd (test.test_downloader_external.TestAria2cFD) ... ok
+2025-02-06T20:46:01.3511629Z test_chunked (test.test_downloader_external.TestAria2pFD) ... SKIP: aria2p not found
+2025-02-06T20:46:01.3513107Z test_regular (test.test_downloader_external.TestAria2pFD) ... SKIP: aria2p not found
+2025-02-06T20:46:01.3514451Z test_make_cmd (test.test_downloader_external.TestAxelFD) ... SKIP: axel not found
+2025-02-06T20:46:01.3529323Z test_make_cmd (test.test_downloader_external.TestCurlFD) ... ok
+2025-02-06T20:46:01.3530638Z test_make_cmd (test.test_downloader_external.TestFFmpegFD) ... SKIP: ffmpeg not found
+2025-02-06T20:46:01.3532102Z test_make_cmd (test.test_downloader_external.TestHttpieFD) ... SKIP: httpie not found
+2025-02-06T20:46:01.3547692Z test_make_cmd (test.test_downloader_external.TestWgetFD) ... ok
+2025-02-06T20:46:01.3793269Z test_chunked (test.test_downloader_http.TestHttpFD) ... ok
+2025-02-06T20:46:01.3888665Z test_regular (test.test_downloader_http.TestHttpFD) ... ok
+2025-02-06T20:46:01.6167344Z test_cmdline_umlauts (test.test_execution.TestExecution) ... ok
+2025-02-06T20:46:01.8311930Z test_import (test.test_execution.TestExecution) ... ok
+2025-02-06T20:46:02.3988333Z test_lazy_extractors (test.test_execution.TestExecution) ... WARNING: Lazy loading extractors is an experimental feature that may not always work
+2025-02-06T20:46:13.7737795Z ..............
+2025-02-06T20:46:13.7739019Z ----------------------------------------------------------------------
+2025-02-06T20:46:13.7740296Z Ran 14 tests in 11.211s
+2025-02-06T20:46:13.7741495Z 
+2025-02-06T20:46:13.7741824Z OK
+2025-02-06T20:46:13.7939786Z ok
+2025-02-06T20:46:14.0298896Z test_main_exec (test.test_execution.TestExecution) ... ok
+2025-02-06T20:46:14.2615187Z test_module_exec (test.test_execution.TestExecution) ... ok
+2025-02-06T20:46:14.2641005Z test_file_urls (test.test_http.TestFileURL) ... ok
+2025-02-06T20:46:14.2642423Z test_brotli (test.test_http.TestHTTP) ... SKIP: brotli support is not installed
+2025-02-06T20:46:14.7700366Z test_content_type (test.test_http.TestHTTP) ... ok
+2025-02-06T20:46:15.2719161Z test_cookiejar (test.test_http.TestHTTP) ... ok
+2025-02-06T20:46:15.7738678Z test_deflate (test.test_http.TestHTTP) ... ok
+2025-02-06T20:46:16.2757076Z test_gzip (test.test_http.TestHTTP) ... ok
+2025-02-06T20:46:16.7777043Z test_gzip_trailing_garbage (test.test_http.TestHTTP) ... ok
+2025-02-06T20:46:17.2796547Z test_multiple_encodings (test.test_http.TestHTTP) ... ok
+2025-02-06T20:46:17.7816363Z test_no_compression_compat_header (test.test_http.TestHTTP) ... ok
+2025-02-06T20:46:18.2886601Z test_nocheckcertificate (test.test_http.TestHTTP) ... ok
+2025-02-06T20:46:18.7905539Z test_passed_cookie_header (test.test_http.TestHTTP) ... ok
+2025-02-06T20:46:19.2925016Z test_percent_encode (test.test_http.TestHTTP) ... ok
+2025-02-06T20:46:19.7945637Z test_redirect (test.test_http.TestHTTP) ... ok
+2025-02-06T20:46:20.2966268Z test_remove_dot_segments (test.test_http.TestHTTP) ... ok
+2025-02-06T20:46:20.7986585Z test_unicode_path_redirection (test.test_http.TestHTTP) ... ok
+2025-02-06T20:46:21.8011170Z test_unsupported_encoding (test.test_http.TestHTTP) ... ok
+2025-02-06T20:46:22.3034861Z test_update_req (test.test_http.TestHTTP) ... ok
+2025-02-06T20:46:22.8081127Z test_proxy (test.test_http.TestProxy) ... ok
+2025-02-06T20:46:23.8103394Z test_proxy_with_idn (test.test_http.TestProxy) ... ok
+2025-02-06T20:46:23.8391683Z test_32066 (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.8481018Z test_Date (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.8534169Z test_add (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.8541493Z test_array_access (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.8554372Z test_assignments (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.8557787Z test_basic (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.8565398Z test_bitwise_operators_overflow (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.8588822Z test_bitwise_operators_typecast (test.test_jsinterp.TestJSInterpreter) ... ERROR
+2025-02-06T20:46:23.8590478Z test_builtins (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.8596590Z test_calc (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.8641814Z test_call (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.8646931Z test_catch (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.8687412Z test_char_code_at (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.8709308Z test_comma (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.8730572Z test_comments (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.8755385Z test_div (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.8764785Z test_elseif (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.8766256Z test_empty_return (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.8792026Z test_exp (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.8796969Z test_finally (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.8849062Z test_forEach (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.8887751Z test_for_loop (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.8894203Z test_for_loop_break (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.8932195Z test_for_loop_continue (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.8941927Z test_for_loop_try (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.8952580Z test_if (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.8987057Z test_indexing (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.9053472Z test_join (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.9059202Z test_literal_list (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.9076048Z test_mod (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.9084404Z test_morespace (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.9101447Z test_mul (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.9124410Z test_negative (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.9128980Z test_nested_try (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.9149681Z test_null (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.9175747Z test_object (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.9276657Z test_operators (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.9277898Z test_packed (test.test_jsinterp.TestJSInterpreter) ... SKIP: Not yet working
+2025-02-06T20:46:23.9295627Z test_parens (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.9320601Z test_pop (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.9333633Z test_precedence (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.9335453Z test_quotes (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.9356706Z test_regex (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.9406613Z test_replace (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.9411127Z test_return_function (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.9437445Z test_shift (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.9625406Z test_slice (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.9706005Z test_split (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.9720226Z test_strange_chars (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.9737414Z test_sub (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.9752934Z test_switch (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.9769333Z test_switch_default (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.9771438Z test_try (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.9805123Z test_typeof (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.9881035Z test_undefined (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.9884646Z test_void (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.9913173Z test_while_loop (test.test_jsinterp.TestJSInterpreter) ... ok
+2025-02-06T20:46:23.9944086Z test_netrc_present (test.test_netrc.TestNetRc) ... ok
+2025-02-06T20:46:23.9949334Z test_hide_login_info (test.test_options.TestOptions) ... ok
+2025-02-06T20:46:23.9952429Z test_format_to_regex (test.test_postprocessors.TestMetadataFromTitle) ... ok
+2025-02-06T20:46:23.9953358Z test_python_impl (test.test_python.TestPython) ... ok
+2025-02-06T20:46:23.9955642Z test_python_ver (test.test_python.TestPython) ... ok
+2025-02-06T20:46:23.9992310Z test_swf_ArrayAccess (test.test_swfinterp.TestSWFInterpreter) ... SKIP: mxmlc not found!
+2025-02-06T20:46:24.0025807Z test_swf_ClassCall (test.test_swfinterp.TestSWFInterpreter) ... SKIP: mxmlc not found!
+2025-02-06T20:46:24.0057768Z test_swf_ClassConstruction (test.test_swfinterp.TestSWFInterpreter) ... SKIP: mxmlc not found!
+2025-02-06T20:46:24.0089785Z test_swf_ConstArrayAccess (test.test_swfinterp.TestSWFInterpreter) ... SKIP: mxmlc not found!
+2025-02-06T20:46:24.0121195Z test_swf_ConstantInt (test.test_swfinterp.TestSWFInterpreter) ... SKIP: mxmlc not found!
+2025-02-06T20:46:24.0154149Z test_swf_DictCall (test.test_swfinterp.TestSWFInterpreter) ... SKIP: mxmlc not found!
+2025-02-06T20:46:24.0185893Z test_swf_EqualsOperator (test.test_swfinterp.TestSWFInterpreter) ... SKIP: mxmlc not found!
+2025-02-06T20:46:24.0219134Z test_swf_LocalVars (test.test_swfinterp.TestSWFInterpreter) ... SKIP: mxmlc not found!
+2025-02-06T20:46:24.0271901Z test_swf_MemberAssignment (test.test_swfinterp.TestSWFInterpreter) ... SKIP: mxmlc not found!
+2025-02-06T20:46:24.0284854Z test_swf_NeOperator (test.test_swfinterp.TestSWFInterpreter) ... SKIP: mxmlc not found!
+2025-02-06T20:46:24.0316306Z test_swf_PrivateCall (test.test_swfinterp.TestSWFInterpreter) ... SKIP: mxmlc not found!
+2025-02-06T20:46:24.0347770Z test_swf_PrivateVoidCall (test.test_swfinterp.TestSWFInterpreter) ... SKIP: mxmlc not found!
+2025-02-06T20:46:24.0379407Z test_swf_StaticAssignment (test.test_swfinterp.TestSWFInterpreter) ... SKIP: mxmlc not found!
+2025-02-06T20:46:24.0412067Z test_swf_StaticRetrieval (test.test_swfinterp.TestSWFInterpreter) ... SKIP: mxmlc not found!
+2025-02-06T20:46:24.0444101Z test_swf_StringBasics (test.test_swfinterp.TestSWFInterpreter) ... SKIP: mxmlc not found!
+2025-02-06T20:46:24.0476518Z test_swf_StringCharCodeAt (test.test_swfinterp.TestSWFInterpreter) ... SKIP: mxmlc not found!
+2025-02-06T20:46:24.0511268Z test_swf_StringConversion (test.test_swfinterp.TestSWFInterpreter) ... SKIP: mxmlc not found!
+2025-02-06T20:46:24.0521023Z test_dict_get (test.test_traversal.TestTraversal) ... ok
+2025-02-06T20:46:24.0522587Z test_get_first (test.test_traversal.TestTraversal) ... ok
+2025-02-06T20:46:24.0532566Z test_traversal_morsel (test.test_traversal.TestTraversal) ... ok
+2025-02-06T20:46:24.0541989Z test_traversal_unbranching (test.test_traversal.TestTraversal) ... ok
+2025-02-06T20:46:24.0633337Z test_traverse_obj (test.test_traversal.TestTraversal) ... ok
+2025-02-06T20:46:24.2653463Z test_all_files (test.test_unicode_literals.TestUnicodeLiterals) ... ok
+2025-02-06T20:46:24.2658155Z test_rsa_verify (test.test_update.TestUpdate) ... ok
+2025-02-06T20:46:24.2660939Z test_LazyList (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2662076Z test_LazyList_laziness (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2662762Z test_age_restricted (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2665715Z test_args_to_str (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2668262Z test_base_url (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2669317Z test_caesar (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2674501Z test_clean_html (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2689910Z test_clean_podcast_url (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2690545Z test_cli_bool_option (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2691171Z test_cli_option (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2692257Z test_cli_valueless_option (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2697464Z test_date_from_str (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2700840Z test_daterange (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2703844Z test_detect_exe_version (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2706380Z test_determine_ext (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2748857Z test_dfxp2srt (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2749632Z test_encode_base_n (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2750457Z test_encode_compat_str (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2752331Z test_escape_rfc3986 (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2758346Z test_escape_url (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2761493Z test_expand_path (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2771536Z test_extract_attributes (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2776230Z test_find_xpath_attr (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2779893Z test_fix_xml_ampersands (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2780429Z test_float_or_none (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2827979Z test_get_element_by_attribute (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2853771Z test_get_element_by_class (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2854956Z test_get_elements_by_attribute (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2856102Z test_get_elements_by_class (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2857168Z test_int_or_none (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2858228Z test_intlist_to_bytes (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2872661Z test_is_html (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2875387Z test_join_nonempty (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2889412Z test_js_to_json_edgecases (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2891309Z test_js_to_json_malformed (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2897078Z test_js_to_json_realworld (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2903233Z test_js_to_json_template_literal (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2908823Z test_js_to_json_vars_strings (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2909460Z test_limit_length (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2916541Z test_lowercase_escape (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2949963Z test_match_str (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2950907Z test_merge_dicts (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2952269Z test_mimetype2ext (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2953333Z test_month_by_name (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2954580Z test_multipart_encode (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2955726Z test_ohdave_rsa_encrypt (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2956613Z test_ordered_set (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2960995Z test_paged_list (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2965493Z test_parse_age_limit (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2967618Z test_parse_bitrate (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2968374Z test_parse_codecs (test.test_utils.TestUtil) ... WARNING: Unknown codec newcodec
+2025-02-06T20:46:24.2969050Z WARNING: Unknown codec unknownvcodec
+2025-02-06T20:46:24.2969502Z WARNING: Unknown codec unknownacodec
+2025-02-06T20:46:24.2969941Z WARNING: Unknown codec unknown
+2025-02-06T20:46:24.2970327Z ok
+2025-02-06T20:46:24.2975353Z test_parse_count (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.2976391Z test_parse_dfxp_time_expr (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3008745Z test_parse_duration (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3016458Z test_parse_filesize (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3020835Z test_parse_iso8601 (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3025821Z test_parse_resolution (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3027251Z test_pkcs1pad (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3029945Z test_prepend_extension (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3030786Z test_read_batch_urls (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3036451Z test_remove_dot_segments (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3037068Z test_remove_end (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3037976Z test_remove_quotes (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3038803Z test_remove_start (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3039806Z test_render_table (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3042560Z test_replace_extension (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3043361Z test_rot47 (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3048081Z test_sanitize_filename (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3068295Z test_sanitize_filename_restricted (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3068999Z test_sanitize_ids (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3069580Z test_sanitize_path (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3071174Z test_sanitize_url (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3076142Z test_sanitized_Request (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3076739Z test_shell_quote (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3079998Z test_smuggle_url (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3080829Z test_str_to_int (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3089680Z test_strip_jsonp (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3090369Z test_strip_or_none (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3091423Z test_subtitles_filename (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3092351Z test_timeconvert (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3093568Z test_try_call (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3096546Z test_unescape_html (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3288142Z test_unified_dates (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3433129Z test_unified_timestamps (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3439513Z test_update_url_query (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3441821Z test_uppercase_escape (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3443517Z test_url_basename (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3447290Z test_url_or_none (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3448313Z test_urlencode_postdata (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3453807Z test_urljoin (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3454861Z test_urshift (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3457934Z test_variadic (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3458867Z test_version_tuple (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3462208Z test_xpath_attr (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3464787Z test_xpath_element (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3466635Z test_xpath_text (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:24.3469842Z test_xpath_with_ns (test.test_utils.TestUtil) ... ok
+2025-02-06T20:46:26.1277845Z test_private_info_arg (test.test_verbose_output.TestVerboseOutput) ... ok
+2025-02-06T20:46:26.8507883Z test_private_info_eq (test.test_verbose_output.TestVerboseOutput) ... ok
+2025-02-06T20:46:27.5715409Z test_private_info_shortarg (test.test_verbose_output.TestVerboseOutput) ... ok
+2025-02-06T20:46:28.3009814Z test_private_info_shortarg_eq (test.test_verbose_output.TestVerboseOutput) ... ok
+2025-02-06T20:46:28.3148542Z test_youtube_extract (test.test_youtube_misc.TestYoutubeMisc) ... ok
+2025-02-06T20:46:28.3149041Z 
+2025-02-06T20:46:28.3149219Z ======================================================================
+2025-02-06T20:46:28.3149833Z ERROR: test_bitwise_operators_typecast (test.test_jsinterp.TestJSInterpreter)
+2025-02-06T20:46:28.3150541Z ----------------------------------------------------------------------
+2025-02-06T20:46:28.3151035Z Traceback (most recent call last):
+2025-02-06T20:46:28.3158131Z   File "/home/runner/work/youtube-dl/youtube-dl/youtube_dl/jsinterp.py", line 583, in _operator
+2025-02-06T20:46:28.3158932Z     return opfunc(left_val, right_val)
+2025-02-06T20:46:28.3159686Z   File "/home/runner/work/youtube-dl/youtube-dl/youtube_dl/jsinterp.py", line 80, in wrapped
+2025-02-06T20:46:28.3160426Z     return op(zeroise(a), zeroise(b)) & 0xffffffff
+2025-02-06T20:46:28.3161066Z TypeError: unsupported operand type(s) for <<: 'float' and 'int'
+2025-02-06T20:46:28.3162162Z 
+2025-02-06T20:46:28.3162444Z During handling of the above exception, another exception occurred:
+2025-02-06T20:46:28.3162865Z 
+2025-02-06T20:46:28.3163009Z Traceback (most recent call last):
+2025-02-06T20:46:28.3163901Z   File "/home/runner/work/youtube-dl/youtube-dl/test/test_jsinterp.py", line 462, in test_bitwise_operators_typecast
+2025-02-06T20:46:28.3165159Z     self._test('function f(){return 0.0 << null}', 0)
+2025-02-06T20:46:28.3165908Z   File "/home/runner/work/youtube-dl/youtube-dl/test/test_jsinterp.py", line 25, in _test
+2025-02-06T20:46:28.3166613Z     got = jsi_or_code.call_function(func, *args)
+2025-02-06T20:46:28.3167404Z   File "/home/runner/work/youtube-dl/youtube-dl/youtube_dl/jsinterp.py", line 1296, in call_function
+2025-02-06T20:46:28.3168211Z     return self.extract_function(funcname)(args, kw_global_vars)
+2025-02-06T20:46:28.3168983Z   File "/home/runner/work/youtube-dl/youtube-dl/youtube_dl/jsinterp.py", line 43, in __call__
+2025-02-06T20:46:28.3169654Z     return self.func(*args, **kwargs)
+2025-02-06T20:46:28.3170302Z   File "/home/runner/work/youtube-dl/youtube-dl/youtube_dl/jsinterp.py", line 1320, in resf
+2025-02-06T20:46:28.3171224Z     ret, should_abort = self.interpret_statement(code.replace('\n', ' '), var_stack, allow_recursion - 1)
+2025-02-06T20:46:28.3172297Z   File "/home/runner/work/youtube-dl/youtube-dl/youtube_dl/jsinterp.py", line 362, in interpret_statement
+2025-02-06T20:46:28.3173187Z     ret, should_ret = f(self, stmt, local_vars, allow_recursion, *args, **kwargs)
+2025-02-06T20:46:28.3174067Z   File "/home/runner/work/youtube-dl/youtube-dl/youtube_dl/jsinterp.py", line 993, in interpret_statement
+2025-02-06T20:46:28.3174893Z     op_result = self.handle_operators(expr, local_vars, allow_recursion)
+2025-02-06T20:46:28.3175762Z   File "/home/runner/work/youtube-dl/youtube-dl/youtube_dl/jsinterp.py", line 662, in handle_operators
+2025-02-06T20:46:28.3176672Z     return self._operator(op, left_val, right_expr, expr, local_vars, allow_recursion), True
+2025-02-06T20:46:28.3177807Z   File "/home/runner/work/youtube-dl/youtube-dl/youtube_dl/jsinterp.py", line 585, in _operator
+2025-02-06T20:46:28.3178977Z     raise self.Exception('Failed to evaluate {left_val!r:.50} {op} {right_val!r:.50}'.format(**locals()), expr, cause=e)
+2025-02-06T20:46:28.3181802Z youtube_dl.jsinterp.Exception: Failed to evaluate 0.0 << None (caused by TypeError("unsupported operand type(s) for <<: 'float' and 'int'",)); please report this issue on https://github.com/ytdl-org/youtube-dl/issues , using the appropriate issue template. Make sure you are using the latest version; see  https://github.com/ytdl-org/youtube-dl/#user-content-installation  on how to update. Be sure to call youtube-dl with the --verbose option and include the complete output.
+2025-02-06T20:46:28.3184120Z 
+2025-02-06T20:46:28.3184314Z ----------------------------------------------------------------------
+2025-02-06T20:46:28.3184765Z Ran 304 tests in 39.009s
+2025-02-06T20:46:28.3184975Z 
+2025-02-06T20:46:28.3185110Z FAILED (SKIP=24, errors=1)
+2025-02-06T20:46:28.3568441Z ##[error]Process completed with exit code 1.
+2025-02-06T20:46:28.3656377Z Post job cleanup.
+2025-02-06T20:46:28.3702421Z Post job cleanup.
+2025-02-06T20:46:28.4440319Z [command]/usr/bin/git version
+2025-02-06T20:46:28.4478610Z git version 2.48.1
+2025-02-06T20:46:28.4522571Z Temporarily overriding HOME='/home/runner/work/_temp/846d6d2e-8f9c-4a18-9c7a-6840d0cbb512' before making global git config changes
+2025-02-06T20:46:28.4523860Z Adding repository directory to the temporary git global config as a safe directory
+2025-02-06T20:46:28.4527686Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/youtube-dl/youtube-dl
+2025-02-06T20:46:28.4558082Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-02-06T20:46:28.4586530Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-02-06T20:46:28.4804773Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-02-06T20:46:28.4823935Z http.https://github.com/.extraheader
+2025-02-06T20:46:28.4835044Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2025-02-06T20:46:28.4862592Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-02-06T20:46:28.5181693Z Cleaning up orphan processes

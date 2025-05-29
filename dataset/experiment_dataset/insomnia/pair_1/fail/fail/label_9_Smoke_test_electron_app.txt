@@ -1,0 +1,103 @@
+2025-04-14T18:08:17.9627957Z ##[group]Run GIT_SYNC_SMOKE_TEST_TOKEN=*** \
+2025-04-14T18:08:17.9628687Z [36;1mGIT_SYNC_SMOKE_TEST_TOKEN=*** \[0m
+2025-04-14T18:08:17.9629102Z [36;1mnpm run test:build -w packages/insomnia-smoke-test -- --project=Smoke[0m
+2025-04-14T18:08:17.9681418Z shell: /usr/bin/bash -e {0}
+2025-04-14T18:08:17.9681660Z env:
+2025-04-14T18:08:17.9682011Z   GIT_SYNC_SMOKE_TEST_TOKEN: ***
+2025-04-14T18:08:17.9682253Z ##[endgroup]
+2025-04-14T18:08:18.0869483Z 
+2025-04-14T18:08:18.0870355Z > insomnia-smoke-test@11.1.0-beta.1 test:build
+2025-04-14T18:08:18.0871438Z > xvfb-maybe cross-env BUNDLE=build playwright test --project=Smoke
+2025-04-14T18:08:18.0872042Z 
+2025-04-14T18:08:20.4323329Z [WebServer] (node:4727) DeprecationWarning: Calling start() is no longer necessary. It can be safely omitted.
+2025-04-14T18:08:20.4325671Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2025-04-14T18:08:20.6730623Z [WebServer] oidc-provider WARNING: configuration cookies.keys is missing, this option is critical to detect and ignore tampered cookies
+2025-04-14T18:08:20.6755414Z [WebServer] oidc-provider WARNING: a quick start development-only in-memory adapter is used, you MUST change it in order to not lose all stateful provider data upon restart and to be able to share these between processes
+2025-04-14T18:08:20.6767249Z [WebServer] oidc-provider WARNING: a quick start development-only signing keys are used, you are expected to provide your own in configuration "jwks" property
+2025-04-14T18:08:20.6813368Z [WebServer] (node:4727) DeprecationWarning: The "plain" PKCE method is deprecated and will be removed in the next major revision.
+2025-04-14T18:08:21.3922757Z 
+2025-04-14T18:08:21.3923458Z Running 109 tests using 1 worker
+2025-04-14T18:14:35.4421091Z ··················°············°··············F··············[WebServer] oidc-provider WARNING: default findAccount function called, you MUST change it in order to use your own account model.
+2025-04-14T18:16:55.0485725Z ···················
+2025-04-14T18:20:33.6197094Z ·····························
+2025-04-14T18:20:33.6204273Z 
+2025-04-14T18:20:33.6216796Z   1) [Smoke] › smoke/insomnia-tab.test.ts:14:7 › multiple-tab feature test › add tab & close tab ───
+2025-04-14T18:20:33.6218203Z 
+2025-04-14T18:20:33.6219200Z     Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m()[22m
+2025-04-14T18:20:33.6219702Z 
+2025-04-14T18:20:33.6220199Z     Locator: getByLabel('Insomnia Tabs').getByLabel('tab-New Request', { exact: true })
+2025-04-14T18:20:33.6220899Z     Expected: visible
+2025-04-14T18:20:33.6221274Z     Received: hidden
+2025-04-14T18:20:33.6221609Z     Call log:
+2025-04-14T18:20:33.6222173Z       [2m- expect.toBeVisible with timeout 25000ms[22m
+2025-04-14T18:20:33.6223193Z     [2m  - waiting for getByLabel('Insomnia Tabs').getByLabel('tab-New Request', { exact: true })[22m
+2025-04-14T18:20:33.6223832Z 
+2025-04-14T18:20:33.6223844Z 
+2025-04-14T18:20:33.6224142Z       16 |     await page.getByLabel('HTTP Request').click();
+2025-04-14T18:20:33.6225189Z       17 |     const tab = await page.getByLabel('Insomnia Tabs').getByLabel(`tab-${DEFAULT_REQUEST_NAME}`, { exact: true });
+2025-04-14T18:20:33.6226086Z     > 18 |     expect(tab).toBeVisible();
+2025-04-14T18:20:33.6226526Z          |                 ^
+2025-04-14T18:20:33.6227128Z       19 |     expect(await tab.getAttribute('data-selected')).toBe('true');
+2025-04-14T18:20:33.6227803Z       20 |     await tab.getByRole('button').click();
+2025-04-14T18:20:33.6228348Z       21 |     await expect(tab).toBeHidden();
+2025-04-14T18:20:33.6228850Z 
+2025-04-14T18:20:33.6229564Z         at /home/runner/work/insomnia/insomnia/packages/insomnia-smoke-test/tests/smoke/insomnia-tab.test.ts:18:17
+2025-04-14T18:20:33.6230308Z 
+2025-04-14T18:20:33.6231020Z     attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+2025-04-14T18:20:33.6232143Z     traces/smoke-insomnia-tab-multipl-3ea8d-ture-test-add-tab-close-tab-Smoke/trace.zip
+2025-04-14T18:20:33.6232899Z     Usage:
+2025-04-14T18:20:33.6233498Z 
+2025-04-14T18:20:33.6234241Z         npx playwright show-trace traces/smoke-insomnia-tab-multipl-3ea8d-ture-test-add-tab-close-tab-Smoke/trace.zip
+2025-04-14T18:20:33.6234993Z 
+2025-04-14T18:20:33.6235571Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2025-04-14T18:20:33.6235977Z 
+2025-04-14T18:20:33.6245383Z   Slow test file: [Smoke] › smoke/pre-request-script-features.test.ts (3.3m)
+2025-04-14T18:20:33.6247326Z   Slow test file: [Smoke] › smoke/runner.test.ts (1.2m)
+2025-04-14T18:20:33.6248885Z   Slow test file: [Smoke] › smoke/debug-sidebar-interactions.test.ts (53.7s)
+2025-04-14T18:20:33.6250678Z   Slow test file: [Smoke] › smoke/insomnia-vault.test.ts (41.5s)
+2025-04-14T18:20:33.6251572Z   Slow test file: [Smoke] › smoke/environment-editor-interactions.test.ts (36.1s)
+2025-04-14T18:20:33.6252420Z   Consider splitting slow test files to speed up parallel execution
+2025-04-14T18:20:33.6252962Z   1 failed
+2025-04-14T18:20:33.6253757Z     [Smoke] › smoke/insomnia-tab.test.ts:14:7 › multiple-tab feature test › add tab & close tab ────
+2025-04-14T18:20:33.6254431Z   2 skipped
+2025-04-14T18:20:33.6254731Z   106 passed (12.2m)
+2025-04-14T18:20:33.6297072Z ##[error]  1) [Smoke] › smoke/insomnia-tab.test.ts:14:7 › multiple-tab feature test › add tab & close tab ───
+    Error: expect(locator).toBeVisible()
+
+    Locator: getByLabel('Insomnia Tabs').getByLabel('tab-New Request', { exact: true })
+    Expected: visible
+    Received: hidden
+    Call log:
+      - expect.toBeVisible with timeout 25000ms
+      - waiting for getByLabel('Insomnia Tabs').getByLabel('tab-New Request', { exact: true })
+
+
+      16 |     await page.getByLabel('HTTP Request').click();
+      17 |     const tab = await page.getByLabel('Insomnia Tabs').getByLabel(`tab-${DEFAULT_REQUEST_NAME}`, { exact: true });
+    > 18 |     expect(tab).toBeVisible();
+         |                 ^
+      19 |     expect(await tab.getAttribute('data-selected')).toBe('true');
+      20 |     await tab.getByRole('button').click();
+      21 |     await expect(tab).toBeHidden();
+
+        at /home/runner/work/insomnia/insomnia/packages/insomnia-smoke-test/tests/smoke/insomnia-tab.test.ts:18:17
+2025-04-14T18:20:33.6311391Z ##[warning]packages/insomnia-smoke-test/[Smoke] › smoke/pre-request-script-features.test.ts took 3.3m
+2025-04-14T18:20:33.6314163Z ##[warning]packages/insomnia-smoke-test/[Smoke] › smoke/runner.test.ts took 1.2m
+2025-04-14T18:20:33.6316760Z ##[warning]packages/insomnia-smoke-test/[Smoke] › smoke/debug-sidebar-interactions.test.ts took 53.7s
+2025-04-14T18:20:33.6319501Z ##[warning]packages/insomnia-smoke-test/[Smoke] › smoke/insomnia-vault.test.ts took 41.5s
+2025-04-14T18:20:33.6322136Z ##[warning]packages/insomnia-smoke-test/[Smoke] › smoke/environment-editor-interactions.test.ts took 36.1s
+2025-04-14T18:20:33.6325865Z ##[notice]  1 failed
+    [Smoke] › smoke/insomnia-tab.test.ts:14:7 › multiple-tab feature test › add tab & close tab ────
+  2 skipped
+  106 passed (12.2m)
+2025-04-14T18:20:33.6444337Z Failed with exit code: 1
+2025-04-14T18:20:33.6447005Z Output:
+2025-04-14T18:20:33.6448333Z 
+2025-04-14T18:20:33.6513631Z npm error Lifecycle script `test:build` failed with error:
+2025-04-14T18:20:33.6514401Z npm error code 255
+2025-04-14T18:20:33.6515399Z npm error path /home/runner/work/insomnia/insomnia/packages/insomnia-smoke-test
+2025-04-14T18:20:33.6516667Z npm error workspace insomnia-smoke-test@11.1.0-beta.1
+2025-04-14T18:20:33.6517600Z npm error location /home/runner/work/insomnia/insomnia/packages/insomnia-smoke-test
+2025-04-14T18:20:33.6518315Z npm error command failed
+2025-04-14T18:20:33.6519255Z npm error command sh -c xvfb-maybe cross-env BUNDLE=build playwright test --project=Smoke
+2025-04-14T18:20:33.6579620Z ##[error]Process completed with exit code 255.

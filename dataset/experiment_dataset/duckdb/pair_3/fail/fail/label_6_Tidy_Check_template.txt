@@ -1,0 +1,72 @@
+##[group]Run make tidy-check TIDY_BINARY=/tmp/clang-tidy-cache
+[36;1mmake tidy-check TIDY_BINARY=/tmp/clang-tidy-cache[0m
+shell: /usr/bin/bash --noprofile --norc -e -o pipefail {<:NUM:>}
+env:
+GH TOKEN: ***
+CC: gcc
+CXX: g++
+GEN: ninja
+TIDY_THREADS: 4
+TIDY_CHECKS:
+##[endgroup]
+mkdir -p ./build/tidy && \
+cd build/tidy && \
+cmake -DCLANG_TIDY=1 -DDISABLE_UNITY=1 -DBUILD_EXTENSIONS=parquet -DBUILD_PYTHON_PKG=TRUE -DBUILD_SHELL=0 ../.. && \
+python3 ../../scripts/run-clang-tidy.py -quiet -j 4 -clang-tidy-binary /tmp/clang-tidy-cache
+-- The <:*:> compiler identification is GNU <:NUM:>.<:NUM:>.<:NUM:>
+-- The <:*:> compiler identification is GNU <:NUM:>.<:NUM:>.<:NUM:>
+-- Detecting <:*:> compiler ABI info
+-- Detecting <:*:> compiler ABI info - done
+-- Check for working <:*:> compiler: <:*:> - skipped
+-- Detecting <:*:> compile features
+-- Detecting <:*:> compile features - done
+-- Detecting <:*:> compiler ABI info
+-- Detecting <:*:> compiler ABI info - done
+-- Check for working <:*:> compiler: <:*:> - skipped
+-- Detecting <:*:> compile features
+-- Detecting <:*:> compile features - done
+-- Performing Test <:*:> <:*:> <:*:> <:*:>
+-- Performing Test <:*:> <:*:> <:*:> <:*:> - <:*:>
+-- Found Threads: TRUE
+-- Found <:*:> <:*:> (found version "<:NUM:>.<:NUM:>.<:NUM:>")
+-- git hash cae7a680bc, version v1.3.0-dev2456, extension folder cae7a680bc
+-- Setting build type to 'Release'.
+-- Load extension 'parquet' from '/home/runner/work/duckdb/duckdb/extensions' @ cae7a680bc
+-- Load extension 'core_functions' from '/home/runner/work/duckdb/duckdb/extensions' @ cae7a680bc
+CMake Warning at tools/pythonpkg/CMakeLists.txt:5 (find_package):
+By not providing "FindPythonLibs.cmake" in CMAKE_MODULE_PATH this project
+has asked CMake to find a package configuration file provided by
+"PythonLibs", but CMake did not find one.
+2025-04-15T00:41:58.7758757Z
+Could not find a package configuration file provided by "PythonLibs" with
+any of the following names:
+2025-04-15T00:41:58.7759688Z
+PythonLibsConfig.cmake
+pythonlibs-config.cmake
+2025-04-15T00:41:58.7760514Z
+Add the installation prefix of "PythonLibs" to CMAKE_PREFIX_PATH or set
+"PythonLibs_DIR" to a directory containing one of the above files.  If
+"PythonLibs" provides a separate development package or SDK, be sure it has
+been installed.
+2025-04-15T00:41:58.7762221Z
+2025-04-15T00:41:58.7762225Z
+-- Extensions linked into DuckDB: [parquet, core_functions]
+-- Configuring done (0.9s)
+-- Generating done (0.7s)
+-- Build files have been written to: /home/runner/work/duckdb/duckdb/build/tidy
+31810 warnings generated.
+/tmp/clang-tidy-cache -p=/home/runner/work/duckdb/duckdb/build/tidy --quiet /home/runner/work/duckdb/duckdb/extension/parquet/parquet_reader.cpp
+/home/runner/work/duckdb/duckdb/extension/parquet/parquet_reader.cpp:1229:43: error: narrowing conversion from 'idx_t' (aka 'unsigned long') to signed type 'row_t' (aka 'long') is implementation-defined [bugprone-narrowing-conversions,-warnings-as-errors]
+63620 warnings generated.
+1229 |                         filter_count = deletion_filter->Filter(state.offset_in_group + state.group_offset, scan_count, state.sel);
+| <:*:>
+Failed to get commands: exit status 1
+31810 warnings generated.
+/tmp/clang-tidy-cache -p=/home/runner/work/duckdb/duckdb/build/tidy --quiet /home/runner/work/duckdb/duckdb/extension/parquet/parquet_reader.cpp
+63620 warnings generated.
+/home/runner/work/duckdb/duckdb/extension/parquet/parquet_reader.cpp:1229:43: error: narrowing conversion from 'idx_t' (aka 'unsigned long') to signed type 'row_t' (aka 'long') is implementation-defined [bugprone-narrowing-conversions,-warnings-as-errors]
+1229 |                         filter_count = deletion_filter->Filter(state.offset_in_group + state.group_offset, scan_count, state.sel);
+| <:*:>
+Failed to get commands: exit status 1
+make: *** [Makefile:426: tidy-check] Error 1
+##[error]Process completed with exit code 2.

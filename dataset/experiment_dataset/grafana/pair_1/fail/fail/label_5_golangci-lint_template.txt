@@ -1,0 +1,101 @@
+##[group]Run <:*:>
+with:
+version: v2.0.2
+args: --verbose $(go list -m -f '{{.Dir}}' | xargs -I{} sh -c 'test ! -f {}/.nolint && echo {}/...')
+install-mode: binary
+github-token: ***
+<:*:> true
+<:*:> false
+<:*:> false
+<:*:> false
+<:*:> false
+cache-invalidation-interval: 7
+##[endgroup]
+##[group]prepare environment
+Checking for go.mod: go.mod
+Cache hit for: golangci-lint.cache-Linux-2884-70ff253f8fa610b4e12e03d77837ed9a37aa2582
+Received 7280543 of 11474847 (63.4%), 6.9 MBs/sec
+Received 11474847 of 11474847 (100.0%), 9.7 MBs/sec
+Cache Size: ~11 MB (11474847 B)
+[command]/usr/bin/tar -xf /home/runner/work/_temp/22a3102b-d10c-4a74-bd76-3de76fce229a/cache.tzst -P -C /home/runner/work/grafana/grafana --use-compress-program unzstd
+Cache restored successfully
+Restored cache for golangci-lint from key 'golangci-lint.cache-Linux-2884-70ff253f8fa610b4e12e03d77837ed9a37aa2582' in 4429ms
+Finding needed golangci-lint version...
+Installation mode: binary
+Installing golangci-lint binary v2.0.2...
+Downloading binary https://github.com/golangci/golangci-lint/releases/download/v2.0.2/golangci-lint-2.0.2-linux-amd64.tar.gz ...
+[command]/usr/bin/tar xz --overwrite --warning=no-unknown-keyword --overwrite -C /home/runner -f /home/runner/work/_temp/54a68747-b043-4ba1-8e3a-d631e2986d16
+Installed golangci-lint into /home/runner/golangci-lint-2.0.2-linux-amd64/golangci-lint in 828ms
+Prepared env in 5259ms
+##[endgroup]
+##[group]run golangci-lint
+Running [/home/runner/golangci-lint-2.0.2-linux-amd64/golangci-lint config path] in [/home/runner/work/grafana/grafana] ...
+Running [/home/runner/golangci-lint-2.0.2-linux-amd64/golangci-lint config verify] in [/home/runner/work/grafana/grafana] ...
+Running [/home/runner/golangci-lint-2.0.2-linux-amd64/golangci-lint run  --verbose $(go list -m -f '{{.Dir}}' | xargs -I{} sh -c 'test ! -f {}/.nolint && echo {}/...')] in [/home/runner/work/grafana/grafana] ...
+##[error]pkg/registry/apis/provisioning/jobs/migrate/legacy_test.go:357:19: Error return value is not checked (errcheck)
+clone.BeforeFn()
+^
+##[error]pkg/registry/apis/provisioning/jobs/migrate/legacy_test.go:361:18: Error return value is not checked (errcheck)
+push.BeforeFn()
+^
+##[error]pkg/registry/apis/provisioning/jobs/migrate/folders_test.go:159:3: unnecessary trailing newline (whitespace)
+}).Return(&resource.BulkResponse{}, nil)
+^
+##[error]pkg/registry/apis/provisioning/jobs/migrate/folders_test.go:222:3: unnecessary trailing newline (whitespace)
+}).Return(&resource.BulkResponse{}, nil)
+^
+4 issues:
+* errcheck: 2
+* whitespace: 2
+2025-04-15T08:42:52.6546943Z
+level=info msg="golangci-lint has version 2.0.2 built with go1.24.1 from 2b224c2c on 2025-03-25T21:36:18Z"
+level=info msg="[config_reader] Config search paths: [./ /home/runner/work/grafana/grafana /home/runner/work/grafana /home/runner/work /home/runner /home /]"
+level=info msg="[config_reader] Used config file .golangci.yml"
+level=info msg="[goenv] Read go env for 3.022728ms: map[string]string{\"GOCACHE\":\"/home/runner/.cache/go-build\", \"GOROOT\":\"/opt/hostedtoolcache/go/1.24.2/x64\"}"
+level=info msg="[lintersdb] Active 21 linters: [asciicheck bodyclose depguard dogsled errcheck errorlint exhaustive gocyclo goimports goprintffuncname gosec govet ineffassign misspell nakedret prealloc revive staticcheck unconvert unused whitespace]"
+level=info msg="[loader] Go packages loading at mode 8767 (files|imports|name|compiled_files|deps|types_sizes|exports_file) took 6m36.706123296s"
+level=info msg="[runner/filename_unadjuster] Pre-built 0 adjustments in 463.754414ms"
+level=info msg="[linters_context/goanalysis] analyzers took 48m35.445243861s with top 10 stages: buildir: 25m14.717475577s, goimports: 4m45.98871378s, unconvert: 1m49.762447486s, the_only_name: 1m44.075823058s, nilness: 1m24.02449329s, gosec: 1m16.721714874s, exhaustive: 35.29311562s, S1038: 29.732097774s, fact_deprecated: 28.608511997s, buildssa: 28.372111656s"
+level=info msg="[runner/exclusion_paths] Skipped 19 issues by pattern \"devenv\""
+level=info msg="[runner/exclusion_paths] Skipped 19 issues by pattern \"scripts\""
+level=info msg="[runner/exclusion_paths] Skipped 0 issues by pattern \"third_party$\""
+level=info msg="[runner/exclusion_paths] Skipped 0 issues by pattern \"builtin$\""
+level=info msg="[runner/exclusion_paths] Skipped 0 issues by pattern \"examples$\""
+level=info msg="[runner/exclusion_rules] Skipped 0 issues by rules: [Path: \"builtin$\", Linters: \"goimports\"]"
+level=info msg="[runner/exclusion_rules] Skipped 45 issues by rules: [Text: \"ST1001\", Linters: \"staticcheck\"]"
+level=info msg="[runner/exclusion_rules] Skipped 1 issues by rules: [Text: \"G108\", Linters: \"gosec\"]"
+level=info msg="[runner/exclusion_rules] Skipped 0 issues by rules: [Text: \"ST1020\", Linters: \"staticcheck\"]"
+level=info msg="[runner/exclusion_rules] Skipped 0 issues by rules: [Path: \"devenv\", Linters: \"goimports\"]"
+level=info msg="[runner/exclusion_rules] Skipped 0 issues by rules: [Path: \"third_party$\", Linters: \"goimports\"]"
+level=info msg="[runner/exclusion_rules] Skipped 0 issues by rules: [Path: \"examples$\", Linters: \"goimports\"]"
+level=info msg="[runner/exclusion_rules] Skipped 0 issues by rules: [Text: \"ST1003\", Linters: \"staticcheck\"]"
+level=info msg="[runner/exclusion_rules] Skipped 2 issues by rules: [Text: \"G110\", Linters: \"gosec\"]"
+level=info msg="[runner/exclusion_rules] Skipped 103 issues by rules: [Text: \"G115\", Linters: \"gosec\"]"
+level=info msg="[runner/exclusion_rules] Skipped 0 issues by rules: [Text: \"G201\", Linters: \"gosec\"]"
+level=info msg="[runner/exclusion_rules] Skipped 0 issues by rules: [Text: \"G202\", Linters: \"gosec\"]"
+level=info msg="[runner/exclusion_rules] Skipped 24 issues by rules: [Text: \"G306\", Linters: \"gosec\"]"
+level=info msg="[runner/exclusion_rules] Skipped 16 issues by rules: [Text: \"501\", Linters: \"gosec\"]"
+level=info msg="[runner/exclusion_rules] Skipped 267 issues by rules: [Text: \"404\", Linters: \"gosec\"]"
+level=info msg="[runner/exclusion_rules] Skipped 8 issues by rules: [Text: \"SA1019: strings.Title\", Linters: \"staticcheck\"]"
+level=info msg="[runner/exclusion_rules] Skipped 2 issues by rules: [Text: \"SA1019: \\\"go.opentelemetry.io/otel/exporters/jaeger\\\"\", Linters: \"staticcheck\"]"
+level=info msg="[runner/exclusion_rules] Skipped 54 issues by rules: [Text: \"use fake service and real access control evaluator instead\", Linters: \"staticcheck\"]"
+level=info msg="[runner/exclusion_rules] Skipped 34 issues by rules: [Text: \"401\", Linters: \"gosec\"]"
+level=info msg="[runner/exclusion_rules] Skipped 185 issues by rules: [Text: \"non-wrapping format verb for fmt.Errorf\", Linters: \"errorlint\"]"
+level=info msg="[runner/exclusion_rules] Skipped 0 issues by rules: [Text: \"ST1000\", Linters: \"staticcheck\"]"
+level=info msg="[runner/exclusion_rules] Skipped 0 issues by rules: [Text: \"ST1021\", Linters: \"staticcheck\"]"
+level=info msg="[runner/exclusion_rules] Skipped 0 issues by rules: [Text: \"G601\", Path: \"(.+)_test\\\\.go\", Linters: \"gosec\"]"
+level=info msg="[runner/exclusion_rules] Skipped 2 issues by rules: [Text: \"SA1019: http.CloseNotifier\", Linters: \"staticcheck\"]"
+level=info msg="[runner/exclusion_rules] Skipped 23 issues by rules: [Text: \"402\", Linters: \"gosec\"]"
+level=info msg="[runner/exclusion_rules] Skipped 0 issues by rules: [Path: \"scripts\", Linters: \"goimports\"]"
+level=warning msg="[runner/nolint_filter] Found unknown linters in //nolint directives: deadcode"
+level=info msg="[runner] Issues before processing: 2309, after processing: 4"
+level=info msg="[runner] Processors filtering stat (in/out): cgo: 2309/2309, path_relativity: 2309/2309, exclusion_rules: 1507/741, uniq_by_line: 6/4, severity-rules: 4/4, path_prettifier: 4/4, invalid_issue: 2309/2309, exclusion_paths: 2309/2271, nolint_filter: 741/6, fixer: 6/6, max_same_issues: 4/4, sort_results: 4/4, path_absoluter: 2309/2309, filename_unadjuster: 2309/2309, generated_file_filter: 2271/1507, diff: 6/6, path_shortener: 4/4, max_per_file_from_linter: 4/4, max_from_linter: 4/4, source_code: 4/4"
+level=info msg="[runner] processing took 173.303177ms with stages: nolint_filter: 155.455941ms, generated_file_filter: 12.627582ms, exclusion_rules: 2.654842ms, path_relativity: 1.288328ms, exclusion_paths: 708.303µs, invalid_issue: 178.002µs, cgo: 137.626µs, path_absoluter: 123.641µs, filename_unadjuster: 69.029µs, source_code: 47.489µs, uniq_by_line: 3.086µs, sort_results: 2.505µs, max_from_linter: 2.074µs, path_shortener: 1.302µs, max_per_file_from_linter: 1.112µs, max_same_issues: 943ns, diff: 601ns, fixer: 450ns, path_prettifier: 210ns, severity-rules: 111ns"
+level=info msg="[runner] linters took 3m24.098090366s with stages: goanalysis_metalinter: 3m23.924642338s"
+level=info msg="File cache stats: 2 entries of total size 24.4KiB"
+level=info msg="Memory: 5210 samples, avg is 1543.3MB, max is 9775.0MB"
+level=info msg="Execution took 10m1.277355757s"
+2025-04-15T08:42:52.6598010Z
+##[error]issues found
+Ran golangci-lint in 601972ms
+##[endgroup]

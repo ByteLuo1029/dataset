@@ -1,0 +1,55 @@
+2025-04-15T02:06:54.3537884Z ##[group]Run rui314/setup-mold@v1
+2025-04-15T02:06:54.3538495Z with:
+2025-04-15T02:06:54.3538744Z   mold-version: 2.37.1
+2025-04-15T02:06:54.3539028Z   make-default: true
+2025-04-15T02:06:54.3539273Z env:
+2025-04-15T02:06:54.3539504Z   CARGO_INCREMENTAL: 0
+2025-04-15T02:06:54.3539770Z   CARGO_NET_RETRY: 10
+2025-04-15T02:06:54.3540065Z   CARGO_TERM_COLOR: always
+2025-04-15T02:06:54.3540344Z   RUSTUP_MAX_RETRIES: 10
+2025-04-15T02:06:54.3540617Z   PYTHON_VERSION: 3.12
+2025-04-15T02:06:54.3540944Z ##[endgroup]
+2025-04-15T02:06:54.3662319Z ##[group]Run set -x
+2025-04-15T02:06:54.3662692Z [36;1mset -x[0m
+2025-04-15T02:06:54.3662971Z [36;1mecho "mold 2.37.1"[0m
+2025-04-15T02:06:54.3663354Z [36;1mif [ "$(whoami)" = root ]; then SUDO=; else SUDO=sudo; fi[0m
+2025-04-15T02:06:54.3664518Z [36;1mwget -O- --timeout=10 --waitretry=3 --retry-connrefused --progress=dot:mega https://github.com/rui314/mold/releases/download/v2.37.1/mold-2.37.1-$(uname -m)-linux.tar.gz | $SUDO tar -C /usr/local --strip-components=1 --no-overwrite-dir -xzf -[0m
+2025-04-15T02:06:54.3665948Z [36;1mtest true = true -a "$(realpath /usr/bin/ld)" != /usr/local/bin/mold && $SUDO ln -sf /usr/local/bin/mold "$(realpath /usr/bin/ld)"; true[0m
+2025-04-15T02:06:54.3719987Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-04-15T02:06:54.3720420Z env:
+2025-04-15T02:06:54.3720656Z   CARGO_INCREMENTAL: 0
+2025-04-15T02:06:54.3720937Z   CARGO_NET_RETRY: 10
+2025-04-15T02:06:54.3721210Z   CARGO_TERM_COLOR: always
+2025-04-15T02:06:54.3721508Z   RUSTUP_MAX_RETRIES: 10
+2025-04-15T02:06:54.3721792Z   PYTHON_VERSION: 3.12
+2025-04-15T02:06:54.3722077Z ##[endgroup]
+2025-04-15T02:06:54.3809782Z + echo 'mold 2.37.1'
+2025-04-15T02:06:54.3810136Z mold 2.37.1
+2025-04-15T02:06:54.3812891Z ++ whoami
+2025-04-15T02:06:54.4314673Z + '[' runner = root ']'
+2025-04-15T02:06:54.4315329Z + SUDO=sudo
+2025-04-15T02:06:54.4319110Z + sudo tar -C /usr/local --strip-components=1 --no-overwrite-dir -xzf -
+2025-04-15T02:06:54.4320135Z ++ uname -m
+2025-04-15T02:06:54.4330376Z + wget -O- --timeout=10 --waitretry=3 --retry-connrefused --progress=dot:mega https://github.com/rui314/mold/releases/download/v2.37.1/mold-2.37.1-x86_64-linux.tar.gz
+2025-04-15T02:06:54.5216547Z --2025-04-15 02:06:54--  https://github.com/rui314/mold/releases/download/v2.37.1/mold-2.37.1-x86_64-linux.tar.gz
+2025-04-15T02:06:54.5485073Z Resolving github.com (github.com)... 140.82.112.3
+2025-04-15T02:06:54.5799821Z Connecting to github.com (github.com)|140.82.112.3|:443... connected.
+2025-04-15T02:06:54.7255356Z HTTP request sent, awaiting response... 302 Found
+2025-04-15T02:06:54.7259175Z Location: https://objects.githubusercontent.com/github-production-release-asset-2e65be/299510783/693a2135-7388-4def-9420-608a68302a08?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=releaseassetproduction%2F20250415%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250415T020654Z&X-Amz-Expires=300&X-Amz-Signature=742e339f9b8689630a0228f4bdd91e2057e2e40dbfe8c394d33f824fc4a8fdc1&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%3Dmold-2.37.1-x86_64-linux.tar.gz&response-content-type=application%2Foctet-stream [following]
+2025-04-15T02:06:54.7263922Z --2025-04-15 02:06:54--  https://objects.githubusercontent.com/github-production-release-asset-2e65be/299510783/693a2135-7388-4def-9420-608a68302a08?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=releaseassetproduction%2F20250415%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250415T020654Z&X-Amz-Expires=300&X-Amz-Signature=742e339f9b8689630a0228f4bdd91e2057e2e40dbfe8c394d33f824fc4a8fdc1&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%3Dmold-2.37.1-x86_64-linux.tar.gz&response-content-type=application%2Foctet-stream
+2025-04-15T02:06:54.7280514Z Resolving objects.githubusercontent.com (objects.githubusercontent.com)... 185.199.111.133, 185.199.108.133, 185.199.109.133, ...
+2025-04-15T02:06:54.7393323Z Connecting to objects.githubusercontent.com (objects.githubusercontent.com)|185.199.111.133|:443... connected.
+2025-04-15T02:06:54.8709989Z HTTP request sent, awaiting response... 200 OK
+2025-04-15T02:06:54.8710809Z Length: 4733327 (4.5M) [application/octet-stream]
+2025-04-15T02:06:54.8711866Z Saving to: ‘STDOUT’
+2025-04-15T02:06:54.8851232Z 
+2025-04-15T02:06:54.9678456Z      0K ........ ........ ........ ........ ........ ........ 66% 31.0M 0s
+2025-04-15T02:06:55.0011658Z   3072K ........ ........ ........                           100% 45.3M=0.1s
+2025-04-15T02:06:55.0012069Z 
+2025-04-15T02:06:55.0012360Z 2025-04-15 02:06:55 (34.7 MB/s) - written to stdout [4733327/4733327]
+2025-04-15T02:06:55.0012791Z 
+2025-04-15T02:06:55.0433597Z ++ realpath /usr/bin/ld
+2025-04-15T02:06:55.0447493Z + test true = true -a /usr/bin/x86_64-linux-gnu-ld.bfd '!=' /usr/local/bin/mold
+2025-04-15T02:06:55.0450175Z ++ realpath /usr/bin/ld
+2025-04-15T02:06:55.0460534Z + sudo ln -sf /usr/local/bin/mold /usr/bin/x86_64-linux-gnu-ld.bfd
+2025-04-15T02:06:55.0535184Z + true

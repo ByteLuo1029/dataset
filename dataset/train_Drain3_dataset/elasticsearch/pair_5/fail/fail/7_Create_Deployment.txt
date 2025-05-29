@@ -1,0 +1,36 @@
+2025-04-14T20:24:50.2995816Z ##[group]Run actions/github-script@v7
+2025-04-14T20:24:50.2996106Z with:
+2025-04-14T20:24:50.2996295Z   result-encoding: string
+2025-04-14T20:24:50.2998518Z   script: const { owner, repo } = context.repo;
+const prNumber = process.env.PR_NUMBER;
+const environment = 'docs-preview';
+const task = prNumber ? `docs-preview-${prNumber}` : undefined;
+const deployment = await github.rest.repos.createDeployment({
+    owner,
+    repo,
+    environment,
+    task,
+    ref: process.env.REF,
+    auto_merge: false,
+    transient_environment: true,
+    required_contexts: [],
+})
+await github.rest.repos.createDeploymentStatus({
+    deployment_id: deployment.data.id,
+    owner,
+    repo,
+    state: "in_progress",
+    log_url: `https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+})
+return deployment.data.id
+
+2025-04-14T20:24:50.3000696Z   github-token: ***
+2025-04-14T20:24:50.3000898Z   debug: false
+2025-04-14T20:24:50.3001104Z   user-agent: actions/github-script
+2025-04-14T20:24:50.3001369Z   retries: 0
+2025-04-14T20:24:50.3001585Z   retry-exempt-status-codes: 400,401,403,404,422
+2025-04-14T20:24:50.3001854Z env:
+2025-04-14T20:24:50.3002092Z   GITHUB_PR_REF_NAME: data-stream-settings-api-experiment
+2025-04-14T20:24:50.3002393Z   PR_NUMBER: 126344
+2025-04-14T20:24:50.3002618Z   REF: c883386a5359c9fe29f250ceff23b4af7599396a
+2025-04-14T20:24:50.3002876Z ##[endgroup]

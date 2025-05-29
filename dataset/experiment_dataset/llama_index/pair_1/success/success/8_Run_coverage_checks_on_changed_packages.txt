@@ -1,0 +1,60 @@
+2025-04-15T08:30:56.5340061Z ##[group]Run # Get the changed files
+2025-04-15T08:30:56.5340410Z [36;1m# Get the changed files[0m
+2025-04-15T08:30:56.5340716Z [36;1mCHANGED_FILES=$(pants list --changed-since=origin/main)[0m
+2025-04-15T08:30:56.5341178Z [36;1m[0m
+2025-04-15T08:30:56.5341391Z [36;1m# Find which roots contain changed files[0m
+2025-04-15T08:30:56.5341676Z [36;1mCHANGED_ROOTS=""[0m
+2025-04-15T08:30:56.5341898Z [36;1mFILTER_PATTERNS="["[0m
+2025-04-15T08:30:56.5342131Z [36;1mfor file in $CHANGED_FILES; do[0m
+2025-04-15T08:30:56.5342381Z [36;1m  # Start with the full path[0m
+2025-04-15T08:30:56.5342619Z [36;1m  root="$file"[0m
+2025-04-15T08:30:56.5342966Z [36;1m  # Keep going up the directory tree until we find a directory containing a marker file[0m
+2025-04-15T08:30:56.5343386Z [36;1m  # (e.g., 'pyproject.toml' for python projects)[0m
+2025-04-15T08:30:56.5343822Z [36;1m  while [[ ! -f "$root/pyproject.toml" && "$root" != "." && "$root" != "/" && "$root" != "./" ]]; do[0m
+2025-04-15T08:30:56.5344198Z [36;1m    root=$(dirname "$root")[0m
+2025-04-15T08:30:56.5344446Z [36;1m  done[0m
+2025-04-15T08:30:56.5344612Z [36;1m[0m
+2025-04-15T08:30:56.5344865Z [36;1m  if [[ "$root" != "." && "$root" != "/" && "$root" != "./" && ! "$FILTER_PATTERNS" =~ "$root" ]]; then[0m
+2025-04-15T08:30:56.5345259Z [36;1m    FILTER_PATTERNS="${FILTER_PATTERNS}'${root}/llama_index',"[0m
+2025-04-15T08:30:56.5345612Z [36;1m    CHANGED_ROOTS="${CHANGED_ROOTS} ${root}/::"[0m
+2025-04-15T08:30:56.5345873Z [36;1m  fi[0m
+2025-04-15T08:30:56.5346042Z [36;1mdone[0m
+2025-04-15T08:30:56.5346206Z [36;1m[0m
+2025-04-15T08:30:56.5346415Z [36;1m# remove the last comma and close the bracket[0m
+2025-04-15T08:30:56.5346715Z [36;1mFILTER_PATTERNS="${FILTER_PATTERNS%,}]"[0m
+2025-04-15T08:30:56.5346963Z [36;1m[0m
+2025-04-15T08:30:56.5347185Z [36;1mecho "Coverage filter patterns: $FILTER_PATTERNS"[0m
+2025-04-15T08:30:56.5347652Z [36;1mecho "Changed roots: $CHANGED_ROOTS"[0m
+2025-04-15T08:30:56.5347893Z [36;1m[0m
+2025-04-15T08:30:56.5348106Z [36;1mpants --level=error --no-local-cache test \[0m
+2025-04-15T08:30:56.5348392Z [36;1m  --test-use-coverage \[0m
+2025-04-15T08:30:56.5348664Z [36;1m  --coverage-py-filter="${FILTER_PATTERNS}" \[0m
+2025-04-15T08:30:56.5348933Z [36;1m  ${CHANGED_ROOTS}[0m
+2025-04-15T08:30:56.5396830Z shell: /usr/bin/bash -e {0}
+2025-04-15T08:30:56.5397068Z env:
+2025-04-15T08:30:56.5397245Z   POETRY_VERSION: 1.8.3
+2025-04-15T08:30:56.5397449Z   SYSTEM_VERSION_COMPAT: 1
+2025-04-15T08:30:56.5397723Z   pythonLocation: /opt/hostedtoolcache/Python/3.9.22/x64
+2025-04-15T08:30:56.5398119Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.9.22/x64/lib/pkgconfig
+2025-04-15T08:30:56.5398493Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.9.22/x64
+2025-04-15T08:30:56.5398830Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.9.22/x64
+2025-04-15T08:30:56.5399167Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.9.22/x64
+2025-04-15T08:30:56.5399499Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.9.22/x64/lib
+2025-04-15T08:30:56.5399788Z ##[endgroup]
+2025-04-15T08:30:59.9390403Z Coverage filter patterns: ['llama-index-integrations/vector_stores/llama-index-vector-stores-milvus/llama_index']
+2025-04-15T08:30:59.9391668Z Changed roots:  llama-index-integrations/vector_stores/llama-index-vector-stores-milvus/::
+2025-04-15T08:42:54.9210745Z 
+2025-04-15T08:42:54.9212810Z ✓ llama-index-integrations/vector_stores/llama-index-vector-stores-milvus/tests/test_vector_stores_milvus.py succeeded in 19.59s.
+2025-04-15T08:43:05.0483169Z 
+2025-04-15T08:43:05.0483859Z Name                                                                                                                   Stmts   Miss  Cover
+2025-04-15T08:43:05.0484650Z ------------------------------------------------------------------------------------------------------------------------------------------
+2025-04-15T08:43:05.0485971Z llama-index-integrations/vector_stores/llama-index-vector-stores-milvus/llama_index/vector_stores/milvus/__init__.py       2      0   100%
+2025-04-15T08:43:05.0487898Z llama-index-integrations/vector_stores/llama-index-vector-stores-milvus/llama_index/vector_stores/milvus/base.py         523    108    79%
+2025-04-15T08:43:05.0489503Z llama-index-integrations/vector_stores/llama-index-vector-stores-milvus/llama_index/vector_stores/milvus/utils.py        138     34    75%
+2025-04-15T08:43:05.0490715Z ------------------------------------------------------------------------------------------------------------------------------------------
+2025-04-15T08:43:05.0491644Z TOTAL                                                                                                                    663    142    79%
+2025-04-15T08:43:05.0492019Z 
+2025-04-15T08:43:05.1480987Z 
+2025-04-15T08:43:05.1481614Z Wrote html coverage report to `dist/coverage/python`
+2025-04-15T08:43:05.1561656Z 
+2025-04-15T08:43:05.1562112Z Wrote xml coverage report to `dist/coverage/python`

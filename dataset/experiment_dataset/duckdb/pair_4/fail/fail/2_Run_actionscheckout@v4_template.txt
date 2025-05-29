@@ -1,0 +1,191 @@
+##[group]Run <:*:>
+with:
+fetch-depth: <:NUM:>
+repository: <:*:>
+token: ***
+ssh-strict: true
+ssh-user: git
+persist-credentials: <:*:>
+clean: true
+sparse-checkout-cone-mode: true
+fetch-tags: false
+show-progress: true
+lfs: false
+submodules: <:*:>
+set-safe-directory: true
+env:
+GH_TOKEN:
+OVERRIDE_GIT_DESCRIBE:
+CIBW_TEST_SKIP: {cp37,cp38}-*
+CIBW_BUILD: cp310-manylinux_2_28_x86_64
+CIBW_TEST_COMMAND: python -m pytest {project}/tests --verbose && USE_ACTUAL_SPARK=true JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java)))) SPARK_HOME={project}/spark_installation/spark python -m pytest {project}/tests/fast/spark --verbose
+PYTEST_TIMEOUT: 600
+CIBW_ENVIRONMENT: OVERRIDE_GIT_DESCRIBE=
+CIBW_BEFORE_ALL: cd {project} && ./scripts/install_spark_in_cibuildwheels_linux_container.sh
+##[endgroup]
+Syncing repository: <:*:>
+##[group]Getting Git version info
+Working directory is <:*:>
+[command]/usr/bin/git version
+git version <:NUM:>.<:NUM:>.<:NUM:>
+##[endgroup]
+Temporarily overriding HOME='/home/runner/work/_temp/6858ecad-67c1-41bb-b43f-b533e05ae63f' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+[command]/usr/bin/git config --global --add safe.directory /home/runner/work/duckdb/duckdb
+Deleting the contents of <:*:>
+##[group]Initializing the repository
+[command]/usr/bin/git init <:*:>
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint:
+hint: git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint: git branch -m <name>
+Initialized empty Git repository in <:*:>
+[command]/usr/bin/git remote add origin <:*:>
+##[endgroup]
+##[group]Disabling automatic garbage collection
+[command]/usr/bin/git config --local gc.auto 0
+##[endgroup]
+##[group]Setting up auth
+[command]/usr/bin/git config --local --name-only --get-regexp <:*:>
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp <:*:> && git config --local --unset-all <:*:> || :"
+[command]/usr/bin/git config --local --name-only --get-regexp <:*:>
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp <:*:> && git config --local --unset-all <:*:> || :"
+[command]/usr/bin/git config <:*:> http.https://github.com/.extraheader AUTHORIZATION: basic ***
+##[endgroup]
+##[group]Fetching the repository
+[command]/usr/bin/git -c protocol.version=<:NUM:> fetch <:*:> <:*:> <:*:> <:*:> <:*:> <:*:>
+From <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new ref] <:SEQ:>-> <:*:>
+##[endgroup]
+##[group]Determining the checkout info
+##[endgroup]
+[command]/usr/bin/git sparse-checkout disable
+[command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+##[group]Checking out the ref
+[command]/usr/bin/git checkout --progress --force refs/remotes/pull/<:NUM:>/merge
+Updating files:  55% (7584/13780)
+Updating files:  56% (7717/13780)
+Updating files:  57% (7855/13780)
+Updating files:  58% (7993/13780)
+Updating files:  59% (8131/13780)
+Updating files:  60% (8268/13780)
+Updating files:  61% (8406/13780)
+Updating files:  62% (8544/13780)
+Updating files:  63% (8682/13780)
+Updating files:  64% (8820/13780)
+Updating files:  65% (8957/13780)
+Updating files:  66% (9095/13780)
+Updating files:  67% (9233/13780)
+Updating files:  68% (9371/13780)
+Updating files:  69% (9509/13780)
+Updating files:  70% (9646/13780)
+Updating files:  71% (9784/13780)
+Updating files:  72% (9922/13780)
+Updating files:  73% (10060/13780)
+Updating files:  74% (10198/13780)
+Updating files:  75% (10335/13780)
+Updating files:  76% (10473/13780)
+Updating files:  77% (10611/13780)
+Updating files:  78% (10749/13780)
+Updating files:  79% (10887/13780)
+Updating files:  80% (11024/13780)
+Updating files:  81% (11162/13780)
+Updating files:  82% (11300/13780)
+Updating files:  83% (11438/13780)
+Updating files:  84% (11576/13780)
+Updating files:  85% (11713/13780)
+Updating files:  86% (11851/13780)
+Updating files:  87% (11989/13780)
+Updating files:  88% (12127/13780)
+Updating files:  89% (12265/13780)
+Updating files:  90% (12402/13780)
+Updating files:  91% (12540/13780)
+Updating files:  92% (12678/13780)
+Updating files:  93% (12816/13780)
+Updating files:  94% (12954/13780)
+Updating files:  95% (13091/13780)
+Updating files:  96% (13229/13780)
+Updating files:  97% (13367/13780)
+Updating files:  98% (13505/13780)
+Updating files:  99% (13643/13780)
+Updating files: 100% (13780/13780)
+Updating files: 100% (13780/13780), done.
+Note: switching to 'refs/remotes/pull/<:NUM:>/merge'.
+2025-04-14T13:25:10.5115181Z
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+2025-04-14T13:25:10.5116983Z
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+2025-04-14T13:25:10.5118369Z
+git switch -c <new-branch-name>
+2025-04-14T13:25:10.5118800Z
+Or undo this operation with:
+2025-04-14T13:25:10.5119291Z
+git switch -
+2025-04-14T13:25:10.5119529Z
+Turn off this advice by setting config variable advice.detachedHead to false
+2025-04-14T13:25:10.5120421Z
+HEAD is now at <:*:> Merge <:SEQ:> into <:SEQ:>
+##[endgroup]
+[command]/usr/bin/git log <:NUM:> <:*:>
+<:SEQ:>

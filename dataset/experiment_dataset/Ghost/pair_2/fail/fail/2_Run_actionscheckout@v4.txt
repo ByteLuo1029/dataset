@@ -1,0 +1,95 @@
+2025-04-14T13:48:01.8216981Z ##[group]Run actions/checkout@v4
+2025-04-14T13:48:01.8218289Z with:
+2025-04-14T13:48:01.8218841Z   fetch-depth: 1000
+2025-04-14T13:48:01.8219476Z   repository: TryGhost/Ghost
+2025-04-14T13:48:01.8220456Z   token: ***
+2025-04-14T13:48:01.8221006Z   ssh-strict: true
+2025-04-14T13:48:01.8221590Z   ssh-user: git
+2025-04-14T13:48:01.8222192Z   persist-credentials: true
+2025-04-14T13:48:01.8222868Z   clean: true
+2025-04-14T13:48:01.8223471Z   sparse-checkout-cone-mode: true
+2025-04-14T13:48:01.8224227Z   fetch-tags: false
+2025-04-14T13:48:01.8224808Z   show-progress: true
+2025-04-14T13:48:01.8225396Z   lfs: false
+2025-04-14T13:48:01.8225940Z   submodules: false
+2025-04-14T13:48:01.8226549Z   set-safe-directory: true
+2025-04-14T13:48:01.8227563Z env:
+2025-04-14T13:48:01.8228076Z   FORCE_COLOR: 1
+2025-04-14T13:48:01.8228800Z   HEAD_COMMIT: 163f847c4c660f84a639e752dd94fd03895ddbdb
+2025-04-14T13:48:01.8231970Z   CACHED_DEPENDENCY_PATHS: /home/runner/work/Ghost/Ghost/node_modules
+/home/runner/work/Ghost/Ghost/apps/*/node_modules
+/home/runner/work/Ghost/Ghost/ghost/*/node_modules
+~/.cache/ms-playwright/
+
+2025-04-14T13:48:01.8235054Z   CACHED_BUILD_PATHS: /home/runner/work/Ghost/Ghost/ghost/*/build
+
+2025-04-14T13:48:01.8236124Z   NX_REJECT_UNKNOWN_LOCAL_CACHE: 0
+2025-04-14T13:48:01.8236848Z   NODE_VERSION: 20.11.1
+2025-04-14T13:48:01.8237631Z ##[endgroup]
+2025-04-14T13:48:02.0379996Z Syncing repository: TryGhost/Ghost
+2025-04-14T13:48:02.0382407Z ##[group]Getting Git version info
+2025-04-14T13:48:02.0383548Z Working directory is '/home/runner/work/Ghost/Ghost'
+2025-04-14T13:48:02.0385136Z [command]/usr/bin/git version
+2025-04-14T13:48:02.0433179Z git version 2.49.0
+2025-04-14T13:48:02.0461279Z ##[endgroup]
+2025-04-14T13:48:02.0475656Z Temporarily overriding HOME='/home/runner/work/_temp/b05603d8-a33c-4500-b811-a9fb2ce38d30' before making global git config changes
+2025-04-14T13:48:02.0478599Z Adding repository directory to the temporary git global config as a safe directory
+2025-04-14T13:48:02.0481072Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Ghost/Ghost
+2025-04-14T13:48:02.0515511Z Deleting the contents of '/home/runner/work/Ghost/Ghost'
+2025-04-14T13:48:02.0519414Z ##[group]Initializing the repository
+2025-04-14T13:48:02.0523543Z [command]/usr/bin/git init /home/runner/work/Ghost/Ghost
+2025-04-14T13:48:02.0591528Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-04-14T13:48:02.0593851Z hint: is subject to change. To configure the initial branch name to use in all
+2025-04-14T13:48:02.0596518Z hint: of your new repositories, which will suppress this warning, call:
+2025-04-14T13:48:02.0599331Z hint:
+2025-04-14T13:48:02.0601215Z hint: 	git config --global init.defaultBranch <name>
+2025-04-14T13:48:02.0603509Z hint:
+2025-04-14T13:48:02.0605629Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-04-14T13:48:02.0609261Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-04-14T13:48:02.0612009Z hint:
+2025-04-14T13:48:02.0613566Z hint: 	git branch -m <name>
+2025-04-14T13:48:02.0616301Z Initialized empty Git repository in /home/runner/work/Ghost/Ghost/.git/
+2025-04-14T13:48:02.0620489Z [command]/usr/bin/git remote add origin https://github.com/TryGhost/Ghost
+2025-04-14T13:48:02.0652146Z ##[endgroup]
+2025-04-14T13:48:02.0655010Z ##[group]Disabling automatic garbage collection
+2025-04-14T13:48:02.0657618Z [command]/usr/bin/git config --local gc.auto 0
+2025-04-14T13:48:02.0687963Z ##[endgroup]
+2025-04-14T13:48:02.0690517Z ##[group]Setting up auth
+2025-04-14T13:48:02.0695639Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-04-14T13:48:02.0729800Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-04-14T13:48:02.1037907Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-14T13:48:02.1071768Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-04-14T13:48:02.1309474Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-04-14T13:48:02.1347721Z ##[endgroup]
+2025-04-14T13:48:02.1349555Z ##[group]Fetching the repository
+2025-04-14T13:48:02.1357969Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1000 origin +163f847c4c660f84a639e752dd94fd03895ddbdb:refs/remotes/pull/22887/merge
+2025-04-14T13:48:06.1081258Z From https://github.com/TryGhost/Ghost
+2025-04-14T13:48:06.1083406Z  * [new ref]           163f847c4c660f84a639e752dd94fd03895ddbdb -> pull/22887/merge
+2025-04-14T13:48:06.1148241Z ##[endgroup]
+2025-04-14T13:48:06.1149559Z ##[group]Determining the checkout info
+2025-04-14T13:48:06.1150533Z ##[endgroup]
+2025-04-14T13:48:06.1155976Z [command]/usr/bin/git sparse-checkout disable
+2025-04-14T13:48:06.1195382Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-04-14T13:48:06.1223302Z ##[group]Checking out the ref
+2025-04-14T13:48:06.1227815Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/22887/merge
+2025-04-14T13:48:06.5519806Z Note: switching to 'refs/remotes/pull/22887/merge'.
+2025-04-14T13:48:06.5520519Z 
+2025-04-14T13:48:06.5520986Z You are in 'detached HEAD' state. You can look around, make experimental
+2025-04-14T13:48:06.5522128Z changes and commit them, and you can discard any commits you make in this
+2025-04-14T13:48:06.5523327Z state without impacting any branches by switching back to a branch.
+2025-04-14T13:48:06.5524036Z 
+2025-04-14T13:48:06.5524527Z If you want to create a new branch to retain commits you create, you may
+2025-04-14T13:48:06.5525622Z do so (now or later) by using -c with the switch command. Example:
+2025-04-14T13:48:06.5526240Z 
+2025-04-14T13:48:06.5526541Z   git switch -c <new-branch-name>
+2025-04-14T13:48:06.5526975Z 
+2025-04-14T13:48:06.5527448Z Or undo this operation with:
+2025-04-14T13:48:06.5527837Z 
+2025-04-14T13:48:06.5528049Z   git switch -
+2025-04-14T13:48:06.5528390Z 
+2025-04-14T13:48:06.5528911Z Turn off this advice by setting config variable advice.detachedHead to false
+2025-04-14T13:48:06.5529713Z 
+2025-04-14T13:48:06.5530666Z HEAD is now at 163f847c Merge 21a915d6912d261fc1fa3b7679a70d652dc933a2 into 2d8511b9704d8106a522b294a044fbdc42669271
+2025-04-14T13:48:06.5551423Z ##[endgroup]
+2025-04-14T13:48:06.5593519Z [command]/usr/bin/git log -1 --format=%H
+2025-04-14T13:48:06.5619280Z 163f847c4c660f84a639e752dd94fd03895ddbdb

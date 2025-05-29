@@ -1,0 +1,221 @@
+2025-04-14T19:35:38.0515284Z ##[group]Checking docker version
+2025-04-14T19:35:38.0533790Z ##[command]/usr/bin/docker version --format '{{.Server.APIVersion}}'
+2025-04-14T19:35:38.1159734Z '1.45'
+2025-04-14T19:35:38.1170763Z Docker daemon API version: '1.45'
+2025-04-14T19:35:38.1171540Z ##[command]/usr/bin/docker version --format '{{.Client.APIVersion}}'
+2025-04-14T19:35:38.1327012Z '1.45'
+2025-04-14T19:35:38.1340198Z Docker client API version: '1.45'
+2025-04-14T19:35:38.1345653Z ##[endgroup]
+2025-04-14T19:35:38.1348401Z ##[group]Clean up resources from previous jobs
+2025-04-14T19:35:38.1354369Z ##[command]/usr/bin/docker ps --all --quiet --no-trunc --filter "label=6fc8e1"
+2025-04-14T19:35:38.1503215Z ##[command]/usr/bin/docker network prune --force --filter "label=6fc8e1"
+2025-04-14T19:35:38.1627174Z ##[endgroup]
+2025-04-14T19:35:38.1627685Z ##[group]Create local container network
+2025-04-14T19:35:38.1637736Z ##[command]/usr/bin/docker network create --label 6fc8e1 github_network_cb2bd18529824a649b1e9bec535ac39b
+2025-04-14T19:35:38.2317738Z 456b2b6f94a3275a3d6b263e8bcdbf3a0acf9ab34d59f0e622e28c0cd3d8fb5b
+2025-04-14T19:35:38.2336891Z ##[endgroup]
+2025-04-14T19:35:38.2361018Z ##[group]Starting mysql service container
+2025-04-14T19:35:38.2379767Z ##[command]/usr/bin/docker pull mysql:9
+2025-04-14T19:35:39.0835549Z 9: Pulling from library/mysql
+2025-04-14T19:35:39.3150864Z cea172a6e83b: Pulling fs layer
+2025-04-14T19:35:39.3151951Z daac2c594bdd: Pulling fs layer
+2025-04-14T19:35:39.3152688Z cb8acbf2440c: Pulling fs layer
+2025-04-14T19:35:39.3153453Z fae51f7de1fb: Pulling fs layer
+2025-04-14T19:35:39.3154156Z b2ead3e96e6b: Pulling fs layer
+2025-04-14T19:35:39.3154872Z 769c3ac51f88: Pulling fs layer
+2025-04-14T19:35:39.3155582Z 79f239a40e62: Pulling fs layer
+2025-04-14T19:35:39.3156287Z c11056354384: Pulling fs layer
+2025-04-14T19:35:39.3156976Z 49978e7ccddf: Pulling fs layer
+2025-04-14T19:35:39.3157678Z 548990e33276: Pulling fs layer
+2025-04-14T19:35:39.3158352Z 79f239a40e62: Waiting
+2025-04-14T19:35:39.3158960Z c11056354384: Waiting
+2025-04-14T19:35:39.3159859Z 49978e7ccddf: Waiting
+2025-04-14T19:35:39.3160567Z 548990e33276: Waiting
+2025-04-14T19:35:39.3161276Z fae51f7de1fb: Waiting
+2025-04-14T19:35:39.3161936Z 769c3ac51f88: Waiting
+2025-04-14T19:35:39.3162593Z b2ead3e96e6b: Waiting
+2025-04-14T19:35:39.6085955Z daac2c594bdd: Verifying Checksum
+2025-04-14T19:35:39.6088517Z daac2c594bdd: Download complete
+2025-04-14T19:35:39.6696089Z cb8acbf2440c: Verifying Checksum
+2025-04-14T19:35:39.6696860Z cb8acbf2440c: Download complete
+2025-04-14T19:35:39.9489002Z b2ead3e96e6b: Verifying Checksum
+2025-04-14T19:35:39.9490934Z b2ead3e96e6b: Download complete
+2025-04-14T19:35:40.0165179Z fae51f7de1fb: Verifying Checksum
+2025-04-14T19:35:40.0165853Z fae51f7de1fb: Download complete
+2025-04-14T19:35:40.2068900Z cea172a6e83b: Verifying Checksum
+2025-04-14T19:35:40.2070922Z cea172a6e83b: Download complete
+2025-04-14T19:35:40.2373795Z 769c3ac51f88: Verifying Checksum
+2025-04-14T19:35:40.2376280Z 769c3ac51f88: Download complete
+2025-04-14T19:35:40.4889838Z c11056354384: Verifying Checksum
+2025-04-14T19:35:40.4892177Z c11056354384: Download complete
+2025-04-14T19:35:40.7723528Z 548990e33276: Download complete
+2025-04-14T19:35:41.1323780Z 79f239a40e62: Verifying Checksum
+2025-04-14T19:35:41.1324363Z 79f239a40e62: Download complete
+2025-04-14T19:35:41.4905651Z cea172a6e83b: Pull complete
+2025-04-14T19:35:41.7404344Z 49978e7ccddf: Verifying Checksum
+2025-04-14T19:35:41.7404916Z 49978e7ccddf: Download complete
+2025-04-14T19:35:41.9841215Z daac2c594bdd: Pull complete
+2025-04-14T19:35:42.0234895Z cb8acbf2440c: Pull complete
+2025-04-14T19:35:42.2306441Z fae51f7de1fb: Pull complete
+2025-04-14T19:35:42.2407581Z b2ead3e96e6b: Pull complete
+2025-04-14T19:35:42.2545408Z 769c3ac51f88: Pull complete
+2025-04-14T19:35:43.0577844Z 79f239a40e62: Pull complete
+2025-04-14T19:35:43.0690180Z c11056354384: Pull complete
+2025-04-14T19:35:49.9350661Z 49978e7ccddf: Pull complete
+2025-04-14T19:35:49.9468832Z 548990e33276: Pull complete
+2025-04-14T19:35:49.9519514Z Digest: sha256:0596fa224cdf3b3355ce3ddbfd7ce77be27ec9e51841dfc5d2e1c8b81eea69d2
+2025-04-14T19:35:49.9535692Z Status: Downloaded newer image for mysql:9
+2025-04-14T19:35:49.9546945Z docker.io/library/mysql:9
+2025-04-14T19:35:49.9602745Z ##[command]/usr/bin/docker create --name 540642265531442ea8983614a01904f1_mysql9_653cef --label 6fc8e1 --network github_network_cb2bd18529824a649b1e9bec535ac39b --network-alias mysql -p 3306:3306 --health-cmd "mysqladmin ping" --health-interval 10s --health-timeout 5s --health-retries 5 -e "MYSQL_ALLOW_EMPTY_PASSWORD=yes" -e "MYSQL_DATABASE=pandas" -e GITHUB_ACTIONS=true -e CI=true mysql:9
+2025-04-14T19:35:49.9897942Z 64802a335a762c299c305d6956ba2113fd6c5232ecbe1e2dfede568665342aad
+2025-04-14T19:35:49.9920710Z ##[command]/usr/bin/docker start 64802a335a762c299c305d6956ba2113fd6c5232ecbe1e2dfede568665342aad
+2025-04-14T19:35:50.2319769Z 64802a335a762c299c305d6956ba2113fd6c5232ecbe1e2dfede568665342aad
+2025-04-14T19:35:50.2338286Z ##[command]/usr/bin/docker ps --all --filter id=64802a335a762c299c305d6956ba2113fd6c5232ecbe1e2dfede568665342aad --filter status=running --no-trunc --format "{{.ID}} {{.Status}}"
+2025-04-14T19:35:50.2460313Z 64802a335a762c299c305d6956ba2113fd6c5232ecbe1e2dfede568665342aad Up Less than a second (health: starting)
+2025-04-14T19:35:50.2478106Z ##[command]/usr/bin/docker port 64802a335a762c299c305d6956ba2113fd6c5232ecbe1e2dfede568665342aad
+2025-04-14T19:35:50.2589760Z 3306/tcp -> 0.0.0.0:3306
+2025-04-14T19:35:50.2591316Z 3306/tcp -> [::]:3306
+2025-04-14T19:35:50.2643151Z ##[endgroup]
+2025-04-14T19:35:50.2644869Z ##[group]Starting postgres service container
+2025-04-14T19:35:50.2646298Z ##[command]/usr/bin/docker pull postgres:17
+2025-04-14T19:35:51.0948834Z 17: Pulling from library/postgres
+2025-04-14T19:35:51.3147885Z 8a628cdd7ccc: Pulling fs layer
+2025-04-14T19:35:51.3148649Z e4847368ad17: Pulling fs layer
+2025-04-14T19:35:51.3150749Z 97cdd47d9131: Pulling fs layer
+2025-04-14T19:35:51.3151151Z 2817206b0512: Pulling fs layer
+2025-04-14T19:35:51.3151503Z 3a6f8814136c: Pulling fs layer
+2025-04-14T19:35:51.3151895Z 07db60713289: Pulling fs layer
+2025-04-14T19:35:51.3152311Z 0c942aac37b1: Pulling fs layer
+2025-04-14T19:35:51.3152679Z 8c63b71925de: Pulling fs layer
+2025-04-14T19:35:51.3153018Z 97f28320a07a: Pulling fs layer
+2025-04-14T19:35:51.3153364Z 2a08aad74366: Pulling fs layer
+2025-04-14T19:35:51.3153723Z 6cea4d95608f: Pulling fs layer
+2025-04-14T19:35:51.3154492Z c1b7de8085d1: Pulling fs layer
+2025-04-14T19:35:51.3154885Z f15c43cffa70: Pulling fs layer
+2025-04-14T19:35:51.3155253Z 6948dc7760c1: Pulling fs layer
+2025-04-14T19:35:51.3155602Z 8c63b71925de: Waiting
+2025-04-14T19:35:51.3155917Z 97f28320a07a: Waiting
+2025-04-14T19:35:51.3156222Z 2a08aad74366: Waiting
+2025-04-14T19:35:51.3156520Z 6cea4d95608f: Waiting
+2025-04-14T19:35:51.3156830Z c1b7de8085d1: Waiting
+2025-04-14T19:35:51.3157142Z f15c43cffa70: Waiting
+2025-04-14T19:35:51.3157445Z 6948dc7760c1: Waiting
+2025-04-14T19:35:51.3157730Z 2817206b0512: Waiting
+2025-04-14T19:35:51.3158025Z 07db60713289: Waiting
+2025-04-14T19:35:51.3158318Z 3a6f8814136c: Waiting
+2025-04-14T19:35:51.3158639Z 0c942aac37b1: Waiting
+2025-04-14T19:35:51.6112331Z e4847368ad17: Verifying Checksum
+2025-04-14T19:35:51.6112957Z e4847368ad17: Download complete
+2025-04-14T19:35:51.7290020Z 97cdd47d9131: Verifying Checksum
+2025-04-14T19:35:51.7290546Z 97cdd47d9131: Download complete
+2025-04-14T19:35:51.9382447Z 8a628cdd7ccc: Verifying Checksum
+2025-04-14T19:35:51.9384154Z 8a628cdd7ccc: Download complete
+2025-04-14T19:35:51.9701420Z 2817206b0512: Download complete
+2025-04-14T19:35:52.1719575Z 3a6f8814136c: Verifying Checksum
+2025-04-14T19:35:52.1720669Z 3a6f8814136c: Download complete
+2025-04-14T19:35:52.2632813Z 0c942aac37b1: Verifying Checksum
+2025-04-14T19:35:52.2634265Z 0c942aac37b1: Download complete
+2025-04-14T19:35:52.2831799Z 07db60713289: Verifying Checksum
+2025-04-14T19:35:52.2832303Z 07db60713289: Download complete
+2025-04-14T19:35:52.4573038Z 8c63b71925de: Download complete
+2025-04-14T19:35:52.5859970Z 2a08aad74366: Verifying Checksum
+2025-04-14T19:35:52.5860602Z 2a08aad74366: Download complete
+2025-04-14T19:35:52.7587702Z 6cea4d95608f: Verifying Checksum
+2025-04-14T19:35:52.7588649Z 6cea4d95608f: Download complete
+2025-04-14T19:35:52.8705889Z c1b7de8085d1: Verifying Checksum
+2025-04-14T19:35:52.8706410Z c1b7de8085d1: Download complete
+2025-04-14T19:35:53.0287841Z f15c43cffa70: Verifying Checksum
+2025-04-14T19:35:53.0288406Z f15c43cffa70: Download complete
+2025-04-14T19:35:53.0811596Z 8a628cdd7ccc: Pull complete
+2025-04-14T19:35:53.1562677Z 6948dc7760c1: Download complete
+2025-04-14T19:35:53.3028502Z e4847368ad17: Pull complete
+2025-04-14T19:35:53.4595312Z 97cdd47d9131: Pull complete
+2025-04-14T19:35:53.5101301Z 2817206b0512: Pull complete
+2025-04-14T19:35:53.6424812Z 97f28320a07a: Verifying Checksum
+2025-04-14T19:35:53.6425338Z 97f28320a07a: Download complete
+2025-04-14T19:35:53.8755148Z 3a6f8814136c: Pull complete
+2025-04-14T19:35:53.9535654Z 07db60713289: Pull complete
+2025-04-14T19:35:53.9641186Z 0c942aac37b1: Pull complete
+2025-04-14T19:35:53.9793657Z 8c63b71925de: Pull complete
+2025-04-14T19:35:57.2661350Z 97f28320a07a: Pull complete
+2025-04-14T19:35:57.2807929Z 2a08aad74366: Pull complete
+2025-04-14T19:35:57.2923752Z 6cea4d95608f: Pull complete
+2025-04-14T19:35:57.3044185Z c1b7de8085d1: Pull complete
+2025-04-14T19:35:57.3170079Z f15c43cffa70: Pull complete
+2025-04-14T19:35:57.3303014Z 6948dc7760c1: Pull complete
+2025-04-14T19:35:57.3352451Z Digest: sha256:fe3f571d128e8efadcd8b2fde0e2b73ebab6dbec33f6bfe69d98c682c7d8f7bd
+2025-04-14T19:35:57.3367681Z Status: Downloaded newer image for postgres:17
+2025-04-14T19:35:57.3407577Z docker.io/library/postgres:17
+2025-04-14T19:35:57.3423892Z ##[command]/usr/bin/docker create --name c9869ac642024a46a40b7274964d0c60_postgres17_c24795 --label 6fc8e1 --network github_network_cb2bd18529824a649b1e9bec535ac39b --network-alias postgres -p 5432:5432 --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5 -e "PGUSER=postgres" -e "POSTGRES_USER=postgres" -e "POSTGRES_PASSWORD=postgres" -e "POSTGRES_DB=pandas" -e GITHUB_ACTIONS=true -e CI=true postgres:17
+2025-04-14T19:35:57.3680182Z 2c1744892c7c327658b3af810a53ca7561696c0fc554b69e7091723145f1fc6a
+2025-04-14T19:35:57.3693721Z ##[command]/usr/bin/docker start 2c1744892c7c327658b3af810a53ca7561696c0fc554b69e7091723145f1fc6a
+2025-04-14T19:35:57.5533061Z 2c1744892c7c327658b3af810a53ca7561696c0fc554b69e7091723145f1fc6a
+2025-04-14T19:35:57.5548853Z ##[command]/usr/bin/docker ps --all --filter id=2c1744892c7c327658b3af810a53ca7561696c0fc554b69e7091723145f1fc6a --filter status=running --no-trunc --format "{{.ID}} {{.Status}}"
+2025-04-14T19:35:57.5670256Z 2c1744892c7c327658b3af810a53ca7561696c0fc554b69e7091723145f1fc6a Up Less than a second (health: starting)
+2025-04-14T19:35:57.5683057Z ##[command]/usr/bin/docker port 2c1744892c7c327658b3af810a53ca7561696c0fc554b69e7091723145f1fc6a
+2025-04-14T19:35:57.5812109Z 5432/tcp -> 0.0.0.0:5432
+2025-04-14T19:35:57.5813429Z 5432/tcp -> [::]:5432
+2025-04-14T19:35:57.5830304Z ##[endgroup]
+2025-04-14T19:35:57.5831553Z ##[group]Starting moto service container
+2025-04-14T19:35:57.5832632Z ##[command]/usr/bin/docker pull motoserver/moto:5.0.27
+2025-04-14T19:35:58.4338516Z 5.0.27: Pulling from motoserver/moto
+2025-04-14T19:35:58.6593620Z af302e5c37e9: Pulling fs layer
+2025-04-14T19:35:58.6594498Z 76530857599c: Pulling fs layer
+2025-04-14T19:35:58.6594896Z 951ef0438920: Pulling fs layer
+2025-04-14T19:35:58.6595312Z e670a00cb8f8: Pulling fs layer
+2025-04-14T19:35:58.6595695Z 9bbcc2a00177: Pulling fs layer
+2025-04-14T19:35:58.6596057Z 4f4fb700ef54: Pulling fs layer
+2025-04-14T19:35:58.6596474Z 7e74c760e0b3: Pulling fs layer
+2025-04-14T19:35:58.6596858Z dcac1f951d09: Pulling fs layer
+2025-04-14T19:35:58.6597212Z 4f4fb700ef54: Waiting
+2025-04-14T19:35:58.6597540Z 7e74c760e0b3: Waiting
+2025-04-14T19:35:58.6597874Z dcac1f951d09: Waiting
+2025-04-14T19:35:58.6598075Z e670a00cb8f8: Waiting
+2025-04-14T19:35:58.6598260Z 9bbcc2a00177: Waiting
+2025-04-14T19:35:59.0250544Z 76530857599c: Verifying Checksum
+2025-04-14T19:35:59.0251026Z 76530857599c: Download complete
+2025-04-14T19:35:59.1896588Z 951ef0438920: Verifying Checksum
+2025-04-14T19:35:59.1897083Z 951ef0438920: Download complete
+2025-04-14T19:35:59.3284304Z e670a00cb8f8: Verifying Checksum
+2025-04-14T19:35:59.3284907Z e670a00cb8f8: Download complete
+2025-04-14T19:35:59.3306550Z af302e5c37e9: Verifying Checksum
+2025-04-14T19:35:59.3307373Z af302e5c37e9: Download complete
+2025-04-14T19:35:59.5967283Z 9bbcc2a00177: Verifying Checksum
+2025-04-14T19:35:59.5967782Z 9bbcc2a00177: Download complete
+2025-04-14T19:35:59.6245036Z 4f4fb700ef54: Verifying Checksum
+2025-04-14T19:35:59.6246668Z 4f4fb700ef54: Download complete
+2025-04-14T19:35:59.9444662Z dcac1f951d09: Verifying Checksum
+2025-04-14T19:35:59.9445188Z dcac1f951d09: Download complete
+2025-04-14T19:36:00.4235803Z af302e5c37e9: Pull complete
+2025-04-14T19:36:00.5418969Z 7e74c760e0b3: Verifying Checksum
+2025-04-14T19:36:00.5419621Z 7e74c760e0b3: Download complete
+2025-04-14T19:36:00.7953190Z 76530857599c: Pull complete
+2025-04-14T19:36:01.5153859Z 951ef0438920: Pull complete
+2025-04-14T19:36:01.5317151Z e670a00cb8f8: Pull complete
+2025-04-14T19:36:02.5716452Z 9bbcc2a00177: Pull complete
+2025-04-14T19:36:02.5823860Z 4f4fb700ef54: Pull complete
+2025-04-14T19:36:10.1442960Z 7e74c760e0b3: Pull complete
+2025-04-14T19:36:10.2133473Z dcac1f951d09: Pull complete
+2025-04-14T19:36:10.2174109Z Digest: sha256:ac5312f68c6b748b667526025f9e7a8c2e4112837c258eee68f96fa36d9dbbef
+2025-04-14T19:36:10.2187496Z Status: Downloaded newer image for motoserver/moto:5.0.27
+2025-04-14T19:36:10.2196311Z docker.io/motoserver/moto:5.0.27
+2025-04-14T19:36:10.2212164Z ##[command]/usr/bin/docker create --name 3c5e1e5bd9134cada7dea7dc02115361_motoservermoto5027_f03aff --label 6fc8e1 --network github_network_cb2bd18529824a649b1e9bec535ac39b --network-alias moto -p 5000:5000  -e "AWS_ACCESS_KEY_ID=foobar_key" -e "AWS_SECRET_ACCESS_KEY=foobar_secret" -e GITHUB_ACTIONS=true -e CI=true motoserver/moto:5.0.27
+2025-04-14T19:36:10.2466774Z ef1ec67ab7adea524d4194b1a100a98d94873bdb4607624a92a3752f1222e805
+2025-04-14T19:36:10.2479795Z ##[command]/usr/bin/docker start ef1ec67ab7adea524d4194b1a100a98d94873bdb4607624a92a3752f1222e805
+2025-04-14T19:36:10.4226397Z ef1ec67ab7adea524d4194b1a100a98d94873bdb4607624a92a3752f1222e805
+2025-04-14T19:36:10.4247578Z ##[command]/usr/bin/docker ps --all --filter id=ef1ec67ab7adea524d4194b1a100a98d94873bdb4607624a92a3752f1222e805 --filter status=running --no-trunc --format "{{.ID}} {{.Status}}"
+2025-04-14T19:36:10.4383282Z ef1ec67ab7adea524d4194b1a100a98d94873bdb4607624a92a3752f1222e805 Up Less than a second
+2025-04-14T19:36:10.4397417Z ##[command]/usr/bin/docker port ef1ec67ab7adea524d4194b1a100a98d94873bdb4607624a92a3752f1222e805
+2025-04-14T19:36:10.4512778Z 5000/tcp -> 0.0.0.0:5000
+2025-04-14T19:36:10.4513716Z 5000/tcp -> [::]:5000
+2025-04-14T19:36:10.4527277Z ##[endgroup]
+2025-04-14T19:36:10.4537270Z ##[group]Waiting for all services to be ready
+2025-04-14T19:36:10.4550998Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" 64802a335a762c299c305d6956ba2113fd6c5232ecbe1e2dfede568665342aad
+2025-04-14T19:36:10.4685769Z healthy
+2025-04-14T19:36:10.4708901Z mysql service is healthy.
+2025-04-14T19:36:10.4710315Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" 2c1744892c7c327658b3af810a53ca7561696c0fc554b69e7091723145f1fc6a
+2025-04-14T19:36:10.4841285Z healthy
+2025-04-14T19:36:10.4858863Z postgres service is healthy.
+2025-04-14T19:36:10.4859839Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" ef1ec67ab7adea524d4194b1a100a98d94873bdb4607624a92a3752f1222e805
+2025-04-14T19:36:10.5004730Z moto service is healthy.
+2025-04-14T19:36:10.5005210Z ##[endgroup]

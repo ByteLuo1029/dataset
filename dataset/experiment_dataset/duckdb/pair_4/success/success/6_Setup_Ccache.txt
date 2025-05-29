@@ -1,0 +1,148 @@
+2025-04-14T11:58:25.7488708Z ##[group]Run hendrikmuhs/ccache-action@main
+2025-04-14T11:58:25.7489029Z with:
+2025-04-14T11:58:25.7489209Z   key: linux-python3-10
+2025-04-14T11:58:25.7489413Z   save: false
+2025-04-14T11:58:25.7489590Z   restore: true
+2025-04-14T11:58:25.7489768Z   max-size: 500M
+2025-04-14T11:58:25.7489942Z   verbose: 0
+2025-04-14T11:58:25.7490106Z   variant: ccache
+2025-04-14T11:58:25.7490303Z   append-timestamp: true
+2025-04-14T11:58:25.7490540Z   create-symlink: false
+2025-04-14T11:58:25.7490753Z   job-summary: CCache Statistics
+2025-04-14T11:58:25.7490978Z env:
+2025-04-14T11:58:25.7491129Z   GH_TOKEN: 
+2025-04-14T11:58:25.7491308Z   OVERRIDE_GIT_DESCRIBE: 
+2025-04-14T11:58:25.7491526Z   CIBW_TEST_SKIP: {cp37,cp38}-*
+2025-04-14T11:58:25.7491754Z   CIBW_BUILD: cp39-manylinux_x86_64
+2025-04-14T11:58:25.7492913Z   CIBW_TEST_COMMAND: python -m pytest {project}/tests --verbose && USE_ACTUAL_SPARK=true JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java)))) SPARK_HOME={project}/spark_installation/spark python -m pytest {project}/tests/fast/spark --verbose
+2025-04-14T11:58:25.7493792Z   PYTEST_TIMEOUT: 600
+2025-04-14T11:58:25.7494014Z   CIBW_ENVIRONMENT: OVERRIDE_GIT_DESCRIBE=
+2025-04-14T11:58:25.7494423Z   CIBW_BEFORE_ALL: cd {project} && ./scripts/install_spark_in_cibuildwheels_linux_container.sh
+2025-04-14T11:58:25.7521519Z   pythonLocation: /opt/hostedtoolcache/Python/3.10.16/x64
+2025-04-14T11:58:25.7522293Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.10.16/x64/lib/pkgconfig
+2025-04-14T11:58:25.7522723Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.10.16/x64
+2025-04-14T11:58:25.7523107Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.10.16/x64
+2025-04-14T11:58:25.7523478Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.10.16/x64
+2025-04-14T11:58:25.7523841Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.10.16/x64/lib
+2025-04-14T11:58:25.7524145Z ##[endgroup]
+2025-04-14T11:58:25.8856488Z ##[group]Install ccache
+2025-04-14T11:58:25.8894659Z [command]/usr/bin/sh -xc $(which sudo) apt-get install -y ccache
+2025-04-14T11:58:25.8936872Z + which sudo
+2025-04-14T11:58:25.8940714Z + /usr/bin/sudo apt-get install -y ccache
+2025-04-14T11:58:27.0754835Z Reading package lists...
+2025-04-14T11:58:27.2788254Z Building dependency tree...
+2025-04-14T11:58:27.2800806Z Reading state information...
+2025-04-14T11:58:27.4308314Z The following additional packages will be installed:
+2025-04-14T11:58:27.4311762Z   libhiredis0.14
+2025-04-14T11:58:27.4317711Z Suggested packages:
+2025-04-14T11:58:27.4318074Z   distcc | icecc
+2025-04-14T11:58:27.4477274Z The following NEW packages will be installed:
+2025-04-14T11:58:27.4486474Z   ccache libhiredis0.14
+2025-04-14T11:58:27.4652891Z 0 upgraded, 2 newly installed, 0 to remove and 10 not upgraded.
+2025-04-14T11:58:27.4653548Z Need to get 528 kB of archives.
+2025-04-14T11:58:27.4654075Z After this operation, 1469 kB of additional disk space will be used.
+2025-04-14T11:58:27.4654501Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [142 B]
+2025-04-14T11:58:27.5219681Z Get:2 http://azure.archive.ubuntu.com/ubuntu jammy/universe amd64 libhiredis0.14 amd64 0.14.1-2 [32.8 kB]
+2025-04-14T11:58:27.5568237Z Get:3 http://azure.archive.ubuntu.com/ubuntu jammy/universe amd64 ccache amd64 4.5.1-1 [495 kB]
+2025-04-14T11:58:27.8966206Z Fetched 528 kB in 0s (3877 kB/s)
+2025-04-14T11:58:27.9243345Z Selecting previously unselected package libhiredis0.14:amd64.
+2025-04-14T11:58:27.9478191Z (Reading database ... 
+2025-04-14T11:58:27.9479025Z (Reading database ... 5%
+2025-04-14T11:58:27.9479404Z (Reading database ... 10%
+2025-04-14T11:58:27.9479757Z (Reading database ... 15%
+2025-04-14T11:58:27.9480112Z (Reading database ... 20%
+2025-04-14T11:58:27.9480446Z (Reading database ... 25%
+2025-04-14T11:58:27.9480803Z (Reading database ... 30%
+2025-04-14T11:58:27.9481157Z (Reading database ... 35%
+2025-04-14T11:58:27.9481508Z (Reading database ... 40%
+2025-04-14T11:58:27.9481857Z (Reading database ... 45%
+2025-04-14T11:58:27.9482426Z (Reading database ... 50%
+2025-04-14T11:58:27.9759712Z (Reading database ... 55%
+2025-04-14T11:58:27.9985331Z (Reading database ... 60%
+2025-04-14T11:58:28.0199669Z (Reading database ... 65%
+2025-04-14T11:58:28.0401623Z (Reading database ... 70%
+2025-04-14T11:58:28.0790842Z (Reading database ... 75%
+2025-04-14T11:58:28.1065703Z (Reading database ... 80%
+2025-04-14T11:58:28.1645612Z (Reading database ... 85%
+2025-04-14T11:58:28.1874785Z (Reading database ... 90%
+2025-04-14T11:58:28.2324980Z (Reading database ... 95%
+2025-04-14T11:58:28.2325592Z (Reading database ... 100%
+2025-04-14T11:58:28.2326241Z (Reading database ... 271514 files and directories currently installed.)
+2025-04-14T11:58:28.2381580Z Preparing to unpack .../libhiredis0.14_0.14.1-2_amd64.deb ...
+2025-04-14T11:58:28.2435709Z Unpacking libhiredis0.14:amd64 (0.14.1-2) ...
+2025-04-14T11:58:28.2683909Z Selecting previously unselected package ccache.
+2025-04-14T11:58:28.2853481Z Preparing to unpack .../ccache_4.5.1-1_amd64.deb ...
+2025-04-14T11:58:28.2863512Z Unpacking ccache (4.5.1-1) ...
+2025-04-14T11:58:28.3460822Z Setting up libhiredis0.14:amd64 (0.14.1-2) ...
+2025-04-14T11:58:28.3493907Z Setting up ccache (4.5.1-1) ...
+2025-04-14T11:58:28.3520479Z Updating symlinks in /usr/lib/ccache ...
+2025-04-14T11:58:28.3625105Z Processing triggers for libc-bin (2.35-0ubuntu3.9) ...
+2025-04-14T11:58:28.3907882Z Processing triggers for man-db (2.10.2-1) ...
+2025-04-14T11:58:29.1757163Z NEEDRESTART-VER: 3.5
+2025-04-14T11:58:29.4595282Z NEEDRESTART-KCUR: 6.8.0-1025-azure
+2025-04-14T11:58:29.4595904Z NEEDRESTART-KEXP: 6.8.0-1025-azure
+2025-04-14T11:58:29.4596293Z NEEDRESTART-KSTA: 1
+2025-04-14T11:58:30.9641580Z 
+2025-04-14T11:58:30.9652960Z ##[endgroup]
+2025-04-14T11:58:30.9653628Z ##[group]Restore cache
+2025-04-14T11:58:31.1031483Z ##[warning]Cache not found for keys: ccache-linux-python3-10-
+2025-04-14T11:58:31.1041437Z No cache found.
+2025-04-14T11:58:31.1042426Z ##[endgroup]
+2025-04-14T11:58:31.1043032Z ##[group]Configure ccache, linux
+2025-04-14T11:58:31.1043739Z [command]/usr/bin/sh -xc ccache --set-config=cache_dir='/home/runner/work/duckdb/duckdb/.ccache'
+2025-04-14T11:58:31.1067181Z + ccache --set-config=cache_dir=/home/runner/work/duckdb/duckdb/.ccache
+2025-04-14T11:58:31.1105230Z [command]/usr/bin/sh -xc ccache --set-config=max_size='500M'
+2025-04-14T11:58:31.1127297Z + ccache --set-config=max_size=500M
+2025-04-14T11:58:31.1162249Z [command]/usr/bin/sh -xc ccache --set-config=compression=true
+2025-04-14T11:58:31.1182587Z + ccache --set-config=compression=true
+2025-04-14T11:58:31.1220889Z [command]/usr/bin/sh -xc ccache --set-config=read_only=true
+2025-04-14T11:58:31.1241869Z + ccache --set-config=read_only=true
+2025-04-14T11:58:31.1267245Z Cccache config:
+2025-04-14T11:58:31.1280722Z [command]/usr/bin/sh -xc ccache -p
+2025-04-14T11:58:31.1300897Z + ccache -p
+2025-04-14T11:58:31.1317541Z (default) absolute_paths_in_stderr = false
+2025-04-14T11:58:31.1318171Z (default) base_dir = 
+2025-04-14T11:58:31.1318841Z (/home/runner/.config/ccache/ccache.conf) cache_dir = /home/runner/work/duckdb/duckdb/.ccache
+2025-04-14T11:58:31.1319335Z (default) compiler = 
+2025-04-14T11:58:31.1319605Z (default) compiler_check = mtime
+2025-04-14T11:58:31.1319848Z (default) compiler_type = auto
+2025-04-14T11:58:31.1320183Z (/home/runner/.config/ccache/ccache.conf) compression = true
+2025-04-14T11:58:31.1320518Z (default) compression_level = 0
+2025-04-14T11:58:31.1320752Z (default) cpp_extension = 
+2025-04-14T11:58:31.1320974Z (default) debug = false
+2025-04-14T11:58:31.1321795Z (default) debug_dir = 
+2025-04-14T11:58:31.1322331Z (default) depend_mode = false
+2025-04-14T11:58:31.1322594Z (default) direct_mode = true
+2025-04-14T11:58:31.1322821Z (default) disable = false
+2025-04-14T11:58:31.1323040Z (default) extra_files_to_hash = 
+2025-04-14T11:58:31.1323271Z (default) file_clone = false
+2025-04-14T11:58:31.1323488Z (default) hard_link = false
+2025-04-14T11:58:31.1323704Z (default) hash_dir = true
+2025-04-14T11:58:31.1323926Z (default) ignore_headers_in_manifest = 
+2025-04-14T11:58:31.1324181Z (default) ignore_options = 
+2025-04-14T11:58:31.1324395Z (default) inode_cache = false
+2025-04-14T11:58:31.1324882Z (default) keep_comments_cpp = false
+2025-04-14T11:58:31.1325140Z (default) limit_multiple = 0.8
+2025-04-14T11:58:31.1325370Z (default) log_file = 
+2025-04-14T11:58:31.1325566Z (default) max_files = 0
+2025-04-14T11:58:31.1325824Z (/home/runner/.config/ccache/ccache.conf) max_size = 500.0M
+2025-04-14T11:58:31.1326135Z (default) namespace = 
+2025-04-14T11:58:31.1326344Z (default) path = 
+2025-04-14T11:58:31.1326571Z (default) pch_external_checksum = false
+2025-04-14T11:58:31.1326827Z (default) prefix_command = 
+2025-04-14T11:58:31.1327037Z (default) prefix_command_cpp = 
+2025-04-14T11:58:31.1327317Z (/home/runner/.config/ccache/ccache.conf) read_only = true
+2025-04-14T11:58:31.1327634Z (default) read_only_direct = false
+2025-04-14T11:58:31.1327876Z (default) recache = false
+2025-04-14T11:58:31.1328090Z (default) reshare = false
+2025-04-14T11:58:31.1328301Z (default) run_second_cpp = true
+2025-04-14T11:58:31.1328681Z (default) secondary_storage = 
+2025-04-14T11:58:31.1328990Z (default) sloppiness = 
+2025-04-14T11:58:31.1329208Z (default) stats = true
+2025-04-14T11:58:31.1329409Z (default) stats_log = 
+2025-04-14T11:58:31.1329644Z (default) temporary_dir = /run/user/1001/ccache-tmp
+2025-04-14T11:58:31.1329929Z (default) umask = 
+2025-04-14T11:58:31.1341656Z [command]/usr/bin/sh -xc ccache -z
+2025-04-14T11:58:31.1363608Z + ccache -z
+2025-04-14T11:58:31.1694120Z Statistics zeroed
+2025-04-14T11:58:31.1701853Z ##[endgroup]

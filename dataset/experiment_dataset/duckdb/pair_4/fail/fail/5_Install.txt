@@ -1,0 +1,57 @@
+2025-04-14T13:25:10.7653576Z ##[group]Run pip install 'cibuildwheel>=2.16.2' build
+2025-04-14T13:25:10.7653977Z [36;1mpip install 'cibuildwheel>=2.16.2' build[0m
+2025-04-14T13:25:10.7718601Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-04-14T13:25:10.7718955Z env:
+2025-04-14T13:25:10.7719342Z   GH_TOKEN: 
+2025-04-14T13:25:10.7719536Z   OVERRIDE_GIT_DESCRIBE: 
+2025-04-14T13:25:10.7719778Z   CIBW_TEST_SKIP: {cp37,cp38}-*
+2025-04-14T13:25:10.7720031Z   CIBW_BUILD: cp310-manylinux_2_28_x86_64
+2025-04-14T13:25:10.7721135Z   CIBW_TEST_COMMAND: python -m pytest {project}/tests --verbose && USE_ACTUAL_SPARK=true JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java)))) SPARK_HOME={project}/spark_installation/spark python -m pytest {project}/tests/fast/spark --verbose
+2025-04-14T13:25:10.7722001Z   PYTEST_TIMEOUT: 600
+2025-04-14T13:25:10.7722228Z   CIBW_ENVIRONMENT: OVERRIDE_GIT_DESCRIBE=
+2025-04-14T13:25:10.7722639Z   CIBW_BEFORE_ALL: cd {project} && ./scripts/install_spark_in_cibuildwheels_linux_container.sh
+2025-04-14T13:25:10.7723170Z   pythonLocation: /opt/hostedtoolcache/Python/3.10.16/x64
+2025-04-14T13:25:10.7723597Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.10.16/x64/lib/pkgconfig
+2025-04-14T13:25:10.7723996Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.10.16/x64
+2025-04-14T13:25:10.7724360Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.10.16/x64
+2025-04-14T13:25:10.7724714Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.10.16/x64
+2025-04-14T13:25:10.7725067Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.10.16/x64/lib
+2025-04-14T13:25:10.7725373Z ##[endgroup]
+2025-04-14T13:25:19.7531778Z Collecting cibuildwheel>=2.16.2
+2025-04-14T13:25:19.7681901Z   Downloading cibuildwheel-2.23.2-py3-none-any.whl.metadata (22 kB)
+2025-04-14T13:25:19.7853948Z Collecting build
+2025-04-14T13:25:19.7896142Z   Downloading build-1.2.2.post1-py3-none-any.whl.metadata (6.5 kB)
+2025-04-14T13:25:19.8104979Z Collecting bashlex!=0.13 (from cibuildwheel>=2.16.2)
+2025-04-14T13:25:19.8151618Z   Downloading bashlex-0.18-py2.py3-none-any.whl.metadata (1.1 kB)
+2025-04-14T13:25:19.8297834Z Collecting bracex (from cibuildwheel>=2.16.2)
+2025-04-14T13:25:19.8339967Z   Downloading bracex-2.5.post1-py3-none-any.whl.metadata (3.5 kB)
+2025-04-14T13:25:19.8669477Z Collecting certifi (from cibuildwheel>=2.16.2)
+2025-04-14T13:25:19.8713924Z   Downloading certifi-2025.1.31-py3-none-any.whl.metadata (2.5 kB)
+2025-04-14T13:25:19.8870924Z Collecting dependency-groups>=1.2 (from cibuildwheel>=2.16.2)
+2025-04-14T13:25:19.8919683Z   Downloading dependency_groups-1.3.0-py3-none-any.whl.metadata (2.2 kB)
+2025-04-14T13:25:19.9130135Z Collecting filelock (from cibuildwheel>=2.16.2)
+2025-04-14T13:25:19.9177848Z   Downloading filelock-3.18.0-py3-none-any.whl.metadata (2.9 kB)
+2025-04-14T13:25:19.9396267Z Collecting packaging>=20.9 (from cibuildwheel>=2.16.2)
+2025-04-14T13:25:19.9444577Z   Downloading packaging-24.2-py3-none-any.whl.metadata (3.2 kB)
+2025-04-14T13:25:19.9629717Z Collecting platformdirs (from cibuildwheel>=2.16.2)
+2025-04-14T13:25:19.9677089Z   Downloading platformdirs-4.3.7-py3-none-any.whl.metadata (11 kB)
+2025-04-14T13:25:19.9868759Z Collecting tomli (from cibuildwheel>=2.16.2)
+2025-04-14T13:25:19.9916985Z   Downloading tomli-2.2.1-py3-none-any.whl.metadata (10 kB)
+2025-04-14T13:25:20.0117638Z Collecting typing-extensions>=4.1.0 (from cibuildwheel>=2.16.2)
+2025-04-14T13:25:20.0163783Z   Downloading typing_extensions-4.13.2-py3-none-any.whl.metadata (3.0 kB)
+2025-04-14T13:25:20.0327810Z Collecting pyproject_hooks (from build)
+2025-04-14T13:25:20.0373856Z   Downloading pyproject_hooks-1.2.0-py3-none-any.whl.metadata (1.3 kB)
+2025-04-14T13:25:20.0574545Z Downloading cibuildwheel-2.23.2-py3-none-any.whl (91 kB)
+2025-04-14T13:25:20.0651652Z Downloading build-1.2.2.post1-py3-none-any.whl (22 kB)
+2025-04-14T13:25:20.0736502Z Downloading bashlex-0.18-py2.py3-none-any.whl (69 kB)
+2025-04-14T13:25:20.0815096Z Downloading dependency_groups-1.3.0-py3-none-any.whl (8.6 kB)
+2025-04-14T13:25:20.0884163Z Downloading packaging-24.2-py3-none-any.whl (65 kB)
+2025-04-14T13:25:20.0953034Z Downloading tomli-2.2.1-py3-none-any.whl (14 kB)
+2025-04-14T13:25:20.1024202Z Downloading typing_extensions-4.13.2-py3-none-any.whl (45 kB)
+2025-04-14T13:25:20.1091086Z Downloading bracex-2.5.post1-py3-none-any.whl (11 kB)
+2025-04-14T13:25:20.1155958Z Downloading certifi-2025.1.31-py3-none-any.whl (166 kB)
+2025-04-14T13:25:20.1242577Z Downloading filelock-3.18.0-py3-none-any.whl (16 kB)
+2025-04-14T13:25:20.1309266Z Downloading platformdirs-4.3.7-py3-none-any.whl (18 kB)
+2025-04-14T13:25:20.1372698Z Downloading pyproject_hooks-1.2.0-py3-none-any.whl (10 kB)
+2025-04-14T13:25:20.2975858Z Installing collected packages: typing-extensions, tomli, pyproject_hooks, platformdirs, packaging, filelock, certifi, bracex, bashlex, dependency-groups, build, cibuildwheel
+2025-04-14T13:25:20.5737361Z Successfully installed bashlex-0.18 bracex-2.5.post1 build-1.2.2.post1 certifi-2025.1.31 cibuildwheel-2.23.2 dependency-groups-1.3.0 filelock-3.18.0 packaging-24.2 platformdirs-4.3.7 pyproject_hooks-1.2.0 tomli-2.2.1 typing-extensions-4.13.2

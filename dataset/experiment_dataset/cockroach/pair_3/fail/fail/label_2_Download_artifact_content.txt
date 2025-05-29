@@ -1,0 +1,30 @@
+actions/github-script@v7.0.1
+
+script: var artifacts = await github.rest.actions.listWorkflowRunArtifacts({
+context.repo.owner,
+context.repo.repo,
+14465470601,
+});
+var matchArtifact = artifacts.data.artifacts.filter((artifact) => {
+  return artifact.name == "cover"
+})[0];
+var download = await github.rest.actions.downloadArtifact({
+context.repo.owner,
+context.repo.repo,
+matchArtifact.id,
+'zip',
+});
+var fs = require('fs');
+fs.writeFileSync('/home/runner/work/cockroach/cockroach/cover.zip', Buffer.from(download.data));
+github-token: ***
+debug: false
+user-agent: actions/github-script
+result-encoding: json
+retries: 0
+retry-exempt-status-codes: 400,401,403,404,422
+##[endgroup]
+TypeError: Cannot read properties of undefined (reading 'id')
+at eval (eval at callAsyncFunction (/home/runner/work/_actions/actions/github-script/v7.0.1/dist/index.js:35424:16), <anonymous>:14:31)
+at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+at async main (/home/runner/work/_actions/actions/github-script/v7.0.1/dist/index.js:35522:20)
+##[error]Unhandled error: TypeError: Cannot read properties of undefined (reading 'id')

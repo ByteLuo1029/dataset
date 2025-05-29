@@ -1,0 +1,335 @@
+2025-04-15T08:26:50.2200193Z ##[group]Run actions/checkout@v4
+2025-04-15T08:26:50.2200804Z with:
+2025-04-15T08:26:50.2200996Z   fetch-depth: 0
+2025-04-15T08:26:50.2201200Z   submodules: recursive
+2025-04-15T08:26:50.2201424Z   repository: netdata/netdata
+2025-04-15T08:26:50.2201822Z   token: ***
+2025-04-15T08:26:50.2202051Z   ssh-strict: true
+2025-04-15T08:26:50.2202241Z   ssh-user: git
+2025-04-15T08:26:50.2202431Z   persist-credentials: true
+2025-04-15T08:26:50.2202835Z   clean: true
+2025-04-15T08:26:50.2203039Z   sparse-checkout-cone-mode: true
+2025-04-15T08:26:50.2203276Z   fetch-tags: false
+2025-04-15T08:26:50.2203466Z   show-progress: true
+2025-04-15T08:26:50.2203652Z   lfs: false
+2025-04-15T08:26:50.2203846Z   set-safe-directory: true
+2025-04-15T08:26:50.2204287Z env:
+2025-04-15T08:26:50.2204491Z   DISABLE_TELEMETRY: 1
+2025-04-15T08:26:50.2204696Z   NIGHTLY_COUNT: 4
+2025-04-15T08:26:50.2204877Z ##[endgroup]
+2025-04-15T08:26:50.4460808Z Syncing repository: netdata/netdata
+2025-04-15T08:26:50.4462098Z ##[group]Getting Git version info
+2025-04-15T08:26:50.4462546Z Working directory is '/home/runner/work/netdata/netdata'
+2025-04-15T08:26:50.4463341Z [command]/usr/bin/git version
+2025-04-15T08:26:50.4552827Z git version 2.49.0
+2025-04-15T08:26:50.4583176Z ##[endgroup]
+2025-04-15T08:26:50.4596647Z Temporarily overriding HOME='/home/runner/work/_temp/8e202789-470c-4f8d-8f85-4cbbf349e574' before making global git config changes
+2025-04-15T08:26:50.4601795Z Adding repository directory to the temporary git global config as a safe directory
+2025-04-15T08:26:50.4602448Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/netdata/netdata
+2025-04-15T08:26:50.4636496Z Deleting the contents of '/home/runner/work/netdata/netdata'
+2025-04-15T08:26:50.4640070Z ##[group]Initializing the repository
+2025-04-15T08:26:50.4644274Z [command]/usr/bin/git init /home/runner/work/netdata/netdata
+2025-04-15T08:26:50.4709941Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-04-15T08:26:50.4710583Z hint: is subject to change. To configure the initial branch name to use in all
+2025-04-15T08:26:50.4711090Z hint: of your new repositories, which will suppress this warning, call:
+2025-04-15T08:26:50.4711424Z hint:
+2025-04-15T08:26:50.4711702Z hint: 	git config --global init.defaultBranch <name>
+2025-04-15T08:26:50.4711989Z hint:
+2025-04-15T08:26:50.4712266Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-04-15T08:26:50.4712880Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-04-15T08:26:50.4713243Z hint:
+2025-04-15T08:26:50.4713437Z hint: 	git branch -m <name>
+2025-04-15T08:26:50.4718351Z Initialized empty Git repository in /home/runner/work/netdata/netdata/.git/
+2025-04-15T08:26:50.4728793Z [command]/usr/bin/git remote add origin https://github.com/netdata/netdata
+2025-04-15T08:26:50.4761712Z ##[endgroup]
+2025-04-15T08:26:50.4762155Z ##[group]Disabling automatic garbage collection
+2025-04-15T08:26:50.4766374Z [command]/usr/bin/git config --local gc.auto 0
+2025-04-15T08:26:50.4793303Z ##[endgroup]
+2025-04-15T08:26:50.4793782Z ##[group]Setting up auth
+2025-04-15T08:26:50.4800330Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-04-15T08:26:50.4829634Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-04-15T08:26:50.5149953Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-15T08:26:50.5179553Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-04-15T08:26:50.5407359Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-04-15T08:26:50.5445375Z ##[endgroup]
+2025-04-15T08:26:50.5445825Z ##[group]Fetching the repository
+2025-04-15T08:26:50.5455209Z [command]/usr/bin/git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/* +7ebc028adb43ff0a386466e365ea6c15a9561272:refs/remotes/pull/20126/merge
+2025-04-15T08:27:04.7635280Z From https://github.com/netdata/netdata
+2025-04-15T08:27:04.7636161Z  * [new branch]          constant-pages          -> origin/constant-pages
+2025-04-15T08:27:04.7636874Z  * [new branch]          cygwin                  -> origin/cygwin
+2025-04-15T08:27:04.7637472Z  * [new branch]          dagger                  -> origin/dagger
+2025-04-15T08:27:04.7640738Z  * [new branch]          dependabot/github_actions/aurelien-baudet/workflow-dispatch-4 -> origin/dependabot/github_actions/aurelien-baudet/workflow-dispatch-4
+2025-04-15T08:27:04.7642251Z  * [new branch]          foobar                  -> origin/foobar
+2025-04-15T08:27:04.7645160Z  * [new branch]          fuzzer                  -> origin/fuzzer
+2025-04-15T08:27:04.7649691Z  * [new branch]          installer-switch-static -> origin/installer-switch-static
+2025-04-15T08:27:04.7650511Z  * [new branch]          integrations-regen      -> origin/integrations-regen
+2025-04-15T08:27:04.7652083Z  * [new branch]          libnetdata-werror       -> origin/libnetdata-werror
+2025-04-15T08:27:04.7654859Z  * [new branch]          master                  -> origin/master
+2025-04-15T08:27:04.7656335Z  * [new branch]          node-delete-docs        -> origin/node-delete-docs
+2025-04-15T08:27:04.7657874Z  * [new branch]          opentelemetry-units     -> origin/opentelemetry-units
+2025-04-15T08:27:04.7659954Z  * [new branch]          otel-stash              -> origin/otel-stash
+2025-04-15T08:27:04.7662053Z  * [new branch]          prng                    -> origin/prng
+2025-04-15T08:27:04.7666384Z  * [new branch]          revert-19409-oci-libunwind -> origin/revert-19409-oci-libunwind
+2025-04-15T08:27:04.7667491Z  * [new branch]          revert-19734-docker-nightly-old -> origin/revert-19734-docker-nightly-old
+2025-04-15T08:27:04.7668588Z  * [new branch]          rrdeng_cfg              -> origin/rrdeng_cfg
+2025-04-15T08:27:04.7671832Z  * [new branch]          sentry                  -> origin/sentry
+2025-04-15T08:27:04.7674127Z  * [new branch]          snap-build              -> origin/snap-build
+2025-04-15T08:27:04.7675363Z  * [new branch]          snap-static             -> origin/snap-static
+2025-04-15T08:27:04.7677395Z  * [new branch]          v1.34                   -> origin/v1.34
+2025-04-15T08:27:04.7679386Z  * [new branch]          v1.35                   -> origin/v1.35
+2025-04-15T08:27:04.7681303Z  * [new branch]          v1.36                   -> origin/v1.36
+2025-04-15T08:27:04.7683534Z  * [new branch]          v1.37                   -> origin/v1.37
+2025-04-15T08:27:04.7685681Z  * [new branch]          v1.38                   -> origin/v1.38
+2025-04-15T08:27:04.7687850Z  * [new branch]          v1.39                   -> origin/v1.39
+2025-04-15T08:27:04.7689635Z  * [new branch]          v1.40                   -> origin/v1.40
+2025-04-15T08:27:04.7691837Z  * [new branch]          v1.41                   -> origin/v1.41
+2025-04-15T08:27:04.7694132Z  * [new branch]          v1.42                   -> origin/v1.42
+2025-04-15T08:27:04.7696070Z  * [new branch]          v1.43                   -> origin/v1.43
+2025-04-15T08:27:04.7698135Z  * [new branch]          v1.44                   -> origin/v1.44
+2025-04-15T08:27:04.7700135Z  * [new branch]          v1.45                   -> origin/v1.45
+2025-04-15T08:27:04.7702163Z  * [new branch]          v1.46                   -> origin/v1.46
+2025-04-15T08:27:04.7704337Z  * [new branch]          v1.47                   -> origin/v1.47
+2025-04-15T08:27:04.7706464Z  * [new branch]          v2.0                    -> origin/v2.0
+2025-04-15T08:27:04.7708581Z  * [new branch]          v2.1                    -> origin/v2.1
+2025-04-15T08:27:04.7710728Z  * [new branch]          v2.2                    -> origin/v2.2
+2025-04-15T08:27:04.7713086Z  * [new branch]          v2.3                    -> origin/v2.3
+2025-04-15T08:27:04.7714505Z  * [new branch]          v2.4                    -> origin/v2.4
+2025-04-15T08:27:04.7717021Z  * [new branch]          vk-cli                  -> origin/vk-cli
+2025-04-15T08:27:04.7718610Z  * [new branch]          vk-fuzzer               -> origin/vk-fuzzer
+2025-04-15T08:27:04.7720805Z  * [new tag]             1.32.1                  -> 1.32.1
+2025-04-15T08:27:04.7724902Z  * [new tag]             1.34.0                  -> 1.34.0
+2025-04-15T08:27:04.7725477Z  * [new tag]             before_rebase           -> before_rebase
+2025-04-15T08:27:04.7726057Z  * [new tag]             issue_4934              -> issue_4934
+2025-04-15T08:27:04.7726604Z  * [new tag]             poc2                    -> poc2
+2025-04-15T08:27:04.7727599Z  * [new tag]             untagged-10d59b9e5fa68b9500e1 -> untagged-10d59b9e5fa68b9500e1
+2025-04-15T08:27:04.7728553Z  * [new tag]             v0.1                    -> v0.1
+2025-04-15T08:27:04.7731240Z  * [new tag]             v0.2                    -> v0.2
+2025-04-15T08:27:04.7731828Z  * [new tag]             v1.0.0                  -> v1.0.0
+2025-04-15T08:27:04.7734242Z  * [new tag]             v1.0rc                  -> v1.0rc
+2025-04-15T08:27:04.7737095Z  * [new tag]             v1.1.0                  -> v1.1.0
+2025-04-15T08:27:04.7737678Z  * [new tag]             v1.10.0                 -> v1.10.0
+2025-04-15T08:27:04.7781575Z  * [new tag]             v1.11.0                 -> v1.11.0
+2025-04-15T08:27:04.7789659Z  * [new tag]             v1.11.1                 -> v1.11.1
+2025-04-15T08:27:04.7790775Z  * [new tag]             v1.12.0                 -> v1.12.0
+2025-04-15T08:27:04.7791896Z  * [new tag]             v1.12.0-rc0             -> v1.12.0-rc0
+2025-04-15T08:27:04.7793187Z  * [new tag]             v1.12.0-rc1             -> v1.12.0-rc1
+2025-04-15T08:27:04.7793959Z  * [new tag]             v1.12.0-rc2             -> v1.12.0-rc2
+2025-04-15T08:27:04.7794838Z  * [new tag]             v1.12.0-rc3             -> v1.12.0-rc3
+2025-04-15T08:27:04.7795584Z  * [new tag]             v1.12.1                 -> v1.12.1
+2025-04-15T08:27:04.7796084Z  * [new tag]             v1.12.2                 -> v1.12.2
+2025-04-15T08:27:04.7796601Z  * [new tag]             v1.13.0                 -> v1.13.0
+2025-04-15T08:27:04.7797155Z  * [new tag]             v1.14.0                 -> v1.14.0
+2025-04-15T08:27:04.7797808Z  * [new tag]             v1.14.0-rc0             -> v1.14.0-rc0
+2025-04-15T08:27:04.7798342Z  * [new tag]             v1.15.0                 -> v1.15.0
+2025-04-15T08:27:04.7798817Z  * [new tag]             v1.16.0                 -> v1.16.0
+2025-04-15T08:27:04.7799306Z  * [new tag]             v1.16.1                 -> v1.16.1
+2025-04-15T08:27:04.7799826Z  * [new tag]             v1.17.0                 -> v1.17.0
+2025-04-15T08:27:04.7800330Z  * [new tag]             v1.17.1                 -> v1.17.1
+2025-04-15T08:27:04.7800801Z  * [new tag]             v1.18.0                 -> v1.18.0
+2025-04-15T08:27:04.7801286Z  * [new tag]             v1.18.1                 -> v1.18.1
+2025-04-15T08:27:04.7801762Z  * [new tag]             v1.19.0                 -> v1.19.0
+2025-04-15T08:27:04.7802249Z  * [new tag]             v1.2.0                  -> v1.2.0
+2025-04-15T08:27:04.7802891Z  * [new tag]             v1.20.0                 -> v1.20.0
+2025-04-15T08:27:04.7803369Z  * [new tag]             v1.21.0                 -> v1.21.0
+2025-04-15T08:27:04.7803840Z  * [new tag]             v1.21.1                 -> v1.21.1
+2025-04-15T08:27:04.7804325Z  * [new tag]             v1.22.0                 -> v1.22.0
+2025-04-15T08:27:04.7804805Z  * [new tag]             v1.22.1                 -> v1.22.1
+2025-04-15T08:27:04.7805291Z  * [new tag]             v1.23.0                 -> v1.23.0
+2025-04-15T08:27:04.7805777Z  * [new tag]             v1.23.1                 -> v1.23.1
+2025-04-15T08:27:04.7806344Z  * [new tag]             v1.23.1_infiniband      -> v1.23.1_infiniband
+2025-04-15T08:27:04.7806883Z  * [new tag]             v1.23.2                 -> v1.23.2
+2025-04-15T08:27:04.7807640Z  * [new tag]             v1.24.0                 -> v1.24.0
+2025-04-15T08:27:04.7808114Z  * [new tag]             v1.25.0                 -> v1.25.0
+2025-04-15T08:27:04.7808579Z  * [new tag]             v1.26.0                 -> v1.26.0
+2025-04-15T08:27:04.7809053Z  * [new tag]             v1.27.0                 -> v1.27.0
+2025-04-15T08:27:04.7809556Z  * [new tag]             v1.27.0_0104103941      -> v1.27.0_0104103941
+2025-04-15T08:27:04.7810065Z  * [new tag]             v1.28.0                 -> v1.28.0
+2025-04-15T08:27:04.7810558Z  * [new tag]             v1.29.0                 -> v1.29.0
+2025-04-15T08:27:04.7811025Z  * [new tag]             v1.29.1                 -> v1.29.1
+2025-04-15T08:27:04.7811501Z  * [new tag]             v1.29.2                 -> v1.29.2
+2025-04-15T08:27:04.7811971Z  * [new tag]             v1.29.3                 -> v1.29.3
+2025-04-15T08:27:04.7812449Z  * [new tag]             v1.3.0                  -> v1.3.0
+2025-04-15T08:27:04.7813104Z  * [new tag]             v1.30.0                 -> v1.30.0
+2025-04-15T08:27:04.7813581Z  * [new tag]             v1.30.1                 -> v1.30.1
+2025-04-15T08:27:04.7814059Z  * [new tag]             v1.31.0                 -> v1.31.0
+2025-04-15T08:27:04.7814523Z  * [new tag]             v1.32.0                 -> v1.32.0
+2025-04-15T08:27:04.7814992Z  * [new tag]             v1.32.1                 -> v1.32.1
+2025-04-15T08:27:04.7815460Z  * [new tag]             v1.33.0                 -> v1.33.0
+2025-04-15T08:27:04.7815934Z  * [new tag]             v1.33.1                 -> v1.33.1
+2025-04-15T08:27:04.7816404Z  * [new tag]             v1.34.0                 -> v1.34.0
+2025-04-15T08:27:04.7816865Z  * [new tag]             v1.34.1                 -> v1.34.1
+2025-04-15T08:27:04.7817533Z  * [new tag]             v1.35.0                 -> v1.35.0
+2025-04-15T08:27:04.7818011Z  * [new tag]             v1.35.1                 -> v1.35.1
+2025-04-15T08:27:04.7818479Z  * [new tag]             v1.36.0                 -> v1.36.0
+2025-04-15T08:27:04.7818964Z  * [new tag]             v1.36.1                 -> v1.36.1
+2025-04-15T08:27:04.7819436Z  * [new tag]             v1.37.0                 -> v1.37.0
+2025-04-15T08:27:04.7819894Z  * [new tag]             v1.37.1                 -> v1.37.1
+2025-04-15T08:27:04.7820363Z  * [new tag]             v1.38.0                 -> v1.38.0
+2025-04-15T08:27:04.7820838Z  * [new tag]             v1.38.1                 -> v1.38.1
+2025-04-15T08:27:04.7821307Z  * [new tag]             v1.39.0                 -> v1.39.0
+2025-04-15T08:27:04.7821778Z  * [new tag]             v1.39.1                 -> v1.39.1
+2025-04-15T08:27:04.7822249Z  * [new tag]             v1.4.0                  -> v1.4.0
+2025-04-15T08:27:04.7833865Z  * [new tag]             v1.40.0                 -> v1.40.0
+2025-04-15T08:27:04.7834457Z  * [new tag]             v1.40.1                 -> v1.40.1
+2025-04-15T08:27:04.7835006Z  * [new tag]             v1.41.0                 -> v1.41.0
+2025-04-15T08:27:04.7835554Z  * [new tag]             v1.42.0                 -> v1.42.0
+2025-04-15T08:27:04.7836070Z  * [new tag]             v1.42.1                 -> v1.42.1
+2025-04-15T08:27:04.7836573Z  * [new tag]             v1.42.2                 -> v1.42.2
+2025-04-15T08:27:04.7837067Z  * [new tag]             v1.42.3                 -> v1.42.3
+2025-04-15T08:27:04.7837567Z  * [new tag]             v1.42.4                 -> v1.42.4
+2025-04-15T08:27:04.7838336Z  * [new tag]             v1.43.0                 -> v1.43.0
+2025-04-15T08:27:04.7838883Z  * [new tag]             v1.43.1                 -> v1.43.1
+2025-04-15T08:27:04.7839393Z  * [new tag]             v1.43.2                 -> v1.43.2
+2025-04-15T08:27:04.7842258Z  * [new tag]             v1.44.0                 -> v1.44.0
+2025-04-15T08:27:04.7843451Z  * [new tag]             v1.44.1                 -> v1.44.1
+2025-04-15T08:27:04.7844235Z  * [new tag]             v1.44.2                 -> v1.44.2
+2025-04-15T08:27:04.7844799Z  * [new tag]             v1.44.3                 -> v1.44.3
+2025-04-15T08:27:04.7847163Z  * [new tag]             v1.45.0                 -> v1.45.0
+2025-04-15T08:27:04.7847705Z  * [new tag]             v1.45.1                 -> v1.45.1
+2025-04-15T08:27:04.7848242Z  * [new tag]             v1.45.2                 -> v1.45.2
+2025-04-15T08:27:04.7850159Z  * [new tag]             v1.45.3                 -> v1.45.3
+2025-04-15T08:27:04.7851861Z  * [new tag]             v1.45.4                 -> v1.45.4
+2025-04-15T08:27:04.7853531Z  * [new tag]             v1.45.5                 -> v1.45.5
+2025-04-15T08:27:04.7854909Z  * [new tag]             v1.45.6                 -> v1.45.6
+2025-04-15T08:27:04.7856279Z  * [new tag]             v1.46.0                 -> v1.46.0
+2025-04-15T08:27:04.7857824Z  * [new tag]             v1.46.1                 -> v1.46.1
+2025-04-15T08:27:04.7859282Z  * [new tag]             v1.46.2                 -> v1.46.2
+2025-04-15T08:27:04.7860552Z  * [new tag]             v1.46.3                 -> v1.46.3
+2025-04-15T08:27:04.7862288Z  * [new tag]             v1.47.0                 -> v1.47.0
+2025-04-15T08:27:04.7864112Z  * [new tag]             v1.47.1                 -> v1.47.1
+2025-04-15T08:27:04.7865673Z  * [new tag]             v1.47.2                 -> v1.47.2
+2025-04-15T08:27:04.7867290Z  * [new tag]             v1.47.3                 -> v1.47.3
+2025-04-15T08:27:04.7868822Z  * [new tag]             v1.47.4                 -> v1.47.4
+2025-04-15T08:27:04.7870059Z  * [new tag]             v1.47.5                 -> v1.47.5
+2025-04-15T08:27:04.7871821Z  * [new tag]             v1.5.0                  -> v1.5.0
+2025-04-15T08:27:04.7873478Z  * [new tag]             v1.6.0                  -> v1.6.0
+2025-04-15T08:27:04.7875235Z  * [new tag]             v1.7.0                  -> v1.7.0
+2025-04-15T08:27:04.7876720Z  * [new tag]             v1.8.0                  -> v1.8.0
+2025-04-15T08:27:04.7878491Z  * [new tag]             v1.9.0                  -> v1.9.0
+2025-04-15T08:27:04.7880019Z  * [new tag]             v1.99.0                 -> v1.99.0
+2025-04-15T08:27:04.7881541Z  * [new tag]             v2.0.0                  -> v2.0.0
+2025-04-15T08:27:04.7883434Z  * [new tag]             v2.0.1                  -> v2.0.1
+2025-04-15T08:27:04.7884648Z  * [new tag]             v2.0.2                  -> v2.0.2
+2025-04-15T08:27:04.7886203Z  * [new tag]             v2.0.3                  -> v2.0.3
+2025-04-15T08:27:04.7887786Z  * [new tag]             v2.1.0                  -> v2.1.0
+2025-04-15T08:27:04.7889273Z  * [new tag]             v2.1.1                  -> v2.1.1
+2025-04-15T08:27:04.7890758Z  * [new tag]             v2.2.0                  -> v2.2.0
+2025-04-15T08:27:04.7892252Z  * [new tag]             v2.2.1                  -> v2.2.1
+2025-04-15T08:27:04.7894104Z  * [new tag]             v2.2.2                  -> v2.2.2
+2025-04-15T08:27:04.7895614Z  * [new tag]             v2.2.3                  -> v2.2.3
+2025-04-15T08:27:04.7897265Z  * [new tag]             v2.2.4                  -> v2.2.4
+2025-04-15T08:27:04.7898543Z  * [new tag]             v2.2.5                  -> v2.2.5
+2025-04-15T08:27:04.7900119Z  * [new tag]             v2.2.6                  -> v2.2.6
+2025-04-15T08:27:04.7901560Z  * [new tag]             v2.3.0                  -> v2.3.0
+2025-04-15T08:27:04.7903411Z  * [new tag]             v2.3.1                  -> v2.3.1
+2025-04-15T08:27:04.7904582Z  * [new tag]             v2.3.2                  -> v2.3.2
+2025-04-15T08:27:04.7906164Z  * [new tag]             v2.4.0                  -> v2.4.0
+2025-04-15T08:27:04.7909663Z  * [new ref]             7ebc028adb43ff0a386466e365ea6c15a9561272 -> pull/20126/merge
+2025-04-15T08:27:04.7965538Z ##[endgroup]
+2025-04-15T08:27:04.7965987Z ##[group]Determining the checkout info
+2025-04-15T08:27:04.7966930Z ##[endgroup]
+2025-04-15T08:27:04.7972948Z [command]/usr/bin/git sparse-checkout disable
+2025-04-15T08:27:04.8013544Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-04-15T08:27:04.8040131Z ##[group]Checking out the ref
+2025-04-15T08:27:04.8045081Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/20126/merge
+2025-04-15T08:27:05.2775565Z Note: switching to 'refs/remotes/pull/20126/merge'.
+2025-04-15T08:27:05.2777701Z 
+2025-04-15T08:27:05.2778185Z You are in 'detached HEAD' state. You can look around, make experimental
+2025-04-15T08:27:05.2779257Z changes and commit them, and you can discard any commits you make in this
+2025-04-15T08:27:05.2780282Z state without impacting any branches by switching back to a branch.
+2025-04-15T08:27:05.2780867Z 
+2025-04-15T08:27:05.2781258Z If you want to create a new branch to retain commits you create, you may
+2025-04-15T08:27:05.2782188Z do so (now or later) by using -c with the switch command. Example:
+2025-04-15T08:27:05.2783062Z 
+2025-04-15T08:27:05.2783277Z   git switch -c <new-branch-name>
+2025-04-15T08:27:05.2783669Z 
+2025-04-15T08:27:05.2783866Z Or undo this operation with:
+2025-04-15T08:27:05.2784216Z 
+2025-04-15T08:27:05.2784385Z   git switch -
+2025-04-15T08:27:05.2784649Z 
+2025-04-15T08:27:05.2785100Z Turn off this advice by setting config variable advice.detachedHead to false
+2025-04-15T08:27:05.2785772Z 
+2025-04-15T08:27:05.2786504Z HEAD is now at 7ebc028ad Merge 543982305bd33f171ebcf0969ac94c889ef98ab3 into cb98702e117f90e13e1ddebeee96a06c7f6f4ce1
+2025-04-15T08:27:05.2813021Z ##[endgroup]
+2025-04-15T08:27:05.2813645Z ##[group]Setting up auth for fetching submodules
+2025-04-15T08:27:05.2820769Z [command]/usr/bin/git config --global http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-04-15T08:27:05.2860497Z [command]/usr/bin/git config --global --unset-all url.https://github.com/.insteadOf
+2025-04-15T08:27:05.2888440Z [command]/usr/bin/git config --global --add url.https://github.com/.insteadOf git@github.com:
+2025-04-15T08:27:05.2918779Z [command]/usr/bin/git config --global --add url.https://github.com/.insteadOf org-43390781@github.com:
+2025-04-15T08:27:05.2943814Z ##[endgroup]
+2025-04-15T08:27:05.2944159Z ##[group]Fetching submodules
+2025-04-15T08:27:05.2948724Z [command]/usr/bin/git submodule sync --recursive
+2025-04-15T08:27:05.3183820Z [command]/usr/bin/git -c protocol.version=2 submodule update --init --force --recursive
+2025-04-15T08:27:05.3410695Z Submodule 'aclk/aclk-schemas' (https://github.com/netdata/aclk-schemas.git) registered for path 'src/aclk/aclk-schemas'
+2025-04-15T08:27:05.3415738Z Submodule 'src/collectors/debugfs.plugin/libsensors/vendored' (https://github.com/lm-sensors/lm-sensors.git) registered for path 'src/collectors/debugfs.plugin/libsensors/vendored'
+2025-04-15T08:27:05.3419774Z Submodule 'src/web/server/h2o/libh2o' (https://github.com/h2o/h2o.git) registered for path 'src/web/server/h2o/libh2o'
+2025-04-15T08:27:05.3447504Z Cloning into '/home/runner/work/netdata/netdata/src/aclk/aclk-schemas'...
+2025-04-15T08:27:05.7151461Z Cloning into '/home/runner/work/netdata/netdata/src/collectors/debugfs.plugin/libsensors/vendored'...
+2025-04-15T08:27:07.3558346Z Cloning into '/home/runner/work/netdata/netdata/src/web/server/h2o/libh2o'...
+2025-04-15T08:27:11.9749974Z Submodule path 'src/aclk/aclk-schemas': checked out 'ec319a14394436f62663548d32eb320eeddd264a'
+2025-04-15T08:27:12.0022360Z Submodule path 'src/collectors/debugfs.plugin/libsensors/vendored': checked out '42f240d2a457834bcbdf4dc8b57237f97b5f5854'
+2025-04-15T08:27:12.3622792Z Submodule path 'src/web/server/h2o/libh2o': checked out '7359e98d78d018a35f5da7523feac69f64eddb4b'
+2025-04-15T08:27:12.3648567Z Submodule 'misc/cache-digest.js' (https://github.com/h2o/cache-digest.js.git) registered for path 'src/web/server/h2o/libh2o/misc/cache-digest.js'
+2025-04-15T08:27:12.3653125Z Submodule 'misc/oktavia' (https://github.com/shibukawa/oktavia.git) registered for path 'src/web/server/h2o/libh2o/misc/oktavia'
+2025-04-15T08:27:12.3657803Z Submodule 'misc/p5-Server-Starter' (https://github.com/kazuho/p5-Server-Starter.git) registered for path 'src/web/server/h2o/libh2o/misc/p5-Server-Starter'
+2025-04-15T08:27:12.3662990Z Submodule 'misc/picotemplate' (https://github.com/kazuho/picotemplate.git) registered for path 'src/web/server/h2o/libh2o/misc/picotemplate'
+2025-04-15T08:27:12.3692411Z Cloning into '/home/runner/work/netdata/netdata/src/web/server/h2o/libh2o/misc/cache-digest.js'...
+2025-04-15T08:27:12.6766849Z Cloning into '/home/runner/work/netdata/netdata/src/web/server/h2o/libh2o/misc/oktavia'...
+2025-04-15T08:27:13.1340038Z Cloning into '/home/runner/work/netdata/netdata/src/web/server/h2o/libh2o/misc/p5-Server-Starter'...
+2025-04-15T08:27:13.4649741Z Cloning into '/home/runner/work/netdata/netdata/src/web/server/h2o/libh2o/misc/picotemplate'...
+2025-04-15T08:27:13.7335392Z Submodule path 'src/web/server/h2o/libh2o/misc/cache-digest.js': checked out '1d982ed25eb15f41e78f614e67ad086c6bfe4af1'
+2025-04-15T08:27:13.7665676Z Submodule path 'src/web/server/h2o/libh2o/misc/oktavia': checked out '25b615f5bc0902b9107e3ffc1178ec6bf768b0ad'
+2025-04-15T08:27:13.7779582Z Submodule path 'src/web/server/h2o/libh2o/misc/p5-Server-Starter': checked out 'a0c10e5a5ca48cbb85150be0a8abcb43acb457b8'
+2025-04-15T08:27:13.7868503Z Submodule path 'src/web/server/h2o/libh2o/misc/picotemplate': checked out '55d6d242ae1e00ddf16199e15b1acaf6d5c84e42'
+2025-04-15T08:27:13.7905455Z [command]/usr/bin/git submodule foreach --recursive git config --local gc.auto 0
+2025-04-15T08:27:13.8121150Z Entering 'src/aclk/aclk-schemas'
+2025-04-15T08:27:13.8160372Z Entering 'src/collectors/debugfs.plugin/libsensors/vendored'
+2025-04-15T08:27:13.8199346Z Entering 'src/web/server/h2o/libh2o'
+2025-04-15T08:27:13.8241530Z Entering 'src/web/server/h2o/libh2o/misc/cache-digest.js'
+2025-04-15T08:27:13.8279293Z Entering 'src/web/server/h2o/libh2o/misc/oktavia'
+2025-04-15T08:27:13.8317801Z Entering 'src/web/server/h2o/libh2o/misc/p5-Server-Starter'
+2025-04-15T08:27:13.8355814Z Entering 'src/web/server/h2o/libh2o/misc/picotemplate'
+2025-04-15T08:27:13.8404469Z ##[endgroup]
+2025-04-15T08:27:13.8404846Z ##[group]Persisting credentials for submodules
+2025-04-15T08:27:13.8413449Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'url\.https\:\/\/github\.com\/\.insteadOf' && git config --local --unset-all 'url.https://github.com/.insteadOf' || :"
+2025-04-15T08:27:13.8629766Z Entering 'src/aclk/aclk-schemas'
+2025-04-15T08:27:13.8673278Z Entering 'src/collectors/debugfs.plugin/libsensors/vendored'
+2025-04-15T08:27:13.8716755Z Entering 'src/web/server/h2o/libh2o'
+2025-04-15T08:27:13.8764060Z Entering 'src/web/server/h2o/libh2o/misc/cache-digest.js'
+2025-04-15T08:27:13.8807621Z Entering 'src/web/server/h2o/libh2o/misc/oktavia'
+2025-04-15T08:27:13.8851258Z Entering 'src/web/server/h2o/libh2o/misc/p5-Server-Starter'
+2025-04-15T08:27:13.8895663Z Entering 'src/web/server/h2o/libh2o/misc/picotemplate'
+2025-04-15T08:27:13.8955438Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local 'http.https://github.com/.extraheader' 'AUTHORIZATION: basic ***' && git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2025-04-15T08:27:13.9170151Z Entering 'src/aclk/aclk-schemas'
+2025-04-15T08:27:13.9208139Z file:/home/runner/work/netdata/netdata/.git/modules/aclk/aclk-schemas/config	remote.origin.url
+2025-04-15T08:27:13.9228001Z Entering 'src/collectors/debugfs.plugin/libsensors/vendored'
+2025-04-15T08:27:13.9266015Z file:/home/runner/work/netdata/netdata/.git/modules/src/collectors/debugfs.plugin/libsensors/vendored/config	remote.origin.url
+2025-04-15T08:27:13.9285809Z Entering 'src/web/server/h2o/libh2o'
+2025-04-15T08:27:13.9323730Z file:/home/runner/work/netdata/netdata/.git/modules/src/web/server/h2o/libh2o/config	remote.origin.url
+2025-04-15T08:27:13.9347516Z Entering 'src/web/server/h2o/libh2o/misc/cache-digest.js'
+2025-04-15T08:27:13.9385494Z file:/home/runner/work/netdata/netdata/.git/modules/src/web/server/h2o/libh2o/modules/misc/cache-digest.js/config	remote.origin.url
+2025-04-15T08:27:13.9405149Z Entering 'src/web/server/h2o/libh2o/misc/oktavia'
+2025-04-15T08:27:13.9442745Z file:/home/runner/work/netdata/netdata/.git/modules/src/web/server/h2o/libh2o/modules/misc/oktavia/config	remote.origin.url
+2025-04-15T08:27:13.9462732Z Entering 'src/web/server/h2o/libh2o/misc/p5-Server-Starter'
+2025-04-15T08:27:13.9501270Z file:/home/runner/work/netdata/netdata/.git/modules/src/web/server/h2o/libh2o/modules/misc/p5-Server-Starter/config	remote.origin.url
+2025-04-15T08:27:13.9520380Z Entering 'src/web/server/h2o/libh2o/misc/picotemplate'
+2025-04-15T08:27:13.9558843Z file:/home/runner/work/netdata/netdata/.git/modules/src/web/server/h2o/libh2o/modules/misc/picotemplate/config	remote.origin.url
+2025-04-15T08:27:13.9634569Z [command]/usr/bin/git submodule foreach --recursive git config --local --add 'url.https://github.com/.insteadOf' 'git@github.com:'
+2025-04-15T08:27:13.9852233Z Entering 'src/aclk/aclk-schemas'
+2025-04-15T08:27:13.9889812Z Entering 'src/collectors/debugfs.plugin/libsensors/vendored'
+2025-04-15T08:27:13.9928112Z Entering 'src/web/server/h2o/libh2o'
+2025-04-15T08:27:13.9971106Z Entering 'src/web/server/h2o/libh2o/misc/cache-digest.js'
+2025-04-15T08:27:14.0010097Z Entering 'src/web/server/h2o/libh2o/misc/oktavia'
+2025-04-15T08:27:14.0048270Z Entering 'src/web/server/h2o/libh2o/misc/p5-Server-Starter'
+2025-04-15T08:27:14.0086306Z Entering 'src/web/server/h2o/libh2o/misc/picotemplate'
+2025-04-15T08:27:14.0139666Z [command]/usr/bin/git submodule foreach --recursive git config --local --add 'url.https://github.com/.insteadOf' 'org-43390781@github.com:'
+2025-04-15T08:27:14.0352316Z Entering 'src/aclk/aclk-schemas'
+2025-04-15T08:27:14.0389937Z Entering 'src/collectors/debugfs.plugin/libsensors/vendored'
+2025-04-15T08:27:14.0428070Z Entering 'src/web/server/h2o/libh2o'
+2025-04-15T08:27:14.0470862Z Entering 'src/web/server/h2o/libh2o/misc/cache-digest.js'
+2025-04-15T08:27:14.0509071Z Entering 'src/web/server/h2o/libh2o/misc/oktavia'
+2025-04-15T08:27:14.0547700Z Entering 'src/web/server/h2o/libh2o/misc/p5-Server-Starter'
+2025-04-15T08:27:14.0585701Z Entering 'src/web/server/h2o/libh2o/misc/picotemplate'
+2025-04-15T08:27:14.0633573Z ##[endgroup]
+2025-04-15T08:27:14.0674410Z [command]/usr/bin/git log -1 --format=%H
+2025-04-15T08:27:14.0696968Z 7ebc028adb43ff0a386466e365ea6c15a9561272

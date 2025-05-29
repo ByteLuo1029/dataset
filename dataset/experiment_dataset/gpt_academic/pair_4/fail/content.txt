@@ -1,0 +1,1308 @@
+Requested labels: ubuntu-latest
+Job defined at: binary-husky/gpt_academic/.github/workflows/build-with-latex-arm.yml@refs/heads/master
+Waiting for a runner to pick up this job...
+Job is waiting for a hosted runner to come online.
+Job is about to start running on the hosted runner: GitHub Actions 16 (hosted)
+Current runner version: '2.322.0'
+##[group]Operating System
+Ubuntu
+24.04.1
+LTS
+##[endgroup]
+##[group]Runner Image
+Image: ubuntu-24.04
+Version: 20250202.1.0
+Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250202.1/images/ubuntu/Ubuntu2404-Readme.md
+Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250202.1
+##[endgroup]
+##[group]Runner Image Provisioner
+2.0.422.1
+##[endgroup]
+##[group]GITHUB_TOKEN Permissions
+read
+
+write
+##[endgroup]
+Actions
+
+
+
+'docker/setup-qemu-action@v3' 4574d27a4764455b42196d70a065bc6853246a25
+'docker/setup-buildx-action@v3' f7ce87c1d6bead3e36075b2ce75da1f6cc28aaca
+'actions/checkout@v4' 11bd71901bbe5b1630ceea73d27597364c9af683
+'docker/login-action@v3' 9780b0c442fbb1117ed29e0efdff1e18412f7567
+'docker/metadata-action@v4' 818d4b7b91585d195f67373fd9cb0332e31a7175
+'docker/build-push-action@v6' ca877d9245402d1537745e0e356eab47c3520991
+build-and-push-image
+docker/setup-qemu-action@v3
+
+image: docker.io/tonistiigi/binfmt:latest
+platforms: all
+cache-image:
+
+REGISTRY: ghcr.io
+IMAGE_NAME: binary-husky/gpt_academic_with_latex_arm
+##[endgroup]
+##[group]Docker info
+[command]/usr/bin/docker version
+Client: Docker Engine - Community
+Version:           26.1.3
+API version:       1.45
+Go version:        go1.21.10
+Git commit:        b72abbb
+Built:             Thu May 16 08:33:35 2024
+OS/Arch:           linux/amd64
+Context:           default
+2025-02-08T12:51:10.4103115Z
+Server: Docker Engine - Community
+Engine:
+Version:          26.1.3
+API version:      1.45 (minimum version 1.24)
+Go version:       go1.21.10
+Git commit:       8e96db1
+Built:            Thu May 16 08:33:35 2024
+OS/Arch:          linux/amd64
+Experimental:
+containerd:
+Version:          1.7.25
+GitCommit:        bcc810d6b9066471b0b6fa75f557a15a1cbf31bb
+runc:
+Version:          1.2.4
+GitCommit:        v1.2.4-0-g6c52b3f
+docker-init:
+Version:          0.19.0
+GitCommit:        de40ad0
+[command]/usr/bin/docker info
+Client: Docker Engine - Community
+Version:    26.1.3
+Context:    default
+Debug Mode: false
+Plugins:
+buildx: Docker Buildx (Docker Inc.)
+Version:  v0.20.1
+Path:     /usr/libexec/docker/cli-plugins/docker-buildx
+compose: Docker Compose (Docker Inc.)
+Version:  v2.27.1
+Path:     /usr/libexec/docker/cli-plugins/docker-compose
+2025-02-08T12:51:10.6506927Z
+Server:
+Containers: 0
+Running: 0
+Paused: 0
+Stopped: 0
+Images: 0
+Server Version: 26.1.3
+Storage Driver: overlay2
+Backing Filesystem: extfs
+Supports d_type: true
+Using metacopy: false
+Native Overlay Diff: false
+userxattr:
+Logging Driver: json-file
+Cgroup Driver: systemd
+Cgroup Version: 2
+Plugins:
+Volume: local
+Network: bridge host ipvlan macvlan null overlay
+Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+Swarm: inactive
+Runtimes: io.containerd.runc.v2 runc
+Default Runtime: runc
+Init Binary: docker-init
+containerd version: bcc810d6b9066471b0b6fa75f557a15a1cbf31bb
+runc version: v1.2.4-0-g6c52b3f
+init version: de40ad0
+Security Options:
+apparmor
+seccomp
+Profile: builtin
+cgroupns
+Kernel Version: 6.8.0-1020-azure
+Operating System: Ubuntu 24.04.1 LTS
+OSType: linux
+Architecture: x86_64
+CPUs: 4
+Total Memory: 15.62GiB
+Name: fv-az1336-587
+ID: 5da1e875-f4d9-42c6-906c-34f1b814e6b3
+Docker Root Dir: /var/lib/docker
+Debug Mode: false
+Username: githubactions
+Experimental:
+Insecure Registries:
+127.0.0.0/8
+Live Restore Enabled: false
+2025-02-08T12:51:10.6565448Z
+##[endgroup]
+##[group]Pulling binfmt Docker image
+Received 11376056 of 23958968 (47.5%), 10.8 MBs/sec
+Cache Size: ~23 MB (23958968 B)
+[command]/usr/bin/tar -xf /home/runner/work/_temp/8cf08477-56b5-4730-a0f1-d8fe36d0fd77/cache.tzst -P -C /home/runner/work/gpt_academic/gpt_academic --use-compress-program unzstd
+Cache restored successfully
+Restored docker.io--tonistiigi--binfmt-latest-linux-x64 from GitHub Actions cache
+Cached to hosted tool cache /opt/hostedtoolcache/docker.io--tonistiigi--binfmt/latest/linux-x64
+Image found from cache in /home/runner/.docker/.cache/images/docker.io--tonistiigi--binfmt/latest/linux-x64/image.tar
+[command]/usr/bin/docker load -i /home/runner/.docker/.cache/images/docker.io--tonistiigi--binfmt/latest/linux-x64/image.tar
+Loaded image: tonistiigi/binfmt:latest
+[command]/usr/bin/docker pull docker.io/tonistiigi/binfmt:latest
+Received 23958968 of 23958968 (100.0%), 11.4 MBs/sec
+latest: Pulling from tonistiigi/binfmt
+66e11bea77a5ea9d6f0fe79b57cd2b189b5d15b93a2bdb925be22949232e4e55
+Status: Image is up to date for tonistiigi/binfmt:latest
+docker.io/tonistiigi/binfmt:latest
+[command]/usr/bin/docker save -o /home/runner/work/_temp/docker-actions-toolkit-mXtWip/749e64100d3fa0c09bdbc8a02e4fb9cb3ee64266f7f661c98371040689abacb3.tar docker.io/tonistiigi/binfmt:latest
+Image cached to /home/runner/.docker/.cache/images/docker.io--tonistiigi--binfmt/latest/linux-x64/image.tar
+##[endgroup]
+##[group]Image info
+[command]/usr/bin/docker image inspect docker.io/tonistiigi/binfmt:latest
+[
+{
+"Id": "sha256:354472a378935adfe74a19600b89bd9ada7bb058306fff23b3d6613405852faf",
+"RepoTags": [
+"tonistiigi/binfmt:latest"
+],
+"RepoDigests": [
+"tonistiigi/binfmt@sha256:66e11bea77a5ea9d6f0fe79b57cd2b189b5d15b93a2bdb925be22949232e4e55"
+],
+"Parent": "",
+"Comment": "buildkit.dockerfile.v0",
+"Created": "2022-08-02T19:13:20.178433831Z",
+"DockerVersion": "",
+"Author": "",
+"Config": {
+"Hostname": "",
+"Domainname": "",
+"User": "",
+"AttachStdin": false,
+"AttachStdout": false,
+"AttachStderr": false,
+"Tty": false,
+"OpenStdin": false,
+"StdinOnce": false,
+"Env": [
+"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+"QEMU_PRESERVE_ARGV0=1"
+],
+"Cmd": null,
+"Image": "",
+"Volumes": {
+"/tmp": {}
+},
+"WorkingDir": "/",
+"Entrypoint": [
+"/usr/bin/binfmt"
+],
+"OnBuild": null,
+"Labels": {
+"org.opencontainers.image.created": "2022-08-02T18:32:39.936Z",
+"org.opencontainers.image.description": "Cross-platform emulator collection distributed with Docker images",
+"org.opencontainers.image.licenses": "MIT",
+"org.opencontainers.image.revision": "a161c41c7aeaf3ef1c5b97f91aa02a12cca73432",
+"org.opencontainers.image.source": "https://github.com/tonistiigi/binfmt",
+"org.opencontainers.image.title": "Binfmt",
+"org.opencontainers.image.url": "https://github.com/tonistiigi/binfmt",
+"org.opencontainers.image.version": "qemu-v7.0.0-28"
+}
+},
+"Architecture": "amd64",
+"Os": "linux",
+"Size": 60182964,
+"GraphDriver": {
+"Data": {
+"LowerDir": "/var/lib/docker/overlay2/bbf5d1b5e3e876f02407fdb15218148f5347cb8069662e9195e2da837b759e46/diff",
+"MergedDir": "/var/lib/docker/overlay2/d540b3fd94d9e2c91aaeff1189142b37b5af7dd5f7d3584a1b6c79c80f7e680c/merged",
+"UpperDir": "/var/lib/docker/overlay2/d540b3fd94d9e2c91aaeff1189142b37b5af7dd5f7d3584a1b6c79c80f7e680c/diff",
+"WorkDir": "/var/lib/docker/overlay2/d540b3fd94d9e2c91aaeff1189142b37b5af7dd5f7d3584a1b6c79c80f7e680c/work"
+},
+"Name": "overlay2"
+},
+"RootFS": {
+"Type": "layers",
+"Layers": [
+"sha256:4c67e4044f8c0fe3e3efaf76f2a3d5d3d866f8ef2e8a9da756949d90e576baa0",
+"sha256:949acf1cb73a60306e050836deb85a26fe23e226f6bcc499872b057efbf22dd1"
+]
+},
+"Metadata": {
+"LastTagTime": "0001-01-01T00:00:00Z"
+}
+}
+]
+##[endgroup]
+##[group]Installing QEMU static binaries
+[command]/usr/bin/docker run --rm --privileged docker.io/tonistiigi/binfmt:latest --install all
+installing: mips64 OK
+installing: arm64 OK
+installing: arm OK
+installing: s390x OK
+installing: riscv64 OK
+installing: mips64le OK
+installing: ppc64le OK
+{
+"supported": [
+"linux/amd64",
+"linux/arm64",
+"linux/riscv64",
+"linux/ppc64le",
+"linux/s390x",
+"linux/386",
+"linux/mips64le",
+"linux/mips64",
+"linux/arm/v7",
+"linux/arm/v6"
+],
+"emulators": [
+"llvm-16-runtime.binfmt",
+"llvm-17-runtime.binfmt",
+"llvm-18-runtime.binfmt",
+"python3.12",
+"qemu-aarch64",
+"qemu-arm",
+"qemu-mips64",
+"qemu-mips64el",
+"qemu-ppc64le",
+"qemu-riscv64",
+"qemu-s390x"
+]
+}
+##[endgroup]
+##[group]Extracting available platforms
+linux/amd64,linux/arm64,linux/riscv64,linux/ppc64le,linux/s390x,linux/386,linux/mips64le,linux/mips64,linux/arm/v7,linux/arm/v6
+##[endgroup]
+docker/setup-buildx-action@v3
+
+driver: docker-container
+install:
+use:
+cache-binary:
+cleanup:
+
+REGISTRY: ghcr.io
+IMAGE_NAME: binary-husky/gpt_academic_with_latex_arm
+##[endgroup]
+##[group]Docker info
+[command]/usr/bin/docker version
+Client: Docker Engine - Community
+Version:           26.1.3
+API version:       1.45
+Go version:        go1.21.10
+Git commit:        b72abbb
+Built:             Thu May 16 08:33:35 2024
+OS/Arch:           linux/amd64
+Context:           default
+2025-02-08T12:51:15.7377557Z
+Server: Docker Engine - Community
+Engine:
+Version:          26.1.3
+API version:      1.45 (minimum version 1.24)
+Go version:       go1.21.10
+Git commit:       8e96db1
+Built:            Thu May 16 08:33:35 2024
+OS/Arch:          linux/amd64
+Experimental:
+containerd:
+Version:          1.7.25
+GitCommit:        bcc810d6b9066471b0b6fa75f557a15a1cbf31bb
+runc:
+Version:          1.2.4
+GitCommit:        v1.2.4-0-g6c52b3f
+docker-init:
+Version:          0.19.0
+GitCommit:        de40ad0
+[command]/usr/bin/docker info
+Client: Docker Engine - Community
+Version:    26.1.3
+Context:    default
+Debug Mode: false
+Plugins:
+buildx: Docker Buildx (Docker Inc.)
+Version:  v0.20.1
+Path:     /usr/libexec/docker/cli-plugins/docker-buildx
+compose: Docker Compose (Docker Inc.)
+Version:  v2.27.1
+Path:     /usr/libexec/docker/cli-plugins/docker-compose
+2025-02-08T12:51:15.7840941Z
+Server:
+Containers: 0
+Running: 0
+Paused: 0
+Stopped: 0
+Images: 1
+Server Version: 26.1.3
+Storage Driver: overlay2
+Backing Filesystem: extfs
+Supports d_type: true
+Using metacopy: false
+Native Overlay Diff: false
+userxattr:
+Logging Driver: json-file
+Cgroup Driver: systemd
+Cgroup Version: 2
+Plugins:
+Volume: local
+Network: bridge host ipvlan macvlan null overlay
+Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+Swarm: inactive
+Runtimes: io.containerd.runc.v2 runc
+Default Runtime: runc
+Init Binary: docker-init
+containerd version: bcc810d6b9066471b0b6fa75f557a15a1cbf31bb
+runc version: v1.2.4-0-g6c52b3f
+init version: de40ad0
+Security Options:
+apparmor
+seccomp
+Profile: builtin
+cgroupns
+Kernel Version: 6.8.0-1020-azure
+Operating System: Ubuntu 24.04.1 LTS
+OSType: linux
+Architecture: x86_64
+CPUs: 4
+Total Memory: 15.62GiB
+Name: fv-az1336-587
+ID: 5da1e875-f4d9-42c6-906c-34f1b814e6b3
+Docker Root Dir: /var/lib/docker
+Debug Mode: false
+Username: githubactions
+Experimental:
+Insecure Registries:
+127.0.0.0/8
+Live Restore Enabled: false
+2025-02-08T12:51:15.7855809Z
+##[endgroup]
+##[group]Buildx version
+[command]/usr/bin/docker buildx version
+github.com/docker/buildx v0.20.1 245093b99ab74aa2c729a496759afca0704d6470
+##[endgroup]
+##[group]Inspecting default docker context
+[
+{
+"Name": "default",
+"Metadata": {},
+"Endpoints": {
+"docker": {
+"Host": "unix:///var/run/docker.sock",
+"SkipTLSVerify":
+}
+},
+"TLSMaterial": {},
+"Storage": {
+"MetadataPath": "<IN MEMORY>",
+"TLSPath": "<IN MEMORY>"
+}
+}
+]
+##[endgroup]
+##[group]Creating a new builder instance
+[command]/usr/bin/docker buildx create --name builder-5db1e4ce-fb8c-4273-9384-e3f4274fb815 --driver docker-container --buildkitd-flags --allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host --use
+builder-5db1e4ce-fb8c-4273-9384-e3f4274fb815
+##[endgroup]
+##[group]Booting builder
+[command]/usr/bin/docker buildx inspect --bootstrap --builder builder-5db1e4ce-fb8c-4273-9384-e3f4274fb815
+#1 [internal] booting buildkit
+#1 pulling image moby/buildkit:buildx-stable-1
+#1 pulling image moby/buildkit:buildx-stable-1 3.2s done
+#1 creating container buildx_buildkit_builder-5db1e4ce-fb8c-4273-9384-e3f4274fb8150
+#1 creating container buildx_buildkit_builder-5db1e4ce-fb8c-4273-9384-e3f4274fb8150 0.4s done
+#1 DONE 3.5s
+Name:          builder-5db1e4ce-fb8c-4273-9384-e3f4274fb815
+Driver:        docker-container
+Last Activity: 2025-02-08 12:51:16 +0000 UTC
+2025-02-08T12:51:19.6226278Z
+Nodes:
+Name:                  builder-5db1e4ce-fb8c-4273-9384-e3f4274fb8150
+Endpoint:              unix:///var/run/docker.sock
+Status:                running
+BuildKit daemon flags: --allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host
+BuildKit version:      v0.19.0
+Platforms:             linux/amd64, linux/amd64/v2, linux/amd64/v3, linux/arm64, linux/riscv64, linux/ppc64le, linux/s390x, linux/386, linux/arm/v7, linux/arm/v6
+Labels:
+org.mobyproject.buildkit.worker.executor:         oci
+org.mobyproject.buildkit.worker.hostname:         ac06f4127166
+org.mobyproject.buildkit.worker.network:          host
+org.mobyproject.buildkit.worker.oci.process-mode: sandbox
+org.mobyproject.buildkit.worker.selinux.enabled:
+org.mobyproject.buildkit.worker.snapshotter:      overlayfs
+GC Policy rule#0:
+All:
+Filters:        type==source.local,type==exec.cachemount,type==source.git.checkout
+Keep Duration:  48h0m0s
+Max Used Space: 488.3MiB
+GC Policy rule#1:
+All:
+Keep Duration:  1440h0m0s
+Reserved Space: 7.451GiB
+Max Used Space: 54.02GiB
+Min Free Space: 13.97GiB
+GC Policy rule#2:
+All:
+Reserved Space: 7.451GiB
+Max Used Space: 54.02GiB
+Min Free Space: 13.97GiB
+GC Policy rule#3:
+All:
+Reserved Space: 7.451GiB
+Max Used Space: 54.02GiB
+Min Free Space: 13.97GiB
+##[endgroup]
+##[group]Inspect builder
+{
+"nodes": [
+{
+"name": "builder-5db1e4ce-fb8c-4273-9384-e3f4274fb8150",
+"endpoint": "unix:///var/run/docker.sock",
+"status": "running",
+"buildkitd-flags": "--allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host",
+"buildkit": "v0.19.0",
+"platforms": "linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/arm64,linux/riscv64,linux/ppc64le,linux/s390x,linux/386,linux/arm/v7,linux/arm/v6",
+"features": {
+"Automatically load images to the Docker Engine image store": true,
+"Cache export": true,
+"Docker exporter": true,
+"Multi-platform build": true,
+"OCI exporter": true
+},
+"labels": {
+"org.mobyproject.buildkit.worker.executor": "oci",
+"org.mobyproject.buildkit.worker.hostname": "ac06f4127166",
+"org.mobyproject.buildkit.worker.network": "host",
+"org.mobyproject.buildkit.worker.oci.process-mode": "sandbox",
+"org.mobyproject.buildkit.worker.selinux.enabled": "false",
+"org.mobyproject.buildkit.worker.snapshotter": "overlayfs"
+},
+"gcPolicy": [
+{
+"all": false,
+"filter": [
+"type==source.local",
+"type==exec.cachemount",
+"type==source.git.checkout"
+],
+"keepDuration": "48h0m0s"
+},
+{
+"all": false,
+"keepDuration": "1440h0m0s"
+},
+{
+"all":
+},
+{
+"all":
+}
+]
+}
+],
+"name": "builder-5db1e4ce-fb8c-4273-9384-e3f4274fb815",
+"driver": "docker-container",
+"lastActivity": "2025-02-08T12:51:16.000Z"
+}
+##[endgroup]
+##[group]BuildKit version
+builder-5db1e4ce-fb8c-4273-9384-e3f4274fb8150: v0.19.0
+##[endgroup]
+actions/checkout@v4
+
+repository: binary-husky/gpt_academic
+
+
+
+true
+
+
+1
+
+
+
+false
+
+
+REGISTRY: ghcr.io
+IMAGE_NAME: binary-husky/gpt_academic_with_latex_arm
+##[endgroup]
+Syncing repository: binary-husky/gpt_academic
+
+Working directory is '/home/runner/work/gpt_academic/gpt_academic'
+
+2 48 1
+##[endgroup]
+Temporarily overriding HOME='/home/runner/work/_temp/75de7722-f3aa-48ae-acff-e3de243d827f' before making global git config changes
+
+[command]/usr/bin/git config --global --add safe.directory /home/runner/work/gpt_academic/gpt_academic
+Deleting the contents of '/home/runner/work/gpt_academic/gpt_academic'
+
+[command]/usr/bin/git init /home/runner/work/gpt_academic/gpt_academic
+
+
+
+
+
+
+
+
+
+
+Initialized empty Git repository in /home/runner/work/gpt_academic/gpt_academic/.git/
+[command]/usr/bin/git remote add origin https://github.com/binary-husky/gpt_academic
+##[endgroup]
+
+[command]/usr/bin/git config --local gc.auto 0
+##[endgroup]
+
+core\.sshCommand
+'core\.sshCommand' 'core.sshCommand'
+http\.https\:\/\/github\.com\/\.extraheader
+'http\.https\:\/\/github\.com\/\.extraheader' 'http.https://github.com/.extraheader'
+--local
+##[endgroup]
+
+2 --no-tags --prune --no-recurse-submodules --depth=1 origin +991a903fa957bc1bd92c3e7e5d915d0577243d33:refs/remotes/origin/master
+From https://github.com/binary-husky/gpt_academic
+991a903fa957bc1bd92c3e7e5d915d0577243d33  origin/master
+##[endgroup]
+
+##[endgroup]
+
+[command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+
+master refs/remotes/origin/master
+Reset branch 'master'
+'master' 'origin/master'.
+##[endgroup]
+-1 --format=%H
+991a903fa957bc1bd92c3e7e5d915d0577243d33
+docker/login-action@v3
+
+registry: ghcr.io
+username: binary-husky
+password: ***
+ecr: auto
+logout:
+
+REGISTRY: ghcr.io
+IMAGE_NAME: binary-husky/gpt_academic_with_latex_arm
+##[endgroup]
+Logging into ghcr.io...
+Login Succeeded!
+docker/metadata-action@v4
+
+images: ghcr.io/binary-husky/gpt_academic_with_latex_arm
+context: workflow
+github-token: ***
+
+REGISTRY: ghcr.io
+IMAGE_NAME: binary-husky/gpt_academic_with_latex_arm
+##[endgroup]
+##[group]Context info
+eventName: push
+sha: 991a903fa957bc1bd92c3e7e5d915d0577243d33
+ref: refs/heads/master
+workflow: build-with-latex-arm
+action: meta
+actor: binary-husky
+runNumber: 83
+runId: 13215789767
+##[endgroup]
+##[group]Processing images input
+name=ghcr.io/binary-husky/gpt_academic_with_latex_arm,enable=true
+##[endgroup]
+##[group]Processing tags input
+type=schedule,pattern=nightly,enable=true,priority=1000
+type=ref,event=branch,enable=true,priority=600
+type=ref,event=tag,enable=true,priority=600
+type=ref,event=pr,prefix=pr-,enable=true,priority=600
+##[endgroup]
+##[group]Processing flavor input
+latest=auto
+prefix=
+prefixLatest=false
+suffix=
+suffixLatest=false
+##[endgroup]
+##[group]Docker image version
+master
+##[endgroup]
+##[group]Docker tags
+ghcr.io/binary-husky/gpt_academic_with_latex_arm:master
+##[endgroup]
+##[group]Docker labels
+org.opencontainers.image.created=2025-02-08T12:51:22.128Z
+org.opencontainers.image.description=为GPT/GLM等LLM大语言模型提供实用化交互接口，特别优化论文阅读/润色/写作体验，模块化设计，支持自定义快捷按钮&函数插件，支持Python和C++等项目剖析&自译解功能，PDF/LaTex论文翻译&总结功能，支持并行问询多种LLM模型，支持chatglm3等本地模型。接入通义千问, deepseekcoder, 讯飞星火, 文心一言, llama2, rwkv, claude2, moss等。
+org.opencontainers.image.licenses=GPL-3.0
+org.opencontainers.image.revision=991a903fa957bc1bd92c3e7e5d915d0577243d33
+org.opencontainers.image.source=https://github.com/binary-husky/gpt_academic
+org.opencontainers.image.title=gpt_academic
+org.opencontainers.image.url=https://github.com/binary-husky/gpt_academic
+org.opencontainers.image.version=master
+##[endgroup]
+##[group]JSON output
+{
+"tags": [
+"ghcr.io/binary-husky/gpt_academic_with_latex_arm:master"
+],
+"labels": {
+"org.opencontainers.image.created": "2025-02-08T12:51:22.128Z",
+"org.opencontainers.image.description": "为GPT/GLM等LLM大语言模型提供实用化交互接口，特别优化论文阅读/润色/写作体验，模块化设计，支持自定义快捷按钮&函数插件，支持Python和C++等项目剖析&自译解功能，PDF/LaTex论文翻译&总结功能，支持并行问询多种LLM模型，支持chatglm3等本地模型。接入通义千问, deepseekcoder, 讯飞星火, 文心一言, llama2, rwkv, claude2, moss等。",
+"org.opencontainers.image.licenses": "GPL-3.0",
+"org.opencontainers.image.revision": "991a903fa957bc1bd92c3e7e5d915d0577243d33",
+"org.opencontainers.image.source": "https://github.com/binary-husky/gpt_academic",
+"org.opencontainers.image.title": "gpt_academic",
+"org.opencontainers.image.url": "https://github.com/binary-husky/gpt_academic",
+"org.opencontainers.image.version": "master"
+}
+}
+##[endgroup]
+##[group]Bake file definition
+{
+"target": {
+"docker-metadata-action": {
+"tags": [
+"ghcr.io/binary-husky/gpt_academic_with_latex_arm:master"
+],
+"labels": {
+"org.opencontainers.image.created": "2025-02-08T12:51:22.128Z",
+"org.opencontainers.image.description": "为GPT/GLM等LLM大语言模型提供实用化交互接口，特别优化论文阅读/润色/写作体验，模块化设计，支持自定义快捷按钮&函数插件，支持Python和C++等项目剖析&自译解功能，PDF/LaTex论文翻译&总结功能，支持并行问询多种LLM模型，支持chatglm3等本地模型。接入通义千问, deepseekcoder, 讯飞星火, 文心一言, llama2, rwkv, claude2, moss等。",
+"org.opencontainers.image.licenses": "GPL-3.0",
+"org.opencontainers.image.revision": "991a903fa957bc1bd92c3e7e5d915d0577243d33",
+"org.opencontainers.image.source": "https://github.com/binary-husky/gpt_academic",
+"org.opencontainers.image.title": "gpt_academic",
+"org.opencontainers.image.url": "https://github.com/binary-husky/gpt_academic",
+"org.opencontainers.image.version": "master"
+},
+"args": {
+"DOCKER_META_IMAGES": "ghcr.io/binary-husky/gpt_academic_with_latex_arm",
+"DOCKER_META_VERSION": "master"
+}
+}
+}
+}
+##[endgroup]
+docker/build-push-action@v6
+
+context: .
+push:
+platforms: linux/arm64
+file: docs/GithubAction+NoLocal+Latex
+tags: ghcr.io/binary-husky/gpt_academic_with_latex_arm:master
+labels: org.opencontainers.image.created=2025-02-08T12:51:22.128Z
+org.opencontainers.image.description=为GPT/GLM等LLM大语言模型提供实用化交互接口，特别优化论文阅读/润色/写作体验，模块化设计，支持自定义快捷按钮&函数插件，支持Python和C++等项目剖析&自译解功能，PDF/LaTex论文翻译&总结功能，支持并行问询多种LLM模型，支持chatglm3等本地模型。接入通义千问, deepseekcoder, 讯飞星火, 文心一言, llama2, rwkv, claude2, moss等。
+org.opencontainers.image.licenses=GPL-3.0
+org.opencontainers.image.revision=991a903fa957bc1bd92c3e7e5d915d0577243d33
+org.opencontainers.image.source=https://github.com/binary-husky/gpt_academic
+org.opencontainers.image.title=gpt_academic
+org.opencontainers.image.url=https://github.com/binary-husky/gpt_academic
+org.opencontainers.image.version=master
+load:
+no-cache:
+pull:
+github-token: ***
+
+REGISTRY: ghcr.io
+IMAGE_NAME: binary-husky/gpt_academic_with_latex_arm
+DOCKER_METADATA_OUTPUT_VERSION: master
+DOCKER_METADATA_OUTPUT_TAGS: ghcr.io/binary-husky/gpt_academic_with_latex_arm:master
+DOCKER_METADATA_OUTPUT_LABELS: org.opencontainers.image.created=2025-02-08T12:51:22.128Z
+org.opencontainers.image.description=为GPT/GLM等LLM大语言模型提供实用化交互接口，特别优化论文阅读/润色/写作体验，模块化设计，支持自定义快捷按钮&函数插件，支持Python和C++等项目剖析&自译解功能，PDF/LaTex论文翻译&总结功能，支持并行问询多种LLM模型，支持chatglm3等本地模型。接入通义千问, deepseekcoder, 讯飞星火, 文心一言, llama2, rwkv, claude2, moss等。
+org.opencontainers.image.licenses=GPL-3.0
+org.opencontainers.image.revision=991a903fa957bc1bd92c3e7e5d915d0577243d33
+org.opencontainers.image.source=https://github.com/binary-husky/gpt_academic
+org.opencontainers.image.title=gpt_academic
+org.opencontainers.image.url=https://github.com/binary-husky/gpt_academic
+org.opencontainers.image.version=master
+DOCKER_METADATA_OUTPUT_JSON: {"tags":["ghcr.io/binary-husky/gpt_academic_with_latex_arm:master"],"labels":{"org.opencontainers.image.created":"2025-02-08T12:51:22.128Z","org.opencontainers.image.description":"为GPT/GLM等LLM大语言模型提供实用化交互接口，特别优化论文阅读/润色/写作体验，模块化设计，支持自定义快捷按钮&函数插件，支持Python和C++等项目剖析&自译解功能，PDF/LaTex论文翻译&总结功能，支持并行问询多种LLM模型，支持chatglm3等本地模型。接入通义千问, deepseekcoder, 讯飞星火, 文心一言, llama2, rwkv, claude2, moss等。","org.opencontainers.image.licenses":"GPL-3.0","org.opencontainers.image.revision":"991a903fa957bc1bd92c3e7e5d915d0577243d33","org.opencontainers.image.source":"https://github.com/binary-husky/gpt_academic","org.opencontainers.image.title":"gpt_academic","org.opencontainers.image.url":"https://github.com/binary-husky/gpt_academic","org.opencontainers.image.version":"master"}}
+DOCKER_METADATA_OUTPUT_BAKE_FILE: /tmp/docker-actions-toolkit-Rz7WEY/docker-metadata-action-bake.json
+##[endgroup]
+##[group]GitHub Actions runtime token ACs
+refs/heads/master: read/write
+##[endgroup]
+##[group]Docker info
+[command]/usr/bin/docker version
+Client: Docker Engine - Community
+Version:           26.1.3
+API version:       1.45
+Go version:        go1.21.10
+Git commit:        b72abbb
+Built:             Thu May 16 08:33:35 2024
+OS/Arch:           linux/amd64
+Context:           default
+2025-02-08T12:51:22.4338265Z
+Server: Docker Engine - Community
+Engine:
+Version:          26.1.3
+API version:      1.45 (minimum version 1.24)
+Go version:       go1.21.10
+Git commit:       8e96db1
+Built:            Thu May 16 08:33:35 2024
+OS/Arch:          linux/amd64
+Experimental:
+containerd:
+Version:          1.7.25
+GitCommit:        bcc810d6b9066471b0b6fa75f557a15a1cbf31bb
+runc:
+Version:          1.2.4
+GitCommit:        v1.2.4-0-g6c52b3f
+docker-init:
+Version:          0.19.0
+GitCommit:        de40ad0
+[command]/usr/bin/docker info
+Client: Docker Engine - Community
+Version:    26.1.3
+Context:    default
+Debug Mode: false
+Plugins:
+buildx: Docker Buildx (Docker Inc.)
+Version:  v0.20.1
+Path:     /usr/libexec/docker/cli-plugins/docker-buildx
+compose: Docker Compose (Docker Inc.)
+Version:  v2.27.1
+Path:     /usr/libexec/docker/cli-plugins/docker-compose
+2025-02-08T12:51:22.4774136Z
+Server:
+Containers: 1
+Running: 1
+Paused: 0
+Stopped: 0
+Images: 2
+Server Version: 26.1.3
+Storage Driver: overlay2
+Backing Filesystem: extfs
+Supports d_type: true
+Using metacopy: false
+Native Overlay Diff: false
+userxattr:
+Logging Driver: json-file
+Cgroup Driver: systemd
+Cgroup Version: 2
+Plugins:
+Volume: local
+Network: bridge host ipvlan macvlan null overlay
+Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+Swarm: inactive
+Runtimes: io.containerd.runc.v2 runc
+Default Runtime: runc
+Init Binary: docker-init
+containerd version: bcc810d6b9066471b0b6fa75f557a15a1cbf31bb
+runc version: v1.2.4-0-g6c52b3f
+init version: de40ad0
+Security Options:
+apparmor
+seccomp
+Profile: builtin
+cgroupns
+Kernel Version: 6.8.0-1020-azure
+Operating System: Ubuntu 24.04.1 LTS
+OSType: linux
+Architecture: x86_64
+CPUs: 4
+Total Memory: 15.62GiB
+Name: fv-az1336-587
+ID: 5da1e875-f4d9-42c6-906c-34f1b814e6b3
+Docker Root Dir: /var/lib/docker
+Debug Mode: false
+Username: githubactions
+Experimental:
+Insecure Registries:
+127.0.0.0/8
+Live Restore Enabled: false
+2025-02-08T12:51:22.4789069Z
+##[endgroup]
+##[group]Proxy configuration
+No proxy configuration found
+##[endgroup]
+##[group]Buildx version
+[command]/usr/bin/docker buildx version
+github.com/docker/buildx v0.20.1 245093b99ab74aa2c729a496759afca0704d6470
+##[endgroup]
+##[group]Builder info
+{
+"nodes": [
+{
+"name": "builder-5db1e4ce-fb8c-4273-9384-e3f4274fb8150",
+"endpoint": "unix:///var/run/docker.sock",
+"status": "running",
+"buildkitd-flags": "--allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host",
+"buildkit": "v0.19.0",
+"platforms": "linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/arm64,linux/riscv64,linux/ppc64le,linux/s390x,linux/386,linux/arm/v7,linux/arm/v6",
+"features": {
+"Automatically load images to the Docker Engine image store": true,
+"Cache export": true,
+"Docker exporter": true,
+"Multi-platform build": true,
+"OCI exporter": true
+},
+"labels": {
+"org.mobyproject.buildkit.worker.executor": "oci",
+"org.mobyproject.buildkit.worker.hostname": "ac06f4127166",
+"org.mobyproject.buildkit.worker.network": "host",
+"org.mobyproject.buildkit.worker.oci.process-mode": "sandbox",
+"org.mobyproject.buildkit.worker.selinux.enabled": "false",
+"org.mobyproject.buildkit.worker.snapshotter": "overlayfs"
+},
+"gcPolicy": [
+{
+"all": false,
+"filter": [
+"type==source.local",
+"type==exec.cachemount",
+"type==source.git.checkout"
+],
+"keepDuration": "48h0m0s"
+},
+{
+"all": false,
+"keepDuration": "1440h0m0s"
+},
+{
+"all":
+},
+{
+"all":
+}
+]
+}
+],
+"name": "builder-5db1e4ce-fb8c-4273-9384-e3f4274fb815",
+"driver": "docker-container",
+"lastActivity": "2025-02-08T12:51:16.000Z"
+}
+##[endgroup]
+[command]/usr/bin/docker buildx build --file docs/GithubAction+NoLocal+Latex --iidfile /home/runner/work/_temp/docker-actions-toolkit-RysORH/build-iidfile-49077e028f.txt --label org.opencontainers.image.created=2025-02-08T12:51:22.128Z --label org.opencontainers.image.description=为GPT/GLM等LLM大语言模型提供实用化交互接口，特别优化论文阅读/润色/写作体验，模块化设计，支持自定义快捷按钮&函数插件，支持Python和C++等项目剖析&自译解功能，PDF/LaTex论文翻译&总结功能，支持并行问询多种LLM模型，支持chatglm3等本地模型。接入通义千问, deepseekcoder, 讯飞星火, 文心一言, llama2, rwkv, claude2, moss等。 --label org.opencontainers.image.licenses=GPL-3.0 --label org.opencontainers.image.revision=991a903fa957bc1bd92c3e7e5d915d0577243d33 --label org.opencontainers.image.source=https://github.com/binary-husky/gpt_academic --label org.opencontainers.image.title=gpt_academic --label org.opencontainers.image.url=https://github.com/binary-husky/gpt_academic --label org.opencontainers.image.version=master --platform linux/arm64 --attest type=provenance,mode=max,builder-id=https://github.com/binary-husky/gpt_academic/actions/runs/13215789767/attempts/1 --tag ghcr.io/binary-husky/gpt_academic_with_latex_arm:master --metadata-file /home/runner/work/_temp/docker-actions-toolkit-RysORH/build-metadata-ed0f1687da.json --push .
+#0 building with "builder-5db1e4ce-fb8c-4273-9384-e3f4274fb815" instance using docker-container driver
+2025-02-08T12:51:22.8861440Z
+#1 [internal] load build definition from GithubAction+NoLocal+Latex
+#1 transferring dockerfile: 1.39kB done
+#1 DONE 0.0s
+2025-02-08T12:51:23.0512812Z
+#2 [internal] load metadata for docker.io/menghuan1918/ubuntu_uv_ctex:latest
+#2 ...
+2025-02-08T12:51:23.2508080Z
+#3 [auth] menghuan1918/ubuntu_uv_ctex:pull token for registry-1.docker.io
+#3 DONE 0.0s
+2025-02-08T12:51:23.4008344Z
+#2 [internal] load metadata for docker.io/menghuan1918/ubuntu_uv_ctex:latest
+#2 DONE 0.9s
+2025-02-08T12:51:23.9591145Z
+#4 [internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+2025-02-08T12:51:23.9592707Z
+#5 [1/8] FROM docker.io/menghuan1918/ubuntu_uv_ctex:latest@sha256:2b087be429bf3f38e08278754ab4e4ca639ba0165b8e71ab707f2814b5d13e11
+#5 resolve docker.io/menghuan1918/ubuntu_uv_ctex:latest@sha256:2b087be429bf3f38e08278754ab4e4ca639ba0165b8e71ab707f2814b5d13e11 done
+#5 ...
+2025-02-08T12:51:24.1563530Z
+#6 [internal] load build context
+#6 transferring context: 6.16MB 0.1s done
+#6 DONE 0.1s
+2025-02-08T12:51:24.1564830Z
+#5 [1/8] FROM docker.io/menghuan1918/ubuntu_uv_ctex:latest@sha256:2b087be429bf3f38e08278754ab4e4ca639ba0165b8e71ab707f2814b5d13e11
+#5 sha256:f792b9949b7aec0cebee50794aeb833593db246fca4563150ae14601133dd1c7 0B / 496.69MB 0.2s
+#5 sha256:decb14e0c39cfa7a919f6a8d931be38ad9ffe7fd84a81abe57bd9720740e83e8 92B / 92B 0.3s done
+#5 sha256:5fae8efb24618fd02d9cfbcf362b278211b8c5726ec0b790509a22fe0c5944ec 0B / 375.71kB 0.2s
+#5 sha256:d57b32b14e776918ee4aa88a566658690b63e675560d0b1f7e50a597597927bc 0B / 1.70kB 0.2s
+#5 sha256:5fae8efb24618fd02d9cfbcf362b278211b8c5726ec0b790509a22fe0c5944ec 375.71kB / 375.71kB 0.3s done
+#5 sha256:d57b32b14e776918ee4aa88a566658690b63e675560d0b1f7e50a597597927bc 1.70kB / 1.70kB 0.3s done
+#5 sha256:3c0a265ff0adaf18b5d57876696e3b101ba2052cff16f4d0af8d39bef53ce495 0B / 2.73GB 0.2s
+#5 sha256:f792b9949b7aec0cebee50794aeb833593db246fca4563150ae14601133dd1c7 40.89MB / 496.69MB 0.5s
+#5 sha256:25a614108e8d9c23a53cb3193f34ba623efe45c81ccaaa2281092b512ef7e07e 1.05MB / 28.89MB 0.2s
+#5 sha256:2fb7df9706f8b78421ef548f8831a46ef6ed2e50bd2d4c546c80aa96e29af213 0B / 12.58MB 0.2s
+#5 sha256:25a614108e8d9c23a53cb3193f34ba623efe45c81ccaaa2281092b512ef7e07e 28.89MB / 28.89MB 0.4s done
+#5 sha256:2fb7df9706f8b78421ef548f8831a46ef6ed2e50bd2d4c546c80aa96e29af213 12.58MB / 12.58MB 0.3s
+#5 sha256:f792b9949b7aec0cebee50794aeb833593db246fca4563150ae14601133dd1c7 84.93MB / 496.69MB 0.8s
+#5 sha256:2fb7df9706f8b78421ef548f8831a46ef6ed2e50bd2d4c546c80aa96e29af213 12.58MB / 12.58MB 0.3s done
+#5 extracting sha256:25a614108e8d9c23a53cb3193f34ba623efe45c81ccaaa2281092b512ef7e07e
+#5 sha256:f792b9949b7aec0cebee50794aeb833593db246fca4563150ae14601133dd1c7 132.12MB / 496.69MB 1.1s
+#5 sha256:3c0a265ff0adaf18b5d57876696e3b101ba2052cff16f4d0af8d39bef53ce495 159.38MB / 2.73GB 1.1s
+#5 sha256:f792b9949b7aec0cebee50794aeb833593db246fca4563150ae14601133dd1c7 179.31MB / 496.69MB 1.4s
+#5 sha256:f792b9949b7aec0cebee50794aeb833593db246fca4563150ae14601133dd1c7 224.40MB / 496.69MB 1.7s
+#5 extracting sha256:25a614108e8d9c23a53cb3193f34ba623efe45c81ccaaa2281092b512ef7e07e 0.9s done
+#5 sha256:f792b9949b7aec0cebee50794aeb833593db246fca4563150ae14601133dd1c7 250.61MB / 496.69MB 1.8s
+#5 sha256:f792b9949b7aec0cebee50794aeb833593db246fca4563150ae14601133dd1c7 275.78MB / 496.69MB 2.0s
+#5 sha256:3c0a265ff0adaf18b5d57876696e3b101ba2052cff16f4d0af8d39bef53ce495 300.94MB / 2.73GB 1.8s
+#5 sha256:f792b9949b7aec0cebee50794aeb833593db246fca4563150ae14601133dd1c7 300.94MB / 496.69MB 2.1s
+#5 sha256:f792b9949b7aec0cebee50794aeb833593db246fca4563150ae14601133dd1c7 343.93MB / 496.69MB 2.4s
+#5 sha256:f792b9949b7aec0cebee50794aeb833593db246fca4563150ae14601133dd1c7 370.15MB / 496.69MB 2.6s
+#5 sha256:f792b9949b7aec0cebee50794aeb833593db246fca4563150ae14601133dd1c7 418.38MB / 496.69MB 2.9s
+#5 sha256:3c0a265ff0adaf18b5d57876696e3b101ba2052cff16f4d0af8d39bef53ce495 448.79MB / 2.73GB 2.7s
+#5 sha256:f792b9949b7aec0cebee50794aeb833593db246fca4563150ae14601133dd1c7 443.55MB / 496.69MB 3.0s
+#5 sha256:f792b9949b7aec0cebee50794aeb833593db246fca4563150ae14601133dd1c7 469.76MB / 496.69MB 3.2s
+#5 sha256:f792b9949b7aec0cebee50794aeb833593db246fca4563150ae14601133dd1c7 496.69MB / 496.69MB 3.5s
+#5 sha256:3c0a265ff0adaf18b5d57876696e3b101ba2052cff16f4d0af8d39bef53ce495 598.74MB / 2.73GB 3.5s
+#5 sha256:f792b9949b7aec0cebee50794aeb833593db246fca4563150ae14601133dd1c7 496.69MB / 496.69MB 4.2s done
+#5 sha256:3c0a265ff0adaf18b5d57876696e3b101ba2052cff16f4d0af8d39bef53ce495 752.88MB / 2.73GB 4.2s
+#5 sha256:3c0a265ff0adaf18b5d57876696e3b101ba2052cff16f4d0af8d39bef53ce495 903.87MB / 2.73GB 5.0s
+#5 sha256:3c0a265ff0adaf18b5d57876696e3b101ba2052cff16f4d0af8d39bef53ce495 1.05GB / 2.73GB 5.7s
+#5 sha256:3c0a265ff0adaf18b5d57876696e3b101ba2052cff16f4d0af8d39bef53ce495 1.21GB / 2.73GB 6.5s
+#5 sha256:3c0a265ff0adaf18b5d57876696e3b101ba2052cff16f4d0af8d39bef53ce495 1.36GB / 2.73GB 7.2s
+#5 sha256:3c0a265ff0adaf18b5d57876696e3b101ba2052cff16f4d0af8d39bef53ce495 1.51GB / 2.73GB 8.0s
+#5 sha256:3c0a265ff0adaf18b5d57876696e3b101ba2052cff16f4d0af8d39bef53ce495 1.66GB / 2.73GB 8.7s
+#5 sha256:3c0a265ff0adaf18b5d57876696e3b101ba2052cff16f4d0af8d39bef53ce495 1.80GB / 2.73GB 9.5s
+#5 sha256:3c0a265ff0adaf18b5d57876696e3b101ba2052cff16f4d0af8d39bef53ce495 1.96GB / 2.73GB 10.2s
+#5 sha256:3c0a265ff0adaf18b5d57876696e3b101ba2052cff16f4d0af8d39bef53ce495 2.10GB / 2.73GB 11.0s
+#5 sha256:3c0a265ff0adaf18b5d57876696e3b101ba2052cff16f4d0af8d39bef53ce495 2.25GB / 2.73GB 11.9s
+#5 sha256:3c0a265ff0adaf18b5d57876696e3b101ba2052cff16f4d0af8d39bef53ce495 2.40GB / 2.73GB 12.6s
+#5 sha256:3c0a265ff0adaf18b5d57876696e3b101ba2052cff16f4d0af8d39bef53ce495 2.55GB / 2.73GB 13.4s
+#5 sha256:3c0a265ff0adaf18b5d57876696e3b101ba2052cff16f4d0af8d39bef53ce495 2.70GB / 2.73GB 14.1s
+#5 sha256:3c0a265ff0adaf18b5d57876696e3b101ba2052cff16f4d0af8d39bef53ce495 2.73GB / 2.73GB 15.8s done
+#5 extracting sha256:3c0a265ff0adaf18b5d57876696e3b101ba2052cff16f4d0af8d39bef53ce495
+#5 extracting sha256:3c0a265ff0adaf18b5d57876696e3b101ba2052cff16f4d0af8d39bef53ce495 52.1s done
+#5 DONE 68.2s
+2025-02-08T12:52:32.1459637Z
+#5 [1/8] FROM docker.io/menghuan1918/ubuntu_uv_ctex:latest@sha256:2b087be429bf3f38e08278754ab4e4ca639ba0165b8e71ab707f2814b5d13e11
+#5 extracting sha256:2fb7df9706f8b78421ef548f8831a46ef6ed2e50bd2d4c546c80aa96e29af213 0.1s done
+#5 DONE 68.3s
+2025-02-08T12:52:32.3027743Z
+#5 [1/8] FROM docker.io/menghuan1918/ubuntu_uv_ctex:latest@sha256:2b087be429bf3f38e08278754ab4e4ca639ba0165b8e71ab707f2814b5d13e11
+#5 extracting sha256:d57b32b14e776918ee4aa88a566658690b63e675560d0b1f7e50a597597927bc done
+#5 extracting sha256:f792b9949b7aec0cebee50794aeb833593db246fca4563150ae14601133dd1c7
+#5 extracting sha256:f792b9949b7aec0cebee50794aeb833593db246fca4563150ae14601133dd1c7 6.0s done
+#5 DONE 74.3s
+2025-02-08T12:52:38.2912628Z
+#5 [1/8] FROM docker.io/menghuan1918/ubuntu_uv_ctex:latest@sha256:2b087be429bf3f38e08278754ab4e4ca639ba0165b8e71ab707f2814b5d13e11
+#5 extracting sha256:5fae8efb24618fd02d9cfbcf362b278211b8c5726ec0b790509a22fe0c5944ec 0.0s done
+#5 extracting sha256:decb14e0c39cfa7a919f6a8d931be38ad9ffe7fd84a81abe57bd9720740e83e8 done
+#5 DONE 74.3s
+2025-02-08T12:52:38.2918989Z
+#7 [2/8] WORKDIR /gpt
+#7 DONE 3.0s
+2025-02-08T12:52:41.3109118Z
+#8 [3/8] COPY requirements.txt .
+#8 DONE 0.0s
+2025-02-08T12:52:41.3110463Z
+#9 [4/8] RUN pip install --break-system-packages openai numpy arxiv rich colorama Markdown pygments pymupdf python-docx pdfminer     && pip install --break-system-packages -r requirements.txt     && if [ "$(uname -m)" = "x86_64" ]; then     pip install --break-system-packages nougat-ocr;     fi     && pip cache purge     && rm -rf /root/.cache/pip/*
+#9 35.82 Collecting openai
+#9 41.17   Downloading openai-1.61.1-py3-none-any.whl.metadata (27 kB)
+#9 58.93 Collecting numpy
+#9 59.03   Downloading numpy-2.2.2-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata (63 kB)
+#9 59.25      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 63.4/63.4 kB 782.5 kB/s eta 0:00:00
+#9 61.54 Collecting arxiv
+#9 61.63   Downloading arxiv-2.1.3-py3-none-any.whl.metadata (6.1 kB)
+#9 68.32 Collecting rich
+#9 68.41   Downloading rich-13.9.4-py3-none-any.whl.metadata (18 kB)
+#9 70.06 Collecting colorama
+#9 70.15   Downloading colorama-0.4.6-py2.py3-none-any.whl.metadata (17 kB)
+#9 72.07 Collecting Markdown
+#9 72.17   Downloading Markdown-3.7-py3-none-any.whl.metadata (7.0 kB)
+#9 74.52 Collecting pygments
+#9 74.61   Downloading pygments-2.19.1-py3-none-any.whl.metadata (2.5 kB)
+#9 91.81 Collecting pymupdf
+#9 91.90   Downloading pymupdf-1.25.3.tar.gz (67.3 MB)
+#9 115.8      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 67.3/67.3 MB 2.7 MB/s eta 0:00:00
+#9 126.3   Getting requirements to build wheel: started
+#9 134.5   Getting requirements to build wheel: finished with status 'done'
+#9 134.6   Installing backend dependencies: started
+#9 195.2   Installing backend dependencies: finished with status 'done'
+#9 195.2   Preparing metadata (pyproject.toml): started
+#9 287.4   Preparing metadata (pyproject.toml): still running...
+#9 353.4   Preparing metadata (pyproject.toml): still running...
+#9 418.2   Preparing metadata (pyproject.toml): still running...
+#9 465.8   Preparing metadata (pyproject.toml): finished with status 'error'
+#9 471.7   error: subprocess-exited-with-error
+#9 471.7
+#9 471.7   × Preparing metadata (pyproject.toml) did not run successfully.
+#9 471.7   │ exit code: 1
+#9 471.7   ╰─> [186 lines of output]
+#9 471.7       pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py: ### Starting.
+#9 471.7       pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py: __name__: 'setup'
+#9 471.7       pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py: platform.platform(): 'Linux-6.8.0-1020-azure-aarch64-with-glibc2.39'
+#9 471.7       pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py: platform.python_version(): '3.12.3'
+#9 471.7       pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py: sys.executable: '/usr/bin/python3'
+#9 471.7       pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py: CPU bits: 64 sys.maxsize=9223372036854775807
+#9 471.7       pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py: __file__: '/tmp/pip-install-n41jzaeh/pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py'
+#9 471.7       pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py: os.getcwd(): '/tmp/pip-install-n41jzaeh/pymupdf_eba2fa438be94e9aa6658122e6e1ad84'
+#9 471.7       pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py: sys.argv (3):
+#9 471.7       pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py:     0: '/usr/lib/python3/dist-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py'
+#9 471.7       pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py:     1: 'prepare_metadata_for_build_wheel'
+#9 471.7       pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py:     2: '/tmp/tmp9m02mhf6'
+#9 471.7       pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py: os.environ (17):
+#9 471.7       pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py:     DEBIAN_FRONTEND: 'noninteractive'
+#9 471.7       pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py:     HOME: '/root'
+#9 471.7       pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py:     LC_CTYPE: 'C.UTF-8'
+#9 471.7       pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py:     OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: 'unix:///dev/otel-grpc.sock'
+#9 471.7       pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py:     OTEL_EXPORTER_OTLP_TRACES_PROTOCOL: 'grpc'
+#9 471.7       pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py:     OTEL_TRACES_EXPORTER: 'otlp'
+#9 471.7       pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py:     OTEL_TRACE_PARENT: '00-002943fd15a1d8563b12ee859d3247a2-6c83a17c8ab319fd-01'
+#9 471.7       pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py:     PATH: '/tmp/pip-build-env-x2jyu7xv/overlay/local/bin:/tmp/pip-build-env-x2jyu7xv/normal/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+#9 471.7       pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py:     PEP517_BACKEND_PATH: '/tmp/pip-install-n41jzaeh/pymupdf_eba2fa438be94e9aa6658122e6e1ad84'
+#9 471.7       pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py:     PEP517_BUILD_BACKEND: 'setup'
+#9 471.7       pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py:     PIP_BUILD_TRACKER: '/tmp/pip-build-tracker-bqvz9pfo'
+#9 471.7       pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py:     PWD: '/gpt'
+#9 471.7       pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py:     PYTHONNOUSERSITE: '1'
+#9 471.7       pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py:     PYTHONPATH: '/tmp/pip-build-env-x2jyu7xv/site'
+#9 471.7       pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py:     SHLVL: '1'
+#9 471.7       pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py:     TRACEPARENT: '00-002943fd15a1d8563b12ee859d3247a2-6c83a17c8ab319fd-01'
+#9 471.7       pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py:     _: '/usr/bin/pip'
+#9 471.7       pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py: PYMUPDF_SETUP_URL_WHEEL=None
+#9 471.7       pipcl.py:785:tag_platform(): From self.tag_platform_: ret=None.
+#9 471.7       pipcl.py:793:tag_platform(): From AUDITWHEEL_PLAT: ret=None.
+#9 471.7       pipcl.py:808:tag_platform(): From sysconfig.get_platform(): ret='linux_aarch64'.
+#9 471.7       pipcl.py:822:tag_platform(): tag_platform(): returning ret='linux_aarch64'.
+#9 471.7       pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py: get_mupdf_internal(): out='dir' location=None sha=None
+#9 471.7       pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py: Download location='https://mupdf.com/downloads/archive/mupdf-1.25.4-source.tar.gz' local_tgz='mupdf-1.25.4-source.tar.gz' name='mupdf-1.25.4-source'
+#9 471.7       pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py: Downloading from location='https://mupdf.com/downloads/archive/mupdf-1.25.4-source.tar.gz' to local_tgz='mupdf-1.25.4-source.tar.gz'.
+#9 471.7       pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py: Extracting mupdf-1.25.4-source.tar.gz
+#9 471.7       pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py: Setting XCFLAGS and XCXXFLAGS to predefine TOFU_CJK_EXT.
+#9 471.7       pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py: Appending `bsymbolic-` to MuPDF build path.
+#9 471.7       pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py: g_py_limited_api=True
+#9 471.7       pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py: Building MuPDF by running: cd /tmp/pip-install-n41jzaeh/pymupdf_eba2fa438be94e9aa6658122e6e1ad84/mupdf-1.25.4-source && XCFLAGS=-DTOFU_CJK_EXT XCXXFLAGS=-DTOFU_CJK_EXT /usr/bin/python3 ./scripts/mupdfwrap.py -d build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release -b all && echo /tmp/pip-install-n41jzaeh/pymupdf_eba2fa438be94e9aa6658122e6e1ad84/mupdf-1.25.4-source/build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release: && ls -l /tmp/pip-install-n41jzaeh/pymupdf_eba2fa438be94e9aa6658122e6e1ad84/mupdf-1.25.4-source/build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release
+#9 471.7       (+9.0s): state.py:358:set_dir_so: self.Py_LIMITED_API=None
+#9 471.7       (+9.5s): -d: state.py:358:set_dir_so: self.Py_LIMITED_API='0x030c0000'
+#9 471.7       (+9.7s): -b: m: __main__.py:1589:build: Building libmupdf.so ...
+#9 471.7       (+9.8s): -b: m: __main__.py:1093:_get_m_command: Setting -j to  multiprocessing.cpu_count()=4
+#9 471.7       (+10.1s): -b: m: __main__.py:1591:build: running: cd /tmp/pip-install-n41jzaeh/pymupdf_eba2fa438be94e9aa6658122e6e1ad84/mupdf-1.25.4-source && XLIB_LDFLAGS=-Wl,-Bsymbolic make -j 4 HAVE_GLUT=no HAVE_PTHREAD=yes verbose=yes shared=yes HAVE_LEPTONICA=yes HAVE_TESSERACT=yes build=release build_prefix=PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-
+#9 471.7       (+10.3s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: /bin/sh: 1: pkg-config: not found
+#9 471.7       (+10.3s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: /bin/sh: 1: pkg-config: not found
+#9 471.7       (+10.3s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: /bin/sh: 1: pkg-config: not found
+#9 471.7       (+10.4s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: /bin/sh: 1: pkg-config: not found
+#9 471.7       (+10.4s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: /bin/sh: 1: pkg-config: not found
+#9 471.7       (+10.4s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: /bin/sh: 1: pkg-config: not found
+#9 471.7       (+10.4s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: /bin/sh: 1: pkg-config: not found
+#9 471.7       (+10.4s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: /bin/sh: 1: pkg-config: not found
+#9 471.7       (+10.5s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: /bin/sh: 1: pkg-config: not found
+#9 471.7       (+10.5s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: /bin/sh: 1: pkg-config: not found
+#9 471.7       (+10.5s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: /bin/sh: 1: pkg-config: not found
+#9 471.7       (+10.5s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: /bin/sh: 1: pkg-config: not found
+#9 471.7       (+10.6s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: /bin/sh: 1: pkg-config: not found
+#9 471.7       (+30.4s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/archive.o -c source/fitz/archive.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+30.4s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/bbox-device.o -c source/fitz/bbox-device.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+30.4s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/bidi-std.o -c source/fitz/bidi-std.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+30.4s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/bidi.o -c source/fitz/bidi.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+34.4s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/bitmap.o -c source/fitz/bitmap.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+34.8s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/buffer.o -c source/fitz/buffer.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+34.9s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/color-fast.o -c source/fitz/color-fast.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+35.4s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/color-icc-create.o -c source/fitz/color-icc-create.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+38.6s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/color-lcms.o -c source/fitz/color-lcms.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+40.2s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/colorspace.o -c source/fitz/colorspace.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+41.3s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/compress.o -c source/fitz/compress.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+44.2s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/compressed-buffer.o -c source/fitz/compressed-buffer.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+44.4s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/context.o -c source/fitz/context.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+47.4s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/crypt-aes.o -c source/fitz/crypt-aes.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+47.4s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/crypt-arc4.o -c source/fitz/crypt-arc4.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+48.0s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/crypt-md5.o -c source/fitz/crypt-md5.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+50.3s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/crypt-sha2.o -c source/fitz/crypt-sha2.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+52.7s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/deskew.o -c source/fitz/deskew.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+53.5s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/device.o -c source/fitz/device.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+57.9s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/directory.o -c source/fitz/directory.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+58.1s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/document-all.o -c source/fitz/document-all.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+1m00.1s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/document.o -c source/fitz/document.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+1m01.1s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/draw-affine.o -c source/fitz/draw-affine.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+1m01.2s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/draw-blend.o -c source/fitz/draw-blend.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+1m02.6s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: In file included from source/fitz/deskew_neon.h:25,
+#9 471.7       (+1m02.6s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build:                  from source/fitz/deskew.c:299:
+#9 471.7       (+1m02.6s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: In function ‘vget_high_s32’,
+#9 471.7       (+1m02.6s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build:     inlined from ‘zoom_x1_neon’ at source/fitz/deskew_neon.h:99:17:
+#9 471.7       (+1m02.6s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: /usr/lib/gcc/aarch64-linux-gnu/13/include/arm_neon.h:3188:11: warning: ‘q_pair_sum’ may be used uninitialized [-Wmaybe-uninitialized]
+#9 471.7       (+1m02.6s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build:  3188 |   return  __builtin_aarch64_get_highv4si (__a);
+#9 471.7       (+1m02.6s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build:       |           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#9 471.7       (+1m02.6s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: source/fitz/deskew_neon.h: In function ‘zoom_x1_neon’:
+#9 471.7       (+1m02.6s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: source/fitz/deskew_neon.h:92:35: note: ‘q_pair_sum’ was declared here
+#9 471.7       (+1m02.6s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build:    92 |                         int32x4_t q_pair_sum;
+#9 471.7       (+1m02.6s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build:       |                                   ^~~~~~~~~~
+#9 471.7       (+1m02.6s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: In function ‘vget_high_s32’,
+#9 471.7       (+1m02.6s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build:     inlined from ‘zoom_x1_neon’ at source/fitz/deskew_neon.h:112:17:
+#9 471.7       (+1m02.6s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: /usr/lib/gcc/aarch64-linux-gnu/13/include/arm_neon.h:3188:11: warning: ‘q_pair_sum’ may be used uninitialized [-Wmaybe-uninitialized]
+#9 471.7       (+1m02.6s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build:  3188 |   return  __builtin_aarch64_get_highv4si (__a);
+#9 471.7       (+1m02.6s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build:       |           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#9 471.7       (+1m02.6s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: source/fitz/deskew_neon.h: In function ‘zoom_x1_neon’:
+#9 471.7       (+1m02.6s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: source/fitz/deskew_neon.h:104:35: note: ‘q_pair_sum’ was declared here
+#9 471.7       (+1m02.6s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build:   104 |                         int32x4_t q_pair_sum;
+#9 471.7       (+1m02.6s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build:       |                                   ^~~~~~~~~~
+#9 471.7       (+1m05.5s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/draw-device.o -c source/fitz/draw-device.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+1m08.3s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/draw-edge.o -c source/fitz/draw-edge.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+1m14.2s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/draw-edgebuffer.o -c source/fitz/draw-edgebuffer.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+1m16.1s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/draw-glyph.o -c source/fitz/draw-glyph.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+1m20.6s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/draw-mesh.o -c source/fitz/draw-mesh.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+1m22.0s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: In function ‘cursor_output’,
+#9 471.7       (+1m22.0s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build:     inlined from ‘cursor_flush’ at source/fitz/draw-edgebuffer.c:938:3,
+#9 471.7       (+1m22.0s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build:     inlined from ‘fz_gap_edgebuffer’ at source/fitz/draw-edgebuffer.c:1866:3,
+#9 471.7       (+1m22.0s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build:     inlined from ‘fz_gap_edgebuffer’ at source/fitz/draw-edgebuffer.c:1851:13:
+#9 471.7       (+1m22.0s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: source/fitz/draw-edgebuffer.c:461:27: warning: ‘iy2’ may be used uninitialized [-Wmaybe-uninitialized]
+#9 471.7       (+1m22.0s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build:   461 |         if (iy >= 0 && iy < height) {
+#9 471.7       (+1m22.0s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build:       |                        ~~~^~~~~~~~
+#9 471.7       (+1m22.0s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: source/fitz/draw-edgebuffer.c: In function ‘fz_gap_edgebuffer’:
+#9 471.7       (+1m22.0s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: source/fitz/draw-edgebuffer.c:740:23: note: ‘iy2’ was declared here
+#9 471.7       (+1m22.0s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build:   740 |         int iy0, iy1, iy2;
+#9 471.7       (+1m22.0s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build:       |                       ^~~
+#9 471.7       (+1m24.1s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/draw-paint.o -c source/fitz/draw-paint.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+1m26.9s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/draw-path.o -c source/fitz/draw-path.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+1m28.3s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/draw-rasterize.o -c source/fitz/draw-rasterize.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+1m31.9s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/draw-scale-simple.o -c source/fitz/draw-scale-simple.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+1m35.0s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: source/fitz/draw-path.c: In function ‘fz_dash_lineto’:
+#9 471.7       (+1m35.0s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: source/fitz/draw-path.c:1342:31: warning: ‘old_bx’ may be used uninitialized [-Wmaybe-uninitialized]
+#9 471.7       (+1m35.0s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build:  1342 |                 s->dash_cur.x = old_bx;
+#9 471.7       (+1m35.0s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build:       |                 ~~~~~~~~~~~~~~^~~~~~~~
+#9 471.7       (+1m35.0s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: source/fitz/draw-path.c:1125:15: note: ‘old_bx’ was declared here
+#9 471.7       (+1m35.0s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build:  1125 |         float old_bx, old_by;
+#9 471.7       (+1m35.0s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build:       |               ^~~~~~
+#9 471.7       (+1m35.0s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: source/fitz/draw-path.c:1343:31: warning: ‘old_by’ may be used uninitialized [-Wmaybe-uninitialized]
+#9 471.7       (+1m35.0s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build:  1343 |                 s->dash_cur.y = old_by;
+#9 471.7       (+1m35.0s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build:       |                 ~~~~~~~~~~~~~~^~~~~~~~
+#9 471.7       (+1m35.0s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: source/fitz/draw-path.c:1125:23: note: ‘old_by’ was declared here
+#9 471.7       (+1m35.0s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build:  1125 |         float old_bx, old_by;
+#9 471.7       (+1m35.0s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build:       |                       ^~~~~~
+#9 471.7       (+1m36.3s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/draw-unpack.o -c source/fitz/draw-unpack.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+1m42.4s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/encode-basic.o -c source/fitz/encode-basic.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+1m43.3s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/encode-fax.o -c source/fitz/encode-fax.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+1m47.1s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/encode-jpx.o -c source/fitz/encode-jpx.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+1m47.4s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/encodings.o -c source/fitz/encodings.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+1m48.7s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/error.o -c source/fitz/error.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+1m51.3s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/filter-basic.o -c source/fitz/filter-basic.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+1m52.6s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/filter-dct.o -c source/fitz/filter-dct.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+1m52.9s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/filter-fax.o -c source/fitz/filter-fax.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+1m57.0s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/filter-flate.o -c source/fitz/filter-flate.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+1m57.9s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: mkdir -p build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/ ; cc -ffunction-sections -fdata-sections -pipe -O2 -DNDEBUG -DTOFU_CJK_EXT -Iinclude -MMD -MP -o build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/filter-jbig2.o -c source/fitz/filter-jbig2.c -Wall -Wsign-compare -Wdeclaration-after-statement -fPIC -Ithirdparty/freetype/include -Iscripts/freetype -Ithirdparty/gumbo-parser/src -Ithirdparty/harfbuzz/src -Ithirdparty/libjpeg -Iscripts/libjpeg -Ithirdparty/lcms2/include -DHAVE_LCMS2MT -Ithirdparty/mujs -Ithirdparty/zlib -Ithirdparty/jbig2dec -Ithirdparty/openjpeg/src/lib/openjp2 -DOPJ_STATIC -DOPJ_HAVE_INTTYPES_H -DOPJ_HAVE_STDINT_H -DHAVE_LEPTONICA -Ithirdparty/leptonica/src -DHAVE_TESSERACT -Ithirdparty/tesseract/include -Iscripts/tesseract -Ithirdparty/extract/include -Ithirdparty/extract/src
+#9 471.7       (+1m58.1s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: Segmentation fault (core dumped)
+#9 471.7       (+1m58.1s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: make: *** [Makefile:149: build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release/source/fitz/filter-jbig2.o] Error 139
+#9 471.7       (+1m58.1s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build: make: *** Waiting for unfinished jobs....
+#9 471.7       (+1m59.8s): -b: m: __main__.py:1591:build: (+9.9s): -b: m: __main__.py:1591:build:
+#9 471.7       (+1m59.8s): -b: m: __main__.py:1591:build: [returned e=2]
+#9 471.7       Traceback (most recent call last):
+#9 471.7           scripts/mupdfwrap.py:6:<module>(): wrap.__main__.main()
+#9 471.7           scripts/wrap/__main__.py:3085:main(): jlib.exception_info()
+#9 471.7           ^except raise:
+#9 471.7           scripts/wrap/__main__.py:3083:main(): main2()
+#9 471.7           scripts/wrap/__main__.py:2466:main2(): build( build_dirs, swig_command, args, vs_upgrade, make_command)
+#9 471.7           scripts/wrap/__main__.py:1591:build(): jlib.system( command, prefix=jlib.log_text(), out='log', verbose=1)
+#9 471.7           scripts/jlib.py:1710:system(): raise Exception( message)
+#9 471.7       Exception: Command failed: cd /tmp/pip-install-n41jzaeh/pymupdf_eba2fa438be94e9aa6658122e6e1ad84/mupdf-1.25.4-source && XLIB_LDFLAGS=-Wl,-Bsymbolic make -j 4 HAVE_GLUT=no HAVE_PTHREAD=yes verbose=yes shared=yes HAVE_LEPTONICA=yes HAVE_TESSERACT=yes build=release build_prefix=PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-
+#9 471.7       Traceback (most recent call last):
+#9 471.7         File "/usr/lib/python3/dist-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py", line 353, in <module>
+#9 471.7           main()
+#9 471.7         File "/usr/lib/python3/dist-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py", line 335, in main
+#9 471.7           json_out['return_val'] = hook(**hook_input['kwargs'])
+#9 471.7                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#9 471.7         File "/usr/lib/python3/dist-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py", line 152, in prepare_metadata_for_build_wheel
+#9 471.7           whl_basename = backend.build_wheel(metadata_directory, config_settings)
+#9 471.7                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#9 471.7         File "/tmp/pip-install-n41jzaeh/pymupdf_eba2fa438be94e9aa6658122e6e1ad84/pipcl.py", line 601, in build_wheel
+#9 471.7           items = self._call_fn_build(config_settings)
+#9 471.7                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#9 471.7         File "/tmp/pip-install-n41jzaeh/pymupdf_eba2fa438be94e9aa6658122e6e1ad84/pipcl.py", line 890, in _call_fn_build
+#9 471.7           ret = self.fn_build()
+#9 471.7                 ^^^^^^^^^^^^^^^
+#9 471.7         File "/tmp/pip-install-n41jzaeh/pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py", line 586, in build
+#9 471.7           mupdf_build_dir = build_mupdf_unix(
+#9 471.7                             ^^^^^^^^^^^^^^^^^
+#9 471.7         File "/tmp/pip-install-n41jzaeh/pymupdf_eba2fa438be94e9aa6658122e6e1ad84/setup.py", line 935, in build_mupdf_unix
+#9 471.7           subprocess.run( command, shell=True, check=True)
+#9 471.7         File "/usr/lib/python3.12/subprocess.py", line 571, in run
+#9 471.7           raise CalledProcessError(retcode, process.args,
+#9 471.7       subprocess.CalledProcessError: Command 'cd /tmp/pip-install-n41jzaeh/pymupdf_eba2fa438be94e9aa6658122e6e1ad84/mupdf-1.25.4-source && XCFLAGS=-DTOFU_CJK_EXT XCXXFLAGS=-DTOFU_CJK_EXT /usr/bin/python3 ./scripts/mupdfwrap.py -d build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release -b all && echo /tmp/pip-install-n41jzaeh/pymupdf_eba2fa438be94e9aa6658122e6e1ad84/mupdf-1.25.4-source/build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release: && ls -l /tmp/pip-install-n41jzaeh/pymupdf_eba2fa438be94e9aa6658122e6e1ad84/mupdf-1.25.4-source/build/PyMuPDF-aarch64-shared-tesseract-bsymbolic-Py_LIMITED_API_0x030c0000-release' returned non-zero exit status 1.
+#9 471.7       [end of output]
+#9 471.7
+#9 471.7   note: This error originates from a subprocess, and is likely not a problem with pip.
+#9 471.8 error: metadata-generation-failed
+#9 471.8
+#9 471.8 × Encountered error while generating package metadata.
+#9 471.8 ╰─> See above for output.
+#9 471.8
+#9 471.8 note: This is an issue with the package mentioned above, not pip.
+#9 471.8 hint: See above for details.
+#9 ERROR: process "/bin/bash -c pip install --break-system-packages openai numpy arxiv rich colorama Markdown pygments pymupdf python-docx pdfminer     && pip install --break-system-packages -r requirements.txt     && if [ \"$(uname -m)\" = \"x86_64\" ]; then     pip install --break-system-packages nougat-ocr;     fi     && pip cache purge     && rm -rf /root/.cache/pip/*" did not complete successfully: exit code: 1
+------
+> [4/8] RUN pip install --break-system-packages openai numpy arxiv rich colorama Markdown pygments pymupdf python-docx pdfminer     && pip install --break-system-packages -r requirements.txt     && if [ "$(uname -m)" = "x86_64" ]; then     pip install --break-system-packages nougat-ocr;     fi     && pip cache purge     && rm -rf /root/.cache/pip/*:
+471.7       [end of output]
+471.7
+471.7   note: This error originates from a subprocess, and is likely not a problem with pip.
+471.8 error: metadata-generation-failed
+471.8
+471.8 × Encountered error while generating package metadata.
+471.8 ╰─> See above for output.
+471.8
+471.8 note: This is an issue with the package mentioned above, not pip.
+471.8 hint: See above for details.
+------
+GithubAction+NoLocal+Latex:15
+--------------------
+14 |     # 安装依赖
+15 | >>> RUN pip install --break-system-packages openai numpy arxiv rich colorama Markdown pygments pymupdf python-docx pdfminer \
+16 | >>>     && pip install --break-system-packages -r requirements.txt \
+17 | >>>     && if [ "$(uname -m)" = "x86_64" ]; then \
+18 | >>>     pip install --break-system-packages nougat-ocr; \
+19 >>> fi \
+20 | >>>     && pip cache purge \
+21 | >>>     && rm -rf /root/.cache/pip/*
+22 |
+--------------------
+ERROR: failed to solve: process "/bin/bash -c pip install --break-system-packages openai numpy arxiv rich colorama Markdown pygments pymupdf python-docx pdfminer     && pip install --break-system-packages -r requirements.txt     && if [ \"$(uname -m)\" = \"x86_64\" ]; then     pip install --break-system-packages nougat-ocr;     fi     && pip cache purge     && rm -rf /root/.cache/pip/*" did not complete successfully: exit code: 1
+##[group]Reference
+builder-5db1e4ce-fb8c-4273-9384-e3f4274fb815/builder-5db1e4ce-fb8c-4273-9384-e3f4274fb8150/wkk9s3ojtj4yle3scyl7c25j4
+##[endgroup]
+##[group]Check build summary support
+Build summary supported!
+##[endgroup]
+##[error]buildx failed with: ERROR: failed to solve: process "/bin/bash -c pip install --break-system-packages openai numpy arxiv rich colorama Markdown pygments pymupdf python-docx pdfminer     && pip install --break-system-packages -r requirements.txt     && if [ \"$(uname -m)\" = \"x86_64\" ]; then     pip install --break-system-packages nougat-ocr;     fi     && pip cache purge     && rm -rf /root/.cache/pip/*" did not complete successfully: exit code: 1
+
+##[group]Generating build summary
+exporting build record to /home/runner/work/_temp/docker-actions-toolkit-qhFm5d/export
+[command]/usr/bin/mkfifo /home/runner/work/_temp/docker-actions-toolkit-qhFm5d/buildx-in-7qJD2I.fifo
+[command]/usr/bin/mkfifo /home/runner/work/_temp/docker-actions-toolkit-qhFm5d/buildx-out-WeiZPY.fifo
+[command]docker buildx --builder builder-5db1e4ce-fb8c-4273-9384-e3f4274fb815 dial-stdio
+[command]docker run --rm -i -v /home/runner/.docker/buildx/refs:/buildx-refs -v /home/runner/work/_temp/docker-actions-toolkit-qhFm5d/export:/out docker.io/dockereng/export-build:latest --ref-state-dir=/buildx-refs --node=builder-5db1e4ce-fb8c-4273-9384-e3f4274fb815/builder-5db1e4ce-fb8c-4273-9384-e3f4274fb8150 --ref=wkk9s3ojtj4yle3scyl7c25j4 --uid=1001 --gid=118
+Unable to find image 'dockereng/export-build:latest' locally
+latest: Pulling from dockereng/export-build
+5f398fcfd265: Pulling fs layer
+152e015ae384: Pulling fs layer
+152e015ae384: Verifying Checksum
+152e015ae384: Download complete
+5f398fcfd265: Verifying Checksum
+5f398fcfd265: Download complete
+5f398fcfd265: Pull complete
+152e015ae384: Pull complete
+8a8d92fc2d7cc8a8855400970bb971436fc117bd39366595f55f7e1283a1e961
+Status: Downloaded newer image for dockereng/export-build:latest
+Process "docker run" exited with code 0
+Parsing /home/runner/work/_temp/docker-actions-toolkit-qhFm5d/export/summary.json
+Build record written to /home/runner/work/_temp/docker-actions-toolkit-qhFm5d/export/binary-husky~gpt_academic~WKK9S3.dockerbuild (26.38 KB)
+Uploading binary-husky~gpt_academic~WKK9S3.dockerbuild to blob storage
+ERROR: read unix @->/run/docker.sock: use of closed network connection
+Process "buildx dial-stdio" was killed with signal SIGKILL
+Beginning upload of artifact content to blob storage
+Uploaded bytes 27014
+Finished uploading artifact content to blob storage!
+SHA256 hash of uploaded artifact is 9abedd704ddece6d6d8c68ca7677acca8805488275b8866a611a5634eda54308
+Finalizing artifact upload
+Artifact successfully finalized (2558581209)
+Artifact download URL: https://github.com/binary-husky/gpt_academic/actions/runs/13215789767/artifacts/2558581209
+Writing summary
+##[endgroup]
+##[group]Removing temp folder /home/runner/work/_temp/docker-actions-toolkit-RysORH
+##[endgroup]
+##[group]Post cache
+State not set
+##[endgroup]
+
+[command]/usr/bin/docker logout ghcr.io
+Removing login credentials for ghcr.io
+##[group]Post cache
+State not set
+##[endgroup]
+
+
+2 48 1
+Temporarily overriding HOME='/home/runner/work/_temp/e281d1aa-d116-4c8b-adb3-6927fe9d7cef' before making global git config changes
+
+[command]/usr/bin/git config --global --add safe.directory /home/runner/work/gpt_academic/gpt_academic
+core\.sshCommand
+'core\.sshCommand' 'core.sshCommand'
+http\.https\:\/\/github\.com\/\.extraheader
+
+
+'http\.https\:\/\/github\.com\/\.extraheader' 'http.https://github.com/.extraheader'
+
+##[group]Removing builder
+[command]/usr/bin/docker buildx rm builder-5db1e4ce-fb8c-4273-9384-e3f4274fb815
+builder-5db1e4ce-fb8c-4273-9384-e3f4274fb815 removed
+##[endgroup]
+##[group]Cleaning up certificates
+##[endgroup]
+##[group]Post cache
+State not set
+##[endgroup]
+
+##[group]Post cache
+Caching docker.io--tonistiigi--binfmt-latest-linux-x64 to GitHub Actions cache
+[command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/gpt_academic/gpt_academic --files-from manifest.txt --use-compress-program zstdmt
+Failed to save: Unable to reserve cache with key docker.io--tonistiigi--binfmt-latest-linux-x64, another job may be creating this cache. More details: Cache already exists. Scope: refs/heads/master, Key: docker.io--tonistiigi--binfmt-latest-linux-x64, Version: 0f256030c2162b26c4af1b51965f055655033ea67381759b247836dd596e3432
+##[endgroup]
+

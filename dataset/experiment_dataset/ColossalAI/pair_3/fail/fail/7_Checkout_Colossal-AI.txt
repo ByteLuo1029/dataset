@@ -1,0 +1,101 @@
+2025-04-11T03:22:58.1637190Z ##[group]Run actions/checkout@v2
+2025-04-11T03:22:58.1637594Z with:
+2025-04-11T03:22:58.1637893Z   repository: hpcaitech/ColossalAI
+2025-04-11T03:22:58.1638378Z   token: ***
+2025-04-11T03:22:58.1638678Z   ssh-strict: true
+2025-04-11T03:22:58.1638956Z   persist-credentials: true
+2025-04-11T03:22:58.1639286Z   clean: true
+2025-04-11T03:22:58.1639573Z   fetch-depth: 1
+2025-04-11T03:22:58.1639816Z   lfs: false
+2025-04-11T03:22:58.1640134Z   submodules: false
+2025-04-11T03:22:58.1640404Z   set-safe-directory: true
+2025-04-11T03:22:58.1640676Z ##[endgroup]
+2025-04-11T03:22:58.1644970Z ##[command]/usr/bin/docker exec  a22674922e87e0d0962e2f956706f403d9456d353f40b8411642994284af24b7 sh -c "cat /etc/*release | grep ^ID"
+2025-04-11T03:22:58.3569399Z Syncing repository: hpcaitech/ColossalAI
+2025-04-11T03:22:58.3572953Z ##[group]Getting Git version info
+2025-04-11T03:22:58.3573275Z Working directory is '/__w/ColossalAI/ColossalAI'
+2025-04-11T03:22:58.3597827Z [command]/usr/bin/git version
+2025-04-11T03:22:58.3625802Z git version 2.25.1
+2025-04-11T03:22:58.3645916Z ##[endgroup]
+2025-04-11T03:22:58.3656354Z Temporarily overriding HOME='/__w/_temp/7f524312-8c4f-4721-8d1a-0bbb6ef8990d' before making global git config changes
+2025-04-11T03:22:58.3656933Z Adding repository directory to the temporary git global config as a safe directory
+2025-04-11T03:22:58.3659407Z [command]/usr/bin/git config --global --add safe.directory /__w/ColossalAI/ColossalAI
+2025-04-11T03:22:58.3685704Z [command]/usr/bin/git config --local --get remote.origin.url
+2025-04-11T03:22:58.3700677Z https://github.com/hpcaitech/ColossalAI
+2025-04-11T03:22:58.3709155Z ##[group]Removing previously created refs, to avoid conflicts
+2025-04-11T03:22:58.3712000Z [command]/usr/bin/git rev-parse --symbolic-full-name --verify --quiet HEAD
+2025-04-11T03:22:58.3725691Z HEAD
+2025-04-11T03:22:58.3732472Z [command]/usr/bin/git rev-parse --symbolic-full-name --branches
+2025-04-11T03:22:58.3750794Z ##[endgroup]
+2025-04-11T03:22:58.3751147Z ##[group]Cleaning the repository
+2025-04-11T03:22:58.3753794Z [command]/usr/bin/git clean -ffdx
+2025-04-11T03:22:58.3895523Z Removing TensorNVMe/
+2025-04-11T03:22:58.3900864Z [command]/usr/bin/git reset --hard HEAD
+2025-04-11T03:22:58.4002327Z HEAD is now at fd69a821 fix
+2025-04-11T03:22:58.4006728Z ##[endgroup]
+2025-04-11T03:22:58.4008286Z ##[group]Disabling automatic garbage collection
+2025-04-11T03:22:58.4011023Z [command]/usr/bin/git config --local gc.auto 0
+2025-04-11T03:22:58.4028636Z ##[endgroup]
+2025-04-11T03:22:58.4028991Z ##[group]Setting up auth
+2025-04-11T03:22:58.4034358Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-04-11T03:22:58.4053867Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-04-11T03:22:58.4222065Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-11T03:22:58.4239530Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-04-11T03:22:58.4399037Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-04-11T03:22:58.4424663Z ##[endgroup]
+2025-04-11T03:22:58.4425022Z ##[group]Fetching the repository
+2025-04-11T03:22:58.4430152Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --progress --no-recurse-submodules --depth=1 origin +05b5218ac29bf0c179452244096c42c9b4c170e1:refs/remotes/pull/6254/merge
+2025-04-11T03:22:59.4291638Z remote: Enumerating objects: 25, done.        
+2025-04-11T03:22:59.4999649Z remote: Counting objects:   4% (1/22)        
+2025-04-11T03:22:59.4999947Z remote: Counting objects:   9% (2/22)        
+2025-04-11T03:22:59.5000243Z remote: Counting objects:  13% (3/22)        
+2025-04-11T03:22:59.5000514Z remote: Counting objects:  18% (4/22)        
+2025-04-11T03:22:59.5001026Z remote: Counting objects:  22% (5/22)        
+2025-04-11T03:22:59.5001306Z remote: Counting objects:  27% (6/22)        
+2025-04-11T03:22:59.5001633Z remote: Counting objects:  31% (7/22)        
+2025-04-11T03:22:59.5001901Z remote: Counting objects:  36% (8/22)        
+2025-04-11T03:22:59.5002164Z remote: Counting objects:  40% (9/22)        
+2025-04-11T03:22:59.5002431Z remote: Counting objects:  45% (10/22)        
+2025-04-11T03:22:59.5002743Z remote: Counting objects:  50% (11/22)        
+2025-04-11T03:22:59.5003012Z remote: Counting objects:  54% (12/22)        
+2025-04-11T03:22:59.5003285Z remote: Counting objects:  59% (13/22)        
+2025-04-11T03:22:59.5003554Z remote: Counting objects:  63% (14/22)        
+2025-04-11T03:22:59.5003823Z remote: Counting objects:  68% (15/22)        
+2025-04-11T03:22:59.5004093Z remote: Counting objects:  72% (16/22)        
+2025-04-11T03:22:59.5004357Z remote: Counting objects:  77% (17/22)        
+2025-04-11T03:22:59.5004627Z remote: Counting objects:  81% (18/22)        
+2025-04-11T03:22:59.5004901Z remote: Counting objects:  86% (19/22)        
+2025-04-11T03:22:59.5005170Z remote: Counting objects:  90% (20/22)        
+2025-04-11T03:22:59.5005440Z remote: Counting objects:  95% (21/22)        
+2025-04-11T03:22:59.5005707Z remote: Counting objects: 100% (22/22)        
+2025-04-11T03:22:59.5005989Z remote: Counting objects: 100% (22/22), done.        
+2025-04-11T03:22:59.5006297Z remote: Compressing objects:  33% (1/3)        
+2025-04-11T03:22:59.5006591Z remote: Compressing objects:  66% (2/3)        
+2025-04-11T03:22:59.5006872Z remote: Compressing objects: 100% (3/3)        
+2025-04-11T03:22:59.5007168Z remote: Compressing objects: 100% (3/3), done.        
+2025-04-11T03:22:59.5007527Z remote: Total 9 (delta 7), reused 6 (delta 5), pack-reused 0 (from 0)        
+2025-04-11T03:22:59.5392395Z From https://github.com/hpcaitech/ColossalAI
+2025-04-11T03:22:59.5392848Z  + 6f94bf4c...05b5218a 05b5218ac29bf0c179452244096c42c9b4c170e1 -> pull/6254/merge  (forced update)
+2025-04-11T03:22:59.5411409Z ##[endgroup]
+2025-04-11T03:22:59.5411802Z ##[group]Determining the checkout info
+2025-04-11T03:22:59.5412967Z ##[endgroup]
+2025-04-11T03:22:59.5413309Z ##[group]Checking out the ref
+2025-04-11T03:22:59.5416360Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/6254/merge
+2025-04-11T03:22:59.5501947Z Warning: you are leaving 43 commits behind, not connected to
+2025-04-11T03:22:59.5502265Z any of your branches:
+2025-04-11T03:22:59.5502410Z 
+2025-04-11T03:22:59.5502509Z   fd69a821 fix
+2025-04-11T03:22:59.5502703Z   db4c73f6 fix
+2025-04-11T03:22:59.5502984Z   0950b07a [pre-commit.ci] auto fixes from pre-commit.com hooks
+2025-04-11T03:22:59.5503294Z   910433f0 fix
+2025-04-11T03:22:59.5503489Z  ... and 39 more.
+2025-04-11T03:22:59.5503604Z 
+2025-04-11T03:22:59.5503778Z If you want to keep them by creating a new branch, this may be a good time
+2025-04-11T03:22:59.5504085Z to do so with:
+2025-04-11T03:22:59.5504224Z 
+2025-04-11T03:22:59.5504351Z  git branch <new-branch-name> fd69a821
+2025-04-11T03:22:59.5504522Z 
+2025-04-11T03:22:59.5505140Z HEAD is now at 05b5218a Merge fd69a821bb2059f45053d204f007d7bcbc66bdc0 into 44d4053fec005fe0b06b6bc755fdc962463145df
+2025-04-11T03:22:59.5509106Z ##[endgroup]
+2025-04-11T03:22:59.5533803Z [command]/usr/bin/git log -1 --format='%H'
+2025-04-11T03:22:59.5550319Z '05b5218ac29bf0c179452244096c42c9b4c170e1'

@@ -1,0 +1,194 @@
+2025-04-14T12:59:43.6909941Z ##[group]Run actions/checkout@v4
+2025-04-14T12:59:43.6910844Z with:
+2025-04-14T12:59:43.6911273Z   fetch-depth: 0
+2025-04-14T12:59:43.6911722Z   repository: duckdb/duckdb
+2025-04-14T12:59:43.6912390Z   token: ***
+2025-04-14T12:59:43.6912818Z   ssh-strict: true
+2025-04-14T12:59:43.6913292Z   ssh-user: git
+2025-04-14T12:59:43.6913977Z   persist-credentials: true
+2025-04-14T12:59:43.6914472Z   clean: true
+2025-04-14T12:59:43.6914917Z   sparse-checkout-cone-mode: true
+2025-04-14T12:59:43.6915450Z   fetch-tags: false
+2025-04-14T12:59:43.6915894Z   show-progress: true
+2025-04-14T12:59:43.6916359Z   lfs: false
+2025-04-14T12:59:43.6916761Z   submodules: false
+2025-04-14T12:59:43.6917208Z   set-safe-directory: true
+2025-04-14T12:59:43.6917971Z env:
+2025-04-14T12:59:43.6918370Z   GH_TOKEN: 
+2025-04-14T12:59:43.6918814Z   OVERRIDE_GIT_DESCRIBE: 
+2025-04-14T12:59:43.6919297Z   CIBW_TEST_SKIP: {cp37,cp38}-*
+2025-04-14T12:59:43.6919817Z   CIBW_BUILD: cp310-manylinux_x86_64
+2025-04-14T12:59:43.6921575Z   CIBW_TEST_COMMAND: python -m pytest {project}/tests --verbose && USE_ACTUAL_SPARK=true JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java)))) SPARK_HOME={project}/spark_installation/spark python -m pytest {project}/tests/fast/spark --verbose
+2025-04-14T12:59:43.6923355Z   PYTEST_TIMEOUT: 600
+2025-04-14T12:59:43.6924029Z   CIBW_ENVIRONMENT: OVERRIDE_GIT_DESCRIBE=
+2025-04-14T12:59:43.6924872Z   CIBW_BEFORE_ALL: cd {project} && ./scripts/install_spark_in_cibuildwheels_linux_container.sh
+2025-04-14T12:59:43.6925665Z ##[endgroup]
+2025-04-14T12:59:43.8778250Z Syncing repository: duckdb/duckdb
+2025-04-14T12:59:43.8780093Z ##[group]Getting Git version info
+2025-04-14T12:59:43.8780853Z Working directory is '/home/runner/work/duckdb/duckdb'
+2025-04-14T12:59:43.8781918Z [command]/usr/bin/git version
+2025-04-14T12:59:43.8836095Z git version 2.49.0
+2025-04-14T12:59:43.8863222Z ##[endgroup]
+2025-04-14T12:59:43.8877376Z Temporarily overriding HOME='/home/runner/work/_temp/e4a1d46b-1cf3-401e-acbf-eaff2e04f762' before making global git config changes
+2025-04-14T12:59:43.8879569Z Adding repository directory to the temporary git global config as a safe directory
+2025-04-14T12:59:43.8882645Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/duckdb/duckdb
+2025-04-14T12:59:43.8918235Z Deleting the contents of '/home/runner/work/duckdb/duckdb'
+2025-04-14T12:59:43.8922110Z ##[group]Initializing the repository
+2025-04-14T12:59:43.8927084Z [command]/usr/bin/git init /home/runner/work/duckdb/duckdb
+2025-04-14T12:59:43.8985049Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-04-14T12:59:43.8986746Z hint: is subject to change. To configure the initial branch name to use in all
+2025-04-14T12:59:43.8988118Z hint: of your new repositories, which will suppress this warning, call:
+2025-04-14T12:59:43.8989159Z hint:
+2025-04-14T12:59:43.8990247Z hint: 	git config --global init.defaultBranch <name>
+2025-04-14T12:59:43.8991389Z hint:
+2025-04-14T12:59:43.8992208Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-04-14T12:59:43.8993817Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-04-14T12:59:43.8994910Z hint:
+2025-04-14T12:59:43.8995628Z hint: 	git branch -m <name>
+2025-04-14T12:59:43.8997096Z Initialized empty Git repository in /home/runner/work/duckdb/duckdb/.git/
+2025-04-14T12:59:43.9001599Z [command]/usr/bin/git remote add origin https://github.com/duckdb/duckdb
+2025-04-14T12:59:43.9035533Z ##[endgroup]
+2025-04-14T12:59:43.9036625Z ##[group]Disabling automatic garbage collection
+2025-04-14T12:59:43.9040367Z [command]/usr/bin/git config --local gc.auto 0
+2025-04-14T12:59:43.9071872Z ##[endgroup]
+2025-04-14T12:59:43.9072781Z ##[group]Setting up auth
+2025-04-14T12:59:43.9078848Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-04-14T12:59:43.9114003Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-04-14T12:59:43.9399216Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-14T12:59:43.9428768Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-04-14T12:59:43.9684935Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-04-14T12:59:43.9723038Z ##[endgroup]
+2025-04-14T12:59:43.9732367Z ##[group]Fetching the repository
+2025-04-14T12:59:43.9736025Z [command]/usr/bin/git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/* +9aafe840d6d05a4225437718755d15af5322377e:refs/remotes/pull/17107/merge
+2025-04-14T13:00:04.1942542Z From https://github.com/duckdb/duckdb
+2025-04-14T13:00:04.1944371Z  * [new branch]            main              -> origin/main
+2025-04-14T13:00:04.1946341Z  * [new branch]            v1.1-eatoni       -> origin/v1.1-eatoni
+2025-04-14T13:00:04.1949851Z  * [new branch]            v1.2-histrionicus -> origin/v1.2-histrionicus
+2025-04-14T13:00:04.1951145Z  * [new tag]               v0.1.0            -> v0.1.0
+2025-04-14T13:00:04.1952244Z  * [new tag]               v0.1.1            -> v0.1.1
+2025-04-14T13:00:04.1953406Z  * [new tag]               v0.1.2            -> v0.1.2
+2025-04-14T13:00:04.1954699Z  * [new tag]               v0.1.3            -> v0.1.3
+2025-04-14T13:00:04.1955818Z  * [new tag]               v0.1.4            -> v0.1.4
+2025-04-14T13:00:04.1956952Z  * [new tag]               v0.1.5            -> v0.1.5
+2025-04-14T13:00:04.1958066Z  * [new tag]               v0.1.6            -> v0.1.6
+2025-04-14T13:00:04.1959548Z  * [new tag]               v0.1.7            -> v0.1.7
+2025-04-14T13:00:04.1960540Z  * [new tag]               v0.1.8            -> v0.1.8
+2025-04-14T13:00:04.1962146Z  * [new tag]               v0.1.9            -> v0.1.9
+2025-04-14T13:00:04.1964117Z  * [new tag]               v0.10.0           -> v0.10.0
+2025-04-14T13:00:04.1965570Z  * [new tag]               v0.10.1           -> v0.10.1
+2025-04-14T13:00:04.1967312Z  * [new tag]               v0.10.2           -> v0.10.2
+2025-04-14T13:00:04.1968893Z  * [new tag]               v0.10.3           -> v0.10.3
+2025-04-14T13:00:04.1970283Z  * [new tag]               v0.2.0            -> v0.2.0
+2025-04-14T13:00:04.1971620Z  * [new tag]               v0.2.1            -> v0.2.1
+2025-04-14T13:00:04.1973051Z  * [new tag]               v0.2.2            -> v0.2.2
+2025-04-14T13:00:04.1974689Z  * [new tag]               v0.2.3            -> v0.2.3
+2025-04-14T13:00:04.1976177Z  * [new tag]               v0.2.4            -> v0.2.4
+2025-04-14T13:00:04.1977686Z  * [new tag]               v0.2.5            -> v0.2.5
+2025-04-14T13:00:04.1979114Z  * [new tag]               v0.2.6            -> v0.2.6
+2025-04-14T13:00:04.1980721Z  * [new tag]               v0.2.7            -> v0.2.7
+2025-04-14T13:00:04.1982193Z  * [new tag]               v0.2.8            -> v0.2.8
+2025-04-14T13:00:04.1983811Z  * [new tag]               v0.2.9            -> v0.2.9
+2025-04-14T13:00:04.1985302Z  * [new tag]               v0.3.0            -> v0.3.0
+2025-04-14T13:00:04.1987194Z  * [new tag]               v0.3.1            -> v0.3.1
+2025-04-14T13:00:04.1988311Z  * [new tag]               v0.3.2            -> v0.3.2
+2025-04-14T13:00:04.1989770Z  * [new tag]               v0.3.3            -> v0.3.3
+2025-04-14T13:00:04.1991294Z  * [new tag]               v0.3.4            -> v0.3.4
+2025-04-14T13:00:04.1992781Z  * [new tag]               v0.4.0            -> v0.4.0
+2025-04-14T13:00:04.1995577Z  * [new tag]               v0.5.0            -> v0.5.0
+2025-04-14T13:00:04.1996320Z  * [new tag]               v0.5.1            -> v0.5.1
+2025-04-14T13:00:04.1997605Z  * [new tag]               v0.6.0            -> v0.6.0
+2025-04-14T13:00:04.1998771Z  * [new tag]               v0.6.1            -> v0.6.1
+2025-04-14T13:00:04.2000247Z  * [new tag]               v0.7.0            -> v0.7.0
+2025-04-14T13:00:04.2001774Z  * [new tag]               v0.7.1            -> v0.7.1
+2025-04-14T13:00:04.2003222Z  * [new tag]               v0.8.0            -> v0.8.0
+2025-04-14T13:00:04.2004871Z  * [new tag]               v0.8.1            -> v0.8.1
+2025-04-14T13:00:04.2006349Z  * [new tag]               v0.9.0            -> v0.9.0
+2025-04-14T13:00:04.2007753Z  * [new tag]               v0.9.1            -> v0.9.1
+2025-04-14T13:00:04.2009194Z  * [new tag]               v0.9.2            -> v0.9.2
+2025-04-14T13:00:04.2010703Z  * [new tag]               v1.0.0            -> v1.0.0
+2025-04-14T13:00:04.2012252Z  * [new tag]               v1.1.0            -> v1.1.0
+2025-04-14T13:00:04.2013893Z  * [new tag]               v1.1.1            -> v1.1.1
+2025-04-14T13:00:04.2015386Z  * [new tag]               v1.1.2            -> v1.1.2
+2025-04-14T13:00:04.2016694Z  * [new tag]               v1.1.3            -> v1.1.3
+2025-04-14T13:00:04.2018073Z  * [new tag]               v1.2.0            -> v1.2.0
+2025-04-14T13:00:04.2019525Z  * [new tag]               v1.2.1            -> v1.2.1
+2025-04-14T13:00:04.2020724Z  * [new tag]               v1.2.2            -> v1.2.2
+2025-04-14T13:00:04.2024662Z  * [new ref]               9aafe840d6d05a4225437718755d15af5322377e -> pull/17107/merge
+2025-04-14T13:00:04.2068710Z ##[endgroup]
+2025-04-14T13:00:04.2069377Z ##[group]Determining the checkout info
+2025-04-14T13:00:04.2070297Z ##[endgroup]
+2025-04-14T13:00:04.2078160Z [command]/usr/bin/git sparse-checkout disable
+2025-04-14T13:00:04.2119723Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-04-14T13:00:04.2157147Z ##[group]Checking out the ref
+2025-04-14T13:00:04.2158076Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/17107/merge
+2025-04-14T13:00:05.2414627Z Updating files:  52% (7191/13780)
+2025-04-14T13:00:05.2476969Z Updating files:  53% (7304/13780)
+2025-04-14T13:00:05.2561914Z Updating files:  54% (7442/13780)
+2025-04-14T13:00:05.2636302Z Updating files:  55% (7579/13780)
+2025-04-14T13:00:05.2754608Z Updating files:  56% (7717/13780)
+2025-04-14T13:00:05.2840824Z Updating files:  57% (7855/13780)
+2025-04-14T13:00:05.2888454Z Updating files:  58% (7993/13780)
+2025-04-14T13:00:05.2939838Z Updating files:  59% (8131/13780)
+2025-04-14T13:00:05.2989621Z Updating files:  60% (8268/13780)
+2025-04-14T13:00:05.3046606Z Updating files:  61% (8406/13780)
+2025-04-14T13:00:05.3254886Z Updating files:  62% (8544/13780)
+2025-04-14T13:00:05.3360318Z Updating files:  63% (8682/13780)
+2025-04-14T13:00:05.3412711Z Updating files:  64% (8820/13780)
+2025-04-14T13:00:05.3468801Z Updating files:  65% (8957/13780)
+2025-04-14T13:00:05.3530479Z Updating files:  66% (9095/13780)
+2025-04-14T13:00:05.3603738Z Updating files:  67% (9233/13780)
+2025-04-14T13:00:05.3664398Z Updating files:  68% (9371/13780)
+2025-04-14T13:00:05.3722400Z Updating files:  69% (9509/13780)
+2025-04-14T13:00:05.3781305Z Updating files:  70% (9646/13780)
+2025-04-14T13:00:05.3834661Z Updating files:  71% (9784/13780)
+2025-04-14T13:00:05.3898560Z Updating files:  72% (9922/13780)
+2025-04-14T13:00:05.3959024Z Updating files:  73% (10060/13780)
+2025-04-14T13:00:05.4020200Z Updating files:  74% (10198/13780)
+2025-04-14T13:00:05.4077693Z Updating files:  75% (10335/13780)
+2025-04-14T13:00:05.4136971Z Updating files:  76% (10473/13780)
+2025-04-14T13:00:05.4197564Z Updating files:  77% (10611/13780)
+2025-04-14T13:00:05.4252161Z Updating files:  78% (10749/13780)
+2025-04-14T13:00:05.4306103Z Updating files:  79% (10887/13780)
+2025-04-14T13:00:05.4551788Z Updating files:  80% (11024/13780)
+2025-04-14T13:00:05.4609829Z Updating files:  81% (11162/13780)
+2025-04-14T13:00:05.4841586Z Updating files:  82% (11300/13780)
+2025-04-14T13:00:05.4897705Z Updating files:  83% (11438/13780)
+2025-04-14T13:00:05.4954445Z Updating files:  84% (11576/13780)
+2025-04-14T13:00:05.5009725Z Updating files:  85% (11713/13780)
+2025-04-14T13:00:05.5065464Z Updating files:  86% (11851/13780)
+2025-04-14T13:00:05.5134648Z Updating files:  87% (11989/13780)
+2025-04-14T13:00:05.5439201Z Updating files:  88% (12127/13780)
+2025-04-14T13:00:05.6069109Z Updating files:  89% (12265/13780)
+2025-04-14T13:00:05.6244545Z Updating files:  90% (12402/13780)
+2025-04-14T13:00:05.6403404Z Updating files:  91% (12540/13780)
+2025-04-14T13:00:05.6588165Z Updating files:  92% (12678/13780)
+2025-04-14T13:00:05.6657273Z Updating files:  93% (12816/13780)
+2025-04-14T13:00:05.6887043Z Updating files:  94% (12954/13780)
+2025-04-14T13:00:05.7015907Z Updating files:  95% (13091/13780)
+2025-04-14T13:00:05.7108878Z Updating files:  96% (13229/13780)
+2025-04-14T13:00:05.7192383Z Updating files:  97% (13367/13780)
+2025-04-14T13:00:05.7267938Z Updating files:  98% (13505/13780)
+2025-04-14T13:00:05.7401188Z Updating files:  99% (13643/13780)
+2025-04-14T13:00:05.7402614Z Updating files: 100% (13780/13780)
+2025-04-14T13:00:05.7403502Z Updating files: 100% (13780/13780), done.
+2025-04-14T13:00:05.7595499Z Note: switching to 'refs/remotes/pull/17107/merge'.
+2025-04-14T13:00:05.7596537Z 
+2025-04-14T13:00:05.7597133Z You are in 'detached HEAD' state. You can look around, make experimental
+2025-04-14T13:00:05.7598070Z changes and commit them, and you can discard any commits you make in this
+2025-04-14T13:00:05.7598984Z state without impacting any branches by switching back to a branch.
+2025-04-14T13:00:05.7599534Z 
+2025-04-14T13:00:05.7599887Z If you want to create a new branch to retain commits you create, you may
+2025-04-14T13:00:05.7600725Z do so (now or later) by using -c with the switch command. Example:
+2025-04-14T13:00:05.7601211Z 
+2025-04-14T13:00:05.7601410Z   git switch -c <new-branch-name>
+2025-04-14T13:00:05.7601741Z 
+2025-04-14T13:00:05.7601931Z Or undo this operation with:
+2025-04-14T13:00:05.7602484Z 
+2025-04-14T13:00:05.7602649Z   git switch -
+2025-04-14T13:00:05.7602874Z 
+2025-04-14T13:00:05.7603270Z Turn off this advice by setting config variable advice.detachedHead to false
+2025-04-14T13:00:05.7604015Z 
+2025-04-14T13:00:05.7604758Z HEAD is now at 9aafe840d6 Merge 6a35683fc60edc376a30ec3e4cca39a21099d3ad into c4436d568eab7ee960e6f2120bec633acf94ee3a
+2025-04-14T13:00:05.7686269Z ##[endgroup]
+2025-04-14T13:00:05.7733087Z [command]/usr/bin/git log -1 --format=%H
+2025-04-14T13:00:05.7757116Z 9aafe840d6d05a4225437718755d15af5322377e

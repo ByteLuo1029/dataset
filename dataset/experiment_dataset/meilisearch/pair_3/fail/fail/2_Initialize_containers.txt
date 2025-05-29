@@ -1,0 +1,40 @@
+2025-04-15T00:10:27.0794672Z ##[group]Checking docker version
+2025-04-15T00:10:27.0808787Z ##[command]/usr/bin/docker version --format '{{.Server.APIVersion}}'
+2025-04-15T00:10:27.1722345Z '1.45'
+2025-04-15T00:10:27.1736963Z Docker daemon API version: '1.45'
+2025-04-15T00:10:27.1738400Z ##[command]/usr/bin/docker version --format '{{.Client.APIVersion}}'
+2025-04-15T00:10:27.1906450Z '1.45'
+2025-04-15T00:10:27.1919231Z Docker client API version: '1.45'
+2025-04-15T00:10:27.1925840Z ##[endgroup]
+2025-04-15T00:10:27.1929096Z ##[group]Clean up resources from previous jobs
+2025-04-15T00:10:27.1935596Z ##[command]/usr/bin/docker ps --all --quiet --no-trunc --filter "label=b689e1"
+2025-04-15T00:10:27.2111389Z ##[command]/usr/bin/docker network prune --force --filter "label=b689e1"
+2025-04-15T00:10:27.2231912Z ##[endgroup]
+2025-04-15T00:10:27.2232818Z ##[group]Create local container network
+2025-04-15T00:10:27.2243646Z ##[command]/usr/bin/docker network create --label b689e1 github_network_b428d39f977747529f4e1e60b3473df5
+2025-04-15T00:10:27.2970763Z 816da114ecc0ce0fd38c1b0d08bcd6ca0f6f2fa1f5b857f7fe221f493e6a9c30
+2025-04-15T00:10:27.2988505Z ##[endgroup]
+2025-04-15T00:10:27.3013480Z ##[group]Starting job container
+2025-04-15T00:10:27.3034702Z ##[command]/usr/bin/docker pull ubuntu:22.04
+2025-04-15T00:10:27.5606593Z 22.04: Pulling from library/ubuntu
+2025-04-15T00:10:27.6138389Z 30a9c22ae099: Pulling fs layer
+2025-04-15T00:10:28.1614830Z 30a9c22ae099: Verifying Checksum
+2025-04-15T00:10:28.1618727Z 30a9c22ae099: Download complete
+2025-04-15T00:10:29.2144896Z 30a9c22ae099: Pull complete
+2025-04-15T00:10:29.2196067Z Digest: sha256:d80997daaa3811b175119350d84305e1ec9129e1799bba0bd1e3120da3ff52c3
+2025-04-15T00:10:29.2214597Z Status: Downloaded newer image for ubuntu:22.04
+2025-04-15T00:10:29.2224638Z docker.io/library/ubuntu:22.04
+2025-04-15T00:10:29.2308821Z ##[command]/usr/bin/docker create --name 025dbfb4cfab40099c1a8e825e540904_ubuntu2204_a0436d --label b689e1 --workdir /__w/meilisearch/meilisearch --network github_network_b428d39f977747529f4e1e60b3473df5  -e "HOME=/github/home" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work":"/__w" -v "/home/runner/runners/2.323.0/externals":"/__e":ro -v "/home/runner/work/_temp":"/__w/_temp" -v "/home/runner/work/_actions":"/__w/_actions" -v "/opt/hostedtoolcache":"/__t" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" --entrypoint "tail" ubuntu:22.04 "-f" "/dev/null"
+2025-04-15T00:10:29.3763568Z 62ee56532268b82ec2cea39912a99a2ab01e5372838868a485af294d9efc2dcb
+2025-04-15T00:10:29.3787496Z ##[command]/usr/bin/docker start 62ee56532268b82ec2cea39912a99a2ab01e5372838868a485af294d9efc2dcb
+2025-04-15T00:10:29.6466572Z 62ee56532268b82ec2cea39912a99a2ab01e5372838868a485af294d9efc2dcb
+2025-04-15T00:10:29.6483961Z ##[command]/usr/bin/docker ps --all --filter id=62ee56532268b82ec2cea39912a99a2ab01e5372838868a485af294d9efc2dcb --filter status=running --no-trunc --format "{{.ID}} {{.Status}}"
+2025-04-15T00:10:29.6608472Z 62ee56532268b82ec2cea39912a99a2ab01e5372838868a485af294d9efc2dcb Up Less than a second
+2025-04-15T00:10:29.6629193Z ##[command]/usr/bin/docker inspect --format "{{range .Config.Env}}{{println .}}{{end}}" 62ee56532268b82ec2cea39912a99a2ab01e5372838868a485af294d9efc2dcb
+2025-04-15T00:10:29.6755913Z HOME=/github/home
+2025-04-15T00:10:29.6756449Z GITHUB_ACTIONS=true
+2025-04-15T00:10:29.6756752Z CI=true
+2025-04-15T00:10:29.6757087Z PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+2025-04-15T00:10:29.6776387Z ##[endgroup]
+2025-04-15T00:10:29.6786179Z ##[group]Waiting for all services to be ready
+2025-04-15T00:10:29.6787972Z ##[endgroup]

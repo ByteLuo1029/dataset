@@ -1,0 +1,445 @@
+
+
+
+./.github/actions/run-tests
+
+PATTERN: single_cpu
+LANG: C.UTF-8
+LC_ALL:
+PANDAS_CI: 1
+PANDAS_FUTURE_INFER_STRING: 1
+TEST_ARGS:
+PYTEST_WORKERS: 0
+PYTEST_TARGET: pandas
+QT_QPA_PLATFORM: offscreen
+REMOVE_PYARROW: 0
+MAMBA_ROOT_PREFIX: /home/runner/micromamba
+MAMBA_EXE: /home/runner/micromamba-bin/micromamba
+CONDARC: /home/runner/work/pandas/pandas/ci/.condarc
+##[endgroup]
+##[group]Run ci/run_tests.sh
+[36;1mci/run_tests.sh[0m
+shell: /usr/bin/bash -el {0}
+
+PATTERN: single_cpu
+LANG: C.UTF-8
+LC_ALL:
+PANDAS_CI: 1
+PANDAS_FUTURE_INFER_STRING: 1
+TEST_ARGS:
+PYTEST_WORKERS: 0
+PYTEST_TARGET: pandas
+QT_QPA_PLATFORM: offscreen
+REMOVE_PYARROW: 0
+MAMBA_ROOT_PREFIX: /home/runner/micromamba
+MAMBA_EXE: /home/runner/micromamba-bin/micromamba
+CONDARC: /home/runner/work/pandas/pandas/ci/.condarc
+##[endgroup]
+MESONPY_EDITABLE_VERBOSE=1 PYTHONDEVMODE=1 PYTHONWARNDEFAULTENCODING=1 pytest -r fE -n 0 --dist=worksteal  -s --cov=pandas --cov-report=xml --cov-append --cov-config=pyproject.toml pandas -m "single_cpu"
+[1/1] Generating write_version_file with a custom command
++ /home/runner/micromamba/envs/test/bin/ninja
+============================= test session starts ==============================
+platform linux -- Python 3.12.10, pytest-8.3.5, pluggy-1.5.0
+PySide6 6.9.0 -- Qt runtime 6.9.0 -- Qt compiled 6.9.0
+rootdir: /home/runner/work/pandas/pandas
+configfile: pyproject.toml
+plugins: qt-4.4.0, xdist-3.6.1, localserver-0.0.0, hypothesis-6.131.0, cov-6.1.1
+collected 237355 items / 232844 deselected / 4511 selected
+2025-04-14T20:03:23.4397351Z
+pandas/tests/apply/test_frame_apply.py x............ss...ss................sxxxxxxxxxsx.
+pandas/tests/apply/test_numba.py sssssssssssssssssss
+pandas/tests/base/test_unique.py ..
+pandas/tests/frame/methods/test_info.py .
+pandas/tests/frame/methods/test_rank.py .
+pandas/tests/frame/test_ufunc.py .
+pandas/tests/groupby/aggregate/test_numba.py ......................................x............................
+pandas/tests/groupby/test_numba.py ................................................................................................................................................
+pandas/tests/groupby/test_timegrouper.py .
+pandas/tests/groupby/transform/test_numba.py ................................................................................
+pandas/tests/io/excel/test_readers.py .............sssssssssssss.............
+pandas/tests/io/excel/test_style.py s
+pandas/tests/io/json/test_compression.py sssssss
+pandas/tests/io/json/test_pandas.py ...s.
+pandas/tests/io/parser/common/test_chunksize.py ....................
+pandas/tests/io/parser/common/test_common_basic.py ..x.........s.s..sssssss.......s..........ss.....s....sx.sx.
+pandas/tests/io/parser/common/test_data_list.py x...
+pandas/tests/io/parser/common/test_decimal.py ...
+pandas/tests/io/parser/common/test_file_buffer_url.py .....x..s...s.s.sss.....................s.
+pandas/tests/io/parser/common/test_float.py s....xx
+pandas/tests/io/parser/common/test_index.py ....sxxxxx.sssss
+pandas/tests/io/parser/common/test_inf.py xxxx
+pandas/tests/io/parser/common/test_ints.py .........x..sssssxx.
+pandas/tests/io/parser/common/test_iterator.py ........
+pandas/tests/io/parser/common/test_read_errors.py ......xssssss..s.ss..s.
+pandas/tests/io/parser/dtypes/test_categorical.py xxxXxxxx......................
+pandas/tests/io/parser/dtypes/test_dtypes_basic.py xxxxx...............xxxxxxx........xxxx......x.......x..
+pandas/tests/io/parser/dtypes/test_empty.py sssssss.ssssssss
+pandas/tests/io/parser/test_comment.py .................
+pandas/tests/io/parser/test_compression.py ........x...x...x...x...x...x................................
+pandas/tests/io/parser/test_converters.py ............
+pandas/tests/io/parser/test_dialect.py ...........................
+pandas/tests/io/parser/test_encoding.py .sssssss.....s..................................s.s.s.s.s.s.s.s.s.s.s.s.........xx
+pandas/tests/io/parser/test_header.py x.....x.x...xxxxxxxxxxxxx.xss....xxxxxxxxxxxxsxxss.xxx.
+pandas/tests/io/parser/test_index_col.py ....ssssssssssssxxx..xxx.xxxxsx.x
+pandas/tests/io/parser/test_mangle_dupes.py xx.xxx...xxx..
+pandas/tests/io/parser/test_multi_thread.py .......x
+pandas/tests/io/parser/test_na_values.py .........x..xx............x.......xs......x..x..xxxxxxxxx.x..xx
+pandas/tests/io/parser/test_network.py ................ssss.....ssssssssssssssssss
+pandas/tests/io/parser/test_parse_dates.py .xsxxxxx.............xxxx......ssssss.s.ssssssxx.sxx..x.x
+pandas/tests/io/parser/test_quoting.py sssxx.......xxxxxxxxx.x...x
+pandas/tests/io/parser/test_read_fwf.py .
+pandas/tests/io/parser/test_skiprows.py xxxxxxxxxxxxxxxxxxxxxx
+pandas/tests/io/parser/test_unsupported.py .s..
+pandas/tests/io/parser/usecols/test_parse_dates.py s.
+pandas/tests/io/parser/usecols/test_strings.py .....
+pandas/tests/io/parser/usecols/test_usecols_basic.py .....s.x.ss.....s...s..x...ssss.sssssss......
+pandas/tests/io/pytables/test_append.py ....x.................
+pandas/tests/io/pytables/test_categorical.py .....
+pandas/tests/io/pytables/test_errors.py ................
+pandas/tests/io/pytables/test_file_handling.py ..........ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss.....................
+pandas/tests/io/pytables/test_keys.py ....
+pandas/tests/io/pytables/test_put.py .........................................
+pandas/tests/io/pytables/test_read.py .................
+pandas/tests/io/pytables/test_retain_attributes.py ......
+pandas/tests/io/pytables/test_round_trip.py ................................
+pandas/tests/io/pytables/test_select.py ...x.....x...............
+pandas/tests/io/pytables/test_store.py ............xx..............................x....................
+pandas/tests/io/pytables/test_time_series.py ....
+pandas/tests/io/test_clipboard.py ......................................................................................................................................................................................................................................................................................................................................
+pandas/tests/io/test_compression.py ..
+pandas/tests/io/test_feather.py ...................
+pandas/tests/io/test_fsspec.py ....x
+pandas/tests/io/test_gcs.py ..Using pyarrow filesystem
+Using pyarrow filesystem
+x..
+pandas/tests/io/test_html.py ..............
+pandas/tests/io/test_http_headers.py ....x........x........x......
+pandas/tests/io/test_parquet.py x.....x
+pandas/tests/io/test_s3.py ..
+pandas/tests/io/test_sql.py ............................................................................................................xx..........................................................xx...............xx............................x..........xx..xxxxx..............xx........xxxxxx........................xx..............................................................................xx...............................................x.........x.............................x.........x....................x...................xx........xx........xx........xx........xx........xxxx......xx....................................................................xx........xx........xx........xx........xx...............................................x.........x.........x..........xxx.......................................................................................................................................................................x...ss.........s......s..........................s..................................xx..xxx...........xxx....................................................................................................xx..........................x......s......s......s..................................s.......xxx.....................................xx........xx........xx........xx........xx........xx........xx........xx....xxxx......xxxx......xxxx......xxxx......xxxx......xxxx......xxxx......xxxx........................................xx................................................................
+pandas/tests/io/xml/test_to_xml.py ..
+pandas/tests/io/xml/test_xml.py ........
+pandas/tests/plotting/test_converter.py .[1/1] Generating write_version_file with a custom command
++ /home/runner/micromamba/envs/test/bin/ninja
+.
+pandas/tests/series/methods/test_rank.py .
+pandas/tests/test_algos.py .
+pandas/tests/test_common.py .
+pandas/tests/test_downstream.py [1/1] Generating write_version_file with a custom command
++ /home/runner/micromamba/envs/test/bin/ninja
+.[1/1] Generating write_version_file with a custom command
++ /home/runner/micromamba/envs/test/bin/ninja
+.
+pandas/tests/window/test_apply.py ........
+pandas/tests/window/test_expanding.py ......
+pandas/tests/window/test_numba.py ..........................................................................................................................F................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+/home/runner/micromamba/envs/test/lib/python3.12/site-packages/coverage/parser.py:434: DeprecationWarning: Bitwise inversion '~' on bool is deprecated and will be removed in Python 3.16. This returns the bitwise inversion of the underlying int object and is usually not what you expect from negating a bool. Use the 'not' operator for boolean negation or ~int(x) if you really want the bitwise inversion of the underlying int.
+self.code = compile(text, filename, "exec", dont_inherit=True)
+pandas/tests/window/test_online.py .................xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.....
+2025-04-14T20:20:18.8659331Z
+=================================== FAILURES ===================================
+_ TestEngine.test_numba_vs_cython_rolling_methods[False-True-True-arithmetic_numba_supported_operators3-1-data0] _
+2025-04-14T20:20:18.8661662Z
+self = <pandas.tests.window.test_numba.TestEngine object at 0x7f079a3b4150>
+data =      0    1    2    3    4
+0  1.0  0.0  0.0  0.0  0.0
+1  0.0  1.0  0.0  0.0  0.0
+2  0.0  0.0  1.0  0.0  0.0
+3  0.0  0.0  0.0  1.0  0.0
+4  0.0  0.0  0.0  0.0  1.0
+nogil = False, parallel = True, nopython = True
+arithmetic_numba_supported_operators = ['max', {}], step = 1
+2025-04-14T20:20:18.8666461Z
+@pytest.mark.parametrize(
+"data",
+[
+DataFrame(np.eye(5)),
+DataFrame(
+[
+[5, 7, 7, 7, np.nan, np.inf, 4, 3, 3, 3],
+[5, 7, 7, 7, np.nan, np.inf, 7, 3, 3, 3],
+[np.nan, np.nan, 5, 6, 7, 5, 5, 5, 5, 5],
+]
+).T,
+Series(range(5), name="foo"),
+Series([20, 10, 10, np.inf, 1, 1, 2, 3]),
+Series([20, 10, 10, np.nan, 10, 1, 2, 3]),
+],
+)
+def test_numba_vs_cython_rolling_methods(
+self,
+data,
+nogil,
+parallel,
+nopython,
+arithmetic_numba_supported_operators,
+step,
+):
+method, kwargs = arithmetic_numba_supported_operators
+2025-04-14T20:20:18.8677152Z
+engine_kwargs = {"nogil": nogil, "parallel": parallel, "nopython": nopython}
+2025-04-14T20:20:18.8678178Z
+roll = data.rolling(3, step=step)
+>       result = getattr(roll, method)(
+engine="numba", engine_kwargs=engine_kwargs, **kwargs
+)
+2025-04-14T20:20:18.8680271Z
+pandas/tests/window/test_numba.py:186:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+pandas/core/window/rolling.py:2286: in max
+return super().max(
+pandas/core/window/rolling.py:1615: in max
+return self._numba_apply(sliding_min_max, engine_kwargs, is_max=True)
+pandas/core/window/rolling.py:650: in _numba_apply
+result = aggregator(
+pandas/core/_numba/executor.py:236: in looper_wrapper
+for i, na_pos in na_positions.items():
+<frozen _collections_abc>:894: in __iter__
+???
+../../../micromamba/envs/test/lib/python3.12/site-packages/numba/typed/typeddict.py:180: in __getitem__
+return _getitem(self, key)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+2025-04-14T20:20:18.8684836Z
+>   raise KeyError()
+E   KeyError
+2025-04-14T20:20:18.8685181Z
+../../../micromamba/envs/test/lib/python3.12/site-packages/numba/typed/dictobject.py:778: KeyError
+=============================== warnings summary ===============================
+<frozen importlib._bootstrap>:488
+<frozen importlib._bootstrap>:488: DeprecationWarning: Bitwise inversion '~' on bool is deprecated and will be removed in Python 3.16. This returns the bitwise inversion of the underlying int object and is usually not what you expect from negating a bool. Use the 'not' operator for boolean negation or ~int(x) if you really want the bitwise inversion of the underlying int.
+2025-04-14T20:20:18.8688450Z
+pandas/tests/apply/test_frame_apply.py::test_apply_args[numba-False-True-0]
+pandas/tests/apply/test_frame_apply.py::test_apply_args[numba-False-True-0]
+pandas/tests/apply/test_frame_apply.py::test_apply_args[numba-False-True-1]
+pandas/tests/apply/test_frame_apply.py::test_apply_args[numba-False-True-1]
+pandas/tests/apply/test_frame_apply.py::test_apply_args[numba-False-False-0]
+pandas/tests/apply/test_frame_apply.py::test_apply_args[numba-False-False-0]
+pandas/tests/apply/test_frame_apply.py::test_apply_args[numba-False-False-1]
+pandas/tests/apply/test_frame_apply.py::test_apply_args[numba-False-False-1]
+/home/runner/micromamba/envs/test/lib/python3.12/site-packages/numba/core/decorators.py:157: NumbaDeprecationWarning: [1mThe keyword argument 'nopython=False' was supplied. From Numba 0.59.0 the default is True and supplying this argument has no effect.[0m
+warnings.warn(msg, NumbaDeprecationWarning)
+2025-04-14T20:20:18.8695163Z
+pandas/tests/groupby/aggregate/test_numba.py::test_multifunc_numba_kwarg_propagation[data0-agg_kwargs0]
+/home/runner/work/pandas/pandas/pandas/core/_numba/executor.py:84: NumbaTypeSafetyWarning: [1m[1m[1munsafe cast from uint64 to int64. Precision may be lost.[0m[0m[0m
+na_positions[i] = np.array(na_pos)
+2025-04-14T20:20:18.8697297Z
+pandas/tests/io/excel/test_readers.py: 26 warnings
+pandas/tests/io/json/test_pandas.py: 2 warnings
+pandas/tests/io/test_fsspec.py: 16 warnings
+pandas/tests/io/test_parquet.py: 16 warnings
+pandas/tests/io/test_s3.py: 5 warnings
+pandas/tests/io/xml/test_to_xml.py: 4 warnings
+pandas/tests/io/xml/test_xml.py: 4 warnings
+/home/runner/micromamba/envs/test/lib/python3.12/site-packages/botocore/auth.py:425: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+datetime_now = datetime.datetime.utcnow()
+2025-04-14T20:20:18.8701702Z
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+------ generated xml file: /home/runner/work/pandas/pandas/test-data.xml -------
+================================ tests coverage ================================
+___________________________________ coverage ___________________________________
+2025-04-14T20:20:18.8703317Z
+Coverage XML written to file coverage.xml
+============================= slowest 30 durations =============================
+19.14s call     pandas/tests/window/test_online.py::TestEWM::test_online_vs_non_online_mean[False-True-True-False-True-obj1]
+15.18s call     pandas/tests/window/test_online.py::TestEWM::test_online_vs_non_online_mean[False-True-True-False-False-obj1]
+14.96s call     pandas/tests/window/test_online.py::TestEWM::test_online_vs_non_online_mean[False-True-True-True-True-obj1]
+14.83s call     pandas/tests/window/test_online.py::TestEWM::test_online_vs_non_online_mean[False-True-True-True-False-obj1]
+14.81s call     pandas/tests/window/test_online.py::TestEWM::test_online_vs_non_online_mean[False-True-True-False-False-obj0]
+14.80s call     pandas/tests/window/test_online.py::TestEWM::test_online_vs_non_online_mean[False-True-True-False-True-obj0]
+14.73s call     pandas/tests/window/test_online.py::TestEWM::test_online_vs_non_online_mean[False-True-True-True-False-obj0]
+14.70s call     pandas/tests/window/test_online.py::TestEWM::test_online_vs_non_online_mean[False-True-True-True-True-obj0]
+13.12s call     pandas/tests/window/test_numba.py::TestTableMethod::test_table_method_rolling_apply[False-True-True-None]
+12.68s call     pandas/tests/window/test_numba.py::TestTableMethod::test_table_method_rolling_apply[False-True-True-2]
+12.64s call     pandas/tests/window/test_numba.py::TestTableMethod::test_table_method_expanding_apply[False-True-True]
+12.60s call     pandas/tests/window/test_numba.py::TestTableMethod::test_table_method_rolling_apply[False-True-True-1]
+12.60s call     pandas/tests/window/test_numba.py::TestTableMethod::test_table_method_rolling_apply[False-True-True-5]
+12.53s call     pandas/tests/window/test_numba.py::TestTableMethod::test_table_method_rolling_apply[False-True-True-10]
+12.36s call     pandas/tests/window/test_numba.py::TestTableMethod::test_table_method_ewm[False-True-True-mean-data0]
+10.46s call     pandas/tests/window/test_numba.py::TestTableMethod::test_table_method_rolling_methods[False-True-True-arithmetic_numba_supported_operators2-None]
+9.73s call     pandas/tests/window/test_numba.py::TestTableMethod::test_table_method_rolling_weighted_mean[None]
+7.36s call     pandas/tests/apply/test_frame_apply.py::test_apply_args[numba-True-True-0]
+7.25s call     pandas/tests/window/test_numba.py::TestTableMethod::test_table_method_rolling_methods[False-True-True-arithmetic_numba_supported_operators1-None]
+6.83s call     pandas/tests/window/test_numba.py::TestTableMethod::test_table_method_rolling_weighted_mean[10]
+6.75s call     pandas/tests/window/test_numba.py::TestTableMethod::test_table_method_rolling_weighted_mean[2]
+6.72s call     pandas/tests/window/test_numba.py::TestTableMethod::test_table_method_rolling_weighted_mean[1]
+6.72s call     pandas/tests/window/test_numba.py::TestTableMethod::test_table_method_rolling_weighted_mean[5]
+6.56s call     pandas/tests/window/test_numba.py::TestTableMethod::test_table_method_rolling_methods[False-True-True-arithmetic_numba_supported_operators3-None]
+6.15s call     pandas/tests/window/test_numba.py::TestTableMethod::test_table_method_rolling_methods[False-True-True-arithmetic_numba_supported_operators0-None]
+6.14s call     pandas/tests/groupby/aggregate/test_numba.py::test_multifunc_numba_kwarg_propagation[data0-agg_kwargs0]
+6.09s call     pandas/tests/window/test_numba.py::TestTableMethod::test_table_method_rolling_methods[False-True-True-arithmetic_numba_supported_operators4-None]
+6.00s call     pandas/tests/window/test_numba.py::TestEngine::test_dont_cache_args[False-True-True-table-rolling-window_kwargs0]
+5.54s call     pandas/tests/window/test_numba.py::TestTableMethod::test_table_method_ewm[False-True-True-mean-data1]
+5.22s call     pandas/tests/window/test_numba.py::TestEngine::test_dont_cache_args[False-True-True-table-expanding-window_kwargs1]
+=========================== short test summary info ============================
+FAILED pandas/tests/window/test_numba.py::TestEngine::test_numba_vs_cython_rolling_methods[False-True-True-arithmetic_numba_supported_operators3-1-data0] - KeyError
+= 1 failed, 3756 passed, 372 skipped, 232844 deselected, 381 xfailed, 1 xpassed, 83 warnings in 1070.53s (0:17:50) =
+##[error]Process completed with exit code 1.
+actions/upload-artifact@v4
+
+name: Test results
+test-data.xml
+if-no-files-found: warn
+compression-level: 6
+overwrite:
+include-hidden-files:
+
+PATTERN: single_cpu
+LANG: C.UTF-8
+LC_ALL:
+PANDAS_CI: 1
+PANDAS_FUTURE_INFER_STRING: 1
+TEST_ARGS:
+PYTEST_WORKERS: 0
+PYTEST_TARGET: pandas
+QT_QPA_PLATFORM: offscreen
+REMOVE_PYARROW: 0
+MAMBA_ROOT_PREFIX: /home/runner/micromamba
+MAMBA_EXE: /home/runner/micromamba-bin/micromamba
+CONDARC: /home/runner/work/pandas/pandas/ci/.condarc
+##[endgroup]
+With the provided path, there will be 1 file uploaded
+Artifact name is valid!
+Root directory input is valid!
+##[error]Failed to CreateArtifact: Received non-retryable error: Failed request: (409) Conflict: an artifact with this name already exists on the workflow run
+codecov/codecov-action@v5
+
+flags: unittests
+name: codecov-pandas
+fail_ci_if_error: false
+disable_file_fixes: false
+disable_search: false
+disable_safe_directory: false
+disable_telem: false
+dry_run: false
+git_service: github
+gcov_executable: gcov
+handle_no_reports_found: false
+recurse_submodules: false
+run_command: upload-coverage
+skip_validation: false
+use_legacy_upload_endpoint: false
+use_oidc: false
+use_pypi: false
+verbose:
+version: latest
+
+PATTERN: single_cpu
+LANG: C.UTF-8
+LC_ALL:
+PANDAS_CI: 1
+PANDAS_FUTURE_INFER_STRING: 1
+TEST_ARGS:
+PYTEST_WORKERS: 0
+PYTEST_TARGET: pandas
+QT_QPA_PLATFORM: offscreen
+REMOVE_PYARROW: 0
+MAMBA_ROOT_PREFIX: /home/runner/micromamba
+MAMBA_EXE: /home/runner/micromamba-bin/micromamba
+CONDARC: /home/runner/work/pandas/pandas/ci/.condarc
+##[endgroup]
+##[group]Run CC_ACTION_VERSION=$(cat ${GITHUB_ACTION_PATH}/src/version)
+[36;1mCC_ACTION_VERSION=$(cat ${GITHUB_ACTION_PATH}/src/version)[0m
+[36;1mecho -e "\033[0;32m==>\033[0m Running Action version $CC_ACTION_VERSION"[0m
+0
+
+PATTERN: single_cpu
+LANG: C.UTF-8
+LC_ALL:
+PANDAS_CI: 1
+PANDAS_FUTURE_INFER_STRING: 1
+TEST_ARGS:
+PYTEST_WORKERS: 0
+PYTEST_TARGET: pandas
+QT_QPA_PLATFORM: offscreen
+REMOVE_PYARROW: 0
+MAMBA_ROOT_PREFIX: /home/runner/micromamba
+MAMBA_EXE: /home/runner/micromamba-bin/micromamba
+CONDARC: /home/runner/work/pandas/pandas/ci/.condarc
+##[endgroup]
+[0;32m==>[0m Running Action version 5.4.1
+##[group]Run git config --global --add safe.directory "/home/runner/work/pandas/pandas"
+[36;1mgit config --global --add safe.directory "/home/runner/work/pandas/pandas"[0m
+[36;1mgit config --global --add safe.directory "$GITHUB_WORKSPACE"[0m
+0
+
+PATTERN: single_cpu
+LANG: C.UTF-8
+LC_ALL:
+PANDAS_CI: 1
+PANDAS_FUTURE_INFER_STRING: 1
+TEST_ARGS:
+PYTEST_WORKERS: 0
+PYTEST_TARGET: pandas
+QT_QPA_PLATFORM: offscreen
+REMOVE_PYARROW: 0
+MAMBA_ROOT_PREFIX: /home/runner/micromamba
+MAMBA_EXE: /home/runner/micromamba-bin/micromamba
+CONDARC: /home/runner/work/pandas/pandas/ci/.condarc
+##[endgroup]
+##[group]Run CC_FORK="false"
+[36;1mCC_FORK="false"[0m
+[36;1mif [ -n "$GITHUB_EVENT_PULL_REQUEST_HEAD_REPO_FULL_NAME" ] && [ "$GITHUB_EVENT_PULL_REQUEST_HEAD_REPO_FULL_NAME" != "$GITHUB_REPOSITORY" ];[0m
+[36;1mthen[0m
+[36;1m  echo -e "\033[0;32m==>\033[0m Fork detected"[0m
+[36;1m  CC_FORK="true"[0m
+36
+[36;1mecho "CC_FORK=$CC_FORK" >> "$GITHUB_ENV"[0m
+0
+
+PATTERN: single_cpu
+LANG: C.UTF-8
+LC_ALL:
+PANDAS_CI: 1
+PANDAS_FUTURE_INFER_STRING: 1
+TEST_ARGS:
+PYTEST_WORKERS: 0
+PYTEST_TARGET: pandas
+QT_QPA_PLATFORM: offscreen
+REMOVE_PYARROW: 0
+MAMBA_ROOT_PREFIX: /home/runner/micromamba
+MAMBA_EXE: /home/runner/micromamba-bin/micromamba
+CONDARC: /home/runner/work/pandas/pandas/ci/.condarc
+GITHUB_EVENT_PULL_REQUEST_HEAD_LABEL: viable-alternative:rolling_mm_upstream
+GITHUB_EVENT_PULL_REQUEST_HEAD_REPO_FULL_NAME: viable-alternative/pandas
+GITHUB_REPOSITORY: pandas-dev/pandas
+##[endgroup]
+[0;32m==>[0m Fork detected
+actions/github-script@v7
+
+script: const id_token = await core.getIDToken(process.env.CC_OIDC_AUDIENCE)
+return id_token
+github-token: ***
+debug: false
+user-agent: actions/github-script
+result-encoding: json
+retries: 0
+retry-exempt-status-codes: 400,401,403,404,422
+
+PATTERN: single_cpu
+LANG: C.UTF-8
+LC_ALL:
+PANDAS_CI: 1
+PANDAS_FUTURE_INFER_STRING: 1
+TEST_ARGS:
+PYTEST_WORKERS: 0
+PYTEST_TARGET: pandas
+QT_QPA_PLATFORM: offscreen
+REMOVE_PYARROW: 0
+MAMBA_ROOT_PREFIX: /home/runner/micromamba
+MAMBA_EXE: /home/runner/micromamba-bin/micromamba
+CONDARC: /home/runner/work/pandas/pandas/ci/.condarc
+CC_FORK: true
+CC_OIDC_AUDIENCE: https://codecov.io
+##[endgroup]
+Error: Error message: Unable to get ACTIONS_ID_TOKEN_REQUEST_URL env variable
+at OidcClient.<anonymous> (/home/runner/work/_actions/actions/github-script/v7/dist/index.js:585:23)
+at Generator.next (<anonymous>)
+at /home/runner/work/_actions/actions/github-script/v7/dist/index.js:522:71
+at new Promise (<anonymous>)
+at __webpack_modules__.8041.__awaiter (/home/runner/work/_actions/actions/github-script/v7/dist/index.js:518:12)
+at OidcClient.getIDToken (/home/runner/work/_actions/actions/github-script/v7/dist/index.js:571:16)
+at Object.<anonymous> (/home/runner/work/_actions/actions/github-script/v7/dist/index.js:421:46)
+at Generator.next (<anonymous>)
+at /home/runner/work/_actions/actions/github-script/v7/dist/index.js:133:71
+at new Promise (<anonymous>)
+##[error]Unhandled error: Error: Error message: Unable to get ACTIONS_ID_TOKEN_REQUEST_URL env variable

@@ -1,0 +1,84 @@
+##[group]Run <:*:>
+with:
+ref: refs/pull/14633/merge
+repository: <:*:>
+token: ***
+ssh-strict: true
+persist-credentials: <:*:>
+clean: true
+sparse-checkout-cone-mode: true
+fetch-depth: <:NUM:>
+fetch-tags: false
+show-progress: true
+lfs: false
+submodules: <:*:>
+set-safe-directory: true
+env:
+NODE_OPTIONS: --max-old-space-size=4096
+GITHUB_REPO_NAME: n8n-io/n8n
+##[endgroup]
+Syncing repository: <:*:>
+##[group]Getting Git version info
+Working directory is '/home/runner/_work/n8n/n8n'
+[command]/usr/bin/git version
+git version <:NUM:>.<:NUM:>.<:NUM:>
+##[endgroup]
+Temporarily overriding HOME='/home/runner/_work/_temp/2ab423e2-3e7b-45da-a9d2-954d125f2633' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+[command]/usr/bin/git config --global --add safe.directory /home/runner/_work/n8n/n8n
+Deleting the contents of '/home/runner/_work/n8n/n8n'
+##[group]Initializing the repository
+[command]/usr/bin/git init /home/runner/_work/n8n/n8n
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint:
+hint: git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint: git branch -m <name>
+Initialized empty Git repository in /home/runner/_work/n8n/n8n/.git/
+[command]/usr/bin/git remote add origin <:*:>
+##[endgroup]
+##[group]Disabling automatic garbage collection
+[command]/usr/bin/git config --local gc.auto 0
+##[endgroup]
+##[group]Setting up auth
+[command]/usr/bin/git config --local --name-only --get-regexp <:*:>
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp <:*:> && git config --local --unset-all <:*:> || :"
+[command]/usr/bin/git config --local --name-only --get-regexp <:*:>
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp <:*:> && git config --local --unset-all <:*:> || :"
+[command]/usr/bin/git config <:*:> http.https://github.com/.extraheader AUTHORIZATION: basic ***
+##[endgroup]
+##[group]Fetching the repository
+[command]/usr/bin/git -c protocol.version=<:NUM:> fetch <:*:> <:*:> <:*:> <:*:> <:*:> <:*:>
+From <:*:>
+* [new <:*:> <:*:> -> <:*:>
+##[endgroup]
+##[group]Determining the checkout info
+##[endgroup]
+##[group]Checking out the ref
+[command]/usr/bin/git checkout --progress --force refs/remotes/pull/<:NUM:>/merge
+Note: switching to 'refs/remotes/pull/<:NUM:>/merge'.
+2025-04-15T08:19:49.8072775Z
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+2025-04-15T08:19:49.8074470Z
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+2025-04-15T08:19:49.8075188Z
+git switch -c <new-branch-name>
+2025-04-15T08:19:49.8075399Z
+Or undo this operation with:
+2025-04-15T08:19:49.8075655Z
+git switch -
+2025-04-15T08:19:49.8075819Z
+Turn off this advice by setting config variable advice.detachedHead to false
+2025-04-15T08:19:49.8076588Z
+HEAD is now at <:*:> Merge <:SEQ:> into <:SEQ:>
+##[endgroup]
+[command]/usr/bin/git log <:NUM:> <:*:>
+'<:SEQ:>'

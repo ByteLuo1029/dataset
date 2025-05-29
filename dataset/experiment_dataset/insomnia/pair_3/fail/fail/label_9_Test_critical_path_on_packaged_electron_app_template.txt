@@ -1,0 +1,76 @@
+##[group]Run npm run test:crit:package
+[36;1mnpm run test:crit:package[0m
+shell: /bin/bash -e {0}
+env:
+PR_NUMBER: 8614
+INSOMNIA_UPDATES_URL: http://localhost:4010
+##[endgroup]
+2025-04-14T17:59:44.5354700Z
+> insomnia@1.0.0 test:crit:package
+> npm run test:package -w insomnia-smoke-test -- --project=Critical
+2025-04-14T17:59:44.5359290Z
+2025-04-14T17:59:44.8127810Z
+> insomnia-smoke-test@11.1.0-alpha-pr-b5e172e.0 test:package
+> xvfb-maybe cross-env BUNDLE=package playwright test --project=Critical
+2025-04-14T17:59:44.8130430Z
+[WebServer] (node:35475) DeprecationWarning: Calling start() is no longer necessary. It can be safely omitted.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[WebServer] oidc-provider WARNING: configuration cookies.keys is missing, this option is critical to detect and ignore tampered cookies
+[WebServer] oidc-provider WARNING: a quick start development-only in-memory adapter is used, you MUST change it in order to not lose all stateful provider data upon restart and to be able to share these between processes
+[WebServer] oidc-provider WARNING: a quick start development-only signing keys are used, you are expected to provide your own in configuration "jwks" property
+[WebServer] (node:35475) DeprecationWarning: The "plain" PKCE method is deprecated and will be removed in the next major revision.
+2025-04-14T17:59:47.8153490Z
+First argument must use the object destructuring pattern: _
+2025-04-14T17:59:47.8155480Z
+at ../playwright/test.ts:50
+2025-04-14T17:59:47.8156060Z
+48 | }
+49 |
+> 50 | export const test = baseTest.extend<{
+| <:*:>
+51 |   app: ElectronApplication;
+52 |   dataPath: string;
+53 |   fixturesPath: string;
+##[error]First argument must use the object destructuring pattern: _
+   at ../playwright/test.ts:50
+  48 | }
+  49 |
+> 50 | export const test = baseTest.extend<{
+| <:*:>
+ElectronApplication;
+string;
+string;
+2025-04-14T17:59:47.8205110Z
+First argument must use the object destructuring pattern: _
+2025-04-14T17:59:47.8207010Z
+at ../playwright/test.ts:50
+2025-04-14T17:59:47.8209100Z
+48 | }
+49 |
+> 50 | export const test = baseTest.extend<{
+| <:*:>
+51 |   app: ElectronApplication;
+52 |   dataPath: string;
+53 |   fixturesPath: string;
+##[error]First argument must use the object destructuring pattern: _
+   at ../playwright/test.ts:50
+  48 | }
+  49 |
+> 50 | export const test = baseTest.extend<{
+| <:*:>
+ElectronApplication;
+string;
+string;
+2025-04-14T17:59:47.8222580Z
+2025-04-14T17:59:47.8222600Z
+Failed with exit code: 1
+Output:
+2025-04-14T17:59:47.8371150Z
+npm error Lifecycle script `test:package` failed with error:
+npm error code 255
+npm error path /Users/runner/work/insomnia/insomnia/packages/insomnia-smoke-test
+npm error workspace insomnia-smoke-test@11.1.0-alpha-pr-b5e172e.0
+npm error location /Users/runner/work/insomnia/insomnia/packages/insomnia-smoke-test
+npm error command failed
+npm error command sh -c xvfb-maybe cross-env BUNDLE=package playwright test --project=Critical
+##[error]Process completed with exit code 255.

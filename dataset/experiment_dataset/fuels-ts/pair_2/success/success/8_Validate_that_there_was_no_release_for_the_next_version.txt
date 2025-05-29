@@ -1,0 +1,28 @@
+2025-04-14T19:01:34.4505893Z ##[group]Run OLD_VERSION=$(sed -nE 's/^\s*"version": "(.*?)",$/\1/p' packages/fuels/package.json)
+2025-04-14T19:01:34.4506557Z [36;1mOLD_VERSION=$(sed -nE 's/^\s*"version": "(.*?)",$/\1/p' packages/fuels/package.json)[0m
+2025-04-14T19:01:34.4506984Z [36;1mpnpm changeset version[0m
+2025-04-14T19:01:34.4507370Z [36;1mNEW_VERSION=$(sed -nE 's/^\s*"version": "(.*?)",$/\1/p' packages/fuels/package.json)[0m
+2025-04-14T19:01:34.4507791Z [36;1mgit reset --hard[0m
+2025-04-14T19:01:34.4508022Z [36;1m[0m
+2025-04-14T19:01:34.4508250Z [36;1mif [ "$OLD_VERSION" = "$NEW_VERSION" ]; then[0m
+2025-04-14T19:01:34.4508676Z [36;1m  # the versions didn't change so we won't be releasing it anyways[0m
+2025-04-14T19:01:34.4509048Z [36;1m  exit 0[0m
+2025-04-14T19:01:34.4509244Z [36;1mfi[0m
+2025-04-14T19:01:34.4509430Z [36;1m[0m
+2025-04-14T19:01:34.4509872Z [36;1mSTATUS_CODE=$(curl -s -w '%{http_code}\n' "https://www.npmjs.com/package/fuels/v/$NEW_VERSION" | tail -n1)[0m
+2025-04-14T19:01:34.4510397Z [36;1mif [[ $STATUS_CODE  != 404 ]]; then[0m
+2025-04-14T19:01:34.4511041Z [36;1m  echo "Release for version $NEW_VERSION already exists or curl received an unexpected result (result is $STATUS_CODE). Exiting."[0m
+2025-04-14T19:01:34.4511613Z [36;1m  exit 1[0m
+2025-04-14T19:01:34.4511815Z [36;1melse[0m
+2025-04-14T19:01:34.4512010Z [36;1m  exit 0[0m
+2025-04-14T19:01:34.4512205Z [36;1mfi[0m
+2025-04-14T19:01:34.4560080Z shell: /usr/bin/bash -e {0}
+2025-04-14T19:01:34.4560352Z env:
+2025-04-14T19:01:34.4560623Z   NPM_CONFIG_USERCONFIG: /home/runner/work/_temp/.npmrc
+2025-04-14T19:01:34.4561010Z   NODE_AUTH_TOKEN: XXXXX-XXXXX-XXXXX-XXXXX
+2025-04-14T19:01:34.4561389Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2025-04-14T19:01:34.4561774Z   CHANGESET_FILE: .changeset/light-dolls-join.md
+2025-04-14T19:01:34.4562377Z   GITHUB_TOKEN: ***
+2025-04-14T19:01:34.4562602Z ##[endgroup]
+2025-04-14T19:01:37.6494064Z 🦋  All files have been updated. Review them and commit at your leisure
+2025-04-14T19:01:37.6948693Z HEAD is now at c8a00cb14 Merge 6a5aedd4e0a72e95bdbef81843527313989a6a8a into abe5933f57f238e08166fadec76f6a8551b74aea

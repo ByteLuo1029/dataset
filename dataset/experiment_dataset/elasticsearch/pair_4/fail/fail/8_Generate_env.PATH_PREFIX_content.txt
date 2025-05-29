@@ -1,0 +1,23 @@
+##[group]Run case "${GITHUB_EVENT_NAME}" in
+[36;1mcase "${GITHUB_EVENT_NAME}" in[0m
+[36;1m  "merge_group" | "pull_request" | "pull_request_target")[0m
+[36;1m    echo "PATH_PREFIX=/${GITHUB_REPOSITORY}/pull/${PR_NUMBER}" >> $GITHUB_ENV[0m
+[36;1m    ;;[0m
+[36;1m  "push" | "workflow_dispatch")[0m
+[36;1m    echo "PATH_PREFIX=/${GITHUB_REPOSITORY}/tree/${GITHUB_REF_NAME}" >> $GITHUB_ENV[0m
+[36;1m    if [[ ! "${GITHUB_REF_NAME}" =~ ^(main|master|16\.x)$ ]]; then[0m
+[36;1m      echo "Unsupported ref name: '${GITHUB_REF_NAME}'";[0m
+[36;1m      exit 1;[0m
+[36;1m    fi[0m
+[36;1m    ;;[0m
+[36;1m  *)[0m
+[36;1m    echo "Unsupported event: '${GITHUB_EVENT_NAME}'";[0m
+[36;1m    exit 1;[0m
+[36;1m    ;;[0m
+[36;1mesac[0m
+0
+
+GITHUB_PR_REF_NAME: markjhoy/default_token_pruning_sparse_vector
+PR_NUMBER: 126739
+GITHUB_REF_NAME: main
+##[endgroup]

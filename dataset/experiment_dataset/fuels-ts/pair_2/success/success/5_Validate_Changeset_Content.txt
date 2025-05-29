@@ -1,0 +1,58 @@
+2025-04-14T19:01:31.1490115Z ##[group]Run CHANGESET_FILE=$(git diff --diff-filter=A --name-only origin/master .changeset/*.md)
+2025-04-14T19:01:31.1490807Z [36;1mCHANGESET_FILE=$(git diff --diff-filter=A --name-only origin/master .changeset/*.md)[0m
+2025-04-14T19:01:31.1491188Z [36;1m[0m
+2025-04-14T19:01:31.1491385Z [36;1mif [ -z "$CHANGESET_FILE" ]; then[0m
+2025-04-14T19:01:31.1491768Z [36;1m  # A PR doesn't have to have a changeset when packages aren't affected[0m
+2025-04-14T19:01:31.1492184Z [36;1m  # e.g. when a script is added in the scripts folder[0m
+2025-04-14T19:01:31.1492473Z [36;1m  exit 0[0m
+2025-04-14T19:01:31.1492655Z [36;1mfi[0m
+2025-04-14T19:01:31.1492916Z [36;1mecho "CHANGESET_FILE=$(echo "$CHANGESET_FILE")" >> $GITHUB_ENV[0m
+2025-04-14T19:01:31.1493237Z [36;1m[0m
+2025-04-14T19:01:31.1493525Z [36;1mAFFECTED_PACKAGES=$(sed -n '/---/,/---/p' "$CHANGESET_FILE" | sed '/---/d')[0m
+2025-04-14T19:01:31.1493869Z [36;1m[0m
+2025-04-14T19:01:31.1494063Z [36;1mif [ -z "$AFFECTED_PACKAGES" ]; then[0m
+2025-04-14T19:01:31.1494567Z [36;1m  # The changelog logic ignores changesets that don't affect any packages so we can ignore them here as well,[0m
+2025-04-14T19:01:31.1495498Z [36;1m  # because this changeset linting logic is only for changesets who's PRs will be referenced in the changelog.[0m
+2025-04-14T19:01:31.1496447Z [36;1m[0m
+2025-04-14T19:01:31.1496655Z [36;1m  # The relevant changelog logic is here:[0m
+2025-04-14T19:01:31.1497283Z [36;1m  # https://github.com/FuelLabs/fuels-ts/blob/155b6f2fe28e988b277dac231af6d6a0cff1df0c/scripts/changeset/get-full-changelog.mts#L77[0m
+2025-04-14T19:01:31.1497875Z [36;1m[0m
+2025-04-14T19:01:31.1498040Z [36;1m  exit 0[0m
+2025-04-14T19:01:31.1498218Z [36;1mfi[0m
+2025-04-14T19:01:31.1498423Z [36;1m# TODO: Remove once v1.0.0 is released.[0m
+2025-04-14T19:01:31.1498785Z [36;1m# Minor changes are treated as breaking until v1.0.0 is released.[0m
+2025-04-14T19:01:31.1499188Z [36;1mif echo "$AFFECTED_PACKAGES" | grep -q 'minor'; then[0m
+2025-04-14T19:01:31.1499522Z [36;1m  if ! echo "$PR_TITLE" | grep -q '!'; then[0m
+2025-04-14T19:01:31.1500124Z [36;1m    echo "Changeset has `minor` changes. Please mark the PR as breaking by adding an exclamation mark to its title (e.g. fix!: xxx) or use a `patch` instead."[0m
+2025-04-14T19:01:31.1500697Z [36;1m    exit 1[0m
+2025-04-14T19:01:31.1500889Z [36;1m  fi[0m
+2025-04-14T19:01:31.1501059Z [36;1mfi[0m
+2025-04-14T19:01:31.1501216Z [36;1m[0m
+2025-04-14T19:01:31.1501464Z [36;1m# Check if the PR title contains an exclamation mark (breaking)[0m
+2025-04-14T19:01:31.1501824Z [36;1mif echo "$PR_TITLE" | grep -q '!'; then[0m
+2025-04-14T19:01:31.1502188Z [36;1m  # If the PR is breaking, ensure that the changeset contains minor changes[0m
+2025-04-14T19:01:31.1502594Z [36;1m  if ! echo "$AFFECTED_PACKAGES" | grep -q 'minor'; then[0m
+2025-04-14T19:01:31.1503007Z [36;1m    echo "PR is marked as breaking but changeset does not contain minor changes."[0m
+2025-04-14T19:01:31.1503396Z [36;1m    echo "Changeset file: $CHANGESET_FILE"[0m
+2025-04-14T19:01:31.1503672Z [36;1m    echo "Changeset content:"[0m
+2025-04-14T19:01:31.1503922Z [36;1m    cat "$CHANGESET_FILE"[0m
+2025-04-14T19:01:31.1504146Z [36;1m    exit 1[0m
+2025-04-14T19:01:31.1504325Z [36;1m  fi[0m
+2025-04-14T19:01:31.1504491Z [36;1mfi[0m
+2025-04-14T19:01:31.1504658Z [36;1m[0m
+2025-04-14T19:01:31.1504939Z [36;1mCHANGESET_DESCRIPTION=$(sed 's/^\s*\|\s*$//g' "$CHANGESET_FILE" | tail -n1)[0m
+2025-04-14T19:01:31.1505583Z [36;1m[0m
+2025-04-14T19:01:31.1505884Z [36;1mif [ "$CHANGESET_DESCRIPTION" != "$PR_TITLE" ]; then[0m
+2025-04-14T19:01:31.1506394Z [36;1m  echo "Changeset content does not match PR title. Please update the changeset to match the PR title."[0m
+2025-04-14T19:01:31.1506852Z [36;1m  echo "Changeset file: $CHANGESET_FILE"[0m
+2025-04-14T19:01:31.1507129Z [36;1m  echo "Changeset content:"[0m
+2025-04-14T19:01:31.1507375Z [36;1m  cat "$CHANGESET_FILE"[0m
+2025-04-14T19:01:31.1507598Z [36;1m  exit 1[0m
+2025-04-14T19:01:31.1507774Z [36;1mfi[0m
+2025-04-14T19:01:31.1554860Z shell: /usr/bin/bash -e {0}
+2025-04-14T19:01:31.1555100Z env:
+2025-04-14T19:01:31.1555479Z   NPM_CONFIG_USERCONFIG: /home/runner/work/_temp/.npmrc
+2025-04-14T19:01:31.1555801Z   NODE_AUTH_TOKEN: XXXXX-XXXXX-XXXXX-XXXXX
+2025-04-14T19:01:31.1556110Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2025-04-14T19:01:31.1556446Z   PR_TITLE: feat: add method for coins consolidation
+2025-04-14T19:01:31.1556714Z ##[endgroup]

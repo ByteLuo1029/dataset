@@ -1,0 +1,137 @@
+2025-04-10T17:36:46.7892787Z ##[group]Run actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea
+2025-04-10T17:36:46.7894240Z with:
+2025-04-10T17:36:46.7939170Z   script: const fs = require("fs");
+async function createOrUpdateChangelogComment(commentDetails, deleteComment) {
+    const commentStart = "## Changelog Warning"
+    
+    const body = commentStart + "\n\n" + commentDetails;
+    const { number: issue_number } = context.issue;
+    const { owner, repo } = context.repo;
+    
+    // List all comments
+    const allComments = (await github.rest.issues.listComments({
+        issue_number,
+        owner,
+        repo,
+    })).data;
+
+    const existingComment = allComments.find(c => c.body.startsWith(commentStart));
+    const comment_id = existingComment?.id;
+    
+    if (deleteComment) {
+        if (existingComment) {
+            await github.rest.issues.deleteComment({
+                owner,
+                repo,
+                comment_id,
+            });
+        }
+        return;
+    }
+
+    core.setFailed(commentDetails);
+
+    if (existingComment) {
+        await github.rest.issues.updateComment({
+            owner,
+            repo,
+            comment_id,
+            body,
+        });
+    } else {
+        await github.rest.issues.createComment({
+            owner,
+            repo,
+            issue_number,
+            body,
+        });
+    }
+}
+
+const changesPresent = false;
+const changedChangesFiles = [];
+const changelogChangesPresent = false;
+const versionChangesPresent = false;
+
+const prLabels = await github.rest.issues.listLabelsOnIssue({
+    issue_number: context.issue.number,
+    owner: context.repo.owner,
+    repo: context.repo.repo
+});
+const backportLabels = prLabels.data.filter(label => label.name.endsWith("-backport"));
+const backportVersions = backportLabels.map(label => label.name.split("-")[0]);
+
+const currentVersionFile = fs.readFileSync("./version/VERSION", "utf-8");
+const currentVersionParts = currentVersionFile.split(".");
+currentVersionParts.pop();
+const currentVersion = currentVersionParts.join(".");
+
+const allVersions = [currentVersion, ...backportVersions]
+allVersions.sort((a, b) => {
+  const as = a.split(".").map(Number);
+  const bs = b.split(".").map(Number);
+
+  if (as[0] !== bs[0]) {
+    return as[0] - bs[0];
+  }
+  
+  if (as[1] !== bs[1]) {
+    return as[1] - bs[1];
+  }
+});
+
+const noChangelogNeededLabel = prLabels.data.find(label => label.name === 'no-changelog-needed');
+const dependenciesLabel = prLabels.data.find(label => label.name === 'dependencies');
+
+// We want to prohibit contributors from directly changing the CHANGELOG.md, it's 
+// generated so all changes will be lost during the release process.
+// Therefore we only allow the changelog to change together with the version.
+// In very rare cases where we generate changes in the changelog without changing the 
+// version we will just ignore this failing check.
+if (changelogChangesPresent && !versionChangesPresent) {
+    await createOrUpdateChangelogComment("Please don't edit the CHANGELOG.md manually. We use changie to control the Changelog generation, please use `npx changie new` to create a new changelog entry.");
+    return;
+}
+
+if (dependenciesLabel) {
+    return;
+}
+
+if (noChangelogNeededLabel) {
+    if (changesPresent) {
+        await createOrUpdateChangelogComment("Please remove either the 'no-changelog-needed' label or the changelog entry from this PR.");
+        return;
+    }
+    
+    // Nothing to complain about, so delete any existing comment
+    await createOrUpdateChangelogComment("", true);
+    return;
+}
+
+// We only want to have a changelog entry for the oldest version this PR will
+// land in.
+const onlyExpectedChangeVersion = allVersions[0]
+const missingChangelogEntry = !changedChangesFiles.some(filePath => filePath.includes("/v"+onlyExpectedChangeVersion+"/"))
+const unexpectedChangelogEntry = changedChangesFiles.filter(filePath => !filePath.includes("/v"+onlyExpectedChangeVersion+"/"))
+
+
+if (missingChangelogEntry) {
+    await createOrUpdateChangelogComment(`Currently this PR would target a v${onlyExpectedChangeVersion} release. Please add a changelog entry for in the .changes/v${onlyExpectedChangeVersion} folder, or discuss which release you'd like to target with your reviewer. If you believe this change does not need a changelog entry, please add the 'no-changelog-needed' label.`);
+    return;
+}
+
+if (unexpectedChangelogEntry.length > 0) {
+    await createOrUpdateChangelogComment(`Please remove the changelog entry for the following paths: ${unexpectedChangelogEntry.join(", ")}. If you believe this change does not need a changelog entry, please add the 'no-changelog-needed' label.`);
+    return;
+}
+
+// Nothing to complain about, so delete any existing comment
+await createOrUpdateChangelogComment("", true);
+
+2025-04-10T17:36:46.7986261Z   github-token: ***
+2025-04-10T17:36:46.7987187Z   debug: false
+2025-04-10T17:36:46.7987994Z   user-agent: actions/github-script
+2025-04-10T17:36:46.7988976Z   result-encoding: json
+2025-04-10T17:36:46.7989805Z   retries: 0
+2025-04-10T17:36:46.7990654Z   retry-exempt-status-codes: 400,401,403,404,422
+2025-04-10T17:36:46.7991738Z ##[endgroup]

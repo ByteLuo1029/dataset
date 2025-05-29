@@ -1,0 +1,31 @@
+##[group]Run echo "Disk usage before:" && df -h
+[36;1mecho "Disk usage before:" && df -h[0m
+[36;1msudo rm -rf /usr/local/lib/android[0m
+[36;1mecho "Disk usage after:" && df -h[0m
+0
+
+GODOT_CPP_BRANCH: 4.4
+SCONSFLAGS: verbose=yes warnings=extra werror=yes module_text_server_fb_enabled=yes strict_checks=yes "accesskit_sdk_path=/home/runner/work/godot/godot/accesskit-c-0.15.1/"
+DOTNET_NOLOGO: true
+DOTNET_CLI_TELEMETRY_OPTOUT: true
+TSAN_OPTIONS: suppressions=/home/runner/work/godot/godot/misc/error_suppressions/tsan.txt
+UBSAN_OPTIONS: suppressions=/home/runner/work/godot/godot/misc/error_suppressions/ubsan.txt
+##[endgroup]
+Disk usage before:
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/root        73G   53G   20G  74% /
+tmpfs           7.9G  172K  7.9G   1% /dev/shm
+tmpfs           3.2G  1.1M  3.2G   1% /run
+tmpfs           5.0M     0  5.0M   0% /run/lock
+/dev/sda15      105M  6.1M   99M   6% /boot/efi
+/dev/sdb1        74G  4.1G   66G   6% /mnt
+tmpfs           1.6G   12K  1.6G   1% /run/user/1001
+Disk usage after:
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/root        73G   45G   28G  62% /
+tmpfs           7.9G  172K  7.9G   1% /dev/shm
+tmpfs           3.2G  1.1M  3.2G   1% /run
+tmpfs           5.0M     0  5.0M   0% /run/lock
+/dev/sda15      105M  6.1M   99M   6% /boot/efi
+/dev/sdb1        74G  4.1G   66G   6% /mnt
+tmpfs           1.6G   12K  1.6G   1% /run/user/1001

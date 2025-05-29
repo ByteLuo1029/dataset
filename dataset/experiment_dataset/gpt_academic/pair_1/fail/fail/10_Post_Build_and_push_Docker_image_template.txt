@@ -1,0 +1,38 @@
+Post job cleanup.
+##[group]Generating build summary
+exporting build record to /home/runner/work/_temp/docker-actions-toolkit-nsouRj/export
+[command]/usr/bin/mkfifo /home/runner/work/_temp/docker-actions-toolkit-nsouRj/buildx-in-Vf0wR9.fifo
+[command]/usr/bin/mkfifo /home/runner/work/_temp/docker-actions-toolkit-nsouRj/buildx-out-jLmbzX.fifo
+[command]docker buildx --builder builder-2bfeccb6-a687-4622-a5d3-679ee6fc81d9 dial-stdio
+[command]docker run --rm -i -v /home/runner/.docker/buildx/refs:/buildx-refs -v /home/runner/work/_temp/docker-actions-toolkit-nsouRj/export:/out docker.io/dockereng/export-build:latest --ref-state-dir=/buildx-refs --node=builder-2bfeccb6-a687-4622-a5d3-679ee6fc81d9/builder-2bfeccb6-a687-4622-a5d3-679ee6fc81d90 --ref=sod1663k4fl4q6meadg3h5hal --uid=1001 --gid=118
+Unable to find image 'dockereng/export-build:latest' locally
+latest: Pulling from dockereng/export-build
+5f398fcfd265: Pulling fs layer
+152e015ae384: Pulling fs layer
+152e015ae384: Download complete
+5f398fcfd265: Verifying Checksum
+5f398fcfd265: Download complete
+5f398fcfd265: Pull complete
+152e015ae384: Pull complete
+Digest: sha256:<:SEQ:>
+Status: Downloaded newer image for dockereng/export-build:latest
+Process "docker run" exited with code 0
+Parsing /home/runner/work/_temp/docker-actions-toolkit-nsouRj/export/summary.json
+Build record written to /home/runner/work/_temp/docker-actions-toolkit-nsouRj/export/binary-husky~gpt_academic~SOD166.dockerbuild (31.15 KB)
+Uploading binary-husky~gpt_academic~SOD166.dockerbuild to blob storage
+Process "buildx dial-stdio" was killed with signal SIGKILL
+ERROR: read unix @->/run/docker.sock: use of closed network connection
+Beginning upload of artifact content to blob storage
+Uploaded bytes 31897
+Finished uploading artifact content to blob storage!
+SHA256 hash of uploaded artifact is 78168ea63100582b3de39de5968fe50e8416f8c721ab66d15f8871191b4289bd
+Finalizing artifact upload
+Artifact successfully finalized (2560557040)
+Artifact download URL: https://github.com/binary-husky/gpt_academic/actions/runs/13225627248/artifacts/2560557040
+Writing summary
+##[endgroup]
+##[group]Removing temp folder /home/runner/work/_temp/docker-actions-toolkit-dqeqZF
+##[endgroup]
+##[group]Post cache
+State not set
+##[endgroup]

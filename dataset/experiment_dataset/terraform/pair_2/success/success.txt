@@ -1,0 +1,582 @@
+2025-04-10T17:45:10.0959000Z Requested labels: ubuntu-latest
+2025-04-10T17:45:10.0959257Z Job defined at: hashicorp/terraform/.github/workflows/checks.yml@refs/pull/36879/merge
+2025-04-10T17:45:10.0959375Z Waiting for a runner to pick up this job...
+2025-04-10T17:45:11.0737801Z Job is waiting for a hosted runner to come online.
+2025-04-10T17:45:13.7042581Z Job is about to start running on the hosted runner: GitHub Actions 2509 (hosted)
+2025-04-10T17:45:15.4070274Z Current runner version: '2.323.0'
+2025-04-10T17:45:15.4116101Z ##[group]Operating System
+2025-04-10T17:45:15.4117065Z Ubuntu
+2025-04-10T17:45:15.4117627Z 24.04.2
+2025-04-10T17:45:15.4118211Z LTS
+2025-04-10T17:45:15.4118722Z ##[endgroup]
+2025-04-10T17:45:15.4119304Z ##[group]Runner Image
+2025-04-10T17:45:15.4119963Z Image: ubuntu-24.04
+2025-04-10T17:45:15.4120560Z Version: 20250406.1.0
+2025-04-10T17:45:15.4121668Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250406.1/images/ubuntu/Ubuntu2404-Readme.md
+2025-04-10T17:45:15.4123138Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250406.1
+2025-04-10T17:45:15.4124053Z ##[endgroup]
+2025-04-10T17:45:15.4124649Z ##[group]Runner Image Provisioner
+2025-04-10T17:45:15.4125351Z 2.0.422.1
+2025-04-10T17:45:15.4126279Z ##[endgroup]
+2025-04-10T17:45:15.4127563Z ##[group]GITHUB_TOKEN Permissions
+2025-04-10T17:45:15.4129714Z Contents: read
+2025-04-10T17:45:15.4130359Z Metadata: read
+2025-04-10T17:45:15.4131189Z ##[endgroup]
+2025-04-10T17:45:15.4134505Z Secret source: Actions
+2025-04-10T17:45:15.4135658Z Prepare workflow directory
+2025-04-10T17:45:15.4537870Z Prepare all required actions
+2025-04-10T17:45:15.4574647Z Getting action download info
+2025-04-10T17:45:15.6547740Z Download action repository 'actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683' (SHA:11bd71901bbe5b1630ceea73d27597364c9af683)
+2025-04-10T17:45:15.7473017Z Download action repository 'actions/setup-go@0aaccfd150d50ccaeb58ebd88d36e91967a5f35b' (SHA:0aaccfd150d50ccaeb58ebd88d36e91967a5f35b)
+2025-04-10T17:45:16.1112376Z Complete job name: Unit Tests
+2025-04-10T17:45:16.1855216Z ##[group]Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+2025-04-10T17:45:16.1856579Z with:
+2025-04-10T17:45:16.1857035Z   repository: hashicorp/terraform
+2025-04-10T17:45:16.1857807Z   token: ***
+2025-04-10T17:45:16.1858211Z   ssh-strict: true
+2025-04-10T17:45:16.1858637Z   ssh-user: git
+2025-04-10T17:45:16.1859070Z   persist-credentials: true
+2025-04-10T17:45:16.1859564Z   clean: true
+2025-04-10T17:45:16.1859991Z   sparse-checkout-cone-mode: true
+2025-04-10T17:45:16.1860486Z   fetch-depth: 1
+2025-04-10T17:45:16.1860903Z   fetch-tags: false
+2025-04-10T17:45:16.1861334Z   show-progress: true
+2025-04-10T17:45:16.1861763Z   lfs: false
+2025-04-10T17:45:16.1862158Z   submodules: false
+2025-04-10T17:45:16.1862580Z   set-safe-directory: true
+2025-04-10T17:45:16.1863269Z ##[endgroup]
+2025-04-10T17:45:16.4259435Z Syncing repository: hashicorp/terraform
+2025-04-10T17:45:16.4262499Z ##[group]Getting Git version info
+2025-04-10T17:45:16.4263724Z Working directory is '/home/runner/work/terraform/terraform'
+2025-04-10T17:45:16.4265490Z [command]/usr/bin/git version
+2025-04-10T17:45:16.4359120Z git version 2.49.0
+2025-04-10T17:45:16.4389760Z ##[endgroup]
+2025-04-10T17:45:16.4404821Z Temporarily overriding HOME='/home/runner/work/_temp/afe66f00-c16c-454d-b01b-fc59ee144693' before making global git config changes
+2025-04-10T17:45:16.4407534Z Adding repository directory to the temporary git global config as a safe directory
+2025-04-10T17:45:16.4410856Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/terraform/terraform
+2025-04-10T17:45:16.4451780Z Deleting the contents of '/home/runner/work/terraform/terraform'
+2025-04-10T17:45:16.4456197Z ##[group]Initializing the repository
+2025-04-10T17:45:16.4460244Z [command]/usr/bin/git init /home/runner/work/terraform/terraform
+2025-04-10T17:45:16.4537327Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-04-10T17:45:16.4539209Z hint: is subject to change. To configure the initial branch name to use in all
+2025-04-10T17:45:16.4540830Z hint: of your new repositories, which will suppress this warning, call:
+2025-04-10T17:45:16.4542019Z hint:
+2025-04-10T17:45:16.4542858Z hint: 	git config --global init.defaultBranch <name>
+2025-04-10T17:45:16.4543883Z hint:
+2025-04-10T17:45:16.4544840Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-04-10T17:45:16.4547204Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-04-10T17:45:16.4548437Z hint:
+2025-04-10T17:45:16.4549117Z hint: 	git branch -m <name>
+2025-04-10T17:45:16.4550366Z Initialized empty Git repository in /home/runner/work/terraform/terraform/.git/
+2025-04-10T17:45:16.4561874Z [command]/usr/bin/git remote add origin https://github.com/hashicorp/terraform
+2025-04-10T17:45:16.4603325Z ##[endgroup]
+2025-04-10T17:45:16.4604700Z ##[group]Disabling automatic garbage collection
+2025-04-10T17:45:16.4608114Z [command]/usr/bin/git config --local gc.auto 0
+2025-04-10T17:45:16.4644889Z ##[endgroup]
+2025-04-10T17:45:16.4646735Z ##[group]Setting up auth
+2025-04-10T17:45:16.4652565Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-04-10T17:45:16.4692750Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-04-10T17:45:16.5030180Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-10T17:45:16.5067199Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-04-10T17:45:16.5320584Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-04-10T17:45:16.5360660Z ##[endgroup]
+2025-04-10T17:45:16.5361588Z ##[group]Fetching the repository
+2025-04-10T17:45:16.5374457Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +5db24683022ddc392b5aa4d6a8b2929c128520ee:refs/remotes/pull/36879/merge
+2025-04-10T17:45:17.9413472Z From https://github.com/hashicorp/terraform
+2025-04-10T17:45:17.9416913Z  * [new ref]         5db24683022ddc392b5aa4d6a8b2929c128520ee -> pull/36879/merge
+2025-04-10T17:45:17.9488401Z ##[endgroup]
+2025-04-10T17:45:17.9489782Z ##[group]Determining the checkout info
+2025-04-10T17:45:17.9491239Z ##[endgroup]
+2025-04-10T17:45:17.9497361Z [command]/usr/bin/git sparse-checkout disable
+2025-04-10T17:45:17.9541750Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-04-10T17:45:17.9572069Z ##[group]Checking out the ref
+2025-04-10T17:45:17.9576553Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/36879/merge
+2025-04-10T17:45:18.2739377Z Note: switching to 'refs/remotes/pull/36879/merge'.
+2025-04-10T17:45:18.2740116Z 
+2025-04-10T17:45:18.2740705Z You are in 'detached HEAD' state. You can look around, make experimental
+2025-04-10T17:45:18.2741931Z changes and commit them, and you can discard any commits you make in this
+2025-04-10T17:45:18.2743173Z state without impacting any branches by switching back to a branch.
+2025-04-10T17:45:18.2743885Z 
+2025-04-10T17:45:18.2744400Z If you want to create a new branch to retain commits you create, you may
+2025-04-10T17:45:18.2745551Z do so (now or later) by using -c with the switch command. Example:
+2025-04-10T17:45:18.2746493Z 
+2025-04-10T17:45:18.2746846Z   git switch -c <new-branch-name>
+2025-04-10T17:45:18.2747397Z 
+2025-04-10T17:45:18.2747734Z Or undo this operation with:
+2025-04-10T17:45:18.2748213Z 
+2025-04-10T17:45:18.2748507Z   git switch -
+2025-04-10T17:45:18.2748917Z 
+2025-04-10T17:45:18.2749524Z Turn off this advice by setting config variable advice.detachedHead to false
+2025-04-10T17:45:18.2750398Z 
+2025-04-10T17:45:18.2751825Z HEAD is now at 5db2468 Merge 331985527782a52fe2a8dbb70b09656c7ba3ebb4 into e98b6ed01350d1d127a43bd0ccd4741ccf415ace
+2025-04-10T17:45:18.2755086Z ##[endgroup]
+2025-04-10T17:45:18.2791753Z [command]/usr/bin/git log -1 --format=%H
+2025-04-10T17:45:18.2815240Z 5db24683022ddc392b5aa4d6a8b2929c128520ee
+2025-04-10T17:45:18.3087262Z Prepare all required actions
+2025-04-10T17:45:18.3168243Z ##[group]Run ./.github/actions/go-version
+2025-04-10T17:45:18.3169373Z ##[endgroup]
+2025-04-10T17:45:18.3287002Z ##[group]Run echo "Building with Go $(cat .go-version)"
+2025-04-10T17:45:18.3288529Z [36;1mecho "Building with Go $(cat .go-version)"[0m
+2025-04-10T17:45:18.3289990Z [36;1mecho "version=$(cat .go-version)" >> "$GITHUB_OUTPUT"[0m
+2025-04-10T17:45:18.3343289Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-04-10T17:45:18.3344642Z ##[endgroup]
+2025-04-10T17:45:18.3450450Z Building with Go 1.24.2
+2025-04-10T17:45:18.3646958Z ##[group]Run actions/setup-go@0aaccfd150d50ccaeb58ebd88d36e91967a5f35b
+2025-04-10T17:45:18.3648375Z with:
+2025-04-10T17:45:18.3649138Z   go-version: 1.24.2
+2025-04-10T17:45:18.3650049Z   cache-dependency-path: go.sum
+2025-04-10T17:45:18.3651029Z   check-latest: false
+2025-04-10T17:45:18.3652174Z   token: ***
+2025-04-10T17:45:18.3652957Z   cache: true
+2025-04-10T17:45:18.3653751Z ##[endgroup]
+2025-04-10T17:45:18.5239038Z Setup go version spec 1.24.2
+2025-04-10T17:45:18.5250436Z Attempting to download 1.24.2...
+2025-04-10T17:45:18.7971377Z matching 1.24.2...
+2025-04-10T17:45:18.7999035Z Acquiring 1.24.2 from https://github.com/actions/go-versions/releases/download/1.24.2-14210955142/go-1.24.2-linux-x64.tar.gz
+2025-04-10T17:45:19.3564833Z Extracting Go...
+2025-04-10T17:45:19.3664107Z [command]/usr/bin/tar xz --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/48aaf23c-f7ca-4f71-9f6d-c7442650a4bc -f /home/runner/work/_temp/1f196a80-3c2f-445f-9e24-3329958c0814
+2025-04-10T17:45:21.1531996Z Successfully extracted go to /home/runner/work/_temp/48aaf23c-f7ca-4f71-9f6d-c7442650a4bc
+2025-04-10T17:45:21.1532839Z Adding to the cache ...
+2025-04-10T17:45:25.6455684Z Successfully cached go to /opt/hostedtoolcache/go/1.24.2/x64
+2025-04-10T17:45:25.6457495Z Added go to the path
+2025-04-10T17:45:25.6460468Z Successfully set up Go version 1.24.2
+2025-04-10T17:45:25.6657860Z [command]/opt/hostedtoolcache/go/1.24.2/x64/bin/go env GOMODCACHE
+2025-04-10T17:45:25.6687174Z [command]/opt/hostedtoolcache/go/1.24.2/x64/bin/go env GOCACHE
+2025-04-10T17:45:25.6717551Z /home/runner/go/pkg/mod
+2025-04-10T17:45:25.6731870Z /home/runner/.cache/go-build
+2025-04-10T17:45:25.7401606Z Cache hit for: setup-go-Linux-x64-ubuntu24-go-1.24.2-9a977ce11373b6d4d25f0812a6528ef1b8a726fb53f4102194f2ed8c4f4d58cb
+2025-04-10T17:45:26.3906046Z Received 129895325 of 129895325 (100.0%), 200.1 MBs/sec
+2025-04-10T17:45:26.3907314Z Cache Size: ~124 MB (129895325 B)
+2025-04-10T17:45:26.3953031Z [command]/usr/bin/tar -xf /home/runner/work/_temp/03b53204-9b07-4ea1-b438-b842243e0c5a/cache.tzst -P -C /home/runner/work/terraform/terraform --use-compress-program unzstd
+2025-04-10T17:45:27.5861146Z Cache restored successfully
+2025-04-10T17:45:27.6138569Z Cache restored from key: setup-go-Linux-x64-ubuntu24-go-1.24.2-9a977ce11373b6d4d25f0812a6528ef1b8a726fb53f4102194f2ed8c4f4d58cb
+2025-04-10T17:45:27.6160950Z go version go1.24.2 linux/amd64
+2025-04-10T17:45:27.6161159Z 
+2025-04-10T17:45:27.6161429Z ##[group]go env
+2025-04-10T17:45:27.6270660Z AR='ar'
+2025-04-10T17:45:27.6270982Z CC='gcc'
+2025-04-10T17:45:27.6271320Z CGO_CFLAGS='-O2 -g'
+2025-04-10T17:45:27.6271691Z CGO_CPPFLAGS=''
+2025-04-10T17:45:27.6271918Z CGO_CXXFLAGS='-O2 -g'
+2025-04-10T17:45:27.6272157Z CGO_ENABLED='1'
+2025-04-10T17:45:27.6272361Z CGO_FFLAGS='-O2 -g'
+2025-04-10T17:45:27.6272595Z CGO_LDFLAGS='-O2 -g'
+2025-04-10T17:45:27.6272798Z CXX='g++'
+2025-04-10T17:45:27.6273045Z GCCGO='gccgo'
+2025-04-10T17:45:27.6273246Z GO111MODULE=''
+2025-04-10T17:45:27.6273474Z GOAMD64='v1'
+2025-04-10T17:45:27.6273700Z GOARCH='amd64'
+2025-04-10T17:45:27.6273884Z GOAUTH='netrc'
+2025-04-10T17:45:27.6274071Z GOBIN=''
+2025-04-10T17:45:27.6274281Z GOCACHE='/home/runner/.cache/go-build'
+2025-04-10T17:45:27.6274548Z GOCACHEPROG=''
+2025-04-10T17:45:27.6274736Z GODEBUG=''
+2025-04-10T17:45:27.6274936Z GOENV='/home/runner/.config/go/env'
+2025-04-10T17:45:27.6275181Z GOEXE=''
+2025-04-10T17:45:27.6275359Z GOEXPERIMENT=''
+2025-04-10T17:45:27.6275555Z GOFIPS140='off'
+2025-04-10T17:45:27.6275735Z GOFLAGS=''
+2025-04-10T17:45:27.6276562Z GOGCCFLAGS='-fPIC -m64 -pthread -Wl,--no-gc-sections -fmessage-length=0 -ffile-prefix-map=/tmp/go-build3278982963=/tmp/go-build -gno-record-gcc-switches'
+2025-04-10T17:45:27.6278154Z GOHOSTARCH='amd64'
+2025-04-10T17:45:27.6278373Z GOHOSTOS='linux'
+2025-04-10T17:45:27.6278570Z GOINSECURE=''
+2025-04-10T17:45:27.6278843Z GOMOD='/home/runner/work/terraform/terraform/go.mod'
+2025-04-10T17:45:27.6279379Z GOMODCACHE='/home/runner/go/pkg/mod'
+2025-04-10T17:45:27.6279635Z GONOPROXY=''
+2025-04-10T17:45:27.6280038Z GONOSUMDB=''
+2025-04-10T17:45:27.6280230Z GOOS='linux'
+2025-04-10T17:45:27.6280423Z GOPATH='/home/runner/go'
+2025-04-10T17:45:27.6280643Z GOPRIVATE=''
+2025-04-10T17:45:27.6280926Z GOPROXY='https://proxy.golang.org,direct'
+2025-04-10T17:45:27.6281264Z GOROOT='/opt/hostedtoolcache/go/1.24.2/x64'
+2025-04-10T17:45:27.6281553Z GOSUMDB='sum.golang.org'
+2025-04-10T17:45:27.6281773Z GOTELEMETRY='local'
+2025-04-10T17:45:27.6282027Z GOTELEMETRYDIR='/home/runner/.config/go/telemetry'
+2025-04-10T17:45:27.6282323Z GOTMPDIR=''
+2025-04-10T17:45:27.6282518Z GOTOOLCHAIN='auto'
+2025-04-10T17:45:27.6282855Z GOTOOLDIR='/opt/hostedtoolcache/go/1.24.2/x64/pkg/tool/linux_amd64'
+2025-04-10T17:45:27.6283207Z GOVCS=''
+2025-04-10T17:45:27.6283383Z GOVERSION='go1.24.2'
+2025-04-10T17:45:27.6283584Z GOWORK=''
+2025-04-10T17:45:27.6283779Z PKG_CONFIG='pkg-config'
+2025-04-10T17:45:27.6283919Z 
+2025-04-10T17:45:27.6284180Z ##[endgroup]
+2025-04-10T17:45:27.6457836Z ##[group]Run # We run tests for all packages from all modules in this repository.
+2025-04-10T17:45:27.6458473Z [36;1m# We run tests for all packages from all modules in this repository.[0m
+2025-04-10T17:45:27.6458935Z [36;1mfor dir in $(go list -m -f '{{.Dir}}' github.com/hashicorp/terraform/...); do[0m
+2025-04-10T17:45:27.6459307Z [36;1m    (cd $dir && go test -cover "./...")[0m
+2025-04-10T17:45:27.6459575Z [36;1mdone[0m
+2025-04-10T17:45:27.6511506Z shell: /usr/bin/bash -e {0}
+2025-04-10T17:45:27.6511757Z ##[endgroup]
+2025-04-10T17:45:32.2211391Z go: downloading github.com/hashicorp/cli v1.1.7
+2025-04-10T17:45:32.2233951Z go: downloading github.com/go-test/deep v1.0.3
+2025-04-10T17:45:32.2243702Z go: downloading github.com/mitchellh/colorstring v0.0.0-20190213212951-d06e56a500db
+2025-04-10T17:45:32.2336416Z go: downloading github.com/hashicorp/go-tfe v1.74.1
+2025-04-10T17:45:32.2748931Z go: downloading go.uber.org/mock v0.4.0
+2025-04-10T17:45:32.2754433Z go: downloading github.com/armon/circbuf v0.0.0-20190214190532-5111143e8da2
+2025-04-10T17:45:32.2810705Z go: downloading github.com/mitchellh/go-linereader v0.0.0-20190213213312-1b945b3263eb
+2025-04-10T17:45:32.2943533Z go: downloading github.com/hashicorp/jsonapi v1.3.2
+2025-04-10T17:45:32.3222741Z go: downloading github.com/Netflix/go-expect v0.0.0-20220104043353-73e0943537d2
+2025-04-10T17:45:32.3335659Z go: downloading github.com/hashicorp/go-getter v1.7.8
+2025-04-10T17:45:32.3754329Z go: downloading github.com/apparentlymart/go-shquot v0.0.1
+2025-04-10T17:45:32.3840110Z go: downloading github.com/apparentlymart/go-userdirs v0.0.0-20200915174352-b0c018a67c13
+2025-04-10T17:45:32.4149576Z go: downloading github.com/hashicorp/go-checkpoint v0.5.0
+2025-04-10T17:45:32.4150285Z go: downloading github.com/mattn/go-shellwords v1.0.12
+2025-04-10T17:45:32.4262248Z go: downloading go.opentelemetry.io/contrib/exporters/autoexport v0.45.0
+2025-04-10T17:45:32.4273930Z go: downloading go.opentelemetry.io/otel v1.34.0
+2025-04-10T17:45:32.4999141Z go: downloading go.opentelemetry.io/otel/sdk v1.31.0
+2025-04-10T17:45:32.5527585Z go: downloading go.opentelemetry.io/otel/trace v1.34.0
+2025-04-10T17:45:32.5531334Z go: downloading github.com/bgentry/speakeasy v0.1.0
+2025-04-10T17:45:32.5532103Z go: downloading github.com/chzyer/readline v0.0.0-20180603132655-2972be24d48e
+2025-04-10T17:45:32.5597321Z go: downloading github.com/kardianos/osext v0.0.0-20190222173326-2bc1f35cddc0
+2025-04-10T17:45:32.5651868Z go: downloading github.com/xlab/treeprint v0.0.0-20161029104018-1d6e34225557
+2025-04-10T17:45:32.5676071Z go: downloading github.com/posener/complete v1.2.3
+2025-04-10T17:45:32.5692000Z go: downloading github.com/pkg/browser v0.0.0-20240102092130-5ac0b6a4141c
+2025-04-10T17:45:32.5715270Z go: downloading github.com/masterzen/winrm v0.0.0-20200615185753-c42b5136ff88
+2025-04-10T17:45:32.5805583Z go: downloading github.com/xanzy/ssh-agent v0.3.3
+2025-04-10T17:45:32.5820578Z go: downloading github.com/packer-community/winrmcp v0.0.0-20221126162354-6e900dd2c68f
+2025-04-10T17:45:32.5904069Z go: downloading github.com/dylanmei/winrmtest v0.0.0-20210303004826-fbc9ae56efb6
+2025-04-10T17:45:32.6830230Z go: downloading golang.org/x/term v0.30.0
+2025-04-10T17:45:32.6837363Z go: downloading github.com/hashicorp/consul/api v1.13.0
+2025-04-10T17:45:32.6846980Z go: downloading github.com/hashicorp/go-azure-helpers v0.72.0
+2025-04-10T17:45:32.7317653Z go: downloading github.com/hashicorp/go-azure-sdk/resource-manager v0.20250131.1134653
+2025-04-10T17:45:32.7319519Z go: downloading github.com/hashicorp/go-azure-sdk/sdk v0.20250131.1134653
+2025-04-10T17:45:32.8336158Z go: downloading github.com/jackofallops/giovanni v0.28.0
+2025-04-10T17:45:32.8352148Z go: downloading github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.588
+2025-04-10T17:45:32.9325317Z go: downloading github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/sts v1.0.588
+2025-04-10T17:45:32.9634700Z go: downloading github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tag v1.0.233
+2025-04-10T17:45:32.9951055Z go: downloading github.com/tencentyun/cos-go-sdk-v5 v0.7.42
+2025-04-10T17:45:32.9952030Z go: downloading cloud.google.com/go/storage v1.30.1
+2025-04-10T17:45:33.0233551Z go: downloading google.golang.org/api v0.155.0
+2025-04-10T17:45:33.0509637Z go: downloading cloud.google.com/go v0.110.10
+2025-04-10T17:45:35.8290969Z go: downloading k8s.io/api v0.25.5
+2025-04-10T17:45:35.8291858Z go: downloading k8s.io/apimachinery v0.25.5
+2025-04-10T17:45:36.0382155Z go: downloading k8s.io/client-go v0.25.5
+2025-04-10T17:45:36.4620099Z go: downloading k8s.io/utils v0.0.0-20220728103510-ee6ede2d64ed
+2025-04-10T17:45:36.4621318Z go: downloading github.com/aliyun/alibaba-cloud-sdk-go v1.61.1501
+2025-04-10T17:45:42.8494921Z go: downloading github.com/aliyun/aliyun-oss-go-sdk v0.0.0-20190103054945-8205d1f41e70
+2025-04-10T17:45:42.8497730Z go: downloading github.com/aliyun/aliyun-tablestore-go-sdk v4.1.2+incompatible
+2025-04-10T17:45:42.8498534Z go: downloading github.com/jmespath/go-jmespath v0.4.0
+2025-04-10T17:45:42.9076466Z go: downloading github.com/lib/pq v1.10.3
+2025-04-10T17:45:42.9273266Z go: downloading github.com/aws/aws-sdk-go-v2 v1.36.0
+2025-04-10T17:45:43.0060279Z go: downloading github.com/aws/aws-sdk-go-v2/feature/s3/manager v1.17.22
+2025-04-10T17:45:43.0060988Z go: downloading github.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.16.27
+2025-04-10T17:45:43.0061453Z go: downloading github.com/aws/aws-sdk-go-v2/service/dynamodb v1.39.8
+2025-04-10T17:45:43.0584193Z go: downloading github.com/aws/aws-sdk-go-v2/service/s3 v1.75.2
+2025-04-10T17:45:43.1020273Z go: downloading github.com/aws/smithy-go v1.22.2
+2025-04-10T17:45:43.1481646Z go: downloading github.com/hashicorp/aws-sdk-go-base/v2 v2.0.0-beta.62
+2025-04-10T17:45:43.2118155Z go: downloading github.com/Masterminds/sprig/v3 v3.2.3
+2025-04-10T17:45:43.2126974Z go: downloading github.com/armon/go-radix v1.0.0
+2025-04-10T17:45:43.2258974Z go: downloading github.com/creack/pty v1.1.17
+2025-04-10T17:45:43.2265697Z go: downloading go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.46.1
+2025-04-10T17:45:43.2410593Z go: downloading golang.org/x/tools v0.31.0
+2025-04-10T17:45:43.2507132Z go: downloading github.com/aws/aws-sdk-go v1.44.122
+2025-04-10T17:45:45.4343935Z go: downloading github.com/bgentry/go-netrc v0.0.0-20140422174119-9fd32a8b3d3d
+2025-04-10T17:45:45.4346778Z go: downloading github.com/hashicorp/go-safetemp v1.0.0
+2025-04-10T17:45:45.4348187Z go: downloading github.com/klauspost/compress v1.15.11
+2025-04-10T17:45:45.4442008Z go: downloading github.com/mitchellh/go-testing-interface v1.14.1
+2025-04-10T17:45:45.4444795Z go: downloading github.com/ulikunitz/xz v0.5.10
+2025-04-10T17:45:45.4539800Z go: downloading github.com/google/go-querystring v1.1.0
+2025-04-10T17:45:45.4674816Z go: downloading golang.org/x/sync v0.12.0
+2025-04-10T17:45:45.4801512Z go: downloading golang.org/x/time v0.9.0
+2025-04-10T17:45:45.4905423Z go: downloading go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc v1.19.0
+2025-04-10T17:45:45.5016618Z go: downloading go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp v1.19.0
+2025-04-10T17:45:45.5148911Z go: downloading go.opentelemetry.io/otel/exporters/otlp/otlptrace v1.19.0
+2025-04-10T17:45:45.5354706Z go: downloading github.com/go-logr/logr v1.4.2
+2025-04-10T17:45:45.5565765Z go: downloading go.opentelemetry.io/otel/metric v1.34.0
+2025-04-10T17:45:45.5770797Z go: downloading github.com/mitchellh/copystructure v1.2.0
+2025-04-10T17:45:45.5840458Z go: downloading github.com/mitchellh/reflectwalk v1.0.2
+2025-04-10T17:45:45.5944309Z go: downloading github.com/dylanmei/iso8601 v0.1.0
+2025-04-10T17:45:45.5949112Z go: downloading github.com/nu7hatch/gouuid v0.0.0-20131221200532-179d4d0c4d8d
+2025-04-10T17:45:45.6042227Z go: downloading github.com/antchfx/xmlquery v1.3.5
+2025-04-10T17:45:45.6797450Z go: downloading github.com/gofrs/uuid v4.0.0+incompatible
+2025-04-10T17:45:45.6869468Z go: downloading github.com/Azure/go-ntlmssp v0.0.0-20200615164410-66371956d46c
+2025-04-10T17:45:45.6926218Z go: downloading github.com/ChrisTrenkamp/goxpath v0.0.0-20190607011252-c5096ec8773d
+2025-04-10T17:45:45.7947156Z go: downloading github.com/hashicorp/go-rootcerts v1.0.2
+2025-04-10T17:45:45.7948252Z go: downloading github.com/hashicorp/serf v0.9.6
+2025-04-10T17:45:45.8049029Z go: downloading github.com/mitchellh/mapstructure v1.5.0
+2025-04-10T17:45:45.8219335Z go: downloading software.sslmate.com/src/go-pkcs12 v0.4.0
+2025-04-10T17:45:45.8367275Z go: downloading github.com/clbanning/mxj v1.8.4
+2025-04-10T17:45:45.8543422Z go: downloading github.com/mozillazg/go-httpheader v0.3.0
+2025-04-10T17:45:45.9163782Z go: downloading cloud.google.com/go/compute/metadata v0.5.2
+2025-04-10T17:45:45.9291772Z go: downloading cloud.google.com/go/iam v1.1.5
+2025-04-10T17:45:45.9499221Z go: downloading github.com/googleapis/gax-go/v2 v2.12.0
+2025-04-10T17:45:45.9504251Z go: downloading k8s.io/klog/v2 v2.70.1
+2025-04-10T17:45:45.9641782Z go: downloading github.com/gogo/protobuf v1.3.2
+2025-04-10T17:45:46.2422565Z go: downloading github.com/google/gofuzz v1.1.0
+2025-04-10T17:45:46.2538087Z go: downloading github.com/imdario/mergo v0.3.13
+2025-04-10T17:45:46.2740670Z go: downloading github.com/spf13/pflag v1.0.5
+2025-04-10T17:45:46.2825786Z go: downloading github.com/json-iterator/go v1.1.12
+2025-04-10T17:45:46.2829615Z go: downloading github.com/modern-go/reflect2 v1.0.2
+2025-04-10T17:45:46.2931542Z go: downloading github.com/aws/aws-sdk-go-v2/internal/configsources v1.3.31
+2025-04-10T17:45:46.2955769Z go: downloading github.com/aws/aws-sdk-go-v2/service/internal/accept-encoding v1.12.2
+2025-04-10T17:45:46.3098595Z go: downloading github.com/aws/aws-sdk-go-v2/service/internal/endpoint-discovery v1.10.12
+2025-04-10T17:45:46.3100109Z go: downloading github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.6.8
+2025-04-10T17:45:46.3201889Z go: downloading github.com/aws/aws-sdk-go-v2/internal/v4a v1.3.31
+2025-04-10T17:45:46.3231355Z go: downloading github.com/aws/aws-sdk-go-v2/service/internal/checksum v1.5.5
+2025-04-10T17:45:46.3232790Z go: downloading github.com/aws/aws-sdk-go-v2/service/internal/presigned-url v1.12.12
+2025-04-10T17:45:46.3325772Z go: downloading github.com/aws/aws-sdk-go-v2/service/internal/s3shared v1.18.12
+2025-04-10T17:45:46.3378572Z go: downloading github.com/aws/aws-sdk-go-v2/config v1.29.4
+2025-04-10T17:45:46.3483981Z go: downloading github.com/aws/aws-sdk-go-v2/credentials v1.17.57
+2025-04-10T17:45:46.3682678Z go: downloading github.com/aws/aws-sdk-go-v2/service/iam v1.38.10
+2025-04-10T17:45:46.3685207Z go: downloading github.com/aws/aws-sdk-go-v2/service/sqs v1.37.12
+2025-04-10T17:45:46.3686252Z go: downloading github.com/aws/aws-sdk-go-v2/service/sso v1.24.14
+2025-04-10T17:45:46.3827138Z go: downloading github.com/aws/aws-sdk-go-v2/service/sts v1.33.12
+2025-04-10T17:45:46.4138805Z go: downloading github.com/hashicorp/go-multierror v1.1.1
+2025-04-10T17:45:46.4243885Z go: downloading github.com/hashicorp/terraform-plugin-log v0.9.0
+2025-04-10T17:45:46.4249307Z go: downloading go.opentelemetry.io/contrib/instrumentation/github.com/aws/aws-sdk-go-v2/otelaws v0.59.0
+2025-04-10T17:45:46.4581236Z go: downloading github.com/Masterminds/goutils v1.1.1
+2025-04-10T17:45:46.4595835Z go: downloading github.com/Masterminds/semver/v3 v3.2.0
+2025-04-10T17:45:46.4695298Z go: downloading github.com/huandu/xstrings v1.3.3
+2025-04-10T17:45:46.4720823Z go: downloading github.com/shopspring/decimal v1.3.1
+2025-04-10T17:45:46.4817960Z go: downloading github.com/spf13/cast v1.5.0
+2025-04-10T17:45:46.4913875Z go: downloading go.opentelemetry.io/proto/otlp v1.0.0
+2025-04-10T17:45:46.5024073Z go: downloading github.com/go-logr/stdr v1.2.2
+2025-04-10T17:45:46.5112125Z go: downloading go.opentelemetry.io/auto/sdk v1.1.0
+2025-04-10T17:45:46.5129669Z go: downloading github.com/antchfx/xpath v1.1.10
+2025-04-10T17:45:46.5130778Z go: downloading github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da
+2025-04-10T17:45:46.5244952Z go: downloading github.com/masterzen/simplexml v0.0.0-20190410153822-31eea3082786
+2025-04-10T17:45:46.5335489Z go: downloading github.com/armon/go-metrics v0.0.0-20180917152333-f0300d1749da
+2025-04-10T17:45:46.5345709Z go: downloading google.golang.org/genproto/googleapis/api v0.0.0-20241015192408-796eee8c2d53
+2025-04-10T17:45:46.5347617Z go: downloading go.opencensus.io v0.24.0
+2025-04-10T17:45:46.5472212Z go: downloading golang.org/x/xerrors v0.0.0-20220907171357-04be3eba64a2
+2025-04-10T17:45:46.5658439Z go: downloading go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.46.1
+2025-04-10T17:45:46.5875271Z go: downloading github.com/google/s2a-go v0.1.7
+2025-04-10T17:45:46.6001940Z go: downloading sigs.k8s.io/structured-merge-diff/v4 v4.2.3
+2025-04-10T17:45:46.6406650Z go: downloading sigs.k8s.io/json v0.0.0-20220713155537-f223a00ba0e2
+2025-04-10T17:45:46.6407778Z go: downloading gopkg.in/inf.v0 v0.9.1
+2025-04-10T17:45:46.6468472Z go: downloading sigs.k8s.io/yaml v1.2.0
+2025-04-10T17:45:46.6495012Z go: downloading github.com/Azure/go-autorest/autorest v0.11.30
+2025-04-10T17:45:46.6567116Z go: downloading github.com/Azure/go-autorest/autorest/adal v0.9.24
+2025-04-10T17:45:46.6963116Z go: downloading github.com/Azure/go-autorest v14.2.0+incompatible
+2025-04-10T17:45:46.7071784Z go: downloading github.com/google/gnostic v0.5.7-v3refs
+2025-04-10T17:45:46.7076957Z go: downloading gopkg.in/ini.v1 v1.66.2
+2025-04-10T17:45:46.7077967Z go: downloading github.com/aws/aws-sdk-go-v2/internal/endpoints/v2 v2.6.31
+2025-04-10T17:45:46.7244917Z go: downloading github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd
+2025-04-10T17:45:46.7260273Z go: downloading github.com/aws/aws-sdk-go-v2/internal/ini v1.8.2
+2025-04-10T17:45:46.7342940Z go: downloading github.com/aws/aws-sdk-go-v2/service/ssooidc v1.28.13
+2025-04-10T17:45:46.7398120Z go: downloading github.com/hashicorp/errwrap v1.1.0
+2025-04-10T17:45:46.7512902Z go: downloading github.com/aws/aws-sdk-go-v2/service/sns v1.33.12
+2025-04-10T17:45:46.7658326Z go: downloading github.com/cenkalti/backoff/v4 v4.2.1
+2025-04-10T17:45:46.7775532Z go: downloading github.com/grpc-ecosystem/grpc-gateway/v2 v2.16.0
+2025-04-10T17:45:46.8214904Z go: downloading github.com/hashicorp/go-immutable-radix v1.0.0
+2025-04-10T17:45:46.8369954Z go: downloading github.com/felixge/httpsnoop v1.0.4
+2025-04-10T17:45:46.8669154Z go: downloading github.com/googleapis/enterprise-certificate-proxy v0.3.2
+2025-04-10T17:45:46.8925020Z go: downloading gopkg.in/yaml.v2 v2.4.0
+2025-04-10T17:45:46.9081102Z go: downloading github.com/Azure/go-autorest/logger v0.2.2
+2025-04-10T17:45:46.9174094Z go: downloading github.com/Azure/go-autorest/tracing v0.6.1
+2025-04-10T17:45:46.9269609Z go: downloading github.com/Azure/go-autorest/autorest/date v0.3.1
+2025-04-10T17:45:46.9391807Z go: downloading github.com/golang-jwt/jwt/v4 v4.5.2
+2025-04-10T17:45:46.9392896Z go: downloading k8s.io/kube-openapi v0.0.0-20220803162953-67bda5d908f1
+2025-04-10T17:45:47.0728469Z go: downloading gopkg.in/yaml.v3 v3.0.1
+2025-04-10T17:45:47.0730508Z go: downloading github.com/hashicorp/golang-lru v0.5.1
+2025-04-10T17:45:47.0747163Z go: downloading github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822
+2025-04-10T17:45:47.0850425Z go: downloading github.com/emicklei/go-restful/v3 v3.8.0
+2025-04-10T17:45:47.0852379Z go: downloading github.com/go-openapi/swag v0.19.14
+2025-04-10T17:45:47.0900512Z go: downloading github.com/go-openapi/jsonreference v0.19.5
+2025-04-10T17:45:47.1006352Z go: downloading github.com/mailru/easyjson v0.7.6
+2025-04-10T17:45:47.1096692Z go: downloading github.com/PuerkitoBio/purell v1.1.1
+2025-04-10T17:45:47.1204178Z go: downloading github.com/go-openapi/jsonpointer v0.19.5
+2025-04-10T17:45:47.1229522Z go: downloading github.com/PuerkitoBio/urlesc v0.0.0-20170810143723-de5bf2ad4578
+2025-04-10T17:45:47.1230804Z go: downloading github.com/josharian/intern v1.0.0
+2025-04-10T17:45:52.9631694Z go: downloading github.com/hashicorp/terraform-plugin-sdk/v2 v2.36.1
+2025-04-10T17:45:53.0443388Z go: downloading github.com/hashicorp/go-cty v1.4.1
+2025-04-10T17:45:53.1025836Z go: downloading github.com/hashicorp/terraform-plugin-go v0.26.0
+2025-04-10T17:45:53.1027272Z go: downloading github.com/hashicorp/logutils v1.0.0
+2025-04-10T17:47:53.6759055Z ok  	github.com/hashicorp/terraform	0.074s	coverage: 35.5% of statements
+2025-04-10T17:47:55.1054091Z ok  	github.com/hashicorp/terraform/internal/addrs	0.031s	coverage: 57.1% of statements
+2025-04-10T17:47:55.1055324Z 	github.com/hashicorp/terraform/internal/backend		coverage: 0.0% of statements
+2025-04-10T17:47:55.1056997Z ok  	github.com/hashicorp/terraform/internal/backend/backendbase	0.008s	coverage: 63.6% of statements
+2025-04-10T17:47:55.9867827Z ok  	github.com/hashicorp/terraform/internal/backend/backendrun	0.038s	coverage: 69.2% of statements
+2025-04-10T17:48:00.0556532Z ok  	github.com/hashicorp/terraform/internal/backend/init	0.034s	coverage: 63.6% of statements
+2025-04-10T17:48:00.2577387Z ok  	github.com/hashicorp/terraform/internal/backend/local	0.232s	coverage: 55.1% of statements
+2025-04-10T17:48:00.6907714Z ok  	github.com/hashicorp/terraform/internal/backend/remote	0.631s	coverage: 72.8% of statements
+2025-04-10T17:48:07.1051511Z ok  	github.com/hashicorp/terraform/internal/backend/remote-state/http	7.099s	coverage: 72.3% of statements
+2025-04-10T17:48:07.1053230Z ok  	github.com/hashicorp/terraform/internal/backend/remote-state/inmem	0.009s	coverage: 91.4% of statements
+2025-04-10T17:48:07.1054820Z ok  	github.com/hashicorp/terraform/internal/builtin/providers/terraform	0.037s	coverage: 71.5% of statements
+2025-04-10T17:48:07.1056622Z ok  	github.com/hashicorp/terraform/internal/builtin/provisioners/file	0.006s	coverage: 30.1% of statements
+2025-04-10T17:48:07.1058230Z ok  	github.com/hashicorp/terraform/internal/builtin/provisioners/local-exec	0.065s	coverage: 86.6% of statements
+2025-04-10T17:48:07.1059915Z ok  	github.com/hashicorp/terraform/internal/builtin/provisioners/remote-exec	2.015s	coverage: 72.6% of statements
+2025-04-10T17:48:07.1061341Z ok  	github.com/hashicorp/terraform/internal/checks	0.016s	coverage: 53.1% of statements
+2025-04-10T17:48:14.3477875Z ok  	github.com/hashicorp/terraform/internal/cloud	5.710s	coverage: 68.5% of statements
+2025-04-10T17:48:14.3500306Z ok  	github.com/hashicorp/terraform/internal/cloud/cloudplan	0.009s	coverage: 79.2% of statements
+2025-04-10T17:48:58.6218251Z ok  	github.com/hashicorp/terraform/internal/cloud/e2e	50.227s	coverage: [no statements]
+2025-04-10T17:48:58.6219676Z ok  	github.com/hashicorp/terraform/internal/cloudplugin	0.029s	coverage: 77.5% of statements
+2025-04-10T17:48:58.6227851Z ok  	github.com/hashicorp/terraform/internal/cloudplugin/cloudplugin1	0.043s	coverage: 53.8% of statements
+2025-04-10T17:48:58.6374552Z 	github.com/hashicorp/terraform/internal/cloudplugin/cloudproto1		coverage: 0.0% of statements
+2025-04-10T17:48:58.6376967Z 	github.com/hashicorp/terraform/internal/cloudplugin/mock_cloudproto1		coverage: 0.0% of statements
+2025-04-10T17:48:58.6378540Z ok  	github.com/hashicorp/terraform/internal/collections	0.016s	coverage: 50.0% of statements
+2025-04-10T17:49:24.9813898Z ok  	github.com/hashicorp/terraform/internal/command	52.553s	coverage: 66.7% of statements
+2025-04-10T17:49:24.9817642Z ok  	github.com/hashicorp/terraform/internal/command/arguments	0.014s	coverage: 93.4% of statements
+2025-04-10T17:49:24.9818966Z ok  	github.com/hashicorp/terraform/internal/command/cliconfig	0.012s	coverage: 69.2% of statements
+2025-04-10T17:49:24.9819997Z ok  	github.com/hashicorp/terraform/internal/command/clistate	0.017s	coverage: 14.6% of statements
+2025-04-10T17:49:24.9821004Z ok  	github.com/hashicorp/terraform/internal/command/e2etest	29.013s	coverage: 0.0% of statements
+2025-04-10T17:49:24.9822041Z ok  	github.com/hashicorp/terraform/internal/command/format	0.018s	coverage: 82.5% of statements
+2025-04-10T17:49:24.9823110Z ok  	github.com/hashicorp/terraform/internal/command/jsonchecks	0.013s	coverage: 73.0% of statements
+2025-04-10T17:49:24.9824162Z ok  	github.com/hashicorp/terraform/internal/command/jsonconfig	0.024s	coverage: 20.9% of statements
+2025-04-10T17:49:24.9825598Z ok  	github.com/hashicorp/terraform/internal/command/jsonformat	0.176s	coverage: 57.5% of statements
+2025-04-10T17:49:24.9826890Z 	github.com/hashicorp/terraform/internal/command/jsonformat/collections		coverage: 0.0% of statements
+2025-04-10T17:49:24.9828013Z 	github.com/hashicorp/terraform/internal/command/jsonformat/computed		coverage: 0.0% of statements
+2025-04-10T17:49:24.9829173Z ok  	github.com/hashicorp/terraform/internal/command/jsonformat/computed/renderers	0.033s	coverage: 63.2% of statements
+2025-04-10T17:49:24.9830367Z ok  	github.com/hashicorp/terraform/internal/command/jsonformat/differ	0.062s	coverage: 87.2% of statements
+2025-04-10T17:49:24.9831609Z 	github.com/hashicorp/terraform/internal/command/jsonformat/jsondiff		coverage: 0.0% of statements
+2025-04-10T17:49:24.9832736Z 	github.com/hashicorp/terraform/internal/command/jsonformat/structured		coverage: 0.0% of statements
+2025-04-10T17:49:24.9833989Z ok  	github.com/hashicorp/terraform/internal/command/jsonformat/structured/attribute_path	0.005s	coverage: 42.0% of statements
+2025-04-10T17:49:24.9835198Z ok  	github.com/hashicorp/terraform/internal/command/jsonfunction	0.009s	coverage: 86.6% of statements
+2025-04-10T17:49:24.9836394Z ok  	github.com/hashicorp/terraform/internal/command/jsonplan	0.011s	coverage: 35.3% of statements
+2025-04-10T17:49:24.9837447Z ok  	github.com/hashicorp/terraform/internal/command/jsonprovider	0.010s	coverage: 70.4% of statements
+2025-04-10T17:49:24.9838470Z ok  	github.com/hashicorp/terraform/internal/command/jsonstate	0.011s	coverage: 73.3% of statements
+2025-04-10T17:49:24.9839431Z ok  	github.com/hashicorp/terraform/internal/command/junit	0.036s	coverage: 69.7% of statements
+2025-04-10T17:49:24.9840380Z 	github.com/hashicorp/terraform/internal/command/testing		coverage: 0.0% of statements
+2025-04-10T17:49:24.9841316Z ok  	github.com/hashicorp/terraform/internal/command/views	7.107s	coverage: 76.4% of statements
+2025-04-10T17:49:24.9842435Z ok  	github.com/hashicorp/terraform/internal/command/views/json	0.011s	coverage: 42.6% of statements
+2025-04-10T17:49:24.9843664Z ok  	github.com/hashicorp/terraform/internal/command/webbrowser	0.017s	coverage: 86.7% of statements
+2025-04-10T17:49:24.9844660Z ok  	github.com/hashicorp/terraform/internal/command/workdir	0.006s	coverage: 39.6% of statements
+2025-04-10T17:49:24.9845626Z ok  	github.com/hashicorp/terraform/internal/communicator	1.038s	coverage: 51.9% of statements
+2025-04-10T17:49:24.9846890Z ok  	github.com/hashicorp/terraform/internal/communicator/remote	0.002s	coverage: 0.0% of statements [no tests to run]
+2025-04-10T17:49:24.9848046Z ok  	github.com/hashicorp/terraform/internal/communicator/shared	0.004s	coverage: 100.0% of statements
+2025-04-10T17:49:24.9849336Z ok  	github.com/hashicorp/terraform/internal/communicator/ssh	2.313s	coverage: 39.4% of statements
+2025-04-10T17:49:24.9850386Z ok  	github.com/hashicorp/terraform/internal/communicator/winrm	0.018s	coverage: 77.5% of statements
+2025-04-10T17:49:24.9851382Z ok  	github.com/hashicorp/terraform/internal/configs	0.055s	coverage: 77.1% of statements
+2025-04-10T17:49:24.9852348Z ok  	github.com/hashicorp/terraform/internal/configs/configload	0.012s	coverage: 57.7% of statements
+2025-04-10T17:49:24.9853442Z ok  	github.com/hashicorp/terraform/internal/configs/configschema	0.013s	coverage: 84.7% of statements
+2025-04-10T17:49:24.9854516Z ok  	github.com/hashicorp/terraform/internal/configs/configtesting	0.002s	coverage: 72.4% of statements
+2025-04-10T17:49:24.9855547Z ok  	github.com/hashicorp/terraform/internal/configs/hcl2shim	0.013s	coverage: 84.5% of statements
+2025-04-10T17:49:24.9856641Z ok  	github.com/hashicorp/terraform/internal/copy	0.005s	coverage: 65.9% of statements
+2025-04-10T17:49:24.9857511Z ok  	github.com/hashicorp/terraform/internal/dag	0.577s	coverage: 84.2% of statements
+2025-04-10T17:49:24.9858392Z ok  	github.com/hashicorp/terraform/internal/depsfile	0.008s	coverage: 80.7% of statements
+2025-04-10T17:49:24.9859324Z ok  	github.com/hashicorp/terraform/internal/didyoumean	0.005s	coverage: 100.0% of statements
+2025-04-10T17:49:24.9860406Z 	github.com/hashicorp/terraform/internal/e2e		coverage: 0.0% of statements
+2025-04-10T17:49:24.9861284Z 	github.com/hashicorp/terraform/internal/experiments		coverage: 0.0% of statements
+2025-04-10T17:49:24.9862165Z ok  	github.com/hashicorp/terraform/internal/genconfig	0.007s	coverage: 51.9% of statements
+2025-04-10T17:49:24.9863076Z 	github.com/hashicorp/terraform/internal/getmodules		coverage: 0.0% of statements
+2025-04-10T17:49:24.9864080Z ok  	github.com/hashicorp/terraform/internal/getmodules/moduleaddrs	0.006s	coverage: 82.7% of statements
+2025-04-10T17:49:24.9865117Z ok  	github.com/hashicorp/terraform/internal/getproviders	4.099s	coverage: 73.3% of statements
+2025-04-10T17:49:24.9866349Z ok  	github.com/hashicorp/terraform/internal/getproviders/providerreqs	0.005s	coverage: 58.8% of statements
+2025-04-10T17:49:24.9867418Z 	github.com/hashicorp/terraform/internal/grpcwrap		coverage: 0.0% of statements
+2025-04-10T17:49:24.9868367Z ok  	github.com/hashicorp/terraform/internal/helper/slowmessage	0.106s	coverage: 100.0% of statements
+2025-04-10T17:49:24.9869372Z ok  	github.com/hashicorp/terraform/internal/httpclient	0.006s	coverage: 100.0% of statements
+2025-04-10T17:49:24.9870292Z ok  	github.com/hashicorp/terraform/internal/initwd	0.033s	coverage: 49.5% of statements
+2025-04-10T17:49:24.9871208Z ok  	github.com/hashicorp/terraform/internal/instances	0.010s	coverage: 83.4% of statements
+2025-04-10T17:49:24.9872104Z ok  	github.com/hashicorp/terraform/internal/ipaddr	0.003s	coverage: 90.8% of statements
+2025-04-10T17:49:24.9872950Z ok  	github.com/hashicorp/terraform/internal/lang	0.040s	coverage: 64.5% of statements
+2025-04-10T17:49:24.9873866Z ok  	github.com/hashicorp/terraform/internal/lang/blocktoattr	0.007s	coverage: 80.5% of statements
+2025-04-10T17:49:24.9874890Z ok  	github.com/hashicorp/terraform/internal/lang/ephemeral	0.004s	coverage: 74.4% of statements
+2025-04-10T17:49:24.9875826Z 	github.com/hashicorp/terraform/internal/lang/format		coverage: 0.0% of statements
+2025-04-10T17:49:24.9876887Z ok  	github.com/hashicorp/terraform/internal/lang/funcs	0.191s	coverage: 88.8% of statements
+2025-04-10T17:49:24.9877853Z ok  	github.com/hashicorp/terraform/internal/lang/globalref	0.022s	coverage: 60.0% of statements
+2025-04-10T17:49:24.9878825Z 	github.com/hashicorp/terraform/internal/lang/langrefs		coverage: 0.0% of statements
+2025-04-10T17:49:24.9879763Z ok  	github.com/hashicorp/terraform/internal/lang/marks	0.004s	coverage: 74.5% of statements
+2025-04-10T17:49:24.9880607Z ?   	github.com/hashicorp/terraform/internal/lang/types	[no test files]
+2025-04-10T17:49:24.9881452Z ok  	github.com/hashicorp/terraform/internal/logging	0.003s	coverage: 38.3% of statements
+2025-04-10T17:49:24.9882567Z 	github.com/hashicorp/terraform/internal/modsdir		coverage: 0.0% of statements
+2025-04-10T17:49:24.9883463Z ok  	github.com/hashicorp/terraform/internal/moduledeps	0.004s	coverage: 37.3% of statements
+2025-04-10T17:49:24.9884409Z ok  	github.com/hashicorp/terraform/internal/moduleref	0.007s	coverage: 90.3% of statements
+2025-04-10T17:49:24.9885456Z ok  	github.com/hashicorp/terraform/internal/moduletest	0.007s	coverage: 32.6% of statements
+2025-04-10T17:49:24.9886552Z ok  	github.com/hashicorp/terraform/internal/moduletest/graph	0.050s	coverage: 14.8% of statements
+2025-04-10T17:49:24.9887574Z ok  	github.com/hashicorp/terraform/internal/moduletest/hcl	0.010s	coverage: 80.5% of statements
+2025-04-10T17:49:24.9888563Z ok  	github.com/hashicorp/terraform/internal/moduletest/mocking	0.011s	coverage: 72.6% of statements
+2025-04-10T17:49:24.9889568Z ok  	github.com/hashicorp/terraform/internal/namedvals	0.003s	coverage: 33.8% of statements
+2025-04-10T17:49:24.9890452Z ok  	github.com/hashicorp/terraform/internal/plans	0.006s	coverage: 20.4% of statements
+2025-04-10T17:49:24.9891401Z ok  	github.com/hashicorp/terraform/internal/plans/deferring	0.005s	coverage: 43.8% of statements
+2025-04-10T17:49:24.9892400Z ok  	github.com/hashicorp/terraform/internal/plans/objchange	0.027s	coverage: 76.5% of statements
+2025-04-10T17:49:24.9893547Z ok  	github.com/hashicorp/terraform/internal/plans/planfile	0.018s	coverage: 68.3% of statements
+2025-04-10T17:49:24.9894540Z 	github.com/hashicorp/terraform/internal/plans/planproto		coverage: 0.0% of statements
+2025-04-10T17:49:24.9895458Z ok  	github.com/hashicorp/terraform/internal/plugin	0.019s	coverage: 52.8% of statements
+2025-04-10T17:49:24.9896587Z ok  	github.com/hashicorp/terraform/internal/plugin/convert	0.014s	coverage: 80.9% of statements
+2025-04-10T17:49:24.9897582Z ok  	github.com/hashicorp/terraform/internal/plugin/discovery	0.004s	coverage: 74.3% of statements
+2025-04-10T17:49:24.9898578Z 	github.com/hashicorp/terraform/internal/plugin/mock_proto		coverage: 0.0% of statements
+2025-04-10T17:49:24.9901268Z ok  	github.com/hashicorp/terraform/internal/plugin6	0.014s	coverage: 52.1% of statements
+2025-04-10T17:49:24.9902281Z ok  	github.com/hashicorp/terraform/internal/plugin6/convert	0.015s	coverage: 78.0% of statements
+2025-04-10T17:49:24.9903319Z 	github.com/hashicorp/terraform/internal/plugin6/mock_proto		coverage: 0.0% of statements
+2025-04-10T17:49:24.9904256Z ok  	github.com/hashicorp/terraform/internal/promising	0.004s	coverage: 87.4% of statements
+2025-04-10T17:49:24.9905216Z 	github.com/hashicorp/terraform/internal/provider-simple		coverage: 0.0% of statements
+2025-04-10T17:49:24.9906357Z 	github.com/hashicorp/terraform/internal/provider-simple/main		coverage: 0.0% of statements
+2025-04-10T17:49:24.9907325Z 	github.com/hashicorp/terraform/internal/provider-simple-v6		coverage: 0.0% of statements
+2025-04-10T17:49:24.9908320Z 	github.com/hashicorp/terraform/internal/provider-simple-v6/main		coverage: 0.0% of statements
+2025-04-10T17:49:24.9909378Z 	github.com/hashicorp/terraform/internal/provider-terraform/main		coverage: 0.0% of statements
+2025-04-10T17:49:24.9910407Z ok  	github.com/hashicorp/terraform/internal/providercache	0.062s	coverage: 71.1% of statements
+2025-04-10T17:49:24.9911338Z ok  	github.com/hashicorp/terraform/internal/providers	0.006s	coverage: 20.2% of statements
+2025-04-10T17:49:24.9912310Z 	github.com/hashicorp/terraform/internal/providers/testing		coverage: 0.0% of statements
+2025-04-10T17:49:24.9913372Z 	github.com/hashicorp/terraform/internal/provisioner-local-exec/main		coverage: 0.0% of statements
+2025-04-10T17:49:24.9914343Z 	github.com/hashicorp/terraform/internal/provisioners		coverage: 0.0% of statements
+2025-04-10T17:49:24.9915246Z ok  	github.com/hashicorp/terraform/internal/refactoring	0.050s	coverage: 82.0% of statements
+2025-04-10T17:49:25.6843921Z ok  	github.com/hashicorp/terraform/internal/registry	2.015s	coverage: 81.7% of statements
+2025-04-10T17:49:25.6845122Z ok  	github.com/hashicorp/terraform/internal/registry/regsrc	0.007s	coverage: 74.0% of statements
+2025-04-10T17:49:25.6847142Z ok  	github.com/hashicorp/terraform/internal/registry/response	0.003s	coverage: 95.7% of statements
+2025-04-10T17:49:25.6849028Z 	github.com/hashicorp/terraform/internal/registry/test		coverage: 0.0% of statements
+2025-04-10T17:49:25.6851303Z ok  	github.com/hashicorp/terraform/internal/releaseauth	0.005s	coverage: 79.2% of statements
+2025-04-10T17:49:25.8157845Z ok  	github.com/hashicorp/terraform/internal/repl	0.053s	coverage: 90.6% of statements
+2025-04-10T17:49:25.8162284Z 	github.com/hashicorp/terraform/internal/replacefile		coverage: 0.0% of statements
+2025-04-10T17:49:25.8163404Z ok  	github.com/hashicorp/terraform/internal/resources/ephemeral	0.035s	coverage: 71.3% of statements
+2025-04-10T17:49:30.7008521Z ok  	github.com/hashicorp/terraform/internal/rpcapi	0.182s	coverage: 55.3% of statements
+2025-04-10T17:49:30.7010125Z 	github.com/hashicorp/terraform/internal/rpcapi/dynrpcserver		coverage: 0.0% of statements
+2025-04-10T17:49:30.7011730Z 	github.com/hashicorp/terraform/internal/rpcapi/dynrpcserver/generator		coverage: 0.0% of statements
+2025-04-10T17:49:30.7013236Z 	github.com/hashicorp/terraform/internal/rpcapi/terraform1		coverage: 0.0% of statements
+2025-04-10T17:49:30.7018085Z 	github.com/hashicorp/terraform/internal/rpcapi/terraform1/dependencies		coverage: 0.0% of statements
+2025-04-10T17:49:30.7019584Z 	github.com/hashicorp/terraform/internal/rpcapi/terraform1/packages		coverage: 0.0% of statements
+2025-04-10T17:49:30.7020874Z 	github.com/hashicorp/terraform/internal/rpcapi/terraform1/setup		coverage: 0.0% of statements
+2025-04-10T17:49:30.7022130Z 	github.com/hashicorp/terraform/internal/rpcapi/terraform1/stacks		coverage: 0.0% of statements
+2025-04-10T17:49:30.7023294Z 	github.com/hashicorp/terraform/internal/schemarepo		coverage: 0.0% of statements
+2025-04-10T17:49:30.7024430Z 	github.com/hashicorp/terraform/internal/schemarepo/loadschemas		coverage: 0.0% of statements
+2025-04-10T17:49:31.0308001Z ok  	github.com/hashicorp/terraform/internal/stacks/stackaddrs	0.004s	coverage: 10.4% of statements
+2025-04-10T17:49:31.1622979Z ok  	github.com/hashicorp/terraform/internal/stacks/stackconfig	0.009s	coverage: 67.4% of statements
+2025-04-10T17:49:31.1627686Z 	github.com/hashicorp/terraform/internal/stacks/stackconfig/parser		coverage: 0.0% of statements
+2025-04-10T17:49:31.1629094Z 	github.com/hashicorp/terraform/internal/stacks/stackconfig/stackconfigtypes		coverage: 0.0% of statements
+2025-04-10T17:49:31.1630433Z 	github.com/hashicorp/terraform/internal/stacks/stackconfig/typeexpr		coverage: 0.0% of statements
+2025-04-10T17:49:35.6511001Z ok  	github.com/hashicorp/terraform/internal/stacks/stackmigrate	0.105s	coverage: 78.4% of statements
+2025-04-10T17:49:35.6514179Z ok  	github.com/hashicorp/terraform/internal/stacks/stackplan	0.025s	coverage: 25.9% of statements
+2025-04-10T17:49:37.7411261Z ok  	github.com/hashicorp/terraform/internal/stacks/stackruntime	1.271s	coverage: 87.0% of statements
+2025-04-10T17:49:37.7417106Z 	github.com/hashicorp/terraform/internal/stacks/stackruntime/hooks		coverage: 0.0% of statements
+2025-04-10T17:49:40.3895001Z ok  	github.com/hashicorp/terraform/internal/stacks/stackruntime/internal/stackeval	0.289s	coverage: 67.0% of statements
+2025-04-10T17:49:40.3898240Z 	github.com/hashicorp/terraform/internal/stacks/stackruntime/internal/stackeval/stubs		coverage: 0.0% of statements
+2025-04-10T17:49:40.3899912Z 	github.com/hashicorp/terraform/internal/stacks/stackruntime/testing		coverage: 0.0% of statements
+2025-04-10T17:49:40.3901431Z ok  	github.com/hashicorp/terraform/internal/stacks/stackstate	0.015s	coverage: 21.3% of statements
+2025-04-10T17:49:40.7082497Z ok  	github.com/hashicorp/terraform/internal/stacks/stackstate/statekeys	0.009s	coverage: 68.8% of statements
+2025-04-10T17:49:40.7084900Z 	github.com/hashicorp/terraform/internal/stacks/stackutils		coverage: 0.0% of statements
+2025-04-10T17:49:41.3829011Z ok  	github.com/hashicorp/terraform/internal/stacks/tfstackdata1	0.014s	coverage: 10.3% of statements
+2025-04-10T17:49:41.9351231Z ok  	github.com/hashicorp/terraform/internal/states	0.021s	coverage: 44.2% of statements
+2025-04-10T17:49:41.9454388Z ok  	github.com/hashicorp/terraform/internal/states/remote	0.034s	coverage: 49.4% of statements
+2025-04-10T17:49:41.9553823Z ok  	github.com/hashicorp/terraform/internal/states/statefile	0.019s	coverage: 63.6% of statements
+2025-04-10T17:49:44.3425000Z ok  	github.com/hashicorp/terraform/internal/states/statemgr	1.733s	coverage: 59.3% of statements
+2025-04-10T17:49:44.3426308Z ok  	github.com/hashicorp/terraform/internal/terminal	0.004s	coverage: 58.0% of statements
+2025-04-10T17:49:56.4667423Z ok  	github.com/hashicorp/terraform/internal/terraform	5.312s	coverage: 85.0% of statements
+2025-04-10T17:49:56.4668162Z ok  	github.com/hashicorp/terraform/internal/tfdiags	0.012s	coverage: 67.9% of statements
+2025-04-10T17:49:56.4668831Z 	github.com/hashicorp/terraform/internal/tfplugin5		coverage: 0.0% of statements
+2025-04-10T17:49:56.4669462Z 	github.com/hashicorp/terraform/internal/tfplugin6		coverage: 0.0% of statements
+2025-04-10T17:49:56.4670113Z 	github.com/hashicorp/terraform/tools/loggraphdiff		coverage: 0.0% of statements
+2025-04-10T17:49:56.4670763Z 	github.com/hashicorp/terraform/tools/protobuf-compile		coverage: 0.0% of statements
+2025-04-10T17:49:56.4671669Z ok  	github.com/hashicorp/terraform/version	0.002s	coverage: 35.0% of statements
+2025-04-10T17:49:58.2561196Z ok  	github.com/hashicorp/terraform/internal/backend/remote-state/azure	0.006s	coverage: 11.6% of statements
+2025-04-10T17:49:58.2811990Z go: downloading github.com/hashicorp/consul/sdk v0.8.0
+2025-04-10T17:49:58.3562947Z go: downloading github.com/pkg/errors v0.9.1
+2025-04-10T17:49:59.3812279Z ok  	github.com/hashicorp/terraform/internal/backend/remote-state/consul	0.005s	coverage: 0.0% of statements
+2025-04-10T17:50:00.3193087Z ok  	github.com/hashicorp/terraform/internal/backend/remote-state/cos	0.005s	coverage: 0.7% of statements
+2025-04-10T17:50:00.3405778Z go: downloading cloud.google.com/go/kms v1.15.5
+2025-04-10T17:50:02.3693746Z ok  	github.com/hashicorp/terraform/internal/backend/remote-state/gcs	0.009s	coverage: 9.6% of statements
+2025-04-10T17:50:04.0027271Z ok  	github.com/hashicorp/terraform/internal/backend/remote-state/kubernetes	0.013s	coverage: 1.2% of statements
+2025-04-10T17:50:04.9959526Z ok  	github.com/hashicorp/terraform/internal/backend/remote-state/oss	0.007s	coverage: 0.0% of statements
+2025-04-10T17:50:05.7012686Z ok  	github.com/hashicorp/terraform/internal/backend/remote-state/pg	0.005s	coverage: 0.0% of statements
+2025-04-10T17:50:08.9557870Z ok  	github.com/hashicorp/terraform/internal/backend/remote-state/s3	1.227s	coverage: 44.7% of statements
+2025-04-10T17:50:09.2907226Z ok  	github.com/hashicorp/terraform/internal/legacy/helper/hashcode	0.008s	coverage: 70.0% of statements
+2025-04-10T17:50:10.6691047Z ok  	github.com/hashicorp/terraform/internal/legacy/helper/schema	0.042s	coverage: 82.5% of statements
+2025-04-10T17:50:10.6691810Z ok  	github.com/hashicorp/terraform/internal/legacy/terraform	0.006s	coverage: 33.3% of statements
+2025-04-10T17:50:10.6898337Z Post job cleanup.
+2025-04-10T17:50:10.8459171Z [command]/opt/hostedtoolcache/go/1.24.2/x64/bin/go env GOMODCACHE
+2025-04-10T17:50:10.8498170Z [command]/opt/hostedtoolcache/go/1.24.2/x64/bin/go env GOCACHE
+2025-04-10T17:50:10.8522146Z /home/runner/go/pkg/mod
+2025-04-10T17:50:10.8546936Z /home/runner/.cache/go-build
+2025-04-10T17:50:10.8552339Z Cache hit occurred on the primary key setup-go-Linux-x64-ubuntu24-go-1.24.2-9a977ce11373b6d4d25f0812a6528ef1b8a726fb53f4102194f2ed8c4f4d58cb, not saving cache.
+2025-04-10T17:50:10.8681556Z Post job cleanup.
+2025-04-10T17:50:10.9653399Z [command]/usr/bin/git version
+2025-04-10T17:50:10.9693425Z git version 2.49.0
+2025-04-10T17:50:10.9747186Z Temporarily overriding HOME='/home/runner/work/_temp/e10b6c53-7f73-4af7-87ae-d6b6fcb32688' before making global git config changes
+2025-04-10T17:50:10.9748542Z Adding repository directory to the temporary git global config as a safe directory
+2025-04-10T17:50:10.9753804Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/terraform/terraform
+2025-04-10T17:50:10.9791363Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-04-10T17:50:10.9825367Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-04-10T17:50:11.0078130Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-10T17:50:11.0101533Z http.https://github.com/.extraheader
+2025-04-10T17:50:11.0114736Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2025-04-10T17:50:11.0145682Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-04-10T17:50:11.0499734Z Cleaning up orphan processes

@@ -1,0 +1,75 @@
+2025-04-13T09:14:42.6551410Z ##[group]Run source .venv/bin/activate
+2025-04-13T09:14:42.6551798Z [36;1msource .venv/bin/activate[0m
+2025-04-13T09:14:42.6552110Z [36;1mpytest --ruff --check-links ./ \[0m
+2025-04-13T09:14:42.6552624Z [36;1m  --check-links-ignore "https://platform.openai.com/*" \[0m
+2025-04-13T09:14:42.6553060Z [36;1m  --check-links-ignore "https://openai.com/*" \[0m
+2025-04-13T09:14:42.6553459Z [36;1m  --check-links-ignore "https://arena.lmsys.org" \[0m
+2025-04-13T09:14:42.6553892Z [36;1m  --check-links-ignore "https://unsloth.ai/blog/gradient" \[0m
+2025-04-13T09:14:42.6554312Z [36;1m  --check-links-ignore "https://www.reddit.com/r/*" \[0m
+2025-04-13T09:14:42.6554904Z [36;1m  --check-links-ignore "https://code.visualstudio.com/*" \[0m
+2025-04-13T09:14:42.6555304Z [36;1m  --check-links-ignore "https://arxiv.org/*" \[0m
+2025-04-13T09:14:42.6555745Z [36;1m  --check-links-ignore "https://ai.stanford.edu/~amaas/data/sentiment/" \[0m
+2025-04-13T09:14:42.6556187Z [36;1m  --check-links-ignore "https://x.com/*" \[0m
+2025-04-13T09:14:42.6556596Z [36;1m  --check-links-ignore "https://scholar.google.com/*"[0m
+2025-04-13T09:14:42.6607269Z shell: /usr/bin/bash -e {0}
+2025-04-13T09:14:42.6607537Z env:
+2025-04-13T09:14:42.6607816Z   pythonLocation: /opt/hostedtoolcache/Python/3.10.16/x64
+2025-04-13T09:14:42.6608295Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.10.16/x64/lib/pkgconfig
+2025-04-13T09:14:42.6608753Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.10.16/x64
+2025-04-13T09:14:42.6609162Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.10.16/x64
+2025-04-13T09:14:42.6609573Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.10.16/x64
+2025-04-13T09:14:42.6609991Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.10.16/x64/lib
+2025-04-13T09:14:42.6610513Z ##[endgroup]
+2025-04-13T09:14:52.5445887Z ============================= test session starts ==============================
+2025-04-13T09:14:52.5446658Z platform linux -- Python 3.10.16, pytest-8.3.5, pluggy-1.5.0
+2025-04-13T09:14:52.5447244Z rootdir: /home/runner/work/LLMs-from-scratch/LLMs-from-scratch
+2025-04-13T09:14:52.5447819Z configfile: pyproject.toml
+2025-04-13T09:14:52.5448251Z plugins: ruff-0.4.1, anyio-4.9.0, pytest_check_links-0.10.1
+2025-04-13T09:14:52.5448768Z collected 1004 items / 1 error
+2025-04-13T09:14:52.5449018Z 
+2025-04-13T09:14:52.5449201Z ==================================== ERRORS ====================================
+2025-04-13T09:14:52.5449842Z _____ ERROR collecting ch05/01_main-chapter-code/exercise-solutions.ipynb ______
+2025-04-13T09:14:52.5450922Z .venv/lib/python3.10/site-packages/nbformat/__init__.py:169: in read
+2025-04-13T09:14:52.5451467Z     buf = fp.read()
+2025-04-13T09:14:52.5451919Z E   AttributeError: 'str' object has no attribute 'read'
+2025-04-13T09:14:52.5452263Z 
+2025-04-13T09:14:52.5452543Z During handling of the above exception, another exception occurred:
+2025-04-13T09:14:52.5453237Z .venv/lib/python3.10/site-packages/nbformat/reader.py:19: in parse_json
+2025-04-13T09:14:52.5453845Z     nb_dict = json.loads(s, **kwargs)
+2025-04-13T09:14:52.5454496Z /opt/hostedtoolcache/Python/3.10.16/x64/lib/python3.10/json/__init__.py:346: in loads
+2025-04-13T09:14:52.5455175Z     return _default_decoder.decode(s)
+2025-04-13T09:14:52.5455807Z /opt/hostedtoolcache/Python/3.10.16/x64/lib/python3.10/json/decoder.py:337: in decode
+2025-04-13T09:14:52.5456505Z     obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+2025-04-13T09:14:52.5457215Z /opt/hostedtoolcache/Python/3.10.16/x64/lib/python3.10/json/decoder.py:353: in raw_decode
+2025-04-13T09:14:52.5457888Z     obj, end = self.scan_once(s, idx)
+2025-04-13T09:14:52.5458514Z E   json.decoder.JSONDecodeError: Expecting ',' delimiter: line 272 column 5 (char 8182)
+2025-04-13T09:14:52.5459064Z 
+2025-04-13T09:14:52.5459344Z The above exception was the direct cause of the following exception:
+2025-04-13T09:14:52.5460106Z .venv/lib/python3.10/site-packages/pytest_check_links/plugin.py:206: in collect
+2025-04-13T09:14:52.5460952Z     for item in self._items_from_notebook():
+2025-04-13T09:14:52.5462031Z .venv/lib/python3.10/site-packages/pytest_check_links/plugin.py:183: in _items_from_notebook
+2025-04-13T09:14:52.5462889Z     nb = nbformat.read(str(self.path), as_version=4)  # type:ignore[no-untyped-call]
+2025-04-13T09:14:52.5463630Z .venv/lib/python3.10/site-packages/nbformat/__init__.py:172: in read
+2025-04-13T09:14:52.5464320Z     return reads(f.read(), as_version, capture_validation_error, **kwargs)
+2025-04-13T09:14:52.5465076Z .venv/lib/python3.10/site-packages/nbformat/__init__.py:92: in reads
+2025-04-13T09:14:52.5465671Z     nb = reader.reads(s, **kwargs)
+2025-04-13T09:14:52.5466222Z .venv/lib/python3.10/site-packages/nbformat/reader.py:75: in reads
+2025-04-13T09:14:52.5467016Z     nb_dict = parse_json(s, **kwargs)
+2025-04-13T09:14:52.5467568Z .venv/lib/python3.10/site-packages/nbformat/reader.py:25: in parse_json
+2025-04-13T09:14:52.5468159Z     raise NotJSONError(message) from e
+2025-04-13T09:14:52.5468889Z E   nbformat.reader.NotJSONError: Notebook does not appear to be JSON: '{\n "cells": [\n  {\n   "cell_type": "m...
+2025-04-13T09:14:52.5469689Z =============================== warnings summary ===============================
+2025-04-13T09:14:52.5470433Z .venv/lib/python3.10/site-packages/jupyter_client/connect.py:22
+2025-04-13T09:14:52.5471811Z   /home/runner/work/LLMs-from-scratch/LLMs-from-scratch/.venv/lib/python3.10/site-packages/jupyter_client/connect.py:22: DeprecationWarning: Jupyter is migrating its paths to use standard platformdirs
+2025-04-13T09:14:52.5473199Z   given by the platformdirs library.  To remove this warning and
+2025-04-13T09:14:52.5473857Z   see the appropriate new directories, set the environment variable
+2025-04-13T09:14:52.5474484Z   `JUPYTER_PLATFORM_DIRS=1` and then run `jupyter --paths`.
+2025-04-13T09:14:52.5475088Z   The use of platformdirs will be the default in `jupyter_core` v6
+2025-04-13T09:14:52.5475765Z     from jupyter_core.paths import jupyter_data_dir, jupyter_runtime_dir, secure_write
+2025-04-13T09:14:52.5476238Z 
+2025-04-13T09:14:52.5476539Z -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+2025-04-13T09:14:52.5477194Z =========================== short test summary info ============================
+2025-04-13T09:14:52.5478300Z ERROR ch05/01_main-chapter-code/exercise-solutions.ipynb - nbformat.reader.NotJSONError: Notebook does not appear to be JSON: '{\n "cells": [\n  {\n   "cell_type": "m...
+2025-04-13T09:14:52.5479421Z !!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+2025-04-13T09:14:52.5479963Z ========================= 1 warning, 1 error in 9.03s ==========================
+2025-04-13T09:14:53.0374654Z ##[error]Process completed with exit code 2.

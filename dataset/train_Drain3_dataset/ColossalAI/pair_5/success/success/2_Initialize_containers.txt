@@ -1,0 +1,83 @@
+2025-04-09T08:35:55.5083898Z ##[group]Checking docker version
+2025-04-09T08:35:55.5120442Z ##[command]/usr/bin/docker version --format '{{.Server.APIVersion}}'
+2025-04-09T08:35:55.5692056Z '1.41'
+2025-04-09T08:35:55.5716586Z Docker daemon API version: '1.41'
+2025-04-09T08:35:55.5718081Z ##[command]/usr/bin/docker version --format '{{.Client.APIVersion}}'
+2025-04-09T08:35:55.6284288Z '1.41'
+2025-04-09T08:35:55.6312933Z Docker client API version: '1.41'
+2025-04-09T08:35:55.6323696Z ##[endgroup]
+2025-04-09T08:35:55.6329258Z ##[group]Clean up resources from previous jobs
+2025-04-09T08:35:55.6341489Z ##[command]/usr/bin/docker ps --all --quiet --no-trunc --filter "label=81704a"
+2025-04-09T08:35:55.6725632Z ##[command]/usr/bin/docker network prune --force --filter "label=81704a"
+2025-04-09T08:35:55.7098381Z ##[endgroup]
+2025-04-09T08:35:55.7099342Z ##[group]Create local container network
+2025-04-09T08:35:55.7126124Z ##[command]/usr/bin/docker network create --label 81704a github_network_c74b273066c146019573fb4eef6f5f56
+2025-04-09T08:35:55.8127391Z ba9e1045bee38210a27be58507ad978e96161f5960f4e595766a66b4554480ac
+2025-04-09T08:35:55.8163727Z ##[endgroup]
+2025-04-09T08:35:55.8226302Z ##[group]Starting job container
+2025-04-09T08:35:55.8284969Z ##[command]/usr/bin/docker pull image-cloud.luchentech.com/hpcaitech/pytorch-cuda:2.2.2-12.1.0
+2025-04-09T08:35:56.3538283Z 2.2.2-12.1.0: Pulling from hpcaitech/pytorch-cuda
+2025-04-09T08:35:56.3562048Z Digest: sha256:c2a777c1361b156ea23925ab311db35b1b450443d25dc292205058aeffea7e64
+2025-04-09T08:35:56.3563656Z Status: Image is up to date for image-cloud.luchentech.com/hpcaitech/pytorch-cuda:2.2.2-12.1.0
+2025-04-09T08:35:56.8726060Z image-cloud.luchentech.com/hpcaitech/pytorch-cuda:2.2.2-12.1.0
+2025-04-09T08:35:56.8942621Z ##[command]/usr/bin/docker create --name 2583feb249aa4bfb8daae53a1abe2c38_imagecloudluchentechcomhpcaitechpytorchcuda2221210_13ad91 --label 81704a --workdir /__w/ColossalAI/ColossalAI --network github_network_c74b273066c146019573fb4eef6f5f56 --gpus all --rm -v /dev/shm -v /data/scratch:/data/scratch -e "HTTP_PROXY=http://vpn.luchentech.com:32171" -e "http_proxy=http://vpn.luchentech.com:32171" -e "HTTPS_PROXY=http://vpn.luchentech.com:32171" -e "https_proxy=http://vpn.luchentech.com:32171" -e "HOME=/github/home" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/root/actions-runner/github-gpu":"/__w" -v "/root/actions-runner/externals":"/__e":ro -v "/root/actions-runner/github-gpu/_temp":"/__w/_temp" -v "/root/actions-runner/github-gpu/_actions":"/__w/_actions" -v "/root/actions-runner/github-gpu/_tool":"/__w/_tool" -v "/root/actions-runner/github-gpu/_temp/_github_home":"/github/home" -v "/root/actions-runner/github-gpu/_temp/_github_workflow":"/github/workflow" --entrypoint "tail" image-cloud.luchentech.com/hpcaitech/pytorch-cuda:2.2.2-12.1.0 "-f" "/dev/null"
+2025-04-09T08:35:56.9953865Z 9daa72d486d4c7cbe58951097510b8b2c5c665f16c02d898cfc8ae779999a54b
+2025-04-09T08:35:57.0005837Z ##[command]/usr/bin/docker start 9daa72d486d4c7cbe58951097510b8b2c5c665f16c02d898cfc8ae779999a54b
+2025-04-09T08:36:33.4437092Z 9daa72d486d4c7cbe58951097510b8b2c5c665f16c02d898cfc8ae779999a54b
+2025-04-09T08:36:33.4484323Z ##[command]/usr/bin/docker ps --all --filter id=9daa72d486d4c7cbe58951097510b8b2c5c665f16c02d898cfc8ae779999a54b --filter status=running --no-trunc --format "{{.ID}} {{.Status}}"
+2025-04-09T08:36:33.4846340Z 9daa72d486d4c7cbe58951097510b8b2c5c665f16c02d898cfc8ae779999a54b Up Less than a second
+2025-04-09T08:36:33.4880480Z ##[command]/usr/bin/docker inspect --format "{{range .Config.Env}}{{println .}}{{end}}" 9daa72d486d4c7cbe58951097510b8b2c5c665f16c02d898cfc8ae779999a54b
+2025-04-09T08:36:33.5367806Z HTTP_PROXY=http://vpn.luchentech.com:32171
+2025-04-09T08:36:33.5369221Z http_proxy=http://vpn.luchentech.com:32171
+2025-04-09T08:36:33.5370660Z HTTPS_PROXY=http://vpn.luchentech.com:32171
+2025-04-09T08:36:33.5371994Z https_proxy=http://vpn.luchentech.com:32171
+2025-04-09T08:36:33.5373101Z HOME=/github/home
+2025-04-09T08:36:33.5374099Z GITHUB_ACTIONS=true
+2025-04-09T08:36:33.5375853Z CI=true
+2025-04-09T08:36:33.5377969Z PATH=/opt/conda/envs/pytorch/bin:/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+2025-04-09T08:36:33.5380136Z NVARCH=x86_64
+2025-04-09T08:36:33.5387630Z NVIDIA_REQUIRE_CUDA=cuda>=12.1 brand=tesla,driver>=470,driver<471 brand=unknown,driver>=470,driver<471 brand=nvidia,driver>=470,driver<471 brand=nvidiartx,driver>=470,driver<471 brand=geforce,driver>=470,driver<471 brand=geforcertx,driver>=470,driver<471 brand=quadro,driver>=470,driver<471 brand=quadrortx,driver>=470,driver<471 brand=titan,driver>=470,driver<471 brand=titanrtx,driver>=470,driver<471 brand=tesla,driver>=525,driver<526 brand=unknown,driver>=525,driver<526 brand=nvidia,driver>=525,driver<526 brand=nvidiartx,driver>=525,driver<526 brand=geforce,driver>=525,driver<526 brand=geforcertx,driver>=525,driver<526 brand=quadro,driver>=525,driver<526 brand=quadrortx,driver>=525,driver<526 brand=titan,driver>=525,driver<526 brand=titanrtx,driver>=525,driver<526
+2025-04-09T08:36:33.5395186Z NV_CUDA_CUDART_VERSION=12.1.55-1
+2025-04-09T08:36:33.5396395Z NV_CUDA_COMPAT_PACKAGE=cuda-compat-12-1
+2025-04-09T08:36:33.5397634Z CUDA_VERSION=12.1.0
+2025-04-09T08:36:33.5398758Z LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+2025-04-09T08:36:33.5400312Z NVIDIA_VISIBLE_DEVICES=all
+2025-04-09T08:36:33.5401410Z NVIDIA_DRIVER_CAPABILITIES=compute,utility
+2025-04-09T08:36:33.5402547Z NV_CUDA_LIB_VERSION=12.1.0-1
+2025-04-09T08:36:33.5403551Z NV_NVTX_VERSION=12.1.66-1
+2025-04-09T08:36:33.5404564Z NV_LIBNPP_VERSION=12.0.2.50-1
+2025-04-09T08:36:33.5405661Z NV_LIBNPP_PACKAGE=libnpp-12-1=12.0.2.50-1
+2025-04-09T08:36:33.5406842Z NV_LIBCUSPARSE_VERSION=12.0.2.55-1
+2025-04-09T08:36:33.5407983Z NV_LIBCUBLAS_PACKAGE_NAME=libcublas-12-1
+2025-04-09T08:36:33.5409175Z NV_LIBCUBLAS_VERSION=12.1.0.26-1
+2025-04-09T08:36:33.5410330Z NV_LIBCUBLAS_PACKAGE=libcublas-12-1=12.1.0.26-1
+2025-04-09T08:36:33.5411569Z NV_LIBNCCL_PACKAGE_NAME=libnccl2
+2025-04-09T08:36:33.5412733Z NV_LIBNCCL_PACKAGE_VERSION=2.17.1-1
+2025-04-09T08:36:33.5413797Z NCCL_VERSION=2.17.1-1
+2025-04-09T08:36:33.5414859Z NV_LIBNCCL_PACKAGE=libnccl2=2.17.1-1+cuda12.1
+2025-04-09T08:36:33.5416029Z NVIDIA_PRODUCT_NAME=CUDA
+2025-04-09T08:36:33.5417504Z NVIDIA_CUDA_END_OF_LIFE=1
+2025-04-09T08:36:33.5418566Z NV_CUDA_CUDART_DEV_VERSION=12.1.55-1
+2025-04-09T08:36:33.5419739Z NV_NVML_DEV_VERSION=12.1.55-1
+2025-04-09T08:36:33.5420756Z NV_LIBCUSPARSE_DEV_VERSION=12.0.2.55-1
+2025-04-09T08:36:33.5421905Z NV_LIBNPP_DEV_VERSION=12.0.2.50-1
+2025-04-09T08:36:33.5423107Z NV_LIBNPP_DEV_PACKAGE=libnpp-dev-12-1=12.0.2.50-1
+2025-04-09T08:36:33.5424341Z NV_LIBCUBLAS_DEV_VERSION=12.1.0.26-1
+2025-04-09T08:36:33.5425552Z NV_LIBCUBLAS_DEV_PACKAGE_NAME=libcublas-dev-12-1
+2025-04-09T08:36:33.5426839Z NV_LIBCUBLAS_DEV_PACKAGE=libcublas-dev-12-1=12.1.0.26-1
+2025-04-09T08:36:33.5428133Z NV_CUDA_NSIGHT_COMPUTE_VERSION=12.1.0-1
+2025-04-09T08:36:33.5429776Z NV_CUDA_NSIGHT_COMPUTE_DEV_PACKAGE=cuda-nsight-compute-12-1=12.1.0-1
+2025-04-09T08:36:33.5430986Z NV_NVPROF_VERSION=12.1.55-1
+2025-04-09T08:36:33.5431708Z NV_NVPROF_DEV_PACKAGE=cuda-nvprof-12-1=12.1.55-1
+2025-04-09T08:36:33.5432483Z NV_LIBNCCL_DEV_PACKAGE_NAME=libnccl-dev
+2025-04-09T08:36:33.5433160Z NV_LIBNCCL_DEV_PACKAGE_VERSION=2.17.1-1
+2025-04-09T08:36:33.5433949Z NV_LIBNCCL_DEV_PACKAGE=libnccl-dev=2.17.1-1+cuda12.1
+2025-04-09T08:36:33.5434747Z LIBRARY_PATH=/usr/local/cuda/lib64/stubs
+2025-04-09T08:36:33.5435457Z NV_CUDNN_VERSION=8.9.0.131
+2025-04-09T08:36:33.5436098Z NV_CUDNN_PACKAGE_NAME=libcudnn8
+2025-04-09T08:36:33.5436770Z NV_CUDNN_PACKAGE=libcudnn8=8.9.0.131-1+cuda12.1
+2025-04-09T08:36:33.5437591Z NV_CUDNN_PACKAGE_DEV=libcudnn8-dev=8.9.0.131-1+cuda12.1
+2025-04-09T08:36:33.5438347Z CUDA_HOME=/usr/local/cuda
+2025-04-09T08:36:33.5451339Z ##[endgroup]
+2025-04-09T08:36:33.5469725Z ##[group]Waiting for all services to be ready
+2025-04-09T08:36:33.5472495Z ##[endgroup]

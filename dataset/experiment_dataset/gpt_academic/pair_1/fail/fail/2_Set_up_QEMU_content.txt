@@ -1,0 +1,234 @@
+docker/setup-qemu-action@v3
+
+image: docker.io/tonistiigi/binfmt:latest
+platforms: all
+cache-image:
+
+REGISTRY: ghcr.io
+IMAGE_NAME: binary-husky/gpt_academic_with_latex_arm
+##[endgroup]
+##[group]Docker info
+[command]/usr/bin/docker version
+Client: Docker Engine - Community
+Version:           26.1.3
+API version:       1.45
+Go version:        go1.21.10
+Git commit:        b72abbb
+Built:             Thu May 16 08:33:35 2024
+OS/Arch:           linux/amd64
+Context:           default
+2025-02-09T12:27:12.4076427Z
+Server: Docker Engine - Community
+Engine:
+Version:          26.1.3
+API version:      1.45 (minimum version 1.24)
+Go version:       go1.21.10
+Git commit:       8e96db1
+Built:            Thu May 16 08:33:35 2024
+OS/Arch:          linux/amd64
+Experimental:
+containerd:
+Version:          1.7.25
+GitCommit:        bcc810d6b9066471b0b6fa75f557a15a1cbf31bb
+runc:
+Version:          1.2.4
+GitCommit:        v1.2.4-0-g6c52b3f
+docker-init:
+Version:          0.19.0
+GitCommit:        de40ad0
+[command]/usr/bin/docker info
+Client: Docker Engine - Community
+Version:    26.1.3
+Context:    default
+Debug Mode: false
+Plugins:
+buildx: Docker Buildx (Docker Inc.)
+Version:  v0.20.1
+Path:     /usr/libexec/docker/cli-plugins/docker-buildx
+compose: Docker Compose (Docker Inc.)
+Version:  v2.27.1
+Path:     /usr/libexec/docker/cli-plugins/docker-compose
+2025-02-09T12:27:15.2477458Z
+Server:
+Containers: 0
+Running: 0
+Paused: 0
+Stopped: 0
+Images: 0
+Server Version: 26.1.3
+Storage Driver: overlay2
+Backing Filesystem: extfs
+Supports d_type: true
+Using metacopy: false
+Native Overlay Diff: false
+userxattr:
+Logging Driver: json-file
+Cgroup Driver: systemd
+Cgroup Version: 2
+Plugins:
+Volume: local
+Network: bridge host ipvlan macvlan null overlay
+Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+Swarm: inactive
+Runtimes: io.containerd.runc.v2 runc
+Default Runtime: runc
+Init Binary: docker-init
+containerd version: bcc810d6b9066471b0b6fa75f557a15a1cbf31bb
+runc version: v1.2.4-0-g6c52b3f
+init version: de40ad0
+Security Options:
+apparmor
+seccomp
+Profile: builtin
+cgroupns
+Kernel Version: 6.8.0-1020-azure
+Operating System: Ubuntu 24.04.1 LTS
+OSType: linux
+Architecture: x86_64
+CPUs: 4
+Total Memory: 15.62GiB
+Name: fv-az1390-435
+ID: 5da1e875-f4d9-42c6-906c-34f1b814e6b3
+Docker Root Dir: /var/lib/docker
+Debug Mode: false
+Username: githubactions
+Experimental:
+Insecure Registries:
+127.0.0.0/8
+Live Restore Enabled: false
+2025-02-09T12:27:15.2501229Z
+##[endgroup]
+##[group]Pulling binfmt Docker image
+Cache Size: ~23 MB (23958968 B)
+[command]/usr/bin/tar -xf /home/runner/work/_temp/3b8af839-f0b8-4c48-8823-10c2ecfc6801/cache.tzst -P -C /home/runner/work/gpt_academic/gpt_academic --use-compress-program unzstd
+Cache restored successfully
+Restored docker.io--tonistiigi--binfmt-latest-linux-x64 from GitHub Actions cache
+Cached to hosted tool cache /opt/hostedtoolcache/docker.io--tonistiigi--binfmt/latest/linux-x64
+Image found from cache in /home/runner/.docker/.cache/images/docker.io--tonistiigi--binfmt/latest/linux-x64/image.tar
+[command]/usr/bin/docker load -i /home/runner/.docker/.cache/images/docker.io--tonistiigi--binfmt/latest/linux-x64/image.tar
+Loaded image: tonistiigi/binfmt:latest
+[command]/usr/bin/docker pull docker.io/tonistiigi/binfmt:latest
+Received 23958968 of 23958968 (100.0%), 22.8 MBs/sec
+latest: Pulling from tonistiigi/binfmt
+66e11bea77a5ea9d6f0fe79b57cd2b189b5d15b93a2bdb925be22949232e4e55
+Status: Image is up to date for tonistiigi/binfmt:latest
+docker.io/tonistiigi/binfmt:latest
+[command]/usr/bin/docker save -o /home/runner/work/_temp/docker-actions-toolkit-GKt0Pi/749e64100d3fa0c09bdbc8a02e4fb9cb3ee64266f7f661c98371040689abacb3.tar docker.io/tonistiigi/binfmt:latest
+Image cached to /home/runner/.docker/.cache/images/docker.io--tonistiigi--binfmt/latest/linux-x64/image.tar
+##[endgroup]
+##[group]Image info
+[command]/usr/bin/docker image inspect docker.io/tonistiigi/binfmt:latest
+[
+{
+"Id": "sha256:354472a378935adfe74a19600b89bd9ada7bb058306fff23b3d6613405852faf",
+"RepoTags": [
+"tonistiigi/binfmt:latest"
+],
+"RepoDigests": [
+"tonistiigi/binfmt@sha256:66e11bea77a5ea9d6f0fe79b57cd2b189b5d15b93a2bdb925be22949232e4e55"
+],
+"Parent": "",
+"Comment": "buildkit.dockerfile.v0",
+"Created": "2022-08-02T19:13:20.178433831Z",
+"DockerVersion": "",
+"Author": "",
+"Config": {
+"Hostname": "",
+"Domainname": "",
+"User": "",
+"AttachStdin": false,
+"AttachStdout": false,
+"AttachStderr": false,
+"Tty": false,
+"OpenStdin": false,
+"StdinOnce": false,
+"Env": [
+"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+"QEMU_PRESERVE_ARGV0=1"
+],
+"Cmd": null,
+"Image": "",
+"Volumes": {
+"/tmp": {}
+},
+"WorkingDir": "/",
+"Entrypoint": [
+"/usr/bin/binfmt"
+],
+"OnBuild": null,
+"Labels": {
+"org.opencontainers.image.created": "2022-08-02T18:32:39.936Z",
+"org.opencontainers.image.description": "Cross-platform emulator collection distributed with Docker images",
+"org.opencontainers.image.licenses": "MIT",
+"org.opencontainers.image.revision": "a161c41c7aeaf3ef1c5b97f91aa02a12cca73432",
+"org.opencontainers.image.source": "https://github.com/tonistiigi/binfmt",
+"org.opencontainers.image.title": "Binfmt",
+"org.opencontainers.image.url": "https://github.com/tonistiigi/binfmt",
+"org.opencontainers.image.version": "qemu-v7.0.0-28"
+}
+},
+"Architecture": "amd64",
+"Os": "linux",
+"Size": 60182964,
+"GraphDriver": {
+"Data": {
+"LowerDir": "/var/lib/docker/overlay2/4c767fcbc7f8e5167f19e86da84b9013637175d2c8819b0b718a96e40685ae60/diff",
+"MergedDir": "/var/lib/docker/overlay2/a38f2a9041a364735d930e42a72c85de2f75b290d4c8135c9bff9a756143da39/merged",
+"UpperDir": "/var/lib/docker/overlay2/a38f2a9041a364735d930e42a72c85de2f75b290d4c8135c9bff9a756143da39/diff",
+"WorkDir": "/var/lib/docker/overlay2/a38f2a9041a364735d930e42a72c85de2f75b290d4c8135c9bff9a756143da39/work"
+},
+"Name": "overlay2"
+},
+"RootFS": {
+"Type": "layers",
+"Layers": [
+"sha256:4c67e4044f8c0fe3e3efaf76f2a3d5d3d866f8ef2e8a9da756949d90e576baa0",
+"sha256:949acf1cb73a60306e050836deb85a26fe23e226f6bcc499872b057efbf22dd1"
+]
+},
+"Metadata": {
+"LastTagTime": "0001-01-01T00:00:00Z"
+}
+}
+]
+##[endgroup]
+##[group]Installing QEMU static binaries
+[command]/usr/bin/docker run --rm --privileged docker.io/tonistiigi/binfmt:latest --install all
+installing: arm64 OK
+installing: s390x OK
+installing: riscv64 OK
+installing: arm OK
+installing: ppc64le OK
+installing: mips64le OK
+installing: mips64 OK
+{
+"supported": [
+"linux/amd64",
+"linux/arm64",
+"linux/riscv64",
+"linux/ppc64le",
+"linux/s390x",
+"linux/386",
+"linux/mips64le",
+"linux/mips64",
+"linux/arm/v7",
+"linux/arm/v6"
+],
+"emulators": [
+"llvm-16-runtime.binfmt",
+"llvm-17-runtime.binfmt",
+"llvm-18-runtime.binfmt",
+"python3.12",
+"qemu-aarch64",
+"qemu-arm",
+"qemu-mips64",
+"qemu-mips64el",
+"qemu-ppc64le",
+"qemu-riscv64",
+"qemu-s390x"
+]
+}
+##[endgroup]
+##[group]Extracting available platforms
+linux/amd64,linux/arm64,linux/riscv64,linux/ppc64le,linux/s390x,linux/386,linux/mips64le,linux/mips64,linux/arm/v7,linux/arm/v6
+##[endgroup]

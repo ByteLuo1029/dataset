@@ -1,0 +1,21 @@
+##[group]Run ./build/github/summarize-build.sh bes.bin
+[36;1m./build/github/summarize-build.sh bes.bin[0m
+shell: /usr/bin/bash -e {<:NUM:>}
+env:
+GITHUB_ACTIONS_BRANCH: 143554
+GITHUB TOKEN: ***
+##[endgroup]
++ '[' '!' -f bes.bin ']'
++++ dirname ./build/github/summarize-build.sh
+++ cd ./build/github
+++ pwd
++ THIS_DIR=/github-actions-runner/_work/cockroach/cockroach/build/github
++ '[' '!' -f _bazel/bin/pkg/cmd/bazci/bazel-github-helper/bazel-github-helper_/bazel-github-helper ']'
++ _bazel/bin/pkg/cmd/bazci/bazel-github-helper/bazel-github-helper_/bazel-github-helper -eventsfile bes.bin -servername mesolite -cert /home/agent/engflow.crt -key /home/agent/engflow.key -jsonout test-results.json
+Not reporting issues for branch 143554 and job lint++ date +%F
+++ python3 -c 'import json, sys; print(json.load(sys.stdin)['\''invocation_id'\''])'
++ gcloud storage cp test-results.json gs://engflow-data/2025-04-15/aa12f204-cd94-48db-9b54-cfa9fa68d13c.json
+Copying file://test-results.json to gs://engflow-data/2025-04-15/aa12f204-cd94-48db-9b54-cfa9fa68d13c.json
+2025-04-15T10:47:54.6217672Z
+.
++ rm test-results.json

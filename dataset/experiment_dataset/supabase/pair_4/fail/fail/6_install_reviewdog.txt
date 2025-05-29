@@ -1,0 +1,193 @@
+2025-04-15T07:13:54.0589029Z ##[group]Run reviewdog/action-setup@3f401fe1d58fe77e10d665ab713057375e39b887
+2025-04-15T07:13:54.0589670Z with:
+2025-04-15T07:13:54.0589874Z   reviewdog_version: v0.20.2
+2025-04-15T07:13:54.0590105Z env:
+2025-04-15T07:13:54.0590290Z   CARGO_NET_GIT_FETCH_WITH_CLI: true
+2025-04-15T07:13:54.0590543Z ##[endgroup]
+2025-04-15T07:13:54.0667344Z ##[group]Run set -eu
+2025-04-15T07:13:54.0667645Z [36;1mset -eu[0m
+2025-04-15T07:13:54.0667890Z [36;1m"$GITHUB_ACTION_PATH/install.sh"[0m
+2025-04-15T07:13:54.0695987Z shell: /usr/bin/sh -e {0}
+2025-04-15T07:13:54.0696254Z env:
+2025-04-15T07:13:54.0696452Z   CARGO_NET_GIT_FETCH_WITH_CLI: true
+2025-04-15T07:13:54.0696723Z   REVIEWDOG_VERSION: v0.20.2
+2025-04-15T07:13:54.0696994Z   REVIEWDOG_TEMPDIR: /home/runner/work/_temp
+2025-04-15T07:13:54.0697264Z ##[endgroup]
+2025-04-15T07:13:54.0769126Z ##[group]🐶 Installing reviewdog ... https://github.com/reviewdog/reviewdog
+2025-04-15T07:13:54.1215832Z reviewdog/reviewdog info checking GitHub for tag 'v0.20.2'
+2025-04-15T07:13:54.3386121Z reviewdog/reviewdog info found version: 0.20.2 for v0.20.2/Linux/x86_64
+2025-04-15T07:13:54.9230018Z reviewdog/reviewdog info installed /home/runner/work/_temp/reviewdog/bin/reviewdog
+2025-04-15T07:13:54.9280050Z ##[endgroup]
+2025-04-15T07:13:54.9311768Z ##[group]Run set -eu
+2025-04-15T07:13:54.9312044Z [36;1mset -eu[0m
+2025-04-15T07:13:54.9312307Z [36;1m"$GITHUB_ACTION_PATH/check-installed.sh"[0m
+2025-04-15T07:13:54.9337940Z shell: /usr/bin/sh -e {0}
+2025-04-15T07:13:54.9338192Z env:
+2025-04-15T07:13:54.9338391Z   CARGO_NET_GIT_FETCH_WITH_CLI: true
+2025-04-15T07:13:54.9338652Z ##[endgroup]
+2025-04-15T07:13:54.9444826Z ##[group]📖 reviewdog -h
+2025-04-15T07:13:54.9464454Z Usage:	reviewdog [flags]
+2025-04-15T07:13:54.9465156Z 	reviewdog accepts any compiler or linter results from stdin and filters
+2025-04-15T07:13:54.9465979Z 	them by diff for review. reviewdog also can posts the results as a comment to
+2025-04-15T07:13:54.9466651Z 	GitHub if you use reviewdog in CI service.
+2025-04-15T07:13:54.9467117Z Flags:
+2025-04-15T07:13:54.9467463Z   -conf string
+2025-04-15T07:13:54.9467809Z     	config file path
+2025-04-15T07:13:54.9468160Z   -diff string
+2025-04-15T07:13:54.9468782Z     	diff command (e.g. "git diff") for local reporters. Do not use --relative flag for git command.
+2025-04-15T07:13:54.9469496Z   -efm value
+2025-04-15T07:13:54.9470209Z     	list of supported machine-readable format and errorformat (https://github.com/reviewdog/errorformat)
+2025-04-15T07:13:54.9471005Z   -f string
+2025-04-15T07:13:54.9471758Z     	format name (run -list to see supported format name) for input. It's also used as tool name in review comment if -name is empty
+2025-04-15T07:13:54.9472589Z   -f.diff.strip int
+2025-04-15T07:13:54.9473225Z     	option for -f=diff: strip NUM leading components from diff file names (equivalent to 'patch -p') (default is 1 for git diff) (default 1)
+2025-04-15T07:13:54.9474360Z   -fail-level value
+2025-04-15T07:13:54.9475446Z     	reviewdog will exit with code 1 if it finds at least 1 issue with severity greater than or equal to the given level. [none(default),any,info,warning,error]
+2025-04-15T07:13:54.9476057Z   -fail-on-error
+2025-04-15T07:13:54.9476294Z     	[DEPRECATED] use -fail-level instead
+2025-04-15T07:13:54.9476572Z   -filter-mode value
+2025-04-15T07:13:54.9476882Z     	how to filter checks results. [added, diff_context, file, nofilter].
+2025-04-15T07:13:54.9477226Z     			"added" (default)
+2025-04-15T07:13:54.9477462Z     				Filter by added/modified diff lines.
+2025-04-15T07:13:54.9477724Z     			"diff_context"
+2025-04-15T07:13:54.9477993Z     				Filter by diff context, which can include unchanged lines.
+2025-04-15T07:13:54.9478373Z     				i.e. changed lines +-N lines (e.g. N=3 for default git diff).
+2025-04-15T07:13:54.9478674Z     			"file"
+2025-04-15T07:13:54.9478878Z     				Filter by added/modified file.
+2025-04-15T07:13:54.9479136Z     			"nofilter"
+2025-04-15T07:13:54.9479341Z     				Do not filter any results.
+2025-04-15T07:13:54.9479570Z     	
+2025-04-15T07:13:54.9479980Z   -guess
+2025-04-15T07:13:54.9480216Z     	guess Pull Request ID by branch name and commit SHA
+2025-04-15T07:13:54.9480645Z   -level string
+2025-04-15T07:13:54.9480953Z     	default report level for supported reporters ("info","warning","error").
+2025-04-15T07:13:54.9481298Z   -list
+2025-04-15T07:13:54.9481572Z     	list supported pre-defined format names which can be used as -f arg
+2025-04-15T07:13:54.9481914Z   -log-level string
+2025-04-15T07:13:54.9482232Z     	log level for reviewdog itself. (debug, info, warning, error) (default "info")
+2025-04-15T07:13:54.9482595Z   -name string
+2025-04-15T07:13:54.9482897Z     	tool name in review comment. -f is used as tool name if -name is empty
+2025-04-15T07:13:54.9483242Z   -reporter string
+2025-04-15T07:13:54.9483457Z     	reporter of reviewdog results.
+2025-04-15T07:13:54.9483701Z     		"local" (default)
+2025-04-15T07:13:54.9484138Z     			Report results to stdout.
+2025-04-15T07:13:54.9484368Z     	
+2025-04-15T07:13:54.9484535Z     		"rdjson"
+2025-04-15T07:13:54.9484754Z     			Report results to stdout in rdjson format.
+2025-04-15T07:13:54.9485022Z     	
+2025-04-15T07:13:54.9485189Z     		"rdjsonl"
+2025-04-15T07:13:54.9485406Z     			Report results to stdout in rdjsonl format.
+2025-04-15T07:13:54.9485664Z     	
+2025-04-15T07:13:54.9485829Z     		"sarif"
+2025-04-15T07:13:54.9486034Z     			Report results to stdout in SARIF format.
+2025-04-15T07:13:54.9486283Z     	
+2025-04-15T07:13:54.9486459Z     		"github-check"
+2025-04-15T07:13:54.9486777Z     			Report results to GitHub Check. It works both for Pull Requests and commits.
+2025-04-15T07:13:54.9487227Z     			For Pull Request, you can see report results in GitHub PullRequest Check
+2025-04-15T07:13:54.9487633Z     			tab and can control filtering mode by -filter-mode flag.
+2025-04-15T07:13:54.9487936Z     	
+2025-04-15T07:13:54.9488138Z     			There are two options to use this reporter.
+2025-04-15T07:13:54.9488398Z     	
+2025-04-15T07:13:54.9488659Z     			Option 1) Run reviewdog from GitHub Actions w/ secrets.GITHUB_TOKEN
+2025-04-15T07:13:54.9489088Z     				Note that it reports result to GitHub Actions log console for Pull
+2025-04-15T07:13:54.9489511Z     				Requests from fork repository due to GitHub Actions restriction.
+2025-04-15T07:13:54.9490058Z     				https://help.github.com/en/articles/virtual-environments-for-github-actions#github_token-secret
+2025-04-15T07:13:54.9490515Z     	
+2025-04-15T07:13:54.9490772Z     				Set REVIEWDOG_GITHUB_API_TOKEN with secrets.GITHUB_TOKEN. e.g.
+2025-04-15T07:13:54.9491162Z     						REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+2025-04-15T07:13:54.9491461Z     	
+2025-04-15T07:13:54.9491658Z     			Option 2) Install reviewdog GitHub Apps
+2025-04-15T07:13:54.9492008Z     				1. Install reviewdog Apps. https://github.com/apps/reviewdog
+2025-04-15T07:13:54.9492417Z     				2. Set REVIEWDOG_TOKEN or run reviewdog CLI in trusted CI providers.
+2025-04-15T07:13:54.9492860Z     				You can get token from https://reviewdog.app/gh/<owner>/<repo-name>.
+2025-04-15T07:13:54.9493224Z     				$ export REVIEWDOG_TOKEN="xxxxx"
+2025-04-15T07:13:54.9493466Z     	
+2025-04-15T07:13:54.9493709Z     				Note: Token is not required if you run reviewdog in Travis CI.
+2025-04-15T07:13:54.9494293Z     	
+2025-04-15T07:13:54.9494478Z     		"github-pr-check"
+2025-04-15T07:13:54.9494785Z     			Same as github-check reporter but it only supports Pull Requests.
+2025-04-15T07:13:54.9495106Z     	
+2025-04-15T07:13:54.9495284Z     		"github-pr-review"
+2025-04-15T07:13:54.9495530Z     			Report results to GitHub review comments.
+2025-04-15T07:13:54.9495789Z     	
+2025-04-15T07:13:54.9496021Z     			1. Set REVIEWDOG_GITHUB_API_TOKEN environment variable.
+2025-04-15T07:13:54.9496501Z     			Go to https://github.com/settings/tokens and create new Personal access token with repo scope.
+2025-04-15T07:13:54.9496918Z     	
+2025-04-15T07:13:54.9497103Z     			For GitHub Enterprise:
+2025-04-15T07:13:54.9497441Z     				$ export GITHUB_API="https://example.githubenterprise.com/api/v3"
+2025-04-15T07:13:54.9497769Z     	
+2025-04-15T07:13:54.9498106Z     		"gitlab-mr-discussion"
+2025-04-15T07:13:54.9498488Z     			Report results to GitLab MergeRequest discussion.
+2025-04-15T07:13:54.9498771Z     	
+2025-04-15T07:13:54.9499003Z     			1. Set REVIEWDOG_GITLAB_API_TOKEN environment variable.
+2025-04-15T07:13:54.9499358Z     			Go to https://gitlab.com/profile/personal_access_tokens
+2025-04-15T07:13:54.9499644Z     	
+2025-04-15T07:13:54.9499940Z     			CI_API_V4_URL (defined by Gitlab CI) as the base URL for the Gitlab API automatically.
+2025-04-15T07:13:54.9500468Z     			Alternatively, GITLAB_API can also be defined, and it will take precedence over the former:
+2025-04-15T07:13:54.9500942Z     				$ export GITLAB_API="https://example.gitlab.com/api/v4"
+2025-04-15T07:13:54.9501243Z     	
+2025-04-15T07:13:54.9501420Z     		"gitlab-mr-commit"
+2025-04-15T07:13:54.9501746Z     			Same as gitlab-mr-discussion, but report results to GitLab comments for
+2025-04-15T07:13:54.9502108Z     			each commits in Merge Requests.
+2025-04-15T07:13:54.9502356Z     	
+2025-04-15T07:13:54.9502537Z     		"gerrit-change-review"
+2025-04-15T07:13:54.9502799Z     			Report results to Gerrit Change comments.
+2025-04-15T07:13:54.9503058Z     	
+2025-04-15T07:13:54.9503328Z     			1. Set GERRIT_USERNAME and GERRIT_PASSWORD for basic authentication or
+2025-04-15T07:13:54.9503723Z     			GIT_GITCOOKIE_PATH for git cookie based authentication.
+2025-04-15T07:13:54.9504383Z     			2. Set GERRIT_CHANGE_ID, GERRIT_REVISION_ID GERRIT_BRANCH and GERRIT_ADDRESS
+2025-04-15T07:13:54.9504723Z     	
+2025-04-15T07:13:54.9504896Z     			For example:
+2025-04-15T07:13:54.9505159Z     				$ export GERRIT_CHANGE_ID=myproject~master~I1293efab014de2
+2025-04-15T07:13:54.9505487Z     				$ export GERRIT_REVISION_ID=ed318bf9a3c
+2025-04-15T07:13:54.9505761Z     				$ export GERRIT_BRANCH=master
+2025-04-15T07:13:54.9506062Z     				$ export GERRIT_ADDRESS=http://localhost:8080
+2025-04-15T07:13:54.9506336Z     	
+2025-04-15T07:13:54.9506521Z     		"bitbucket-code-report"
+2025-04-15T07:13:54.9506796Z     			Create Bitbucket Code Report via Code Insights
+2025-04-15T07:13:54.9507194Z     			(https://confluence.atlassian.com/display/BITBUCKET/Code+insights).
+2025-04-15T07:13:54.9507567Z     			You can set custom report name with:
+2025-04-15T07:13:54.9507808Z     	
+2025-04-15T07:13:54.9508106Z     			If running as part of Bitbucket Pipelines no additional configurations is needed.
+2025-04-15T07:13:54.9508589Z     			If running outside of Bitbucket Pipelines you need to provide git repo data
+2025-04-15T07:13:54.9509047Z     			(see documentation below for local reporters) and BitBucket credentials:
+2025-04-15T07:13:54.9509462Z     			- For Basic Auth you need to set following env variables:
+2025-04-15T07:13:54.9509793Z     				  BITBUCKET_USER and BITBUCKET_PASSWORD
+2025-04-15T07:13:54.9510123Z     			- For AccessToken Auth you need to set BITBUCKET_ACCESS_TOKEN
+2025-04-15T07:13:54.9510425Z     	
+2025-04-15T07:13:54.9510672Z     			To post results to Bitbucket Server specify BITBUCKET_SERVER_URL.
+2025-04-15T07:13:54.9510993Z     	
+2025-04-15T07:13:54.9511168Z     		"gitea-pr-review"
+2025-04-15T07:13:54.9511410Z     			Report results to Gitea review comments.
+2025-04-15T07:13:54.9511660Z     	
+2025-04-15T07:13:54.9511883Z     			1. Set REVIEWDOG_GITEA_API_TOKEN environment variable.
+2025-04-15T07:13:54.9512410Z     			Go to https://<gitea-server>/user/settings/applications and create new Access Token token with repo scope.
+2025-04-15T07:13:54.9512989Z     			2. Set GITEA_ADDRESS environment variable to your Gitea server base address.
+2025-04-15T07:13:54.9513345Z     			For example:
+2025-04-15T07:13:54.9513584Z     				$ export GITEA_ADDRESS=http://localhost:3000
+2025-04-15T07:13:54.9514046Z     	
+2025-04-15T07:13:54.9514471Z     		For GitHub Enterprise and self hosted GitLab or Gitea, set
+2025-04-15T07:13:54.9514957Z     		REVIEWDOG_INSECURE_SKIP_VERIFY to skip verifying SSL (please use this at your own risk)
+2025-04-15T07:13:54.9515385Z     			$ export REVIEWDOG_INSECURE_SKIP_VERIFY=true
+2025-04-15T07:13:54.9515787Z     	
+2025-04-15T07:13:54.9516068Z     		For non-local reporters, reviewdog automatically get necessary data from
+2025-04-15T07:13:54.9516790Z     		environment variable in CI service (GitHub Actions, Travis CI, Circle CI, drone.io, GitLab CI, Bitbucket Pipelines).
+2025-04-15T07:13:54.9517408Z     		You can set necessary data with following environment variable manually if
+2025-04-15T07:13:54.9517782Z     		you want (e.g. run reviewdog in Jenkins).
+2025-04-15T07:13:54.9518034Z     	
+2025-04-15T07:13:54.9518266Z     			$ export CI_PULL_REQUEST=14 # Pull Request number (e.g. 14)
+2025-04-15T07:13:54.9518652Z     			$ export CI_COMMIT="$(git rev-parse @)" # SHA1 for the current build
+2025-04-15T07:13:54.9519025Z     			$ export CI_REPO_OWNER="haya14busa" # repository owner
+2025-04-15T07:13:54.9519356Z     			$ export CI_REPO_NAME="reviewdog" # repository name
+2025-04-15T07:13:54.9519640Z     	 (default "local")
+2025-04-15T07:13:54.9519848Z   -runners string
+2025-04-15T07:13:54.9520168Z     	comma separated runners name to run in config file. default: run all runners
+2025-04-15T07:13:54.9520545Z   -strip int
+2025-04-15T07:13:54.9520969Z     	strip NUM leading components from diff file names (equivalent to 'patch -p') (default is 1 for git diff) (default 1)
+2025-04-15T07:13:54.9521436Z   -tee
+2025-04-15T07:13:54.9521867Z     	enable "tee"-like mode which outputs tools's output as is while reporting results to -reporter. Useful for debugging as well.
+2025-04-15T07:13:54.9522351Z   -version
+2025-04-15T07:13:54.9522527Z     	print version
+2025-04-15T07:13:54.9522645Z 
+2025-04-15T07:13:54.9522801Z See https://github.com/reviewdog/reviewdog for more detail.
+2025-04-15T07:13:54.9523297Z ##[endgroup]

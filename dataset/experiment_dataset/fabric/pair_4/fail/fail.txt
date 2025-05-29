@@ -1,0 +1,1178 @@
+2025-03-11T06:51:56.9132644Z Requested labels: ubuntu-latest
+2025-03-11T06:51:56.9133093Z Job defined at: danielmiessler/fabric/.github/workflows/update-version-and-create-tag.yml@refs/heads/main
+2025-03-11T06:51:56.9133247Z Waiting for a runner to pick up this job...
+2025-03-11T06:51:58.3040778Z Job is waiting for a hosted runner to come online.
+2025-03-11T06:52:01.9966013Z Job is about to start running on the hosted runner: GitHub Actions 36 (hosted)
+2025-03-11T06:52:03.4482169Z Current runner version: '2.322.0'
+2025-03-11T06:52:03.4505373Z ##[group]Operating System
+2025-03-11T06:52:03.4506154Z Ubuntu
+2025-03-11T06:52:03.4506743Z 24.04.2
+2025-03-11T06:52:03.4507244Z LTS
+2025-03-11T06:52:03.4507762Z ##[endgroup]
+2025-03-11T06:52:03.4508416Z ##[group]Runner Image
+2025-03-11T06:52:03.4509031Z Image: ubuntu-24.04
+2025-03-11T06:52:03.4509616Z Version: 20250302.1.0
+2025-03-11T06:52:03.4510682Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250302.1/images/ubuntu/Ubuntu2404-Readme.md
+2025-03-11T06:52:03.4512037Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250302.1
+2025-03-11T06:52:03.4512992Z ##[endgroup]
+2025-03-11T06:52:03.4513568Z ##[group]Runner Image Provisioner
+2025-03-11T06:52:03.4514494Z 2.0.422.1
+2025-03-11T06:52:03.4515091Z ##[endgroup]
+2025-03-11T06:52:03.4516098Z ##[group]GITHUB_TOKEN Permissions
+2025-03-11T06:52:03.4517952Z Contents: write
+2025-03-11T06:52:03.4518543Z Metadata: read
+2025-03-11T06:52:03.4519326Z ##[endgroup]
+2025-03-11T06:52:03.4522116Z Secret source: Actions
+2025-03-11T06:52:03.4522849Z Prepare workflow directory
+2025-03-11T06:52:03.4825950Z Prepare all required actions
+2025-03-11T06:52:03.4862668Z Getting action download info
+2025-03-11T06:52:03.6247528Z Download action repository 'actions/checkout@v4' (SHA:11bd71901bbe5b1630ceea73d27597364c9af683)
+2025-03-11T06:52:03.7039834Z Download action repository 'DeterminateSystems/nix-installer-action@main' (SHA:a48face58194521af687ce7df4c802b1b558e743)
+2025-03-11T06:52:04.0007869Z Complete job name: update-version
+2025-03-11T06:52:04.0806547Z ##[group]Run actions/checkout@v4
+2025-03-11T06:52:04.0807394Z with:
+2025-03-11T06:52:04.0807788Z   fetch-depth: 0
+2025-03-11T06:52:04.0808232Z   repository: danielmiessler/fabric
+2025-03-11T06:52:04.0808903Z   token: ***
+2025-03-11T06:52:04.0809304Z   ssh-strict: true
+2025-03-11T06:52:04.0809724Z   ssh-user: git
+2025-03-11T06:52:04.0810152Z   persist-credentials: true
+2025-03-11T06:52:04.0810626Z   clean: true
+2025-03-11T06:52:04.0811070Z   sparse-checkout-cone-mode: true
+2025-03-11T06:52:04.0811571Z   fetch-tags: false
+2025-03-11T06:52:04.0811992Z   show-progress: true
+2025-03-11T06:52:04.0812418Z   lfs: false
+2025-03-11T06:52:04.0812814Z   submodules: false
+2025-03-11T06:52:04.0813251Z   set-safe-directory: true
+2025-03-11T06:52:04.0814148Z ##[endgroup]
+2025-03-11T06:52:04.2415273Z Syncing repository: danielmiessler/fabric
+2025-03-11T06:52:04.2416946Z ##[group]Getting Git version info
+2025-03-11T06:52:04.2417608Z Working directory is '/home/runner/work/fabric/fabric'
+2025-03-11T06:52:04.2418557Z [command]/usr/bin/git version
+2025-03-11T06:52:04.2456925Z git version 2.48.1
+2025-03-11T06:52:04.2483103Z ##[endgroup]
+2025-03-11T06:52:04.2496574Z Temporarily overriding HOME='/home/runner/work/_temp/335436ee-cb8d-47d8-9bc1-de80a078b649' before making global git config changes
+2025-03-11T06:52:04.2497959Z Adding repository directory to the temporary git global config as a safe directory
+2025-03-11T06:52:04.2508133Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/fabric/fabric
+2025-03-11T06:52:04.2541874Z Deleting the contents of '/home/runner/work/fabric/fabric'
+2025-03-11T06:52:04.2546080Z ##[group]Initializing the repository
+2025-03-11T06:52:04.2549843Z [command]/usr/bin/git init /home/runner/work/fabric/fabric
+2025-03-11T06:52:04.2603015Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-03-11T06:52:04.2605055Z hint: is subject to change. To configure the initial branch name to use in all
+2025-03-11T06:52:04.2606549Z hint: of your new repositories, which will suppress this warning, call:
+2025-03-11T06:52:04.2607637Z hint:
+2025-03-11T06:52:04.2608384Z hint: 	git config --global init.defaultBranch <name>
+2025-03-11T06:52:04.2609311Z hint:
+2025-03-11T06:52:04.2610183Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-03-11T06:52:04.2611653Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-03-11T06:52:04.2613143Z hint:
+2025-03-11T06:52:04.2613925Z hint: 	git branch -m <name>
+2025-03-11T06:52:04.2616527Z Initialized empty Git repository in /home/runner/work/fabric/fabric/.git/
+2025-03-11T06:52:04.2622592Z [command]/usr/bin/git remote add origin https://github.com/danielmiessler/fabric
+2025-03-11T06:52:04.2762768Z ##[endgroup]
+2025-03-11T06:52:04.2764203Z ##[group]Disabling automatic garbage collection
+2025-03-11T06:52:04.2767827Z [command]/usr/bin/git config --local gc.auto 0
+2025-03-11T06:52:04.2800519Z ##[endgroup]
+2025-03-11T06:52:04.2801788Z ##[group]Setting up auth
+2025-03-11T06:52:04.2808167Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-03-11T06:52:04.2843219Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-03-11T06:52:04.3109553Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-03-11T06:52:04.3136723Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-03-11T06:52:04.3357463Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-03-11T06:52:04.3396014Z ##[endgroup]
+2025-03-11T06:52:04.3397326Z ##[group]Fetching the repository
+2025-03-11T06:52:04.3406082Z [command]/usr/bin/git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/*
+2025-03-11T06:52:07.8242673Z From https://github.com/danielmiessler/fabric
+2025-03-11T06:52:07.8244632Z  * [new branch]      agents                -> origin/agents
+2025-03-11T06:52:07.8246460Z  * [new branch]      dependabot/npm_and_yarn/web/npm_and_yarn-5df92da818 -> origin/dependabot/npm_and_yarn/web/npm_and_yarn-5df92da818
+2025-03-11T06:52:07.8248938Z  * [new branch]      feat/exolab           -> origin/feat/exolab
+2025-03-11T06:52:07.8253060Z  * [new branch]      main                  -> origin/main
+2025-03-11T06:52:07.8254619Z  * [new branch]      model_as_env_variable -> origin/model_as_env_variable
+2025-03-11T06:52:07.8256159Z  * [new branch]      pipx                  -> origin/pipx
+2025-03-11T06:52:07.8257418Z  * [new branch]      transcribe            -> origin/transcribe
+2025-03-11T06:52:07.8259153Z  * [new branch]      trying_something_awesome -> origin/trying_something_awesome
+2025-03-11T06:52:07.8260652Z  * [new tag]         1.2.0                 -> 1.2.0
+2025-03-11T06:52:07.8262058Z  * [new tag]         1.4.0                 -> 1.4.0
+2025-03-11T06:52:07.8263286Z  * [new tag]         v0.9.04               -> v0.9.04
+2025-03-11T06:52:07.8264661Z  * [new tag]         v1.0.0                -> v1.0.0
+2025-03-11T06:52:07.8371455Z  * [new tag]         v1.1.0                -> v1.1.0
+2025-03-11T06:52:07.8372886Z  * [new tag]         v1.1.1                -> v1.1.1
+2025-03-11T06:52:07.8374512Z  * [new tag]         v1.1.2                -> v1.1.2
+2025-03-11T06:52:07.8377072Z  * [new tag]         v1.1.3                -> v1.1.3
+2025-03-11T06:52:07.8378857Z  * [new tag]         v1.3.0                -> v1.3.0
+2025-03-11T06:52:07.8380015Z  * [new tag]         v1.4.100              -> v1.4.100
+2025-03-11T06:52:07.8381116Z  * [new tag]         v1.4.101              -> v1.4.101
+2025-03-11T06:52:07.8382168Z  * [new tag]         v1.4.102              -> v1.4.102
+2025-03-11T06:52:07.8383236Z  * [new tag]         v1.4.103              -> v1.4.103
+2025-03-11T06:52:07.8384499Z  * [new tag]         v1.4.104              -> v1.4.104
+2025-03-11T06:52:07.8385623Z  * [new tag]         v1.4.105              -> v1.4.105
+2025-03-11T06:52:07.8386796Z  * [new tag]         v1.4.106              -> v1.4.106
+2025-03-11T06:52:07.8388036Z  * [new tag]         v1.4.107              -> v1.4.107
+2025-03-11T06:52:07.8389257Z  * [new tag]         v1.4.108              -> v1.4.108
+2025-03-11T06:52:07.8390446Z  * [new tag]         v1.4.109              -> v1.4.109
+2025-03-11T06:52:07.8391495Z  * [new tag]         v1.4.110              -> v1.4.110
+2025-03-11T06:52:07.8392625Z  * [new tag]         v1.4.111              -> v1.4.111
+2025-03-11T06:52:07.8393635Z  * [new tag]         v1.4.112              -> v1.4.112
+2025-03-11T06:52:07.8395065Z  * [new tag]         v1.4.113              -> v1.4.113
+2025-03-11T06:52:07.8396115Z  * [new tag]         v1.4.114              -> v1.4.114
+2025-03-11T06:52:07.8397221Z  * [new tag]         v1.4.115              -> v1.4.115
+2025-03-11T06:52:07.8398283Z  * [new tag]         v1.4.116              -> v1.4.116
+2025-03-11T06:52:07.8399275Z  * [new tag]         v1.4.117              -> v1.4.117
+2025-03-11T06:52:07.8400227Z  * [new tag]         v1.4.118              -> v1.4.118
+2025-03-11T06:52:07.8401327Z  * [new tag]         v1.4.119              -> v1.4.119
+2025-03-11T06:52:07.8402350Z  * [new tag]         v1.4.120              -> v1.4.120
+2025-03-11T06:52:07.8403311Z  * [new tag]         v1.4.121              -> v1.4.121
+2025-03-11T06:52:07.8404538Z  * [new tag]         v1.4.122              -> v1.4.122
+2025-03-11T06:52:07.8405595Z  * [new tag]         v1.4.123              -> v1.4.123
+2025-03-11T06:52:07.8406642Z  * [new tag]         v1.4.124              -> v1.4.124
+2025-03-11T06:52:07.8407594Z  * [new tag]         v1.4.125              -> v1.4.125
+2025-03-11T06:52:07.8408678Z  * [new tag]         v1.4.126              -> v1.4.126
+2025-03-11T06:52:07.8409689Z  * [new tag]         v1.4.127              -> v1.4.127
+2025-03-11T06:52:07.8410869Z  * [new tag]         v1.4.128              -> v1.4.128
+2025-03-11T06:52:07.8411929Z  * [new tag]         v1.4.129              -> v1.4.129
+2025-03-11T06:52:07.8412940Z  * [new tag]         v1.4.13               -> v1.4.13
+2025-03-11T06:52:07.8413604Z  * [new tag]         v1.4.130              -> v1.4.130
+2025-03-11T06:52:07.8414480Z  * [new tag]         v1.4.131              -> v1.4.131
+2025-03-11T06:52:07.8415152Z  * [new tag]         v1.4.132              -> v1.4.132
+2025-03-11T06:52:07.8415829Z  * [new tag]         v1.4.133              -> v1.4.133
+2025-03-11T06:52:07.8416486Z  * [new tag]         v1.4.134              -> v1.4.134
+2025-03-11T06:52:07.8417142Z  * [new tag]         v1.4.135              -> v1.4.135
+2025-03-11T06:52:07.8417790Z  * [new tag]         v1.4.136              -> v1.4.136
+2025-03-11T06:52:07.8418449Z  * [new tag]         v1.4.137              -> v1.4.137
+2025-03-11T06:52:07.8419102Z  * [new tag]         v1.4.138              -> v1.4.138
+2025-03-11T06:52:07.8419765Z  * [new tag]         v1.4.139              -> v1.4.139
+2025-03-11T06:52:07.8420423Z  * [new tag]         v1.4.140              -> v1.4.140
+2025-03-11T06:52:07.8421067Z  * [new tag]         v1.4.141              -> v1.4.141
+2025-03-11T06:52:07.8421723Z  * [new tag]         v1.4.142              -> v1.4.142
+2025-03-11T06:52:07.8422366Z  * [new tag]         v1.4.143              -> v1.4.143
+2025-03-11T06:52:07.8423015Z  * [new tag]         v1.4.144              -> v1.4.144
+2025-03-11T06:52:07.8423674Z  * [new tag]         v1.4.145              -> v1.4.145
+2025-03-11T06:52:07.8424511Z  * [new tag]         v1.4.146              -> v1.4.146
+2025-03-11T06:52:07.8425158Z  * [new tag]         v1.4.147              -> v1.4.147
+2025-03-11T06:52:07.8425813Z  * [new tag]         v1.4.148              -> v1.4.148
+2025-03-11T06:52:07.8426464Z  * [new tag]         v1.4.149              -> v1.4.149
+2025-03-11T06:52:07.8427096Z  * [new tag]         v1.4.150              -> v1.4.150
+2025-03-11T06:52:07.8427748Z  * [new tag]         v1.4.151              -> v1.4.151
+2025-03-11T06:52:07.8428398Z  * [new tag]         v1.4.152              -> v1.4.152
+2025-03-11T06:52:07.8429040Z  * [new tag]         v1.4.153              -> v1.4.153
+2025-03-11T06:52:07.8429701Z  * [new tag]         v1.4.154              -> v1.4.154
+2025-03-11T06:52:07.8430356Z  * [new tag]         v1.4.155              -> v1.4.155
+2025-03-11T06:52:07.8431015Z  * [new tag]         v1.4.44               -> v1.4.44
+2025-03-11T06:52:07.8431861Z  * [new tag]         v1.4.45               -> v1.4.45
+2025-03-11T06:52:07.8432514Z  * [new tag]         v1.4.46               -> v1.4.46
+2025-03-11T06:52:07.8433168Z  * [new tag]         v1.4.47               -> v1.4.47
+2025-03-11T06:52:07.8433973Z  * [new tag]         v1.4.48               -> v1.4.48
+2025-03-11T06:52:07.8434620Z  * [new tag]         v1.4.49               -> v1.4.49
+2025-03-11T06:52:07.8435250Z  * [new tag]         v1.4.50               -> v1.4.50
+2025-03-11T06:52:07.8435891Z  * [new tag]         v1.4.51               -> v1.4.51
+2025-03-11T06:52:07.8436509Z  * [new tag]         v1.4.52               -> v1.4.52
+2025-03-11T06:52:07.8437124Z  * [new tag]         v1.4.53               -> v1.4.53
+2025-03-11T06:52:07.8437738Z  * [new tag]         v1.4.54               -> v1.4.54
+2025-03-11T06:52:07.8438360Z  * [new tag]         v1.4.55               -> v1.4.55
+2025-03-11T06:52:07.8438983Z  * [new tag]         v1.4.56               -> v1.4.56
+2025-03-11T06:52:07.8439636Z  * [new tag]         v1.4.57               -> v1.4.57
+2025-03-11T06:52:07.8440253Z  * [new tag]         v1.4.58               -> v1.4.58
+2025-03-11T06:52:07.8440868Z  * [new tag]         v1.4.59               -> v1.4.59
+2025-03-11T06:52:07.8441484Z  * [new tag]         v1.4.60               -> v1.4.60
+2025-03-11T06:52:07.8442100Z  * [new tag]         v1.4.61               -> v1.4.61
+2025-03-11T06:52:07.8442708Z  * [new tag]         v1.4.62               -> v1.4.62
+2025-03-11T06:52:07.8443326Z  * [new tag]         v1.4.63               -> v1.4.63
+2025-03-11T06:52:07.8444322Z  * [new tag]         v1.4.64               -> v1.4.64
+2025-03-11T06:52:07.8444987Z  * [new tag]         v1.4.65               -> v1.4.65
+2025-03-11T06:52:07.8445676Z  * [new tag]         v1.4.66               -> v1.4.66
+2025-03-11T06:52:07.8446738Z  * [new tag]         v1.4.67               -> v1.4.67
+2025-03-11T06:52:07.8447784Z  * [new tag]         v1.4.68               -> v1.4.68
+2025-03-11T06:52:07.8448816Z  * [new tag]         v1.4.69               -> v1.4.69
+2025-03-11T06:52:07.8449506Z  * [new tag]         v1.4.70               -> v1.4.70
+2025-03-11T06:52:07.8450129Z  * [new tag]         v1.4.71               -> v1.4.71
+2025-03-11T06:52:07.8450801Z  * [new tag]         v1.4.72               -> v1.4.72
+2025-03-11T06:52:07.8451605Z  * [new tag]         v1.4.73               -> v1.4.73
+2025-03-11T06:52:07.8452226Z  * [new tag]         v1.4.74               -> v1.4.74
+2025-03-11T06:52:07.8452842Z  * [new tag]         v1.4.75               -> v1.4.75
+2025-03-11T06:52:07.8453944Z  * [new tag]         v1.4.76               -> v1.4.76
+2025-03-11T06:52:07.8455098Z  * [new tag]         v1.4.77               -> v1.4.77
+2025-03-11T06:52:07.8456308Z  * [new tag]         v1.4.78               -> v1.4.78
+2025-03-11T06:52:07.8457451Z  * [new tag]         v1.4.79               -> v1.4.79
+2025-03-11T06:52:07.8458592Z  * [new tag]         v1.4.80               -> v1.4.80
+2025-03-11T06:52:07.8459619Z  * [new tag]         v1.4.81               -> v1.4.81
+2025-03-11T06:52:07.8460783Z  * [new tag]         v1.4.82               -> v1.4.82
+2025-03-11T06:52:07.8461935Z  * [new tag]         v1.4.83               -> v1.4.83
+2025-03-11T06:52:07.8463048Z  * [new tag]         v1.4.84               -> v1.4.84
+2025-03-11T06:52:07.8464361Z  * [new tag]         v1.4.85               -> v1.4.85
+2025-03-11T06:52:07.8465414Z  * [new tag]         v1.4.86               -> v1.4.86
+2025-03-11T06:52:07.8466540Z  * [new tag]         v1.4.87               -> v1.4.87
+2025-03-11T06:52:07.8467746Z  * [new tag]         v1.4.88               -> v1.4.88
+2025-03-11T06:52:07.8468980Z  * [new tag]         v1.4.89               -> v1.4.89
+2025-03-11T06:52:07.8470166Z  * [new tag]         v1.4.90               -> v1.4.90
+2025-03-11T06:52:07.8471277Z  * [new tag]         v1.4.91               -> v1.4.91
+2025-03-11T06:52:07.8472342Z  * [new tag]         v1.4.92               -> v1.4.92
+2025-03-11T06:52:07.8473322Z  * [new tag]         v1.4.93               -> v1.4.93
+2025-03-11T06:52:07.8474810Z  * [new tag]         v1.4.94               -> v1.4.94
+2025-03-11T06:52:07.8475834Z  * [new tag]         v1.4.95               -> v1.4.95
+2025-03-11T06:52:07.8476864Z  * [new tag]         v1.4.96               -> v1.4.96
+2025-03-11T06:52:07.8477659Z  * [new tag]         v1.4.97               -> v1.4.97
+2025-03-11T06:52:07.8478310Z  * [new tag]         v1.4.98               -> v1.4.98
+2025-03-11T06:52:07.8478958Z  * [new tag]         v1.4.99               -> v1.4.99
+2025-03-11T06:52:07.8480544Z [command]/usr/bin/git branch --list --remote origin/main
+2025-03-11T06:52:07.8498267Z   origin/main
+2025-03-11T06:52:07.8508127Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+2025-03-11T06:52:07.8529709Z efeeb7a796164520628d62224aeee6d7f5f8c697
+2025-03-11T06:52:07.8537133Z ##[endgroup]
+2025-03-11T06:52:07.8538551Z ##[group]Determining the checkout info
+2025-03-11T06:52:07.8541312Z ##[endgroup]
+2025-03-11T06:52:07.8542690Z [command]/usr/bin/git sparse-checkout disable
+2025-03-11T06:52:07.8584032Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-03-11T06:52:07.8610573Z ##[group]Checking out the ref
+2025-03-11T06:52:07.8615238Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2025-03-11T06:52:08.3303470Z Switched to a new branch 'main'
+2025-03-11T06:52:08.3306127Z branch 'main' set up to track 'origin/main'.
+2025-03-11T06:52:08.3330244Z ##[endgroup]
+2025-03-11T06:52:08.3368642Z [command]/usr/bin/git log -1 --format=%H
+2025-03-11T06:52:08.3391086Z efeeb7a796164520628d62224aeee6d7f5f8c697
+2025-03-11T06:52:08.3789994Z ##[group]Run DeterminateSystems/nix-installer-action@main
+2025-03-11T06:52:08.3791420Z with:
+2025-03-11T06:52:08.3792264Z   determinate: false
+2025-03-11T06:52:08.3793217Z   flakehub: false
+2025-03-11T06:52:08.3794352Z   force-docker-shim: false
+2025-03-11T06:52:08.3795757Z   github-token: ***
+2025-03-11T06:52:08.3796791Z   github-server-url: https://github.com
+2025-03-11T06:52:08.3798020Z   job-status: success
+2025-03-11T06:52:08.3798970Z   kvm: true
+2025-03-11T06:52:08.3799848Z   modify-profile: true
+2025-03-11T06:52:08.3800848Z   reinstall: false
+2025-03-11T06:52:08.3801781Z   start-daemon: true
+2025-03-11T06:52:08.3802780Z   diagnostic-endpoint: -
+2025-03-11T06:52:08.3803913Z   trust-runner-user: true
+2025-03-11T06:52:08.3804972Z   _internal-strict-mode: false
+2025-03-11T06:52:08.3806020Z ##[endgroup]
+2025-03-11T06:52:08.9049463Z ##[group]Configuring KVM
+2025-03-11T06:52:08.9533447Z ##[endgroup]
+2025-03-11T06:52:08.9534378Z [32m Accelerated KVM is enabled [33m⚡️
+2025-03-11T06:52:08.9535997Z ##[group]Installing Nix
+2025-03-11T06:52:08.9538210Z ##[group]Downloading nix-installer for x86_64-linux
+2025-03-11T06:52:08.9539671Z Fetching from https://us-east-2.swim.install.determinate.systems/nix-installer/stable/x86_64-linux
+2025-03-11T06:52:09.3339180Z Cache Size: ~35 MB (36785232 B)
+2025-03-11T06:52:09.3377838Z [command]/usr/bin/tar -xf /home/runner/work/_temp/9b1621a6-a55d-4529-8420-613786945ed2/cache.tzst -P -C /home/runner/work/_temp/nix-installer-2a4a37c9-af96-444c-b10f-d11072d37350 --use-compress-program unzstd
+2025-03-11T06:52:09.4406296Z Cache restored successfully
+2025-03-11T06:52:09.4487536Z ##[endgroup]
+2025-03-11T06:52:09.4502791Z [command]/home/runner/work/_temp/nix-installer-2a4a37c9-af96-444c-b10f-d11072d37350/nix-installer install linux
+2025-03-11T06:52:09.4565607Z  INFO nix-installer v3.0.0
+2025-03-11T06:52:09.6206652Z [2m[33m`nix-installer` needs to run as `root`, attempting to escalate now via `sudo`...[39m[0m
+2025-03-11T06:52:09.6317101Z  INFO nix-installer v3.0.0
+2025-03-11T06:52:09.7914373Z  INFO Step: Create directory `/nix`
+2025-03-11T06:52:09.7918323Z  INFO Step: Provision Nix
+2025-03-11T06:52:10.1413231Z Received 36785232 of 36785232 (100.0%), 35.1 MBs/sec
+2025-03-11T06:52:11.7642042Z  INFO Step: Create build users (UID 30001-30032) and group (GID 30000)
+2025-03-11T06:52:12.4101527Z  INFO Step: Configure Nix
+2025-03-11T06:52:12.6353442Z  INFO Step: Create directory `/etc/tmpfiles.d`
+2025-03-11T06:52:12.6355708Z  INFO Step: Configure upstream Nix daemon service
+2025-03-11T06:52:13.1462983Z  INFO Step: Remove directory `/nix/temp-install-dir`
+2025-03-11T06:52:13.3219599Z [1m[32mNix was installed successfully![39m[0m
+2025-03-11T06:52:13.3220530Z To get started using Nix, open a new shell or run `[1m. /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh[0m`
+2025-03-11T06:52:13.3220907Z 
+2025-03-11T06:52:13.3430212Z ##[endgroup]
+2025-03-11T06:52:13.4067678Z ##[group]Run git config user.name "github-actions[bot]"
+2025-03-11T06:52:13.4068074Z [36;1mgit config user.name "github-actions[bot]"[0m
+2025-03-11T06:52:13.4068441Z [36;1mgit config user.email "github-actions[bot]@users.noreply.github.com"[0m
+2025-03-11T06:52:13.4119142Z shell: /usr/bin/bash -e {0}
+2025-03-11T06:52:13.4119374Z env:
+2025-03-11T06:52:13.4119549Z   DETERMINATE_NIX_KVM: 1
+2025-03-11T06:52:13.4119753Z ##[endgroup]
+2025-03-11T06:52:13.4260673Z ##[group]Run latest_tag=$(git tag --sort=-creatordate | head -n 1)
+2025-03-11T06:52:13.4261148Z [36;1mlatest_tag=$(git tag --sort=-creatordate | head -n 1)[0m
+2025-03-11T06:52:13.4261486Z [36;1mecho "Latest tag is: $latest_tag"[0m
+2025-03-11T06:52:13.4261863Z [36;1mecho "tag=$latest_tag" >> $GITHUB_ENV  # Save the latest tag to environment file[0m
+2025-03-11T06:52:13.4304241Z shell: /usr/bin/bash -e {0}
+2025-03-11T06:52:13.4304478Z env:
+2025-03-11T06:52:13.4304661Z   DETERMINATE_NIX_KVM: 1
+2025-03-11T06:52:13.4304873Z ##[endgroup]
+2025-03-11T06:52:13.4408012Z Latest tag is: v1.4.155
+2025-03-11T06:52:13.4455591Z ##[group]Run latest_tag=v1.4.155
+2025-03-11T06:52:13.4455892Z [36;1mlatest_tag=v1.4.155[0m
+2025-03-11T06:52:13.4456203Z [36;1mmajor=$(echo "$latest_tag" | cut -d. -f1 | sed 's/v//')[0m
+2025-03-11T06:52:13.4456556Z [36;1mminor=$(echo "$latest_tag" | cut -d. -f2)[0m
+2025-03-11T06:52:13.4456874Z [36;1mpatch=$(echo "$latest_tag" | cut -d. -f3)[0m
+2025-03-11T06:52:13.4457157Z [36;1mnew_patch=$((patch + 1))[0m
+2025-03-11T06:52:13.4457420Z [36;1mnew_version="${major}.${minor}.${new_patch}"[0m
+2025-03-11T06:52:13.4457696Z [36;1mnew_tag="v${new_version}"[0m
+2025-03-11T06:52:13.4457934Z [36;1mecho "New version is: $new_version"[0m
+2025-03-11T06:52:13.4458314Z [36;1mecho "new_version=$new_version" >> $GITHUB_ENV  # Save the new version to environment file[0m
+2025-03-11T06:52:13.4458685Z [36;1mecho "New tag is: $new_tag"[0m
+2025-03-11T06:52:13.4459002Z [36;1mecho "new_tag=$new_tag" >> $GITHUB_ENV  # Save the new tag to environment file[0m
+2025-03-11T06:52:13.4499756Z shell: /usr/bin/bash -e {0}
+2025-03-11T06:52:13.4499990Z env:
+2025-03-11T06:52:13.4500170Z   DETERMINATE_NIX_KVM: 1
+2025-03-11T06:52:13.4500385Z   tag: v1.4.155
+2025-03-11T06:52:13.4500570Z ##[endgroup]
+2025-03-11T06:52:13.4608084Z New version is: 1.4.156
+2025-03-11T06:52:13.4608430Z New tag is: v1.4.156
+2025-03-11T06:52:13.4633038Z ##[group]Run echo "package main" > version.go
+2025-03-11T06:52:13.4633371Z [36;1mecho "package main" > version.go[0m
+2025-03-11T06:52:13.4633636Z [36;1mecho "" >> version.go[0m
+2025-03-11T06:52:13.4634162Z [36;1mecho "var version = \"v1.4.156\"" >> version.go[0m
+2025-03-11T06:52:13.4677311Z shell: /usr/bin/bash -e {0}
+2025-03-11T06:52:13.4677547Z env:
+2025-03-11T06:52:13.4677728Z   DETERMINATE_NIX_KVM: 1
+2025-03-11T06:52:13.4677946Z   tag: v1.4.155
+2025-03-11T06:52:13.4678140Z   new_version: 1.4.156
+2025-03-11T06:52:13.4678340Z   new_tag: v1.4.156
+2025-03-11T06:52:13.4678521Z ##[endgroup]
+2025-03-11T06:52:13.4784826Z ##[group]Run echo "\"1.4.156\"" > nix/pkgs/fabric/version.nix
+2025-03-11T06:52:13.4785228Z [36;1mecho "\"1.4.156\"" > nix/pkgs/fabric/version.nix[0m
+2025-03-11T06:52:13.4827867Z shell: /usr/bin/bash -e {0}
+2025-03-11T06:52:13.4828107Z env:
+2025-03-11T06:52:13.4828290Z   DETERMINATE_NIX_KVM: 1
+2025-03-11T06:52:13.4828505Z   tag: v1.4.155
+2025-03-11T06:52:13.4828700Z   new_version: 1.4.156
+2025-03-11T06:52:13.4828902Z   new_tag: v1.4.156
+2025-03-11T06:52:13.4829084Z ##[endgroup]
+2025-03-11T06:52:13.4913923Z ##[group]Run nix fmt
+2025-03-11T06:52:13.4914170Z [36;1mnix fmt[0m
+2025-03-11T06:52:13.4956594Z shell: /usr/bin/bash -e {0}
+2025-03-11T06:52:13.4956827Z env:
+2025-03-11T06:52:13.4957006Z   DETERMINATE_NIX_KVM: 1
+2025-03-11T06:52:13.4957223Z   tag: v1.4.155
+2025-03-11T06:52:13.4957414Z   new_version: 1.4.156
+2025-03-11T06:52:13.4957614Z   new_tag: v1.4.156
+2025-03-11T06:52:13.4957802Z ##[endgroup]
+2025-03-11T06:52:13.5441792Z warning: Git tree '/home/runner/work/fabric/fabric' is dirty
+2025-03-11T06:52:14.4178251Z copying path '/nix/store/v0g0bxsd5gw6k0jz2855f8h7l1218925-source' from 'https://cache.nixos.org'...
+2025-03-11T06:52:28.8647691Z unpacking 'github:nix-systems/default/da67096a3b9bf56a91d16901293e51ba5b49a27e?narHash=sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768%3D' into the Git cache...
+2025-03-11T06:52:29.0394337Z unpacking 'github:numtide/treefmt-nix/13c913f5deb3a5c08bb810efd89dc8cb24dd968b?narHash=sha256-p2r8xhQZ3TYIEKBoiEhllKWQqWNJNoT9v64Vmg4q8Zw%3D' into the Git cache...
+2025-03-11T06:52:32.2114448Z these 5 derivations will be built:
+2025-03-11T06:52:32.2119233Z   /nix/store/zpykvf42zcd44mif9y3sfv2l7zkvjnlz-statix.toml.drv
+2025-03-11T06:52:32.2119919Z   /nix/store/h2wyc6zpxd83yipm3y33gf2ygqiar5w6-statix-config.drv
+2025-03-11T06:52:32.2120569Z   /nix/store/f0pci68fildnfn38bjwfm4fx0dcy1wbq-statix-fix.drv
+2025-03-11T06:52:32.2121185Z   /nix/store/ybkhyn9wxyx9sbga5j8cf67g1xd0d6fk-treefmt.toml.drv
+2025-03-11T06:52:32.2121831Z   /nix/store/5cmn667g6zsa4l3hvklc423yzi9hihfh-treefmt.drv
+2025-03-11T06:52:32.2122503Z these 80 paths will be fetched (150.85 MiB download, 705.86 MiB unpacked):
+2025-03-11T06:52:32.2123192Z   /nix/store/cf7gkacyxmm66lwl5nj6j6yykbrg4q5c-acl-2.3.2
+2025-03-11T06:52:32.2124057Z   /nix/store/a9jgnlhkjkxav6qrc3rzg2q84pkl2wvr-attr-2.5.2
+2025-03-11T06:52:32.2124694Z   /nix/store/5mh7kaj2fyv8mk4sfq1brwxgc02884wi-bash-5.2p37
+2025-03-11T06:52:32.2125361Z   /nix/store/8zvalh0pmrmzypynv2gh8mw1vkkys19i-brotli-1.1.0-lib
+2025-03-11T06:52:32.2126079Z   /nix/store/ivl2v8rgg7qh1jkj5pwpqycax3rc2hnl-bzip2-1.0.8
+2025-03-11T06:52:32.2126811Z   /nix/store/mglixp03lsp0w986svwdvm7vcy17rdax-bzip2-1.0.8-bin
+2025-03-11T06:52:32.2127527Z   /nix/store/4s9rah4cwaxflicsk5cndnknqlk9n4p3-coreutils-9.5
+2025-03-11T06:52:32.2128172Z   /nix/store/8yfak7dis3yqqls4mclzp5jb1ic2jzab-curl-8.11.0
+2025-03-11T06:52:32.2128835Z   /nix/store/c748z5q1ac6yc92xf69lm7mjaj52m4xx-deadnix-1.2.1
+2025-03-11T06:52:32.2129543Z   /nix/store/00g69vw7c9lycy63h45ximy0wmzqx5y6-diffutils-3.10
+2025-03-11T06:52:32.2130184Z   /nix/store/74h4z8k82pmp24xryflv4lxkz8jlpqqd-ed-1.20.2
+2025-03-11T06:52:32.2130830Z   /nix/store/wkysiv0sxqs6wn44nb46bbyig4plzsy4-elfutils-0.192
+2025-03-11T06:52:32.2131459Z   /nix/store/5ayb629gzbkc3amm6zd5jp1aciprb2zs-expat-2.6.4
+2025-03-11T06:52:32.2132074Z   /nix/store/c4rj90r2m89rxs64hmm857mipwjhig5d-file-5.46
+2025-03-11T06:52:32.2132807Z   /nix/store/jqrz1vq5nz4lnv9pqzydj0ir58wbjfy1-findutils-4.10.0
+2025-03-11T06:52:32.2133498Z   /nix/store/a3c47r5z1q2c4rz0kvq8hlilkhx2s718-gawk-5.3.1
+2025-03-11T06:52:32.2134364Z   /nix/store/bpq1s72cw9qb2fs8mnmlw6hn2c7iy0ss-gcc-14-20241116-lib
+2025-03-11T06:52:32.2135149Z   /nix/store/17v0ywnr3akp85pvdi56gwl99ljv95kx-gcc-14-20241116-libgcc
+2025-03-11T06:52:32.2135890Z   /nix/store/2h8rk9xwa6xqy2pqk2lr2s57qbrx5p30-gdbm-1.24-lib
+2025-03-11T06:52:32.2136597Z   /nix/store/65h17wjrrlsj2rj540igylrx7fqcd6vq-glibc-2.40-36
+2025-03-11T06:52:32.2137601Z   /nix/store/a2byxfv4lc8f2g5xfzw8cz5q8k05wi29-gmp-with-cxx-6.3.0
+2025-03-11T06:52:32.2138543Z   /nix/store/ghb61mqc90qf1nx6kyahhhagicyxvcyg-gmp-with-cxx-6.3.0
+2025-03-11T06:52:32.2139341Z   /nix/store/1m67ipsk39xvhyqrxnzv2m2p48pil8kl-gnu-config-2024-01-01
+2025-03-11T06:52:32.2140088Z   /nix/store/aap6cq56amx4mzbyxp2wpgsf1kqjcr1f-gnugrep-3.11
+2025-03-11T06:52:32.2140798Z   /nix/store/fp6cjl1zcmm6mawsnrb5yak1wkz2ma8l-gnumake-4.4.1
+2025-03-11T06:52:32.2141480Z   /nix/store/abm77lnrkrkb58z6xp1qwjcr1xgkcfwm-gnused-4.9
+2025-03-11T06:52:32.2142252Z   /nix/store/9cwwj1c9csmc85l2cqzs3h9hbf1vwl6c-gnutar-1.35
+2025-03-11T06:52:32.2143280Z   /nix/store/jfv85qbj4vb1dafcg6kncg4vrbq2bbxv-go-1.23.4
+2025-03-11T06:52:32.2144224Z   /nix/store/mnnv5iqsa1hcc9v1snyxai3yqzmav9kf-gotools-0.25.0
+2025-03-11T06:52:32.2145205Z   /nix/store/nvvj6sk0k6px48436drlblf4gafgbvzr-gzip-1.13
+2025-03-11T06:52:32.2145941Z   /nix/store/pmvskik4cp4vh4gy0affdavpwm79k2mf-iana-etc-20240318
+2025-03-11T06:52:32.2146814Z   /nix/store/i1mjz7h6bx4yv5x32wf726b1mgl4yygd-json-c-0.18
+2025-03-11T06:52:32.2147558Z   /nix/store/2wh1gqyzf5xsvxpdz2k0bxiz583wwq29-keyutils-1.6.3-lib
+2025-03-11T06:52:32.2148305Z   /nix/store/zqkizm9zn19bf9n58xcfxl4ks7yfs8my-krb5-1.21.3-lib
+2025-03-11T06:52:32.2150940Z   /nix/store/r04wysx6yl7ys1rdv1b1lih6in1810r0-libffi-3.4.6
+2025-03-11T06:52:32.2151852Z   /nix/store/34z2792zyd4ayl5186vx0s98ckdaccz9-libidn2-2.3.7
+2025-03-11T06:52:32.2152564Z   /nix/store/fkfhss4k4zqi3rqzwgisqa8gm8xjb0b2-libpsl-0.21.5
+2025-03-11T06:52:32.2158346Z   /nix/store/fp0l21s4j49wcp9l4w59nlb4biy0dr8f-libssh2-1.11.1
+2025-03-11T06:52:32.2159025Z   /nix/store/xcqcgqazykf6s7fsn08k0blnh0wisdcl-libunistring-1.3
+2025-03-11T06:52:32.2159777Z   /nix/store/6cr0spsvymmrp1hj5n0kbaxw55w1lqyp-libxcrypt-4.4.36
+2025-03-11T06:52:32.2160449Z   /nix/store/srz64fswvjbph7i00ffvr3wbyjw87a06-libyaml-0.2.5
+2025-03-11T06:52:32.2160886Z   /nix/store/ky5k49f2byfjg49ci75ci89szy29hk4k-mailcap-2.1.54
+2025-03-11T06:52:32.2161586Z   /nix/store/1aybnfshx1vxh7vi04bhfh1n69k15335-mpdecimal-4.0.0
+2025-03-11T06:52:32.2162228Z   /nix/store/wm1qn5jqrxpcjkc640gq8a90ns5gw3cn-ncurses-6.4.20221231
+2025-03-11T06:52:32.2162715Z   /nix/store/82lh8f5wi6ya5jkcwr036md8630j652d-nghttp2-1.64.0-lib
+2025-03-11T06:52:32.2163275Z   /nix/store/lch913ar0a3w3f6d63crf5vfvpckddk1-nixfmt-unstable-2024-12-04
+2025-03-11T06:52:32.2164210Z   /nix/store/h1ydpxkw9qhjdxjpic1pdc2nirggyy6f-openssl-3.3.2
+2025-03-11T06:52:32.2164715Z   /nix/store/5yja5dpk2qw1v5mbfbl2d7klcdfrh90w-patch-2.7.6
+2025-03-11T06:52:32.2165421Z   /nix/store/srfxqk119fijwnprgsqvn68ys9kiw0bn-patchelf-0.15.0
+2025-03-11T06:52:32.2166111Z   /nix/store/3j1p598fivxs69wx3a657ysv3rw8k06l-pcre2-10.44
+2025-03-11T06:52:32.2166968Z   /nix/store/0lj0851s55mkwmylmkcw4m71m7ggl772-publicsuffix-list-0-unstable-2024-12-06
+2025-03-11T06:52:32.2167838Z   /nix/store/c9m6yd8fg1flz2j5r4bif1ib5j20a0cy-python3-3.12.8
+2025-03-11T06:52:32.2168534Z   /nix/store/ka3h6h9gj6wf24yckrch9844pd4bklfc-python3.12-cbor2-5.6.4
+2025-03-11T06:52:32.2169385Z   /nix/store/a7p8w035ri614k9y82y7c9cs9fkvb6ac-python3.12-colorama-0.4.6
+2025-03-11T06:52:32.2170148Z   /nix/store/vnkay8zkgfh38biyhgj1rp2886qlw9bz-python3.12-markdown-it-py-3.0.0
+2025-03-11T06:52:32.2170651Z   /nix/store/f3a35ljg6yaxf4cxb5fqc562r3v978x7-python3.12-mdurl-0.1.2
+2025-03-11T06:52:32.2171446Z   /nix/store/ncvqa6aazrsh3lyjwrd0q5wjvng8si8w-python3.12-pygments-2.18.0
+2025-03-11T06:52:32.2172442Z   /nix/store/mv5jpzs99allm6ni5zfjbhmyvjw8mdcj-python3.12-python-dateutil-2.9.0.post0
+2025-03-11T06:52:32.2173448Z   /nix/store/r5kb9400ihayy81jgj6rw6cwxlq6k24a-python3.12-pyyaml-6.0.2
+2025-03-11T06:52:32.2174476Z   /nix/store/lmzwm13gz7am129ihxg2zjmm51vinaaf-python3.12-remarshal-0.20.0
+2025-03-11T06:52:32.2175347Z   /nix/store/8cipdqyzsiyqx1d73lzs89anz2sb9pzs-python3.12-rich-13.9.4
+2025-03-11T06:52:32.2176249Z   /nix/store/zqsb4b4rdf5yl7i76vwjhg49hbgp3nli-python3.12-rich-argparse-1.6.0
+2025-03-11T06:52:32.2177202Z   /nix/store/svijjywn5mk2ljh4c9lx2my1w2jmr8hy-python3.12-ruamel-base-1.0.0
+2025-03-11T06:52:32.2178132Z   /nix/store/ipci9bcpb3kaxq88f5wwcyf3spvqk265-python3.12-ruamel-yaml-0.18.6
+2025-03-11T06:52:32.2179098Z   /nix/store/iqjg6b78n41i9r2z7i70q0nk6m1d8h6k-python3.12-ruamel-yaml-clib-0.2.7
+2025-03-11T06:52:32.2180004Z   /nix/store/03kwj7hvj4f32ss5g99zm2wq18h8r0wf-python3.12-six-1.17.0
+2025-03-11T06:52:32.2180827Z   /nix/store/v9vdk698r9jk17z6ipph79cj9wjqb573-python3.12-tomlkit-0.13.2
+2025-03-11T06:52:32.2181730Z   /nix/store/ls6dyvvnxji760drr228z8v5n6mivzdh-python3.12-u-msgpack-python-2.8.0
+2025-03-11T06:52:32.2182529Z   /nix/store/9jzrcxf9wi9yp679il6j6zh6cq81p4s9-readline-8.2p13
+2025-03-11T06:52:32.2183217Z   /nix/store/dj96qp9vps02l3n8xgc2vallqa9rhafb-sqlite-3.47.0
+2025-03-11T06:52:32.2184349Z   /nix/store/zc1f5d889k3xb33vdxw56mhah1q8a8lb-statix-0.5.8
+2025-03-11T06:52:32.2185163Z   /nix/store/4ig84cyqi6qy4n0sanrbzsw1ixa497jx-stdenv-linux
+2025-03-11T06:52:32.2185804Z   /nix/store/8n58sbly7gdjscz5wkr6kia72dcf1qs5-treefmt-2.1.1
+2025-03-11T06:52:32.2186436Z   /nix/store/gfkyf4hw4riqwgf5scfk8r8g69crbn4x-tzdata-2024b
+2025-03-11T06:52:32.2187307Z   /nix/store/d29r1bdmlvwmj52apgcdxfl1mm9c5782-update-autotools-gnu-config-scripts-hook
+2025-03-11T06:52:32.2188286Z   /nix/store/acfkqzj5qrqs88a4a6ixnybbjxja663d-xgcc-14-20241116-libgcc
+2025-03-11T06:52:32.2189010Z   /nix/store/c2njy6bv84kw1i4bjf5k5gn7gz8hn57n-xz-5.6.3
+2025-03-11T06:52:32.2189637Z   /nix/store/h18s640fnhhj2qdh5vivcfbxvz377srg-xz-5.6.3-bin
+2025-03-11T06:52:32.2190253Z   /nix/store/cqlaa2xf6lslnizyj9xqa8j0ii1yqw0x-zlib-1.3.1
+2025-03-11T06:52:32.2190843Z   /nix/store/s0zynhz13rhg0gg8cy0ga4c0lnv3yqdn-zstd-1.5.6
+2025-03-11T06:52:32.2222409Z copying path '/nix/store/pmvskik4cp4vh4gy0affdavpwm79k2mf-iana-etc-20240318' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.2225476Z copying path '/nix/store/ky5k49f2byfjg49ci75ci89szy29hk4k-mailcap-2.1.54' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.2230048Z copying path '/nix/store/gfkyf4hw4riqwgf5scfk8r8g69crbn4x-tzdata-2024b' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.2241411Z copying path '/nix/store/1m67ipsk39xvhyqrxnzv2m2p48pil8kl-gnu-config-2024-01-01' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.2249757Z copying path '/nix/store/acfkqzj5qrqs88a4a6ixnybbjxja663d-xgcc-14-20241116-libgcc' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.2254304Z copying path '/nix/store/17v0ywnr3akp85pvdi56gwl99ljv95kx-gcc-14-20241116-libgcc' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.2268023Z copying path '/nix/store/xcqcgqazykf6s7fsn08k0blnh0wisdcl-libunistring-1.3' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.2380651Z copying path '/nix/store/d29r1bdmlvwmj52apgcdxfl1mm9c5782-update-autotools-gnu-config-scripts-hook' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.2383467Z copying path '/nix/store/0lj0851s55mkwmylmkcw4m71m7ggl772-publicsuffix-list-0-unstable-2024-12-06' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.2654138Z copying path '/nix/store/34z2792zyd4ayl5186vx0s98ckdaccz9-libidn2-2.3.7' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.2790272Z copying path '/nix/store/65h17wjrrlsj2rj540igylrx7fqcd6vq-glibc-2.40-36' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.7012216Z copying path '/nix/store/a9jgnlhkjkxav6qrc3rzg2q84pkl2wvr-attr-2.5.2' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.7017516Z copying path '/nix/store/5mh7kaj2fyv8mk4sfq1brwxgc02884wi-bash-5.2p37' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.7018732Z copying path '/nix/store/ivl2v8rgg7qh1jkj5pwpqycax3rc2hnl-bzip2-1.0.8' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.7019872Z copying path '/nix/store/74h4z8k82pmp24xryflv4lxkz8jlpqqd-ed-1.20.2' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.7022003Z copying path '/nix/store/bpq1s72cw9qb2fs8mnmlw6hn2c7iy0ss-gcc-14-20241116-lib' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.7023413Z copying path '/nix/store/8zvalh0pmrmzypynv2gh8mw1vkkys19i-brotli-1.1.0-lib' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.7024734Z copying path '/nix/store/5ayb629gzbkc3amm6zd5jp1aciprb2zs-expat-2.6.4' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.7025932Z copying path '/nix/store/2h8rk9xwa6xqy2pqk2lr2s57qbrx5p30-gdbm-1.24-lib' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.7027106Z copying path '/nix/store/a3c47r5z1q2c4rz0kvq8hlilkhx2s718-gawk-5.3.1' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.7028288Z copying path '/nix/store/fp6cjl1zcmm6mawsnrb5yak1wkz2ma8l-gnumake-4.4.1' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.7033481Z copying path '/nix/store/mnnv5iqsa1hcc9v1snyxai3yqzmav9kf-gotools-0.25.0' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.7035427Z copying path '/nix/store/abm77lnrkrkb58z6xp1qwjcr1xgkcfwm-gnused-4.9' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.7036742Z copying path '/nix/store/r04wysx6yl7ys1rdv1b1lih6in1810r0-libffi-3.4.6' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.7038277Z copying path '/nix/store/fkfhss4k4zqi3rqzwgisqa8gm8xjb0b2-libpsl-0.21.5' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.7039542Z copying path '/nix/store/i1mjz7h6bx4yv5x32wf726b1mgl4yygd-json-c-0.18' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.7041014Z copying path '/nix/store/2wh1gqyzf5xsvxpdz2k0bxiz583wwq29-keyutils-1.6.3-lib' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.7205343Z copying path '/nix/store/6cr0spsvymmrp1hj5n0kbaxw55w1lqyp-libxcrypt-4.4.36' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.7271997Z copying path '/nix/store/srz64fswvjbph7i00ffvr3wbyjw87a06-libyaml-0.2.5' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.7334445Z copying path '/nix/store/mglixp03lsp0w986svwdvm7vcy17rdax-bzip2-1.0.8-bin' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.7336979Z copying path '/nix/store/cf7gkacyxmm66lwl5nj6j6yykbrg4q5c-acl-2.3.2' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.7342279Z copying path '/nix/store/1aybnfshx1vxh7vi04bhfh1n69k15335-mpdecimal-4.0.0' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.7396512Z copying path '/nix/store/wm1qn5jqrxpcjkc640gq8a90ns5gw3cn-ncurses-6.4.20221231' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.7586887Z copying path '/nix/store/82lh8f5wi6ya5jkcwr036md8630j652d-nghttp2-1.64.0-lib' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.7639137Z copying path '/nix/store/h1ydpxkw9qhjdxjpic1pdc2nirggyy6f-openssl-3.3.2' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.7670009Z copying path '/nix/store/5yja5dpk2qw1v5mbfbl2d7klcdfrh90w-patch-2.7.6' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.7710035Z copying path '/nix/store/3j1p598fivxs69wx3a657ysv3rw8k06l-pcre2-10.44' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.7777565Z copying path '/nix/store/c2njy6bv84kw1i4bjf5k5gn7gz8hn57n-xz-5.6.3' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.7786748Z copying path '/nix/store/8n58sbly7gdjscz5wkr6kia72dcf1qs5-treefmt-2.1.1' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.7796270Z copying path '/nix/store/cqlaa2xf6lslnizyj9xqa8j0ii1yqw0x-zlib-1.3.1' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.7861654Z copying path '/nix/store/jfv85qbj4vb1dafcg6kncg4vrbq2bbxv-go-1.23.4' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.7906210Z copying path '/nix/store/nvvj6sk0k6px48436drlblf4gafgbvzr-gzip-1.13' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.8041282Z copying path '/nix/store/9cwwj1c9csmc85l2cqzs3h9hbf1vwl6c-gnutar-1.35' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.8254856Z copying path '/nix/store/dj96qp9vps02l3n8xgc2vallqa9rhafb-sqlite-3.47.0' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.8259289Z copying path '/nix/store/c4rj90r2m89rxs64hmm857mipwjhig5d-file-5.46' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.8973010Z copying path '/nix/store/h18s640fnhhj2qdh5vivcfbxvz377srg-xz-5.6.3-bin' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.9158628Z copying path '/nix/store/aap6cq56amx4mzbyxp2wpgsf1kqjcr1f-gnugrep-3.11' from 'https://cache.nixos.org'...
+2025-03-11T06:52:32.9994176Z copying path '/nix/store/srfxqk119fijwnprgsqvn68ys9kiw0bn-patchelf-0.15.0' from 'https://cache.nixos.org'...
+2025-03-11T06:52:33.0001231Z copying path '/nix/store/c748z5q1ac6yc92xf69lm7mjaj52m4xx-deadnix-1.2.1' from 'https://cache.nixos.org'...
+2025-03-11T06:52:33.0007474Z copying path '/nix/store/a2byxfv4lc8f2g5xfzw8cz5q8k05wi29-gmp-with-cxx-6.3.0' from 'https://cache.nixos.org'...
+2025-03-11T06:52:33.0047169Z copying path '/nix/store/ghb61mqc90qf1nx6kyahhhagicyxvcyg-gmp-with-cxx-6.3.0' from 'https://cache.nixos.org'...
+2025-03-11T06:52:33.0049164Z copying path '/nix/store/zc1f5d889k3xb33vdxw56mhah1q8a8lb-statix-0.5.8' from 'https://cache.nixos.org'...
+2025-03-11T06:52:33.0051585Z copying path '/nix/store/s0zynhz13rhg0gg8cy0ga4c0lnv3yqdn-zstd-1.5.6' from 'https://cache.nixos.org'...
+2025-03-11T06:52:33.1226332Z copying path '/nix/store/zqkizm9zn19bf9n58xcfxl4ks7yfs8my-krb5-1.21.3-lib' from 'https://cache.nixos.org'...
+2025-03-11T06:52:33.1244929Z copying path '/nix/store/fp0l21s4j49wcp9l4w59nlb4biy0dr8f-libssh2-1.11.1' from 'https://cache.nixos.org'...
+2025-03-11T06:52:33.1741809Z copying path '/nix/store/4s9rah4cwaxflicsk5cndnknqlk9n4p3-coreutils-9.5' from 'https://cache.nixos.org'...
+2025-03-11T06:52:33.3328173Z copying path '/nix/store/9jzrcxf9wi9yp679il6j6zh6cq81p4s9-readline-8.2p13' from 'https://cache.nixos.org'...
+2025-03-11T06:52:33.3329672Z copying path '/nix/store/00g69vw7c9lycy63h45ximy0wmzqx5y6-diffutils-3.10' from 'https://cache.nixos.org'...
+2025-03-11T06:52:33.3337925Z copying path '/nix/store/jqrz1vq5nz4lnv9pqzydj0ir58wbjfy1-findutils-4.10.0' from 'https://cache.nixos.org'...
+2025-03-11T06:52:33.3412630Z copying path '/nix/store/8yfak7dis3yqqls4mclzp5jb1ic2jzab-curl-8.11.0' from 'https://cache.nixos.org'...
+2025-03-11T06:52:33.3888796Z copying path '/nix/store/c9m6yd8fg1flz2j5r4bif1ib5j20a0cy-python3-3.12.8' from 'https://cache.nixos.org'...
+2025-03-11T06:52:33.3984007Z copying path '/nix/store/wkysiv0sxqs6wn44nb46bbyig4plzsy4-elfutils-0.192' from 'https://cache.nixos.org'...
+2025-03-11T06:52:33.4636171Z copying path '/nix/store/4ig84cyqi6qy4n0sanrbzsw1ixa497jx-stdenv-linux' from 'https://cache.nixos.org'...
+2025-03-11T06:52:33.5065225Z copying path '/nix/store/lch913ar0a3w3f6d63crf5vfvpckddk1-nixfmt-unstable-2024-12-04' from 'https://cache.nixos.org'...
+2025-03-11T06:52:35.4170753Z copying path '/nix/store/ka3h6h9gj6wf24yckrch9844pd4bklfc-python3.12-cbor2-5.6.4' from 'https://cache.nixos.org'...
+2025-03-11T06:52:35.4172485Z copying path '/nix/store/a7p8w035ri614k9y82y7c9cs9fkvb6ac-python3.12-colorama-0.4.6' from 'https://cache.nixos.org'...
+2025-03-11T06:52:35.4177814Z copying path '/nix/store/r5kb9400ihayy81jgj6rw6cwxlq6k24a-python3.12-pyyaml-6.0.2' from 'https://cache.nixos.org'...
+2025-03-11T06:52:35.4182756Z copying path '/nix/store/f3a35ljg6yaxf4cxb5fqc562r3v978x7-python3.12-mdurl-0.1.2' from 'https://cache.nixos.org'...
+2025-03-11T06:52:35.4187564Z copying path '/nix/store/ncvqa6aazrsh3lyjwrd0q5wjvng8si8w-python3.12-pygments-2.18.0' from 'https://cache.nixos.org'...
+2025-03-11T06:52:35.4195505Z copying path '/nix/store/svijjywn5mk2ljh4c9lx2my1w2jmr8hy-python3.12-ruamel-base-1.0.0' from 'https://cache.nixos.org'...
+2025-03-11T06:52:35.4197084Z copying path '/nix/store/03kwj7hvj4f32ss5g99zm2wq18h8r0wf-python3.12-six-1.17.0' from 'https://cache.nixos.org'...
+2025-03-11T06:52:35.4198575Z copying path '/nix/store/v9vdk698r9jk17z6ipph79cj9wjqb573-python3.12-tomlkit-0.13.2' from 'https://cache.nixos.org'...
+2025-03-11T06:52:35.4200153Z copying path '/nix/store/ls6dyvvnxji760drr228z8v5n6mivzdh-python3.12-u-msgpack-python-2.8.0' from 'https://cache.nixos.org'...
+2025-03-11T06:52:35.4201785Z copying path '/nix/store/iqjg6b78n41i9r2z7i70q0nk6m1d8h6k-python3.12-ruamel-yaml-clib-0.2.7' from 'https://cache.nixos.org'...
+2025-03-11T06:52:35.4326176Z copying path '/nix/store/mv5jpzs99allm6ni5zfjbhmyvjw8mdcj-python3.12-python-dateutil-2.9.0.post0' from 'https://cache.nixos.org'...
+2025-03-11T06:52:35.4401254Z copying path '/nix/store/vnkay8zkgfh38biyhgj1rp2886qlw9bz-python3.12-markdown-it-py-3.0.0' from 'https://cache.nixos.org'...
+2025-03-11T06:52:35.4577883Z copying path '/nix/store/ipci9bcpb3kaxq88f5wwcyf3spvqk265-python3.12-ruamel-yaml-0.18.6' from 'https://cache.nixos.org'...
+2025-03-11T06:52:35.7274627Z copying path '/nix/store/8cipdqyzsiyqx1d73lzs89anz2sb9pzs-python3.12-rich-13.9.4' from 'https://cache.nixos.org'...
+2025-03-11T06:52:35.7837944Z copying path '/nix/store/zqsb4b4rdf5yl7i76vwjhg49hbgp3nli-python3.12-rich-argparse-1.6.0' from 'https://cache.nixos.org'...
+2025-03-11T06:52:35.7935770Z copying path '/nix/store/lmzwm13gz7am129ihxg2zjmm51vinaaf-python3.12-remarshal-0.20.0' from 'https://cache.nixos.org'...
+2025-03-11T06:52:35.8310256Z building '/nix/store/zpykvf42zcd44mif9y3sfv2l7zkvjnlz-statix.toml.drv'...
+2025-03-11T06:52:36.0665172Z building '/nix/store/h2wyc6zpxd83yipm3y33gf2ygqiar5w6-statix-config.drv'...
+2025-03-11T06:52:36.1852235Z building '/nix/store/f0pci68fildnfn38bjwfm4fx0dcy1wbq-statix-fix.drv'...
+2025-03-11T06:52:36.9967888Z building '/nix/store/ybkhyn9wxyx9sbga5j8cf67g1xd0d6fk-treefmt.toml.drv'...
+2025-03-11T06:52:37.2203072Z building '/nix/store/5cmn667g6zsa4l3hvklc423yzi9hihfh-treefmt.drv'...
+2025-03-11T06:52:37.2825592Z 2025/03/11 06:52:37 INFO using config file: /nix/store/dfgzl3n4ls3nsgb5y9wqsjwqgy35dqav-treefmt.toml
+2025-03-11T06:52:37.3868241Z WARN no formatter for path: .devcontainer/devcontainer.json
+2025-03-11T06:52:37.3868884Z WARN no formatter for path: .dockerignore
+2025-03-11T06:52:37.3869375Z WARN no formatter for path: .envrc
+2025-03-11T06:52:37.3869920Z WARN no formatter for path: .github/ISSUE_TEMPLATE/bug.yml
+2025-03-11T06:52:37.3870630Z WARN no formatter for path: .github/ISSUE_TEMPLATE/feature-request.yml
+2025-03-11T06:52:37.3871397Z WARN no formatter for path: .github/ISSUE_TEMPLATE/question.yml
+2025-03-11T06:52:37.3872123Z WARN no formatter for path: .github/pull_request_template.md
+2025-03-11T06:52:37.3872755Z WARN no formatter for path: .github/workflows/ci.yml
+2025-03-11T06:52:37.3873374Z WARN no formatter for path: .github/workflows/patterns.yaml
+2025-03-11T06:52:37.3874207Z WARN no formatter for path: .github/workflows/release.yml
+2025-03-11T06:52:37.3874979Z WARN no formatter for path: .github/workflows/update-version-and-create-tag.yml
+2025-03-11T06:52:37.3875651Z WARN no formatter for path: Alma.md
+2025-03-11T06:52:37.3876107Z WARN no formatter for path: Dockerfile
+2025-03-11T06:52:37.3876552Z WARN no formatter for path: LICENSE
+2025-03-11T06:52:37.3876981Z WARN no formatter for path: NOTES.md
+2025-03-11T06:52:37.3877686Z WARN no formatter for path: Pattern_Descriptions/README_Pattern_Descriptions_and_Tags_MGT.md
+2025-03-11T06:52:37.3878572Z WARN no formatter for path: Pattern_Descriptions/extract_patterns.py
+2025-03-11T06:52:37.3879361Z WARN no formatter for path: Pattern_Descriptions/pattern_descriptions.json
+2025-03-11T06:52:37.3880156Z WARN no formatter for path: Pattern_Descriptions/pattern_extracts.json
+2025-03-11T06:52:37.3880780Z WARN no formatter for path: README.md
+2025-03-11T06:52:37.3881439Z WARN no formatter for path: Web Interface MOD Readme Files/WEB V2 Install Guide.md
+2025-03-11T06:52:37.3882279Z WARN no formatter for path: Web Interface MOD Readme Files/pr-1284-update.md
+2025-03-11T06:52:37.3882937Z WARN no formatter for path: cli/README.md
+2025-03-11T06:52:37.3883503Z WARN no formatter for path: cli/example.yaml
+2025-03-11T06:52:37.3884166Z WARN no formatter for path: coverage.out
+2025-03-11T06:52:37.3884676Z WARN no formatter for path: docker-compose.yml
+2025-03-11T06:52:37.3885237Z WARN no formatter for path: images/fabric-logo-gif.gif
+2025-03-11T06:52:37.3885861Z WARN no formatter for path: images/fabric-summarize.png
+2025-03-11T06:52:37.3886659Z WARN no formatter for path: nix/pkgs/fabric/gomod2nix.toml
+2025-03-11T06:52:37.3887304Z WARN no formatter for path: patterns/agility_story/system.md
+2025-03-11T06:52:37.3887950Z WARN no formatter for path: patterns/agility_story/user.md
+2025-03-11T06:52:37.3888543Z WARN no formatter for path: patterns/ai/system.md
+2025-03-11T06:52:37.3889164Z WARN no formatter for path: patterns/analyze_answers/README.md
+2025-03-11T06:52:37.3889834Z WARN no formatter for path: patterns/analyze_answers/system.md
+2025-03-11T06:52:37.3890519Z WARN no formatter for path: patterns/analyze_candidates/system.md
+2025-03-11T06:52:37.3891312Z WARN no formatter for path: patterns/analyze_candidates/user.md
+2025-03-11T06:52:37.3892019Z WARN no formatter for path: patterns/analyze_cfp_submission/system.md
+2025-03-11T06:52:37.3892719Z WARN no formatter for path: patterns/analyze_claims/system.md
+2025-03-11T06:52:37.3893364Z WARN no formatter for path: patterns/analyze_claims/user.md
+2025-03-11T06:52:37.3894189Z WARN no formatter for path: patterns/analyze_comments/system.md
+2025-03-11T06:52:37.3894859Z WARN no formatter for path: patterns/analyze_debate/system.md
+2025-03-11T06:52:37.3895835Z WARN no formatter for path: patterns/analyze_email_headers/system.md
+2025-03-11T06:52:37.3896574Z WARN no formatter for path: patterns/analyze_email_headers/user.md
+2025-03-11T06:52:37.3897478Z WARN no formatter for path: patterns/analyze_incident/system.md
+2025-03-11T06:52:37.3898139Z WARN no formatter for path: patterns/analyze_incident/user.md
+2025-03-11T06:52:37.3898876Z WARN no formatter for path: patterns/analyze_interviewer_techniques/system.md
+2025-03-11T06:52:37.3899609Z WARN no formatter for path: patterns/analyze_logs/system.md
+2025-03-11T06:52:37.3900256Z WARN no formatter for path: patterns/analyze_malware/system.md
+2025-03-11T06:52:37.3900970Z WARN no formatter for path: patterns/analyze_military_strategy/system.md
+2025-03-11T06:52:37.3901686Z WARN no formatter for path: patterns/analyze_mistakes/system.md
+2025-03-11T06:52:37.3902338Z WARN no formatter for path: patterns/analyze_paper/system.md
+2025-03-11T06:52:37.3902973Z WARN no formatter for path: patterns/analyze_paper/user.md
+2025-03-11T06:52:37.3903618Z WARN no formatter for path: patterns/analyze_patent/system.md
+2025-03-11T06:52:37.3904499Z WARN no formatter for path: patterns/analyze_personality/system.md
+2025-03-11T06:52:37.3912754Z WARN no formatter for path: patterns/analyze_presentation/system.md
+2025-03-11T06:52:37.3913560Z WARN no formatter for path: patterns/analyze_product_feedback/system.md
+2025-03-11T06:52:37.3914503Z WARN no formatter for path: patterns/analyze_proposition/system.md
+2025-03-11T06:52:37.3915276Z WARN no formatter for path: patterns/analyze_proposition/user.md
+2025-03-11T06:52:37.3915948Z WARN no formatter for path: patterns/analyze_prose/system.md
+2025-03-11T06:52:37.3916583Z WARN no formatter for path: patterns/analyze_prose/user.md
+2025-03-11T06:52:37.3917254Z WARN no formatter for path: patterns/analyze_prose_json/system.md
+2025-03-11T06:52:37.3917928Z WARN no formatter for path: patterns/analyze_prose_json/user.md
+2025-03-11T06:52:37.3918592Z WARN no formatter for path: patterns/analyze_prose_pinker/system.md
+2025-03-11T06:52:37.3919267Z WARN no formatter for path: patterns/analyze_risk/system.md
+2025-03-11T06:52:37.3919908Z WARN no formatter for path: patterns/analyze_sales_call/system.md
+2025-03-11T06:52:37.3920606Z WARN no formatter for path: patterns/analyze_spiritual_text/system.md
+2025-03-11T06:52:37.3921305Z WARN no formatter for path: patterns/analyze_spiritual_text/user.md
+2025-03-11T06:52:37.3921993Z WARN no formatter for path: patterns/analyze_tech_impact/system.md
+2025-03-11T06:52:37.3922677Z WARN no formatter for path: patterns/analyze_tech_impact/user.md
+2025-03-11T06:52:37.3923401Z WARN no formatter for path: patterns/analyze_threat_report/system.md
+2025-03-11T06:52:37.3924345Z WARN no formatter for path: patterns/analyze_threat_report/user.md
+2025-03-11T06:52:37.3925098Z WARN no formatter for path: patterns/analyze_threat_report_cmds/system.md
+2025-03-11T06:52:37.3925860Z WARN no formatter for path: patterns/analyze_threat_report_trends/system.md
+2025-03-11T06:52:37.3926620Z WARN no formatter for path: patterns/analyze_threat_report_trends/user.md
+2025-03-11T06:52:37.3927380Z WARN no formatter for path: patterns/answer_interview_question/system.md
+2025-03-11T06:52:37.3928142Z WARN no formatter for path: patterns/ask_secure_by_design_questions/system.md
+2025-03-11T06:52:37.3928847Z WARN no formatter for path: patterns/ask_uncle_duke/system.md
+2025-03-11T06:52:37.3929509Z WARN no formatter for path: patterns/capture_thinkers_work/system.md
+2025-03-11T06:52:37.3930167Z WARN no formatter for path: patterns/check_agreement/system.md
+2025-03-11T06:52:37.3930814Z WARN no formatter for path: patterns/check_agreement/user.md
+2025-03-11T06:52:37.3931439Z WARN no formatter for path: patterns/clean_text/system.md
+2025-03-11T06:52:37.3932040Z WARN no formatter for path: patterns/clean_text/user.md
+2025-03-11T06:52:37.3932658Z WARN no formatter for path: patterns/coding_master/system.md
+2025-03-11T06:52:37.3933339Z WARN no formatter for path: patterns/compare_and_contrast/system.md
+2025-03-11T06:52:37.3961532Z WARN no formatter for path: patterns/compare_and_contrast/user.md
+2025-03-11T06:52:37.3962328Z WARN no formatter for path: patterns/convert_to_markdown/system.md
+2025-03-11T06:52:37.3963312Z WARN no formatter for path: patterns/create_5_sentence_summary/system.md
+2025-03-11T06:52:37.3964283Z WARN no formatter for path: patterns/create_academic_paper/system.md
+2025-03-11T06:52:37.3965004Z WARN no formatter for path: patterns/create_ai_jobs_analysis/system.md
+2025-03-11T06:52:37.3965691Z WARN no formatter for path: patterns/create_aphorisms/system.md
+2025-03-11T06:52:37.3966361Z WARN no formatter for path: patterns/create_aphorisms/user.md
+2025-03-11T06:52:37.3967014Z WARN no formatter for path: patterns/create_art_prompt/system.md
+2025-03-11T06:52:37.3967720Z WARN no formatter for path: patterns/create_better_frame/system.md
+2025-03-11T06:52:37.3968415Z WARN no formatter for path: patterns/create_better_frame/user.md
+2025-03-11T06:52:37.3969121Z WARN no formatter for path: patterns/create_coding_project/README.md
+2025-03-11T06:52:37.3969860Z WARN no formatter for path: patterns/create_coding_project/system.md
+2025-03-11T06:52:37.3970593Z WARN no formatter for path: patterns/create_command/README.md
+2025-03-11T06:52:37.3971364Z WARN no formatter for path: patterns/create_command/system.md
+2025-03-11T06:52:37.3972034Z WARN no formatter for path: patterns/create_command/user.md
+2025-03-11T06:52:37.3972717Z WARN no formatter for path: patterns/create_cyber_summary/system.md
+2025-03-11T06:52:37.3973439Z WARN no formatter for path: patterns/create_design_document/system.md
+2025-03-11T06:52:37.3974281Z WARN no formatter for path: patterns/create_diy/system.md
+2025-03-11T06:52:37.3974944Z WARN no formatter for path: patterns/create_formal_email/system.md
+2025-03-11T06:52:37.3975655Z WARN no formatter for path: patterns/create_git_diff_commit/README.md
+2025-03-11T06:52:37.3976377Z WARN no formatter for path: patterns/create_git_diff_commit/system.md
+2025-03-11T06:52:37.3977155Z WARN no formatter for path: patterns/create_graph_from_input/system.md
+2025-03-11T06:52:37.3977883Z WARN no formatter for path: patterns/create_hormozi_offer/system.md
+2025-03-11T06:52:37.3978591Z WARN no formatter for path: patterns/create_idea_compass/system.md
+2025-03-11T06:52:37.3979366Z WARN no formatter for path: patterns/create_investigation_visualization/system.md
+2025-03-11T06:52:37.3980125Z WARN no formatter for path: patterns/create_keynote/system.md
+2025-03-11T06:52:37.3980802Z WARN no formatter for path: patterns/create_loe_document/system.md
+2025-03-11T06:52:37.3981462Z WARN no formatter for path: patterns/create_logo/system.md
+2025-03-11T06:52:37.3982077Z WARN no formatter for path: patterns/create_logo/user.md
+2025-03-11T06:52:37.3982780Z WARN no formatter for path: patterns/create_markmap_visualization/system.md
+2025-03-11T06:52:37.3983581Z WARN no formatter for path: patterns/create_mermaid_visualization/system.md
+2025-03-11T06:52:37.3991089Z WARN no formatter for path: patterns/create_mermaid_visualization_for_github/system.md
+2025-03-11T06:52:37.3991966Z WARN no formatter for path: patterns/create_micro_summary/system.md
+2025-03-11T06:52:37.3992762Z WARN no formatter for path: patterns/create_network_threat_landscape/system.md
+2025-03-11T06:52:37.3993597Z WARN no formatter for path: patterns/create_network_threat_landscape/user.md
+2025-03-11T06:52:37.3998159Z WARN no formatter for path: patterns/create_newsletter_entry/system.md
+2025-03-11T06:52:37.3998918Z WARN no formatter for path: patterns/create_newsletter_entry/user.md
+2025-03-11T06:52:37.3999594Z WARN no formatter for path: patterns/create_npc/system.md
+2025-03-11T06:52:37.4000212Z WARN no formatter for path: patterns/create_npc/user.md
+2025-03-11T06:52:37.4000836Z WARN no formatter for path: patterns/create_pattern/system.md
+2025-03-11T06:52:37.4001466Z WARN no formatter for path: patterns/create_prd/system.md
+2025-03-11T06:52:37.4002119Z WARN no formatter for path: patterns/create_prediction_block/system.md
+2025-03-11T06:52:37.4002808Z WARN no formatter for path: patterns/create_quiz/README.md
+2025-03-11T06:52:37.4004234Z WARN no formatter for path: patterns/create_quiz/system.md
+2025-03-11T06:52:37.4005204Z WARN no formatter for path: patterns/create_reading_plan/system.md
+2025-03-11T06:52:37.4005948Z WARN no formatter for path: patterns/create_recursive_outline/system.md
+2025-03-11T06:52:37.4006704Z WARN no formatter for path: patterns/create_report_finding/system.md
+2025-03-11T06:52:37.4007424Z WARN no formatter for path: patterns/create_report_finding/user.md
+2025-03-11T06:52:37.4008112Z WARN no formatter for path: patterns/create_rpg_summary/system.md
+2025-03-11T06:52:37.4008820Z WARN no formatter for path: patterns/create_security_update/system.md
+2025-03-11T06:52:37.4009534Z WARN no formatter for path: patterns/create_security_update/user.md
+2025-03-11T06:52:37.4010223Z WARN no formatter for path: patterns/create_show_intro/system.md
+2025-03-11T06:52:37.4010939Z WARN no formatter for path: patterns/create_sigma_rules/system.md
+2025-03-11T06:52:37.4011720Z WARN no formatter for path: patterns/create_story_explanation/system.md
+2025-03-11T06:52:37.4012507Z WARN no formatter for path: patterns/create_stride_threat_model/system.md
+2025-03-11T06:52:37.4013198Z WARN no formatter for path: patterns/create_summary/system.md
+2025-03-11T06:52:37.4013985Z WARN no formatter for path: patterns/create_tags/system.md
+2025-03-11T06:52:37.4014679Z WARN no formatter for path: patterns/create_threat_scenarios/system.md
+2025-03-11T06:52:37.4015405Z WARN no formatter for path: patterns/create_ttrc_graph/system.md
+2025-03-11T06:52:37.4016113Z WARN no formatter for path: patterns/create_ttrc_narrative/system.md
+2025-03-11T06:52:37.4016834Z WARN no formatter for path: patterns/create_upgrade_pack/system.md
+2025-03-11T06:52:37.4017520Z WARN no formatter for path: patterns/create_user_story/system.md
+2025-03-11T06:52:37.4018205Z WARN no formatter for path: patterns/create_video_chapters/system.md
+2025-03-11T06:52:37.4018911Z WARN no formatter for path: patterns/create_video_chapters/user.md
+2025-03-11T06:52:37.4019617Z WARN no formatter for path: patterns/create_visualization/system.md
+2025-03-11T06:52:37.4020320Z WARN no formatter for path: patterns/dialog_with_socrates/system.md
+2025-03-11T06:52:37.4021009Z WARN no formatter for path: patterns/enrich_blog_post/system.md
+2025-03-11T06:52:37.4021656Z WARN no formatter for path: patterns/explain_code/system.md
+2025-03-11T06:52:37.4022264Z WARN no formatter for path: patterns/explain_code/user.md
+2025-03-11T06:52:37.4022871Z WARN no formatter for path: patterns/explain_docs/system.md
+2025-03-11T06:52:37.4023474Z WARN no formatter for path: patterns/explain_docs/user.md
+2025-03-11T06:52:37.4024258Z WARN no formatter for path: patterns/explain_math/README.md
+2025-03-11T06:52:37.4024884Z WARN no formatter for path: patterns/explain_math/system.md
+2025-03-11T06:52:37.4025524Z WARN no formatter for path: patterns/explain_project/system.md
+2025-03-11T06:52:37.4026177Z WARN no formatter for path: patterns/explain_terms/system.md
+2025-03-11T06:52:37.4026842Z WARN no formatter for path: patterns/export_data_as_csv/system.md
+2025-03-11T06:52:37.4027653Z WARN no formatter for path: patterns/extract_algorithm_update_recommendations/system.md
+2025-03-11T06:52:37.4028600Z WARN no formatter for path: patterns/extract_algorithm_update_recommendations/user.md
+2025-03-11T06:52:37.4029423Z WARN no formatter for path: patterns/extract_article_wisdom/README.md
+2025-03-11T06:52:37.4030310Z WARN no formatter for path: patterns/extract_article_wisdom/dmiessler/extract_wisdom-1.0.0/system.md
+2025-03-11T06:52:37.4031356Z WARN no formatter for path: patterns/extract_article_wisdom/dmiessler/extract_wisdom-1.0.0/user.md
+2025-03-11T06:52:37.4032235Z WARN no formatter for path: patterns/extract_article_wisdom/system.md
+2025-03-11T06:52:37.4032965Z WARN no formatter for path: patterns/extract_article_wisdom/user.md
+2025-03-11T06:52:37.4033634Z WARN no formatter for path: patterns/extract_book_ideas/system.md
+2025-03-11T06:52:37.4035078Z WARN no formatter for path: patterns/extract_book_recommendations/system.md
+2025-03-11T06:52:37.4036071Z WARN no formatter for path: patterns/extract_business_ideas/system.md
+2025-03-11T06:52:37.4036981Z WARN no formatter for path: patterns/extract_controversial_ideas/system.md
+2025-03-11T06:52:37.4037687Z WARN no formatter for path: patterns/extract_core_message/system.md
+2025-03-11T06:52:37.4038394Z WARN no formatter for path: patterns/extract_ctf_writeup/README.md
+2025-03-11T06:52:37.4039079Z WARN no formatter for path: patterns/extract_ctf_writeup/system.md
+2025-03-11T06:52:37.4039762Z WARN no formatter for path: patterns/extract_domains/system.md
+2025-03-11T06:52:37.4040511Z WARN no formatter for path: patterns/extract_extraordinary_claims/system.md
+2025-03-11T06:52:37.4041252Z WARN no formatter for path: patterns/extract_ideas/system.md
+2025-03-11T06:52:37.4041926Z WARN no formatter for path: patterns/extract_insights/system.md
+2025-03-11T06:52:37.4042633Z WARN no formatter for path: patterns/extract_insights_dm/system.md
+2025-03-11T06:52:37.4043369Z WARN no formatter for path: patterns/extract_instructions/system.md
+2025-03-11T06:52:37.4044393Z WARN no formatter for path: patterns/extract_jokes/system.md
+2025-03-11T06:52:37.4045112Z WARN no formatter for path: patterns/extract_latest_video/system.md
+2025-03-11T06:52:37.4045827Z WARN no formatter for path: patterns/extract_main_idea/system.md
+2025-03-11T06:52:37.4046576Z WARN no formatter for path: patterns/extract_most_redeeming_thing/system.md
+2025-03-11T06:52:37.4047324Z WARN no formatter for path: patterns/extract_patterns/system.md
+2025-03-11T06:52:37.4047998Z WARN no formatter for path: patterns/extract_poc/system.md
+2025-03-11T06:52:37.4048792Z WARN no formatter for path: patterns/extract_poc/user.md
+2025-03-11T06:52:37.4049466Z WARN no formatter for path: patterns/extract_predictions/system.md
+2025-03-11T06:52:37.4050202Z WARN no formatter for path: patterns/extract_primary_problem/system.md
+2025-03-11T06:52:37.4050965Z WARN no formatter for path: patterns/extract_primary_solution/system.md
+2025-03-11T06:52:37.4051729Z WARN no formatter for path: patterns/extract_product_features/README.md
+2025-03-11T06:52:37.4052668Z WARN no formatter for path: patterns/extract_product_features/dmiessler/extract_wisdom-1.0.0/system.md
+2025-03-11T06:52:37.4054533Z WARN no formatter for path: patterns/extract_product_features/dmiessler/extract_wisdom-1.0.0/user.md
+2025-03-11T06:52:37.4055502Z WARN no formatter for path: patterns/extract_product_features/system.md
+2025-03-11T06:52:37.4056241Z WARN no formatter for path: patterns/extract_questions/system.md
+2025-03-11T06:52:37.4056916Z WARN no formatter for path: patterns/extract_recipe/README.md
+2025-03-11T06:52:37.4057572Z WARN no formatter for path: patterns/extract_recipe/system.md
+2025-03-11T06:52:37.4058279Z WARN no formatter for path: patterns/extract_recommendations/system.md
+2025-03-11T06:52:37.4059007Z WARN no formatter for path: patterns/extract_recommendations/user.md
+2025-03-11T06:52:37.4059698Z WARN no formatter for path: patterns/extract_references/system.md
+2025-03-11T06:52:37.4060378Z WARN no formatter for path: patterns/extract_references/user.md
+2025-03-11T06:52:37.4061023Z WARN no formatter for path: patterns/extract_skills/system.md
+2025-03-11T06:52:37.4061688Z WARN no formatter for path: patterns/extract_song_meaning/system.md
+2025-03-11T06:52:37.4062368Z WARN no formatter for path: patterns/extract_sponsors/system.md
+2025-03-11T06:52:37.4063024Z WARN no formatter for path: patterns/extract_videoid/system.md
+2025-03-11T06:52:37.4063677Z WARN no formatter for path: patterns/extract_videoid/user.md
+2025-03-11T06:52:37.4064497Z WARN no formatter for path: patterns/extract_wisdom/README.md
+2025-03-11T06:52:37.4065457Z WARN no formatter for path: patterns/extract_wisdom/dmiessler/extract_wisdom-1.0.0/system.md
+2025-03-11T06:52:37.4066604Z WARN no formatter for path: patterns/extract_wisdom/dmiessler/extract_wisdom-1.0.0/user.md
+2025-03-11T06:52:37.4067587Z WARN no formatter for path: patterns/extract_wisdom/system.md
+2025-03-11T06:52:37.4068792Z WARN no formatter for path: patterns/extract_wisdom_agents/system.md
+2025-03-11T06:52:37.4069692Z WARN no formatter for path: patterns/extract_wisdom_dm/system.md
+2025-03-11T06:52:37.4070765Z WARN no formatter for path: patterns/extract_wisdom_nometa/system.md
+2025-03-11T06:52:37.4071762Z WARN no formatter for path: patterns/find_hidden_message/system.md
+2025-03-11T06:52:37.4072687Z WARN no formatter for path: patterns/find_logical_fallacies/system.md
+2025-03-11T06:52:37.4182563Z WARN no formatter for path: patterns/get_wow_per_minute/system.md
+2025-03-11T06:52:37.4183268Z WARN no formatter for path: patterns/get_youtube_rss/system.md
+2025-03-11T06:52:37.4184097Z WARN no formatter for path: patterns/humanize/README.md
+2025-03-11T06:52:37.4184676Z WARN no formatter for path: patterns/humanize/system.md
+2025-03-11T06:52:37.4185336Z WARN no formatter for path: patterns/identify_dsrp_distinctions/system.md
+2025-03-11T06:52:37.4186094Z WARN no formatter for path: patterns/identify_dsrp_perspectives/system.md
+2025-03-11T06:52:37.4186892Z WARN no formatter for path: patterns/identify_dsrp_relationships/system.md
+2025-03-11T06:52:37.4187641Z WARN no formatter for path: patterns/identify_dsrp_systems/system.md
+2025-03-11T06:52:37.4188333Z WARN no formatter for path: patterns/identify_job_stories/system.md
+2025-03-11T06:52:37.4189053Z WARN no formatter for path: patterns/improve_academic_writing/system.md
+2025-03-11T06:52:37.4189784Z WARN no formatter for path: patterns/improve_academic_writing/user.md
+2025-03-11T06:52:37.4190453Z WARN no formatter for path: patterns/improve_prompt/system.md
+2025-03-11T06:52:37.4191131Z WARN no formatter for path: patterns/improve_report_finding/system.md
+2025-03-11T06:52:37.4191847Z WARN no formatter for path: patterns/improve_report_finding/user.md
+2025-03-11T06:52:37.4192530Z WARN no formatter for path: patterns/improve_writing/system.md
+2025-03-11T06:52:37.4193159Z WARN no formatter for path: patterns/improve_writing/user.md
+2025-03-11T06:52:37.4194251Z WARN no formatter for path: patterns/judge_output/system.md
+2025-03-11T06:52:37.4194947Z WARN no formatter for path: patterns/label_and_rate/system.md
+2025-03-11T06:52:37.4195580Z WARN no formatter for path: patterns/md_callout/system.md
+2025-03-11T06:52:37.4196397Z WARN no formatter for path: patterns/official_pattern_template/system.md
+2025-03-11T06:52:37.4197120Z WARN no formatter for path: patterns/pattern_explanations.md
+2025-03-11T06:52:37.4197795Z WARN no formatter for path: patterns/prepare_7s_strategy/system.md
+2025-03-11T06:52:37.4198490Z WARN no formatter for path: patterns/provide_guidance/system.md
+2025-03-11T06:52:37.4199159Z WARN no formatter for path: patterns/rate_ai_response/system.md
+2025-03-11T06:52:37.4199809Z WARN no formatter for path: patterns/rate_ai_result/system.md
+2025-03-11T06:52:37.4200437Z WARN no formatter for path: patterns/rate_content/system.md
+2025-03-11T06:52:37.4201046Z WARN no formatter for path: patterns/rate_content/user.md
+2025-03-11T06:52:37.4201637Z WARN no formatter for path: patterns/rate_value/README.md
+2025-03-11T06:52:37.4202257Z WARN no formatter for path: patterns/rate_value/system.md
+2025-03-11T06:52:37.4202855Z WARN no formatter for path: patterns/rate_value/user.md
+2025-03-11T06:52:37.4203458Z WARN no formatter for path: patterns/raw_query/system.md
+2025-03-11T06:52:37.4204278Z WARN no formatter for path: patterns/raycast/capture_thinkers_work
+2025-03-11T06:52:37.4204983Z WARN no formatter for path: patterns/raycast/create_story_explanation
+2025-03-11T06:52:37.4205688Z WARN no formatter for path: patterns/raycast/extract_primary_problem
+2025-03-11T06:52:37.4206336Z WARN no formatter for path: patterns/raycast/extract_wisdom
+2025-03-11T06:52:37.4206895Z WARN no formatter for path: patterns/raycast/yt
+2025-03-11T06:52:37.4207500Z WARN no formatter for path: patterns/recommend_artists/system.md
+2025-03-11T06:52:37.4208224Z WARN no formatter for path: patterns/recommend_pipeline_upgrades/system.md
+2025-03-11T06:52:37.4208987Z WARN no formatter for path: patterns/recommend_talkpanel_topics/system.md
+2025-03-11T06:52:37.4210014Z WARN no formatter for path: patterns/refine_design_document/system.md
+2025-03-11T06:52:37.4210794Z WARN no formatter for path: patterns/review_design/system.md
+2025-03-11T06:52:37.4211727Z WARN no formatter for path: patterns/sanitize_broken_html_to_markdown/system.md
+2025-03-11T06:52:37.4212521Z WARN no formatter for path: patterns/show_fabric_options_markmap/system.md
+2025-03-11T06:52:37.4213230Z WARN no formatter for path: patterns/solve_with_cot/system.md
+2025-03-11T06:52:37.4214056Z WARN no formatter for path: patterns/suggest_pattern/system.md
+2025-03-11T06:52:37.4214714Z WARN no formatter for path: patterns/suggest_pattern/user.md
+2025-03-11T06:52:37.4215413Z WARN no formatter for path: patterns/summarize/dmiessler/summarize/system.md
+2025-03-11T06:52:37.4216184Z WARN no formatter for path: patterns/summarize/dmiessler/summarize/user.md
+2025-03-11T06:52:37.4216876Z WARN no formatter for path: patterns/summarize/system.md
+2025-03-11T06:52:37.4217457Z WARN no formatter for path: patterns/summarize/user.md
+2025-03-11T06:52:37.4218070Z WARN no formatter for path: patterns/summarize_debate/system.md
+2025-03-11T06:52:37.4218769Z WARN no formatter for path: patterns/summarize_git_changes/system.md
+2025-03-11T06:52:37.4219469Z WARN no formatter for path: patterns/summarize_git_diff/system.md
+2025-03-11T06:52:37.4220127Z WARN no formatter for path: patterns/summarize_lecture/system.md
+2025-03-11T06:52:37.4220809Z WARN no formatter for path: patterns/summarize_legislation/system.md
+2025-03-11T06:52:37.4221491Z WARN no formatter for path: patterns/summarize_meeting/system.md
+2025-03-11T06:52:37.4222150Z WARN no formatter for path: patterns/summarize_micro/system.md
+2025-03-11T06:52:37.4222792Z WARN no formatter for path: patterns/summarize_micro/user.md
+2025-03-11T06:52:37.4223454Z WARN no formatter for path: patterns/summarize_newsletter/system.md
+2025-03-11T06:52:37.4224430Z WARN no formatter for path: patterns/summarize_newsletter/user.md
+2025-03-11T06:52:37.4225116Z WARN no formatter for path: patterns/summarize_paper/README.md
+2025-03-11T06:52:37.4225800Z WARN no formatter for path: patterns/summarize_paper/system.md
+2025-03-11T06:52:37.4226463Z WARN no formatter for path: patterns/summarize_paper/user.md
+2025-03-11T06:52:37.4227107Z WARN no formatter for path: patterns/summarize_prompt/system.md
+2025-03-11T06:52:37.4227824Z WARN no formatter for path: patterns/summarize_pull-requests/system.md
+2025-03-11T06:52:37.4228545Z WARN no formatter for path: patterns/summarize_pull-requests/user.md
+2025-03-11T06:52:37.4229268Z WARN no formatter for path: patterns/summarize_rpg_session/system.md
+2025-03-11T06:52:37.4230014Z WARN no formatter for path: patterns/t_analyze_challenge_handling/system.md
+2025-03-11T06:52:37.4230727Z WARN no formatter for path: patterns/t_check_metrics/system.md
+2025-03-11T06:52:37.4231377Z WARN no formatter for path: patterns/t_create_h3_career/system.md
+2025-03-11T06:52:37.4232100Z WARN no formatter for path: patterns/t_create_opening_sentences/system.md
+2025-03-11T06:52:37.4240938Z WARN no formatter for path: patterns/t_describe_life_outlook/system.md
+2025-03-11T06:52:37.4241742Z WARN no formatter for path: patterns/t_extract_intro_sentences/system.md
+2025-03-11T06:52:37.4242501Z WARN no formatter for path: patterns/t_extract_panel_topics/system.md
+2025-03-11T06:52:37.4243208Z WARN no formatter for path: patterns/t_find_blindspots/system.md
+2025-03-11T06:52:37.4244323Z WARN no formatter for path: patterns/t_find_negative_thinking/system.md
+2025-03-11T06:52:37.4245212Z WARN no formatter for path: patterns/t_find_neglected_goals/system.md
+2025-03-11T06:52:37.4245937Z WARN no formatter for path: patterns/t_give_encouragement/system.md
+2025-03-11T06:52:37.4246645Z WARN no formatter for path: patterns/t_red_team_thinking/system.md
+2025-03-11T06:52:37.4247321Z WARN no formatter for path: patterns/t_threat_model_plans/system.md
+2025-03-11T06:52:37.4248074Z WARN no formatter for path: patterns/t_visualize_mission_goals_projects/system.md
+2025-03-11T06:52:37.4249017Z WARN no formatter for path: patterns/t_year_in_review/system.md
+2025-03-11T06:52:37.4249680Z WARN no formatter for path: patterns/to_flashcards/system.md
+2025-03-11T06:52:37.4250504Z WARN no formatter for path: patterns/transcribe_minutes/README.md
+2025-03-11T06:52:37.4251181Z WARN no formatter for path: patterns/transcribe_minutes/system.md
+2025-03-11T06:52:37.4251817Z WARN no formatter for path: patterns/translate/system.md
+2025-03-11T06:52:37.4252399Z WARN no formatter for path: patterns/tweet/system.md
+2025-03-11T06:52:37.4252980Z WARN no formatter for path: patterns/write_essay/system.md
+2025-03-11T06:52:37.4253633Z WARN no formatter for path: patterns/write_hackerone_report/README.md
+2025-03-11T06:52:37.4254601Z WARN no formatter for path: patterns/write_hackerone_report/system.md
+2025-03-11T06:52:37.4255256Z WARN no formatter for path: patterns/write_latex/system.md
+2025-03-11T06:52:37.4255889Z WARN no formatter for path: patterns/write_micro_essay/system.md
+2025-03-11T06:52:37.4256610Z WARN no formatter for path: patterns/write_nuclei_template_rule/system.md
+2025-03-11T06:52:37.4257349Z WARN no formatter for path: patterns/write_nuclei_template_rule/user.md
+2025-03-11T06:52:37.4258057Z WARN no formatter for path: patterns/write_pull-request/system.md
+2025-03-11T06:52:37.4258718Z WARN no formatter for path: patterns/write_semgrep_rule/system.md
+2025-03-11T06:52:37.4259372Z WARN no formatter for path: patterns/write_semgrep_rule/user.md
+2025-03-11T06:52:37.4260020Z WARN no formatter for path: patterns/youtube_summary/system.md
+2025-03-11T06:52:37.4260677Z WARN no formatter for path: plugins/template/Examples/README.md
+2025-03-11T06:52:37.4261340Z WARN no formatter for path: plugins/template/Examples/memories.db
+2025-03-11T06:52:37.4262105Z WARN no formatter for path: plugins/template/Examples/remote-security-report.sh
+2025-03-11T06:52:37.4262969Z WARN no formatter for path: plugins/template/Examples/remote-security-report.yaml
+2025-03-11T06:52:37.4263970Z WARN no formatter for path: plugins/template/Examples/security-report.sh
+2025-03-11T06:52:37.4264774Z WARN no formatter for path: plugins/template/Examples/security-report.yaml
+2025-03-11T06:52:37.4265545Z WARN no formatter for path: plugins/template/Examples/sqlite3_demo.yaml
+2025-03-11T06:52:37.4266291Z WARN no formatter for path: plugins/template/Examples/test_pattern.md
+2025-03-11T06:52:37.4267015Z WARN no formatter for path: plugins/template/Examples/track_packages.sh
+2025-03-11T06:52:37.4267748Z WARN no formatter for path: plugins/template/Examples/word-generator.py
+2025-03-11T06:52:37.4268485Z WARN no formatter for path: plugins/template/Examples/word-generator.yaml
+2025-03-11T06:52:37.4269155Z WARN no formatter for path: plugins/template/README.md
+2025-03-11T06:52:37.4269743Z WARN no formatter for path: plugins/template/datetime.md
+2025-03-11T06:52:37.4270281Z WARN no formatter for path: plugins/template/fetch.md
+2025-03-11T06:52:37.4270818Z WARN no formatter for path: plugins/template/file.md
+2025-03-11T06:52:37.4271330Z WARN no formatter for path: plugins/template/sys.md
+2025-03-11T06:52:37.4271865Z WARN no formatter for path: plugins/template/text.md
+2025-03-11T06:52:37.4272374Z WARN no formatter for path: setup_fabric.bat
+2025-03-11T06:52:37.4272978Z WARN no formatter for path: stitches/rate_ai_result/rate_ai_result.txt
+2025-03-11T06:52:37.4273666Z WARN no formatter for path: stitches/rate_ai_result/readme.md
+2025-03-11T06:52:37.4274393Z WARN no formatter for path: streamlit.py
+2025-03-11T06:52:37.4274842Z WARN no formatter for path: system.md
+2025-03-11T06:52:37.4275335Z WARN no formatter for path: web/.github/dependabot.yml
+2025-03-11T06:52:37.4275872Z WARN no formatter for path: web/.npmrc
+2025-03-11T06:52:37.4276349Z WARN no formatter for path: web/.prettierignore
+2025-03-11T06:52:37.4276897Z WARN no formatter for path: web/.prettierrc
+2025-03-11T06:52:37.4277421Z WARN no formatter for path: web/.vscode/settings.json
+2025-03-11T06:52:37.4277936Z WARN no formatter for path: web/README.md
+2025-03-11T06:52:37.4278412Z WARN no formatter for path: web/STD-README.md
+2025-03-11T06:52:37.4279423Z WARN no formatter for path: web/Web Interface Update README Files/enhanced-pattern-selection-update.md
+2025-03-11T06:52:37.4280574Z WARN no formatter for path: web/Web Interface Update README Files/language-options.md
+2025-03-11T06:52:37.4281568Z WARN no formatter for path: web/Web Interface Update README Files/pattern-search-implementation.md
+2025-03-11T06:52:37.4282530Z WARN no formatter for path: web/Web Interface Update README Files/pr-1284-update.md
+2025-03-11T06:52:37.4283482Z WARN no formatter for path: web/Web Interface Update README Files/pr-1319_PDF_TO_MARKDOWN_README.md
+2025-03-11T06:52:37.4284526Z WARN no formatter for path: web/eslint.config.js
+2025-03-11T06:52:37.4285053Z WARN no formatter for path: web/jsconfig.json
+2025-03-11T06:52:37.4285578Z WARN no formatter for path: web/my-custom-theme.ts
+2025-03-11T06:52:37.4286191Z WARN no formatter for path: web/myfiles/Fabric_obsidian/.gitkeep
+2025-03-11T06:52:37.4286832Z WARN no formatter for path: web/myfiles/inbox/.gitkeep
+2025-03-11T06:52:37.4287384Z WARN no formatter for path: web/package.json
+2025-03-11T06:52:37.4287892Z WARN no formatter for path: web/pnpm-lock.yaml
+2025-03-11T06:52:37.4288429Z WARN no formatter for path: web/postcss.config.cjs
+2025-03-11T06:52:37.4288964Z WARN no formatter for path: web/postcss.config.js
+2025-03-11T06:52:37.4289489Z WARN no formatter for path: web/rollup.config.js
+2025-03-11T06:52:37.4289990Z WARN no formatter for path: web/src/app.css
+2025-03-11T06:52:37.4290476Z WARN no formatter for path: web/src/app.d.ts
+2025-03-11T06:52:37.4290959Z WARN no formatter for path: web/src/app.html
+2025-03-11T06:52:37.4291457Z WARN no formatter for path: web/src/app.postcss
+2025-03-11T06:52:37.4291972Z WARN no formatter for path: web/src/index.test.ts
+2025-03-11T06:52:37.4292557Z WARN no formatter for path: web/src/lib/actions/clickOutside.ts
+2025-03-11T06:52:37.4293142Z WARN no formatter for path: web/src/lib/api/base.ts
+2025-03-11T06:52:37.4293677Z WARN no formatter for path: web/src/lib/api/config.ts
+2025-03-11T06:52:37.4294384Z WARN no formatter for path: web/src/lib/api/contexts.ts
+2025-03-11T06:52:37.4294958Z WARN no formatter for path: web/src/lib/api/models.ts
+2025-03-11T06:52:37.4295572Z WARN no formatter for path: web/src/lib/components/chat/Chat.svelte
+2025-03-11T06:52:37.4296265Z WARN no formatter for path: web/src/lib/components/chat/ChatInput.svelte
+2025-03-11T06:52:37.4297023Z WARN no formatter for path: web/src/lib/components/chat/ChatMessages.svelte
+2025-03-11T06:52:37.4297836Z WARN no formatter for path: web/src/lib/components/chat/DropdownGroup.svelte
+2025-03-11T06:52:37.4298636Z WARN no formatter for path: web/src/lib/components/chat/ModelConfig.svelte
+2025-03-11T06:52:37.4299407Z WARN no formatter for path: web/src/lib/components/chat/Models.svelte
+2025-03-11T06:52:37.4300150Z WARN no formatter for path: web/src/lib/components/chat/Patterns.svelte
+2025-03-11T06:52:37.4300945Z WARN no formatter for path: web/src/lib/components/chat/SessionManager.svelte
+2025-03-11T06:52:37.4301757Z WARN no formatter for path: web/src/lib/components/chat/Transcripts.svelte
+2025-03-11T06:52:37.4302540Z WARN no formatter for path: web/src/lib/components/contact/Contact.svelte
+2025-03-11T06:52:37.4303296Z WARN no formatter for path: web/src/lib/components/home/Footer.svelte
+2025-03-11T06:52:37.4304176Z WARN no formatter for path: web/src/lib/components/home/Header.svelte
+2025-03-11T06:52:37.4304949Z WARN no formatter for path: web/src/lib/components/patterns/PatternList.svelte
+2025-03-11T06:52:37.4305810Z WARN no formatter for path: web/src/lib/components/patterns/TagFilterPanel.svelte
+2025-03-11T06:52:37.4306639Z WARN no formatter for path: web/src/lib/components/posts/PostCard.svelte
+2025-03-11T06:52:37.4307431Z WARN no formatter for path: web/src/lib/components/posts/PostContent.svelte
+2025-03-11T06:52:37.4308300Z WARN no formatter for path: web/src/lib/components/posts/PostLayout.svelte
+2025-03-11T06:52:37.4309074Z WARN no formatter for path: web/src/lib/components/posts/PostMeta.svelte
+2025-03-11T06:52:37.4310032Z WARN no formatter for path: web/src/lib/components/posts/post-interface.ts
+2025-03-11T06:52:37.4310915Z WARN no formatter for path: web/src/lib/components/settings/LanguageSelector.svelte
+2025-03-11T06:52:37.4311973Z WARN no formatter for path: web/src/lib/components/terminal/Terminal.svelte
+2025-03-11T06:52:37.4312756Z WARN no formatter for path: web/src/lib/components/ui/button/button.svelte
+2025-03-11T06:52:37.4313500Z WARN no formatter for path: web/src/lib/components/ui/button/index.js
+2025-03-11T06:52:37.4314460Z WARN no formatter for path: web/src/lib/components/ui/buymeacoffee/BuyMeCoffee.svelte
+2025-03-11T06:52:37.4315298Z WARN no formatter for path: web/src/lib/components/ui/cards/card.svelte
+2025-03-11T06:52:37.4316079Z WARN no formatter for path: web/src/lib/components/ui/checkbox/Checkbox.svelte
+2025-03-11T06:52:37.4316891Z WARN no formatter for path: web/src/lib/components/ui/checkbox/index.ts
+2025-03-11T06:52:37.4317747Z WARN no formatter for path: web/src/lib/components/ui/connections/Connections.svelte
+2025-03-11T06:52:37.4318694Z WARN no formatter for path: web/src/lib/components/ui/connections/ParticleSystem.ts
+2025-03-11T06:52:37.4319539Z WARN no formatter for path: web/src/lib/components/ui/connections/canvas.ts
+2025-03-11T06:52:37.4320311Z WARN no formatter for path: web/src/lib/components/ui/connections/colors.ts
+2025-03-11T06:52:37.4321103Z WARN no formatter for path: web/src/lib/components/ui/connections/particle.ts
+2025-03-11T06:52:37.4321898Z WARN no formatter for path: web/src/lib/components/ui/help/HelpModal.svelte
+2025-03-11T06:52:37.4322660Z WARN no formatter for path: web/src/lib/components/ui/input/Input.svelte
+2025-03-11T06:52:37.4323384Z WARN no formatter for path: web/src/lib/components/ui/input/index.ts
+2025-03-11T06:52:37.4324344Z WARN no formatter for path: web/src/lib/components/ui/label/index.js
+2025-03-11T06:52:37.4325083Z WARN no formatter for path: web/src/lib/components/ui/label/label.svelte
+2025-03-11T06:52:37.4325833Z WARN no formatter for path: web/src/lib/components/ui/modal/Modal.svelte
+2025-03-11T06:52:37.4326693Z WARN no formatter for path: web/src/lib/components/ui/modal/PatternTilesModal.svelte
+2025-03-11T06:52:37.4327603Z WARN no formatter for path: web/src/lib/components/ui/noteDrawer/NoteDrawer.svelte
+2025-03-11T06:52:37.4328426Z WARN no formatter for path: web/src/lib/components/ui/select/index.js
+2025-03-11T06:52:37.4329233Z WARN no formatter for path: web/src/lib/components/ui/select/select-content.svelte
+2025-03-11T06:52:37.4330115Z WARN no formatter for path: web/src/lib/components/ui/select/select-item.svelte
+2025-03-11T06:52:37.4330970Z WARN no formatter for path: web/src/lib/components/ui/select/select-label.svelte
+2025-03-11T06:52:37.4331852Z WARN no formatter for path: web/src/lib/components/ui/select/select-separator.svelte
+2025-03-11T06:52:37.4332761Z WARN no formatter for path: web/src/lib/components/ui/select/select-trigger.svelte
+2025-03-11T06:52:37.4333631Z WARN no formatter for path: web/src/lib/components/ui/select/select-value.svelte
+2025-03-11T06:52:37.4334597Z WARN no formatter for path: web/src/lib/components/ui/select/select.svelte
+2025-03-11T06:52:37.4335364Z WARN no formatter for path: web/src/lib/components/ui/slider/index.js
+2025-03-11T06:52:37.4336079Z WARN no formatter for path: web/src/lib/components/ui/slider/slider.svelte
+2025-03-11T06:52:37.4336817Z WARN no formatter for path: web/src/lib/components/ui/spinner/spinner.svelte
+2025-03-11T06:52:37.4337581Z WARN no formatter for path: web/src/lib/components/ui/tagSearch/TagList.svelte
+2025-03-11T06:52:37.4338392Z WARN no formatter for path: web/src/lib/components/ui/tagSearch/TagSearch.svelte
+2025-03-11T06:52:37.4339195Z WARN no formatter for path: web/src/lib/components/ui/textarea/index.js
+2025-03-11T06:52:37.4339973Z WARN no formatter for path: web/src/lib/components/ui/textarea/textarea.svelte
+2025-03-11T06:52:37.4340762Z WARN no formatter for path: web/src/lib/components/ui/toast/Toast.svelte
+2025-03-11T06:52:37.4341572Z WARN no formatter for path: web/src/lib/components/ui/toast/ToastContainer.svelte
+2025-03-11T06:52:37.4342561Z WARN no formatter for path: web/src/lib/components/ui/toc/Toc.svelte
+2025-03-11T06:52:37.4343474Z WARN no formatter for path: web/src/lib/components/ui/tooltip/Tooltip.svelte
+2025-03-11T06:52:37.4344387Z WARN no formatter for path: web/src/lib/config/features.ts
+2025-03-11T06:52:37.4345050Z WARN no formatter for path: web/src/lib/content/.obsidian/app.json
+2025-03-11T06:52:37.4345784Z WARN no formatter for path: web/src/lib/content/.obsidian/appearance.json
+2025-03-11T06:52:37.4346571Z WARN no formatter for path: web/src/lib/content/.obsidian/core-plugins.json
+2025-03-11T06:52:37.4347346Z WARN no formatter for path: web/src/lib/content/.obsidian/templates.json
+2025-03-11T06:52:37.4348093Z WARN no formatter for path: web/src/lib/content/.obsidian/types.json
+2025-03-11T06:52:37.4348824Z WARN no formatter for path: web/src/lib/content/.obsidian/workspace.json
+2025-03-11T06:52:37.4349567Z WARN no formatter for path: web/src/lib/content/posts/extract_wisdom.md
+2025-03-11T06:52:37.4350419Z WARN no formatter for path: web/src/lib/content/posts/faq.md
+2025-03-11T06:52:37.4351092Z WARN no formatter for path: web/src/lib/content/posts/obsidian.md
+2025-03-11T06:52:37.4351780Z WARN no formatter for path: web/src/lib/content/posts/opinion.md
+2025-03-11T06:52:37.4352495Z WARN no formatter for path: web/src/lib/content/posts/personal-story.md
+2025-03-11T06:52:37.4353238Z WARN no formatter for path: web/src/lib/content/posts/product-review.md
+2025-03-11T06:52:37.4354107Z WARN no formatter for path: web/src/lib/content/posts/resources.md
+2025-03-11T06:52:37.4354819Z WARN no formatter for path: web/src/lib/content/posts/tips-n-tricks.md
+2025-03-11T06:52:37.4355522Z WARN no formatter for path: web/src/lib/content/posts/tutorial.md
+2025-03-11T06:52:37.4356281Z WARN no formatter for path: web/src/lib/content/posts/using-svelte-in-markdown.md
+2025-03-11T06:52:37.4357049Z WARN no formatter for path: web/src/lib/content/posts/welcome.md
+2025-03-11T06:52:37.4357764Z WARN no formatter for path: web/src/lib/content/templates/{{title}}.md
+2025-03-11T06:52:37.4358501Z WARN no formatter for path: web/src/lib/interfaces/LanguageDisplay.svelte
+2025-03-11T06:52:37.4359263Z WARN no formatter for path: web/src/lib/interfaces/chat-interface.ts
+2025-03-11T06:52:37.4360011Z WARN no formatter for path: web/src/lib/interfaces/context-interface.ts
+2025-03-11T06:52:37.4360753Z WARN no formatter for path: web/src/lib/interfaces/model-interface.ts
+2025-03-11T06:52:37.4361487Z WARN no formatter for path: web/src/lib/interfaces/pattern-interface.ts
+2025-03-11T06:52:37.4362236Z WARN no formatter for path: web/src/lib/interfaces/session-interface.ts
+2025-03-11T06:52:37.4362965Z WARN no formatter for path: web/src/lib/interfaces/storage-interface.ts
+2025-03-11T06:52:37.4363668Z WARN no formatter for path: web/src/lib/services/ChatService.ts
+2025-03-11T06:52:37.4364535Z WARN no formatter for path: web/src/lib/services/PdfConversionService.ts
+2025-03-11T06:52:37.4365262Z WARN no formatter for path: web/src/lib/services/toast-service.ts
+2025-03-11T06:52:37.4365973Z WARN no formatter for path: web/src/lib/services/transcriptService.ts
+2025-03-11T06:52:37.4366661Z WARN no formatter for path: web/src/lib/store/chat-config.ts
+2025-03-11T06:52:37.4367283Z WARN no formatter for path: web/src/lib/store/chat-store.ts
+2025-03-11T06:52:37.4367924Z WARN no formatter for path: web/src/lib/store/favorites-store.ts
+2025-03-11T06:52:37.4368591Z WARN no formatter for path: web/src/lib/store/language-store.ts
+2025-03-11T06:52:37.4369232Z WARN no formatter for path: web/src/lib/store/model-store.ts
+2025-03-11T06:52:37.4369857Z WARN no formatter for path: web/src/lib/store/note-store.ts
+2025-03-11T06:52:37.4370496Z WARN no formatter for path: web/src/lib/store/obsidian-store.ts
+2025-03-11T06:52:37.4371158Z WARN no formatter for path: web/src/lib/store/pattern-store.ts
+2025-03-11T06:52:37.4371809Z WARN no formatter for path: web/src/lib/store/session-store.ts
+2025-03-11T06:52:37.4372450Z WARN no formatter for path: web/src/lib/store/theme-store.ts
+2025-03-11T06:52:37.4373243Z WARN no formatter for path: web/src/lib/store/toast-store.ts
+2025-03-11T06:52:37.4374090Z WARN no formatter for path: web/src/lib/types/index.ts
+2025-03-11T06:52:37.4374851Z WARN no formatter for path: web/src/lib/utils/file-utils.ts
+2025-03-11T06:52:37.4375463Z WARN no formatter for path: web/src/lib/utils/markdown.ts
+2025-03-11T06:52:37.4376057Z WARN no formatter for path: web/src/lib/utils/utils.ts
+2025-03-11T06:52:37.4376658Z WARN no formatter for path: web/src/lib/utils/validators.ts
+2025-03-11T06:52:37.4377315Z WARN no formatter for path: web/src/routes/+layout.svelte
+2025-03-11T06:52:37.4377902Z WARN no formatter for path: web/src/routes/+layout.ts
+2025-03-11T06:52:37.4378481Z WARN no formatter for path: web/src/routes/+page.svelte
+2025-03-11T06:52:37.4379052Z WARN no formatter for path: web/src/routes/+page.ts
+2025-03-11T06:52:37.4379649Z WARN no formatter for path: web/src/routes/about/+error.svelte
+2025-03-11T06:52:37.4380294Z WARN no formatter for path: web/src/routes/about/+page.svelte
+2025-03-11T06:52:37.4380926Z WARN no formatter for path: web/src/routes/about/+page.ts
+2025-03-11T06:52:37.4381530Z WARN no formatter for path: web/src/routes/about/README.md
+2025-03-11T06:52:37.4382230Z WARN no formatter for path: web/src/routes/api/youtube/transcript/+server.ts
+2025-03-11T06:52:37.4382967Z WARN no formatter for path: web/src/routes/chat/+layout.svelte
+2025-03-11T06:52:37.4383611Z WARN no formatter for path: web/src/routes/chat/+page.svelte
+2025-03-11T06:52:37.4384369Z WARN no formatter for path: web/src/routes/chat/+page.ts
+2025-03-11T06:52:37.4384966Z WARN no formatter for path: web/src/routes/chat/+server.ts
+2025-03-11T06:52:37.4385601Z WARN no formatter for path: web/src/routes/contact/+error.svelte
+2025-03-11T06:52:37.4386271Z WARN no formatter for path: web/src/routes/contact/+page.svelte
+2025-03-11T06:52:37.4386923Z WARN no formatter for path: web/src/routes/contact/+page.ts
+2025-03-11T06:52:37.4387547Z WARN no formatter for path: web/src/routes/contact/contact.md
+2025-03-11T06:52:37.4388182Z WARN no formatter for path: web/src/routes/notes/+server.ts
+2025-03-11T06:52:37.4388793Z WARN no formatter for path: web/src/routes/obsidian/+server.ts
+2025-03-11T06:52:37.4389443Z WARN no formatter for path: web/src/routes/posts/+error.svelte
+2025-03-11T06:52:37.4390083Z WARN no formatter for path: web/src/routes/posts/+page.svelte
+2025-03-11T06:52:37.4390704Z WARN no formatter for path: web/src/routes/posts/+page.ts
+2025-03-11T06:52:37.4391333Z WARN no formatter for path: web/src/routes/posts/Search.svelte
+2025-03-11T06:52:37.4392018Z WARN no formatter for path: web/src/routes/posts/[slug]/+error.svelte
+2025-03-11T06:52:37.4392744Z WARN no formatter for path: web/src/routes/posts/[slug]/+page.svelte
+2025-03-11T06:52:37.4393431Z WARN no formatter for path: web/src/routes/posts/[slug]/+page.ts
+2025-03-11T06:52:37.4394227Z WARN no formatter for path: web/src/routes/tags/+page.svelte
+2025-03-11T06:52:37.4394833Z WARN no formatter for path: web/src/routes/tags/+page.ts
+2025-03-11T06:52:37.4395486Z WARN no formatter for path: web/src/routes/tags/[tag]/+page.svelte
+2025-03-11T06:52:37.4396151Z WARN no formatter for path: web/src/routes/tags/[tag]/+page.ts
+2025-03-11T06:52:37.4396750Z WARN no formatter for path: web/static/brain.png
+2025-03-11T06:52:37.4397378Z WARN no formatter for path: web/static/data/pattern_descriptions.json
+2025-03-11T06:52:37.4398022Z WARN no formatter for path: web/static/electric.png
+2025-03-11T06:52:37.4398584Z WARN no formatter for path: web/static/fabric-logo.gif
+2025-03-11T06:52:37.4399173Z WARN no formatter for path: web/static/fabric-logo.png
+2025-03-11T06:52:37.4399782Z WARN no formatter for path: web/static/fabric-summarize.png
+2025-03-11T06:52:37.4400376Z WARN no formatter for path: web/static/favicon.png
+2025-03-11T06:52:37.4400951Z WARN no formatter for path: web/static/obsidian-logo.png
+2025-03-11T06:52:37.4401522Z WARN no formatter for path: web/static/robots.txt
+2025-03-11T06:52:37.4402051Z WARN no formatter for path: web/svelte.config.js
+2025-03-11T06:52:37.4402740Z WARN no formatter for path: web/tailwind.config.ts
+2025-03-11T06:52:37.4403265Z WARN no formatter for path: web/tsconfig.json
+2025-03-11T06:52:37.4404060Z WARN no formatter for path: web/vite.config.ts
+2025-03-11T06:52:37.5435659Z traversed 618 files
+2025-03-11T06:52:37.5436291Z emitted 99 files for processing
+2025-03-11T06:52:37.5436652Z formatted 99 files (0 changed) in 261ms
+2025-03-11T06:52:37.5471899Z ##[group]Run nix run .#gomod2nix -- --outdir nix/pkgs/fabric
+2025-03-11T06:52:37.5472348Z [36;1mnix run .#gomod2nix -- --outdir nix/pkgs/fabric[0m
+2025-03-11T06:52:37.5521314Z shell: /usr/bin/bash -e {0}
+2025-03-11T06:52:37.5521548Z env:
+2025-03-11T06:52:37.5521728Z   DETERMINATE_NIX_KVM: 1
+2025-03-11T06:52:37.5521943Z   tag: v1.4.155
+2025-03-11T06:52:37.5522133Z   new_version: 1.4.156
+2025-03-11T06:52:37.5522331Z   new_tag: v1.4.156
+2025-03-11T06:52:37.5522518Z ##[endgroup]
+2025-03-11T06:52:37.5980655Z warning: Git tree '/home/runner/work/fabric/fabric' is dirty
+2025-03-11T06:52:37.6384675Z unpacking 'github:nix-community/gomod2nix/514283ec89c39ad0079ff2f3b1437404e4cba608?narHash=sha256-tPsqU00FhgdFr0JiQUiBMgPVbl1jbPCY5gbFiJycL3I%3D' into the Git cache...
+2025-03-11T06:52:37.8601513Z unpacking 'github:numtide/flake-utils/ff7b65b44d01cf9ba6a71320833626af21126384?narHash=sha256-zsNZZGTGnMOf9YpHKJqMSsa0dXbfmxeoJ7xHlrt%2BxmY%3D' into the Git cache...
+2025-03-11T06:52:38.7730771Z these 12 derivations will be built:
+2025-03-11T06:52:38.7743935Z   /nix/store/1b1c3g3b2fmschhvm5blfh1n5czrp3sz-mousetrap_v1.1.0.drv
+2025-03-11T06:52:38.7744748Z   /nix/store/41pc91cs173vlavrspdr94nqdzx7bzjb-pflag_v1.0.5.drv
+2025-03-11T06:52:38.7745438Z   /nix/store/8q9vr419wlkv2d1xs1gy6x7m4ix80682-toml_v1.4.0.drv
+2025-03-11T06:52:38.7745982Z   /nix/store/9h0a6rjal49r0lwjys48q8zcrhn2b8hp-logrus_v1.9.3.drv
+2025-03-11T06:52:38.7746435Z   /nix/store/g5hgirapgam66lklxpb4al8lqfxlpg1s-sys_v0.14.0.drv
+2025-03-11T06:52:38.7746886Z   /nix/store/hjn4a2b5lmzd2a5hw9zkvyvdp384ldvj-vcs_v0.1.0-deprecated.drv
+2025-03-11T06:52:38.7747346Z   /nix/store/k8nqs36qhvhdb35hcc88z64x57d2c65x-cobra_v1.8.1.drv
+2025-03-11T06:52:38.7747831Z   /nix/store/kniwzs6l2gl0ywipwgpxqqv32mbmq5vf-mod_v0.22.0.drv
+2025-03-11T06:52:38.7748355Z   /nix/store/kq4vaijlpgi6da2jsiljrf4x0vbfp85d-gomod2nix-symlink.drv
+2025-03-11T06:52:38.7749060Z   /nix/store/yybafbmrg3syrvwb5qfmvy50ccvl0cma-go-nix_v0.0.0-20220612195009-5f5614f7ca47.drv
+2025-03-11T06:52:38.7749959Z   /nix/store/zrsq7njqp1af3sj3pv7ryzi54h7z26wh-vendor-env.drv
+2025-03-11T06:52:38.7750663Z   /nix/store/i4lg9fpq4in0w1ml4g82d92wi22jshz8-gomod2nix-dev.drv
+2025-03-11T06:52:38.7751176Z these 26 paths will be fetched (64.74 MiB download, 297.55 MiB unpacked):
+2025-03-11T06:52:38.7751871Z   /nix/store/j7p46r8v9gcpbxx89pbqlh61zhd33gzv-binutils-2.43.1
+2025-03-11T06:52:38.7752383Z   /nix/store/df2a8k58k00f2dh2x930dg6xs6g6mliv-binutils-2.43.1-lib
+2025-03-11T06:52:38.7752961Z   /nix/store/srcmmqi8kxjfygd0hyy42c8hv6cws83b-binutils-wrapper-2.43.1
+2025-03-11T06:52:38.7753893Z   /nix/store/qj9sknibkcml9b4v8gwljh4ph3yg9ssb-die-hook
+2025-03-11T06:52:38.7754621Z   /nix/store/qbry6090vlr9ar33kdmmbq2p5apzbga8-expand-response-params
+2025-03-11T06:52:38.7755374Z   /nix/store/l89iqc7am6i60y8vk507zwrzxf0wcd3v-gcc-14-20241116
+2025-03-11T06:52:38.7756175Z   /nix/store/xcn9p4xxfbvlkpah7pwchpav4ab9d135-gcc-wrapper-14-20241116
+2025-03-11T06:52:38.7756997Z   /nix/store/1c6bmxrrhm8bd26ai2rjqld2yyjrxhds-glibc-2.40-36-bin
+2025-03-11T06:52:38.7757691Z   /nix/store/kj8hbqx4ds9qm9mq7hyikxyfwwg13kzj-glibc-2.40-36-dev
+2025-03-11T06:52:38.7758091Z   /nix/store/kryrg7ds05iwcmy81amavk8w13y4lxbs-gmp-6.3.0
+2025-03-11T06:52:38.7758489Z   /nix/store/6fh284hiym458bvsrprpvf00ldg1md3r-install-shell-files
+2025-03-11T06:52:38.7758883Z   /nix/store/xmbv8s4p4i4dbxgkgdrdfb0ym25wh6gk-isl-0.20
+2025-03-11T06:52:38.7759221Z   /nix/store/s8vyrf9xh2yh66ilivw3gi8hzxv7d44c-jq-1.7.1
+2025-03-11T06:52:38.7759567Z   /nix/store/c79nkzxaiki5r7igd4a5lawwdds38f2l-jq-1.7.1-bin
+2025-03-11T06:52:38.7759937Z   /nix/store/4nrxcmjis6bahcr6gphczjfhz12f2vnd-jq-1.7.1-dev
+2025-03-11T06:52:38.7760301Z   /nix/store/2a3anh8vl3fcgk0fvaravlimrqawawza-libmpc-1.3.1
+2025-03-11T06:52:38.7760829Z   /nix/store/pc74azbkr19rkd5bjalq2xwx86cj3cga-linux-headers-6.12
+2025-03-11T06:52:38.7761699Z   /nix/store/png303rlwchszvb9hdq9cx40aw2bg940-lz4-1.10.0-lib
+2025-03-11T06:52:38.7762342Z   /nix/store/9cdcy8k4zp8zm03kpqf49xghfk1c451l-make-shell-wrapper-hook
+2025-03-11T06:52:38.7763601Z   /nix/store/qs22aazzrdd4dnjf9vffl0n31hvls43h-mpfr-4.2.1
+2025-03-11T06:52:38.7764522Z   /nix/store/4cn5s8950q4ldkwmzs9cgyssp62lhf9m-nss-cacert-3.107
+2025-03-11T06:52:38.7765291Z   /nix/store/w6skm2pz5dc6dk8w2g92hl2jd2q2yc49-oniguruma-6.9.9-lib
+2025-03-11T06:52:38.7766001Z   /nix/store/2ylv2am86rc4rxvz38zyvdws4gwdr34k-popt-1.19
+2025-03-11T06:52:38.7766643Z   /nix/store/9j9gm3r9bpsi2iliwykh9h930rishqdh-rsync-3.3.0
+2025-03-11T06:52:38.7767308Z   /nix/store/d0gfdcag8bxzvg7ww4s7px4lf8sxisyx-stdenv-linux
+2025-03-11T06:52:38.7768006Z   /nix/store/48klpfwghadq8jpzprk5d04h9l04ihcv-xxHash-0.8.2
+2025-03-11T06:52:38.7810060Z copying path '/nix/store/6fh284hiym458bvsrprpvf00ldg1md3r-install-shell-files' from 'https://cache.nixos.org'...
+2025-03-11T06:52:38.7822564Z copying path '/nix/store/qj9sknibkcml9b4v8gwljh4ph3yg9ssb-die-hook' from 'https://cache.nixos.org'...
+2025-03-11T06:52:38.7859880Z copying path '/nix/store/qbry6090vlr9ar33kdmmbq2p5apzbga8-expand-response-params' from 'https://cache.nixos.org'...
+2025-03-11T06:52:38.7863958Z copying path '/nix/store/pc74azbkr19rkd5bjalq2xwx86cj3cga-linux-headers-6.12' from 'https://cache.nixos.org'...
+2025-03-11T06:52:38.7865606Z copying path '/nix/store/png303rlwchszvb9hdq9cx40aw2bg940-lz4-1.10.0-lib' from 'https://cache.nixos.org'...
+2025-03-11T06:52:38.7868402Z copying path '/nix/store/48klpfwghadq8jpzprk5d04h9l04ihcv-xxHash-0.8.2' from 'https://cache.nixos.org'...
+2025-03-11T06:52:38.7869757Z copying path '/nix/store/2ylv2am86rc4rxvz38zyvdws4gwdr34k-popt-1.19' from 'https://cache.nixos.org'...
+2025-03-11T06:52:38.7873519Z copying path '/nix/store/1c6bmxrrhm8bd26ai2rjqld2yyjrxhds-glibc-2.40-36-bin' from 'https://cache.nixos.org'...
+2025-03-11T06:52:38.7886253Z copying path '/nix/store/kryrg7ds05iwcmy81amavk8w13y4lxbs-gmp-6.3.0' from 'https://cache.nixos.org'...
+2025-03-11T06:52:38.7903315Z copying path '/nix/store/df2a8k58k00f2dh2x930dg6xs6g6mliv-binutils-2.43.1-lib' from 'https://cache.nixos.org'...
+2025-03-11T06:52:38.7906193Z copying path '/nix/store/4cn5s8950q4ldkwmzs9cgyssp62lhf9m-nss-cacert-3.107' from 'https://cache.nixos.org'...
+2025-03-11T06:52:38.8511607Z building '/nix/store/kq4vaijlpgi6da2jsiljrf4x0vbfp85d-gomod2nix-symlink.drv'...
+2025-03-11T06:52:38.8528136Z copying path '/nix/store/w6skm2pz5dc6dk8w2g92hl2jd2q2yc49-oniguruma-6.9.9-lib' from 'https://cache.nixos.org'...
+2025-03-11T06:52:38.8530759Z copying path '/nix/store/9cdcy8k4zp8zm03kpqf49xghfk1c451l-make-shell-wrapper-hook' from 'https://cache.nixos.org'...
+2025-03-11T06:52:38.8532218Z copying path '/nix/store/xmbv8s4p4i4dbxgkgdrdfb0ym25wh6gk-isl-0.20' from 'https://cache.nixos.org'...
+2025-03-11T06:52:38.8537015Z copying path '/nix/store/9j9gm3r9bpsi2iliwykh9h930rishqdh-rsync-3.3.0' from 'https://cache.nixos.org'...
+2025-03-11T06:52:38.8540436Z copying path '/nix/store/qs22aazzrdd4dnjf9vffl0n31hvls43h-mpfr-4.2.1' from 'https://cache.nixos.org'...
+2025-03-11T06:52:38.8846100Z copying path '/nix/store/2a3anh8vl3fcgk0fvaravlimrqawawza-libmpc-1.3.1' from 'https://cache.nixos.org'...
+2025-03-11T06:52:38.8850107Z copying path '/nix/store/s8vyrf9xh2yh66ilivw3gi8hzxv7d44c-jq-1.7.1' from 'https://cache.nixos.org'...
+2025-03-11T06:52:38.9069862Z copying path '/nix/store/j7p46r8v9gcpbxx89pbqlh61zhd33gzv-binutils-2.43.1' from 'https://cache.nixos.org'...
+2025-03-11T06:52:38.9078602Z copying path '/nix/store/c79nkzxaiki5r7igd4a5lawwdds38f2l-jq-1.7.1-bin' from 'https://cache.nixos.org'...
+2025-03-11T06:52:38.9108864Z copying path '/nix/store/4nrxcmjis6bahcr6gphczjfhz12f2vnd-jq-1.7.1-dev' from 'https://cache.nixos.org'...
+2025-03-11T06:52:38.9607365Z building '/nix/store/k8nqs36qhvhdb35hcc88z64x57d2c65x-cobra_v1.8.1.drv'...
+2025-03-11T06:52:38.9856241Z building '/nix/store/yybafbmrg3syrvwb5qfmvy50ccvl0cma-go-nix_v0.0.0-20220612195009-5f5614f7ca47.drv'...
+2025-03-11T06:52:39.0173206Z building '/nix/store/9h0a6rjal49r0lwjys48q8zcrhn2b8hp-logrus_v1.9.3.drv'...
+2025-03-11T06:52:39.2197690Z copying path '/nix/store/kj8hbqx4ds9qm9mq7hyikxyfwwg13kzj-glibc-2.40-36-dev' from 'https://cache.nixos.org'...
+2025-03-11T06:52:39.4568087Z building '/nix/store/kniwzs6l2gl0ywipwgpxqqv32mbmq5vf-mod_v0.22.0.drv'...
+2025-03-11T06:52:39.5691303Z building '/nix/store/1b1c3g3b2fmschhvm5blfh1n5czrp3sz-mousetrap_v1.1.0.drv'...
+2025-03-11T06:52:39.5716726Z copying path '/nix/store/l89iqc7am6i60y8vk507zwrzxf0wcd3v-gcc-14-20241116' from 'https://cache.nixos.org'...
+2025-03-11T06:52:39.9191856Z building '/nix/store/41pc91cs173vlavrspdr94nqdzx7bzjb-pflag_v1.0.5.drv'...
+2025-03-11T06:52:40.0189066Z copying path '/nix/store/srcmmqi8kxjfygd0hyy42c8hv6cws83b-binutils-wrapper-2.43.1' from 'https://cache.nixos.org'...
+2025-03-11T06:52:40.0390144Z building '/nix/store/g5hgirapgam66lklxpb4al8lqfxlpg1s-sys_v0.14.0.drv'...
+2025-03-11T06:52:40.0572769Z building '/nix/store/8q9vr419wlkv2d1xs1gy6x7m4ix80682-toml_v1.4.0.drv'...
+2025-03-11T06:52:40.1954770Z building '/nix/store/hjn4a2b5lmzd2a5hw9zkvyvdp384ldvj-vcs_v0.1.0-deprecated.drv'...
+2025-03-11T06:52:44.1076858Z copying path '/nix/store/xcn9p4xxfbvlkpah7pwchpav4ab9d135-gcc-wrapper-14-20241116' from 'https://cache.nixos.org'...
+2025-03-11T06:52:44.1241497Z copying path '/nix/store/d0gfdcag8bxzvg7ww4s7px4lf8sxisyx-stdenv-linux' from 'https://cache.nixos.org'...
+2025-03-11T06:52:44.5261764Z building '/nix/store/zrsq7njqp1af3sj3pv7ryzi54h7z26wh-vendor-env.drv'...
+2025-03-11T06:52:44.5894445Z building '/nix/store/i4lg9fpq4in0w1ml4g82d92wi22jshz8-gomod2nix-dev.drv'...
+2025-03-11T06:53:00.9107308Z time="2025-03-11T06:53:00Z" level=info msg="Parsing go.mod" modPath=go.mod
+2025-03-11T06:53:00.9110079Z time="2025-03-11T06:53:00Z" level=info msg="Downloading dependencies"
+2025-03-11T06:53:04.9151198Z time="2025-03-11T06:53:04Z" level=info msg="Done downloading dependencies"
+2025-03-11T06:53:04.9166916Z time="2025-03-11T06:53:04Z" level=info msg="Wrote: nix/pkgs/fabric/gomod2nix.toml"
+2025-03-11T06:53:04.9201668Z ##[group]Run git add version.go
+2025-03-11T06:53:04.9201971Z [36;1mgit add version.go[0m
+2025-03-11T06:53:04.9202233Z [36;1mgit add nix/pkgs/fabric/version.nix[0m
+2025-03-11T06:53:04.9202541Z [36;1mgit add nix/pkgs/fabric/gomod2nix.toml[0m
+2025-03-11T06:53:04.9202813Z [36;1mgit add .[0m
+2025-03-11T06:53:04.9203042Z [36;1mif ! git diff --staged --quiet; then[0m
+2025-03-11T06:53:04.9203407Z [36;1m  git commit -m "Update version to v1.4.156 and commit $commit_hash"[0m
+2025-03-11T06:53:04.9203971Z [36;1melse[0m
+2025-03-11T06:53:04.9204197Z [36;1m  echo "No changes to commit."[0m
+2025-03-11T06:53:04.9204443Z [36;1mfi[0m
+2025-03-11T06:53:04.9252039Z shell: /usr/bin/bash -e {0}
+2025-03-11T06:53:04.9252276Z env:
+2025-03-11T06:53:04.9252454Z   DETERMINATE_NIX_KVM: 1
+2025-03-11T06:53:04.9252672Z   tag: v1.4.155
+2025-03-11T06:53:04.9252858Z   new_version: 1.4.156
+2025-03-11T06:53:04.9253054Z   new_tag: v1.4.156
+2025-03-11T06:53:04.9253240Z ##[endgroup]
+2025-03-11T06:53:05.3158850Z [main 173abd2] Update version to v1.4.156 and commit
+2025-03-11T06:53:05.3159443Z  2 files changed, 2 insertions(+), 2 deletions(-)
+2025-03-11T06:53:05.3189082Z ##[group]Run git push origin main  # Push changes to the main branch
+2025-03-11T06:53:05.3189537Z [36;1mgit push origin main  # Push changes to the main branch[0m
+2025-03-11T06:53:05.3235676Z shell: /usr/bin/bash -e {0}
+2025-03-11T06:53:05.3235907Z env:
+2025-03-11T06:53:05.3236092Z   DETERMINATE_NIX_KVM: 1
+2025-03-11T06:53:05.3236306Z   tag: v1.4.155
+2025-03-11T06:53:05.3236502Z   new_version: 1.4.156
+2025-03-11T06:53:05.3236702Z   new_tag: v1.4.156
+2025-03-11T06:53:05.3237098Z   GITHUB_TOKEN: ***
+2025-03-11T06:53:05.3237297Z ##[endgroup]
+2025-03-11T06:53:05.4482563Z To https://github.com/danielmiessler/fabric
+2025-03-11T06:53:05.4483115Z  ! [rejected]        main -> main (fetch first)
+2025-03-11T06:53:05.4484031Z error: failed to push some refs to 'https://github.com/danielmiessler/fabric'
+2025-03-11T06:53:05.4492954Z hint: Updates were rejected because the remote contains work that you do not
+2025-03-11T06:53:05.4494269Z hint: have locally. This is usually caused by another repository pushing to
+2025-03-11T06:53:05.4494999Z hint: the same ref. If you want to integrate the remote changes, use
+2025-03-11T06:53:05.4495519Z hint: 'git pull' before pushing again.
+2025-03-11T06:53:05.4495874Z hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+2025-03-11T06:53:05.4508227Z ##[error]Process completed with exit code 1.
+2025-03-11T06:53:05.4637627Z Post job cleanup.
+2025-03-11T06:53:06.6483634Z Post job cleanup.
+2025-03-11T06:53:06.7392913Z [command]/usr/bin/git version
+2025-03-11T06:53:06.7427876Z git version 2.48.1
+2025-03-11T06:53:06.7470321Z Temporarily overriding HOME='/home/runner/work/_temp/6243e037-d2e0-4fff-8efb-d75c47824936' before making global git config changes
+2025-03-11T06:53:06.7471618Z Adding repository directory to the temporary git global config as a safe directory
+2025-03-11T06:53:06.7483146Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/fabric/fabric
+2025-03-11T06:53:06.7518656Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-03-11T06:53:06.7550811Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-03-11T06:53:06.7781532Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-03-11T06:53:06.7801442Z http.https://github.com/.extraheader
+2025-03-11T06:53:06.7813556Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2025-03-11T06:53:06.7844284Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-03-11T06:53:06.8165742Z Cleaning up orphan processes

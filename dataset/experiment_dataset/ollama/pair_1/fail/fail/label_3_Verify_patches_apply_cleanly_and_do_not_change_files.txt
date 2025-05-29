@@ -1,0 +1,143 @@
+2025-04-14T02:26:18.5065703Z ##[group]Run make -f Makefile.sync clean sync
+2025-04-14T02:26:18.5066804Z [36;1mmake -f Makefile.sync clean sync[0m
+2025-04-14T02:26:18.5067815Z [36;1mgit diff --compact-summary --exit-code[0m
+2025-04-14T02:26:18.5119498Z shell: /usr/bin/bash -e {0}
+2025-04-14T02:26:18.5120423Z ##[endgroup]
+2025-04-14T02:26:18.5240643Z git clone https://github.com/ggerganov/llama.cpp.git llama/vendor
+2025-04-14T02:26:18.5250716Z Cloning into 'llama/vendor'...
+2025-04-14T02:26:25.7032732Z git -C llama/vendor fetch
+2025-04-14T02:26:25.8490899Z git -C llama/vendor checkout -f 71e90e8813f90097701e62f7fce137d96ddf41e2
+2025-04-14T02:26:26.2659432Z Note: switching to '71e90e8813f90097701e62f7fce137d96ddf41e2'.
+2025-04-14T02:26:26.2661095Z 
+2025-04-14T02:26:26.2661587Z You are in 'detached HEAD' state. You can look around, make experimental
+2025-04-14T02:26:26.2662705Z changes and commit them, and you can discard any commits you make in this
+2025-04-14T02:26:26.2663803Z state without impacting any branches by switching back to a branch.
+2025-04-14T02:26:26.2664561Z 
+2025-04-14T02:26:26.2665028Z If you want to create a new branch to retain commits you create, you may
+2025-04-14T02:26:26.2666074Z do so (now or later) by using -c with the switch command. Example:
+2025-04-14T02:26:26.2666649Z 
+2025-04-14T02:26:26.2667054Z   git switch -c <new-branch-name>
+2025-04-14T02:26:26.2667800Z 
+2025-04-14T02:26:26.2668220Z Or undo this operation with:
+2025-04-14T02:26:26.2668912Z 
+2025-04-14T02:26:26.2669335Z   git switch -
+2025-04-14T02:26:26.2669800Z 
+2025-04-14T02:26:26.2670466Z Turn off this advice by setting config variable advice.detachedHead to false
+2025-04-14T02:26:26.2670955Z 
+2025-04-14T02:26:26.2671399Z HEAD is now at 71e90e88 quantize: Handle user-defined quantization levels for additional tensors (#12511)
+2025-04-14T02:26:26.2677306Z rm -f llama/patches/0001-cuda.patched llama/patches/0002-pretokenizer.patched llama/patches/0003-embeddings.patched llama/patches/0004-clip-unicode.patched llama/patches/0005-solar-pro.patched llama/patches/0006-conditional-fattn.patched llama/patches/0007-add-mllama-support.patched llama/patches/0008-add-unpad-operator.patched llama/patches/0009-fix-deepseek-deseret-regex.patched llama/patches/0010-Maintain-ordering-for-rules-for-grammar.patched llama/patches/0011-sort-devices-by-score.patched llama/patches/0012-add-phony-target-ggml-cpu-for-all-cpu-variants.patched llama/patches/0013-remove-amx.patched llama/patches/0014-fix-string-arr-kv-loading.patched llama/patches/0015-ollama-debug-tensor.patched llama/patches/0016-add-model-quantizations.patched llama/patches/0017-add-op_neg.patched llama/patches/0018-fix-compiler-error-in-clip.h.patched llama/patches/0019-Revert-Simplify-and-improve-CUDA-graphs-through-use-.patched llama/patches/0020-remove-ggml-git-build-info.patched
+2025-04-14T02:26:26.2683389Z sed -e 's|@FETCH_HEAD@|71e90e8813f90097701e62f7fce137d96ddf41e2|' llama/build-info.cpp.in > llama/build-info.cpp
+2025-04-14T02:26:26.2705730Z rsync -arvzc -f "merge llama/llama.cpp/.rsync-filter" llama/vendor/ llama/llama.cpp
+2025-04-14T02:26:26.2756906Z sending incremental file list
+2025-04-14T02:26:26.2778197Z ./
+2025-04-14T02:26:26.2791158Z common/
+2025-04-14T02:26:26.2791679Z common/json-schema-to-grammar.cpp
+2025-04-14T02:26:26.2797717Z examples/
+2025-04-14T02:26:26.2798138Z examples/llava/
+2025-04-14T02:26:26.2798620Z examples/llava/clip.cpp
+2025-04-14T02:26:26.2805686Z examples/llava/clip.h
+2025-04-14T02:26:26.2806704Z examples/llava/llava.cpp
+2025-04-14T02:26:26.2807827Z include/
+2025-04-14T02:26:26.2808212Z include/llama.h
+2025-04-14T02:26:26.2812922Z src/
+2025-04-14T02:26:26.2897252Z src/llama-arch.cpp
+2025-04-14T02:26:26.2898309Z src/llama-arch.h
+2025-04-14T02:26:26.2898805Z src/llama-batch.cpp
+2025-04-14T02:26:26.2899259Z src/llama-context.cpp
+2025-04-14T02:26:26.2899676Z src/llama-context.h
+2025-04-14T02:26:26.2900120Z src/llama-cparams.h
+2025-04-14T02:26:26.2900717Z src/llama-graph.cpp
+2025-04-14T02:26:26.2901092Z src/llama-graph.h
+2025-04-14T02:26:26.2901565Z src/llama-hparams.cpp
+2025-04-14T02:26:26.2902427Z src/llama-hparams.h
+2025-04-14T02:26:26.2902827Z src/llama-kv-cache.cpp
+2025-04-14T02:26:26.2903353Z src/llama-model-loader.cpp
+2025-04-14T02:26:26.2904124Z src/llama-model.cpp
+2025-04-14T02:26:26.2904527Z src/llama-model.h
+2025-04-14T02:26:26.2904914Z src/llama-quant.cpp
+2025-04-14T02:26:26.2905161Z src/llama-vocab.cpp
+2025-04-14T02:26:26.2905396Z src/unicode.cpp
+2025-04-14T02:26:26.3296572Z 
+2025-04-14T02:26:26.3297301Z sent 229,349 bytes  received 590 bytes  459,878.00 bytes/sec
+2025-04-14T02:26:26.3298101Z total size is 3,243,049  speedup is 14.10
+2025-04-14T02:26:26.3309426Z rsync -arvzc -f "merge ml/backend/ggml/ggml/.rsync-filter" llama/vendor/ggml/ ml/backend/ggml/ggml
+2025-04-14T02:26:26.3346281Z sending incremental file list
+2025-04-14T02:26:26.3384269Z ./
+2025-04-14T02:26:26.3384748Z CMakeLists.txt
+2025-04-14T02:26:26.3434984Z cmake/
+2025-04-14T02:26:26.3435613Z include/
+2025-04-14T02:26:26.3436140Z include/ggml.h
+2025-04-14T02:26:26.3438882Z include/gguf.h
+2025-04-14T02:26:26.3439544Z src/
+2025-04-14T02:26:26.3439969Z src/CMakeLists.txt
+2025-04-14T02:26:26.3441273Z src/ggml-backend-reg.cpp
+2025-04-14T02:26:26.3442722Z src/ggml-backend.cpp
+2025-04-14T02:26:26.3446118Z src/ggml.c
+2025-04-14T02:26:26.3453980Z src/gguf.cpp
+2025-04-14T02:26:26.3455990Z src/ggml-blas/
+2025-04-14T02:26:26.3456650Z src/ggml-cpu/
+2025-04-14T02:26:26.3457105Z src/ggml-cpu/ggml-cpu.c
+2025-04-14T02:26:26.3460885Z src/ggml-cpu/ops.cpp
+2025-04-14T02:26:26.3468574Z src/ggml-cpu/ops.h
+2025-04-14T02:26:26.3469214Z src/ggml-cpu/amx/
+2025-04-14T02:26:26.3469827Z src/ggml-cpu/cmake/
+2025-04-14T02:26:26.3470594Z src/ggml-cpu/llamafile/
+2025-04-14T02:26:26.3471107Z src/ggml-cuda/
+2025-04-14T02:26:26.3471603Z src/ggml-cuda/common.cuh
+2025-04-14T02:26:26.3472267Z src/ggml-cuda/cpy.cu
+2025-04-14T02:26:26.3472726Z src/ggml-cuda/cpy.cuh
+2025-04-14T02:26:26.3473182Z src/ggml-cuda/ggml-cuda.cu
+2025-04-14T02:26:26.3478781Z src/ggml-cuda/pad.cu
+2025-04-14T02:26:26.3479729Z src/ggml-cuda/pad.cuh
+2025-04-14T02:26:26.3480666Z src/ggml-cuda/template-instances/
+2025-04-14T02:26:26.3481257Z src/ggml-cuda/vendors/
+2025-04-14T02:26:26.3481706Z src/ggml-hip/
+2025-04-14T02:26:26.3482108Z src/ggml-metal/
+2025-04-14T02:26:26.3482548Z src/ggml-metal/ggml-metal.m
+2025-04-14T02:26:26.3488863Z src/ggml-metal/ggml-metal.metal
+2025-04-14T02:26:26.3925257Z 
+2025-04-14T02:26:26.3926089Z sent 264,878 bytes  received 1,251 bytes  532,258.00 bytes/sec
+2025-04-14T02:26:26.3927182Z total size is 4,203,907  speedup is 15.80
+2025-04-14T02:26:26.5955455Z  llama/llama.cpp/common/json-schema-to-grammar.cpp  |   2 +-
+2025-04-14T02:26:26.5956893Z  llama/llama.cpp/examples/llava/clip.cpp            |  39 --
+2025-04-14T02:26:26.5958121Z  llama/llama.cpp/examples/llava/clip.h              |   5 +-
+2025-04-14T02:26:26.5959326Z  llama/llama.cpp/examples/llava/llava.cpp           |   5 +-
+2025-04-14T02:26:26.5960554Z  llama/llama.cpp/include/llama.h                    |   6 -
+2025-04-14T02:26:26.5961389Z  llama/llama.cpp/src/llama-arch.cpp                 |  82 ----
+2025-04-14T02:26:26.5962198Z  llama/llama.cpp/src/llama-arch.h                   |  14 -
+2025-04-14T02:26:26.5962908Z  llama/llama.cpp/src/llama-batch.cpp                |   3 -
+2025-04-14T02:26:26.5963633Z  llama/llama.cpp/src/llama-context.cpp              |  33 +-
+2025-04-14T02:26:26.5964338Z  llama/llama.cpp/src/llama-context.h                |   1 -
+2025-04-14T02:26:26.5965036Z  llama/llama.cpp/src/llama-cparams.h                |   1 -
+2025-04-14T02:26:26.5965718Z  llama/llama.cpp/src/llama-graph.cpp                |  25 -
+2025-04-14T02:26:26.5966411Z  llama/llama.cpp/src/llama-graph.h                  |  12 -
+2025-04-14T02:26:26.5966964Z  llama/llama.cpp/src/llama-hparams.cpp              |  12 -
+2025-04-14T02:26:26.5967517Z  llama/llama.cpp/src/llama-hparams.h                |  12 -
+2025-04-14T02:26:26.5968096Z  llama/llama.cpp/src/llama-kv-cache.cpp             |  12 +-
+2025-04-14T02:26:26.5968666Z  llama/llama.cpp/src/llama-model-loader.cpp         |   3 -
+2025-04-14T02:26:26.5969328Z  llama/llama.cpp/src/llama-model.cpp                | 518 +--------------------
+2025-04-14T02:26:26.5970596Z  llama/llama.cpp/src/llama-model.h                  |  15 -
+2025-04-14T02:26:26.5971353Z  llama/llama.cpp/src/llama-quant.cpp                |   8 +-
+2025-04-14T02:26:26.5971925Z  llama/llama.cpp/src/llama-vocab.cpp                |  18 +-
+2025-04-14T02:26:26.5972480Z  llama/llama.cpp/src/unicode.cpp                    |  21 -
+2025-04-14T02:26:26.5973032Z  ml/backend/ggml/ggml/CMakeLists.txt                |  25 +
+2025-04-14T02:26:26.5973594Z  ml/backend/ggml/ggml/include/ggml.h                |  10 -
+2025-04-14T02:26:26.5974145Z  ml/backend/ggml/ggml/include/gguf.h                |   1 -
+2025-04-14T02:26:26.5974709Z  ml/backend/ggml/ggml/src/CMakeLists.txt            |   6 +-
+2025-04-14T02:26:26.5975291Z  ml/backend/ggml/ggml/src/ggml-backend-reg.cpp      |  27 +-
+2025-04-14T02:26:26.5975862Z  ml/backend/ggml/ggml/src/ggml-backend.cpp          |   1 +
+2025-04-14T02:26:26.5976425Z  ml/backend/ggml/ggml/src/ggml-cpu/ggml-cpu.c       |  11 -
+2025-04-14T02:26:26.5976990Z  ml/backend/ggml/ggml/src/ggml-cpu/ops.cpp          |  55 ---
+2025-04-14T02:26:26.5977426Z  ml/backend/ggml/ggml/src/ggml-cpu/ops.h            |   1 -
+2025-04-14T02:26:26.5977861Z  ml/backend/ggml/ggml/src/ggml-cuda/common.cuh      |   8 +-
+2025-04-14T02:26:26.5978307Z  ml/backend/ggml/ggml/src/ggml-cuda/cpy.cu          | 149 +++---
+2025-04-14T02:26:26.5978757Z  ml/backend/ggml/ggml/src/ggml-cuda/cpy.cuh         |   2 +
+2025-04-14T02:26:26.5979200Z  ml/backend/ggml/ggml/src/ggml-cuda/ggml-cuda.cu    | 100 +---
+2025-04-14T02:26:26.5979656Z  ml/backend/ggml/ggml/src/ggml-cuda/pad.cu          |  46 --
+2025-04-14T02:26:26.5980115Z  ml/backend/ggml/ggml/src/ggml-cuda/pad.cuh         |   1 -
+2025-04-14T02:26:26.5980682Z  ml/backend/ggml/ggml/src/ggml-metal/ggml-metal.m   |  49 --
+2025-04-14T02:26:26.5981122Z  .../ggml/ggml/src/ggml-metal/ggml-metal.metal      |  52 ---
+2025-04-14T02:26:26.5981551Z  ml/backend/ggml/ggml/src/ggml.c                    |  25 +-
+2025-04-14T02:26:26.5981977Z  ml/backend/ggml/ggml/src/gguf.cpp                  |   7 +-
+2025-04-14T02:26:26.5982426Z  41 files changed, 208 insertions(+), 1215 deletions(-)
+2025-04-14T02:26:26.7507006Z ##[error]Process completed with exit code 1.

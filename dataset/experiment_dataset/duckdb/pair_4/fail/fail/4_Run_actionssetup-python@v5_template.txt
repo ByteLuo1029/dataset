@@ -1,0 +1,21 @@
+##[group]Run <:*:>
+with:
+python-version: <:*:>
+check-latest: false
+token: ***
+<:*:> true
+<:*:> false
+<:*:> false
+env:
+GH_TOKEN:
+OVERRIDE_GIT_DESCRIBE:
+CIBW_TEST_SKIP: {cp37,cp38}-*
+CIBW_BUILD: cp310-manylinux_2_28_x86_64
+CIBW_TEST_COMMAND: python -m pytest {project}/tests --verbose && USE_ACTUAL_SPARK=true JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java)))) SPARK_HOME={project}/spark_installation/spark python -m pytest {project}/tests/fast/spark --verbose
+PYTEST_TIMEOUT: 600
+CIBW_ENVIRONMENT: OVERRIDE_GIT_DESCRIBE=
+CIBW_BEFORE_ALL: cd {project} && ./scripts/install_spark_in_cibuildwheels_linux_container.sh
+##[endgroup]
+##[group]Installed versions
+Successfully set up CPython (<:NUM:>.<:NUM:>.<:NUM:>)
+##[endgroup]

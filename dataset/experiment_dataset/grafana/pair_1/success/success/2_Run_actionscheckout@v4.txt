@@ -1,0 +1,88 @@
+2025-04-15T08:31:06.9623605Z ##[group]Run actions/checkout@v4
+2025-04-15T08:31:06.9624546Z with:
+2025-04-15T08:31:06.9625013Z   repository: grafana/grafana
+2025-04-15T08:31:06.9625740Z   token: ***
+2025-04-15T08:31:06.9626351Z   ssh-strict: true
+2025-04-15T08:31:06.9626803Z   ssh-user: git
+2025-04-15T08:31:06.9627242Z   persist-credentials: true
+2025-04-15T08:31:06.9627749Z   clean: true
+2025-04-15T08:31:06.9628204Z   sparse-checkout-cone-mode: true
+2025-04-15T08:31:06.9628732Z   fetch-depth: 1
+2025-04-15T08:31:06.9629169Z   fetch-tags: false
+2025-04-15T08:31:06.9629610Z   show-progress: true
+2025-04-15T08:31:06.9630059Z   lfs: false
+2025-04-15T08:31:06.9630478Z   submodules: false
+2025-04-15T08:31:06.9630942Z   set-safe-directory: true
+2025-04-15T08:31:06.9631749Z ##[endgroup]
+2025-04-15T08:31:07.1337511Z Syncing repository: grafana/grafana
+2025-04-15T08:31:07.1339824Z ##[group]Getting Git version info
+2025-04-15T08:31:07.1340613Z Working directory is '/home/runner/work/grafana/grafana'
+2025-04-15T08:31:07.1341650Z [command]/usr/bin/git version
+2025-04-15T08:31:07.1428174Z git version 2.49.0
+2025-04-15T08:31:07.1456534Z ##[endgroup]
+2025-04-15T08:31:07.1471274Z Temporarily overriding HOME='/home/runner/work/_temp/56a1c9b0-a96c-432d-ba44-7697ad2c490d' before making global git config changes
+2025-04-15T08:31:07.1472761Z Adding repository directory to the temporary git global config as a safe directory
+2025-04-15T08:31:07.1476897Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/grafana/grafana
+2025-04-15T08:31:07.1521627Z Deleting the contents of '/home/runner/work/grafana/grafana'
+2025-04-15T08:31:07.1526390Z ##[group]Initializing the repository
+2025-04-15T08:31:07.1531508Z [command]/usr/bin/git init /home/runner/work/grafana/grafana
+2025-04-15T08:31:07.1601799Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-04-15T08:31:07.1603260Z hint: is subject to change. To configure the initial branch name to use in all
+2025-04-15T08:31:07.1604238Z hint: of your new repositories, which will suppress this warning, call:
+2025-04-15T08:31:07.1604980Z hint:
+2025-04-15T08:31:07.1605499Z hint: 	git config --global init.defaultBranch <name>
+2025-04-15T08:31:07.1606357Z hint:
+2025-04-15T08:31:07.1606971Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-04-15T08:31:07.1608015Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-04-15T08:31:07.1609447Z hint:
+2025-04-15T08:31:07.1609938Z hint: 	git branch -m <name>
+2025-04-15T08:31:07.1611222Z Initialized empty Git repository in /home/runner/work/grafana/grafana/.git/
+2025-04-15T08:31:07.1622912Z [command]/usr/bin/git remote add origin https://github.com/grafana/grafana
+2025-04-15T08:31:07.1661017Z ##[endgroup]
+2025-04-15T08:31:07.1662423Z ##[group]Disabling automatic garbage collection
+2025-04-15T08:31:07.1666143Z [command]/usr/bin/git config --local gc.auto 0
+2025-04-15T08:31:07.1696412Z ##[endgroup]
+2025-04-15T08:31:07.1697859Z ##[group]Setting up auth
+2025-04-15T08:31:07.1704444Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-04-15T08:31:07.1736803Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-04-15T08:31:07.2077283Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-15T08:31:07.2110458Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-04-15T08:31:07.2340917Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-04-15T08:31:07.2381791Z ##[endgroup]
+2025-04-15T08:31:07.2382781Z ##[group]Fetching the repository
+2025-04-15T08:31:07.2392236Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +d3e24cc00b061f2a856e51fb07d8448cdb3c03ee:refs/remotes/pull/99916/merge
+2025-04-15T08:31:11.9956276Z From https://github.com/grafana/grafana
+2025-04-15T08:31:11.9958193Z  * [new ref]           d3e24cc00b061f2a856e51fb07d8448cdb3c03ee -> pull/99916/merge
+2025-04-15T08:31:12.0235622Z ##[endgroup]
+2025-04-15T08:31:12.0236798Z ##[group]Determining the checkout info
+2025-04-15T08:31:12.0237948Z ##[endgroup]
+2025-04-15T08:31:12.0243544Z [command]/usr/bin/git sparse-checkout disable
+2025-04-15T08:31:12.0286367Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-04-15T08:31:12.0315194Z ##[group]Checking out the ref
+2025-04-15T08:31:12.0319827Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/99916/merge
+2025-04-15T08:31:13.0527170Z Updating files:  97% (16784/17143)
+2025-04-15T08:31:13.0843322Z Updating files:  98% (16801/17143)
+2025-04-15T08:31:13.1288481Z Updating files:  99% (16972/17143)
+2025-04-15T08:31:13.1289799Z Updating files: 100% (17143/17143)
+2025-04-15T08:31:13.1290748Z Updating files: 100% (17143/17143), done.
+2025-04-15T08:31:13.1487852Z Note: switching to 'refs/remotes/pull/99916/merge'.
+2025-04-15T08:31:13.1490944Z 
+2025-04-15T08:31:13.1491397Z You are in 'detached HEAD' state. You can look around, make experimental
+2025-04-15T08:31:13.1492126Z changes and commit them, and you can discard any commits you make in this
+2025-04-15T08:31:13.1492833Z state without impacting any branches by switching back to a branch.
+2025-04-15T08:31:13.1493270Z 
+2025-04-15T08:31:13.1493528Z If you want to create a new branch to retain commits you create, you may
+2025-04-15T08:31:13.1494133Z do so (now or later) by using -c with the switch command. Example:
+2025-04-15T08:31:13.1494502Z 
+2025-04-15T08:31:13.1494684Z   git switch -c <new-branch-name>
+2025-04-15T08:31:13.1495359Z 
+2025-04-15T08:31:13.1495516Z Or undo this operation with:
+2025-04-15T08:31:13.1496023Z 
+2025-04-15T08:31:13.1496135Z   git switch -
+2025-04-15T08:31:13.1496297Z 
+2025-04-15T08:31:13.1496630Z Turn off this advice by setting config variable advice.detachedHead to false
+2025-04-15T08:31:13.1497063Z 
+2025-04-15T08:31:13.1497538Z HEAD is now at d3e24cc0 Merge 6f4e718f121ea32c832c580d3c23b1dbe6a7dae2 into 8e63782e5b58f4a0323ef73b747778e88e639abf
+2025-04-15T08:31:13.1521963Z ##[endgroup]
+2025-04-15T08:31:13.1563014Z [command]/usr/bin/git log -1 --format=%H
+2025-04-15T08:31:13.1587004Z d3e24cc00b061f2a856e51fb07d8448cdb3c03ee

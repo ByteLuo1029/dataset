@@ -1,0 +1,565 @@
+2025-04-15T08:45:38.6070654Z ##[group]Run echo "Version: 0.5.16-1269"
+2025-04-15T08:45:38.6071110Z [36;1mecho "Version: 0.5.16-1269"[0m
+2025-04-15T08:45:38.6071463Z [36;1m# Update the version in electron/package.json[0m
+2025-04-15T08:45:38.6071975Z [36;1mjq --arg version "0.5.16-1269" '.version = $version' electron/package.json > /tmp/package.json[0m
+2025-04-15T08:45:38.6072462Z [36;1mmv /tmp/package.json electron/package.json[0m
+2025-04-15T08:45:38.6072749Z [36;1m[0m
+2025-04-15T08:45:38.6073100Z [36;1mjq --arg version "0.5.16-1269" '.version = $version' web/package.json > /tmp/package.json[0m
+2025-04-15T08:45:38.6073561Z [36;1mmv /tmp/package.json web/package.json[0m
+2025-04-15T08:45:38.6073839Z [36;1m[0m
+2025-04-15T08:45:38.6074974Z [36;1mjq '.build.publish = [{"provider": "generic", "url": "https://delta.jan.ai/nightly", "channel": "latest"}, {"provider": "s3", "acl": null, "bucket": "***", "region": "***", "path": "temp-nightly", "channel": "latest"}]' electron/package.json > /tmp/package.json[0m
+2025-04-15T08:45:38.6075868Z [36;1mmv /tmp/package.json electron/package.json[0m
+2025-04-15T08:45:38.6076163Z [36;1m[0m
+2025-04-15T08:45:38.6076485Z [36;1mjq '.build.win.sign = "./sign.js"' electron/package.json > /tmp/package.json[0m
+2025-04-15T08:45:38.6076923Z [36;1mmv /tmp/package.json electron/package.json[0m
+2025-04-15T08:45:38.6077239Z [36;1mcat electron/package.json[0m
+2025-04-15T08:45:38.6077498Z [36;1m[0m
+2025-04-15T08:45:38.6077729Z [36;1mchmod +x .github/scripts/rename-app.sh[0m
+2025-04-15T08:45:38.6078140Z [36;1m.github/scripts/rename-app.sh ./electron/package.json nightly[0m
+2025-04-15T08:45:38.6078741Z [36;1mchmod +x .github/scripts/rename-workspace.sh[0m
+2025-04-15T08:45:38.6079148Z [36;1m.github/scripts/rename-workspace.sh ./package.json nightly[0m
+2025-04-15T08:45:38.6079549Z [36;1mchmod +x .github/scripts/rename-uninstaller.sh[0m
+2025-04-15T08:45:38.6079913Z [36;1m.github/scripts/rename-uninstaller.sh nightly[0m
+2025-04-15T08:45:38.6080224Z [36;1mecho "------------------------"[0m
+2025-04-15T08:45:38.6080514Z [36;1mcat ./electron/package.json[0m
+2025-04-15T08:45:38.6080779Z [36;1mecho "------------------------"[0m
+2025-04-15T08:45:38.6081048Z [36;1mcat ./package.json[0m
+2025-04-15T08:45:38.6081338Z [36;1mecho "------------------------"[0m
+2025-04-15T08:45:38.6092010Z shell: C:\Program Files\Git\bin\bash.EXE --noprofile --norc -e -o pipefail {0}
+2025-04-15T08:45:38.6092407Z ##[endgroup]
+2025-04-15T08:45:38.6375716Z Version: 0.5.16-1269
+2025-04-15T08:45:39.6412374Z {
+2025-04-15T08:45:39.6412930Z   "name": "jan",
+2025-04-15T08:45:39.6413464Z   "version": "0.5.16-1269",
+2025-04-15T08:45:39.6413877Z   "main": "./build/main.js",
+2025-04-15T08:45:39.6414526Z   "author": "Jan <service@jan.ai>",
+2025-04-15T08:45:39.6415326Z   "license": "MIT",
+2025-04-15T08:45:39.6416165Z   "productName": "Jan",
+2025-04-15T08:45:39.6417275Z   "homepage": "https://github.com/menloresearch/jan/tree/main/electron",
+2025-04-15T08:45:39.6419149Z   "description": "Use offline LLMs with your own data. Run open source models like Llama2 or Falcon on your internal computers/servers.",
+2025-04-15T08:45:39.6420383Z   "build": {
+2025-04-15T08:45:39.6420782Z     "appId": "jan.ai.app",
+2025-04-15T08:45:39.6421251Z     "productName": "Jan",
+2025-04-15T08:45:39.6421506Z     "files": [
+2025-04-15T08:45:39.6421741Z       "renderer/**/*",
+2025-04-15T08:45:39.6421992Z       "build/**/*.{js,map}",
+2025-04-15T08:45:39.6422249Z       "pre-install",
+2025-04-15T08:45:39.6422476Z       "themes",
+2025-04-15T08:45:39.6422702Z       "scripts/**/*",
+2025-04-15T08:45:39.6422944Z       "icons/**/*",
+2025-04-15T08:45:39.6423165Z       "themes",
+2025-04-15T08:45:39.6423372Z       "shared"
+2025-04-15T08:45:39.6423577Z     ],
+2025-04-15T08:45:39.6423775Z     "asarUnpack": [
+2025-04-15T08:45:39.6424005Z       "pre-install",
+2025-04-15T08:45:39.6424225Z       "themes",
+2025-04-15T08:45:39.6424430Z       "docs",
+2025-04-15T08:45:39.6424638Z       "scripts",
+2025-04-15T08:45:39.6424848Z       "icons",
+2025-04-15T08:45:39.6427860Z       "themes",
+2025-04-15T08:45:39.6428243Z       "shared"
+2025-04-15T08:45:39.6428561Z     ],
+2025-04-15T08:45:39.6428773Z     "publish": [
+2025-04-15T08:45:39.6429031Z       {
+2025-04-15T08:45:39.6429275Z         "provider": "generic",
+2025-04-15T08:45:39.6429868Z         "url": "https://delta.jan.ai/nightly",
+2025-04-15T08:45:39.6430426Z         "channel": "latest"
+2025-04-15T08:45:39.6430845Z       },
+2025-04-15T08:45:39.6431166Z       {
+2025-04-15T08:45:39.6431518Z         "provider": "s3",
+2025-04-15T08:45:39.6431959Z         "acl": null,
+2025-04-15T08:45:39.6432550Z         "bucket": "***",
+2025-04-15T08:45:39.6433001Z         "region": "***",
+2025-04-15T08:45:39.6433289Z         "path": "temp-nightly",
+2025-04-15T08:45:39.6433556Z         "channel": "latest"
+2025-04-15T08:45:39.6433784Z       }
+2025-04-15T08:45:39.6433963Z     ],
+2025-04-15T08:45:39.6434151Z     "extends": null,
+2025-04-15T08:45:39.6434367Z     "mac": {
+2025-04-15T08:45:39.6434595Z       "type": "distribution",
+2025-04-15T08:45:39.6434916Z       "entitlements": "./entitlements.mac.plist",
+2025-04-15T08:45:39.6435304Z       "entitlementsInherit": "./entitlements.mac.plist",
+2025-04-15T08:45:39.6435632Z       "notarize": {
+2025-04-15T08:45:39.6435872Z         "teamId": "F8AH6NHVY5"
+2025-04-15T08:45:39.6436110Z       },
+2025-04-15T08:45:39.6436318Z       "icon": "icons/icon.png"
+2025-04-15T08:45:39.6436548Z     },
+2025-04-15T08:45:39.6436728Z     "linux": {
+2025-04-15T08:45:39.6436926Z       "target": [
+2025-04-15T08:45:39.6437330Z         "deb"
+2025-04-15T08:45:39.6437518Z       ],
+2025-04-15T08:45:39.6437712Z       "category": "Utility",
+2025-04-15T08:45:39.6437955Z       "icon": "icons/"
+2025-04-15T08:45:39.6438162Z     },
+2025-04-15T08:45:39.6438338Z     "win": {
+2025-04-15T08:45:39.6438562Z       "icon": "icons/icon.png",
+2025-04-15T08:45:39.6438800Z       "target": [
+2025-04-15T08:45:39.6439002Z         "nsis"
+2025-04-15T08:45:39.6439187Z       ],
+2025-04-15T08:45:39.6439384Z       "sign": "./sign.js"
+2025-04-15T08:45:39.6439599Z     },
+2025-04-15T08:45:39.6439783Z     "nsis": {
+2025-04-15T08:45:39.6439988Z       "oneClick": true,
+2025-04-15T08:45:39.6440253Z       "installerIcon": "icons/icon.ico",
+2025-04-15T08:45:39.6440603Z       "uninstallerIcon": "icons/icon.ico",
+2025-04-15T08:45:39.6440930Z       "include": "scripts/uninstaller.nsh",
+2025-04-15T08:45:39.6441252Z       "deleteAppDataOnUninstall": true
+2025-04-15T08:45:39.6441567Z     },
+2025-04-15T08:45:39.6441896Z     "protocols": [
+2025-04-15T08:45:39.6442260Z       {
+2025-04-15T08:45:39.6442574Z         "name": "Jan",
+2025-04-15T08:45:39.6442947Z         "schemes": [
+2025-04-15T08:45:39.6443536Z           "jan"
+2025-04-15T08:45:39.6443881Z         ]
+2025-04-15T08:45:39.6444196Z       }
+2025-04-15T08:45:39.6444498Z     ],
+2025-04-15T08:45:39.6444988Z     "artifactName": "jan-${os}-${arch}-${version}.${ext}"
+2025-04-15T08:45:39.6445527Z   },
+2025-04-15T08:45:39.6445837Z   "scripts": {
+2025-04-15T08:45:39.6446461Z     "lint": "eslint . --ext \".js,.jsx,.ts,.tsx\"",
+2025-04-15T08:45:39.6447243Z     "test:e2e": "DEBUG=pw:browser xvfb-maybe -- playwright test --workers=1",
+2025-04-15T08:45:39.6448334Z     "copy:assets": "rimraf --glob \"./pre-install/*.tgz\" && cpx \"../pre-install/*.tgz\" \"./pre-install\"",
+2025-04-15T08:45:39.6449206Z     "version-patch": "run-script-os",
+2025-04-15T08:45:39.6450573Z     "version-patch:darwin:linux": "jq '.version' package.json | tr -d '\"' > .version.bak && jq --arg ver \"0.1.$(date +%s)\" '.version = $ver' package.json > package.tmp && mv package.tmp package.json",
+2025-04-15T08:45:39.6453171Z     "version-patch:win32": "node -e \"const fs=require('fs');const pkg=require('./package.json');const bak=pkg.version;fs.writeFileSync('.version.bak',bak);pkg.version='0.1.'+Math.floor(Date.now()/1000);fs.writeFileSync('package.json',JSON.stringify(pkg,null,2));\"",
+2025-04-15T08:45:39.6454225Z     "version-restore": "run-script-os",
+2025-04-15T08:45:39.6456857Z     "version-restore:darwin:linux": "jq --arg ver $(cat .version.bak) '.version = $ver' package.json > package.tmp && mv package.tmp package.json && rm .version.bak",
+2025-04-15T08:45:39.6458758Z     "version-restore:win32": "node -e \"const fs=require('fs');const pkg=require('./package.json');const bak=fs.readFileSync('.version.bak','utf8');pkg.version=bak;fs.writeFileSync('package.json',JSON.stringify(pkg,null,2));\"",
+2025-04-15T08:45:39.6459909Z     "dev:darwin:linux": "yarn copy:assets && tsc -p . && yarn version-patch && electron . && yarn version-restore",
+2025-04-15T08:45:39.6460515Z     "dev:windows": "yarn copy:assets && tsc -p . && electron .",
+2025-04-15T08:45:39.6460869Z     "dev": "run-script-os",
+2025-04-15T08:45:39.6461144Z     "compile": "tsc -p .",
+2025-04-15T08:45:39.6461388Z     "start": "electron .",
+2025-04-15T08:45:39.6461702Z     "build": "yarn copy:assets && run-script-os",
+2025-04-15T08:45:39.6462077Z     "build:test": "yarn copy:assets && run-script-os",
+2025-04-15T08:45:39.6462807Z     "build:test:darwin": "tsc -p . && electron-builder -p never -m --dir",
+2025-04-15T08:45:39.6463343Z     "build:test:win32": "tsc -p . && electron-builder -p never -w --dir",
+2025-04-15T08:45:39.6463825Z     "build:test:linux": "tsc -p . && electron-builder -p never -l --dir",
+2025-04-15T08:45:39.6464318Z     "build:darwin": "tsc -p . && electron-builder -p never -m --universal",
+2025-04-15T08:45:39.6464800Z     "build:win32": "tsc -p . && electron-builder -p never -w",
+2025-04-15T08:45:39.6465449Z     "build:linux": "tsc -p . && electron-builder -p never -l deb -l AppImage",
+2025-04-15T08:45:39.6466426Z     "build:publish": "yarn copy:assets && run-script-os",
+2025-04-15T08:45:39.6467159Z     "build:publish:darwin": "tsc -p . && electron-builder -p always -m --universal",
+2025-04-15T08:45:39.6467693Z     "build:publish:win32": "tsc -p . && electron-builder -p always -w",
+2025-04-15T08:45:39.6468211Z     "build:publish:linux": "tsc -p . && electron-builder -p always -l deb -l AppImage"
+2025-04-15T08:45:39.6468605Z   },
+2025-04-15T08:45:39.6468796Z   "dependencies": {
+2025-04-15T08:45:39.6469055Z     "@alumna/reflect": "^1.1.3",
+2025-04-15T08:45:39.6469338Z     "@janhq/core": "link:../core",
+2025-04-15T08:45:39.6469630Z     "@janhq/server": "link:../server",
+2025-04-15T08:45:39.6469950Z     "@kirillvakalov/nut-tree__nut-js": "4.2.1-2",
+2025-04-15T08:45:39.6470272Z     "@npmcli/arborist": "^7.1.0",
+2025-04-15T08:45:39.6470549Z     "electron-store": "^8.1.0",
+2025-04-15T08:45:39.6470824Z     "electron-updater": "^6.1.7",
+2025-04-15T08:45:39.6471089Z     "fs-extra": "^11.2.0",
+2025-04-15T08:45:39.6471350Z     "pacote": "^21.0.0",
+2025-04-15T08:45:39.6471725Z     "request": "^2.88.2",
+2025-04-15T08:45:39.6472138Z     "request-progress": "^3.0.0",
+2025-04-15T08:45:39.6472544Z     "ulidx": "^2.3.0"
+2025-04-15T08:45:39.6472754Z   },
+2025-04-15T08:45:39.6472952Z   "devDependencies": {
+2025-04-15T08:45:39.6473206Z     "@electron/notarize": "^2.5.0",
+2025-04-15T08:45:39.6473506Z     "@playwright/test": "^1.38.1",
+2025-04-15T08:45:39.6473836Z     "@reportportal/agent-js-playwright": "^5.1.7",
+2025-04-15T08:45:39.6474187Z     "@types/npmcli__arborist": "^5.6.4",
+2025-04-15T08:45:39.6474485Z     "@types/pacote": "^11.1.7",
+2025-04-15T08:45:39.6474763Z     "@types/request": "^2.48.12",
+2025-04-15T08:45:39.6475072Z     "@typescript-eslint/eslint-plugin": "^6.7.3",
+2025-04-15T08:45:39.6475414Z     "@typescript-eslint/parser": "^6.7.3",
+2025-04-15T08:45:39.6475690Z     "electron": "30.0.6",
+2025-04-15T08:45:39.6475957Z     "electron-builder": "^24.13.3",
+2025-04-15T08:45:39.6476291Z     "electron-builder-squirrel-windows": "^24.13.3",
+2025-04-15T08:45:39.6476658Z     "electron-devtools-installer": "^3.2.0",
+2025-04-15T08:45:39.6476989Z     "electron-playwright-helpers": "^1.6.0",
+2025-04-15T08:45:39.6477276Z     "eslint": "8.57.0",
+2025-04-15T08:45:39.6477531Z     "eslint-plugin-react": "^7.34.0",
+2025-04-15T08:45:39.6477802Z     "rimraf": "^5.0.5",
+2025-04-15T08:45:39.6478177Z     "run-script-os": "^1.1.6",
+2025-04-15T08:45:39.6478436Z     "typescript": "^5.3.3",
+2025-04-15T08:45:39.6478674Z     "xvfb-maybe": "^0.2.1"
+2025-04-15T08:45:39.6478890Z   },
+2025-04-15T08:45:39.6479082Z   "installConfig": {
+2025-04-15T08:45:39.6479424Z     "hoistingLimits": "workspaces"
+2025-04-15T08:45:39.6479869Z   },
+2025-04-15T08:45:39.6480255Z   "packageManager": "yarn@4.5.3"
+2025-04-15T08:45:39.6480920Z }
+2025-04-15T08:45:39.8009704Z {
+2025-04-15T08:45:39.8010647Z   "name": "jan-nightly",
+2025-04-15T08:45:39.8011172Z   "version": "0.5.16-1269",
+2025-04-15T08:45:39.8011671Z   "main": "./build/main.js",
+2025-04-15T08:45:39.8012184Z   "author": "Jan <service@jan.ai>",
+2025-04-15T08:45:39.8012671Z   "license": "MIT",
+2025-04-15T08:45:39.8013096Z   "productName": "Jan-nightly",
+2025-04-15T08:45:39.8013783Z   "homepage": "https://github.com/menloresearch/jan/tree/main/electron",
+2025-04-15T08:45:39.8015055Z   "description": "Use offline LLMs with your own data. Run open source models like Llama2 or Falcon on your internal computers/servers.",
+2025-04-15T08:45:39.8016037Z   "build": {
+2025-04-15T08:45:39.8016436Z     "appId": "jan-nightly.ai.app",
+2025-04-15T08:45:39.8016932Z     "productName": "Jan-nightly",
+2025-04-15T08:45:39.8017364Z     "files": [
+2025-04-15T08:45:39.8017701Z       "renderer/**/*",
+2025-04-15T08:45:39.8018080Z       "build/**/*.{js,map}",
+2025-04-15T08:45:39.8018489Z       "pre-install",
+2025-04-15T08:45:39.8018722Z       "themes",
+2025-04-15T08:45:39.8019055Z       "scripts/**/*",
+2025-04-15T08:45:39.8019684Z       "icons/**/*",
+2025-04-15T08:45:39.8019919Z       "themes",
+2025-04-15T08:45:39.8020124Z       "shared"
+2025-04-15T08:45:39.8020326Z     ],
+2025-04-15T08:45:39.8020522Z     "asarUnpack": [
+2025-04-15T08:45:39.8020757Z       "pre-install",
+2025-04-15T08:45:39.8020992Z       "themes",
+2025-04-15T08:45:39.8021186Z       "docs",
+2025-04-15T08:45:39.8021384Z       "scripts",
+2025-04-15T08:45:39.8021581Z       "icons",
+2025-04-15T08:45:39.8021791Z       "themes",
+2025-04-15T08:45:39.8021980Z       "shared"
+2025-04-15T08:45:39.8022167Z     ],
+2025-04-15T08:45:39.8022357Z     "publish": [
+2025-04-15T08:45:39.8022551Z       {
+2025-04-15T08:45:39.8022767Z         "provider": "generic",
+2025-04-15T08:45:39.8023181Z         "url": "https://delta.jan.ai/nightly",
+2025-04-15T08:45:39.8023510Z         "channel": "latest"
+2025-04-15T08:45:39.8023739Z       },
+2025-04-15T08:45:39.8023915Z       {
+2025-04-15T08:45:39.8024110Z         "provider": "s3",
+2025-04-15T08:45:39.8024334Z         "acl": null,
+2025-04-15T08:45:39.8024730Z         "bucket": "***",
+2025-04-15T08:45:39.8025016Z         "region": "***",
+2025-04-15T08:45:39.8025282Z         "path": "temp-nightly",
+2025-04-15T08:45:39.8025545Z         "channel": "latest"
+2025-04-15T08:45:39.8025793Z       }
+2025-04-15T08:45:39.8026090Z     ],
+2025-04-15T08:45:39.8026420Z     "extends": null,
+2025-04-15T08:45:39.8026782Z     "mac": {
+2025-04-15T08:45:39.8027148Z       "type": "distribution",
+2025-04-15T08:45:39.8027716Z       "entitlements": "./entitlements.mac.plist",
+2025-04-15T08:45:39.8028406Z       "entitlementsInherit": "./entitlements.mac.plist",
+2025-04-15T08:45:39.8028969Z       "notarize": {
+2025-04-15T08:45:39.8029381Z         "teamId": "F8AH6NHVY5"
+2025-04-15T08:45:39.8029807Z       },
+2025-04-15T08:45:39.8030180Z       "icon": "icons/icon.png"
+2025-04-15T08:45:39.8030583Z     },
+2025-04-15T08:45:39.8030903Z     "linux": {
+2025-04-15T08:45:39.8031245Z       "target": [
+2025-04-15T08:45:39.8031573Z         "deb"
+2025-04-15T08:45:39.8031897Z       ],
+2025-04-15T08:45:39.8032223Z       "category": "Utility",
+2025-04-15T08:45:39.8032614Z       "icon": "icons/"
+2025-04-15T08:45:39.8032939Z     },
+2025-04-15T08:45:39.8033224Z     "win": {
+2025-04-15T08:45:39.8033574Z       "icon": "icons/icon.png",
+2025-04-15T08:45:39.8033955Z       "target": [
+2025-04-15T08:45:39.8034292Z         "nsis"
+2025-04-15T08:45:39.8034605Z       ],
+2025-04-15T08:45:39.8034933Z       "sign": "./sign.js"
+2025-04-15T08:45:39.8035551Z     },
+2025-04-15T08:45:39.8035743Z     "nsis": {
+2025-04-15T08:45:39.8035950Z       "oneClick": true,
+2025-04-15T08:45:39.8036347Z       "installerIcon": "icons/icon.ico",
+2025-04-15T08:45:39.8036913Z       "uninstallerIcon": "icons/icon.ico",
+2025-04-15T08:45:39.8037481Z       "include": "scripts/uninstaller.nsh",
+2025-04-15T08:45:39.8038003Z       "deleteAppDataOnUninstall": true
+2025-04-15T08:45:39.8038285Z     },
+2025-04-15T08:45:39.8038474Z     "protocols": [
+2025-04-15T08:45:39.8038685Z       {
+2025-04-15T08:45:39.8038909Z         "name": "Jan-nightly",
+2025-04-15T08:45:39.8039161Z         "schemes": [
+2025-04-15T08:45:39.8039377Z           "jan-nightly"
+2025-04-15T08:45:39.8039584Z         ]
+2025-04-15T08:45:39.8039770Z       }
+2025-04-15T08:45:39.8039942Z     ],
+2025-04-15T08:45:39.8040253Z     "artifactName": "jan-nightly-${os}-${arch}-${version}.${ext}"
+2025-04-15T08:45:39.8040598Z   },
+2025-04-15T08:45:39.8040789Z   "scripts": {
+2025-04-15T08:45:39.8041067Z     "lint": "eslint . --ext \".js,.jsx,.ts,.tsx\"",
+2025-04-15T08:45:39.8041533Z     "test:e2e": "DEBUG=pw:browser xvfb-maybe -- playwright test --workers=1",
+2025-04-15T08:45:39.8042148Z     "copy:assets": "rimraf --glob \"./pre-install/*.tgz\" && cpx \"../pre-install/*.tgz\" \"./pre-install\"",
+2025-04-15T08:45:39.8042648Z     "version-patch": "run-script-os",
+2025-04-15T08:45:39.8043428Z     "version-patch:darwin:linux": "jq '.version' package.json | tr -d '\"' > .version.bak && jq --arg ver \"0.1.$(date +%s)\" '.version = $ver' package.json > package.tmp && mv package.tmp package.json",
+2025-04-15T08:45:39.8045309Z     "version-patch:win32": "node -e \"const fs=require('fs');const pkg=require('./package.json');const bak=pkg.version;fs.writeFileSync('.version.bak',bak);pkg.version='0.1.'+Math.floor(Date.now()/1000);fs.writeFileSync('package.json',JSON.stringify(pkg,null,2));\"",
+2025-04-15T08:45:39.8046342Z     "version-restore": "run-script-os",
+2025-04-15T08:45:39.8047047Z     "version-restore:darwin:linux": "jq --arg ver $(cat .version.bak) '.version = $ver' package.json > package.tmp && mv package.tmp package.json && rm .version.bak",
+2025-04-15T08:45:39.8048721Z     "version-restore:win32": "node -e \"const fs=require('fs');const pkg=require('./package.json');const bak=fs.readFileSync('.version.bak','utf8');pkg.version=bak;fs.writeFileSync('package.json',JSON.stringify(pkg,null,2));\"",
+2025-04-15T08:45:39.8050242Z     "dev:darwin:linux": "yarn copy:assets && tsc -p . && yarn version-patch && electron . && yarn version-restore",
+2025-04-15T08:45:39.8050838Z     "dev:windows": "yarn copy:assets && tsc -p . && electron .",
+2025-04-15T08:45:39.8051179Z     "dev": "run-script-os",
+2025-04-15T08:45:39.8051439Z     "compile": "tsc -p .",
+2025-04-15T08:45:39.8051698Z     "start": "electron .",
+2025-04-15T08:45:39.8051996Z     "build": "yarn copy:assets && run-script-os",
+2025-04-15T08:45:39.8052360Z     "build:test": "yarn copy:assets && run-script-os",
+2025-04-15T08:45:39.8052807Z     "build:test:darwin": "tsc -p . && electron-builder -p never -m --dir",
+2025-04-15T08:45:39.8053292Z     "build:test:win32": "tsc -p . && electron-builder -p never -w --dir",
+2025-04-15T08:45:39.8053770Z     "build:test:linux": "tsc -p . && electron-builder -p never -l --dir",
+2025-04-15T08:45:39.8054237Z     "build:darwin": "tsc -p . && electron-builder -p never -m --universal",
+2025-04-15T08:45:39.8054936Z     "build:win32": "tsc -p . && electron-builder -p never -w",
+2025-04-15T08:45:39.8055605Z     "build:linux": "tsc -p . && electron-builder -p never -l deb -l AppImage",
+2025-04-15T08:45:39.8056092Z     "build:publish": "yarn copy:assets && run-script-os",
+2025-04-15T08:45:39.8056580Z     "build:publish:darwin": "tsc -p . && electron-builder -p always -m --universal",
+2025-04-15T08:45:39.8057103Z     "build:publish:win32": "tsc -p . && electron-builder -p always -w",
+2025-04-15T08:45:39.8057621Z     "build:publish:linux": "tsc -p . && electron-builder -p always -l deb -l AppImage"
+2025-04-15T08:45:39.8058865Z   },
+2025-04-15T08:45:39.8059062Z   "dependencies": {
+2025-04-15T08:45:39.8059322Z     "@alumna/reflect": "^1.1.3",
+2025-04-15T08:45:39.8059598Z     "@janhq/core": "link:../core",
+2025-04-15T08:45:39.8059895Z     "@janhq/server": "link:../server",
+2025-04-15T08:45:39.8060221Z     "@kirillvakalov/nut-tree__nut-js": "4.2.1-2",
+2025-04-15T08:45:39.8060546Z     "@npmcli/arborist": "^7.1.0",
+2025-04-15T08:45:39.8060824Z     "electron-store": "^8.1.0",
+2025-04-15T08:45:39.8061103Z     "electron-updater": "^6.1.7",
+2025-04-15T08:45:39.8061365Z     "fs-extra": "^11.2.0",
+2025-04-15T08:45:39.8061607Z     "pacote": "^21.0.0",
+2025-04-15T08:45:39.8061836Z     "request": "^2.88.2",
+2025-04-15T08:45:39.8062099Z     "request-progress": "^3.0.0",
+2025-04-15T08:45:39.8062346Z     "ulidx": "^2.3.0"
+2025-04-15T08:45:39.8062554Z   },
+2025-04-15T08:45:39.8062754Z   "devDependencies": {
+2025-04-15T08:45:39.8063021Z     "@electron/notarize": "^2.5.0",
+2025-04-15T08:45:39.8063462Z     "@playwright/test": "^1.38.1",
+2025-04-15T08:45:39.8063850Z     "@reportportal/agent-js-playwright": "^5.1.7",
+2025-04-15T08:45:39.8064192Z     "@types/npmcli__arborist": "^5.6.4",
+2025-04-15T08:45:39.8064487Z     "@types/pacote": "^11.1.7",
+2025-04-15T08:45:39.8064761Z     "@types/request": "^2.48.12",
+2025-04-15T08:45:39.8065060Z     "@typescript-eslint/eslint-plugin": "^6.7.3",
+2025-04-15T08:45:39.8065396Z     "@typescript-eslint/parser": "^6.7.3",
+2025-04-15T08:45:39.8065676Z     "electron": "30.0.6",
+2025-04-15T08:45:39.8065937Z     "electron-builder": "^24.13.3",
+2025-04-15T08:45:39.8066849Z     "electron-builder-squirrel-windows": "^24.13.3",
+2025-04-15T08:45:39.8067219Z     "electron-devtools-installer": "^3.2.0",
+2025-04-15T08:45:39.8067549Z     "electron-playwright-helpers": "^1.6.0",
+2025-04-15T08:45:39.8067835Z     "eslint": "8.57.0",
+2025-04-15T08:45:39.8068088Z     "eslint-plugin-react": "^7.34.0",
+2025-04-15T08:45:39.8068355Z     "rimraf": "^5.0.5",
+2025-04-15T08:45:39.8068594Z     "run-script-os": "^1.1.6",
+2025-04-15T08:45:39.8068854Z     "typescript": "^5.3.3",
+2025-04-15T08:45:39.8069096Z     "xvfb-maybe": "^0.2.1"
+2025-04-15T08:45:39.8069318Z   },
+2025-04-15T08:45:39.8069504Z   "installConfig": {
+2025-04-15T08:45:39.8069752Z     "hoistingLimits": "workspaces"
+2025-04-15T08:45:39.8070004Z   },
+2025-04-15T08:45:39.8070213Z   "packageManager": "yarn@4.5.3"
+2025-04-15T08:45:39.8070536Z }
+2025-04-15T08:45:39.8440535Z File has been updated: web/app/layout.tsx
+2025-04-15T08:45:39.8914979Z File has been updated: ./package.json
+2025-04-15T08:45:39.9530529Z File has been updated: electron/scripts/uninstaller.nsh
+2025-04-15T08:45:39.9537448Z ------------------------
+2025-04-15T08:45:39.9660496Z {
+2025-04-15T08:45:39.9661800Z   "name": "jan-nightly",
+2025-04-15T08:45:39.9663567Z   "version": "0.5.16-1269",
+2025-04-15T08:45:39.9664131Z   "main": "./build/main.js",
+2025-04-15T08:45:39.9664748Z   "author": "Jan <service@jan.ai>",
+2025-04-15T08:45:39.9665212Z   "license": "MIT",
+2025-04-15T08:45:39.9665843Z   "productName": "Jan-nightly",
+2025-04-15T08:45:39.9666630Z   "homepage": "https://github.com/menloresearch/jan/tree/main/electron",
+2025-04-15T08:45:39.9667645Z   "description": "Use offline LLMs with your own data. Run open source models like Llama2 or Falcon on your internal computers/servers.",
+2025-04-15T08:45:39.9668368Z   "build": {
+2025-04-15T08:45:39.9668694Z     "appId": "jan-nightly.ai.app",
+2025-04-15T08:45:39.9669144Z     "productName": "Jan-nightly",
+2025-04-15T08:45:39.9669498Z     "files": [
+2025-04-15T08:45:39.9669851Z       "renderer/**/*",
+2025-04-15T08:45:39.9670252Z       "build/**/*.{js,map}",
+2025-04-15T08:45:39.9670759Z       "pre-install",
+2025-04-15T08:45:39.9671067Z       "themes",
+2025-04-15T08:45:39.9691116Z       "scripts/**/*",
+2025-04-15T08:45:39.9691559Z       "icons/**/*",
+2025-04-15T08:45:39.9691928Z       "themes",
+2025-04-15T08:45:39.9692311Z       "shared"
+2025-04-15T08:45:39.9692650Z     ],
+2025-04-15T08:45:39.9692945Z     "asarUnpack": [
+2025-04-15T08:45:39.9693394Z       "pre-install",
+2025-04-15T08:45:39.9693774Z       "themes",
+2025-04-15T08:45:39.9694122Z       "docs",
+2025-04-15T08:45:39.9694471Z       "scripts",
+2025-04-15T08:45:39.9694833Z       "icons",
+2025-04-15T08:45:39.9695188Z       "themes",
+2025-04-15T08:45:39.9695441Z       "shared"
+2025-04-15T08:45:39.9695638Z     ],
+2025-04-15T08:45:39.9695827Z     "publish": [
+2025-04-15T08:45:39.9696038Z       {
+2025-04-15T08:45:39.9696258Z         "provider": "generic",
+2025-04-15T08:45:39.9696569Z         "url": "https://delta.jan.ai/nightly",
+2025-04-15T08:45:39.9696898Z         "channel": "latest"
+2025-04-15T08:45:39.9697123Z       },
+2025-04-15T08:45:39.9697310Z       {
+2025-04-15T08:45:39.9697505Z         "provider": "s3",
+2025-04-15T08:45:39.9697740Z         "acl": null,
+2025-04-15T08:45:39.9698097Z         "bucket": "***",
+2025-04-15T08:45:39.9698387Z         "region": "***",
+2025-04-15T08:45:39.9698650Z         "path": "temp-nightly",
+2025-04-15T08:45:39.9698928Z         "channel": "latest"
+2025-04-15T08:45:39.9699151Z       }
+2025-04-15T08:45:39.9699337Z     ],
+2025-04-15T08:45:39.9699524Z     "extends": null,
+2025-04-15T08:45:39.9699745Z     "mac": {
+2025-04-15T08:45:39.9699953Z       "type": "distribution",
+2025-04-15T08:45:39.9700276Z       "entitlements": "./entitlements.mac.plist",
+2025-04-15T08:45:39.9700677Z       "entitlementsInherit": "./entitlements.mac.plist",
+2025-04-15T08:45:39.9701001Z       "notarize": {
+2025-04-15T08:45:39.9701240Z         "teamId": "F8AH6NHVY5"
+2025-04-15T08:45:39.9701657Z       },
+2025-04-15T08:45:39.9702000Z       "icon": "icons/icon.png"
+2025-04-15T08:45:39.9702369Z     },
+2025-04-15T08:45:39.9702569Z     "linux": {
+2025-04-15T08:45:39.9702777Z       "target": [
+2025-04-15T08:45:39.9702978Z         "deb"
+2025-04-15T08:45:39.9703162Z       ],
+2025-04-15T08:45:39.9703363Z       "category": "Utility",
+2025-04-15T08:45:39.9703603Z       "icon": "icons/"
+2025-04-15T08:45:39.9703815Z     },
+2025-04-15T08:45:39.9703994Z     "win": {
+2025-04-15T08:45:39.9704225Z       "icon": "icons/icon.png",
+2025-04-15T08:45:39.9704465Z       "target": [
+2025-04-15T08:45:39.9704768Z         "nsis"
+2025-04-15T08:45:39.9705070Z       ],
+2025-04-15T08:45:39.9705370Z       "sign": "./sign.js"
+2025-04-15T08:45:39.9705731Z     },
+2025-04-15T08:45:39.9706015Z     "nsis": {
+2025-04-15T08:45:39.9706334Z       "oneClick": true,
+2025-04-15T08:45:39.9706760Z       "installerIcon": "icons/icon.ico",
+2025-04-15T08:45:39.9707088Z       "uninstallerIcon": "icons/icon.ico",
+2025-04-15T08:45:39.9707420Z       "include": "scripts/uninstaller.nsh",
+2025-04-15T08:45:39.9707735Z       "deleteAppDataOnUninstall": true
+2025-04-15T08:45:39.9708005Z     },
+2025-04-15T08:45:39.9708191Z     "protocols": [
+2025-04-15T08:45:39.9708389Z       {
+2025-04-15T08:45:39.9708631Z         "name": "Jan-nightly",
+2025-04-15T08:45:39.9708882Z         "schemes": [
+2025-04-15T08:45:39.9709104Z           "jan-nightly"
+2025-04-15T08:45:39.9709313Z         ]
+2025-04-15T08:45:39.9709494Z       }
+2025-04-15T08:45:39.9709672Z     ],
+2025-04-15T08:45:39.9709979Z     "artifactName": "jan-nightly-${os}-${arch}-${version}.${ext}"
+2025-04-15T08:45:39.9710348Z   },
+2025-04-15T08:45:39.9710533Z   "scripts": {
+2025-04-15T08:45:39.9710807Z     "lint": "eslint . --ext \".js,.jsx,.ts,.tsx\"",
+2025-04-15T08:45:39.9711412Z     "test:e2e": "DEBUG=pw:browser xvfb-maybe -- playwright test --workers=1",
+2025-04-15T08:45:39.9712306Z     "copy:assets": "rimraf --glob \"./pre-install/*.tgz\" && cpx \"../pre-install/*.tgz\" \"./pre-install\"",
+2025-04-15T08:45:39.9712808Z     "version-patch": "run-script-os",
+2025-04-15T08:45:39.9713592Z     "version-patch:darwin:linux": "jq '.version' package.json | tr -d '\"' > .version.bak && jq --arg ver \"0.1.$(date +%s)\" '.version = $ver' package.json > package.tmp && mv package.tmp package.json",
+2025-04-15T08:45:39.9715041Z     "version-patch:win32": "node -e \"const fs=require('fs');const pkg=require('./package.json');const bak=pkg.version;fs.writeFileSync('.version.bak',bak);pkg.version='0.1.'+Math.floor(Date.now()/1000);fs.writeFileSync('package.json',JSON.stringify(pkg,null,2));\"",
+2025-04-15T08:45:39.9716182Z     "version-restore": "run-script-os",
+2025-04-15T08:45:39.9716884Z     "version-restore:darwin:linux": "jq --arg ver $(cat .version.bak) '.version = $ver' package.json > package.tmp && mv package.tmp package.json && rm .version.bak",
+2025-04-15T08:45:39.9718184Z     "version-restore:win32": "node -e \"const fs=require('fs');const pkg=require('./package.json');const bak=fs.readFileSync('.version.bak','utf8');pkg.version=bak;fs.writeFileSync('package.json',JSON.stringify(pkg,null,2));\"",
+2025-04-15T08:45:39.9719256Z     "dev:darwin:linux": "yarn copy:assets && tsc -p . && yarn version-patch && electron . && yarn version-restore",
+2025-04-15T08:45:39.9720395Z     "dev:windows": "yarn copy:assets && tsc -p . && electron .",
+2025-04-15T08:45:39.9721014Z     "dev": "run-script-os",
+2025-04-15T08:45:39.9721465Z     "compile": "tsc -p .",
+2025-04-15T08:45:39.9721880Z     "start": "electron .",
+2025-04-15T08:45:39.9722387Z     "build": "yarn copy:assets && run-script-os",
+2025-04-15T08:45:39.9723031Z     "build:test": "yarn copy:assets && run-script-os",
+2025-04-15T08:45:39.9723787Z     "build:test:darwin": "tsc -p . && electron-builder -p never -m --dir",
+2025-04-15T08:45:39.9724618Z     "build:test:win32": "tsc -p . && electron-builder -p never -w --dir",
+2025-04-15T08:45:39.9725464Z     "build:test:linux": "tsc -p . && electron-builder -p never -l --dir",
+2025-04-15T08:45:39.9726562Z     "build:darwin": "tsc -p . && electron-builder -p never -m --universal",
+2025-04-15T08:45:39.9727331Z     "build:win32": "tsc -p . && electron-builder -p never -w",
+2025-04-15T08:45:39.9728159Z     "build:linux": "tsc -p . && electron-builder -p never -l deb -l AppImage",
+2025-04-15T08:45:39.9728923Z     "build:publish": "yarn copy:assets && run-script-os",
+2025-04-15T08:45:39.9729751Z     "build:publish:darwin": "tsc -p . && electron-builder -p always -m --universal",
+2025-04-15T08:45:39.9730685Z     "build:publish:win32": "tsc -p . && electron-builder -p always -w",
+2025-04-15T08:45:39.9731605Z     "build:publish:linux": "tsc -p . && electron-builder -p always -l deb -l AppImage"
+2025-04-15T08:45:39.9732269Z   },
+2025-04-15T08:45:39.9732599Z   "dependencies": {
+2025-04-15T08:45:39.9733015Z     "@alumna/reflect": "^1.1.3",
+2025-04-15T08:45:39.9733498Z     "@janhq/core": "link:../core",
+2025-04-15T08:45:39.9733985Z     "@janhq/server": "link:../server",
+2025-04-15T08:45:39.9734578Z     "@kirillvakalov/nut-tree__nut-js": "4.2.1-2",
+2025-04-15T08:45:39.9735166Z     "@npmcli/arborist": "^7.1.0",
+2025-04-15T08:45:39.9735685Z     "electron-store": "^8.1.0",
+2025-04-15T08:45:39.9736168Z     "electron-updater": "^6.1.7",
+2025-04-15T08:45:39.9736658Z     "fs-extra": "^11.2.0",
+2025-04-15T08:45:39.9737054Z     "pacote": "^21.0.0",
+2025-04-15T08:45:39.9737470Z     "request": "^2.88.2",
+2025-04-15T08:45:39.9737913Z     "request-progress": "^3.0.0",
+2025-04-15T08:45:39.9738385Z     "ulidx": "^2.3.0"
+2025-04-15T08:45:39.9738740Z   },
+2025-04-15T08:45:39.9739092Z   "devDependencies": {
+2025-04-15T08:45:39.9739545Z     "@electron/notarize": "^2.5.0",
+2025-04-15T08:45:39.9740062Z     "@playwright/test": "^1.38.1",
+2025-04-15T08:45:39.9740612Z     "@reportportal/agent-js-playwright": "^5.1.7",
+2025-04-15T08:45:39.9741221Z     "@types/npmcli__arborist": "^5.6.4",
+2025-04-15T08:45:39.9741761Z     "@types/pacote": "^11.1.7",
+2025-04-15T08:45:39.9742240Z     "@types/request": "^2.48.12",
+2025-04-15T08:45:39.9742828Z     "@typescript-eslint/eslint-plugin": "^6.7.3",
+2025-04-15T08:45:39.9743428Z     "@typescript-eslint/parser": "^6.7.3",
+2025-04-15T08:45:39.9743843Z     "electron": "30.0.6",
+2025-04-15T08:45:39.9744106Z     "electron-builder": "^24.13.3",
+2025-04-15T08:45:39.9744629Z     "electron-builder-squirrel-windows": "^24.13.3",
+2025-04-15T08:45:39.9745226Z     "electron-devtools-installer": "^3.2.0",
+2025-04-15T08:45:39.9746510Z     "electron-playwright-helpers": "^1.6.0",
+2025-04-15T08:45:39.9746943Z     "eslint": "8.57.0",
+2025-04-15T08:45:39.9747303Z     "eslint-plugin-react": "^7.34.0",
+2025-04-15T08:45:39.9747652Z     "rimraf": "^5.0.5",
+2025-04-15T08:45:39.9747987Z     "run-script-os": "^1.1.6",
+2025-04-15T08:45:39.9748505Z     "typescript": "^5.3.3",
+2025-04-15T08:45:39.9748833Z     "xvfb-maybe": "^0.2.1"
+2025-04-15T08:45:39.9749113Z   },
+2025-04-15T08:45:39.9749358Z   "installConfig": {
+2025-04-15T08:45:39.9749682Z     "hoistingLimits": "workspaces"
+2025-04-15T08:45:39.9750022Z   },
+2025-04-15T08:45:39.9750296Z   "packageManager": "yarn@4.5.3"
+2025-04-15T08:45:39.9750645Z }
+2025-04-15T08:45:39.9751149Z ------------------------
+2025-04-15T08:45:39.9798118Z {
+2025-04-15T08:45:39.9799101Z   "name": "jan-app",
+2025-04-15T08:45:39.9799534Z   "private": true,
+2025-04-15T08:45:39.9799918Z   "workspaces": {
+2025-04-15T08:45:39.9800269Z     "packages": [
+2025-04-15T08:45:39.9800580Z       "joi",
+2025-04-15T08:45:39.9800987Z       "core",
+2025-04-15T08:45:39.9801381Z       "electron",
+2025-04-15T08:45:39.9801780Z       "web",
+2025-04-15T08:45:39.9802087Z       "server"
+2025-04-15T08:45:39.9802378Z     ]
+2025-04-15T08:45:39.9802661Z   },
+2025-04-15T08:45:39.9802894Z   "scripts": {
+2025-04-15T08:45:39.9804134Z     "lint": "yarn workspace jan-nightly lint && yarn workspace @janhq/web lint",
+2025-04-15T08:45:39.9804878Z     "test:unit": "jest",
+2025-04-15T08:45:39.9805364Z     "test:coverage": "jest --coverage",
+2025-04-15T08:45:39.9805976Z     "test": "yarn workspace jan-nightly test:e2e",
+2025-04-15T08:45:39.9806885Z     "test-local": "yarn lint && yarn build:test && yarn test",
+2025-04-15T08:45:39.9808884Z     "copy:assets": "cpx \"pre-install/*.tgz\" \"electron/pre-install/\" && cpx \"themes/**\" \"electron/themes\"",
+2025-04-15T08:45:39.9810338Z     "copy:assets:tauri": "cpx \"pre-install/*.tgz\" \"src-tauri/resources/pre-install/\" && cpx \"themes/**\" \"src-tauri/resources/themes\"",
+2025-04-15T08:45:39.9811539Z     "dev:electron": "yarn copy:assets && yarn workspace jan-nightly dev",
+2025-04-15T08:45:39.9813723Z     "dev:web:standalone": "concurrently \"yarn workspace @janhq/web dev\" \"wait-on http://localhost:3000 && rsync -av --prune-empty-dirs --include '*/' --include 'dist/***' --include 'package.json' --include 'tsconfig.json' --exclude '*' ./extensions/ web/.next/static/extensions/\"",
+2025-04-15T08:45:39.9815533Z     "dev:web": "yarn workspace @janhq/web dev",
+2025-04-15T08:45:39.9816134Z     "dev:server": "yarn workspace @janhq/server dev",
+2025-04-15T08:45:39.9817129Z     "dev": "concurrently -n \"NEXT,ELECTRON\" -c \"yellow,blue\" --kill-others \"yarn dev:web\" \"yarn dev:electron\"",
+2025-04-15T08:45:39.9818199Z     "install:cortex:linux:darwin": "cd src-tauri/binaries && ./download.sh",
+2025-04-15T08:45:39.9819048Z     "install:cortex:win32": "cd src-tauri/binaries && download.bat",
+2025-04-15T08:45:39.9819693Z     "install:cortex": "run-script-os",
+2025-04-15T08:45:39.9820375Z     "dev:tauri": "yarn build:icon && yarn copy:assets:tauri && tauri dev",
+2025-04-15T08:45:39.9821387Z     "build:tauri": "yarn install:cortex && yarn build:icon && yarn copy:assets:tauri && yarn tauri build",
+2025-04-15T08:45:39.9822093Z     "build:icon": "tauri icon ./src-tauri/icons/icon.png",
+2025-04-15T08:45:39.9822463Z     "build:server": "cd server && yarn build",
+2025-04-15T08:45:39.9822826Z     "build:core": "cd core && yarn build && yarn pack",
+2025-04-15T08:45:39.9823316Z     "build:web": "yarn workspace @janhq/web build && cpx \"web/out/**\" \"electron/renderer/\"",
+2025-04-15T08:45:39.9823883Z     "build:electron": "yarn copy:assets && yarn workspace jan-nightly build",
+2025-04-15T08:45:39.9824374Z     "build:electron:test": "yarn workspace jan-nightly build:test",
+2025-04-15T08:45:39.9825472Z     "build:extensions": "rimraf ./pre-install/*.tgz || true && yarn workspace @janhq/core build && cd extensions && yarn install && yarn workspaces foreach -Apt run build:publish",
+2025-04-15T08:45:39.9827975Z     "build:test": "yarn copy:assets && yarn workspace @janhq/web build && cpx \"web/out/**\" \"electron/renderer/\" && yarn workspace jan-nightly build:test",
+2025-04-15T08:45:39.9828672Z     "build": "yarn build:web && yarn build:tauri",
+2025-04-15T08:45:39.9829199Z     "build:publish": "yarn copy:assets && yarn build:web && yarn workspace jan-nightly build:publish",
+2025-04-15T08:45:39.9829823Z     "dev:joi": "yarn workspace @janhq/joi install && yarn workspace @janhq/joi dev",
+2025-04-15T08:45:39.9830285Z     "build:joi": "yarn workspace @janhq/joi build",
+2025-04-15T08:45:39.9830613Z     "prepare": "husky"
+2025-04-15T08:45:39.9830872Z   },
+2025-04-15T08:45:39.9831166Z   "devDependencies": {
+2025-04-15T08:45:39.9831426Z     "@tauri-apps/cli": "^2.2.5",
+2025-04-15T08:45:39.9831699Z     "concurrently": "^9.1.0",
+2025-04-15T08:45:39.9831936Z     "cpx": "^1.5.0",
+2025-04-15T08:45:39.9832155Z     "husky": "^9.1.5",
+2025-04-15T08:45:39.9832363Z     "jest": "^29.7.0",
+2025-04-15T08:45:39.9832629Z     "jest-environment-jsdom": "^29.7.0",
+2025-04-15T08:45:39.9832904Z     "rimraf": "^3.0.2",
+2025-04-15T08:45:39.9833153Z     "run-script-os": "^1.1.6",
+2025-04-15T08:45:39.9833391Z     "wait-on": "^7.0.1"
+2025-04-15T08:45:39.9833599Z   },
+2025-04-15T08:45:39.9833789Z   "version": "0.0.0",
+2025-04-15T08:45:39.9834011Z   "installConfig": {
+2025-04-15T08:45:39.9834265Z     "hoistingLimits": "workspaces"
+2025-04-15T08:45:39.9834523Z   },
+2025-04-15T08:45:39.9834706Z   "resolutions": {
+2025-04-15T08:45:39.9834914Z     "yallist": "4.0.0"
+2025-04-15T08:45:39.9835251Z   },
+2025-04-15T08:45:39.9835466Z   "packageManager": "yarn@4.5.3"
+2025-04-15T08:45:39.9835734Z }
+2025-04-15T08:45:39.9835947Z ------------------------

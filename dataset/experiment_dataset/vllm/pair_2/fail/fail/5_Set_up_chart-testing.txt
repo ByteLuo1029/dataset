@@ -1,0 +1,337 @@
+﻿2025-04-15T09:26:58.8939701Z ##[group]Run helm/chart-testing-action@0d28d3144d3a25ea2cc349d6e59901c4ff469b3b
+2025-04-15T09:26:58.8940110Z with:
+2025-04-15T09:26:58.8940274Z   version: v3.10.1
+2025-04-15T09:26:58.8940473Z   yamllint_version: 1.33.0
+2025-04-15T09:26:58.8940676Z   yamale_version: 4.0.4
+2025-04-15T09:26:58.8940851Z env:
+2025-04-15T09:26:58.8941078Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T09:26:58.8941478Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.2/x64/lib/pkgconfig
+2025-04-15T09:26:58.8941873Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T09:26:58.8942209Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T09:26:58.8942547Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T09:26:58.8942872Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.2/x64/lib
+2025-04-15T09:26:58.8943140Z ##[endgroup]
+2025-04-15T09:26:58.9093723Z ##[group]Run sigstore/cosign-installer@dc72c7d5c4d10cd6bcb8cf6e3fd625a9e5e537da
+2025-04-15T09:26:58.9094135Z with:
+2025-04-15T09:26:58.9094311Z   cosign-release: v2.4.1
+2025-04-15T09:26:58.9094513Z   install-dir: $HOME/.cosign
+2025-04-15T09:26:58.9094717Z   use-sudo: false
+2025-04-15T09:26:58.9094877Z env:
+2025-04-15T09:26:58.9095101Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T09:26:58.9095490Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.2/x64/lib/pkgconfig
+2025-04-15T09:26:58.9095862Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T09:26:58.9096193Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T09:26:58.9096522Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T09:26:58.9096853Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.2/x64/lib
+2025-04-15T09:26:58.9097120Z ##[endgroup]
+2025-04-15T09:26:58.9150972Z ##[group]Run #!/bin/bash
+2025-04-15T09:26:58.9151678Z [36;1m#!/bin/bash[0m
+2025-04-15T09:26:58.9151887Z [36;1m# cosign install script[0m
+2025-04-15T09:26:58.9152121Z [36;1mshopt -s expand_aliases[0m
+2025-04-15T09:26:58.9152361Z [36;1mif [ -z "$NO_COLOR" ]; then[0m
+2025-04-15T09:26:58.9152654Z [36;1m  alias log_info="echo -e \"\033[1;32mINFO\033[0m:\""[0m
+2025-04-15T09:26:58.9152985Z [36;1m  alias log_error="echo -e \"\033[1;31mERROR\033[0m:\""[0m
+2025-04-15T09:26:58.9153254Z [36;1melse[0m
+2025-04-15T09:26:58.9153444Z [36;1m  alias log_info="echo \"INFO:\""[0m
+2025-04-15T09:26:58.9153689Z [36;1m  alias log_error="echo \"ERROR:\""[0m
+2025-04-15T09:26:58.9153910Z [36;1mfi[0m
+2025-04-15T09:26:58.9154064Z [36;1mset -e[0m
+2025-04-15T09:26:58.9154228Z [36;1m[0m
+2025-04-15T09:26:58.9154387Z [36;1mmkdir -p $HOME/.cosign[0m
+2025-04-15T09:26:58.9154590Z [36;1m[0m
+2025-04-15T09:26:58.9154747Z [36;1mif [[ v2.4.1 == "main" ]]; then[0m
+2025-04-15T09:26:58.9155124Z [36;1m  log_info "installing cosign via 'go install' from its main version"[0m
+2025-04-15T09:26:58.9155469Z [36;1m  GOBIN=$(go env GOPATH)/bin[0m
+2025-04-15T09:26:58.9155757Z [36;1m  go install github.com/sigstore/cosign/cmd/cosign@main[0m
+2025-04-15T09:26:58.9156078Z [36;1m  ln -s $GOBIN/cosign $HOME/.cosign/cosign[0m
+2025-04-15T09:26:58.9156311Z [36;1m  exit 0[0m
+2025-04-15T09:26:58.9156470Z [36;1mfi[0m
+2025-04-15T09:26:58.9156616Z [36;1m[0m
+2025-04-15T09:26:58.9156766Z [36;1mshaprog() {[0m
+2025-04-15T09:26:58.9156940Z [36;1m  case Linux in[0m
+2025-04-15T09:26:58.9157129Z [36;1m    Linux|linux)[0m
+2025-04-15T09:26:58.9157339Z [36;1m      sha256sum $1 | cut -d' ' -f1[0m
+2025-04-15T09:26:58.9157558Z [36;1m      ;;[0m
+2025-04-15T09:26:58.9157912Z [36;1m    macOS|macos)[0m
+2025-04-15T09:26:58.9158114Z [36;1m      shasum -a256 $1 | cut -d' ' -f1[0m
+2025-04-15T09:26:58.9158490Z [36;1m      ;;[0m
+2025-04-15T09:26:58.9158659Z [36;1m    Windows|windows)[0m
+2025-04-15T09:26:58.9159095Z [36;1m      powershell -command "(Get-FileHash $1 -Algorithm SHA256 | Select-Object -ExpandProperty Hash).ToLower()"[0m
+2025-04-15T09:26:58.9159536Z [36;1m      ;;[0m
+2025-04-15T09:26:58.9159685Z [36;1m    *)[0m
+2025-04-15T09:26:58.9160055Z [36;1m      log_error "unsupported OS Linux"[0m
+2025-04-15T09:26:58.9160293Z [36;1m      exit 1[0m
+2025-04-15T09:26:58.9160461Z [36;1m      ;;[0m
+2025-04-15T09:26:58.9160610Z [36;1m  esac[0m
+2025-04-15T09:26:58.9160758Z [36;1m}[0m
+2025-04-15T09:26:58.9160898Z [36;1m[0m
+2025-04-15T09:26:58.9161077Z [36;1mbootstrap_version='v2.4.1'[0m
+2025-04-15T09:26:58.9161495Z [36;1mbootstrap_linux_amd64_sha='8b24b946dd5809c6bd93de08033bcf6bc0ed7d336b7785787c080f574b89249b'[0m
+2025-04-15T09:26:58.9162098Z [36;1mbootstrap_linux_arm_sha='541fd175fae792a154fa2fa025146e3d4691e2dd97717fa9ace35677a88489e7'[0m
+2025-04-15T09:26:58.9162691Z [36;1mbootstrap_linux_arm64_sha='3b2e2e3854d0356c45fe6607047526ccd04742d20bd44afb5be91fa2a6e7cb4a'[0m
+2025-04-15T09:26:58.9163277Z [36;1mbootstrap_darwin_amd64_sha='666032ca283da92b6f7953965688fd51200fdc891a86c19e05c98b898ea0af4e'[0m
+2025-04-15T09:26:58.9163871Z [36;1mbootstrap_darwin_arm64_sha='13343856b69f70388c4fe0b986a31dde5958e444b41be22d785d3dc5e1a9cc62'[0m
+2025-04-15T09:26:58.9164472Z [36;1mbootstrap_windows_amd64_sha='8d57f8a42a981d27290c4227271fa9f0f62ca6630eb4a21d316bd6b01405b87c'[0m
+2025-04-15T09:26:58.9164907Z [36;1mcosign_executable_name=cosign[0m
+2025-04-15T09:26:58.9165129Z [36;1m[0m
+2025-04-15T09:26:58.9165289Z [36;1mtrap "popd >/dev/null" EXIT[0m
+2025-04-15T09:26:58.9165503Z [36;1m[0m
+2025-04-15T09:26:58.9165663Z [36;1mpushd $HOME/.cosign > /dev/null[0m
+2025-04-15T09:26:58.9165889Z [36;1m[0m
+2025-04-15T09:26:58.9166032Z [36;1mcase Linux in[0m
+2025-04-15T09:26:58.9166225Z [36;1m  Linux|linux)[0m
+2025-04-15T09:26:58.9166403Z [36;1m    case X64 in[0m
+2025-04-15T09:26:58.9166585Z [36;1m      X64|amd64)[0m
+2025-04-15T09:26:58.9166807Z [36;1m        bootstrap_filename='cosign-linux-amd64'[0m
+2025-04-15T09:26:58.9167103Z [36;1m        bootstrap_sha=${bootstrap_linux_amd64_sha}[0m
+2025-04-15T09:26:58.9167415Z [36;1m        desired_cosign_filename='cosign-linux-amd64'[0m
+2025-04-15T09:26:58.9167769Z [36;1m        # v0.6.0 had different filename structures from all other releases[0m
+2025-04-15T09:26:58.9168105Z [36;1m        if [[ v2.4.1 == 'v0.6.0' ]]; then[0m
+2025-04-15T09:26:58.9168711Z [36;1m          desired_cosign_filename='cosign_linux_amd64_0.6.0_linux_amd64'[0m
+2025-04-15T09:26:58.9169143Z [36;1m          desired_cosign_v060_signature='cosign_linux_amd64_0.6.0_linux_amd64.sig'[0m
+2025-04-15T09:26:58.9169475Z [36;1m        fi[0m
+2025-04-15T09:26:58.9169634Z [36;1m        ;;[0m
+2025-04-15T09:26:58.9169792Z [36;1m[0m
+2025-04-15T09:26:58.9169942Z [36;1m      ARM|arm)[0m
+2025-04-15T09:26:58.9170168Z [36;1m        bootstrap_filename='cosign-linux-arm'[0m
+2025-04-15T09:26:58.9170451Z [36;1m        bootstrap_sha=${bootstrap_linux_arm_sha}[0m
+2025-04-15T09:26:58.9170751Z [36;1m        desired_cosign_filename='cosign-linux-arm'[0m
+2025-04-15T09:26:58.9171028Z [36;1m        if [[ v2.4.1 == 'v0.6.0' ]]; then[0m
+2025-04-15T09:26:58.9171313Z [36;1m          log_error "linux-arm build not available at v0.6.0"[0m
+2025-04-15T09:26:58.9171597Z [36;1m          exit 1[0m
+2025-04-15T09:26:58.9171770Z [36;1m        fi[0m
+2025-04-15T09:26:58.9171931Z [36;1m        ;;[0m
+2025-04-15T09:26:58.9172081Z [36;1m[0m
+2025-04-15T09:26:58.9172234Z [36;1m      ARM64|arm64)[0m
+2025-04-15T09:26:58.9172473Z [36;1m        bootstrap_filename='cosign-linux-arm64'[0m
+2025-04-15T09:26:58.9172765Z [36;1m        bootstrap_sha=${bootstrap_linux_arm64_sha}[0m
+2025-04-15T09:26:58.9173074Z [36;1m        desired_cosign_filename='cosign-linux-arm64'[0m
+2025-04-15T09:26:58.9173495Z [36;1m        if [[ v2.4.1 == 'v0.6.0' ]]; then[0m
+2025-04-15T09:26:58.9173788Z [36;1m          log_error "linux-arm64 build not available at v0.6.0"[0m
+2025-04-15T09:26:58.9174066Z [36;1m          exit 1[0m
+2025-04-15T09:26:58.9174245Z [36;1m        fi[0m
+2025-04-15T09:26:58.9174407Z [36;1m        ;;[0m
+2025-04-15T09:26:58.9174559Z [36;1m[0m
+2025-04-15T09:26:58.9174700Z [36;1m      *)[0m
+2025-04-15T09:26:58.9174899Z [36;1m        log_error "unsupported architecture X64"[0m
+2025-04-15T09:26:58.9175269Z [36;1m        exit 1[0m
+2025-04-15T09:26:58.9175435Z [36;1m        ;;[0m
+2025-04-15T09:26:58.9175597Z [36;1m    esac[0m
+2025-04-15T09:26:58.9175743Z [36;1m    ;;[0m
+2025-04-15T09:26:58.9175894Z [36;1m[0m
+2025-04-15T09:26:58.9176037Z [36;1m  macOS|macos)[0m
+2025-04-15T09:26:58.9176221Z [36;1m    case X64 in[0m
+2025-04-15T09:26:58.9176400Z [36;1m      X64|amd64)[0m
+2025-04-15T09:26:58.9176618Z [36;1m        bootstrap_filename='cosign-darwin-amd64'[0m
+2025-04-15T09:26:58.9176922Z [36;1m        bootstrap_sha=${bootstrap_darwin_amd64_sha}[0m
+2025-04-15T09:26:58.9177266Z [36;1m        desired_cosign_filename='cosign-darwin-amd64'[0m
+2025-04-15T09:26:58.9177620Z [36;1m        # v0.6.0 had different filename structures from all other releases[0m
+2025-04-15T09:26:58.9177944Z [36;1m        if [[ v2.4.1 == 'v0.6.0' ]]; then[0m
+2025-04-15T09:26:58.9178416Z [36;1m          desired_cosign_filename='cosign_darwin_amd64_0.6.0_darwin_amd64'[0m
+2025-04-15T09:26:58.9178855Z [36;1m          desired_cosign_v060_signature='cosign_darwin_amd64_0.6.0_darwin_amd64.sig'[0m
+2025-04-15T09:26:58.9179189Z [36;1m        fi[0m
+2025-04-15T09:26:58.9179345Z [36;1m        ;;[0m
+2025-04-15T09:26:58.9179501Z [36;1m[0m
+2025-04-15T09:26:58.9179653Z [36;1m      ARM64|arm64)[0m
+2025-04-15T09:26:58.9179887Z [36;1m        bootstrap_filename='cosign-darwin-arm64'[0m
+2025-04-15T09:26:58.9180181Z [36;1m        bootstrap_sha=${bootstrap_darwin_arm64_sha}[0m
+2025-04-15T09:26:58.9180492Z [36;1m        desired_cosign_filename='cosign-darwin-arm64'[0m
+2025-04-15T09:26:58.9180842Z [36;1m        # v0.6.0 had different filename structures from all other releases[0m
+2025-04-15T09:26:58.9181155Z [36;1m        if [[ v2.4.1 == 'v0.6.0' ]]; then[0m
+2025-04-15T09:26:58.9181467Z [36;1m          desired_cosign_filename='cosign_darwin_arm64_0.6.0_darwin_arm64'[0m
+2025-04-15T09:26:58.9181889Z [36;1m          desired_cosign_v060_signature='cosign_darwin_arm64_0.6.0_darwin_arm64.sig'[0m
+2025-04-15T09:26:58.9182226Z [36;1m        fi[0m
+2025-04-15T09:26:58.9182386Z [36;1m        ;;[0m
+2025-04-15T09:26:58.9182536Z [36;1m[0m
+2025-04-15T09:26:58.9182680Z [36;1m      *)[0m
+2025-04-15T09:26:58.9182879Z [36;1m        log_error "unsupported architecture X64"[0m
+2025-04-15T09:26:58.9183129Z [36;1m        exit 1[0m
+2025-04-15T09:26:58.9183298Z [36;1m        ;;[0m
+2025-04-15T09:26:58.9183455Z [36;1m    esac[0m
+2025-04-15T09:26:58.9183603Z [36;1m    ;;[0m
+2025-04-15T09:26:58.9183762Z [36;1m[0m
+2025-04-15T09:26:58.9183914Z [36;1m  Windows|windows)[0m
+2025-04-15T09:26:58.9184102Z [36;1m    case X64 in[0m
+2025-04-15T09:26:58.9184290Z [36;1m      X64|amd64)[0m
+2025-04-15T09:26:58.9184524Z [36;1m        bootstrap_filename='cosign-windows-amd64.exe'[0m
+2025-04-15T09:26:58.9184839Z [36;1m        bootstrap_sha=${bootstrap_windows_amd64_sha}[0m
+2025-04-15T09:26:58.9185156Z [36;1m        desired_cosign_filename='cosign-windows-amd64.exe'[0m
+2025-04-15T09:26:58.9185463Z [36;1m        cosign_executable_name=cosign.exe[0m
+2025-04-15T09:26:58.9185788Z [36;1m        # v0.6.0 had different filename structures from all other releases[0m
+2025-04-15T09:26:58.9186099Z [36;1m        if [[ v2.4.1 == 'v0.6.0' ]]; then[0m
+2025-04-15T09:26:58.9186431Z [36;1m          desired_cosign_filename='cosign_windows_amd64_0.6.0_windows_amd64.exe'[0m
+2025-04-15T09:26:58.9186895Z [36;1m          desired_cosign_v060_signature='cosign_windows_amd64_0.6.0_windows_amd64.exe.sig'[0m
+2025-04-15T09:26:58.9187405Z [36;1m        fi[0m
+2025-04-15T09:26:58.9187562Z [36;1m        ;;[0m
+2025-04-15T09:26:58.9187721Z [36;1m      *)[0m
+2025-04-15T09:26:58.9187922Z [36;1m        log_error "unsupported architecture X64"[0m
+2025-04-15T09:26:58.9188167Z [36;1m        exit 1[0m
+2025-04-15T09:26:58.9188556Z [36;1m        ;;[0m
+2025-04-15T09:26:58.9188710Z [36;1m    esac[0m
+2025-04-15T09:26:58.9188865Z [36;1m    ;;[0m
+2025-04-15T09:26:58.9189018Z [36;1m  *)[0m
+2025-04-15T09:26:58.9189201Z [36;1m    log_error "unsupported os Linux"[0m
+2025-04-15T09:26:58.9189546Z [36;1m    exit 1[0m
+2025-04-15T09:26:58.9189713Z [36;1m    ;;[0m
+2025-04-15T09:26:58.9189862Z [36;1mesac[0m
+2025-04-15T09:26:58.9190011Z [36;1m[0m
+2025-04-15T09:26:58.9190155Z [36;1mSUDO=[0m
+2025-04-15T09:26:58.9190384Z [36;1mif [[ "false" == "true" ]] && command -v sudo >/dev/null; then[0m
+2025-04-15T09:26:58.9190666Z [36;1m  SUDO=sudo[0m
+2025-04-15T09:26:58.9190830Z [36;1mfi[0m
+2025-04-15T09:26:58.9190976Z [36;1m[0m
+2025-04-15T09:26:58.9191188Z [36;1mexpected_bootstrap_version_digest=${bootstrap_sha}[0m
+2025-04-15T09:26:58.9192015Z [36;1mlog_info "Downloading bootstrap version '${bootstrap_version}' of cosign to verify version to be installed...\n      https://github.com/sigstore/cosign/releases/download/${bootstrap_version}/${bootstrap_filename}"[0m
+2025-04-15T09:26:58.9193139Z [36;1m$SUDO curl -fsL https://github.com/sigstore/cosign/releases/download/${bootstrap_version}/${bootstrap_filename} -o ${cosign_executable_name}[0m
+2025-04-15T09:26:58.9193773Z [36;1mshaBootstrap=$(shaprog ${cosign_executable_name});[0m
+2025-04-15T09:26:58.9194148Z [36;1mif [[ $shaBootstrap != ${expected_bootstrap_version_digest} ]]; then[0m
+2025-04-15T09:26:58.9194535Z [36;1m  log_error "Unable to validate cosign version: 'v2.4.1'"[0m
+2025-04-15T09:26:58.9194815Z [36;1m  exit 1[0m
+2025-04-15T09:26:58.9194974Z [36;1mfi[0m
+2025-04-15T09:26:58.9195148Z [36;1m$SUDO chmod +x ${cosign_executable_name}[0m
+2025-04-15T09:26:58.9195386Z [36;1m[0m
+2025-04-15T09:26:58.9195651Z [36;1m# If the bootstrap and specified `cosign` releases are the same, we're done.[0m
+2025-04-15T09:26:58.9196026Z [36;1mif [[ v2.4.1 == ${bootstrap_version} ]]; then[0m
+2025-04-15T09:26:58.9196487Z [36;1m  log_info "bootstrap version successfully verified and matches requested version so nothing else to do"[0m
+2025-04-15T09:26:58.9196912Z [36;1m  exit 0[0m
+2025-04-15T09:26:58.9197065Z [36;1mfi[0m
+2025-04-15T09:26:58.9197207Z [36;1m[0m
+2025-04-15T09:26:58.9197417Z [36;1msemver='^v([0-9]+\.){0,2}(\*|[0-9]+)(-?r?c?)(\.[0-9]+)$'[0m
+2025-04-15T09:26:58.9197685Z [36;1mif [[ v2.4.1 =~ $semver ]]; then[0m
+2025-04-15T09:26:58.9197962Z [36;1m  log_info "Custom cosign version 'v2.4.1' requested"[0m
+2025-04-15T09:26:58.9198313Z [36;1melse[0m
+2025-04-15T09:26:58.9198569Z [36;1m  log_error "Unable to validate requested cosign version: 'v2.4.1'"[0m
+2025-04-15T09:26:58.9198875Z [36;1m  exit 1[0m
+2025-04-15T09:26:58.9199024Z [36;1mfi[0m
+2025-04-15T09:26:58.9199172Z [36;1m[0m
+2025-04-15T09:26:58.9199324Z [36;1m# Download custom cosign[0m
+2025-04-15T09:26:58.9199931Z [36;1mlog_info "Downloading platform-specific version 'v2.4.1' of cosign...\n      https://github.com/sigstore/cosign/releases/download/v2.4.1/${desired_cosign_filename}"[0m
+2025-04-15T09:26:58.9200813Z [36;1m$SUDO curl -fsL https://github.com/sigstore/cosign/releases/download/v2.4.1/${desired_cosign_filename} -o cosign_v2.4.1[0m
+2025-04-15T09:26:58.9201337Z [36;1mshaCustom=$(shaprog cosign_v2.4.1);[0m
+2025-04-15T09:26:58.9201569Z [36;1m[0m
+2025-04-15T09:26:58.9201736Z [36;1m# same hash means it is the same release[0m
+2025-04-15T09:26:58.9202012Z [36;1mif [[ $shaCustom != $shaBootstrap ]]; then[0m
+2025-04-15T09:26:58.9202292Z [36;1m  if [[ v2.4.1 == 'v0.6.0' && Linux == 'Linux' ]]; then[0m
+2025-04-15T09:26:58.9202617Z [36;1m    # v0.6.0's linux release has a dependency on `libpcsclite1`[0m
+2025-04-15T09:26:58.9202987Z [36;1m    log_info "Installing libpcsclite1 package if necessary..."[0m
+2025-04-15T09:26:58.9203422Z [36;1m    set +e[0m
+2025-04-15T09:26:58.9203610Z [36;1m    sudo dpkg -s libpcsclite1[0m
+2025-04-15T09:26:58.9203832Z [36;1m    if [ $? -eq 0 ]; then[0m
+2025-04-15T09:26:58.9204105Z [36;1m        log_info "libpcsclite1 package is already installed"[0m
+2025-04-15T09:26:58.9204373Z [36;1m    else[0m
+2025-04-15T09:26:58.9204647Z [36;1m         log_info "libpcsclite1 package is not installed, installing it now."[0m
+2025-04-15T09:26:58.9204995Z [36;1m         sudo apt-get update -q -q[0m
+2025-04-15T09:26:58.9205371Z [36;1m         sudo apt-get install -yq libpcsclite1[0m
+2025-04-15T09:26:58.9205613Z [36;1m    fi[0m
+2025-04-15T09:26:58.9205772Z [36;1m    set -e[0m
+2025-04-15T09:26:58.9205939Z [36;1m  fi[0m
+2025-04-15T09:26:58.9206082Z [36;1m[0m
+2025-04-15T09:26:58.9206247Z [36;1m  if [[ v2.4.1 == 'v0.6.0' ]]; then[0m
+2025-04-15T09:26:58.9206915Z [36;1m    log_info "Downloading detached signature for platform-specific 'v2.4.1' of cosign...\n      https://github.com/sigstore/cosign/releases/download/v2.4.1/${desired_cosign_v060_signature}"[0m
+2025-04-15T09:26:58.9207925Z [36;1m    $SUDO curl -fsL https://github.com/sigstore/cosign/releases/download/v2.4.1/${desired_cosign_v060_signature} -o ${desired_cosign_filename}.sig[0m
+2025-04-15T09:26:58.9208741Z [36;1m  else[0m
+2025-04-15T09:26:58.9209346Z [36;1m    log_info "Downloading detached signature for platform-specific 'v2.4.1' of cosign...\n      https://github.com/sigstore/cosign/releases/download/v2.4.1/${desired_cosign_filename}.sig"[0m
+2025-04-15T09:26:58.9210249Z [36;1m    $SUDO curl -fsLO https://github.com/sigstore/cosign/releases/download/v2.4.1/${desired_cosign_filename}.sig[0m
+2025-04-15T09:26:58.9210696Z [36;1m  fi[0m
+2025-04-15T09:26:58.9210843Z [36;1m[0m
+2025-04-15T09:26:58.9211005Z [36;1m  if [[ v2.4.1 < 'v0.6.0' ]]; then[0m
+2025-04-15T09:26:58.9211569Z [36;1m    log_info "Downloading cosign public key 'v2.4.1' of cosign...\n    https://raw.githubusercontent.com/sigstore/cosign/v2.4.1/.github/workflows/cosign.pub"[0m
+2025-04-15T09:26:58.9212381Z [36;1m    RELEASE_COSIGN_PUB_KEY=https://raw.githubusercontent.com/sigstore/cosign/v2.4.1/.github/workflows/cosign.pub[0m
+2025-04-15T09:26:58.9213034Z [36;1m    RELEASE_COSIGN_PUB_KEY_SHA='4aa4bd19530a4929d758a9896255aef2c82f1a3a9f4b000034c6df4307c14f9e'[0m
+2025-04-15T09:26:58.9213426Z [36;1m  else[0m
+2025-04-15T09:26:58.9213923Z [36;1m    log_info "Downloading cosign public key 'v2.4.1' of cosign...\n    https://raw.githubusercontent.com/sigstore/cosign/v2.4.1/release/release-cosign.pub"[0m
+2025-04-15T09:26:58.9214711Z [36;1m    RELEASE_COSIGN_PUB_KEY=https://raw.githubusercontent.com/sigstore/cosign/v2.4.1/release/release-cosign.pub[0m
+2025-04-15T09:26:58.9215351Z [36;1m    RELEASE_COSIGN_PUB_KEY_SHA='f4cea466e5e887a45da5031757fa1d32655d83420639dc1758749b744179f126'[0m
+2025-04-15T09:26:58.9215744Z [36;1m  fi[0m
+2025-04-15T09:26:58.9215889Z [36;1m[0m
+2025-04-15T09:26:58.9216109Z [36;1m  log_info "Verifying public key matches expected value"[0m
+2025-04-15T09:26:58.9216462Z [36;1m  $SUDO curl -fsL $RELEASE_COSIGN_PUB_KEY -o public.key[0m
+2025-04-15T09:26:58.9216772Z [36;1m  sha_fetched_key=$(shaprog public.key)[0m
+2025-04-15T09:26:58.9217087Z [36;1m  if [[ $sha_fetched_key != $RELEASE_COSIGN_PUB_KEY_SHA ]]; then[0m
+2025-04-15T09:26:58.9217479Z [36;1m    log_error "Fetched public key does not match expected digest, exiting"[0m
+2025-04-15T09:26:58.9217809Z [36;1m    exit 1[0m
+2025-04-15T09:26:58.9217972Z [36;1m  fi[0m
+2025-04-15T09:26:58.9218130Z [36;1m[0m
+2025-04-15T09:26:58.9218547Z [36;1m  log_info "Using bootstrap cosign to verify signature of desired cosign version"[0m
+2025-04-15T09:26:58.9219167Z [36;1m  ./cosign verify-blob --insecure-ignore-tlog --key public.key --signature ${desired_cosign_filename}.sig cosign_v2.4.1[0m
+2025-04-15T09:26:58.9219637Z [36;1m[0m
+2025-04-15T09:26:58.9219784Z [36;1m  $SUDO rm cosign[0m
+2025-04-15T09:26:58.9220026Z [36;1m  $SUDO mv cosign_v2.4.1 ${cosign_executable_name}[0m
+2025-04-15T09:26:58.9220473Z [36;1m  $SUDO chmod +x ${cosign_executable_name}[0m
+2025-04-15T09:26:58.9220745Z [36;1m  log_info "Installation complete!"[0m
+2025-04-15T09:26:58.9220964Z [36;1mfi[0m
+2025-04-15T09:26:58.9271340Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-04-15T09:26:58.9271654Z env:
+2025-04-15T09:26:58.9271900Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T09:26:58.9272291Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.2/x64/lib/pkgconfig
+2025-04-15T09:26:58.9272850Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T09:26:58.9273197Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T09:26:58.9273527Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T09:26:58.9273864Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.2/x64/lib
+2025-04-15T09:26:58.9274133Z ##[endgroup]
+2025-04-15T09:26:58.9381627Z [1;32mINFO[0m: Downloading bootstrap version 'v2.4.1' of cosign to verify version to be installed...
+2025-04-15T09:26:58.9382346Z       https://github.com/sigstore/cosign/releases/download/v2.4.1/cosign-linux-amd64
+2025-04-15T09:26:59.5027458Z [1;32mINFO[0m: bootstrap version successfully verified and matches requested version so nothing else to do
+2025-04-15T09:26:59.5066712Z ##[group]Run echo "$HOME/.cosign" >> $GITHUB_PATH
+2025-04-15T09:26:59.5067056Z [36;1mecho "$HOME/.cosign" >> $GITHUB_PATH[0m
+2025-04-15T09:26:59.5114642Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-04-15T09:26:59.5115002Z env:
+2025-04-15T09:26:59.5115246Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T09:26:59.5115661Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.2/x64/lib/pkgconfig
+2025-04-15T09:26:59.5116068Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T09:26:59.5116429Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T09:26:59.5116783Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T09:26:59.5117158Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.2/x64/lib
+2025-04-15T09:26:59.5117456Z ##[endgroup]
+2025-04-15T09:26:59.5244291Z ##[group]Run cd $GITHUB_ACTION_PATH \
+2025-04-15T09:26:59.5244569Z [36;1mcd $GITHUB_ACTION_PATH \[0m
+2025-04-15T09:26:59.5244783Z [36;1m&& ./ct.sh \[0m
+2025-04-15T09:26:59.5244980Z [36;1m    --version v3.10.1 \[0m
+2025-04-15T09:26:59.5245222Z [36;1m    --yamllint-version 1.33.0 \[0m
+2025-04-15T09:26:59.5245461Z [36;1m    --yamale-version 4.0.4[0m
+2025-04-15T09:26:59.5291433Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-04-15T09:26:59.5291743Z env:
+2025-04-15T09:26:59.5291969Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T09:26:59.5292363Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.2/x64/lib/pkgconfig
+2025-04-15T09:26:59.5292758Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T09:26:59.5293093Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T09:26:59.5293428Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T09:26:59.5293772Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.2/x64/lib
+2025-04-15T09:26:59.5294057Z ##[endgroup]
+2025-04-15T09:26:59.5411173Z Installing chart-testing v3.10.1...
+2025-04-15T09:27:00.3969709Z Verified OK
+2025-04-15T09:27:00.4853680Z Creating virtual Python environment...
+2025-04-15T09:27:04.5581694Z Activating virtual environment...
+2025-04-15T09:27:04.5600539Z Installing yamllint...
+2025-04-15T09:27:04.9707950Z Collecting yamllint==1.33.0
+2025-04-15T09:27:05.0062570Z   Downloading yamllint-1.33.0-py3-none-any.whl.metadata (4.2 kB)
+2025-04-15T09:27:05.0266232Z Collecting pathspec>=0.5.3 (from yamllint==1.33.0)
+2025-04-15T09:27:05.0297436Z   Downloading pathspec-0.12.1-py3-none-any.whl.metadata (21 kB)
+2025-04-15T09:27:05.0757180Z Collecting pyyaml (from yamllint==1.33.0)
+2025-04-15T09:27:05.0791002Z   Downloading PyYAML-6.0.2-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (2.1 kB)
+2025-04-15T09:27:05.0867691Z Downloading yamllint-1.33.0-py3-none-any.whl (65 kB)
+2025-04-15T09:27:05.0975134Z Downloading pathspec-0.12.1-py3-none-any.whl (31 kB)
+2025-04-15T09:27:05.1030723Z Downloading PyYAML-6.0.2-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (759 kB)
+2025-04-15T09:27:05.1150223Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 759.5/759.5 kB 72.2 MB/s eta 0:00:00
+2025-04-15T09:27:05.1287202Z Installing collected packages: pyyaml, pathspec, yamllint
+2025-04-15T09:27:05.2363321Z Successfully installed pathspec-0.12.1 pyyaml-6.0.2 yamllint-1.33.0
+2025-04-15T09:27:05.3547245Z 
+2025-04-15T09:27:05.3548046Z [notice] A new release of pip is available: 24.3.1 -> 25.0.1
+2025-04-15T09:27:05.3548925Z [notice] To update, run: pip install --upgrade pip
+2025-04-15T09:27:05.4039407Z Installing Yamale...
+2025-04-15T09:27:05.7966914Z Collecting yamale==4.0.4
+2025-04-15T09:27:05.8291375Z   Downloading yamale-4.0.4-py3-none-any.whl.metadata (20 kB)
+2025-04-15T09:27:05.8359811Z Requirement already satisfied: pyyaml in /opt/hostedtoolcache/ct/3.10.1/amd64/venv/lib/python3.13/site-packages (from yamale==4.0.4) (6.0.2)
+2025-04-15T09:27:05.8392537Z Downloading yamale-4.0.4-py3-none-any.whl (55 kB)
+2025-04-15T09:27:05.8601740Z Installing collected packages: yamale
+2025-04-15T09:27:05.9037838Z Successfully installed yamale-4.0.4
+2025-04-15T09:27:05.9335709Z 
+2025-04-15T09:27:05.9336227Z [notice] A new release of pip is available: 24.3.1 -> 25.0.1
+2025-04-15T09:27:05.9337060Z [notice] To update, run: pip install --upgrade pip
+2025-04-15T09:27:05.9763481Z Adding ct directory to PATH...
+2025-04-15T09:27:05.9764231Z Setting CT_CONFIG_DIR...
+2025-04-15T09:27:05.9765155Z Configuring environment variables for virtual environment for subsequent workflow steps...
+2025-04-15T09:27:05.9791626Z Version:	 v3.10.1
+2025-04-15T09:27:05.9792333Z Git commit:	 c35d32b568ba7901e00d3386a231ae2b6e1c2efc
+2025-04-15T09:27:05.9793166Z Date:		 2023-11-03T12:16:46Z
+2025-04-15T09:27:05.9793781Z License:	 Apache 2.0

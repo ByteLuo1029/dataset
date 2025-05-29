@@ -1,0 +1,279 @@
+2025-04-15T08:05:18.8075194Z Prepare all required actions
+2025-04-15T08:05:18.8075677Z Getting action download info
+2025-04-15T08:05:18.9482781Z ##[group]Download immutable action package 'actions/github-script@v7'
+2025-04-15T08:05:18.9483218Z Version: 7.0.1
+2025-04-15T08:05:18.9483599Z Digest: sha256:bce02966afe3a75123f766b765abe432fac5464b74976015dc06b811ac9054c7
+2025-04-15T08:05:18.9484118Z Source commit SHA: 60a0d83039c74a4aee543508d2ffcb1c3799cdea
+2025-04-15T08:05:18.9484469Z ##[endgroup]
+2025-04-15T08:05:19.1135459Z ##[group]Run ./.github/actions/download-artifact
+2025-04-15T08:05:19.1135784Z with:
+2025-04-15T08:05:19.1136189Z   namePrefix: blob-report
+2025-04-15T08:05:19.1136436Z   path: all-blob-reports
+2025-04-15T08:05:19.1136671Z ##[endgroup]
+2025-04-15T08:05:19.1224190Z ##[group]Run mkdir -p 'all-blob-reports/artifacts'
+2025-04-15T08:05:19.1224565Z [36;1mmkdir -p 'all-blob-reports/artifacts'[0m
+2025-04-15T08:05:19.1270878Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-04-15T08:05:19.1271243Z ##[endgroup]
+2025-04-15T08:05:19.1404020Z ##[group]Run actions/github-script@v7
+2025-04-15T08:05:19.1404298Z with:
+2025-04-15T08:05:19.1407080Z   script: console.log(`downloading artifacts for workflow_run: ${context.payload.workflow_run.id}`);
+console.log(`workflow_run: ${JSON.stringify(context.payload.workflow_run, null, 2)}`);
+const allArtifacts = await github.paginate(github.rest.actions.listWorkflowRunArtifacts, {
+  ...context.repo,
+  run_id: context.payload.workflow_run.id
+});
+console.log('total = ', allArtifacts.length);
+const artifacts = allArtifacts.filter(a => a.name.startsWith('blob-report'));
+const fs = require('fs');
+for (const artifact of artifacts) {
+  const result = await github.rest.actions.downloadArtifact({
+    ...context.repo,
+    artifact_id: artifact.id,
+    archive_format: 'zip'
+  });
+  console.log(`Downloaded ${artifact.name}.zip (${result.data.byteLength} bytes)`);
+  fs.writeFileSync(`all-blob-reports/artifacts/${artifact.name}.zip`, Buffer.from(result.data));
+}
+
+2025-04-15T08:05:19.1410017Z   github-token: ***
+2025-04-15T08:05:19.1410247Z   debug: false
+2025-04-15T08:05:19.1410465Z   user-agent: actions/github-script
+2025-04-15T08:05:19.1410741Z   result-encoding: json
+2025-04-15T08:05:19.1410957Z   retries: 0
+2025-04-15T08:05:19.1411191Z   retry-exempt-status-codes: 400,401,403,404,422
+2025-04-15T08:05:19.1411487Z ##[endgroup]
+2025-04-15T08:05:19.2242184Z downloading artifacts for workflow_run: 14464375454
+2025-04-15T08:05:19.2246898Z workflow_run: {
+2025-04-15T08:05:19.2247300Z   "actor": {
+2025-04-15T08:05:19.2247901Z     "avatar_url": "https://avatars.githubusercontent.com/u/14912729?v=4",
+2025-04-15T08:05:19.2248498Z     "events_url": "https://api.github.com/users/Skn0tt/events{/privacy}",
+2025-04-15T08:05:19.2249053Z     "followers_url": "https://api.github.com/users/Skn0tt/followers",
+2025-04-15T08:05:19.2249644Z     "following_url": "https://api.github.com/users/Skn0tt/following{/other_user}",
+2025-04-15T08:05:19.2250257Z     "gists_url": "https://api.github.com/users/Skn0tt/gists{/gist_id}",
+2025-04-15T08:05:19.2250673Z     "gravatar_id": "",
+2025-04-15T08:05:19.2250986Z     "html_url": "https://github.com/Skn0tt",
+2025-04-15T08:05:19.2251296Z     "id": 14912729,
+2025-04-15T08:05:19.2251532Z     "login": "Skn0tt",
+2025-04-15T08:05:19.2251813Z     "node_id": "MDQ6VXNlcjE0OTEyNzI5",
+2025-04-15T08:05:19.2252259Z     "organizations_url": "https://api.github.com/users/Skn0tt/orgs",
+2025-04-15T08:05:19.2252842Z     "received_events_url": "https://api.github.com/users/Skn0tt/received_events",
+2025-04-15T08:05:19.2253384Z     "repos_url": "https://api.github.com/users/Skn0tt/repos",
+2025-04-15T08:05:19.2253752Z     "site_admin": false,
+2025-04-15T08:05:19.2254203Z     "starred_url": "https://api.github.com/users/Skn0tt/starred{/owner}{/repo}",
+2025-04-15T08:05:19.2254814Z     "subscriptions_url": "https://api.github.com/users/Skn0tt/subscriptions",
+2025-04-15T08:05:19.2255248Z     "type": "User",
+2025-04-15T08:05:19.2255559Z     "url": "https://api.github.com/users/Skn0tt",
+2025-04-15T08:05:19.2256156Z     "user_view_type": "public"
+2025-04-15T08:05:19.2256784Z   },
+2025-04-15T08:05:19.2257269Z   "artifacts_url": "https://api.github.com/repos/microsoft/playwright/actions/runs/14464375454/artifacts",
+2025-04-15T08:05:19.2257996Z   "cancel_url": "https://api.github.com/repos/microsoft/playwright/actions/runs/14464375454/cancel",
+2025-04-15T08:05:19.2258482Z   "check_suite_id": 37187233049,
+2025-04-15T08:05:19.2258808Z   "check_suite_node_id": "CS_kwDODTssw88AAAAIqIglGQ",
+2025-04-15T08:05:19.2259347Z   "check_suite_url": "https://api.github.com/repos/microsoft/playwright/check-suites/37187233049",
+2025-04-15T08:05:19.2259796Z   "conclusion": "cancelled",
+2025-04-15T08:05:19.2260069Z   "created_at": "2025-04-15T08:03:31Z",
+2025-04-15T08:05:19.2260410Z   "display_title": "chore: refactor error context",
+2025-04-15T08:05:19.2260722Z   "event": "pull_request",
+2025-04-15T08:05:19.2261009Z   "head_branch": "error-context-refactor",
+2025-04-15T08:05:19.2261288Z   "head_commit": {
+2025-04-15T08:05:19.2261491Z     "author": {
+2025-04-15T08:05:19.2261733Z       "email": "info@simonknott.de",
+2025-04-15T08:05:19.2261995Z       "name": "Simon Knott"
+2025-04-15T08:05:19.2262215Z     },
+2025-04-15T08:05:19.2262403Z     "committer": {
+2025-04-15T08:05:19.2262639Z       "email": "info@simonknott.de",
+2025-04-15T08:05:19.2262892Z       "name": "Simon Knott"
+2025-04-15T08:05:19.2263104Z     },
+2025-04-15T08:05:19.2263355Z     "id": "e8302005c115bd60c42580cf9e7d3d58f3da8c44",
+2025-04-15T08:05:19.2263653Z     "message": "rename",
+2025-04-15T08:05:19.2263915Z     "timestamp": "2025-04-15T07:58:51Z",
+2025-04-15T08:05:19.2264253Z     "tree_id": "6c39a3de9a615e9fde37682379df4fe4ed574dce"
+2025-04-15T08:05:19.2264542Z   },
+2025-04-15T08:05:19.2264727Z   "head_repository": {
+2025-04-15T08:05:19.2265157Z     "archive_url": "https://api.github.com/repos/Skn0tt/playwright/{archive_format}{/ref}",
+2025-04-15T08:05:19.2265799Z     "assignees_url": "https://api.github.com/repos/Skn0tt/playwright/assignees{/user}",
+2025-04-15T08:05:19.2266734Z     "blobs_url": "https://api.github.com/repos/Skn0tt/playwright/git/blobs{/sha}",
+2025-04-15T08:05:19.2267315Z     "branches_url": "https://api.github.com/repos/Skn0tt/playwright/branches{/branch}",
+2025-04-15T08:05:19.2267964Z     "collaborators_url": "https://api.github.com/repos/Skn0tt/playwright/collaborators{/collaborator}",
+2025-04-15T08:05:19.2268600Z     "comments_url": "https://api.github.com/repos/Skn0tt/playwright/comments{/number}",
+2025-04-15T08:05:19.2269155Z     "commits_url": "https://api.github.com/repos/Skn0tt/playwright/commits{/sha}",
+2025-04-15T08:05:19.2269722Z     "compare_url": "https://api.github.com/repos/Skn0tt/playwright/compare/{base}...{head}",
+2025-04-15T08:05:19.2270306Z     "contents_url": "https://api.github.com/repos/Skn0tt/playwright/contents/{+path}",
+2025-04-15T08:05:19.2270879Z     "contributors_url": "https://api.github.com/repos/Skn0tt/playwright/contributors",
+2025-04-15T08:05:19.2271458Z     "deployments_url": "https://api.github.com/repos/Skn0tt/playwright/deployments",
+2025-04-15T08:05:19.2272264Z     "description": "Playwright is a framework for Web Testing and Automation. It allows testing Chromium, Firefox and WebKit with a single API. ",
+2025-04-15T08:05:19.2272989Z     "downloads_url": "https://api.github.com/repos/Skn0tt/playwright/downloads",
+2025-04-15T08:05:19.2273500Z     "events_url": "https://api.github.com/repos/Skn0tt/playwright/events",
+2025-04-15T08:05:19.2273850Z     "fork": true,
+2025-04-15T08:05:19.2274190Z     "forks_url": "https://api.github.com/repos/Skn0tt/playwright/forks",
+2025-04-15T08:05:19.2274576Z     "full_name": "Skn0tt/playwright",
+2025-04-15T08:05:19.2275077Z     "git_commits_url": "https://api.github.com/repos/Skn0tt/playwright/git/commits{/sha}",
+2025-04-15T08:05:19.2275663Z     "git_refs_url": "https://api.github.com/repos/Skn0tt/playwright/git/refs{/sha}",
+2025-04-15T08:05:19.2276411Z     "git_tags_url": "https://api.github.com/repos/Skn0tt/playwright/git/tags{/sha}",
+2025-04-15T08:05:19.2276922Z     "hooks_url": "https://api.github.com/repos/Skn0tt/playwright/hooks",
+2025-04-15T08:05:19.2277512Z     "html_url": "https://github.com/Skn0tt/playwright",
+2025-04-15T08:05:19.2277809Z     "id": 763554482,
+2025-04-15T08:05:19.2278260Z     "issue_comment_url": "https://api.github.com/repos/Skn0tt/playwright/issues/comments{/number}",
+2025-04-15T08:05:19.2278921Z     "issue_events_url": "https://api.github.com/repos/Skn0tt/playwright/issues/events{/number}",
+2025-04-15T08:05:19.2279514Z     "issues_url": "https://api.github.com/repos/Skn0tt/playwright/issues{/number}",
+2025-04-15T08:05:19.2280053Z     "keys_url": "https://api.github.com/repos/Skn0tt/playwright/keys{/key_id}",
+2025-04-15T08:05:19.2280574Z     "labels_url": "https://api.github.com/repos/Skn0tt/playwright/labels{/name}",
+2025-04-15T08:05:19.2281101Z     "languages_url": "https://api.github.com/repos/Skn0tt/playwright/languages",
+2025-04-15T08:05:19.2281603Z     "merges_url": "https://api.github.com/repos/Skn0tt/playwright/merges",
+2025-04-15T08:05:19.2282155Z     "milestones_url": "https://api.github.com/repos/Skn0tt/playwright/milestones{/number}",
+2025-04-15T08:05:19.2282576Z     "name": "playwright",
+2025-04-15T08:05:19.2282860Z     "node_id": "R_kgDOLYLqsg",
+2025-04-15T08:05:19.2283416Z     "notifications_url": "https://api.github.com/repos/Skn0tt/playwright/notifications{?since,all,participating}",
+2025-04-15T08:05:19.2283922Z     "owner": {
+2025-04-15T08:05:19.2284269Z       "avatar_url": "https://avatars.githubusercontent.com/u/14912729?v=4",
+2025-04-15T08:05:19.2284764Z       "events_url": "https://api.github.com/users/Skn0tt/events{/privacy}",
+2025-04-15T08:05:19.2285240Z       "followers_url": "https://api.github.com/users/Skn0tt/followers",
+2025-04-15T08:05:19.2285747Z       "following_url": "https://api.github.com/users/Skn0tt/following{/other_user}",
+2025-04-15T08:05:19.2286527Z       "gists_url": "https://api.github.com/users/Skn0tt/gists{/gist_id}",
+2025-04-15T08:05:19.2287032Z       "gravatar_id": "",
+2025-04-15T08:05:19.2287321Z       "html_url": "https://github.com/Skn0tt",
+2025-04-15T08:05:19.2287617Z       "id": 14912729,
+2025-04-15T08:05:19.2287834Z       "login": "Skn0tt",
+2025-04-15T08:05:19.2288096Z       "node_id": "MDQ6VXNlcjE0OTEyNzI5",
+2025-04-15T08:05:19.2288514Z       "organizations_url": "https://api.github.com/users/Skn0tt/orgs",
+2025-04-15T08:05:19.2289031Z       "received_events_url": "https://api.github.com/users/Skn0tt/received_events",
+2025-04-15T08:05:19.2289511Z       "repos_url": "https://api.github.com/users/Skn0tt/repos",
+2025-04-15T08:05:19.2289834Z       "site_admin": false,
+2025-04-15T08:05:19.2290222Z       "starred_url": "https://api.github.com/users/Skn0tt/starred{/owner}{/repo}",
+2025-04-15T08:05:19.2290760Z       "subscriptions_url": "https://api.github.com/users/Skn0tt/subscriptions",
+2025-04-15T08:05:19.2291134Z       "type": "User",
+2025-04-15T08:05:19.2291411Z       "url": "https://api.github.com/users/Skn0tt",
+2025-04-15T08:05:19.2291738Z       "user_view_type": "public"
+2025-04-15T08:05:19.2291983Z     },
+2025-04-15T08:05:19.2292169Z     "private": false,
+2025-04-15T08:05:19.2292551Z     "pulls_url": "https://api.github.com/repos/Skn0tt/playwright/pulls{/number}",
+2025-04-15T08:05:19.2293090Z     "releases_url": "https://api.github.com/repos/Skn0tt/playwright/releases{/id}",
+2025-04-15T08:05:19.2293637Z     "stargazers_url": "https://api.github.com/repos/Skn0tt/playwright/stargazers",
+2025-04-15T08:05:19.2294216Z     "statuses_url": "https://api.github.com/repos/Skn0tt/playwright/statuses/{sha}",
+2025-04-15T08:05:19.2294775Z     "subscribers_url": "https://api.github.com/repos/Skn0tt/playwright/subscribers",
+2025-04-15T08:05:19.2295341Z     "subscription_url": "https://api.github.com/repos/Skn0tt/playwright/subscription",
+2025-04-15T08:05:19.2295860Z     "tags_url": "https://api.github.com/repos/Skn0tt/playwright/tags",
+2025-04-15T08:05:19.2296559Z     "teams_url": "https://api.github.com/repos/Skn0tt/playwright/teams",
+2025-04-15T08:05:19.2297075Z     "trees_url": "https://api.github.com/repos/Skn0tt/playwright/git/trees{/sha}",
+2025-04-15T08:05:19.2297683Z     "url": "https://api.github.com/repos/Skn0tt/playwright"
+2025-04-15T08:05:19.2297985Z   },
+2025-04-15T08:05:19.2298248Z   "head_sha": "e8302005c115bd60c42580cf9e7d3d58f3da8c44",
+2025-04-15T08:05:19.2298710Z   "html_url": "https://github.com/microsoft/playwright/actions/runs/14464375454",
+2025-04-15T08:05:19.2299082Z   "id": 14464375454,
+2025-04-15T08:05:19.2299515Z   "jobs_url": "https://api.github.com/repos/microsoft/playwright/actions/runs/14464375454/jobs",
+2025-04-15T08:05:19.2300163Z   "logs_url": "https://api.github.com/repos/microsoft/playwright/actions/runs/14464375454/logs",
+2025-04-15T08:05:19.2300590Z   "name": "tests 1",
+2025-04-15T08:05:19.2300848Z   "node_id": "WFR_kwLODTssw88AAAADXiTang",
+2025-04-15T08:05:19.2301183Z   "path": ".github/workflows/tests_primary.yml",
+2025-04-15T08:05:19.2301495Z   "previous_attempt_url": null,
+2025-04-15T08:05:19.2301744Z   "pull_requests": [],
+2025-04-15T08:05:19.2301981Z   "referenced_workflows": [],
+2025-04-15T08:05:19.2302221Z   "repository": {
+2025-04-15T08:05:19.2302671Z     "archive_url": "https://api.github.com/repos/microsoft/playwright/{archive_format}{/ref}",
+2025-04-15T08:05:19.2303305Z     "assignees_url": "https://api.github.com/repos/microsoft/playwright/assignees{/user}",
+2025-04-15T08:05:19.2303894Z     "blobs_url": "https://api.github.com/repos/microsoft/playwright/git/blobs{/sha}",
+2025-04-15T08:05:19.2304476Z     "branches_url": "https://api.github.com/repos/microsoft/playwright/branches{/branch}",
+2025-04-15T08:05:19.2305153Z     "collaborators_url": "https://api.github.com/repos/microsoft/playwright/collaborators{/collaborator}",
+2025-04-15T08:05:19.2305832Z     "comments_url": "https://api.github.com/repos/microsoft/playwright/comments{/number}",
+2025-04-15T08:05:19.2306524Z     "commits_url": "https://api.github.com/repos/microsoft/playwright/commits{/sha}",
+2025-04-15T08:05:19.2307134Z     "compare_url": "https://api.github.com/repos/microsoft/playwright/compare/{base}...{head}",
+2025-04-15T08:05:19.2307914Z     "contents_url": "https://api.github.com/repos/microsoft/playwright/contents/{+path}",
+2025-04-15T08:05:19.2308522Z     "contributors_url": "https://api.github.com/repos/microsoft/playwright/contributors",
+2025-04-15T08:05:19.2309120Z     "deployments_url": "https://api.github.com/repos/microsoft/playwright/deployments",
+2025-04-15T08:05:19.2309916Z     "description": "Playwright is a framework for Web Testing and Automation. It allows testing Chromium, Firefox and WebKit with a single API. ",
+2025-04-15T08:05:19.2310664Z     "downloads_url": "https://api.github.com/repos/microsoft/playwright/downloads",
+2025-04-15T08:05:19.2311204Z     "events_url": "https://api.github.com/repos/microsoft/playwright/events",
+2025-04-15T08:05:19.2311568Z     "fork": false,
+2025-04-15T08:05:19.2311919Z     "forks_url": "https://api.github.com/repos/microsoft/playwright/forks",
+2025-04-15T08:05:19.2312318Z     "full_name": "microsoft/playwright",
+2025-04-15T08:05:19.2312794Z     "git_commits_url": "https://api.github.com/repos/microsoft/playwright/git/commits{/sha}",
+2025-04-15T08:05:19.2313387Z     "git_refs_url": "https://api.github.com/repos/microsoft/playwright/git/refs{/sha}",
+2025-04-15T08:05:19.2313947Z     "git_tags_url": "https://api.github.com/repos/microsoft/playwright/git/tags{/sha}",
+2025-04-15T08:05:19.2314465Z     "hooks_url": "https://api.github.com/repos/microsoft/playwright/hooks",
+2025-04-15T08:05:19.2314909Z     "html_url": "https://github.com/microsoft/playwright",
+2025-04-15T08:05:19.2315211Z     "id": 221981891,
+2025-04-15T08:05:19.2315667Z     "issue_comment_url": "https://api.github.com/repos/microsoft/playwright/issues/comments{/number}",
+2025-04-15T08:05:19.2316565Z     "issue_events_url": "https://api.github.com/repos/microsoft/playwright/issues/events{/number}",
+2025-04-15T08:05:19.2317182Z     "issues_url": "https://api.github.com/repos/microsoft/playwright/issues{/number}",
+2025-04-15T08:05:19.2317733Z     "keys_url": "https://api.github.com/repos/microsoft/playwright/keys{/key_id}",
+2025-04-15T08:05:19.2318416Z     "labels_url": "https://api.github.com/repos/microsoft/playwright/labels{/name}",
+2025-04-15T08:05:19.2318966Z     "languages_url": "https://api.github.com/repos/microsoft/playwright/languages",
+2025-04-15T08:05:19.2319493Z     "merges_url": "https://api.github.com/repos/microsoft/playwright/merges",
+2025-04-15T08:05:19.2320067Z     "milestones_url": "https://api.github.com/repos/microsoft/playwright/milestones{/number}",
+2025-04-15T08:05:19.2320492Z     "name": "playwright",
+2025-04-15T08:05:19.2320792Z     "node_id": "MDEwOlJlcG9zaXRvcnkyMjE5ODE4OTE=",
+2025-04-15T08:05:19.2321409Z     "notifications_url": "https://api.github.com/repos/microsoft/playwright/notifications{?since,all,participating}",
+2025-04-15T08:05:19.2321931Z     "owner": {
+2025-04-15T08:05:19.2322275Z       "avatar_url": "https://avatars.githubusercontent.com/u/6154722?v=4",
+2025-04-15T08:05:19.2322779Z       "events_url": "https://api.github.com/users/microsoft/events{/privacy}",
+2025-04-15T08:05:19.2323281Z       "followers_url": "https://api.github.com/users/microsoft/followers",
+2025-04-15T08:05:19.2323813Z       "following_url": "https://api.github.com/users/microsoft/following{/other_user}",
+2025-04-15T08:05:19.2324331Z       "gists_url": "https://api.github.com/users/microsoft/gists{/gist_id}",
+2025-04-15T08:05:19.2324686Z       "gravatar_id": "",
+2025-04-15T08:05:19.2324974Z       "html_url": "https://github.com/microsoft",
+2025-04-15T08:05:19.2325257Z       "id": 6154722,
+2025-04-15T08:05:19.2325470Z       "login": "microsoft",
+2025-04-15T08:05:19.2325772Z       "node_id": "MDEyOk9yZ2FuaXphdGlvbjYxNTQ3MjI=",
+2025-04-15T08:05:19.2326429Z       "organizations_url": "https://api.github.com/users/microsoft/orgs",
+2025-04-15T08:05:19.2326970Z       "received_events_url": "https://api.github.com/users/microsoft/received_events",
+2025-04-15T08:05:19.2327462Z       "repos_url": "https://api.github.com/users/microsoft/repos",
+2025-04-15T08:05:19.2327927Z       "site_admin": false,
+2025-04-15T08:05:19.2328319Z       "starred_url": "https://api.github.com/users/microsoft/starred{/owner}{/repo}",
+2025-04-15T08:05:19.2328868Z       "subscriptions_url": "https://api.github.com/users/microsoft/subscriptions",
+2025-04-15T08:05:19.2329259Z       "type": "Organization",
+2025-04-15T08:05:19.2329570Z       "url": "https://api.github.com/users/microsoft",
+2025-04-15T08:05:19.2329890Z       "user_view_type": "public"
+2025-04-15T08:05:19.2330128Z     },
+2025-04-15T08:05:19.2330315Z     "private": false,
+2025-04-15T08:05:19.2330710Z     "pulls_url": "https://api.github.com/repos/microsoft/playwright/pulls{/number}",
+2025-04-15T08:05:19.2331277Z     "releases_url": "https://api.github.com/repos/microsoft/playwright/releases{/id}",
+2025-04-15T08:05:19.2331848Z     "stargazers_url": "https://api.github.com/repos/microsoft/playwright/stargazers",
+2025-04-15T08:05:19.2332414Z     "statuses_url": "https://api.github.com/repos/microsoft/playwright/statuses/{sha}",
+2025-04-15T08:05:19.2332996Z     "subscribers_url": "https://api.github.com/repos/microsoft/playwright/subscribers",
+2025-04-15T08:05:19.2333590Z     "subscription_url": "https://api.github.com/repos/microsoft/playwright/subscription",
+2025-04-15T08:05:19.2334131Z     "tags_url": "https://api.github.com/repos/microsoft/playwright/tags",
+2025-04-15T08:05:19.2334623Z     "teams_url": "https://api.github.com/repos/microsoft/playwright/teams",
+2025-04-15T08:05:19.2335150Z     "trees_url": "https://api.github.com/repos/microsoft/playwright/git/trees{/sha}",
+2025-04-15T08:05:19.2335632Z     "url": "https://api.github.com/repos/microsoft/playwright"
+2025-04-15T08:05:19.2336144Z   },
+2025-04-15T08:05:19.2336578Z   "rerun_url": "https://api.github.com/repos/microsoft/playwright/actions/runs/14464375454/rerun",
+2025-04-15T08:05:19.2337024Z   "run_attempt": 1,
+2025-04-15T08:05:19.2337234Z   "run_number": 30618,
+2025-04-15T08:05:19.2337492Z   "run_started_at": "2025-04-15T08:03:31Z",
+2025-04-15T08:05:19.2337758Z   "status": "completed",
+2025-04-15T08:05:19.2337991Z   "triggering_actor": {
+2025-04-15T08:05:19.2338355Z     "avatar_url": "https://avatars.githubusercontent.com/u/14912729?v=4",
+2025-04-15T08:05:19.2338983Z     "events_url": "https://api.github.com/users/Skn0tt/events{/privacy}",
+2025-04-15T08:05:19.2339457Z     "followers_url": "https://api.github.com/users/Skn0tt/followers",
+2025-04-15T08:05:19.2339961Z     "following_url": "https://api.github.com/users/Skn0tt/following{/other_user}",
+2025-04-15T08:05:19.2340465Z     "gists_url": "https://api.github.com/users/Skn0tt/gists{/gist_id}",
+2025-04-15T08:05:19.2340809Z     "gravatar_id": "",
+2025-04-15T08:05:19.2341081Z     "html_url": "https://github.com/Skn0tt",
+2025-04-15T08:05:19.2341351Z     "id": 14912729,
+2025-04-15T08:05:19.2341553Z     "login": "Skn0tt",
+2025-04-15T08:05:19.2341803Z     "node_id": "MDQ6VXNlcjE0OTEyNzI5",
+2025-04-15T08:05:19.2342200Z     "organizations_url": "https://api.github.com/users/Skn0tt/orgs",
+2025-04-15T08:05:19.2342703Z     "received_events_url": "https://api.github.com/users/Skn0tt/received_events",
+2025-04-15T08:05:19.2343177Z     "repos_url": "https://api.github.com/users/Skn0tt/repos",
+2025-04-15T08:05:19.2343510Z     "site_admin": false,
+2025-04-15T08:05:19.2343888Z     "starred_url": "https://api.github.com/users/Skn0tt/starred{/owner}{/repo}",
+2025-04-15T08:05:19.2344412Z     "subscriptions_url": "https://api.github.com/users/Skn0tt/subscriptions",
+2025-04-15T08:05:19.2344780Z     "type": "User",
+2025-04-15T08:05:19.2345047Z     "url": "https://api.github.com/users/Skn0tt",
+2025-04-15T08:05:19.2345361Z     "user_view_type": "public"
+2025-04-15T08:05:19.2345592Z   },
+2025-04-15T08:05:19.2345809Z   "updated_at": "2025-04-15T08:04:24Z",
+2025-04-15T08:05:19.2346371Z   "url": "https://api.github.com/repos/microsoft/playwright/actions/runs/14464375454",
+2025-04-15T08:05:19.2346783Z   "workflow_id": 8973349,
+2025-04-15T08:05:19.2347234Z   "workflow_url": "https://api.github.com/repos/microsoft/playwright/actions/workflows/8973349"
+2025-04-15T08:05:19.2347799Z }
+2025-04-15T08:05:19.4286790Z total =  0
+2025-04-15T08:05:19.4896943Z ##[group]Run unzip -n 'all-blob-reports/artifacts/*.zip' -d all-blob-reports
+2025-04-15T08:05:19.4897669Z [36;1munzip -n 'all-blob-reports/artifacts/*.zip' -d all-blob-reports[0m
+2025-04-15T08:05:19.4898164Z [36;1mrm -rf 'all-blob-reports/artifacts'[0m
+2025-04-15T08:05:19.4944024Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-04-15T08:05:19.4944371Z ##[endgroup]
+2025-04-15T08:05:19.5038427Z unzip:  cannot find or open all-blob-reports/artifacts/*.zip, all-blob-reports/artifacts/*.zip.zip or all-blob-reports/artifacts/*.zip.ZIP.
+2025-04-15T08:05:19.5039350Z 
+2025-04-15T08:05:19.5039475Z No zipfiles found.
+2025-04-15T08:05:19.5052389Z ##[error]Process completed with exit code 9.

@@ -1,0 +1,364 @@
+2025-04-15T01:53:00.2252126Z Prepare all required actions
+2025-04-15T01:53:00.2252612Z Getting action download info
+2025-04-15T01:53:00.3504597Z ##[group]Download immutable action package 'actions/github-script@v7'
+2025-04-15T01:53:00.3505069Z Version: 7.0.1
+2025-04-15T01:53:00.3505488Z Digest: sha256:bce02966afe3a75123f766b765abe432fac5464b74976015dc06b811ac9054c7
+2025-04-15T01:53:00.3506052Z Source commit SHA: 60a0d83039c74a4aee543508d2ffcb1c3799cdea
+2025-04-15T01:53:00.3506426Z ##[endgroup]
+2025-04-15T01:53:00.5082117Z ##[group]Run ./.github/actions/download-artifact
+2025-04-15T01:53:00.5082451Z with:
+2025-04-15T01:53:00.5082668Z   namePrefix: blob-report
+2025-04-15T01:53:00.5082918Z   path: all-blob-reports
+2025-04-15T01:53:00.5083149Z ##[endgroup]
+2025-04-15T01:53:00.5168142Z ##[group]Run mkdir -p 'all-blob-reports/artifacts'
+2025-04-15T01:53:00.5168522Z [36;1mmkdir -p 'all-blob-reports/artifacts'[0m
+2025-04-15T01:53:00.5215384Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-04-15T01:53:00.5215748Z ##[endgroup]
+2025-04-15T01:53:00.5340445Z ##[group]Run actions/github-script@v7
+2025-04-15T01:53:00.5340719Z with:
+2025-04-15T01:53:00.5343251Z   script: console.log(`downloading artifacts for workflow_run: ${context.payload.workflow_run.id}`);
+console.log(`workflow_run: ${JSON.stringify(context.payload.workflow_run, null, 2)}`);
+const allArtifacts = await github.paginate(github.rest.actions.listWorkflowRunArtifacts, {
+  ...context.repo,
+  run_id: context.payload.workflow_run.id
+});
+console.log('total = ', allArtifacts.length);
+const artifacts = allArtifacts.filter(a => a.name.startsWith('blob-report'));
+const fs = require('fs');
+for (const artifact of artifacts) {
+  const result = await github.rest.actions.downloadArtifact({
+    ...context.repo,
+    artifact_id: artifact.id,
+    archive_format: 'zip'
+  });
+  console.log(`Downloaded ${artifact.name}.zip (${result.data.byteLength} bytes)`);
+  fs.writeFileSync(`all-blob-reports/artifacts/${artifact.name}.zip`, Buffer.from(result.data));
+}
+
+2025-04-15T01:53:00.5346169Z   github-token: ***
+2025-04-15T01:53:00.5346395Z   debug: false
+2025-04-15T01:53:00.5346618Z   user-agent: actions/github-script
+2025-04-15T01:53:00.5346889Z   result-encoding: json
+2025-04-15T01:53:00.5347111Z   retries: 0
+2025-04-15T01:53:00.5347346Z   retry-exempt-status-codes: 400,401,403,404,422
+2025-04-15T01:53:00.5347640Z ##[endgroup]
+2025-04-15T01:53:00.6181047Z downloading artifacts for workflow_run: 14458092631
+2025-04-15T01:53:00.6185012Z workflow_run: {
+2025-04-15T01:53:00.6185390Z   "actor": {
+2025-04-15T01:53:00.6186043Z     "avatar_url": "https://avatars.githubusercontent.com/u/9798949?v=4",
+2025-04-15T01:53:00.6186970Z     "events_url": "https://api.github.com/users/yury-s/events{/privacy}",
+2025-04-15T01:53:00.6187851Z     "followers_url": "https://api.github.com/users/yury-s/followers",
+2025-04-15T01:53:00.6188931Z     "following_url": "https://api.github.com/users/yury-s/following{/other_user}",
+2025-04-15T01:53:00.6189867Z     "gists_url": "https://api.github.com/users/yury-s/gists{/gist_id}",
+2025-04-15T01:53:00.6190465Z     "gravatar_id": "",
+2025-04-15T01:53:00.6190788Z     "html_url": "https://github.com/yury-s",
+2025-04-15T01:53:00.6191115Z     "id": 9798949,
+2025-04-15T01:53:00.6191344Z     "login": "yury-s",
+2025-04-15T01:53:00.6191630Z     "node_id": "MDQ6VXNlcjk3OTg5NDk=",
+2025-04-15T01:53:00.6192079Z     "organizations_url": "https://api.github.com/users/yury-s/orgs",
+2025-04-15T01:53:00.6192716Z     "received_events_url": "https://api.github.com/users/yury-s/received_events",
+2025-04-15T01:53:00.6193283Z     "repos_url": "https://api.github.com/users/yury-s/repos",
+2025-04-15T01:53:00.6193645Z     "site_admin": false,
+2025-04-15T01:53:00.6194080Z     "starred_url": "https://api.github.com/users/yury-s/starred{/owner}{/repo}",
+2025-04-15T01:53:00.6194689Z     "subscriptions_url": "https://api.github.com/users/yury-s/subscriptions",
+2025-04-15T01:53:00.6195112Z     "type": "User",
+2025-04-15T01:53:00.6195425Z     "url": "https://api.github.com/users/yury-s",
+2025-04-15T01:53:00.6195787Z     "user_view_type": "public"
+2025-04-15T01:53:00.6196408Z   },
+2025-04-15T01:53:00.6196939Z   "artifacts_url": "https://api.github.com/repos/microsoft/playwright/actions/runs/14458092631/artifacts",
+2025-04-15T01:53:00.6197766Z   "cancel_url": "https://api.github.com/repos/microsoft/playwright/actions/runs/14458092631/cancel",
+2025-04-15T01:53:00.6198291Z   "check_suite_id": 37172361620,
+2025-04-15T01:53:00.6198944Z   "check_suite_node_id": "CS_kwDODTssw88AAAAIp6U5lA",
+2025-04-15T01:53:00.6199532Z   "check_suite_url": "https://api.github.com/repos/microsoft/playwright/check-suites/37172361620",
+2025-04-15T01:53:00.6199998Z   "conclusion": "success",
+2025-04-15T01:53:00.6200285Z   "created_at": "2025-04-14T23:54:09Z",
+2025-04-15T01:53:00.6200727Z   "display_title": "chore(bidi): rename bidi-firefox-stable to moz-firefox channel",
+2025-04-15T01:53:00.6201125Z   "event": "pull_request",
+2025-04-15T01:53:00.6201401Z   "head_branch": "moz-firefox-channel",
+2025-04-15T01:53:00.6201681Z   "head_commit": {
+2025-04-15T01:53:00.6201899Z     "author": {
+2025-04-15T01:53:00.6202145Z       "email": "yurys@chromium.org",
+2025-04-15T01:53:00.6202436Z       "name": "Yury Semikhatsky"
+2025-04-15T01:53:00.6202676Z     },
+2025-04-15T01:53:00.6202865Z     "committer": {
+2025-04-15T01:53:00.6203108Z       "email": "yurys@chromium.org",
+2025-04-15T01:53:00.6203392Z       "name": "Yury Semikhatsky"
+2025-04-15T01:53:00.6203627Z     },
+2025-04-15T01:53:00.6203885Z     "id": "48a632c06204116be6f81dff2548ea37f28df9a1",
+2025-04-15T01:53:00.6204336Z     "message": "chore(bidi): rename bidi-firefox-stable to moz-firefox channel",
+2025-04-15T01:53:00.6204749Z     "timestamp": "2025-04-14T23:53:19Z",
+2025-04-15T01:53:00.6205094Z     "tree_id": "2d00f0575a88ca235ac84fd6277fb88649be982a"
+2025-04-15T01:53:00.6205388Z   },
+2025-04-15T01:53:00.6205584Z   "head_repository": {
+2025-04-15T01:53:00.6206018Z     "archive_url": "https://api.github.com/repos/yury-s/playwright/{archive_format}{/ref}",
+2025-04-15T01:53:00.6206794Z     "assignees_url": "https://api.github.com/repos/yury-s/playwright/assignees{/user}",
+2025-04-15T01:53:00.6207360Z     "blobs_url": "https://api.github.com/repos/yury-s/playwright/git/blobs{/sha}",
+2025-04-15T01:53:00.6207914Z     "branches_url": "https://api.github.com/repos/yury-s/playwright/branches{/branch}",
+2025-04-15T01:53:00.6208719Z     "collaborators_url": "https://api.github.com/repos/yury-s/playwright/collaborators{/collaborator}",
+2025-04-15T01:53:00.6209437Z     "comments_url": "https://api.github.com/repos/yury-s/playwright/comments{/number}",
+2025-04-15T01:53:00.6209995Z     "commits_url": "https://api.github.com/repos/yury-s/playwright/commits{/sha}",
+2025-04-15T01:53:00.6210571Z     "compare_url": "https://api.github.com/repos/yury-s/playwright/compare/{base}...{head}",
+2025-04-15T01:53:00.6211156Z     "contents_url": "https://api.github.com/repos/yury-s/playwright/contents/{+path}",
+2025-04-15T01:53:00.6211733Z     "contributors_url": "https://api.github.com/repos/yury-s/playwright/contributors",
+2025-04-15T01:53:00.6212316Z     "deployments_url": "https://api.github.com/repos/yury-s/playwright/deployments",
+2025-04-15T01:53:00.6212871Z     "description": "Node library to automate Chromium, Firefox and WebKit browsers",
+2025-04-15T01:53:00.6213412Z     "downloads_url": "https://api.github.com/repos/yury-s/playwright/downloads",
+2025-04-15T01:53:00.6213931Z     "events_url": "https://api.github.com/repos/yury-s/playwright/events",
+2025-04-15T01:53:00.6214293Z     "fork": true,
+2025-04-15T01:53:00.6214645Z     "forks_url": "https://api.github.com/repos/yury-s/playwright/forks",
+2025-04-15T01:53:00.6215043Z     "full_name": "yury-s/playwright",
+2025-04-15T01:53:00.6215502Z     "git_commits_url": "https://api.github.com/repos/yury-s/playwright/git/commits{/sha}",
+2025-04-15T01:53:00.6216064Z     "git_refs_url": "https://api.github.com/repos/yury-s/playwright/git/refs{/sha}",
+2025-04-15T01:53:00.6216603Z     "git_tags_url": "https://api.github.com/repos/yury-s/playwright/git/tags{/sha}",
+2025-04-15T01:53:00.6217112Z     "hooks_url": "https://api.github.com/repos/yury-s/playwright/hooks",
+2025-04-15T01:53:00.6217703Z     "html_url": "https://github.com/yury-s/playwright",
+2025-04-15T01:53:00.6218006Z     "id": 235660493,
+2025-04-15T01:53:00.6218458Z     "issue_comment_url": "https://api.github.com/repos/yury-s/playwright/issues/comments{/number}",
+2025-04-15T01:53:00.6219347Z     "issue_events_url": "https://api.github.com/repos/yury-s/playwright/issues/events{/number}",
+2025-04-15T01:53:00.6219953Z     "issues_url": "https://api.github.com/repos/yury-s/playwright/issues{/number}",
+2025-04-15T01:53:00.6220498Z     "keys_url": "https://api.github.com/repos/yury-s/playwright/keys{/key_id}",
+2025-04-15T01:53:00.6221027Z     "labels_url": "https://api.github.com/repos/yury-s/playwright/labels{/name}",
+2025-04-15T01:53:00.6221562Z     "languages_url": "https://api.github.com/repos/yury-s/playwright/languages",
+2025-04-15T01:53:00.6222079Z     "merges_url": "https://api.github.com/repos/yury-s/playwright/merges",
+2025-04-15T01:53:00.6222662Z     "milestones_url": "https://api.github.com/repos/yury-s/playwright/milestones{/number}",
+2025-04-15T01:53:00.6223090Z     "name": "playwright",
+2025-04-15T01:53:00.6223415Z     "node_id": "MDEwOlJlcG9zaXRvcnkyMzU2NjA0OTM=",
+2025-04-15T01:53:00.6224024Z     "notifications_url": "https://api.github.com/repos/yury-s/playwright/notifications{?since,all,participating}",
+2025-04-15T01:53:00.6224532Z     "owner": {
+2025-04-15T01:53:00.6224879Z       "avatar_url": "https://avatars.githubusercontent.com/u/9798949?v=4",
+2025-04-15T01:53:00.6225384Z       "events_url": "https://api.github.com/users/yury-s/events{/privacy}",
+2025-04-15T01:53:00.6225868Z       "followers_url": "https://api.github.com/users/yury-s/followers",
+2025-04-15T01:53:00.6226378Z       "following_url": "https://api.github.com/users/yury-s/following{/other_user}",
+2025-04-15T01:53:00.6226885Z       "gists_url": "https://api.github.com/users/yury-s/gists{/gist_id}",
+2025-04-15T01:53:00.6227428Z       "gravatar_id": "",
+2025-04-15T01:53:00.6227735Z       "html_url": "https://github.com/yury-s",
+2025-04-15T01:53:00.6228030Z       "id": 9798949,
+2025-04-15T01:53:00.6228251Z       "login": "yury-s",
+2025-04-15T01:53:00.6228529Z       "node_id": "MDQ6VXNlcjk3OTg5NDk=",
+2025-04-15T01:53:00.6229046Z       "organizations_url": "https://api.github.com/users/yury-s/orgs",
+2025-04-15T01:53:00.6229562Z       "received_events_url": "https://api.github.com/users/yury-s/received_events",
+2025-04-15T01:53:00.6230044Z       "repos_url": "https://api.github.com/users/yury-s/repos",
+2025-04-15T01:53:00.6230375Z       "site_admin": false,
+2025-04-15T01:53:00.6230784Z       "starred_url": "https://api.github.com/users/yury-s/starred{/owner}{/repo}",
+2025-04-15T01:53:00.6231317Z       "subscriptions_url": "https://api.github.com/users/yury-s/subscriptions",
+2025-04-15T01:53:00.6231696Z       "type": "User",
+2025-04-15T01:53:00.6231982Z       "url": "https://api.github.com/users/yury-s",
+2025-04-15T01:53:00.6232315Z       "user_view_type": "public"
+2025-04-15T01:53:00.6232561Z     },
+2025-04-15T01:53:00.6232757Z     "private": false,
+2025-04-15T01:53:00.6233139Z     "pulls_url": "https://api.github.com/repos/yury-s/playwright/pulls{/number}",
+2025-04-15T01:53:00.6233692Z     "releases_url": "https://api.github.com/repos/yury-s/playwright/releases{/id}",
+2025-04-15T01:53:00.6234246Z     "stargazers_url": "https://api.github.com/repos/yury-s/playwright/stargazers",
+2025-04-15T01:53:00.6234804Z     "statuses_url": "https://api.github.com/repos/yury-s/playwright/statuses/{sha}",
+2025-04-15T01:53:00.6235361Z     "subscribers_url": "https://api.github.com/repos/yury-s/playwright/subscribers",
+2025-04-15T01:53:00.6235934Z     "subscription_url": "https://api.github.com/repos/yury-s/playwright/subscription",
+2025-04-15T01:53:00.6236453Z     "tags_url": "https://api.github.com/repos/yury-s/playwright/tags",
+2025-04-15T01:53:00.6236926Z     "teams_url": "https://api.github.com/repos/yury-s/playwright/teams",
+2025-04-15T01:53:00.6237436Z     "trees_url": "https://api.github.com/repos/yury-s/playwright/git/trees{/sha}",
+2025-04-15T01:53:00.6238035Z     "url": "https://api.github.com/repos/yury-s/playwright"
+2025-04-15T01:53:00.6238346Z   },
+2025-04-15T01:53:00.6238836Z   "head_sha": "48a632c06204116be6f81dff2548ea37f28df9a1",
+2025-04-15T01:53:00.6239425Z   "html_url": "https://github.com/microsoft/playwright/actions/runs/14458092631",
+2025-04-15T01:53:00.6239809Z   "id": 14458092631,
+2025-04-15T01:53:00.6240248Z   "jobs_url": "https://api.github.com/repos/microsoft/playwright/actions/runs/14458092631/jobs",
+2025-04-15T01:53:00.6240902Z   "logs_url": "https://api.github.com/repos/microsoft/playwright/actions/runs/14458092631/logs",
+2025-04-15T01:53:00.6241335Z   "name": "tests 1",
+2025-04-15T01:53:00.6241602Z   "node_id": "WFR_kwLODTssw88AAAADXcT8Vw",
+2025-04-15T01:53:00.6241947Z   "path": ".github/workflows/tests_primary.yml",
+2025-04-15T01:53:00.6242269Z   "previous_attempt_url": null,
+2025-04-15T01:53:00.6242553Z   "pull_requests": [],
+2025-04-15T01:53:00.6242794Z   "referenced_workflows": [],
+2025-04-15T01:53:00.6243050Z   "repository": {
+2025-04-15T01:53:00.6243481Z     "archive_url": "https://api.github.com/repos/microsoft/playwright/{archive_format}{/ref}",
+2025-04-15T01:53:00.6244114Z     "assignees_url": "https://api.github.com/repos/microsoft/playwright/assignees{/user}",
+2025-04-15T01:53:00.6244701Z     "blobs_url": "https://api.github.com/repos/microsoft/playwright/git/blobs{/sha}",
+2025-04-15T01:53:00.6245284Z     "branches_url": "https://api.github.com/repos/microsoft/playwright/branches{/branch}",
+2025-04-15T01:53:00.6245960Z     "collaborators_url": "https://api.github.com/repos/microsoft/playwright/collaborators{/collaborator}",
+2025-04-15T01:53:00.6246625Z     "comments_url": "https://api.github.com/repos/microsoft/playwright/comments{/number}",
+2025-04-15T01:53:00.6247202Z     "commits_url": "https://api.github.com/repos/microsoft/playwright/commits{/sha}",
+2025-04-15T01:53:00.6247957Z     "compare_url": "https://api.github.com/repos/microsoft/playwright/compare/{base}...{head}",
+2025-04-15T01:53:00.6248777Z     "contents_url": "https://api.github.com/repos/microsoft/playwright/contents/{+path}",
+2025-04-15T01:53:00.6249431Z     "contributors_url": "https://api.github.com/repos/microsoft/playwright/contributors",
+2025-04-15T01:53:00.6250028Z     "deployments_url": "https://api.github.com/repos/microsoft/playwright/deployments",
+2025-04-15T01:53:00.6250816Z     "description": "Playwright is a framework for Web Testing and Automation. It allows testing Chromium, Firefox and WebKit with a single API. ",
+2025-04-15T01:53:00.6251575Z     "downloads_url": "https://api.github.com/repos/microsoft/playwright/downloads",
+2025-04-15T01:53:00.6252138Z     "events_url": "https://api.github.com/repos/microsoft/playwright/events",
+2025-04-15T01:53:00.6252513Z     "fork": false,
+2025-04-15T01:53:00.6252872Z     "forks_url": "https://api.github.com/repos/microsoft/playwright/forks",
+2025-04-15T01:53:00.6253291Z     "full_name": "microsoft/playwright",
+2025-04-15T01:53:00.6253780Z     "git_commits_url": "https://api.github.com/repos/microsoft/playwright/git/commits{/sha}",
+2025-04-15T01:53:00.6254380Z     "git_refs_url": "https://api.github.com/repos/microsoft/playwright/git/refs{/sha}",
+2025-04-15T01:53:00.6254951Z     "git_tags_url": "https://api.github.com/repos/microsoft/playwright/git/tags{/sha}",
+2025-04-15T01:53:00.6255476Z     "hooks_url": "https://api.github.com/repos/microsoft/playwright/hooks",
+2025-04-15T01:53:00.6255933Z     "html_url": "https://github.com/microsoft/playwright",
+2025-04-15T01:53:00.6256244Z     "id": 221981891,
+2025-04-15T01:53:00.6256707Z     "issue_comment_url": "https://api.github.com/repos/microsoft/playwright/issues/comments{/number}",
+2025-04-15T01:53:00.6257394Z     "issue_events_url": "https://api.github.com/repos/microsoft/playwright/issues/events{/number}",
+2025-04-15T01:53:00.6258014Z     "issues_url": "https://api.github.com/repos/microsoft/playwright/issues{/number}",
+2025-04-15T01:53:00.6258680Z     "keys_url": "https://api.github.com/repos/microsoft/playwright/keys{/key_id}",
+2025-04-15T01:53:00.6259382Z     "labels_url": "https://api.github.com/repos/microsoft/playwright/labels{/name}",
+2025-04-15T01:53:00.6259951Z     "languages_url": "https://api.github.com/repos/microsoft/playwright/languages",
+2025-04-15T01:53:00.6260489Z     "merges_url": "https://api.github.com/repos/microsoft/playwright/merges",
+2025-04-15T01:53:00.6261069Z     "milestones_url": "https://api.github.com/repos/microsoft/playwright/milestones{/number}",
+2025-04-15T01:53:00.6261502Z     "name": "playwright",
+2025-04-15T01:53:00.6261818Z     "node_id": "MDEwOlJlcG9zaXRvcnkyMjE5ODE4OTE=",
+2025-04-15T01:53:00.6262447Z     "notifications_url": "https://api.github.com/repos/microsoft/playwright/notifications{?since,all,participating}",
+2025-04-15T01:53:00.6262971Z     "owner": {
+2025-04-15T01:53:00.6263329Z       "avatar_url": "https://avatars.githubusercontent.com/u/6154722?v=4",
+2025-04-15T01:53:00.6263850Z       "events_url": "https://api.github.com/users/microsoft/events{/privacy}",
+2025-04-15T01:53:00.6264359Z       "followers_url": "https://api.github.com/users/microsoft/followers",
+2025-04-15T01:53:00.6264890Z       "following_url": "https://api.github.com/users/microsoft/following{/other_user}",
+2025-04-15T01:53:00.6265425Z       "gists_url": "https://api.github.com/users/microsoft/gists{/gist_id}",
+2025-04-15T01:53:00.6265789Z       "gravatar_id": "",
+2025-04-15T01:53:00.6266086Z       "html_url": "https://github.com/microsoft",
+2025-04-15T01:53:00.6266378Z       "id": 6154722,
+2025-04-15T01:53:00.6266602Z       "login": "microsoft",
+2025-04-15T01:53:00.6266919Z       "node_id": "MDEyOk9yZ2FuaXphdGlvbjYxNTQ3MjI=",
+2025-04-15T01:53:00.6267370Z       "organizations_url": "https://api.github.com/users/microsoft/orgs",
+2025-04-15T01:53:00.6267909Z       "received_events_url": "https://api.github.com/users/microsoft/received_events",
+2025-04-15T01:53:00.6268417Z       "repos_url": "https://api.github.com/users/microsoft/repos",
+2025-04-15T01:53:00.6268997Z       "site_admin": false,
+2025-04-15T01:53:00.6269405Z       "starred_url": "https://api.github.com/users/microsoft/starred{/owner}{/repo}",
+2025-04-15T01:53:00.6269958Z       "subscriptions_url": "https://api.github.com/users/microsoft/subscriptions",
+2025-04-15T01:53:00.6270358Z       "type": "Organization",
+2025-04-15T01:53:00.6270675Z       "url": "https://api.github.com/users/microsoft",
+2025-04-15T01:53:00.6271035Z       "user_view_type": "public"
+2025-04-15T01:53:00.6271282Z     },
+2025-04-15T01:53:00.6271478Z     "private": false,
+2025-04-15T01:53:00.6271877Z     "pulls_url": "https://api.github.com/repos/microsoft/playwright/pulls{/number}",
+2025-04-15T01:53:00.6272451Z     "releases_url": "https://api.github.com/repos/microsoft/playwright/releases{/id}",
+2025-04-15T01:53:00.6273022Z     "stargazers_url": "https://api.github.com/repos/microsoft/playwright/stargazers",
+2025-04-15T01:53:00.6273597Z     "statuses_url": "https://api.github.com/repos/microsoft/playwright/statuses/{sha}",
+2025-04-15T01:53:00.6274190Z     "subscribers_url": "https://api.github.com/repos/microsoft/playwright/subscribers",
+2025-04-15T01:53:00.6274790Z     "subscription_url": "https://api.github.com/repos/microsoft/playwright/subscription",
+2025-04-15T01:53:00.6275341Z     "tags_url": "https://api.github.com/repos/microsoft/playwright/tags",
+2025-04-15T01:53:00.6275841Z     "teams_url": "https://api.github.com/repos/microsoft/playwright/teams",
+2025-04-15T01:53:00.6276378Z     "trees_url": "https://api.github.com/repos/microsoft/playwright/git/trees{/sha}",
+2025-04-15T01:53:00.6276873Z     "url": "https://api.github.com/repos/microsoft/playwright"
+2025-04-15T01:53:00.6277189Z   },
+2025-04-15T01:53:00.6277618Z   "rerun_url": "https://api.github.com/repos/microsoft/playwright/actions/runs/14458092631/rerun",
+2025-04-15T01:53:00.6278103Z   "run_attempt": 1,
+2025-04-15T01:53:00.6278331Z   "run_number": 30615,
+2025-04-15T01:53:00.6278771Z   "run_started_at": "2025-04-14T23:54:09Z",
+2025-04-15T01:53:00.6279101Z   "status": "completed",
+2025-04-15T01:53:00.6279358Z   "triggering_actor": {
+2025-04-15T01:53:00.6279874Z     "avatar_url": "https://avatars.githubusercontent.com/u/9798949?v=4",
+2025-04-15T01:53:00.6280383Z     "events_url": "https://api.github.com/users/yury-s/events{/privacy}",
+2025-04-15T01:53:00.6280873Z     "followers_url": "https://api.github.com/users/yury-s/followers",
+2025-04-15T01:53:00.6281399Z     "following_url": "https://api.github.com/users/yury-s/following{/other_user}",
+2025-04-15T01:53:00.6281918Z     "gists_url": "https://api.github.com/users/yury-s/gists{/gist_id}",
+2025-04-15T01:53:00.6282271Z     "gravatar_id": "",
+2025-04-15T01:53:00.6282572Z     "html_url": "https://github.com/yury-s",
+2025-04-15T01:53:00.6282857Z     "id": 9798949,
+2025-04-15T01:53:00.6283072Z     "login": "yury-s",
+2025-04-15T01:53:00.6283333Z     "node_id": "MDQ6VXNlcjk3OTg5NDk=",
+2025-04-15T01:53:00.6283729Z     "organizations_url": "https://api.github.com/users/yury-s/orgs",
+2025-04-15T01:53:00.6284246Z     "received_events_url": "https://api.github.com/users/yury-s/received_events",
+2025-04-15T01:53:00.6284729Z     "repos_url": "https://api.github.com/users/yury-s/repos",
+2025-04-15T01:53:00.6285056Z     "site_admin": false,
+2025-04-15T01:53:00.6285461Z     "starred_url": "https://api.github.com/users/yury-s/starred{/owner}{/repo}",
+2025-04-15T01:53:00.6286001Z     "subscriptions_url": "https://api.github.com/users/yury-s/subscriptions",
+2025-04-15T01:53:00.6286379Z     "type": "User",
+2025-04-15T01:53:00.6286662Z     "url": "https://api.github.com/users/yury-s",
+2025-04-15T01:53:00.6286982Z     "user_view_type": "public"
+2025-04-15T01:53:00.6287217Z   },
+2025-04-15T01:53:00.6287453Z   "updated_at": "2025-04-15T01:52:01Z",
+2025-04-15T01:53:00.6287919Z   "url": "https://api.github.com/repos/microsoft/playwright/actions/runs/14458092631",
+2025-04-15T01:53:00.6288334Z   "workflow_id": 8973349,
+2025-04-15T01:53:00.6288989Z   "workflow_url": "https://api.github.com/repos/microsoft/playwright/actions/workflows/8973349"
+2025-04-15T01:53:00.6289566Z }
+2025-04-15T01:53:00.7747910Z total =  22
+2025-04-15T01:53:00.9144054Z Downloaded blob-report-web-components-html-reporter.zip (12982 bytes)
+2025-04-15T01:53:01.0364352Z Downloaded blob-report-web-components-web.zip (12249 bytes)
+2025-04-15T01:53:01.2125341Z Downloaded blob-report-ubuntu-latest-node22-2.zip (896419 bytes)
+2025-04-15T01:53:01.3606551Z Downloaded blob-report-ubuntu-latest-node20-2.zip (897083 bytes)
+2025-04-15T01:53:01.5004690Z Downloaded blob-report-ubuntu-latest-node18-2.zip (897570 bytes)
+2025-04-15T01:53:01.6479902Z Downloaded blob-report-windows-latest-node18-2.zip (903604 bytes)
+2025-04-15T01:53:01.8688979Z Downloaded blob-report-chromium-ubuntu-22.04-node22.zip (3976953 bytes)
+2025-04-15T01:53:02.0009712Z Downloaded blob-report-package-installations-ubuntu-latest.zip (295390 bytes)
+2025-04-15T01:53:02.1513377Z Downloaded blob-report-chromium-ubuntu-22.04-node20.zip (3982883 bytes)
+2025-04-15T01:53:02.3761888Z Downloaded blob-report-chromium-ubuntu-22.04-node18.zip (3984006 bytes)
+2025-04-15T01:53:02.5251926Z Downloaded blob-report-ubuntu-22.04-chromium-tip-of-tree.zip (4032643 bytes)
+2025-04-15T01:53:02.7558411Z Downloaded blob-report-webkit-ubuntu-22.04-node18.zip (3924166 bytes)
+2025-04-15T01:53:02.9232595Z Downloaded blob-report-package-installations-windows-latest.zip (473405 bytes)
+2025-04-15T01:53:03.0706582Z Downloaded blob-report-firefox-ubuntu-22.04-node18.zip (3923882 bytes)
+2025-04-15T01:53:03.2065568Z Downloaded blob-report-ubuntu-latest-node20-1.zip (909161 bytes)
+2025-04-15T01:53:03.3267554Z Downloaded blob-report-ubuntu-latest-node22-1.zip (907012 bytes)
+2025-04-15T01:53:03.4689006Z Downloaded blob-report-vscode-extension.zip (1151856 bytes)
+2025-04-15T01:53:03.5974313Z Downloaded blob-report-ubuntu-latest-node18-1.zip (911449 bytes)
+2025-04-15T01:53:03.7326648Z Downloaded blob-report-windows-latest-node18-1.zip (939418 bytes)
+2025-04-15T01:53:03.8698792Z Downloaded blob-report-macos-latest-node18-2.zip (893188 bytes)
+2025-04-15T01:53:03.9746067Z Downloaded blob-report-package-installations-macos-latest.zip (324813 bytes)
+2025-04-15T01:53:04.0893298Z Downloaded blob-report-macos-latest-node18-1.zip (884713 bytes)
+2025-04-15T01:53:04.1077249Z ##[group]Run unzip -n 'all-blob-reports/artifacts/*.zip' -d all-blob-reports
+2025-04-15T01:53:04.1078165Z [36;1munzip -n 'all-blob-reports/artifacts/*.zip' -d all-blob-reports[0m
+2025-04-15T01:53:04.1079114Z [36;1mrm -rf 'all-blob-reports/artifacts'[0m
+2025-04-15T01:53:04.1130764Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-04-15T01:53:04.1131120Z ##[endgroup]
+2025-04-15T01:53:04.1348806Z Archive:  all-blob-reports/artifacts/blob-report-package-installations-macos-latest.zip
+2025-04-15T01:53:04.1372627Z   inflating: all-blob-reports/package-installations-macos-latest.zip  
+2025-04-15T01:53:04.1373042Z 
+2025-04-15T01:53:04.1373439Z Archive:  all-blob-reports/artifacts/blob-report-ubuntu-latest-node20-1.zip
+2025-04-15T01:53:04.1441273Z   inflating: all-blob-reports/ubuntu-latest-node20-1.zip  
+2025-04-15T01:53:04.1441720Z 
+2025-04-15T01:53:04.1442249Z Archive:  all-blob-reports/artifacts/blob-report-web-components-web.zip
+2025-04-15T01:53:04.1443166Z   inflating: all-blob-reports/web-components-web.zip  
+2025-04-15T01:53:04.1443605Z 
+2025-04-15T01:53:04.1444162Z Archive:  all-blob-reports/artifacts/blob-report-ubuntu-latest-node18-1.zip
+2025-04-15T01:53:04.1511231Z   inflating: all-blob-reports/ubuntu-latest-node18-1.zip  
+2025-04-15T01:53:04.1511585Z 
+2025-04-15T01:53:04.1512011Z Archive:  all-blob-reports/artifacts/blob-report-firefox-ubuntu-22.04-node18.zip
+2025-04-15T01:53:04.1787700Z   inflating: all-blob-reports/firefox-ubuntu-22.04-node18.zip  
+2025-04-15T01:53:04.1788218Z 
+2025-04-15T01:53:04.1788965Z Archive:  all-blob-reports/artifacts/blob-report-ubuntu-latest-node22-1.zip
+2025-04-15T01:53:04.1855719Z   inflating: all-blob-reports/ubuntu-latest-node22-1.zip  
+2025-04-15T01:53:04.1856186Z 
+2025-04-15T01:53:04.1856823Z Archive:  all-blob-reports/artifacts/blob-report-chromium-ubuntu-22.04-node18.zip
+2025-04-15T01:53:04.2136733Z   inflating: all-blob-reports/chromium-ubuntu-22.04-node18.zip  
+2025-04-15T01:53:04.2137305Z 
+2025-04-15T01:53:04.2137969Z Archive:  all-blob-reports/artifacts/blob-report-chromium-ubuntu-22.04-node22.zip
+2025-04-15T01:53:04.2418725Z   inflating: all-blob-reports/chromium-ubuntu-22.04-node22.zip  
+2025-04-15T01:53:04.2419300Z 
+2025-04-15T01:53:04.2420011Z Archive:  all-blob-reports/artifacts/blob-report-ubuntu-22.04-chromium-tip-of-tree.zip
+2025-04-15T01:53:04.2702188Z   inflating: all-blob-reports/ubuntu-22.04-chromium-tip-of-tree.zip  
+2025-04-15T01:53:04.2702707Z 
+2025-04-15T01:53:04.2703264Z Archive:  all-blob-reports/artifacts/blob-report-ubuntu-latest-node18-2.zip
+2025-04-15T01:53:04.2761880Z   inflating: all-blob-reports/ubuntu-latest-node18-2.zip  
+2025-04-15T01:53:04.2762338Z 
+2025-04-15T01:53:04.2762936Z Archive:  all-blob-reports/artifacts/blob-report-chromium-ubuntu-22.04-node20.zip
+2025-04-15T01:53:04.3043358Z   inflating: all-blob-reports/chromium-ubuntu-22.04-node20.zip  
+2025-04-15T01:53:04.3043874Z 
+2025-04-15T01:53:04.3044440Z Archive:  all-blob-reports/artifacts/blob-report-macos-latest-node18-2.zip
+2025-04-15T01:53:04.3101958Z   inflating: all-blob-reports/macos-latest-node18-2.zip  
+2025-04-15T01:53:04.3102407Z 
+2025-04-15T01:53:04.3103092Z Archive:  all-blob-reports/artifacts/blob-report-package-installations-ubuntu-latest.zip
+2025-04-15T01:53:04.3123985Z   inflating: all-blob-reports/package-installations-ubuntu-latest.zip  
+2025-04-15T01:53:04.3124582Z 
+2025-04-15T01:53:04.3125161Z Archive:  all-blob-reports/artifacts/blob-report-webkit-ubuntu-22.04-node18.zip
+2025-04-15T01:53:04.3399800Z   inflating: all-blob-reports/webkit-ubuntu-22.04-node18.zip  
+2025-04-15T01:53:04.3400419Z 
+2025-04-15T01:53:04.3401097Z Archive:  all-blob-reports/artifacts/blob-report-ubuntu-latest-node22-2.zip
+2025-04-15T01:53:04.3460676Z   inflating: all-blob-reports/ubuntu-latest-node22-2.zip  
+2025-04-15T01:53:04.3461085Z 
+2025-04-15T01:53:04.3461520Z Archive:  all-blob-reports/artifacts/blob-report-vscode-extension.zip
+2025-04-15T01:53:04.3541893Z   inflating: all-blob-reports/report.zip  
+2025-04-15T01:53:04.3542259Z 
+2025-04-15T01:53:04.3542729Z Archive:  all-blob-reports/artifacts/blob-report-windows-latest-node18-1.zip
+2025-04-15T01:53:04.3610521Z   inflating: all-blob-reports/windows-latest-node18-1.zip  
+2025-04-15T01:53:04.3610906Z 
+2025-04-15T01:53:04.3611315Z Archive:  all-blob-reports/artifacts/blob-report-macos-latest-node18-1.zip
+2025-04-15T01:53:04.3675923Z   inflating: all-blob-reports/macos-latest-node18-1.zip  
+2025-04-15T01:53:04.3676303Z 
+2025-04-15T01:53:04.3676666Z Archive:  all-blob-reports/artifacts/blob-report-windows-latest-node18-2.zip
+2025-04-15T01:53:04.3735092Z   inflating: all-blob-reports/windows-latest-node18-2.zip  
+2025-04-15T01:53:04.3735498Z 
+2025-04-15T01:53:04.3736074Z Archive:  all-blob-reports/artifacts/blob-report-package-installations-windows-latest.zip
+2025-04-15T01:53:04.3770322Z   inflating: all-blob-reports/package-installations-windows-latest.zip  
+2025-04-15T01:53:04.3770784Z 
+2025-04-15T01:53:04.3771224Z Archive:  all-blob-reports/artifacts/blob-report-ubuntu-latest-node20-2.zip
+2025-04-15T01:53:04.3829595Z   inflating: all-blob-reports/ubuntu-latest-node20-2.zip  
+2025-04-15T01:53:04.3830234Z 
+2025-04-15T01:53:04.3830945Z Archive:  all-blob-reports/artifacts/blob-report-web-components-html-reporter.zip
+2025-04-15T01:53:04.3831515Z 
+2025-04-15T01:53:04.3831795Z 22 archives were successfully processed.
+2025-04-15T01:53:04.3832427Z   inflating: all-blob-reports/web-components-html-reporter.zip  

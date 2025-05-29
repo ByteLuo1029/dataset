@@ -1,0 +1,94 @@
+2025-04-15T04:52:55.6552621Z ##[group]Run actions/checkout@v4
+2025-04-15T04:52:55.6554378Z with:
+2025-04-15T04:52:55.6555239Z   persist-credentials: false
+2025-04-15T04:52:55.6556245Z   repository: python/cpython
+2025-04-15T04:52:55.6557541Z   token: ***
+2025-04-15T04:52:55.6558329Z   ssh-strict: true
+2025-04-15T04:52:55.6559149Z   ssh-user: git
+2025-04-15T04:52:55.6559969Z   clean: true
+2025-04-15T04:52:55.6561005Z   sparse-checkout-cone-mode: true
+2025-04-15T04:52:55.6562041Z   fetch-depth: 1
+2025-04-15T04:52:55.6562864Z   fetch-tags: false
+2025-04-15T04:52:55.6563841Z   show-progress: true
+2025-04-15T04:52:55.6564731Z   lfs: false
+2025-04-15T04:52:55.6565582Z   submodules: false
+2025-04-15T04:52:55.6566438Z   set-safe-directory: true
+2025-04-15T04:52:55.6567639Z env:
+2025-04-15T04:52:55.6568368Z   FORCE_COLOR: 1
+2025-04-15T04:52:55.6569206Z   RUFF_OUTPUT_FORMAT: github
+2025-04-15T04:52:55.6570134Z ##[endgroup]
+2025-04-15T04:52:55.8252974Z Syncing repository: python/cpython
+2025-04-15T04:52:55.8256968Z ##[group]Getting Git version info
+2025-04-15T04:52:55.8258888Z Working directory is '/home/runner/work/cpython/cpython'
+2025-04-15T04:52:55.8261959Z [command]/usr/bin/git version
+2025-04-15T04:52:55.8284680Z git version 2.49.0
+2025-04-15T04:52:55.8314345Z ##[endgroup]
+2025-04-15T04:52:55.8328832Z Temporarily overriding HOME='/home/runner/work/_temp/941d87b0-9414-4b0d-9b13-b3d711dbbd56' before making global git config changes
+2025-04-15T04:52:55.8331904Z Adding repository directory to the temporary git global config as a safe directory
+2025-04-15T04:52:55.8334865Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/cpython/cpython
+2025-04-15T04:52:55.8471880Z Deleting the contents of '/home/runner/work/cpython/cpython'
+2025-04-15T04:52:55.8475352Z ##[group]Initializing the repository
+2025-04-15T04:52:55.8477524Z [command]/usr/bin/git init /home/runner/work/cpython/cpython
+2025-04-15T04:52:55.8480860Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-04-15T04:52:55.8484338Z hint: is subject to change. To configure the initial branch name to use in all
+2025-04-15T04:52:55.8487507Z hint: of your new repositories, which will suppress this warning, call:
+2025-04-15T04:52:55.8489781Z hint:
+2025-04-15T04:52:55.8491244Z hint: 	git config --global init.defaultBranch <name>
+2025-04-15T04:52:55.8493318Z hint:
+2025-04-15T04:52:55.8495445Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-04-15T04:52:55.8498660Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-04-15T04:52:55.8500961Z hint:
+2025-04-15T04:52:55.8502333Z hint: 	git branch -m <name>
+2025-04-15T04:52:55.8505297Z Initialized empty Git repository in /home/runner/work/cpython/cpython/.git/
+2025-04-15T04:52:55.8511034Z [command]/usr/bin/git remote add origin https://github.com/python/cpython
+2025-04-15T04:52:55.8525718Z ##[endgroup]
+2025-04-15T04:52:55.8528065Z ##[group]Disabling automatic garbage collection
+2025-04-15T04:52:55.8530255Z [command]/usr/bin/git config --local gc.auto 0
+2025-04-15T04:52:55.8561887Z ##[endgroup]
+2025-04-15T04:52:55.8563248Z ##[group]Setting up auth
+2025-04-15T04:52:55.8568784Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-04-15T04:52:55.8600343Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-04-15T04:52:55.8887080Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-15T04:52:55.8921444Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-04-15T04:52:55.9150768Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-04-15T04:52:55.9189964Z ##[endgroup]
+2025-04-15T04:52:55.9191580Z ##[group]Fetching the repository
+2025-04-15T04:52:55.9200535Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +e218ca8fcdc604f3c7cf53a0ebd1ecdbe73a8b1c:refs/remotes/pull/132540/merge
+2025-04-15T04:53:01.6040311Z From https://github.com/python/cpython
+2025-04-15T04:53:01.6041915Z  * [new ref]         e218ca8fcdc604f3c7cf53a0ebd1ecdbe73a8b1c -> pull/132540/merge
+2025-04-15T04:53:01.6148809Z ##[endgroup]
+2025-04-15T04:53:01.6149627Z ##[group]Determining the checkout info
+2025-04-15T04:53:01.6151576Z ##[endgroup]
+2025-04-15T04:53:01.6157253Z [command]/usr/bin/git sparse-checkout disable
+2025-04-15T04:53:01.6198497Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-04-15T04:53:01.6225298Z ##[group]Checking out the ref
+2025-04-15T04:53:01.6229533Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/132540/merge
+2025-04-15T04:53:02.1802561Z Note: switching to 'refs/remotes/pull/132540/merge'.
+2025-04-15T04:53:02.1803208Z 
+2025-04-15T04:53:02.1803613Z You are in 'detached HEAD' state. You can look around, make experimental
+2025-04-15T04:53:02.1804716Z changes and commit them, and you can discard any commits you make in this
+2025-04-15T04:53:02.1805605Z state without impacting any branches by switching back to a branch.
+2025-04-15T04:53:02.1806144Z 
+2025-04-15T04:53:02.1806575Z If you want to create a new branch to retain commits you create, you may
+2025-04-15T04:53:02.1807750Z do so (now or later) by using -c with the switch command. Example:
+2025-04-15T04:53:02.1808058Z 
+2025-04-15T04:53:02.1808192Z   git switch -c <new-branch-name>
+2025-04-15T04:53:02.1808406Z 
+2025-04-15T04:53:02.1808546Z Or undo this operation with:
+2025-04-15T04:53:02.1808742Z 
+2025-04-15T04:53:02.1808850Z   git switch -
+2025-04-15T04:53:02.1809030Z 
+2025-04-15T04:53:02.1809278Z Turn off this advice by setting config variable advice.detachedHead to false
+2025-04-15T04:53:02.1809652Z 
+2025-04-15T04:53:02.1810039Z HEAD is now at e218ca8 Merge e11f8fe53fcc932b6d24667d95310568b2192ce3 into 0879ebc953fa7372a4d99f3f79889093f04cac67
+2025-04-15T04:53:02.1825458Z ##[endgroup]
+2025-04-15T04:53:02.1864426Z [command]/usr/bin/git log -1 --format=%H
+2025-04-15T04:53:02.1886595Z e218ca8fcdc604f3c7cf53a0ebd1ecdbe73a8b1c
+2025-04-15T04:53:02.1897201Z ##[group]Removing auth
+2025-04-15T04:53:02.1900670Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-04-15T04:53:02.1928115Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-04-15T04:53:02.2159159Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-15T04:53:02.2179992Z http.https://github.com/.extraheader
+2025-04-15T04:53:02.2188175Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2025-04-15T04:53:02.2217732Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-04-15T04:53:02.2440193Z ##[endgroup]

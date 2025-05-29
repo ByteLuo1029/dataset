@@ -1,0 +1,38 @@
+Post job cleanup.
+##[group]Generating build summary
+exporting build record to /home/runner/work/_temp/docker-actions-toolkit-k3IfKf/export
+[command]/usr/bin/mkfifo /home/runner/work/_temp/docker-actions-toolkit-k3IfKf/buildx-in-k0snt6.fifo
+[command]/usr/bin/mkfifo /home/runner/work/_temp/docker-actions-toolkit-k3IfKf/buildx-out-wcANma.fifo
+[command]docker buildx --builder builder-68ed9162-4043-4feb-b9c7-e88abd08d16d dial-stdio
+[command]docker run --rm -i -v /home/runner/.docker/buildx/refs:/buildx-refs -v /home/runner/work/_temp/docker-actions-toolkit-k3IfKf/export:/out docker.io/dockereng/export-build:latest --ref-state-dir=/buildx-refs --node=builder-68ed9162-4043-4feb-b9c7-e88abd08d16d/builder-68ed9162-4043-4feb-b9c7-e88abd08d16d0 --ref=fh8k9gix20ixpxehnud02jjq4 --uid=1001 --gid=118
+Unable to find image 'dockereng/export-build:latest' locally
+latest: Pulling from dockereng/export-build
+5f398fcfd265: Pulling fs layer
+152e015ae384: Pulling fs layer
+152e015ae384: Download complete
+5f398fcfd265: Verifying Checksum
+5f398fcfd265: Download complete
+5f398fcfd265: Pull complete
+152e015ae384: Pull complete
+Digest: sha256:<:SEQ:>
+Status: Downloaded newer image for dockereng/export-build:latest
+Process "docker run" exited with code 0
+Parsing /home/runner/work/_temp/docker-actions-toolkit-k3IfKf/export/summary.json
+Build record written to /home/runner/work/_temp/docker-actions-toolkit-k3IfKf/export/langgenius~dify~FH8K9G.dockerbuild (45.99 KB)
+Uploading langgenius~dify~FH8K9G.dockerbuild to blob storage
+ERROR: read unix @->/run/docker.sock: use of closed network connection
+Process "buildx dial-stdio" was killed with signal SIGKILL
+Beginning upload of artifact content to blob storage
+Uploaded bytes 47089
+Finished uploading artifact content to blob storage!
+SHA256 hash of uploaded artifact is f7a0725879576e1af1a4648784dc5b156c9ecfd465da493cfd70da7d06849c2c
+Finalizing artifact upload
+Artifact successfully finalized (2944874823)
+Artifact download URL: https://github.com/langgenius/dify/actions/runs/14460687434/artifacts/2944874823
+Writing summary
+##[endgroup]
+##[group]Removing temp folder /home/runner/work/_temp/docker-actions-toolkit-MzxoXc
+##[endgroup]
+##[group]Post cache
+State not set
+##[endgroup]

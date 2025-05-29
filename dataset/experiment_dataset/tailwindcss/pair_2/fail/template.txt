@@ -1,0 +1,1417 @@
+Requested labels: macos-14
+Job defined at: tailwindlabs/tailwindcss/.github/workflows/release-insiders.yml@refs/heads/main
+Waiting for a runner to pick up this job...
+Job is waiting for a hosted runner to come online.
+Job is about to start running on the hosted runner: GitHub Actions 7 (hosted)
+Current runner version: '2.323.0'
+##[group]Operating System
+macOS
+14.7.4
+23H420
+##[endgroup]
+##[group]Runner Image
+Image: macos-14-arm64
+Version: 20250331.1204
+Included Software: https://github.com/actions/runner-images/blob/macos-14-arm64/20250331.1204/images/macos/macos-14-arm64-Readme.md
+Image Release: https://github.com/actions/runner-images/releases/tag/macos-14-arm64%2F20250331.1204
+##[endgroup]
+##[group]Runner Image Provisioner
+2.0.422.1+55c30c14fe2a0a1547db1b656933ae07d97649a9
+##[endgroup]
+##[group]GITHUB_TOKEN Permissions
+Contents: <:*:>
+Metadata: read
+##[endgroup]
+Secret source: <:*:>
+Prepare workflow directory
+Prepare all required actions
+Getting action download info
+##[group]Download immutable action package <:*:>
+Version: 4.2.2
+Digest: sha256:<:SEQ:>
+Source commit SHA: <:SEQ:>
+##[endgroup]
+Download action repository <:*:> (SHA:<:SEQ:>)
+##[group]Download immutable action package <:*:>
+Version: 4.3.0
+Digest: sha256:<:SEQ:>
+Source commit SHA: <:SEQ:>
+##[endgroup]
+##[group]Download immutable action package <:*:>
+Version: 4.2.3
+Digest: sha256:<:SEQ:>
+Source commit SHA: <:SEQ:>
+##[endgroup]
+##[group]Download immutable action package <:*:>
+Version: 4.2.1
+Digest: sha256:<:SEQ:>
+Source commit SHA: <:SEQ:>
+##[endgroup]
+##[group]Download immutable action package <:*:>
+Version: 4.6.2
+Digest: sha256:<:SEQ:>
+Source commit SHA: <:SEQ:>
+##[endgroup]
+##[group]Download immutable action package <:*:>
+Version: 7.0.1
+Digest: sha256:<:SEQ:>
+Source commit SHA: <:SEQ:>
+##[endgroup]
+Complete job name: Build and release Tailwind CSS insiders
+##[group]Run <:*:>
+with:
+fetch-depth: <:NUM:>
+repository: <:*:>
+token: ***
+ssh-strict: true
+ssh-user: git
+persist-credentials: <:*:>
+clean: true
+sparse-checkout-cone-mode: true
+fetch-tags: false
+show-progress: true
+lfs: false
+submodules: <:*:>
+set-safe-directory: true
+env:
+APP_NAME: tailwindcss-oxide
+NODE_VERSION: 20
+OXIDE_LOCATION: ./crates/node
+RELEASE_CHANNEL: insiders
+##[endgroup]
+Syncing repository: <:*:>
+##[group]Getting Git version info
+Working directory is <:*:>
+[command]/opt/homebrew/bin/git version
+git version <:NUM:>.<:NUM:>.<:NUM:>
+##[endgroup]
+Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/a539e20f-13b9-4d82-8b28-1faa2d89fdcf/.gitconfig'
+Temporarily overriding HOME='/Users/runner/work/_temp/a539e20f-13b9-4d82-8b28-1faa2d89fdcf' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+[command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/tailwindcss/tailwindcss
+Deleting the contents of <:*:>
+##[group]Initializing the repository
+[command]/opt/homebrew/bin/git init /Users/runner/work/tailwindcss/tailwindcss
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint:
+hint: git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint: git branch -m <name>
+Initialized empty Git repository in <:*:>
+[command]/opt/homebrew/bin/git remote add origin https://github.com/tailwindlabs/tailwindcss
+##[endgroup]
+##[group]Disabling automatic garbage collection
+[command]/opt/homebrew/bin/git config --local gc.auto 0
+##[endgroup]
+##[group]Setting up auth
+[command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+[command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+[command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+[command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+[command]/opt/homebrew/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+##[endgroup]
+##[group]Fetching the repository
+[command]/opt/homebrew/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=20 origin +83ce4c0a3063e9831a5e3d582ea5dc1e4708df5c:refs/remotes/origin/main
+From <:*:>
+* [new ref] <:SEQ:>-> <:*:>
+##[endgroup]
+##[group]Determining the checkout info
+##[endgroup]
+[command]/opt/homebrew/bin/git sparse-checkout disable
+[command]/opt/homebrew/bin/git config --local --unset-all extensions.worktreeConfig
+##[group]Checking out the ref
+[command]/opt/homebrew/bin/git checkout --progress --force -B main refs/remotes/origin/main
+Switched to a new branch 'main'
+branch <:*:> set up to track <:*:>
+##[endgroup]
+[command]/opt/homebrew/bin/git log -1 --format=%H
+<:SEQ:>
+##[group]Run echo "SHA_SHORT=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+[36;1mecho "SHA_SHORT=$(git rev-parse --short HEAD)" >> $GITHUB_ENV[0m
+shell: /bin/bash -e {0}
+env:
+APP_NAME: tailwindcss-oxide
+NODE_VERSION: 20
+OXIDE_LOCATION: ./crates/node
+RELEASE_CHANNEL: insiders
+##[endgroup]
+##[group]Run <:*:>
+with:
+dest: ~/setup-pnpm
+run_install: null
+package_json_file: package.json
+standalone: false
+env:
+APP_NAME: tailwindcss-oxide
+NODE_VERSION: 20
+OXIDE_LOCATION: ./crates/node
+RELEASE_CHANNEL: insiders
+SHA_SHORT: 83ce4c0
+##[endgroup]
+##[group]Running self-installer...
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: <:*:>
++
+Progress: resolved 1, reused 0, downloaded 1, added 1, done
+2025-04-11T15:27:02.5922560Z
+dependencies:
++ pnpm 9.6.0 (10.8.0 is available)
+2025-04-11T15:27:02.5923490Z
+Done in 997ms
+##[endgroup]
+Installation Completed!
+##[group]Run <:*:>
+with:
+node-version: 20
+cache: pnpm
+registry-url: https://registry.npmjs.org
+always-auth: false
+check-latest: false
+token: ***
+env:
+APP_NAME: tailwindcss-oxide
+NODE_VERSION: 20
+OXIDE_LOCATION: ./crates/node
+RELEASE_CHANNEL: insiders
+SHA_SHORT: 83ce4c0
+PNPM_HOME: /Users/runner/setup-pnpm/node_modules/.bin
+##[endgroup]
+Found in cache @ /Users/runner/hostedtoolcache/node/20.19.0/arm64
+##[group]Environment details
+node: v20.19.0
+npm: 10.8.2
+yarn: 1.22.22
+##[endgroup]
+[command]/Users/runner/setup-pnpm/node_modules/.bin/pnpm store path --silent
+/Users/runner/setup-pnpm/node_modules/.bin/store/v3
+Cache hit for: node-cache-macOS-arm64-pnpm-efa1ca9d7121330576e5fe5bac8513f255b910c7ccc8922516c67b7e3aa7a706
+Received 100565140 of 100565140 (100.0%), 150.1 MBs/sec
+Cache Size: ~96 MB (100565140 B)
+[command]/opt/homebrew/bin/gtar -xf /Users/runner/work/_temp/fd6a2aaf-ca4d-4a14-bdb3-ad17205484da/cache.tzst -P -C /Users/runner/work/tailwindcss/tailwindcss --delay-directory-restore --use-compress-program unzstd
+Cache restored successfully
+Cache restored from key: node-cache-macOS-arm64-pnpm-efa1ca9d7121330576e5fe5bac8513f255b910c7ccc8922516c67b7e3aa7a706
+##[group]Run <:*:>
+with:
+path: <:*:>
+~/.cargo/registry/index/
+~/.cargo/registry/cache/
+~/.cargo/git/db/
+target/
+key: macOS--cargo-1f1d90b91121ec7c4e795ca2e813af2c74fc0e356de86e686ae606074019ffd3
+enableCrossOsArchive: false
+fail-on-cache-miss: false
+lookup-only: false
+<:*:> false
+env:
+APP_NAME: tailwindcss-oxide
+NODE_VERSION: 20
+OXIDE_LOCATION: ./crates/node
+RELEASE_CHANNEL: insiders
+SHA_SHORT: 83ce4c0
+PNPM_HOME: /Users/runner/setup-pnpm/node_modules/.bin
+NPM_CONFIG_USERCONFIG: /Users/runner/work/_temp/.npmrc
+NODE_AUTH_TOKEN: XXXXX-XXXXX-XXXXX-XXXXX
+##[endgroup]
+Cache not found for input keys: macOS--cargo-1f1d90b91121ec7c4e795ca2e813af2c74fc0e356de86e686ae606074019ffd3
+##[group]Run <:*:>
+with:
+path: <:*:>
+./crates/node/*.wasm
+./crates/node/index.d.ts
+./crates/node/index.js
+./crates/node/browser.js
+./crates/node/tailwindcss-oxide.wasi-browser.js
+./crates/node/tailwindcss-oxide.wasi.cjs
+./crates/node/wasi-worker-browser.mjs
+./crates/node/wasi-worker.mjs
+key: macOS--oxide-3d66aba146d7de26bdc4c02ddf7974d2888e75884ee414e27070af0430466cd1
+enableCrossOsArchive: false
+fail-on-cache-miss: false
+lookup-only: false
+<:*:> false
+env:
+APP_NAME: tailwindcss-oxide
+NODE_VERSION: 20
+OXIDE_LOCATION: ./crates/node
+RELEASE_CHANNEL: insiders
+SHA_SHORT: 83ce4c0
+PNPM_HOME: /Users/runner/setup-pnpm/node_modules/.bin
+NPM_CONFIG_USERCONFIG: /Users/runner/work/_temp/.npmrc
+NODE_AUTH_TOKEN: XXXXX-XXXXX-XXXXX-XXXXX
+##[endgroup]
+Cache not found for input keys: macOS--oxide-3d66aba146d7de26bdc4c02ddf7974d2888e75884ee414e27070af0430466cd1
+##[group]Run rustup target add wasm32-wasip1-threads
+[36;1mrustup target add wasm32-wasip1-threads[0m
+shell: /bin/bash -e {0}
+env:
+APP_NAME: tailwindcss-oxide
+NODE_VERSION: 20
+OXIDE_LOCATION: ./crates/node
+RELEASE_CHANNEL: insiders
+SHA_SHORT: 83ce4c0
+PNPM_HOME: /Users/runner/setup-pnpm/node_modules/.bin
+NPM_CONFIG_USERCONFIG: /Users/runner/work/_temp/.npmrc
+NODE_AUTH_TOKEN: XXXXX-XXXXX-XXXXX-XXXXX
+##[endgroup]
+info: syncing channel updates for '1.85.0-aarch64-apple-darwin'
+info: latest update on 2025-02-20, rust version 1.85.0 (4d91de4e4 2025-02-17)
+info: downloading component 'cargo'
+info: downloading component 'clippy'
+info: downloading component 'rust-docs'
+info: downloading component 'rust-std'
+info: downloading component 'rustc'
+info: downloading component 'rustfmt'
+info: installing component 'cargo'
+info: installing component 'clippy'
+info: installing component 'rust-docs'
+info: installing component 'rust-std'
+info: installing component 'rustc'
+info: installing component 'rustfmt'
+info: downloading component 'rust-std' for 'wasm32-wasip1-threads'
+info: installing component 'rust-std' for 'wasm32-wasip1-threads'
+##[group]Run pnpm --filter=!./playgrounds/* install
+[36;1mpnpm --filter=!./playgrounds/* install[0m
+shell: /bin/bash -e {0}
+env:
+APP_NAME: tailwindcss-oxide
+NODE_VERSION: 20
+OXIDE_LOCATION: ./crates/node
+RELEASE_CHANNEL: insiders
+SHA_SHORT: 83ce4c0
+PNPM_HOME: /Users/runner/setup-pnpm/node_modules/.bin
+NPM_CONFIG_USERCONFIG: /Users/runner/work/_temp/.npmrc
+NODE_AUTH_TOKEN: XXXXX-XXXXX-XXXXX-XXXXX
+##[endgroup]
+crates/node/npm/android-arm-eabi         |  WARN  Unsupported platform: wanted: {"cpu":["arm"],"os":["android"],"libc":["any"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/android-arm64            |  WARN  Unsupported platform: wanted: {"cpu":["arm64"],"os":["android"],"libc":["any"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/darwin-x64               |  WARN  Unsupported platform: wanted: {"cpu":["x64"],"os":["darwin"],"libc":["any"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/freebsd-x64              |  WARN  Unsupported platform: wanted: {"cpu":["x64"],"os":["freebsd"],"libc":["any"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/linux-arm-gnueabihf      |  WARN  Unsupported platform: wanted: {"cpu":["arm"],"os":["linux"],"libc":["any"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/linux-arm64-gnu          |  WARN  Unsupported platform: wanted: {"cpu":["arm64"],"os":["linux"],"libc":["glibc"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/linux-arm64-musl         |  WARN  Unsupported platform: wanted: {"cpu":["arm64"],"os":["linux"],"libc":["musl"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/linux-x64-gnu            |  WARN  Unsupported platform: wanted: {"cpu":["x64"],"os":["linux"],"libc":["glibc"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/linux-x64-musl           |  WARN  Unsupported platform: wanted: {"cpu":["x64"],"os":["linux"],"libc":["musl"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/wasm32-wasi              |  WARN  Unsupported platform: wanted: {"cpu":["wasm32"],"os":["any"],"libc":["any"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/win32-arm64-msvc         |  WARN  Unsupported platform: wanted: {"cpu":["arm64"],"os":["win32"],"libc":["any"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/win32-x64-msvc           |  WARN  Unsupported platform: wanted: {"cpu":["x64"],"os":["win32"],"libc":["any"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+Scope: 25 of 28 workspace projects
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+.                                        | +345 ++++++++++++++++++++++++++++++++
+Progress: resolved 345, reused 344, downloaded 0, added 345, done
+.../node_modules/@parcel/watcher install$ node scripts/build-from-source.js
+.../esbuild@0.21.5/node_modules/esbuild postinstall$ node install.js
+.../node_modules/@parcel/watcher install$ node scripts/build-from-source.js
+.../esbuild@0.25.0/node_modules/esbuild postinstall$ node install.js
+.../esbuild@0.23.1/node_modules/esbuild postinstall$ node install.js
+.../node_modules/@parcel/watcher install: Done
+.../node_modules/@parcel/watcher install: Done
+.../.pnpm/bun@1.2.8/node_modules/bun postinstall$ node install.js
+.../node_modules/tree-sitter install$ node-gyp-build
+.../esbuild@0.21.5/node_modules/esbuild postinstall: Done
+.../esbuild@0.25.0/node_modules/esbuild postinstall: Done
+.../esbuild@0.24.0/node_modules/esbuild postinstall$ node install.js
+.../esbuild@0.23.1/node_modules/esbuild postinstall: Done
+.../.pnpm/bun@1.2.8/node_modules/bun postinstall: Done
+.../node_modules/tree-sitter install: Done
+.../esbuild@0.24.0/node_modules/esbuild postinstall: Done
+.../node_modules/tree-sitter-javascript install$ node-gyp-build
+.../node_modules/tree-sitter-javascript install: Done
+.../node_modules/tree-sitter-typescript install$ node-gyp-build
+.../node_modules/tree-sitter-typescript install: Done
+WARN  Failed to create bin at /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-standalone/node_modules/.bin/tailwindcss. ENOENT: no such file or directory, open '/Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-cli/dist/index.mjs'
+WARN  Failed to create bin at /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-standalone/node_modules/.bin/tailwindcss. ENOENT: no such file or directory, open '/Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-standalone/node_modules/@tailwindcss/cli/dist/index.mjs'
+Done in 3.8s
+##[group]Run <:*:>
+with:
+path: <:*:>
+<:*:> false
+repository: <:*:>
+run-id: 14406456121
+env:
+APP_NAME: tailwindcss-oxide
+NODE_VERSION: 20
+OXIDE_LOCATION: ./crates/node
+RELEASE_CHANNEL: insiders
+SHA_SHORT: 83ce4c0
+PNPM_HOME: /Users/runner/setup-pnpm/node_modules/.bin
+NPM_CONFIG_USERCONFIG: /Users/runner/work/_temp/.npmrc
+NODE_AUTH_TOKEN: XXXXX-XXXXX-XXXXX-XXXXX
+##[endgroup]
+Found 12 artifact(s)
+No input name or pattern filtered specified, downloading all artifacts
+An extra directory with the artifact name will be created for each download
+Preparing to download the following artifacts:
+- bindings-aarch64-pc-windows-msvc (ID: 2928548750, Size: 1153439, Expected Digest: sha256:6bfebd37f531cf074b291893e395f9319ed00e79edbc8592dcb83af5007188ce)
+- bindings-x86_64-pc-windows-msvc (ID: 2928540648, Size: 1259991, Expected Digest: sha256:f41df5ab8eb2cb97f66cfbeb1155f79d4984b927fb879d8e606e422a06b54f58)
+- bindings-aarch64-unknown-linux-musl (ID: 2928533019, Size: 1146019, Expected Digest: sha256:c538df3f454f884baa68fb7dcc7c0ed005f2c81de6ad8fe5a7f36b2e41b542ac)
+- bindings-x86_64-unknown-linux-musl (ID: 2928531624, Size: 1246478, Expected Digest: sha256:c76b8fd425b829e945ca3528db4b6375a5cb4d5c5ed6d029719c0540bb3767fa)
+- bindings-x86_64-unknown-freebsd (ID: 2928530931, Size: 1222625, Expected Digest: sha256:b7f47cc271dc8a25eacb7e359bc4649a11e25f500d5f9c1b9e9d9f29bafa9a5f)
+- bindings-armv7-unknown-linux-gnueabihf (ID: 2928529867, Size: 1126469, Expected Digest: sha256:46a85c86cd86d69346a66587a896878f4d8dbf9ac82efef3e399c659bd0c39a7)
+- bindings-aarch64-unknown-linux-gnu (ID: 2928528701, Size: 1150180, Expected Digest: sha256:75fc1c5bac3aeee627b243c2278a7b8fe3ab762006a3fc5f7a9983f585a7730c)
+- bindings-x86_64-unknown-linux-gnu (ID: 2928527906, Size: 1248591, Expected Digest: sha256:8e691f50fd031e9c2f9ddc0d689a4b573db3b0b8d33e840dc689e478a8ecd41f)
+- bindings-aarch64-linux-android (ID: 2928521333, Size: 1154442, Expected Digest: sha256:11693d8242f718f5a14ad013faca228f52b36e3c9e73ecde6322ad2861819a5b)
+- bindings-armv7-linux-androideabi (ID: 2928520707, Size: 1025775, Expected Digest: sha256:07753cf7a8447d93c5ff26ac65c0889c4ce8a840ef004e34486676104a80d56b)
+- bindings-aarch64-apple-darwin (ID: 2928520579, Size: 1097106, Expected Digest: sha256:f7c0550e27d9963ea3889581a2dc73c6e527c4f1dbb092723db20a8db398a891)
+- bindings-x86_64-apple-darwin (ID: 2928519701, Size: 1178604, Expected Digest: sha256:4bd1f076b0c884feb49f988a56668f3bc1a95a022b8897da0325a3183463ed81)
+Redirecting to blob download url: https://productionresultssa14.blob.core.windows.net/actions-results/54b5fc55-8950-4279-a915-c007c34dc211/workflow-job-run-44c23029-6532-5b63-296c-3b4c2f6f81c2/artifacts/16a5652cdcd72fb6e6f4bb148036a4c0aa4feb4d6ec44e3c4d170b8217618065.zip
+Starting download of artifact to: /Users/runner/work/tailwindcss/tailwindcss/crates/node/bindings-aarch64-pc-windows-msvc
+Redirecting to blob download url: https://productionresultssa14.blob.core.windows.net/actions-results/54b5fc55-8950-4279-a915-c007c34dc211/workflow-job-run-5a6b5f00-b174-5237-fcf8-2c175c4bb9bb/artifacts/69f89ed6bc31cf3f5f90fc7000ad1f9eead24a885837bc1ab41c01d0b1ebcdf6.zip
+Starting download of artifact to: /Users/runner/work/tailwindcss/tailwindcss/crates/node/bindings-x86_64-pc-windows-msvc
+Redirecting to blob download url: https://productionresultssa14.blob.core.windows.net/actions-results/54b5fc55-8950-4279-a915-c007c34dc211/workflow-job-run-ecdeedee-3d55-5616-0fd8-ef53ab1a5d59/artifacts/2d69f6fb7af021b5fa439a32fb846dc0ff6316933524276fc0efbafcaae359f2.zip
+Starting download of artifact to: /Users/runner/work/tailwindcss/tailwindcss/crates/node/bindings-x86_64-unknown-linux-musl
+Redirecting to blob download url: https://productionresultssa14.blob.core.windows.net/actions-results/54b5fc55-8950-4279-a915-c007c34dc211/workflow-job-run-94819aa5-d760-53ed-b4a2-1328b869c75d/artifacts/451d933aa4e10ed1371769ab46f0c256cfb22802c965085041aaf8d6c30216ad.zip
+Starting download of artifact to: /Users/runner/work/tailwindcss/tailwindcss/crates/node/bindings-x86_64-unknown-linux-gnu
+Redirecting to blob download url: https://productionresultssa14.blob.core.windows.net/actions-results/54b5fc55-8950-4279-a915-c007c34dc211/workflow-job-run-b2f889fc-5692-5afa-71b8-a9a306411a4d/artifacts/d0fe504a2ea15b4b654c7f5a1f1791b4a166d2100a628afe89136ef632a2bd3a.zip
+Starting download of artifact to: /Users/runner/work/tailwindcss/tailwindcss/crates/node/bindings-aarch64-unknown-linux-gnu
+Redirecting to blob download url: https://productionresultssa14.blob.core.windows.net/actions-results/54b5fc55-8950-4279-a915-c007c34dc211/workflow-job-run-298b25d7-57be-5d3d-bdcc-050e0b618afd/artifacts/2a665b93533926783a21c8a15c6e138a58cf1b6eeb3e78ac1ad59b5b1ec649c4.zip
+Starting download of artifact to: /Users/runner/work/tailwindcss/tailwindcss/crates/node/bindings-aarch64-unknown-linux-musl
+Redirecting to blob download url: https://productionresultssa14.blob.core.windows.net/actions-results/54b5fc55-8950-4279-a915-c007c34dc211/workflow-job-run-42025153-ff47-585f-6536-2a69ccf6e1be/artifacts/e0fa1fade6eb15732b4a021bfa0c9f9db7f01fc5771a1851eab14e6390532e78.zip
+Starting download of artifact to: /Users/runner/work/tailwindcss/tailwindcss/crates/node/bindings-armv7-linux-androideabi
+Redirecting to blob download url: https://productionresultssa14.blob.core.windows.net/actions-results/54b5fc55-8950-4279-a915-c007c34dc211/workflow-job-run-8d499733-e421-5a15-9454-d635b68d32a9/artifacts/267b0b3f059d56c067f01453e5a60f41b582a5b94e1355021e8fa180ea37e1b0.zip
+Starting download of artifact to: /Users/runner/work/tailwindcss/tailwindcss/crates/node/bindings-aarch64-linux-android
+Redirecting to blob download url: https://productionresultssa14.blob.core.windows.net/actions-results/54b5fc55-8950-4279-a915-c007c34dc211/workflow-job-run-e888464f-5787-5a42-f74b-41c616537a8f/artifacts/9d475aa43c9738185d3381123041c7832a8e43124be54cf092021f63e2b21823.zip
+Starting download of artifact to: /Users/runner/work/tailwindcss/tailwindcss/crates/node/bindings-aarch64-apple-darwin
+Redirecting to blob download url: https://productionresultssa14.blob.core.windows.net/actions-results/54b5fc55-8950-4279-a915-c007c34dc211/workflow-job-run-053d3d36-0805-5ce4-f94d-f0afc50d44a3/artifacts/2629f2faed6439ce9d9b0c893bc3e18ac20ebdfabc352032ab025661594ace7b.zip
+Starting download of artifact to: /Users/runner/work/tailwindcss/tailwindcss/crates/node/bindings-x86_64-unknown-freebsd
+Redirecting to blob download url: https://productionresultssa14.blob.core.windows.net/actions-results/54b5fc55-8950-4279-a915-c007c34dc211/workflow-job-run-bcc8c493-b964-5a93-58fc-c130085c0ebf/artifacts/903651e9c28222f01e4490378e3e083c7d7b664708837b94f62da3ac7622237b.zip
+Starting download of artifact to: /Users/runner/work/tailwindcss/tailwindcss/crates/node/bindings-armv7-unknown-linux-gnueabihf
+(node:1796) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+SHA256 digest of downloaded artifact is 07753cf7a8447d93c5ff26ac65c0889c4ce8a840ef004e34486676104a80d56b
+Artifact download completed successfully.
+SHA256 digest of downloaded artifact is 6bfebd37f531cf074b291893e395f9319ed00e79edbc8592dcb83af5007188ce
+Artifact download completed successfully.
+Redirecting to blob download url: https://productionresultssa14.blob.core.windows.net/actions-results/54b5fc55-8950-4279-a915-c007c34dc211/workflow-job-run-aad55572-0bef-577e-1e84-a69e71e9daf2/artifacts/0207ee517a3ff68af7f87432ee44648750086bdae68a0aca6284429ae5fbf5a4.zip
+Starting download of artifact to: /Users/runner/work/tailwindcss/tailwindcss/crates/node/bindings-x86_64-apple-darwin
+SHA256 digest of downloaded artifact is c538df3f454f884baa68fb7dcc7c0ed005f2c81de6ad8fe5a7f36b2e41b542ac
+Artifact download completed successfully.
+SHA256 digest of downloaded artifact is 11693d8242f718f5a14ad013faca228f52b36e3c9e73ecde6322ad2861819a5b
+Artifact download completed successfully.
+SHA256 digest of downloaded artifact is 75fc1c5bac3aeee627b243c2278a7b8fe3ab762006a3fc5f7a9983f585a7730c
+Artifact download completed successfully.
+SHA256 digest of downloaded artifact is f41df5ab8eb2cb97f66cfbeb1155f79d4984b927fb879d8e606e422a06b54f58
+Artifact download completed successfully.
+SHA256 digest of downloaded artifact is c76b8fd425b829e945ca3528db4b6375a5cb4d5c5ed6d029719c0540bb3767fa
+Artifact download completed successfully.
+SHA256 digest of downloaded artifact is 46a85c86cd86d69346a66587a896878f4d8dbf9ac82efef3e399c659bd0c39a7
+Artifact download completed successfully.
+SHA256 digest of downloaded artifact is 8e691f50fd031e9c2f9ddc0d689a4b573db3b0b8d33e840dc689e478a8ecd41f
+Artifact download completed successfully.
+SHA256 digest of downloaded artifact is b7f47cc271dc8a25eacb7e359bc4649a11e25f500d5f9c1b9e9d9f29bafa9a5f
+Artifact download completed successfully.
+SHA256 digest of downloaded artifact is f7c0550e27d9963ea3889581a2dc73c6e527c4f1dbb092723db20a8db398a891
+Artifact download completed successfully.
+SHA256 digest of downloaded artifact is 4bd1f076b0c884feb49f988a56668f3bc1a95a022b8897da0325a3183463ed81
+Artifact download completed successfully.
+Total of 12 artifact(s) downloaded
+Download artifact has finished successfully
+##[group]Run cd ./crates/node
+[36;1mcd ./crates/node[0m
+[36;1mcp bindings-x86_64-pc-windows-msvc/* ./npm/win32-x64-msvc/[0m
+[36;1mcp bindings-aarch64-pc-windows-msvc/* ./npm/win32-arm64-msvc/[0m
+[36;1mcp bindings-x86_64-apple-darwin/* ./npm/darwin-x64/[0m
+[36;1mcp bindings-aarch64-apple-darwin/* ./npm/darwin-arm64/[0m
+[36;1mcp bindings-aarch64-linux-android/* ./npm/android-arm64/[0m
+[36;1mcp bindings-armv7-linux-androideabi/* ./npm/android-arm-eabi/[0m
+[36;1mcp bindings-aarch64-unknown-linux-gnu/* ./npm/linux-arm64-gnu/[0m
+[36;1mcp bindings-aarch64-unknown-linux-musl/* ./npm/linux-arm64-musl/[0m
+[36;1mcp bindings-armv7-unknown-linux-gnueabihf/* ./npm/linux-arm-gnueabihf/[0m
+[36;1mcp bindings-x86_64-unknown-linux-gnu/* ./npm/linux-x64-gnu/[0m
+[36;1mcp bindings-x86_64-unknown-linux-musl/* ./npm/linux-x64-musl/[0m
+[36;1mcp bindings-x86_64-unknown-freebsd/* ./npm/freebsd-x64/[0m
+shell: /bin/bash -e {0}
+env:
+APP_NAME: tailwindcss-oxide
+NODE_VERSION: 20
+OXIDE_LOCATION: ./crates/node
+RELEASE_CHANNEL: insiders
+SHA_SHORT: 83ce4c0
+PNPM_HOME: /Users/runner/setup-pnpm/node_modules/.bin
+NPM_CONFIG_USERCONFIG: /Users/runner/work/_temp/.npmrc
+NODE_AUTH_TOKEN: XXXXX-XXXXX-XXXXX-XXXXX
+##[endgroup]
+##[group]Run pnpm run version-packages 0.0.0-insiders.83ce4c0
+[36;1mpnpm run version-packages 0.0.0-insiders.83ce4c0[0m
+shell: /bin/bash -e {0}
+env:
+APP_NAME: tailwindcss-oxide
+NODE_VERSION: 20
+OXIDE_LOCATION: ./crates/node
+RELEASE_CHANNEL: insiders
+SHA_SHORT: 83ce4c0
+PNPM_HOME: /Users/runner/setup-pnpm/node_modules/.bin
+NPM_CONFIG_USERCONFIG: /Users/runner/work/_temp/.npmrc
+NODE_AUTH_TOKEN: XXXXX-XXXXX-XXXXX-XXXXX
+##[endgroup]
+2025-04-11T15:27:24.6672150Z
+> @tailwindcss/root@1.0.0 version-packages /Users/runner/work/tailwindcss/tailwindcss
+> node ./scripts/version-packages.mjs "0.0.0-insiders.83ce4c0"
+2025-04-11T15:27:24.6740650Z
+Done.
+##[group]Run pnpm run build
+[36;1mpnpm run build[0m
+shell: /bin/bash -e {0}
+env:
+APP_NAME: tailwindcss-oxide
+NODE_VERSION: 20
+OXIDE_LOCATION: ./crates/node
+RELEASE_CHANNEL: insiders
+SHA_SHORT: 83ce4c0
+PNPM_HOME: /Users/runner/setup-pnpm/node_modules/.bin
+NPM_CONFIG_USERCONFIG: /Users/runner/work/_temp/.npmrc
+NODE_AUTH_TOKEN: XXXXX-XXXXX-XXXXX-XXXXX
+##[endgroup]
+2025-04-11T15:27:25.5368710Z
+> @tailwindcss/root@1.0.0 build /Users/runner/work/tailwindcss/tailwindcss
+> turbo build --filter=!./playgrounds/*
+2025-04-11T15:27:25.5373220Z
+2025-04-11T15:27:25.7986690Z
+Attention:
+Turborepo now collects completely anonymous telemetry regarding usage.
+This information is used to shape the Turborepo roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://turbo.build/repo/docs/telemetry
+2025-04-11T15:27:25.7995270Z
+• Packages in scope: @tailwindcss/browser, @tailwindcss/cli, @tailwindcss/node, @tailwindcss/oxide, @tailwindcss/oxide-android-arm-eabi, @tailwindcss/oxide-android-arm64, @tailwindcss/oxide-darwin-arm64, @tailwindcss/oxide-darwin-x64, @tailwindcss/oxide-freebsd-x64, @tailwindcss/oxide-linux-arm-gnueabihf, @tailwindcss/oxide-linux-arm64-gnu, @tailwindcss/oxide-linux-arm64-musl, @tailwindcss/oxide-linux-x64-gnu, @tailwindcss/oxide-linux-x64-musl, @tailwindcss/oxide-wasm32-wasi, @tailwindcss/oxide-win32-arm64-msvc, @tailwindcss/oxide-win32-x64-msvc, @tailwindcss/postcss, @tailwindcss/standalone, @tailwindcss/upgrade, @tailwindcss/vite, internal-example-plugin, internal-integrations, tailwindcss
+• Running build in 24 packages
+• Remote caching disabled
+##[group]@tailwindcss/oxide:build
+cache miss, executing bb3065051b6f2112
+2025-04-11T15:28:32.0187520Z
+> @tailwindcss/oxide@0.0.0-insiders.83ce4c0 build /Users/runner/work/tailwindcss/tailwindcss/crates/node
+> pnpm run build:platform && pnpm run build:wasm
+2025-04-11T15:28:32.0189140Z
+2025-04-11T15:28:32.0189150Z
+> @tailwindcss/oxide@0.0.0-insiders.83ce4c0 build:platform /Users/runner/work/tailwindcss/tailwindcss/crates/node
+> napi build --platform --release --no-const-enum
+2025-04-11T15:28:32.0190720Z
+Updating crates.io index
+Downloading crates ...
+Downloaded arrayvec v0.7.6
+Downloaded log v0.4.22
+Downloaded aho-corasick v1.1.3
+Downloaded thread_local v1.1.7
+Downloaded walkdir v2.5.0
+Downloaded unicode-ident v1.0.9
+Downloaded tracing-core v0.1.32
+Downloaded tracing v0.1.40
+Downloaded unicode-segmentation v1.10.1
+Downloaded regex-automata v0.1.10
+Downloaded itertools v0.11.0
+Downloaded nom v7.1.3
+Downloaded napi v2.16.17
+Downloaded tracing-subscriber v0.3.18
+Downloaded rayon v1.10.0
+Downloaded minimal-lexical v0.2.1
+Downloaded regex v1.11.1
+Downloaded syn v2.0.18
+Downloaded regex-syntax v0.6.29
+Downloaded bstr v1.11.3
+Downloaded memchr v2.7.4
+Downloaded regex-syntax v0.8.5
+Downloaded serde v1.0.163
+Downloaded rayon-core v1.12.1
+Downloaded sharded-slab v0.1.4
+Downloaded crossbeam-epoch v0.9.18
+Downloaded crossbeam-channel v0.5.13
+Downloaded quote v1.0.28
+Downloaded proc-macro2 v1.0.86
+Downloaded overload v0.1.1
+Downloaded ignore v0.4.23
+Downloaded globset v0.4.16
+Downloaded bitflags v2.6.0
+Downloaded tracing-log v0.2.0
+Downloaded tracing-attributes v0.1.27
+Downloaded regex-automata v0.4.8
+Downloaded semver v1.0.17
+Downloaded rustc-hash v2.1.1
+Downloaded pin-project-lite v0.2.9
+Downloaded once_cell v1.19.0
+Downloaded napi-derive-backend v1.0.75
+Downloaded napi-derive v2.16.13
+Downloaded lazy_static v1.4.0
+Downloaded globwalk v0.9.1
+Downloaded fast-glob v0.4.3
+Downloaded either v1.8.1
+Downloaded ctor v0.2.1
+Downloaded crossbeam-utils v0.8.20
+Downloaded crossbeam-queue v0.3.11
+Downloaded crossbeam-deque v0.8.5
+Downloaded crossbeam v0.8.4
+Downloaded convert_case v0.6.0
+Downloaded cfg-if v1.0.0
+Downloaded bexpand v1.2.0
+Downloaded smallvec v1.10.0
+Downloaded same-file v1.0.6
+Downloaded nu-ansi-term v0.46.0
+Downloaded napi-sys v2.4.0
+Downloaded napi-build v2.1.6
+Downloaded matchers v0.1.0
+Downloaded dunce v1.0.5
+Compiling proc-macro2 v1.0.86
+Compiling crossbeam-utils v0.8.20
+Compiling memchr v2.7.4
+Compiling quote v1.0.28
+Compiling unicode-ident v1.0.9
+Compiling aho-corasick v1.1.3
+Compiling regex-syntax v0.8.5
+Compiling syn v2.0.18
+Compiling regex-automata v0.4.8
+Compiling crossbeam-epoch v0.9.18
+Compiling crossbeam-deque v0.8.5
+Compiling log v0.4.22
+Compiling once_cell v1.19.0
+Compiling same-file v1.0.6
+Compiling bstr v1.11.3
+Compiling globset v0.4.16
+Compiling walkdir v2.5.0
+Compiling tracing-core v0.1.32
+Compiling either v1.8.1
+Compiling semver v1.0.17
+Compiling rayon-core v1.12.1
+Compiling regex-syntax v0.6.29
+Compiling tracing-attributes v0.1.27
+Compiling regex-automata v0.1.10
+Compiling bitflags v2.6.0
+Compiling minimal-lexical v0.2.1
+Compiling pin-project-lite v0.2.9
+Compiling unicode-segmentation v1.10.1
+Compiling lazy_static v1.4.0
+Compiling cfg-if v1.0.0
+Compiling overload v0.1.1
+Compiling nu-ansi-term v0.46.0
+Compiling regex v1.11.1
+Compiling convert_case v0.6.0
+Compiling thread_local v1.1.7
+Compiling sharded-slab v0.1.4
+Compiling nom v7.1.3
+Compiling tracing v0.1.40
+Compiling matchers v0.1.0
+Compiling itertools v0.11.0
+Compiling tracing-log v0.2.0
+Compiling ignore v0.4.23
+Compiling crossbeam-queue v0.3.11
+Compiling crossbeam-channel v0.5.13
+Compiling napi-build v2.1.6
+Compiling dunce v1.0.5
+Compiling arrayvec v0.7.6
+Compiling smallvec v1.10.0
+Compiling fast-glob v0.4.3
+Compiling tracing-subscriber v0.3.18
+Compiling ignore v0.4.23 (/Users/runner/work/tailwindcss/tailwindcss/crates/ignore)
+Compiling napi-derive-backend v1.0.75
+Compiling crossbeam v0.8.4
+Compiling tailwind-oxide v0.0.0 (/Users/runner/work/tailwindcss/tailwindcss/crates/node)
+Compiling globwalk v0.9.1
+Compiling bexpand v1.2.0
+Compiling rayon v1.10.0
+Compiling classification-macros v0.1.0 (/Users/runner/work/tailwindcss/tailwindcss/crates/classification-macros)
+Compiling ctor v0.2.1
+Compiling rustc-hash v2.1.1
+Compiling napi-sys v2.4.0
+Compiling napi v2.16.17
+Compiling napi-derive v2.16.13
+Compiling tailwindcss-oxide v0.1.0 (/Users/runner/work/tailwindcss/tailwindcss/crates/oxide)
+warning: unexpected `cfg` condition value: `used_linker`
+--> crates/node/src/lib.rs:96:1
+|
+96 | #[napi]
+| <:*:>
+|
+= note: no expected values for `feature`
+= note: using a cfg inside a attribute macro will use the cfgs from the destination crate and not the ones from the defining crate
+= help: try referring to `napi::bindgen_prelude::ctor` crate for guidance on how handle this unexpected cfg
+= help: the attribute macro `napi::bindgen_prelude::ctor` may come from an old version of the `ctor` crate, try updating your dependency with `cargo update -p ctor`
+= note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+= note: `#[warn(unexpected_cfgs)]` on by default
+= note: this warning originates in the attribute macro `napi::bindgen_prelude::ctor` (in Nightly builds, run with -Z macro-backtrace for more info)
+2025-04-11T15:28:32.0273310Z
+warning: unexpected `cfg` condition value: `used_linker`
+--> crates/node/src/lib.rs:111:1
+|
+111 | #[napi]
+| <:*:>
+|
+= note: no expected values for `feature`
+= note: using a cfg inside a attribute macro will use the cfgs from the destination crate and not the ones from the defining crate
+= help: try referring to `napi::bindgen_prelude::ctor` crate for guidance on how handle this unexpected cfg
+= help: the attribute macro `napi::bindgen_prelude::ctor` may come from an old version of the `ctor` crate, try updating your dependency with `cargo update -p ctor`
+= note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+= note: this warning originates in the attribute macro `napi::bindgen_prelude::ctor` (in Nightly builds, run with -Z macro-backtrace for more info)
+2025-04-11T15:28:32.0279720Z
+warning: `tailwind-oxide` (lib) generated 2 warnings
+Finished `release` profile [optimized] target(s) in 40.04s
+2025-04-11T15:28:32.0280830Z
+> @tailwindcss/oxide@0.0.0-insiders.83ce4c0 postbuild:platform /Users/runner/work/tailwindcss/tailwindcss/crates/node
+> node ./scripts/move-artifacts.mjs
+2025-04-11T15:28:32.0282000Z
+Moved tailwindcss-oxide.darwin-arm64.node to npm/darwin-arm64
+Moved tailwindcss-oxide.wasi-browser.js to npm/wasm32-wasi
+Moved tailwindcss-oxide.wasi.cjs to npm/wasm32-wasi
+Moved wasi-worker-browser.mjs to npm/wasm32-wasi
+Moved wasi-worker.mjs to npm/wasm32-wasi
+2025-04-11T15:28:32.0284200Z
+> @tailwindcss/oxide@0.0.0-insiders.83ce4c0 build:wasm /Users/runner/work/tailwindcss/tailwindcss/crates/node
+> napi build --release --target wasm32-wasip1-threads --no-const-enum
+2025-04-11T15:28:32.0285540Z
+Compiling crossbeam-utils v0.8.20
+Compiling memchr v2.7.4
+Compiling regex-syntax v0.8.5
+Compiling aho-corasick v1.1.3
+Compiling crossbeam-epoch v0.9.18
+Compiling crossbeam-deque v0.8.5
+Compiling once_cell v1.19.0
+Compiling log v0.4.22
+Compiling same-file v1.0.6
+Compiling walkdir v2.5.0
+Compiling regex-automata v0.4.8
+Compiling tracing-core v0.1.32
+Compiling regex-syntax v0.6.29
+Compiling either v1.8.1
+Compiling rayon-core v1.12.1
+Compiling minimal-lexical v0.2.1
+Compiling pin-project-lite v0.2.9
+Compiling bitflags v2.6.0
+Compiling bstr v1.11.3
+Compiling globset v0.4.16
+Compiling regex-automata v0.1.10
+Compiling overload v0.1.1
+Compiling cfg-if v1.0.0
+Compiling lazy_static v1.4.0
+Compiling sharded-slab v0.1.4
+Compiling matchers v0.1.0
+Compiling thread_local v1.1.7
+Compiling nu-ansi-term v0.46.0
+Compiling ignore v0.4.23
+Compiling regex v1.11.1
+Compiling tracing v0.1.40
+Compiling nom v7.1.3
+Compiling itertools v0.11.0
+Compiling tracing-log v0.2.0
+Compiling crossbeam-channel v0.5.13
+Compiling crossbeam-queue v0.3.11
+Compiling arrayvec v0.7.6
+Compiling smallvec v1.10.0
+Compiling dunce v1.0.5
+Compiling ignore v0.4.23 (/Users/runner/work/tailwindcss/tailwindcss/crates/ignore)
+Compiling tracing-subscriber v0.3.18
+Compiling bexpand v1.2.0
+warning: unused variable: `depth`
+--> crates/ignore/src/walk.rs:387:9
+|
+387 |         depth: usize,
+|         ^^^^^ help: if this is intentional, prefix it with an underscore: `_depth`
+|
+= note: `#[warn(unused_variables)]` on by default
+2025-04-11T15:28:32.0300610Z
+warning: unused variable: `ent`
+--> crates/ignore/src/walk.rs:388:9
+|
+388 |         ent: &fs::DirEntry,
+|         ^^^ help: if this is intentional, prefix it with an underscore: `_ent`
+2025-04-11T15:28:32.0302250Z
+warning: unused variable: `ty`
+--> crates/ignore/src/walk.rs:389:9
+|
+389 |         ty: fs::FileType,
+|         ^^ help: if this is intentional, prefix it with an underscore: `_ty`
+2025-04-11T15:28:32.0304470Z
+warning: unused variable: `depth`
+--> crates/ignore/src/walk.rs:426:18
+|
+426 |     fn from_path(depth: usize, pb: PathBuf, link: bool) -> Result<DirEntryRaw, Error> {
+|                  ^^^^^ help: if this is intentional, prefix it with an underscore: `_depth`
+2025-04-11T15:28:32.0306580Z
+warning: unused variable: `pb`
+--> crates/ignore/src/walk.rs:426:32
+|
+426 |     fn from_path(depth: usize, pb: PathBuf, link: bool) -> Result<DirEntryRaw, Error> {
+|                                ^^ help: if this is intentional, prefix it with an underscore: `_pb`
+2025-04-11T15:28:32.0308530Z
+warning: unused variable: `link`
+--> crates/ignore/src/walk.rs:426:45
+|
+426 |     fn from_path(depth: usize, pb: PathBuf, link: bool) -> Result<DirEntryRaw, Error> {
+|                                             ^^^^ help: if this is intentional, prefix it with an underscore: `_link`
+2025-04-11T15:28:32.0310560Z
+Compiling fast-glob v0.4.3
+Compiling crossbeam v0.8.4
+Compiling rayon v1.10.0
+warning: `ignore` (lib) generated 6 warnings
+Compiling globwalk v0.9.1
+Compiling napi-sys v2.4.0
+Compiling rustc-hash v2.1.1
+Compiling napi v2.16.17
+Compiling tailwindcss-oxide v0.1.0 (/Users/runner/work/tailwindcss/tailwindcss/crates/oxide)
+Compiling tailwind-oxide v0.0.0 (/Users/runner/work/tailwindcss/tailwindcss/crates/node)
+Finished `release` profile [optimized] target(s) in 23.37s
+2025-04-11T15:28:32.0314800Z
+> @tailwindcss/oxide@0.0.0-insiders.83ce4c0 postbuild:wasm /Users/runner/work/tailwindcss/tailwindcss/crates/node
+> node ./scripts/move-artifacts.mjs
+2025-04-11T15:28:32.0316000Z
+Moved tailwindcss-oxide.darwin-arm64.node to npm/darwin-arm64
+Moved tailwindcss-oxide.debug.wasm to npm/wasm32-wasi
+Moved tailwindcss-oxide.wasi-browser.js to npm/wasm32-wasi
+Moved tailwindcss-oxide.wasi.cjs to npm/wasm32-wasi
+Moved tailwindcss-oxide.wasm to npm/wasm32-wasi
+Moved wasi-worker-browser.mjs to npm/wasm32-wasi
+Moved wasi-worker.mjs to npm/wasm32-wasi
+##[endgroup]
+##[group]tailwindcss:build
+cache miss, executing 4e9563463bdc3d64
+2025-04-11T15:28:38.6885400Z
+> tailwindcss@0.0.0-insiders.83ce4c0 build /Users/runner/work/tailwindcss/tailwindcss/packages/tailwindcss
+> tsup-node --env.NODE_ENV production
+2025-04-11T15:28:38.6890060Z
+[34mCLI[39m Building entry: {"lib":"src/index.ts","plugin":"src/plugin.ts","colors":"src/compat/colors.ts","default-theme":"src/compat/default-theme.ts","flatten-color-palette":"src/compat/flatten-color-palette.ts"}
+[34mCLI[39m Using tsconfig: tsconfig.json
+[34mCLI[39m Building entry: {"plugin":"src/plugin.cts","lib":"src/index.cts","colors":"src/compat/colors.cts","default-theme":"src/compat/default-theme.cts","flatten-color-palette":"src/compat/flatten-color-palette.cts"}
+[34mCLI[39m Using tsconfig: tsconfig.json
+[34mCLI[39m tsup v8.4.0
+[34mCLI[39m Using tsup config: /Users/runner/work/tailwindcss/tailwindcss/packages/tailwindcss/tsup.config.ts
+[34mCLI[39m tsup v8.4.0
+[34mCLI[39m Using tsup config: /Users/runner/work/tailwindcss/tailwindcss/packages/tailwindcss/tsup.config.ts
+[34mCLI[39m Target: es2022
+[34mESM[39m Build start
+[34mCLI[39m Target: es2022
+[34mCJS[39m Build start
+[32mCJS[39m [1mdist/plugin.js                [22m[32m201.00 B[39m
+[32mCJS[39m [1mdist/flatten-color-palette.js [22m[32m29.34 KB[39m
+[32mCJS[39m [1mdist/lib.js                   [22m[32m217.34 KB[39m
+[32mCJS[39m [1mdist/default-theme.js         [22m[32m25.01 KB[39m
+[32mCJS[39m [1mdist/colors.js                [22m[32m7.80 KB[39m
+[32mCJS[39m ⚡️ Build success in 60ms
+[32mESM[39m [1mdist/plugin.mjs                [22m[32m192.00 B[39m
+[32mESM[39m [1mdist/chunk-P5FH2LZE.mjs        [22m[32m22.77 KB[39m
+[32mESM[39m [1mdist/chunk-2TPSGK42.mjs        [22m[32m186.65 KB[39m
+[32mESM[39m [1mdist/chunk-HTB5LLOP.mjs        [22m[32m7.79 KB[39m
+[32mESM[39m [1mdist/lib.mjs                   [22m[32m218.00 B[39m
+[32mESM[39m [1mdist/default-theme.mjs         [22m[32m92.00 B[39m
+[32mESM[39m [1mdist/flatten-color-palette.mjs [22m[32m424.00 B[39m
+[32mESM[39m [1mdist/colors.mjs                [22m[32m58.00 B[39m
+[32mESM[39m ⚡️ Build success in 64ms
+[34mDTS[39m Build start
+[34mDTS[39m Build start
+[32mDTS[39m ⚡️ Build success in 5676ms
+[32mDTS[39m [1mdist/lib.d.mts                     [22m[32m8.09 KB[39m
+[32mDTS[39m [1mdist/plugin.d.mts                  [22m[32m642.00 B[39m
+[32mDTS[39m [1mdist/default-theme.d.mts           [22m[32m27.49 KB[39m
+[32mDTS[39m [1mdist/colors.d.mts                  [22m[32m6.01 KB[39m
+[32mDTS[39m [1mdist/flatten-color-palette.d.mts   [22m[32m186.00 B[39m
+[32mDTS[39m [1mdist/types-B254mqw1.d.mts          [22m[32m3.29 KB[39m
+[32mDTS[39m [1mdist/resolve-config-QUZ9b-Gn.d.mts [22m[32m3.54 KB[39m
+[32mDTS[39m ⚡️ Build success in 5915ms
+[32mDTS[39m [1mdist/plugin.d.ts                  [22m[32m3.47 KB[39m
+[32mDTS[39m [1mdist/lib.d.ts                     [22m[32m92.00 B[39m
+[32mDTS[39m [1mdist/colors.d.ts                  [22m[32m89.00 B[39m
+[32mDTS[39m [1mdist/default-theme.d.ts           [22m[32m27.49 KB[39m
+[32mDTS[39m [1mdist/flatten-color-palette.d.ts   [22m[32m186.00 B[39m
+[32mDTS[39m [1mdist/resolve-config-BIFUA2FY.d.ts [22m[32m491.00 B[39m
+[32mDTS[39m [1mdist/colors-b_6i0Oi7.d.ts         [22m[32m6.00 KB[39m
+##[endgroup]
+##[group]@tailwindcss/browser:build
+cache miss, executing df63b4a3cce475dc
+2025-04-11T15:28:39.3644900Z
+> @tailwindcss/browser@0.0.0-insiders.83ce4c0 build /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-browser
+> tsup-node
+2025-04-11T15:28:39.3946810Z
+[34mCLI[39m Building entry: src/index.ts
+[34mCLI[39m Using tsconfig: tsconfig.json
+[34mCLI[39m tsup v8.4.0
+[34mCLI[39m Using tsup config: /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-browser/tsup.config.ts
+[34mCLI[39m Target: es2022
+[34mCLI[39m Cleaning output folder
+[34mIIFE[39m Build start
+[32mIIFE[39m [1mdist/index.global.js [22m[32m244.70 KB[39m
+[32mIIFE[39m ⚡️ Build success in 51ms
+##[endgroup]
+##[group]@tailwindcss/node:build
+cache miss, executing 71b6eb04d7163e17
+2025-04-11T15:28:44.8492200Z
+> @tailwindcss/node@0.0.0-insiders.83ce4c0 build /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-node
+> tsup-node
+2025-04-11T15:28:44.8493710Z
+[34mCLI[39m Building entry: src/index.cts
+[34mCLI[39m Using tsconfig: tsconfig.json
+[34mCLI[39m tsup v8.4.0
+[34mCLI[39m Using tsup config: /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-node/tsup.config.ts
+[34mCLI[39m Building entry: src/index.ts
+[34mCLI[39m Using tsconfig: tsconfig.json
+[34mCLI[39m tsup v8.4.0
+[34mCLI[39m Using tsup config: /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-node/tsup.config.ts
+[34mCLI[39m Building entry: src/esm-cache.loader.mts
+[34mCLI[39m Using tsconfig: tsconfig.json
+[34mCLI[39m tsup v8.4.0
+[34mCLI[39m Using tsup config: /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-node/tsup.config.ts
+[34mCLI[39m Building entry: src/require-cache.cts
+[34mCLI[39m Using tsconfig: tsconfig.json
+[34mCLI[39m tsup v8.4.0
+[34mCLI[39m Using tsup config: /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-node/tsup.config.ts
+[34mCLI[39m Target: es2022
+[34mCJS[39m Build start
+[34mCLI[39m Target: es2022
+[34mESM[39m Build start
+[34mCLI[39m Target: es2022
+[34mESM[39m Build start
+[34mCLI[39m Target: es2022
+[34mCJS[39m Build start
+[32mCJS[39m [1mdist/require-cache.js [22m[32m579.00 B[39m
+[32mCJS[39m ⚡️ Build success in 17ms
+[32mESM[39m [1mdist/esm-cache.loader.mjs [22m[32m307.00 B[39m
+[32mESM[39m ⚡️ Build success in 17ms
+[warn] [33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1m"import.meta" is not available with the "cjs" output format and will be empty[0m [empty-import-meta]
+2025-04-11T15:28:44.9240230Z
+src/compile.ts:195:24:
+[37m      195 │     jiti ??= createJiti([32mimport.meta[37m.url, { moduleCache: false, fs...
+╵                         [32m~~~~~~~~~~~[0m
+2025-04-11T15:28:44.9800910Z
+You need to set the output format to "esm" for "import.meta" to work correctly.
+2025-04-11T15:28:45.0114160Z
+2025-04-11T15:28:45.0214540Z
+[32mCJS[39m [1mdist/index.js [22m[32m44.24 KB[39m
+[32mCJS[39m ⚡️ Build success in 85ms
+[32mESM[39m [1mdist/index.mjs [22m[32m43.43 KB[39m
+[32mESM[39m ⚡️ Build success in 85ms
+[34mDTS[39m Build start
+[34mDTS[39m Build start
+[34mDTS[39m Build start
+[34mDTS[39m Build start
+[32mDTS[39m ⚡️ Build success in 2185ms
+[32mDTS[39m [1mdist/require-cache.d.ts [22m[32m90.00 B[39m
+[32mDTS[39m ⚡️ Build success in 2184ms
+[32mDTS[39m [1mdist/esm-cache.loader.d.mts [22m[32m99.00 B[39m
+[32mDTS[39m ⚡️ Build success in 5094ms
+[32mDTS[39m [1mdist/index.d.ts [22m[32m3.69 KB[39m
+[32mDTS[39m ⚡️ Build success in 5273ms
+[32mDTS[39m [1mdist/index.d.mts [22m[32m3.69 KB[39m
+##[endgroup]
+##[group]@tailwindcss/upgrade:build
+cache miss, executing d001eaa0a610de3e
+2025-04-11T15:28:46.0216620Z
+> @tailwindcss/upgrade@0.0.0-insiders.83ce4c0 build /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-upgrade
+> tsup-node
+2025-04-11T15:28:46.0520500Z
+[34mCLI[39m Building entry: src/index.ts
+[34mCLI[39m Using tsconfig: tsconfig.json
+[34mCLI[39m tsup v8.4.0
+[34mCLI[39m Using tsup config: /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-upgrade/tsup.config.ts
+[34mCLI[39m Target: es2022
+[34mCLI[39m Cleaning output folder
+[34mESM[39m Build start
+[32mESM[39m [1mdist/index.mjs [22m[32m146.62 KB[39m
+[32mESM[39m ⚡️ Build success in 64ms
+##[endgroup]
+##[group]@tailwindcss/cli:build
+cache miss, executing 0d88e85021e4e4cb
+2025-04-11T15:28:46.1045130Z
+> @tailwindcss/cli@0.0.0-insiders.83ce4c0 build /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-cli
+> tsup-node
+2025-04-11T15:28:46.1346660Z
+[34mCLI[39m Building entry: src/index.ts
+[34mCLI[39m Using tsconfig: tsconfig.json
+[34mCLI[39m tsup v8.4.0
+[34mCLI[39m Using tsup config: /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-cli/tsup.config.ts
+[34mCLI[39m Target: es2022
+[34mCLI[39m Cleaning output folder
+[34mESM[39m Build start
+[32mESM[39m [1mdist/index.mjs [22m[32m10.24 KB[39m
+[32mESM[39m ⚡️ Build success in 19ms
+##[endgroup]
+##[group]@tailwindcss/standalone:build
+cache miss, executing 385c3ca0f519b14d
+2025-04-11T15:28:54.0366800Z
+> @tailwindcss/standalone@0.0.0-insiders.83ce4c0 build /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-standalone
+> bun ./scripts/build.ts
+2025-04-11T15:28:54.0668200Z
+[765ms]  bundle  230 modules
+[783ms]  bundle  231 modules
+[835ms]  bundle  231 modules
+[905ms]  bundle  231 modules
+[964ms]  bundle  231 modules
+[989ms]  bundle  231 modules
+Downloading [12970140]
+Downloading [17148060] Downloading [8005788] Downloading [10639519]
+Downloading [19003548] Downloading [2185362] Downloading [13154461]
+[1490ms]  bundle  230 modules
+Downloading [11081884]
+Downloading [14272671]
+Downloading [11823260]
+Downloading [2570386]
+Downloading [17119389]
+Downloading [22415516]
+Downloading [14436511]
+Downloading [14313628]
+Downloading [3242130]
+Downloading [5183634]
+Downloading [14837916]
+Downloading [21821597]
+Downloading [7448722]
+Downloading [19953820]
+Downloading [18614431]
+Downloading [11368594]
+Downloading [21477532]
+Downloading [21244063]
+Downloading [25544860]
+Downloading [25483421]
+Downloading [22534300]
+Downloading [31365276]
+Downloading [24369311]
+Downloading [13490322]
+Downloading [25421983]
+Downloading [29157533]
+Downloading [33302684]
+Downloading [21645458]
+2025-04-11T15:28:54.1680870Z
+Downloading [25680028]
+Downloading [25942175]
+Downloading [35399836]
+Downloading [31701151]
+Downloading [10342]
+Downloading [3655825]
+Downloading [11999377]
+Downloading [38004892]
+2025-04-11T15:28:54.1683950Z
+Downloading [16160913]
+Downloading [28293276]
+Downloading [17201297]
+Downloading [32061596]
+Downloading [22796433]
+2025-04-11T15:28:54.1685750Z
+Downloading [25409682]
+Downloading [33863836]
+Downloading [30914706]
+2025-04-11T15:28:54.1686910Z
+Downloading [32880786]
+Downloading [33974418]
+Downloading [37275794]
+Downloading [37800082]
+[3.626s] compile  /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-standalone/dist/tailwindcss-macos-arm64
+Decompressing...
+Decompressing...
+[4.856s] compile  /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-standalone/dist/tailwindcss-linux-arm64-musl bun-linux-aarch64-musl-v1.2.8
+[4.444s] compile  /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-standalone/dist/tailwindcss-macos-x64 bun-darwin-x64-baseline-v1.2.8
+Decompressing...
+[5.288s] compile  /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-standalone/dist/tailwindcss-linux-x64-musl bun-linux-x64-musl-baseline-v1.2.8
+Decompressing...
+Decompressing...
+[5.417s] compile  /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-standalone/dist/tailwindcss-linux-arm64 bun-linux-aarch64-v1.2.8
+[5.392s] compile  /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-standalone/dist/tailwindcss-linux-x64 bun-linux-x64-baseline-v1.2.8
+Decompressing...
+[5.732s] compile  /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-standalone/dist/tailwindcss-windows-x64.exe bun-windows-x64-baseline-v1.2.8
+┌───┬─────────────────────────────┬──────────────────────────────────────────────────────────────────┬─────────┐
+│   │ triple                      │ sum                                                              │ elapsed │
+├───┼─────────────────────────────┼──────────────────────────────────────────────────────────────────┼─────────┤
+│ 0 │ bun-linux-arm64             │ 88341332808f4e64d7bb86b49ec10b1fe83f121113733b643a6686aa8db81787 │ 7085ms  │
+│ 1 │ bun-linux-arm64-musl        │ 204d7c2beeb45b1b3320752bc0ec88f820e7adf67115a239edb0456aab6e1243 │ 6050ms  │
+│ 2 │ bun-linux-x64-baseline      │ 7356081ff8ee35def3f08646303c97c6e7699d9f4dc66000300852f9c350a1fa │ 6861ms  │
+│ 3 │ bun-linux-x64-musl-baseline │ ff3555f37b06c75a2b5e5c6521b68127d3d804e00ec80d0b3d6841c35aa002da │ 6554ms  │
+│ 4 │ bun-darwin-arm64            │ 349418dcbf868055a810e70eabf2d264069a7fc6bcb581094eefa88699975a60 │ 5315ms  │
+│ 5 │ bun-darwin-x64-baseline     │ 3014d9e94c47c7f53f6b06f49f8737b3040c1c4a8ee4bfdceaa8660cd6374301 │ 6276ms  │
+│ 6 │ bun-windows-x64-baseline    │ e4b3568caafec888d802bcbede5b28bb405834285d3ff4f9ab6d450b22c58b0d │ 6970ms  │
+└───┴─────────────────────────────┴──────────────────────────────────────────────────────────────────┴─────────┘
+##[endgroup]
+##[group]@tailwindcss/vite:build
+cache miss, executing 2dad9c804dcde463
+2025-04-11T15:28:56.3988760Z
+> @tailwindcss/vite@0.0.0-insiders.83ce4c0 build /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-vite
+> tsup-node
+2025-04-11T15:28:56.4292700Z
+[34mCLI[39m Building entry: src/index.ts
+[34mCLI[39m Using tsconfig: tsconfig.json
+[34mCLI[39m tsup v8.4.0
+[34mCLI[39m Using tsup config: /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-vite/tsup.config.ts
+[34mCLI[39m Target: es2022
+[34mCLI[39m Cleaning output folder
+[34mESM[39m Build start
+[32mESM[39m [1mdist/index.mjs [22m[32m5.06 KB[39m
+[32mESM[39m ⚡️ Build success in 10ms
+[34mDTS[39m Build start
+[32mDTS[39m ⚡️ Build success in 9853ms
+[32mDTS[39m [1mdist/index.d.mts [22m[32m110.00 B[39m
+##[endgroup]
+##[group]@tailwindcss/postcss:build
+cache miss, executing 9fd2570ec45545d4
+2025-04-11T15:28:56.5262840Z
+> @tailwindcss/postcss@0.0.0-insiders.83ce4c0 build /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-postcss
+> tsup-node
+2025-04-11T15:28:56.5264480Z
+[34mCLI[39m Building entry: src/index.ts
+[34mCLI[39m Using tsconfig: tsconfig.json
+[34mCLI[39m tsup v8.4.0
+[34mCLI[39m Using tsup config: /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-postcss/tsup.config.ts
+[34mCLI[39m Building entry: src/index.cts
+[34mCLI[39m Using tsconfig: tsconfig.json
+[34mCLI[39m tsup v8.4.0
+[34mCLI[39m Using tsup config: /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-postcss/tsup.config.ts
+[34mCLI[39m Target: es2022
+[34mESM[39m Build start
+[34mCLI[39m Target: es2022
+[34mCJS[39m Build start
+[32mCJS[39m [1mdist/index.js [22m[32m37.47 KB[39m
+[32mCJS[39m ⚡️ Build success in 105ms
+[32mESM[39m [1mdist/index.mjs [22m[32m36.81 KB[39m
+[32mESM[39m ⚡️ Build success in 111ms
+[34mDTS[39m Build start
+[34mDTS[39m Build start
+[32mDTS[39m ⚡️ Build success in 10215ms
+[32mDTS[39m [1mdist/index.d.ts [22m[32m221.00 B[39m
+[32mDTS[39m ⚡️ Build success in 10230ms
+[32mDTS[39m [1mdist/index.d.mts [22m[32m254.00 B[39m
+##[endgroup]
+2025-04-11T15:28:56.5306770Z
+Tasks:    9 successful, 9 total
+Cached:    0 cached, 9 total
+Time:    1m30.445s
+2025-04-11T15:28:56.5308480Z
+2025-04-11T15:28:58.4060530Z
+> @tailwindcss/root@1.0.0 postbuild /Users/runner/work/tailwindcss/tailwindcss
+> node ./scripts/pack-packages.mjs
+2025-04-11T15:28:58.4062350Z
+Done.
+##[group]Run node ./scripts/pre-publish-optimizations.mjs
+[36;1mnode ./scripts/pre-publish-optimizations.mjs[0m
+shell: /bin/bash -e {0}
+env:
+APP_NAME: tailwindcss-oxide
+NODE_VERSION: 20
+OXIDE_LOCATION: ./crates/node
+RELEASE_CHANNEL: insiders
+SHA_SHORT: 83ce4c0
+PNPM_HOME: /Users/runner/setup-pnpm/node_modules/.bin
+NPM_CONFIG_USERCONFIG: /Users/runner/work/_temp/.npmrc
+NODE_AUTH_TOKEN: XXXXX-XXXXX-XXXXX-XXXXX
+##[endgroup]
+##[group]Run node ./scripts/lock-pre-release-versions.mjs
+[36;1mnode ./scripts/lock-pre-release-versions.mjs[0m
+shell: /bin/bash -e {0}
+env:
+APP_NAME: tailwindcss-oxide
+NODE_VERSION: 20
+OXIDE_LOCATION: ./crates/node
+RELEASE_CHANNEL: insiders
+SHA_SHORT: 83ce4c0
+PNPM_HOME: /Users/runner/setup-pnpm/node_modules/.bin
+NPM_CONFIG_USERCONFIG: /Users/runner/work/_temp/.npmrc
+NODE_AUTH_TOKEN: XXXXX-XXXXX-XXXXX-XXXXX
+##[endgroup]
+Done.
+##[group]Run <:*:>
+with:
+name: npm-package-tarballs
+path: <:*:>
+if-no-files-found: warn
+compression-level: 6
+<:*:> false
+<:*:> false
+env:
+APP_NAME: tailwindcss-oxide
+NODE_VERSION: 20
+OXIDE_LOCATION: ./crates/node
+RELEASE_CHANNEL: insiders
+SHA_SHORT: 83ce4c0
+PNPM_HOME: /Users/runner/setup-pnpm/node_modules/.bin
+NPM_CONFIG_USERCONFIG: /Users/runner/work/_temp/.npmrc
+NODE_AUTH_TOKEN: XXXXX-XXXXX-XXXXX-XXXXX
+##[endgroup]
+With the provided path, there will be 21 files uploaded
+Artifact name is valid!
+Root directory input is valid!
+Beginning upload of artifact content to blob storage
+Uploaded bytes 8388608
+Uploaded bytes 16560149
+Finished uploading artifact content to blob storage!
+SHA256 digest of uploaded artifact zip is 212eacbcb5fc916da8dee15db44c8687229de110ceef1713e5d09a6496603ab0
+Finalizing artifact upload
+Artifact npm-package-tarballs.zip successfully finalized. Artifact ID 2928574660
+Artifact npm-package-tarballs has been successfully uploaded! Final size is 16560149 bytes. Artifact ID is 2928574660
+Artifact download URL: https://github.com/tailwindlabs/tailwindcss/actions/runs/14406456121/artifacts/2928574660
+##[group]Run pnpm --recursive publish --tag insiders --no-git-checks
+[36;1mpnpm --recursive publish --tag insiders --no-git-checks[0m
+shell: /bin/bash -e {0}
+env:
+APP_NAME: tailwindcss-oxide
+NODE_VERSION: 20
+OXIDE_LOCATION: ./crates/node
+RELEASE_CHANNEL: insiders
+SHA_SHORT: 83ce4c0
+PNPM_HOME: /Users/runner/setup-pnpm/node_modules/.bin
+NPM_CONFIG_USERCONFIG: /Users/runner/work/_temp/.npmrc
+NODE_AUTH_TOKEN: ***
+##[endgroup]
+crates/node/npm/android-arm-eabi         |  WARN  Unsupported platform: wanted: {"cpu":["arm"],"os":["android"],"libc":["any"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/android-arm64            |  WARN  Unsupported platform: wanted: {"cpu":["arm64"],"os":["android"],"libc":["any"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/darwin-x64               |  WARN  Unsupported platform: wanted: {"cpu":["x64"],"os":["darwin"],"libc":["any"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/freebsd-x64              |  WARN  Unsupported platform: wanted: {"cpu":["x64"],"os":["freebsd"],"libc":["any"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/linux-arm-gnueabihf      |  WARN  Unsupported platform: wanted: {"cpu":["arm"],"os":["linux"],"libc":["any"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/linux-arm64-gnu          |  WARN  Unsupported platform: wanted: {"cpu":["arm64"],"os":["linux"],"libc":["glibc"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/linux-arm64-musl         |  WARN  Unsupported platform: wanted: {"cpu":["arm64"],"os":["linux"],"libc":["musl"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/linux-x64-gnu            |  WARN  Unsupported platform: wanted: {"cpu":["x64"],"os":["linux"],"libc":["glibc"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/linux-x64-musl           |  WARN  Unsupported platform: wanted: {"cpu":["x64"],"os":["linux"],"libc":["musl"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/wasm32-wasi              |  WARN  Unsupported platform: wanted: {"cpu":["wasm32"],"os":["any"],"libc":["any"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/win32-arm64-msvc         |  WARN  Unsupported platform: wanted: {"cpu":["arm64"],"os":["win32"],"libc":["any"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/win32-x64-msvc           |  WARN  Unsupported platform: wanted: {"cpu":["x64"],"os":["win32"],"libc":["any"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/android-arm-eabi         |  WARN  Unsupported platform: wanted: {"cpu":["arm"],"os":["android"],"libc":["any"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/android-arm-eabi         |  WARN  Unsupported platform: wanted: {"cpu":["arm"],"os":["android"],"libc":["any"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/android-arm-eabi         |  WARN  Unsupported platform: wanted: {"cpu":["arm"],"os":["android"],"libc":["any"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+npm notice
+npm notice 📦  @tailwindcss/oxide-android-arm-eabi@0.0.0-insiders.83ce4c0
+npm notice Tarball Contents
+npm notice 1.1kB LICENSE
+npm notice 114B README.md
+npm notice 555B package.json
+npm notice 1.8MB tailwindcss-oxide.android-arm-eabi.node
+npm notice Tarball Details
+npm notice name: @tailwindcss/oxide-android-arm-eabi
+npm notice version: 0.0.0-insiders.83ce4c0
+npm notice filename: tailwindcss-oxide-android-arm-eabi-0.0.0-insiders.83ce4c0.tgz
+npm notice package size: 1.0 MB
+npm notice unpacked size: 1.8 MB
+npm notice shasum: c2af61438a843efcd36353e63e9a2ca848ee20d1
+npm notice integrity: sha512-uAAFyM76mee7J[...]VxbbL1Gw0zlDw==
+npm notice total files: 4
+npm notice
+npm notice Publishing to https://registry.npmjs.org/ with tag insiders and public access
+npm notice publish Signed provenance statement with source and build information from GitHub Actions
+npm notice publish Provenance statement published to transparency log: https://search.sigstore.dev/?logIndex=195574380
++ @tailwindcss/oxide-android-arm-eabi@0.0.0-insiders.83ce4c0
+crates/node/npm/android-arm64            |  WARN  Unsupported platform: wanted: {"cpu":["arm64"],"os":["android"],"libc":["any"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/android-arm64            |  WARN  Unsupported platform: wanted: {"cpu":["arm64"],"os":["android"],"libc":["any"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/android-arm64            |  WARN  Unsupported platform: wanted: {"cpu":["arm64"],"os":["android"],"libc":["any"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+npm notice
+npm notice 📦  @tailwindcss/oxide-android-arm64@0.0.0-insiders.83ce4c0
+npm notice Tarball Contents
+npm notice 1.1kB LICENSE
+npm notice 108B README.md
+npm notice 545B package.json
+npm notice 2.6MB tailwindcss-oxide.android-arm64.node
+npm notice Tarball Details
+npm notice name: @tailwindcss/oxide-android-arm64
+npm notice version: 0.0.0-insiders.83ce4c0
+npm notice filename: tailwindcss-oxide-android-arm64-0.0.0-insiders.83ce4c0.tgz
+npm notice package size: 1.2 MB
+npm notice unpacked size: 2.6 MB
+npm notice shasum: 299a6dba8c56f86402a742f1190ba5c36f4d765e
+npm notice integrity: sha512-mXU/IG1sjxfHZ[...]CElxaRlRbZOYw==
+npm notice total files: 4
+npm notice
+npm notice Publishing to https://registry.npmjs.org/ with tag insiders and public access
+npm notice publish Signed provenance statement with source and build information from GitHub Actions
+npm notice publish Provenance statement published to transparency log: https://search.sigstore.dev/?logIndex=195574392
++ @tailwindcss/oxide-android-arm64@0.0.0-insiders.83ce4c0
+npm notice
+npm notice 📦  @tailwindcss/oxide-darwin-arm64@0.0.0-insiders.83ce4c0
+npm notice Tarball Contents
+npm notice 1.1kB LICENSE
+npm notice 106B README.md
+npm notice 540B package.json
+npm notice 2.8MB tailwindcss-oxide.darwin-arm64.node
+npm notice Tarball Details
+npm notice name: @tailwindcss/oxide-darwin-arm64
+npm notice version: 0.0.0-insiders.83ce4c0
+npm notice filename: tailwindcss-oxide-darwin-arm64-0.0.0-insiders.83ce4c0.tgz
+npm notice package size: 1.2 MB
+npm notice unpacked size: 2.8 MB
+npm notice shasum: 35f91b4e598092afd29f34a5422ed186c3a12504
+npm notice integrity: sha512-RuuArxHEHOUOP[...]BLVKp03Hg7QTA==
+npm notice total files: 4
+npm notice
+npm notice Publishing to https://registry.npmjs.org/ with tag insiders and public access
+npm notice publish Signed provenance statement with source and build information from GitHub Actions
+npm notice publish Provenance statement published to transparency log: https://search.sigstore.dev/?logIndex=195574402
++ @tailwindcss/oxide-darwin-arm64@0.0.0-insiders.83ce4c0
+crates/node/npm/darwin-x64               |  WARN  Unsupported platform: wanted: {"cpu":["x64"],"os":["darwin"],"libc":["any"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/darwin-x64               |  WARN  Unsupported platform: wanted: {"cpu":["x64"],"os":["darwin"],"libc":["any"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/darwin-x64               |  WARN  Unsupported platform: wanted: {"cpu":["x64"],"os":["darwin"],"libc":["any"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+npm notice
+npm notice 📦  @tailwindcss/oxide-darwin-x64@0.0.0-insiders.83ce4c0
+npm notice Tarball Contents
+npm notice 1.1kB LICENSE
+npm notice 103B README.md
+npm notice 530B package.json
+npm notice 2.6MB tailwindcss-oxide.darwin-x64.node
+npm notice Tarball Details
+npm notice name: @tailwindcss/oxide-darwin-x64
+npm notice version: 0.0.0-insiders.83ce4c0
+npm notice filename: tailwindcss-oxide-darwin-x64-0.0.0-insiders.83ce4c0.tgz
+npm notice package size: 1.2 MB
+npm notice unpacked size: 2.6 MB
+npm notice shasum: e1ea9ae1ecbb9390d052dd5bc47f592024e71a5f
+npm notice integrity: sha512-ucCegcTgWR/Kz[...]gTCxCUTymXQ6g==
+npm notice total files: 4
+npm notice
+npm notice Publishing to https://registry.npmjs.org/ with tag insiders and public access
+npm notice publish Signed provenance statement with source and build information from GitHub Actions
+npm notice publish Provenance statement published to transparency log: https://search.sigstore.dev/?logIndex=195574411
++ @tailwindcss/oxide-darwin-x64@0.0.0-insiders.83ce4c0
+crates/node/npm/freebsd-x64              |  WARN  Unsupported platform: wanted: {"cpu":["x64"],"os":["freebsd"],"libc":["any"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/freebsd-x64              |  WARN  Unsupported platform: wanted: {"cpu":["x64"],"os":["freebsd"],"libc":["any"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/freebsd-x64              |  WARN  Unsupported platform: wanted: {"cpu":["x64"],"os":["freebsd"],"libc":["any"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+npm notice
+npm notice 📦  @tailwindcss/oxide-freebsd-x64@0.0.0-insiders.83ce4c0
+npm notice Tarball Contents
+npm notice 1.1kB LICENSE
+npm notice 107B README.md
+npm notice 535B package.json
+npm notice 3.0MB tailwindcss-oxide.freebsd-x64.node
+npm notice Tarball Details
+npm notice name: @tailwindcss/oxide-freebsd-x64
+npm notice version: 0.0.0-insiders.83ce4c0
+npm notice filename: tailwindcss-oxide-freebsd-x64-0.0.0-insiders.83ce4c0.tgz
+npm notice package size: 1.2 MB
+npm notice unpacked size: 3.0 MB
+npm notice shasum: d714c5881dec1b8a59dffd93fe9d9482075c4b00
+npm notice integrity: sha512-lC0UExo6nmsnn[...]ef80NBA0Mqmog==
+npm notice total files: 4
+npm notice
+npm notice Publishing to https://registry.npmjs.org/ with tag insiders and public access
+npm notice publish Signed provenance statement with source and build information from GitHub Actions
+npm notice publish Provenance statement published to transparency log: https://search.sigstore.dev/?logIndex=195574419
++ @tailwindcss/oxide-freebsd-x64@0.0.0-insiders.83ce4c0
+crates/node/npm/linux-arm-gnueabihf      |  WARN  Unsupported platform: wanted: {"cpu":["arm"],"os":["linux"],"libc":["any"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/linux-arm-gnueabihf      |  WARN  Unsupported platform: wanted: {"cpu":["arm"],"os":["linux"],"libc":["any"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/linux-arm-gnueabihf      |  WARN  Unsupported platform: wanted: {"cpu":["arm"],"os":["linux"],"libc":["any"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+npm notice
+npm notice 📦  @tailwindcss/oxide-linux-arm-gnueabihf@0.0.0-insiders.83ce4c0
+npm notice Tarball Contents
+npm notice 1.1kB LICENSE
+npm notice 122B README.md
+npm notice 565B package.json
+npm notice 2.4MB tailwindcss-oxide.linux-arm-gnueabihf.node
+npm notice Tarball Details
+npm notice name: @tailwindcss/oxide-linux-arm-gnueabihf
+npm notice version: 0.0.0-insiders.83ce4c0
+npm notice filename: tailwindcss-oxide-linux-arm-gnueabihf-0.0.0-insiders.83ce4c0.tgz
+npm notice package size: 1.1 MB
+npm notice unpacked size: 2.4 MB
+npm notice shasum: eda9f9bdd58570a9967a013917b8483952f9fadb
+npm notice integrity: sha512-6Mm9K0jWK5wVM[...]2PrNjYtz/teSA==
+npm notice total files: 4
+npm notice
+npm notice Publishing to https://registry.npmjs.org/ with tag insiders and public access
+npm notice publish Signed provenance statement with source and build information from GitHub Actions
+npm notice publish Provenance statement published to transparency log: https://search.sigstore.dev/?logIndex=195574432
++ @tailwindcss/oxide-linux-arm-gnueabihf@0.0.0-insiders.83ce4c0
+crates/node/npm/linux-arm64-gnu          |  WARN  Unsupported platform: wanted: {"cpu":["arm64"],"os":["linux"],"libc":["glibc"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/linux-arm64-gnu          |  WARN  Unsupported platform: wanted: {"cpu":["arm64"],"os":["linux"],"libc":["glibc"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/linux-arm64-gnu          |  WARN  Unsupported platform: wanted: {"cpu":["arm64"],"os":["linux"],"libc":["glibc"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+npm notice
+npm notice 📦  @tailwindcss/oxide-linux-arm64-gnu@0.0.0-insiders.83ce4c0
+npm notice Tarball Contents
+npm notice 1.1kB LICENSE
+npm notice 114B README.md
+npm notice 580B package.json
+npm notice 2.6MB tailwindcss-oxide.linux-arm64-gnu.node
+npm notice Tarball Details
+npm notice name: @tailwindcss/oxide-linux-arm64-gnu
+npm notice version: 0.0.0-insiders.83ce4c0
+npm notice filename: tailwindcss-oxide-linux-arm64-gnu-0.0.0-insiders.83ce4c0.tgz
+npm notice package size: 1.2 MB
+npm notice unpacked size: 2.6 MB
+npm notice shasum: ea739d9ee8f9ceb874100e622c18fd77f78684db
+npm notice integrity: sha512-bBQnWdcKLhc3V[...]aq2kyU31kGi8A==
+npm notice total files: 4
+npm notice
+npm notice Publishing to https://registry.npmjs.org/ with tag insiders and public access
+npm notice publish Signed provenance statement with source and build information from GitHub Actions
+npm notice publish Provenance statement published to transparency log: https://search.sigstore.dev/?logIndex=195574442
++ @tailwindcss/oxide-linux-arm64-gnu@0.0.0-insiders.83ce4c0
+crates/node/npm/linux-arm64-musl         |  WARN  Unsupported platform: wanted: {"cpu":["arm64"],"os":["linux"],"libc":["musl"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/linux-arm64-musl         |  WARN  Unsupported platform: wanted: {"cpu":["arm64"],"os":["linux"],"libc":["musl"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/linux-arm64-musl         |  WARN  Unsupported platform: wanted: {"cpu":["arm64"],"os":["linux"],"libc":["musl"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+npm notice
+npm notice 📦  @tailwindcss/oxide-linux-arm64-musl@0.0.0-insiders.83ce4c0
+npm notice Tarball Contents
+npm notice 1.1kB LICENSE
+npm notice 116B README.md
+npm notice 583B package.json
+npm notice 2.6MB tailwindcss-oxide.linux-arm64-musl.node
+npm notice Tarball Details
+npm notice name: @tailwindcss/oxide-linux-arm64-musl
+npm notice version: 0.0.0-insiders.83ce4c0
+npm notice filename: tailwindcss-oxide-linux-arm64-musl-0.0.0-insiders.83ce4c0.tgz
+npm notice package size: 1.1 MB
+npm notice unpacked size: 2.6 MB
+npm notice shasum: 753b0a9d0947efd1d9db699f4d446a91e1e6c57a
+npm notice integrity: sha512-2TyGL9N8A+e75[...]UOOrZRakS1fZg==
+npm notice total files: 4
+npm notice
+npm notice Publishing to https://registry.npmjs.org/ with tag insiders and public access
+npm notice publish Signed provenance statement with source and build information from GitHub Actions
+npm notice publish Provenance statement published to transparency log: https://search.sigstore.dev/?logIndex=195574451
++ @tailwindcss/oxide-linux-arm64-musl@0.0.0-insiders.83ce4c0
+crates/node/npm/linux-x64-gnu            |  WARN  Unsupported platform: wanted: {"cpu":["x64"],"os":["linux"],"libc":["glibc"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/linux-x64-gnu            |  WARN  Unsupported platform: wanted: {"cpu":["x64"],"os":["linux"],"libc":["glibc"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/linux-x64-gnu            |  WARN  Unsupported platform: wanted: {"cpu":["x64"],"os":["linux"],"libc":["glibc"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+npm notice
+npm notice 📦  @tailwindcss/oxide-linux-x64-gnu@0.0.0-insiders.83ce4c0
+npm notice Tarball Contents
+npm notice 1.1kB LICENSE
+npm notice 111B README.md
+npm notice 570B package.json
+npm notice 3.0MB tailwindcss-oxide.linux-x64-gnu.node
+npm notice Tarball Details
+npm notice name: @tailwindcss/oxide-linux-x64-gnu
+npm notice version: 0.0.0-insiders.83ce4c0
+npm notice filename: tailwindcss-oxide-linux-x64-gnu-0.0.0-insiders.83ce4c0.tgz
+npm notice package size: 1.2 MB
+npm notice unpacked size: 3.0 MB
+npm notice shasum: a8e80351562240e931eb8af0e7ae04c042847b69
+npm notice integrity: sha512-+b/nxLreZ6RNh[...]4jbGQxwlmeTtw==
+npm notice total files: 4
+npm notice
+npm notice Publishing to https://registry.npmjs.org/ with tag insiders and public access
+npm notice publish Signed provenance statement with source and build information from GitHub Actions
+npm notice publish Provenance statement published to transparency log: https://search.sigstore.dev/?logIndex=195574465
++ @tailwindcss/oxide-linux-x64-gnu@0.0.0-insiders.83ce4c0
+crates/node/npm/linux-x64-musl           |  WARN  Unsupported platform: wanted: {"cpu":["x64"],"os":["linux"],"libc":["musl"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/linux-x64-musl           |  WARN  Unsupported platform: wanted: {"cpu":["x64"],"os":["linux"],"libc":["musl"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/linux-x64-musl           |  WARN  Unsupported platform: wanted: {"cpu":["x64"],"os":["linux"],"libc":["musl"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+npm notice
+npm notice 📦  @tailwindcss/oxide-linux-x64-musl@0.0.0-insiders.83ce4c0
+npm notice Tarball Contents
+npm notice 1.1kB LICENSE
+npm notice 113B README.md
+npm notice 573B package.json
+npm notice 3.0MB tailwindcss-oxide.linux-x64-musl.node
+npm notice Tarball Details
+npm notice name: @tailwindcss/oxide-linux-x64-musl
+npm notice version: 0.0.0-insiders.83ce4c0
+npm notice filename: tailwindcss-oxide-linux-x64-musl-0.0.0-insiders.83ce4c0.tgz
+npm notice package size: 1.2 MB
+npm notice unpacked size: 3.0 MB
+npm notice shasum: 32ab673cc328176943801a598604e792cf3c5df7
+npm notice integrity: sha512-sUJT3Kb7Pzpyn[...]keosJZwl0GiDg==
+npm notice total files: 4
+npm notice
+npm notice Publishing to https://registry.npmjs.org/ with tag insiders and public access
+npm notice publish Signed provenance statement with source and build information from GitHub Actions
+npm notice publish Provenance statement published to transparency log: https://search.sigstore.dev/?logIndex=195574475
++ @tailwindcss/oxide-linux-x64-musl@0.0.0-insiders.83ce4c0
+crates/node/npm/wasm32-wasi              |  WARN  Unsupported platform: wanted: {"cpu":["wasm32"],"os":["any"],"libc":["any"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+crates/node/npm/wasm32-wasi              |  WARN  Unsupported platform: wanted: {"cpu":["wasm32"],"os":["any"],"libc":["any"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+ERR_PNPM_BUNDLED_DEPENDENCIES_WITHOUT_HOISTED  bundledDependencies does not work with node-linker=isolated
+2025-04-11T15:29:43.1540660Z
+Add node-linker=hoisted to .npmrc or delete bundledDependencies from the root package.json to resolve this error
+##[error]Process completed with exit code 1.
+Post job cleanup.
+Pruning is unnecessary.
+Post job cleanup.
+[command]/opt/homebrew/bin/git version
+git version <:NUM:>.<:NUM:>.<:NUM:>
+Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/d27a20d6-51e6-4e63-9260-dc280a39f7c5/.gitconfig'
+Temporarily overriding HOME='/Users/runner/work/_temp/d27a20d6-51e6-4e63-9260-dc280a39f7c5' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+[command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/tailwindcss/tailwindcss
+[command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+[command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+[command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+http.https://github.com/.extraheader
+[command]/opt/homebrew/bin/git config --local --unset-all http.https://github.com/.extraheader
+[command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Cleaning up orphan processes

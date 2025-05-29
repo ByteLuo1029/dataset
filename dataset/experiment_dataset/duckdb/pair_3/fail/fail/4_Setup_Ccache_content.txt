@@ -1,0 +1,146 @@
+hendrikmuhs/ccache-action@main
+
+key: tidy-check
+save:
+restore:
+max-size: 500M
+verbose: 0
+variant: ccache
+append-timestamp:
+create-symlink:
+job-summary: CCache Statistics
+
+
+CC: gcc
+CXX: g++
+GEN: ninja
+TIDY_THREADS: 4
+TIDY_CHECKS:
+##[endgroup]
+##[group]Install ccache
+[command]/usr/bin/sh -xc $(which sudo) apt-get install -y ccache
++ which sudo
++ /usr/bin/sudo apt-get install -y ccache
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+libhiredis1.1.0
+Suggested packages:
+distcc | icecc
+The following NEW packages will be installed:
+ccache libhiredis1.1.0
+0 upgraded, 2 newly installed, 0 to remove and 101 not upgraded.
+Need to get 633 kB of archives.
+After this operation, 1756 kB of additional disk space will be used.
+Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [142 B]
+Get:2 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libhiredis1.1.0 amd64 1.2.0-6ubuntu3 [41.4 kB]
+Get:3 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 ccache amd64 4.9.1-1 [592 kB]
+Fetched 633 kB in 1s (460 kB/s)
+Selecting previously unselected package libhiredis1.1.0:amd64.
+(Reading database ...
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 221820 files and directories currently installed.)
+Preparing to unpack .../libhiredis1.1.0_1.2.0-6ubuntu3_amd64.deb ...
+Unpacking libhiredis1.1.0:amd64 (1.2.0-6ubuntu3) ...
+Selecting previously unselected package ccache.
+Preparing to unpack .../ccache_4.9.1-1_amd64.deb ...
+Unpacking ccache (4.9.1-1) ...
+Setting up libhiredis1.1.0:amd64 (1.2.0-6ubuntu3) ...
+Setting up ccache (4.9.1-1) ...
+Updating symlinks in /usr/lib/ccache ...
+Processing triggers for libc-bin (2.39-0ubuntu8.4) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+2025-04-15T00:41:56.3380951Z
+Running kernel seems to be up-to-date.
+2025-04-15T00:41:56.3381840Z
+No services need to be restarted.
+2025-04-15T00:41:56.3383647Z
+No containers need to be restarted.
+2025-04-15T00:41:56.3384127Z
+No user sessions are running outdated binaries.
+2025-04-15T00:41:56.3384559Z
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+2025-04-15T00:41:57.2889962Z
+##[endgroup]
+##[group]Restore cache
+##[warning]Cache not found for keys: ccache-tidy-check-
+No cache found.
+##[endgroup]
+##[group]Configure ccache, linux
+[command]/usr/bin/sh -xc ccache --set-config=cache_dir='/home/runner/work/duckdb/duckdb/.ccache'
++ ccache --set-config=cache_dir=/home/runner/work/duckdb/duckdb/.ccache
+[command]/usr/bin/sh -xc ccache --set-config=max_size='500M'
++ ccache --set-config=max_size=500M
+[command]/usr/bin/sh -xc ccache --set-config=compression=true
++ ccache --set-config=compression=true
+Cccache config:
+[command]/usr/bin/sh -xc ccache -p
++ ccache -p
+(default) absolute_paths_in_stderr = false
+(default) base_dir =
+(/home/runner/.config/ccache/ccache.conf) cache_dir = /home/runner/work/duckdb/duckdb/.ccache
+(default) compiler =
+(default) compiler_check = mtime
+(default) compiler_type = auto
+(/home/runner/.config/ccache/ccache.conf) compression = true
+(default) compression_level = 0
+(default) cpp_extension =
+(default) debug = false
+(default) debug_dir =
+(default) debug_level = 2
+(default) depend_mode = false
+(default) direct_mode = true
+(default) disable = false
+(default) extra_files_to_hash =
+(default) file_clone = false
+(default) hard_link = false
+(default) hash_dir = true
+(default) ignore_headers_in_manifest =
+(default) ignore_options =
+(default) inode_cache = true
+(default) keep_comments_cpp = false
+(default) log_file =
+(default) max_files = 0
+(/home/runner/.config/ccache/ccache.conf) max_size = 500.0 MB
+(default) msvc_dep_prefix = Note: including file:
+(default) namespace =
+(default) path =
+(default) pch_external_checksum = false
+(default) prefix_command =
+(default) prefix_command_cpp =
+(default) read_only = false
+(default) read_only_direct = false
+(default) recache = false
+(default) remote_only = false
+(default) remote_storage =
+(default) reshare = false
+(default) run_second_cpp = true
+(default) sloppiness =
+(default) stats = true
+(default) stats_log =
+(default) temporary_dir = /run/user/1001/ccache-tmp
+(default) umask =
+[command]/usr/bin/sh -xc ccache -z
++ ccache -z
+Statistics zeroed
+##[endgroup]

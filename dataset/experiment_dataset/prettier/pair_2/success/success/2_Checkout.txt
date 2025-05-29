@@ -1,0 +1,83 @@
+2025-04-15T05:51:56.3842162Z ##[group]Run actions/checkout@v4
+2025-04-15T05:51:56.3843036Z with:
+2025-04-15T05:51:56.3843457Z   repository: prettier/prettier
+2025-04-15T05:51:56.3844135Z   token: ***
+2025-04-15T05:51:56.3844535Z   ssh-strict: true
+2025-04-15T05:51:56.3844934Z   ssh-user: git
+2025-04-15T05:51:56.3845352Z   persist-credentials: true
+2025-04-15T05:51:56.3845808Z   clean: true
+2025-04-15T05:51:56.3846226Z   sparse-checkout-cone-mode: true
+2025-04-15T05:51:56.3846722Z   fetch-depth: 1
+2025-04-15T05:51:56.3847127Z   fetch-tags: false
+2025-04-15T05:51:56.3847540Z   show-progress: true
+2025-04-15T05:51:56.3848256Z   lfs: false
+2025-04-15T05:51:56.3848653Z   submodules: false
+2025-04-15T05:51:56.3849100Z   set-safe-directory: true
+2025-04-15T05:51:56.3850217Z ##[endgroup]
+2025-04-15T05:51:56.6110478Z Syncing repository: prettier/prettier
+2025-04-15T05:51:56.6112509Z ##[group]Getting Git version info
+2025-04-15T05:51:56.6113230Z Working directory is '/home/runner/work/prettier/prettier'
+2025-04-15T05:51:56.6114181Z [command]/usr/bin/git version
+2025-04-15T05:51:56.6191394Z git version 2.49.0
+2025-04-15T05:51:56.6218761Z ##[endgroup]
+2025-04-15T05:51:56.6233318Z Temporarily overriding HOME='/home/runner/work/_temp/474e2ff6-6381-4e6c-a073-908583b0ea24' before making global git config changes
+2025-04-15T05:51:56.6235761Z Adding repository directory to the temporary git global config as a safe directory
+2025-04-15T05:51:56.6239996Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/prettier/prettier
+2025-04-15T05:51:56.6279652Z Deleting the contents of '/home/runner/work/prettier/prettier'
+2025-04-15T05:51:56.6283444Z ##[group]Initializing the repository
+2025-04-15T05:51:56.6287575Z [command]/usr/bin/git init /home/runner/work/prettier/prettier
+2025-04-15T05:51:56.6366181Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-04-15T05:51:56.6367676Z hint: is subject to change. To configure the initial branch name to use in all
+2025-04-15T05:51:56.6369414Z hint: of your new repositories, which will suppress this warning, call:
+2025-04-15T05:51:56.6370626Z hint:
+2025-04-15T05:51:56.6371387Z hint: 	git config --global init.defaultBranch <name>
+2025-04-15T05:51:56.6372324Z hint:
+2025-04-15T05:51:56.6373158Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-04-15T05:51:56.6374046Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-04-15T05:51:56.6374741Z hint:
+2025-04-15T05:51:56.6375125Z hint: 	git branch -m <name>
+2025-04-15T05:51:56.6375863Z Initialized empty Git repository in /home/runner/work/prettier/prettier/.git/
+2025-04-15T05:51:56.6383372Z [command]/usr/bin/git remote add origin https://github.com/prettier/prettier
+2025-04-15T05:51:56.6419168Z ##[endgroup]
+2025-04-15T05:51:56.6419938Z ##[group]Disabling automatic garbage collection
+2025-04-15T05:51:56.6423244Z [command]/usr/bin/git config --local gc.auto 0
+2025-04-15T05:51:56.6451394Z ##[endgroup]
+2025-04-15T05:51:56.6452107Z ##[group]Setting up auth
+2025-04-15T05:51:56.6458272Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-04-15T05:51:56.6492761Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-04-15T05:51:56.6869842Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-15T05:51:56.6900111Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-04-15T05:51:56.7130962Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-04-15T05:51:56.7168805Z ##[endgroup]
+2025-04-15T05:51:56.7170075Z ##[group]Fetching the repository
+2025-04-15T05:51:56.7212140Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +ddf12c70dcde88b9adda6fe91de6b5230fa6f83a:refs/remotes/pull/17040/merge
+2025-04-15T05:51:57.8557940Z From https://github.com/prettier/prettier
+2025-04-15T05:51:57.8560092Z  * [new ref]         ddf12c70dcde88b9adda6fe91de6b5230fa6f83a -> pull/17040/merge
+2025-04-15T05:51:57.8598175Z ##[endgroup]
+2025-04-15T05:51:57.8599301Z ##[group]Determining the checkout info
+2025-04-15T05:51:57.8600831Z ##[endgroup]
+2025-04-15T05:51:57.8605541Z [command]/usr/bin/git sparse-checkout disable
+2025-04-15T05:51:57.8646174Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-04-15T05:51:57.8673898Z ##[group]Checking out the ref
+2025-04-15T05:51:57.8677672Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/17040/merge
+2025-04-15T05:51:58.2885968Z Note: switching to 'refs/remotes/pull/17040/merge'.
+2025-04-15T05:51:58.2886626Z 
+2025-04-15T05:51:58.2886916Z You are in 'detached HEAD' state. You can look around, make experimental
+2025-04-15T05:51:58.2887582Z changes and commit them, and you can discard any commits you make in this
+2025-04-15T05:51:58.2888500Z state without impacting any branches by switching back to a branch.
+2025-04-15T05:51:58.2888893Z 
+2025-04-15T05:51:58.2889180Z If you want to create a new branch to retain commits you create, you may
+2025-04-15T05:51:58.2889768Z do so (now or later) by using -c with the switch command. Example:
+2025-04-15T05:51:58.2890125Z 
+2025-04-15T05:51:58.2890299Z   git switch -c <new-branch-name>
+2025-04-15T05:51:58.2890545Z 
+2025-04-15T05:51:58.2890730Z Or undo this operation with:
+2025-04-15T05:51:58.2890959Z 
+2025-04-15T05:51:58.2891098Z   git switch -
+2025-04-15T05:51:58.2891354Z 
+2025-04-15T05:51:58.2891645Z Turn off this advice by setting config variable advice.detachedHead to false
+2025-04-15T05:51:58.2892036Z 
+2025-04-15T05:51:58.2892960Z HEAD is now at ddf12c7 Merge e2d1674b8ddf3b04a627d637f162e6642d00ca6a into fd93c56973e4cc3d29daaf32b9f980e4251d3041
+2025-04-15T05:51:58.2898533Z ##[endgroup]
+2025-04-15T05:51:58.2936889Z [command]/usr/bin/git log -1 --format=%H
+2025-04-15T05:51:58.2958143Z ddf12c70dcde88b9adda6fe91de6b5230fa6f83a

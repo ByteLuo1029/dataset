@@ -1,0 +1,364 @@
+2025-04-15T08:04:32.8236762Z Prepare all required actions
+2025-04-15T08:04:32.8238126Z Getting action download info
+2025-04-15T08:04:33.1179890Z ##[group]Download immutable action package 'actions/setup-node@v4'
+2025-04-15T08:04:33.1180392Z Version: 4.4.0
+2025-04-15T08:04:33.1180808Z Digest: sha256:9427cefe82346e992fb5b949e3569b39d537ae41aa3086483b14eceebfc16bc1
+2025-04-15T08:04:33.1181354Z Source commit SHA: 49933ea5288caeca8642d1e84afbd3f7d6820020
+2025-04-15T08:04:33.1181743Z ##[endgroup]
+2025-04-15T08:04:33.4373868Z Download action repository 'azure/login@v2' (SHA:a457da9ea143d694b1b9c7c869ebb04ebe844ef5)
+2025-04-15T08:04:33.8656252Z ##[group]Run ./.github/actions/run-test
+2025-04-15T08:04:33.8656620Z with:
+2025-04-15T08:04:33.8656894Z   browsers-to-install: chromium-tip-of-tree
+2025-04-15T08:04:33.8657269Z   command: npm run test -- --project=chromium-*
+2025-04-15T08:04:33.8657629Z   bot-name: ubuntu-22.04-chromium-tip-of-tree
+2025-04-15T08:04:33.8657969Z   node-version: 18
+2025-04-15T08:04:33.8658205Z   shell: bash
+2025-04-15T08:04:33.8658458Z env:
+2025-04-15T08:04:33.8658659Z   FORCE_COLOR: 1
+2025-04-15T08:04:33.8658903Z   ELECTRON_SKIP_BINARY_DOWNLOAD: 1
+2025-04-15T08:04:33.8659197Z   DEBUG_GIT_COMMIT_INFO: 1
+2025-04-15T08:04:33.8659475Z   PWTEST_CHANNEL: chromium-tip-of-tree
+2025-04-15T08:04:33.8659761Z ##[endgroup]
+2025-04-15T08:04:33.8790064Z ##[group]Run actions/setup-node@v4
+2025-04-15T08:04:33.8790374Z with:
+2025-04-15T08:04:33.8790636Z   node-version: 18
+2025-04-15T08:04:33.8790876Z   always-auth: false
+2025-04-15T08:04:33.8791119Z   check-latest: false
+2025-04-15T08:04:33.8791489Z   token: ***
+2025-04-15T08:04:33.8791703Z env:
+2025-04-15T08:04:33.8791918Z   FORCE_COLOR: 1
+2025-04-15T08:04:33.8792169Z   ELECTRON_SKIP_BINARY_DOWNLOAD: 1
+2025-04-15T08:04:33.8792466Z   DEBUG_GIT_COMMIT_INFO: 1
+2025-04-15T08:04:33.8792751Z   PWTEST_CHANNEL: chromium-tip-of-tree
+2025-04-15T08:04:33.8793041Z ##[endgroup]
+2025-04-15T08:04:34.0487579Z Found in cache @ /opt/hostedtoolcache/node/18.20.8/x64
+2025-04-15T08:04:34.0493764Z ##[group]Environment details
+2025-04-15T08:04:37.4728326Z node: v18.20.8
+2025-04-15T08:04:37.4728951Z npm: 10.8.2
+2025-04-15T08:04:37.4729456Z yarn: 1.22.22
+2025-04-15T08:04:37.4730376Z ##[endgroup]
+2025-04-15T08:04:37.4828812Z Prepare all required actions
+2025-04-15T08:04:37.4865011Z ##[group]Run ./.github/actions/enable-microphone-access
+2025-04-15T08:04:37.4865527Z env:
+2025-04-15T08:04:37.4865702Z   FORCE_COLOR: 1
+2025-04-15T08:04:37.4865903Z   ELECTRON_SKIP_BINARY_DOWNLOAD: 1
+2025-04-15T08:04:37.4866145Z   DEBUG_GIT_COMMIT_INFO: 1
+2025-04-15T08:04:37.4866370Z   PWTEST_CHANNEL: chromium-tip-of-tree
+2025-04-15T08:04:37.4866608Z ##[endgroup]
+2025-04-15T08:04:37.4900854Z ##[group]Run if [[ "$(uname)" != "Darwin" ]]; then
+2025-04-15T08:04:37.4901243Z [36;1mif [[ "$(uname)" != "Darwin" ]]; then[0m
+2025-04-15T08:04:37.4901530Z [36;1m  echo "Not macOS, exiting"[0m
+2025-04-15T08:04:37.4901765Z [36;1m  exit 0[0m
+2025-04-15T08:04:37.4901968Z [36;1mfi[0m
+2025-04-15T08:04:37.4902189Z [36;1mecho "Allowing microphone access to all apps"[0m
+2025-04-15T08:04:37.4902555Z [36;1mversion=$(sw_vers -productVersion | cut -d. -f1)[0m
+2025-04-15T08:04:37.4902902Z [36;1mif [[ "$version" == "14" || "$version" == "15" ]]; then[0m
+2025-04-15T08:04:37.4903891Z [36;1m  sqlite3 $HOME/Library/Application\ Support/com.apple.TCC/TCC.db "INSERT OR IGNORE INTO access VALUES ('kTCCServiceMicrophone','/usr/local/opt/runner/provisioner/provisioner',1,2,4,1,NULL,NULL,0,'UNUSED',NULL,0,1687786159,NULL,NULL,'UNUSED',1687786159);"[0m
+2025-04-15T08:04:37.4904899Z [36;1melif [[ "$version" == "12" || "$version" == "13" ]]; then[0m
+2025-04-15T08:04:37.4905964Z [36;1m  sqlite3 $HOME/Library/Application\ Support/com.apple.TCC/TCC.db "INSERT OR REPLACE INTO access VALUES('kTCCServiceMicrophone','/usr/local/opt/runner/provisioner/provisioner',1,2,4,1,NULL,NULL,0,'UNUSED',NULL,0,1687786159);"[0m
+2025-04-15T08:04:37.4906799Z [36;1melse[0m
+2025-04-15T08:04:37.4907032Z [36;1m  echo "Skipping unsupported macOS version $version"[0m
+2025-04-15T08:04:37.4907696Z [36;1m  exit 0[0m
+2025-04-15T08:04:37.4907873Z [36;1mfi[0m
+2025-04-15T08:04:37.4908090Z [36;1mecho "Successfully allowed microphone access"[0m
+2025-04-15T08:04:37.5002038Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-04-15T08:04:37.5002391Z env:
+2025-04-15T08:04:37.5002597Z   FORCE_COLOR: 1
+2025-04-15T08:04:37.5002799Z   ELECTRON_SKIP_BINARY_DOWNLOAD: 1
+2025-04-15T08:04:37.5003035Z   DEBUG_GIT_COMMIT_INFO: 1
+2025-04-15T08:04:37.5003261Z   PWTEST_CHANNEL: chromium-tip-of-tree
+2025-04-15T08:04:37.5003512Z ##[endgroup]
+2025-04-15T08:04:37.5115380Z Not macOS, exiting
+2025-04-15T08:04:37.5151923Z ##[group]Run echo "::group::npm ci"
+2025-04-15T08:04:37.5152215Z [36;1mecho "::group::npm ci"[0m
+2025-04-15T08:04:37.5152439Z [36;1mnpm ci[0m
+2025-04-15T08:04:37.5152630Z [36;1mecho "::endgroup::"[0m
+2025-04-15T08:04:37.5203040Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-04-15T08:04:37.5203376Z env:
+2025-04-15T08:04:37.5203546Z   FORCE_COLOR: 1
+2025-04-15T08:04:37.5203756Z   ELECTRON_SKIP_BINARY_DOWNLOAD: 1
+2025-04-15T08:04:37.5203996Z   DEBUG_GIT_COMMIT_INFO: 1
+2025-04-15T08:04:37.5204223Z   PWTEST_CHANNEL: chromium-tip-of-tree
+2025-04-15T08:04:37.5204470Z ##[endgroup]
+2025-04-15T08:04:37.5276126Z ##[group]npm ci
+2025-04-15T08:04:41.6767540Z npm warn deprecated xterm-addon-fit@0.7.0: This package is now deprecated. Move to @xterm/addon-fit instead.
+2025-04-15T08:04:42.0716657Z npm warn deprecated readdir-scoped-modules@1.1.0: This functionality has been moved to @npmcli/fs
+2025-04-15T08:04:42.1488959Z npm warn deprecated read-package-json@2.1.2: This package is no longer supported. Please use @npmcli/package-json instead.
+2025-04-15T08:04:42.2533061Z npm warn deprecated osenv@0.1.5: This package is no longer supported.
+2025-04-15T08:04:42.6530040Z npm warn deprecated read-installed@4.0.3: This package is no longer supported.
+2025-04-15T08:04:42.6839604Z npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+2025-04-15T08:04:42.7161317Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+2025-04-15T08:04:43.0706054Z npm warn deprecated debuglog@1.0.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-04-15T08:04:43.3245120Z npm warn deprecated @types/immutable@3.8.7: This is a stub types definition for Facebook's Immutable (https://github.com/facebook/immutable-js). Facebook's Immutable provides its own type definitions, so you don't need @types/immutable installed!
+2025-04-15T08:04:43.3597567Z npm warn deprecated boolean@3.2.0: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-04-15T08:04:45.1663386Z npm warn deprecated xterm@5.3.0: This package is now deprecated. Move to @xterm/xterm instead.
+2025-04-15T08:04:52.9219949Z 
+2025-04-15T08:04:52.9220692Z added 557 packages, and audited 580 packages in 15s
+2025-04-15T08:04:52.9221149Z 
+2025-04-15T08:04:52.9221385Z 147 packages are looking for funding
+2025-04-15T08:04:52.9221842Z   run `npm fund` for details
+2025-04-15T08:04:52.9364502Z 
+2025-04-15T08:04:52.9364878Z 2 moderate severity vulnerabilities
+2025-04-15T08:04:52.9365126Z 
+2025-04-15T08:04:52.9365430Z To address all issues, run:
+2025-04-15T08:04:52.9365690Z   npm audit fix
+2025-04-15T08:04:52.9365808Z 
+2025-04-15T08:04:52.9365933Z Run `npm audit` for details.
+2025-04-15T08:04:52.9611647Z ##[endgroup]
+2025-04-15T08:04:52.9636309Z ##[group]Run echo "::group::npm run build"
+2025-04-15T08:04:52.9636622Z [36;1mecho "::group::npm run build"[0m
+2025-04-15T08:04:52.9636862Z [36;1mnpm run build[0m
+2025-04-15T08:04:52.9637068Z [36;1mecho "::endgroup::"[0m
+2025-04-15T08:04:52.9689915Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-04-15T08:04:52.9690236Z env:
+2025-04-15T08:04:52.9690592Z   FORCE_COLOR: 1
+2025-04-15T08:04:52.9690786Z   ELECTRON_SKIP_BINARY_DOWNLOAD: 1
+2025-04-15T08:04:52.9691169Z   DEBUG_GIT_COMMIT_INFO: 1
+2025-04-15T08:04:52.9691396Z   PWTEST_CHANNEL: chromium-tip-of-tree
+2025-04-15T08:04:52.9691641Z ##[endgroup]
+2025-04-15T08:04:52.9763814Z ##[group]npm run build
+2025-04-15T08:04:53.1447738Z 
+2025-04-15T08:04:53.1448305Z > playwright-internal@1.52.0-next build
+2025-04-15T08:04:53.1448707Z > node utils/build/build.js
+2025-04-15T08:04:53.1448893Z 
+2025-04-15T08:04:53.3133166Z ==== Running npm ci --save=false --fund=false --audit=false in /home/runner/work/playwright/playwright/tests/playwright-test/stable-test-runner
+2025-04-15T08:04:54.0363182Z 
+2025-04-15T08:04:54.0363820Z added 3 packages in 653ms
+2025-04-15T08:04:54.0449193Z ==== Running npm ci --save=false --fund=false --audit=false --omit=optional in /home/runner/work/playwright/playwright/packages/playwright/bundles/babel
+2025-04-15T08:04:55.2858405Z 
+2025-04-15T08:04:55.2859075Z added 75 packages in 1s
+2025-04-15T08:04:55.2989216Z ==== Running npm ci --save=false --fund=false --audit=false --omit=optional in /home/runner/work/playwright/playwright/packages/playwright/bundles/expect
+2025-04-15T08:04:56.1527204Z 
+2025-04-15T08:04:56.1527803Z added 51 packages in 779ms
+2025-04-15T08:04:56.1685010Z ==== Running npm ci --save=false --fund=false --audit=false --omit=optional in /home/runner/work/playwright/playwright/packages/playwright/bundles/utils
+2025-04-15T08:04:56.8608730Z 
+2025-04-15T08:04:56.8609319Z added 26 packages in 627ms
+2025-04-15T08:04:56.8694442Z ==== Running npm ci --save=false --fund=false --audit=false --omit=optional in /home/runner/work/playwright/playwright/packages/playwright-core/bundles/utils
+2025-04-15T08:04:57.7901423Z 
+2025-04-15T08:04:57.7902299Z added 45 packages in 852ms
+2025-04-15T08:04:57.8000102Z ==== Running npm ci --save=false --fund=false --audit=false --omit=optional in /home/runner/work/playwright/playwright/packages/playwright-core/bundles/zip
+2025-04-15T08:04:58.4199226Z 
+2025-04-15T08:04:58.4199831Z added 16 packages in 552ms
+2025-04-15T08:04:58.4274199Z ==== Running node /home/runner/work/playwright/playwright/utils/generate_third_party_notice.js in /home/runner/work/playwright/playwright
+2025-04-15T08:05:02.5514624Z ==== Running node utils/generate_clip_paths.js in /home/runner/work/playwright/playwright
+2025-04-15T08:05:02.6159054Z ==== Running node utils/generate_injected.js in /home/runner/work/playwright/playwright
+2025-04-15T08:05:02.7327754Z ==== Running npx esbuild "/home/runner/work/playwright/playwright/packages/playwright/src/**/*.ts" --outdir="/home/runner/work/playwright/playwright/packages/playwright/lib" --platform=node --format=cjs in /home/runner/work/playwright/playwright
+2025-04-15T08:05:03.1640117Z 
+2025-04-15T08:05:03.1640867Z   packages/playwright/lib/index.js                     28.8kb
+2025-04-15T08:05:03.1641678Z   packages/playwright/lib/reporters/html.js            23.7kb
+2025-04-15T08:05:03.1642425Z   packages/playwright/lib/worker/workerMain.js         21.5kb
+2025-04-15T08:05:03.1643183Z   packages/playwright/lib/reporters/base.js            21.1kb
+2025-04-15T08:05:03.1643892Z   packages/playwright/lib/program.js                   20.4kb
+2025-04-15T08:05:03.1644559Z   packages/playwright/lib/runner/testServer.js         20.2kb
+2025-04-15T08:05:03.1645450Z   packages/playwright/lib/runner/dispatcher.js         18.4kb
+2025-04-15T08:05:03.1646174Z   packages/playwright/lib/matchers/matchers.js         18.1kb
+2025-04-15T08:05:03.1646933Z   packages/playwright/lib/matchers/toMatchSnapshot.js  18.0kb
+2025-04-15T08:05:03.1647671Z   packages/playwright/lib/reporters/merge.js           17.8kb
+2025-04-15T08:05:03.1648391Z   packages/playwright/lib/worker/testInfo.js           17.7kb
+2025-04-15T08:05:03.1649122Z   packages/playwright/lib/common/configLoader.js       17.4kb
+2025-04-15T08:05:03.1649836Z   packages/playwright/lib/runner/tasks.js              16.2kb
+2025-04-15T08:05:03.1650546Z   packages/playwright/lib/runner/watchMode.js          15.5kb
+2025-04-15T08:05:03.1651407Z   packages/playwright/lib/util.js                      15.1kb
+2025-04-15T08:05:03.1652012Z   packages/playwright/lib/isomorphic/teleReceiver.js   14.7kb
+2025-04-15T08:05:03.1652433Z   packages/playwright/lib/common/testType.js           14.1kb
+2025-04-15T08:05:03.1652835Z   packages/playwright/lib/runner/loadUtils.js          14.0kb
+2025-04-15T08:05:03.1653233Z   packages/playwright/lib/matchers/expect.js           13.4kb
+2025-04-15T08:05:03.1653634Z   packages/playwright/lib/worker/testTracing.js        13.2kb
+2025-04-15T08:05:03.1653975Z   ...and 73 more output files...
+2025-04-15T08:05:03.1654133Z 
+2025-04-15T08:05:03.1654437Z ⚡ Done in 39ms
+2025-04-15T08:05:03.1741422Z ==== Running npx esbuild "/home/runner/work/playwright/playwright/packages/playwright-core/src/**/*.ts" --outdir="/home/runner/work/playwright/playwright/packages/playwright-core/lib" --platform=node --format=cjs in /home/runner/work/playwright/playwright
+2025-04-15T08:05:03.6519466Z 
+2025-04-15T08:05:03.6520508Z   packages/playwright-core/lib/generated/injectedScriptSource.js      273.8kb
+2025-04-15T08:05:03.6521604Z   packages/playwright-core/lib/protocol/validator.js                  212.5kb
+2025-04-15T08:05:03.6522616Z   packages/playwright-core/lib/generated/consoleApiSource.js           77.7kb
+2025-04-15T08:05:03.6523551Z   packages/playwright-core/lib/server/frames.js                        64.7kb
+2025-04-15T08:05:03.6524446Z   packages/playwright-core/lib/server/registry/index.js                62.8kb
+2025-04-15T08:05:03.6525509Z   packages/playwright-core/lib/generated/pollingRecorderSource.js      58.5kb
+2025-04-15T08:05:03.6526403Z   packages/playwright-core/lib/server/webkit/wkPage.js                 49.6kb
+2025-04-15T08:05:03.6527292Z   packages/playwright-core/lib/server/chromium/crPage.js               45.1kb
+2025-04-15T08:05:03.6528215Z   packages/playwright-core/lib/server/dom.js                           36.4kb
+2025-04-15T08:05:03.6529125Z   packages/playwright-core/lib/server/registry/nativeDeps.js           31.3kb
+2025-04-15T08:05:03.6530049Z   packages/playwright-core/lib/server/page.js                          29.9kb
+2025-04-15T08:05:03.6530994Z   packages/playwright-core/lib/server/chromium/crNetworkManager.js     29.8kb
+2025-04-15T08:05:03.6531915Z   packages/playwright-core/lib/client/page.js                          28.3kb
+2025-04-15T08:05:03.6532833Z   packages/playwright-core/lib/utils/isomorphic/cssTokenizer.js        26.2kb
+2025-04-15T08:05:03.6533748Z   packages/playwright-core/lib/cli/program.js                          25.9kb
+2025-04-15T08:05:03.6534647Z   packages/playwright-core/lib/server/fetch.js                         25.3kb
+2025-04-15T08:05:03.6535699Z   packages/playwright-core/lib/server/browserContext.js                25.1kb
+2025-04-15T08:05:03.6536646Z   packages/playwright-core/lib/utils/isomorphic/locatorGenerators.js   24.7kb
+2025-04-15T08:05:03.6537544Z   packages/playwright-core/lib/client/network.js                       24.5kb
+2025-04-15T08:05:03.6538362Z   packages/playwright-core/lib/server/har/harTracer.js                 23.7kb
+2025-04-15T08:05:03.6539028Z   ...and 261 more output files...
+2025-04-15T08:05:03.6539311Z 
+2025-04-15T08:05:03.6539682Z ⚡ Done in 125ms
+2025-04-15T08:05:03.6628436Z ==== Running npx esbuild "/home/runner/work/playwright/playwright/packages/playwright-dashboard/src/**/*.ts" --outdir="/home/runner/work/playwright/playwright/packages/playwright-dashboard/lib" --platform=node --format=cjs in /home/runner/work/playwright/playwright
+2025-04-15T08:05:04.0262888Z 
+2025-04-15T08:05:04.0263543Z   packages/playwright-dashboard/lib/markdownReporter.js     5.4kb
+2025-04-15T08:05:04.0264133Z   packages/playwright-dashboard/lib/ghaMarkdownReporter.js  5.1kb
+2025-04-15T08:05:04.0264421Z 
+2025-04-15T08:05:04.0264718Z ⚡ Done in 2ms
+2025-04-15T08:05:04.0357808Z ==== Running npx esbuild "/home/runner/work/playwright/playwright/packages/playwright-ct-core/src/**/*.ts" --outdir="/home/runner/work/playwright/playwright/packages/playwright-ct-core/lib" --platform=node --format=cjs in /home/runner/work/playwright/playwright
+2025-04-15T08:05:04.3935342Z 
+2025-04-15T08:05:04.3936418Z   packages/playwright-ct-core/lib/vitePlugin.js               9.9kb
+2025-04-15T08:05:04.3937342Z   packages/playwright-ct-core/lib/viteUtils.js                7.2kb
+2025-04-15T08:05:04.3938175Z   packages/playwright-ct-core/lib/tsxTransform.js             6.5kb
+2025-04-15T08:05:04.3938985Z   packages/playwright-ct-core/lib/router.js                   6.1kb
+2025-04-15T08:05:04.3939786Z   packages/playwright-ct-core/lib/generated/indexSource.js    4.4kb
+2025-04-15T08:05:04.3940622Z   packages/playwright-ct-core/lib/devServer.js                4.3kb
+2025-04-15T08:05:04.3941383Z   packages/playwright-ct-core/lib/mount.js                    4.3kb
+2025-04-15T08:05:04.3941932Z   packages/playwright-ct-core/lib/injected/serializers.js     3.6kb
+2025-04-15T08:05:04.3942417Z   packages/playwright-ct-core/lib/injected/importRegistry.js  2.1kb
+2025-04-15T08:05:04.3942879Z   packages/playwright-ct-core/lib/program.js                  1.1kb
+2025-04-15T08:05:04.3943330Z   packages/playwright-ct-core/lib/injected/index.js           312b 
+2025-04-15T08:05:04.3943584Z 
+2025-04-15T08:05:04.3943869Z ⚡ Done in 5ms
+2025-04-15T08:05:04.4025833Z ==== Running npm run build in /home/runner/work/playwright/playwright/packages/playwright/bundles/babel
+2025-04-15T08:05:04.5586731Z 
+2025-04-15T08:05:04.5587227Z > babel-bundle@0.0.1 build
+2025-04-15T08:05:04.5587742Z > npm run esbuild -- --minify
+2025-04-15T08:05:04.5587951Z 
+2025-04-15T08:05:04.7155548Z 
+2025-04-15T08:05:04.7156092Z > babel-bundle@0.0.1 esbuild
+2025-04-15T08:05:04.7157185Z > esbuild ./src/babelBundleImpl.ts --bundle --outdir=../../lib/transform --format=cjs --platform=node --target=ES2019 --external:playwright --minify
+2025-04-15T08:05:04.7157812Z 
+2025-04-15T08:05:04.8255059Z 
+2025-04-15T08:05:04.8256998Z   ../../lib/transform/babelBundleImpl.js  1.3mb ⚠️
+2025-04-15T08:05:04.8257419Z 
+2025-04-15T08:05:04.8257638Z ⚡ Done in 103ms
+2025-04-15T08:05:04.8401501Z ==== Running npm run build in /home/runner/work/playwright/playwright/packages/playwright/bundles/expect
+2025-04-15T08:05:04.9917880Z 
+2025-04-15T08:05:04.9918432Z > expect-bundle@0.0.1 build
+2025-04-15T08:05:04.9918904Z > npm run esbuild -- --minify
+2025-04-15T08:05:04.9919089Z 
+2025-04-15T08:05:05.1506472Z 
+2025-04-15T08:05:05.1507027Z > expect-bundle@0.0.1 esbuild
+2025-04-15T08:05:05.1508312Z > esbuild ./src/expectBundleImpl.ts --bundle --outdir=../../lib/common --format=cjs --platform=node --target=ES2019 --minify
+2025-04-15T08:05:05.1509153Z 
+2025-04-15T08:05:05.1910515Z 
+2025-04-15T08:05:05.1912554Z   ../../lib/common/expectBundleImpl.js  249.6kb
+2025-04-15T08:05:05.1912830Z 
+2025-04-15T08:05:05.1913116Z ⚡ Done in 34ms
+2025-04-15T08:05:05.2050619Z ==== Running npm run build in /home/runner/work/playwright/playwright/packages/playwright/bundles/utils
+2025-04-15T08:05:05.3564346Z 
+2025-04-15T08:05:05.3564871Z > utils-bundle@0.0.1 build
+2025-04-15T08:05:05.3565637Z > npm run esbuild -- --minify
+2025-04-15T08:05:05.3565871Z 
+2025-04-15T08:05:05.5112489Z 
+2025-04-15T08:05:05.5113089Z > utils-bundle@0.0.1 esbuild
+2025-04-15T08:05:05.5113685Z > node build.js --minify
+2025-04-15T08:05:05.5113961Z 
+2025-04-15T08:05:05.6074554Z ==== Running npm run build in /home/runner/work/playwright/playwright/packages/playwright-core/bundles/utils
+2025-04-15T08:05:05.7602260Z 
+2025-04-15T08:05:05.7603154Z > utils-bundle@0.0.1 build
+2025-04-15T08:05:05.7604876Z > npm run esbuild -- --minify
+2025-04-15T08:05:05.7605360Z 
+2025-04-15T08:05:05.9179239Z 
+2025-04-15T08:05:05.9179865Z > utils-bundle@0.0.1 esbuild
+2025-04-15T08:05:05.9180367Z > node build.js --minify
+2025-04-15T08:05:05.9180596Z 
+2025-04-15T08:05:06.0440024Z ==== Running npm run build in /home/runner/work/playwright/playwright/packages/playwright-core/bundles/zip
+2025-04-15T08:05:06.1942346Z 
+2025-04-15T08:05:06.1942917Z > zip-bundle@0.0.1 build
+2025-04-15T08:05:06.1943443Z > npm run esbuild -- --minify
+2025-04-15T08:05:06.1943755Z 
+2025-04-15T08:05:06.3482746Z 
+2025-04-15T08:05:06.3483543Z > zip-bundle@0.0.1 esbuild
+2025-04-15T08:05:06.3484018Z > node build.js --minify
+2025-04-15T08:05:06.3484467Z 
+2025-04-15T08:05:06.4238115Z ==== Running npm run build in /home/runner/work/playwright/playwright/packages/playwright-client
+2025-04-15T08:05:06.5854330Z 
+2025-04-15T08:05:06.5854865Z > @playwright/client@0.0.0 build
+2025-04-15T08:05:06.5855814Z > esbuild ./src/index.ts --outdir=lib --format=cjs --bundle --platform=node --target=ES2019
+2025-04-15T08:05:06.5856210Z 
+2025-04-15T08:05:06.6154122Z 
+2025-04-15T08:05:06.6154650Z   lib/index.js  395.3kb
+2025-04-15T08:05:06.6154937Z 
+2025-04-15T08:05:06.6155468Z ⚡ Done in 24ms
+2025-04-15T08:05:06.6229784Z ==== Running npx vite --config vite.sw.config.ts build in /home/runner/work/playwright/playwright/packages/trace-viewer
+2025-04-15T08:05:07.1823883Z [36mvite v6.2.6 [32mbuilding for production...[36m[39m
+2025-04-15T08:05:07.2302372Z transforming...
+2025-04-15T08:05:07.6536226Z [32m✓[39m 35 modules transformed.
+2025-04-15T08:05:07.7239402Z rendering chunks...
+2025-04-15T08:05:07.7269003Z computing gzip size...
+2025-04-15T08:05:07.7317453Z [2mpublic/[22m[36msw.bundle.js  [39m[1m[2m94.25 kB[22m[1m[22m[2m │ gzip: 32.93 kB[22m
+2025-04-15T08:05:07.7318495Z [32m✓ built in 525ms[39m
+2025-04-15T08:05:07.7534041Z ==== Running npx vite build in /home/runner/work/playwright/playwright/packages/html-reporter
+2025-04-15T08:05:08.3132089Z [36mvite v6.2.6 [32mbuilding for production...[36m[39m
+2025-04-15T08:05:08.3770945Z transforming...
+2025-04-15T08:05:08.6623297Z [32m✓[39m 55 modules transformed.
+2025-04-15T08:05:08.6664004Z [31m✗[39m Build failed in 330ms
+2025-04-15T08:05:08.6664872Z [31merror during build:
+2025-04-15T08:05:08.6666832Z [31m[vite]: Rollup failed to resolve import "@testIsomorphic/prompt" from "/home/runner/work/playwright/playwright/packages/html-reporter/src/testErrorView.tsx".
+2025-04-15T08:05:08.6668120Z This is most likely unintended because it can break your application at runtime.
+2025-04-15T08:05:08.6668911Z If you do want to externalize this module explicitly add it to
+2025-04-15T08:05:08.6669741Z `build.rollupOptions.external`[31m
+2025-04-15T08:05:08.6670741Z     at viteLog (file:///home/runner/work/playwright/playwright/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51645:15)
+2025-04-15T08:05:08.6672079Z     at file:///home/runner/work/playwright/playwright/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51703:18
+2025-04-15T08:05:08.6673442Z     at onwarn (file:///home/runner/work/playwright/playwright/node_modules/@vitejs/plugin-react/dist/index.mjs:282:9)
+2025-04-15T08:05:08.6674726Z     at file:///home/runner/work/playwright/playwright/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51701:7
+2025-04-15T08:05:08.6676291Z     at onRollupLog (file:///home/runner/work/playwright/playwright/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51693:5)
+2025-04-15T08:05:08.6677746Z     at onLog (file:///home/runner/work/playwright/playwright/node_modules/vite/dist/node/chunks/dep-Bid9ssRr.js:51343:7)
+2025-04-15T08:05:08.6679086Z     at file:///home/runner/work/playwright/playwright/node_modules/rollup/dist/es/shared/node-entry.js:20487:32
+2025-04-15T08:05:08.6680465Z     at Object.logger [as onLog] (file:///home/runner/work/playwright/playwright/node_modules/rollup/dist/es/shared/node-entry.js:22230:9)
+2025-04-15T08:05:08.6681636Z     at ModuleLoader.handleInvalidResolvedId (file:///home/runner/work/playwright/playwright/node_modules/rollup/dist/es/shared/node-entry.js:21113:26)
+2025-04-15T08:05:08.6682737Z     at file:///home/runner/work/playwright/playwright/node_modules/rollup/dist/es/shared/node-entry.js:21071:26[39m
+2025-04-15T08:05:08.6976783Z ##[error]Process completed with exit code 1.
+2025-04-15T08:05:08.7018850Z ##[group]Run echo "::group::./utils/upload_flakiness_dashboard.sh"
+2025-04-15T08:05:08.7019275Z [36;1mecho "::group::./utils/upload_flakiness_dashboard.sh"[0m
+2025-04-15T08:05:08.7019677Z [36;1m./utils/upload_flakiness_dashboard.sh ./test-results/report.json[0m
+2025-04-15T08:05:08.7020261Z [36;1mecho "::endgroup::"[0m
+2025-04-15T08:05:08.7073068Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-04-15T08:05:08.7073567Z env:
+2025-04-15T08:05:08.7073731Z   FORCE_COLOR: 1
+2025-04-15T08:05:08.7073937Z   ELECTRON_SKIP_BINARY_DOWNLOAD: 1
+2025-04-15T08:05:08.7074181Z   DEBUG_GIT_COMMIT_INFO: 1
+2025-04-15T08:05:08.7074429Z   PWTEST_CHANNEL: chromium-tip-of-tree
+2025-04-15T08:05:08.7074684Z ##[endgroup]
+2025-04-15T08:05:08.7144413Z ##[group]./utils/upload_flakiness_dashboard.sh
+2025-04-15T08:05:08.7166169Z NOTE: skipping dashboard uploading from Playwright branches
+2025-04-15T08:05:08.7168203Z ##[endgroup]
+2025-04-15T08:05:08.7194494Z Prepare all required actions
+2025-04-15T08:05:08.7194791Z Getting action download info
+2025-04-15T08:05:08.9509695Z ##[group]Download immutable action package 'actions/upload-artifact@v4'
+2025-04-15T08:05:08.9510143Z Version: 4.6.2
+2025-04-15T08:05:08.9510530Z Digest: sha256:290722aa3281d5caf23d0acdc3dbeb3424786a1a01a9cc97e72f147225e37c38
+2025-04-15T08:05:08.9511089Z Source commit SHA: ea165f8d65b6e75b540449e92b4886f43607fa02
+2025-04-15T08:05:08.9511448Z ##[endgroup]
+2025-04-15T08:05:09.0718429Z ##[group]Run ./.github/actions/upload-blob-report
+2025-04-15T08:05:09.0718716Z with:
+2025-04-15T08:05:09.0718896Z   report_dir: blob-report
+2025-04-15T08:05:09.0719136Z   job_name: ubuntu-22.04-chromium-tip-of-tree
+2025-04-15T08:05:09.0719381Z env:
+2025-04-15T08:05:09.0719543Z   FORCE_COLOR: 1
+2025-04-15T08:05:09.0719730Z   ELECTRON_SKIP_BINARY_DOWNLOAD: 1
+2025-04-15T08:05:09.0719974Z   DEBUG_GIT_COMMIT_INFO: 1
+2025-04-15T08:05:09.0720197Z   PWTEST_CHANNEL: chromium-tip-of-tree
+2025-04-15T08:05:09.0720448Z ##[endgroup]
+2025-04-15T08:05:09.0736855Z ##[group]Run find "blob-report" -name "*.zip" -exec unzip -t {} \;
+2025-04-15T08:05:09.0737268Z [36;1mfind "blob-report" -name "*.zip" -exec unzip -t {} \;[0m
+2025-04-15T08:05:09.0789276Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-04-15T08:05:09.0789580Z env:
+2025-04-15T08:05:09.0789745Z   FORCE_COLOR: 1
+2025-04-15T08:05:09.0789953Z   ELECTRON_SKIP_BINARY_DOWNLOAD: 1
+2025-04-15T08:05:09.0790199Z   DEBUG_GIT_COMMIT_INFO: 1
+2025-04-15T08:05:09.0790431Z   PWTEST_CHANNEL: chromium-tip-of-tree
+2025-04-15T08:05:09.0790669Z ##[endgroup]
+2025-04-15T08:05:09.0877444Z find: ‘blob-report’: No such file or directory
+2025-04-15T08:05:09.0882016Z ##[error]Process completed with exit code 1.
+2025-04-15T08:05:09.0913007Z ##[group]Run actions/upload-artifact@v4
+2025-04-15T08:05:09.0913258Z with:
+2025-04-15T08:05:09.0913484Z   name: blob-report-ubuntu-22.04-chromium-tip-of-tree
+2025-04-15T08:05:09.0913771Z   path: blob-report/**
+2025-04-15T08:05:09.0913971Z   retention-days: 7
+2025-04-15T08:05:09.0914160Z   if-no-files-found: warn
+2025-04-15T08:05:09.0914365Z   compression-level: 6
+2025-04-15T08:05:09.0914556Z   overwrite: false
+2025-04-15T08:05:09.0914742Z   include-hidden-files: false
+2025-04-15T08:05:09.0914948Z env:
+2025-04-15T08:05:09.0915110Z   FORCE_COLOR: 1
+2025-04-15T08:05:09.0915598Z   ELECTRON_SKIP_BINARY_DOWNLOAD: 1
+2025-04-15T08:05:09.0915853Z   DEBUG_GIT_COMMIT_INFO: 1
+2025-04-15T08:05:09.0916081Z   PWTEST_CHANNEL: chromium-tip-of-tree
+2025-04-15T08:05:09.0916319Z ##[endgroup]
+2025-04-15T08:05:09.3065629Z ##[warning]No files were found with the provided path: blob-report/**. No artifacts will be uploaded.

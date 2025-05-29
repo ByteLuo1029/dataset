@@ -1,0 +1,94 @@
+2025-04-15T07:59:05.6622505Z ##[group]Run psf/black@stable
+2025-04-15T07:59:05.6622821Z with:
+2025-04-15T07:59:05.6623240Z   options: --check --diff
+2025-04-15T07:59:05.6623480Z   src: .
+2025-04-15T07:59:05.6623664Z   jupyter: false
+2025-04-15T07:59:05.6623868Z   use_pyproject: false
+2025-04-15T07:59:05.6624074Z   summary: true
+2025-04-15T07:59:05.6624300Z ##[endgroup]
+2025-04-15T07:59:05.6752131Z ##[group]Run # Even when black fails, do not close the shell
+2025-04-15T07:59:05.6752630Z [36;1m# Even when black fails, do not close the shell[0m
+2025-04-15T07:59:05.6752939Z [36;1mset +e[0m
+2025-04-15T07:59:05.6753139Z [36;1m[0m
+2025-04-15T07:59:05.6753347Z [36;1mif [ "$RUNNER_OS" == "Windows" ]; then[0m
+2025-04-15T07:59:05.6753638Z [36;1m  runner="python"[0m
+2025-04-15T07:59:05.6753860Z [36;1melse[0m
+2025-04-15T07:59:05.6754066Z [36;1m  runner="python3"[0m
+2025-04-15T07:59:05.6754296Z [36;1mfi[0m
+2025-04-15T07:59:05.6754482Z [36;1m[0m
+2025-04-15T07:59:05.6754729Z [36;1mout=$(${runner} $GITHUB_ACTION_PATH/action/main.py)[0m
+2025-04-15T07:59:05.6755100Z [36;1mexit_code=$?[0m
+2025-04-15T07:59:05.6755310Z [36;1m[0m
+2025-04-15T07:59:05.6755535Z [36;1m# Display the raw output in the step[0m
+2025-04-15T07:59:05.6755811Z [36;1mecho "${out}"[0m
+2025-04-15T07:59:05.6756005Z [36;1m[0m
+2025-04-15T07:59:05.6756194Z [36;1mif [ "true" == "true" ]; then[0m
+2025-04-15T07:59:05.6756493Z [36;1m  # Display the Markdown output in the job summary[0m
+2025-04-15T07:59:05.6756825Z [36;1m  echo "\`\`\`python" >> $GITHUB_STEP_SUMMARY[0m
+2025-04-15T07:59:05.6757127Z [36;1m  echo "${out}" >> $GITHUB_STEP_SUMMARY[0m
+2025-04-15T07:59:05.6757418Z [36;1m  echo "\`\`\`" >> $GITHUB_STEP_SUMMARY[0m
+2025-04-15T07:59:05.6757664Z [36;1mfi[0m
+2025-04-15T07:59:05.6757838Z [36;1m[0m
+2025-04-15T07:59:05.6758056Z [36;1m# Exit with the exit-code returned by Black[0m
+2025-04-15T07:59:05.6758339Z [36;1mexit ${exit_code}[0m
+2025-04-15T07:59:05.6812166Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-04-15T07:59:05.6812540Z env:
+2025-04-15T07:59:05.6812767Z   INPUT_OPTIONS: --check --diff
+2025-04-15T07:59:05.6813040Z   INPUT_SRC: .
+2025-04-15T07:59:05.6813234Z   INPUT_JUPYTER: false
+2025-04-15T07:59:05.6813460Z   INPUT_BLACK_ARGS: 
+2025-04-15T07:59:05.6813666Z   INPUT_VERSION: 
+2025-04-15T07:59:05.6813879Z   INPUT_USE_PYPROJECT: false
+2025-04-15T07:59:05.6814113Z   pythonioencoding: utf-8
+2025-04-15T07:59:05.6814337Z ##[endgroup]
+2025-04-15T07:59:48.0976592Z Installing black[colorama]==25.1.0...
+2025-04-15T07:59:48.0977738Z --- /home/runner/work/django/django/tests/auth_tests/test_forms.py	2025-04-15 07:59:05.493516+00:00
+2025-04-15T07:59:48.0979091Z +++ /home/runner/work/django/django/tests/auth_tests/test_forms.py	2025-04-15 07:59:28.788445+00:00
+2025-04-15T07:59:48.0980120Z @@ -1453,11 +1453,11 @@
+2025-04-15T07:59:48.0980612Z          hashed_html = "<p><strong>No password set.</p>"
+2025-04-15T07:59:48.0981281Z          self.assertHTMLEqual(render_password_as_hash(None), hashed_html)
+2025-04-15T07:59:48.0981954Z          self.assertHTMLEqual(
+2025-04-15T07:59:48.0982433Z              widget.render("name", None, {}),
+2025-04-15T07:59:48.0983176Z              f'<div>{hashed_html}<p><a role="button" class="button" href="../password/">'
+2025-04-15T07:59:48.0983856Z -            'Set password</a></p></div>',
+2025-04-15T07:59:48.0984315Z +            "Set password</a></p></div>",
+2025-04-15T07:59:48.0984709Z          )
+2025-04-15T07:59:48.0985025Z  
+2025-04-15T07:59:48.0985332Z      @override_settings(
+2025-04-15T07:59:48.0985831Z          PASSWORD_HASHERS=["django.contrib.auth.hashers.PBKDF2PasswordHasher"]
+2025-04-15T07:59:48.0986270Z      )
+2025-04-15T07:59:48.0986441Z @@ -1470,11 +1470,11 @@
+2025-04-15T07:59:48.0986654Z          )
+2025-04-15T07:59:48.0986929Z          self.assertHTMLEqual(render_password_as_hash(value), hashed_html)
+2025-04-15T07:59:48.0987282Z          self.assertHTMLEqual(
+2025-04-15T07:59:48.0987536Z              widget.render("name", value, {}),
+2025-04-15T07:59:48.0987907Z              f'<div>{hashed_html}<p><a role="button" class="button" href="../password/">'
+2025-04-15T07:59:48.0988568Z -            'Reset password</a></p></div>',
+2025-04-15T07:59:48.0989050Z +            "Reset password</a></p></div>",
+2025-04-15T07:59:48.0989483Z          )
+2025-04-15T07:59:48.0989707Z  
+2025-04-15T07:59:48.0989910Z      def test_readonly_field_has_changed(self):
+2025-04-15T07:59:48.0990214Z          field = ReadOnlyPasswordHashField()
+2025-04-15T07:59:48.0990496Z          self.assertIs(field.disabled, True)
+2025-04-15T07:59:48.0990901Z would reformat /home/runner/work/django/django/tests/auth_tests/test_forms.py
+2025-04-15T07:59:48.0991479Z --- /home/runner/work/django/django/tests/auth_tests/test_views.py	2025-04-15 07:59:05.494516+00:00
+2025-04-15T07:59:48.0992105Z +++ /home/runner/work/django/django/tests/auth_tests/test_views.py	2025-04-15 07:59:29.649205+00:00
+2025-04-15T07:59:48.0992530Z @@ -1715,11 +1715,12 @@
+2025-04-15T07:59:48.0992737Z                  hash_string[:6],
+2025-04-15T07:59:48.0992958Z              ),
+2025-04-15T07:59:48.0993140Z              html=True,
+2025-04-15T07:59:48.0993329Z          )
+2025-04-15T07:59:48.0993529Z          self.assertNotContains(
+2025-04-15T07:59:48.0993902Z -            response, '<a role="button" class="button" href="../password/">Reset password</a>'
+2025-04-15T07:59:48.0994279Z +            response,
+2025-04-15T07:59:48.0994575Z +            '<a role="button" class="button" href="../password/">Reset password</a>',
+2025-04-15T07:59:48.0994906Z          )
+2025-04-15T07:59:48.0995100Z          # Value in POST data is ignored.
+2025-04-15T07:59:48.0995370Z          data = self.get_user_data(u)
+2025-04-15T07:59:48.0995636Z          data["password"] = "shouldnotchange"
+2025-04-15T07:59:48.0995985Z          change_url = reverse("auth_test_admin:auth_user_change", args=(u.pk,))
+2025-04-15T07:59:48.0996450Z would reformat /home/runner/work/django/django/tests/auth_tests/test_views.py
+2025-04-15T07:59:48.0996746Z 
+2025-04-15T07:59:48.0997071Z Oh no! 💥 💔 💥
+2025-04-15T07:59:48.0997355Z 2 files would be reformatted, 2830 files would be left unchanged.
+2025-04-15T07:59:48.1009912Z ##[error]Process completed with exit code 1.

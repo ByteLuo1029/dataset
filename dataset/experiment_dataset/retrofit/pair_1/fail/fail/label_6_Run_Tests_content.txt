@@ -1,0 +1,75 @@
+reactivecircus/android-emulator-runner@v2
+
+api-level: 24
+script: ./gradlew connectedCheck --stacktrace
+target: default
+arch: x86
+cores: 2
+avd-name: test
+force-avd-creation:
+emulator-boot-timeout: 600
+emulator-port: 5554
+emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
+disable-animations:
+disable-spellchecker:
+disable-linux-hw-accel: auto
+enable-hw-keyboard:
+channel: stable
+
+GRADLE_OPTS: -Dorg.gradle.jvmargs=-Xmx4g -Dorg.gradle.daemon=false -Dkotlin.incremental=false
+JAVA_HOME: /opt/hostedtoolcache/Java_Zulu_jdk/23.0.2-7/x64
+JAVA_HOME_23_X64: /opt/hostedtoolcache/Java_Zulu_jdk/23.0.2-7/x64
+GRADLE_ACTION_ID: gradle/actions/setup-gradle
+GRADLE_USER_HOME: /home/runner/.gradle
+GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+DEVELOCITY_INJECTION_INIT_SCRIPT_NAME: gradle-actions.inject-develocity.init.gradle
+DEVELOCITY_AUTO_INJECTION_CUSTOM_VALUE: gradle-actions
+GITHUB_DEPENDENCY_GRAPH_ENABLED: false
+API_LEVEL: 24
+##[endgroup]
+##[group]Configure emulator
+API level: 24
+System image API level: 24
+target: default
+CPU architecture: x86
+Hardware profile:
+Cores: 2
+RAM size:
+Heap size:
+SD card path or size:
+Disk size:
+AVD name: test
+force avd creation: true
+Emulator boot timeout: 600
+emulator port: 5554
+emulator options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
+disable animations: true
+disable spellchecker: false
+disable Linux hardware acceleration: false
+enable hardware keyboard: false
+Channel: 0 (stable)
+Script:
+./gradlew connectedCheck --stacktrace
+Pre emulator launch script:
+##[endgroup]
+##[group]Install Android SDK
+[command]/usr/bin/sh -c \yes | sdkmanager --licenses > /dev/null
+Warning: Errors during XML parse:
+Warning: Additionally, the fallback loader failed to parse the XML.
+Installing latest build tools, platform tools, and platform.
+[command]/usr/bin/sh -c \sdkmanager --install 'build-tools;35.0.0' platform-tools 'platforms;android-24'> /dev/null
+Warning: Errors during XML parse:
+Warning: Additionally, the fallback loader failed to parse the XML.
+Installing latest emulator.
+[command]/usr/bin/sh -c \sdkmanager --install emulator --channel=0 > /dev/null
+Warning: Errors during XML parse:
+Warning: Additionally, the fallback loader failed to parse the XML.
+Warning: An error occurred while preparing SDK package Android Emulator: Error on ZipFile unknown archive.
+##[endgroup]
+##[group]Terminate Emulator
+[command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 emu kill
+error: could not connect to TCP port 5554: Connection refused
+The process '/usr/local/lib/android/sdk/platform-tools/adb' failed with exit code 1
+##[endgroup]
+##[error]The process '/usr/bin/sh' failed with exit code 1

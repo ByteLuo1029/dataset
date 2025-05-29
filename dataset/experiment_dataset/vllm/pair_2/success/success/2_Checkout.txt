@@ -1,0 +1,190 @@
+﻿2025-04-15T09:12:59.1676262Z ##[group]Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+2025-04-15T09:12:59.1677073Z with:
+2025-04-15T09:12:59.1677345Z   fetch-depth: 0
+2025-04-15T09:12:59.1677642Z   repository: vllm-project/vllm
+2025-04-15T09:12:59.1678120Z   token: ***
+2025-04-15T09:12:59.1678392Z   ssh-strict: true
+2025-04-15T09:12:59.1678676Z   ssh-user: git
+2025-04-15T09:12:59.1678967Z   persist-credentials: true
+2025-04-15T09:12:59.1679284Z   clean: true
+2025-04-15T09:12:59.1740029Z   sparse-checkout-cone-mode: true
+2025-04-15T09:12:59.1740495Z   fetch-tags: false
+2025-04-15T09:12:59.1740812Z   show-progress: true
+2025-04-15T09:12:59.1741119Z   lfs: false
+2025-04-15T09:12:59.1741392Z   submodules: false
+2025-04-15T09:12:59.1741676Z   set-safe-directory: true
+2025-04-15T09:12:59.1744649Z ##[endgroup]
+2025-04-15T09:12:59.3417345Z Syncing repository: vllm-project/vllm
+2025-04-15T09:12:59.3418910Z ##[group]Getting Git version info
+2025-04-15T09:12:59.3419404Z Working directory is '/home/runner/work/vllm/vllm'
+2025-04-15T09:12:59.3420155Z [command]/usr/bin/git version
+2025-04-15T09:12:59.3465472Z git version 2.49.0
+2025-04-15T09:12:59.3493355Z ##[endgroup]
+2025-04-15T09:12:59.3509027Z Temporarily overriding HOME='/home/runner/work/_temp/3a7ee2fd-f59d-4bdd-bb29-2f413ba048dc' before making global git config changes
+2025-04-15T09:12:59.3510684Z Adding repository directory to the temporary git global config as a safe directory
+2025-04-15T09:12:59.3515646Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/vllm/vllm
+2025-04-15T09:12:59.3550031Z Deleting the contents of '/home/runner/work/vllm/vllm'
+2025-04-15T09:12:59.3553856Z ##[group]Initializing the repository
+2025-04-15T09:12:59.3557912Z [command]/usr/bin/git init /home/runner/work/vllm/vllm
+2025-04-15T09:12:59.3612901Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-04-15T09:12:59.3613804Z hint: is subject to change. To configure the initial branch name to use in all
+2025-04-15T09:12:59.3614587Z hint: of your new repositories, which will suppress this warning, call:
+2025-04-15T09:12:59.3615461Z hint:
+2025-04-15T09:12:59.3616095Z hint: 	git config --global init.defaultBranch <name>
+2025-04-15T09:12:59.3616770Z hint:
+2025-04-15T09:12:59.3617438Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-04-15T09:12:59.3618446Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-04-15T09:12:59.3619224Z hint:
+2025-04-15T09:12:59.3619691Z hint: 	git branch -m <name>
+2025-04-15T09:12:59.3620197Z Initialized empty Git repository in /home/runner/work/vllm/vllm/.git/
+2025-04-15T09:12:59.3629382Z [command]/usr/bin/git remote add origin https://github.com/vllm-project/vllm
+2025-04-15T09:12:59.3662379Z ##[endgroup]
+2025-04-15T09:12:59.3662966Z ##[group]Disabling automatic garbage collection
+2025-04-15T09:12:59.3666507Z [command]/usr/bin/git config --local gc.auto 0
+2025-04-15T09:12:59.3694037Z ##[endgroup]
+2025-04-15T09:12:59.3694628Z ##[group]Setting up auth
+2025-04-15T09:12:59.3700724Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-04-15T09:12:59.3730636Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-04-15T09:12:59.3997676Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-15T09:12:59.4026553Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-04-15T09:12:59.4258132Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-04-15T09:12:59.4294238Z ##[endgroup]
+2025-04-15T09:12:59.4302750Z ##[group]Fetching the repository
+2025-04-15T09:12:59.4303912Z [command]/usr/bin/git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/* +2e47fef1e2c1a14d6bb277d7b190b11d237a3ea8:refs/remotes/pull/15826/merge
+2025-04-15T09:13:02.3747076Z From https://github.com/vllm-project/vllm
+2025-04-15T09:13:02.3748084Z  * [new branch]          add-python-3.13        -> origin/add-python-3.13
+2025-04-15T09:13:02.3749151Z  * [new branch]          amd-ci                 -> origin/amd-ci
+2025-04-15T09:13:02.3749933Z  * [new branch]          bench-latency          -> origin/bench-latency
+2025-04-15T09:13:02.3750873Z  * [new branch]          benchmark-output       -> origin/benchmark-output
+2025-04-15T09:13:02.3753986Z  * [new branch]          bind_kv_caches         -> origin/bind_kv_caches
+2025-04-15T09:13:02.3755671Z  * [new branch]          correct-docs-cuda-version -> origin/correct-docs-cuda-version
+2025-04-15T09:13:02.3757038Z  * [new branch]          decouple-engines       -> origin/decouple-engines
+2025-04-15T09:13:02.3761831Z  * [new branch]          dependabot/github_actions/actions/setup-python-5.5.0 -> origin/dependabot/github_actions/actions/setup-python-5.5.0
+2025-04-15T09:13:02.3764342Z  * [new branch]          dynamo-patch           -> origin/dynamo-patch
+2025-04-15T09:13:02.3766115Z  * [new branch]          eagle-max-len          -> origin/eagle-max-len
+2025-04-15T09:13:02.3767802Z  * [new branch]          fix-hashing-partial-blocks -> origin/fix-hashing-partial-blocks
+2025-04-15T09:13:02.3769675Z  * [new branch]          fix_use_ep             -> origin/fix_use_ep
+2025-04-15T09:13:02.3771791Z  * [new branch]          full_cudagraph         -> origin/full_cudagraph
+2025-04-15T09:13:02.3775134Z  * [new branch]          jax-tpu                -> origin/jax-tpu
+2025-04-15T09:13:02.3777972Z  * [new branch]          khluu/test             -> origin/khluu/test
+2025-04-15T09:13:02.3780945Z  * [new branch]          khluu/try_moc          -> origin/khluu/try_moc
+2025-04-15T09:13:02.3783578Z  * [new branch]          main                   -> origin/main
+2025-04-15T09:13:02.3784508Z  * [new branch]          mamba_tests            -> origin/mamba_tests
+2025-04-15T09:13:02.3787127Z  * [new branch]          mla-support-awq-marlin -> origin/mla-support-awq-marlin
+2025-04-15T09:13:02.3790015Z  * [new branch]          mla_cuda_graphs        -> origin/mla_cuda_graphs
+2025-04-15T09:13:02.3791073Z  * [new branch]          moondream2             -> origin/moondream2
+2025-04-15T09:13:02.3793596Z  * [new branch]          optimize-prefix-caching-scheduling -> origin/optimize-prefix-caching-scheduling
+2025-04-15T09:13:02.3795239Z  * [new branch]          qwen25vl               -> origin/qwen25vl
+2025-04-15T09:13:02.3797765Z  * [new branch]          reduce_scatter_comm    -> origin/reduce_scatter_comm
+2025-04-15T09:13:02.3799582Z  * [new branch]          revert_10902           -> origin/revert_10902
+2025-04-15T09:13:02.3801469Z  * [new branch]          rob-fixes              -> origin/rob-fixes
+2025-04-15T09:13:02.3804034Z  * [new branch]          running-deque          -> origin/running-deque
+2025-04-15T09:13:02.3806938Z  * [new branch]          sampler-env-variable   -> origin/sampler-env-variable
+2025-04-15T09:13:02.3808530Z  * [new branch]          torch_dynamo           -> origin/torch_dynamo
+2025-04-15T09:13:02.3810194Z  * [new branch]          tpu_v1                 -> origin/tpu_v1
+2025-04-15T09:13:02.3812883Z  * [new branch]          tpu_v1_optimized       -> origin/tpu_v1_optimized
+2025-04-15T09:13:02.3814577Z  * [new branch]          v0.7.2-staging-branch  -> origin/v0.7.2-staging-branch
+2025-04-15T09:13:02.3816538Z  * [new branch]          v0.8.0                 -> origin/v0.8.0
+2025-04-15T09:13:02.3818559Z  * [new branch]          v0.8.1                 -> origin/v0.8.1
+2025-04-15T09:13:02.3820554Z  * [new branch]          v0.8.2                 -> origin/v0.8.2
+2025-04-15T09:13:02.3822707Z  * [new branch]          v0.8.3                 -> origin/v0.8.3
+2025-04-15T09:13:02.3825102Z  * [new branch]          v0.8.4                 -> origin/v0.8.4
+2025-04-15T09:13:02.3827105Z  * [new branch]          v1-backend-error       -> origin/v1-backend-error
+2025-04-15T09:13:02.3828981Z  * [new branch]          v1-block-table-opt     -> origin/v1-block-table-opt
+2025-04-15T09:13:02.3830987Z  * [new branch]          v1-blocktable-opt      -> origin/v1-blocktable-opt
+2025-04-15T09:13:02.3833234Z  * [new branch]          v1-cascade-opt         -> origin/v1-cascade-opt
+2025-04-15T09:13:02.3835443Z  * [new branch]          v1-ngram-oracle        -> origin/v1-ngram-oracle
+2025-04-15T09:13:02.3837239Z  * [new branch]          v1-sched-common        -> origin/v1-sched-common
+2025-04-15T09:13:02.3839090Z  * [new branch]          v1-sched-interface-2   -> origin/v1-sched-interface-2
+2025-04-15T09:13:02.3841048Z  * [new branch]          v1-scheduler-interface -> origin/v1-scheduler-interface
+2025-04-15T09:13:02.3843519Z  * [new branch]          v1_fix_profiler        -> origin/v1_fix_profiler
+2025-04-15T09:13:02.3845379Z  * [new branch]          whisper-translate      -> origin/whisper-translate
+2025-04-15T09:13:02.3847376Z  * [new branch]          woosuk-hybrid-mem      -> origin/woosuk-hybrid-mem
+2025-04-15T09:13:02.3848625Z  * [new tag]             submission             -> submission
+2025-04-15T09:13:02.3850092Z  * [new tag]             v0.1.0                 -> v0.1.0
+2025-04-15T09:13:02.3851290Z  * [new tag]             v0.1.1                 -> v0.1.1
+2025-04-15T09:13:02.3852707Z  * [new tag]             v0.1.2                 -> v0.1.2
+2025-04-15T09:13:02.3854315Z  * [new tag]             v0.1.3                 -> v0.1.3
+2025-04-15T09:13:02.3855504Z  * [new tag]             v0.1.4                 -> v0.1.4
+2025-04-15T09:13:02.3857024Z  * [new tag]             v0.1.5                 -> v0.1.5
+2025-04-15T09:13:02.3858179Z  * [new tag]             v0.1.6                 -> v0.1.6
+2025-04-15T09:13:02.3859707Z  * [new tag]             v0.1.7                 -> v0.1.7
+2025-04-15T09:13:02.3860935Z  * [new tag]             v0.2.0                 -> v0.2.0
+2025-04-15T09:13:02.3862792Z  * [new tag]             v0.2.1                 -> v0.2.1
+2025-04-15T09:13:02.3863834Z  * [new tag]             v0.2.1.post1           -> v0.2.1.post1
+2025-04-15T09:13:02.3865429Z  * [new tag]             v0.2.2                 -> v0.2.2
+2025-04-15T09:13:02.3866635Z  * [new tag]             v0.2.3                 -> v0.2.3
+2025-04-15T09:13:02.3868123Z  * [new tag]             v0.2.4                 -> v0.2.4
+2025-04-15T09:13:02.3869274Z  * [new tag]             v0.2.5                 -> v0.2.5
+2025-04-15T09:13:02.3870863Z  * [new tag]             v0.2.6                 -> v0.2.6
+2025-04-15T09:13:02.3872206Z  * [new tag]             v0.2.7                 -> v0.2.7
+2025-04-15T09:13:02.3874002Z  * [new tag]             v0.3.0                 -> v0.3.0
+2025-04-15T09:13:02.3875238Z  * [new tag]             v0.3.1                 -> v0.3.1
+2025-04-15T09:13:02.3876799Z  * [new tag]             v0.3.2                 -> v0.3.2
+2025-04-15T09:13:02.3878078Z  * [new tag]             v0.3.3                 -> v0.3.3
+2025-04-15T09:13:02.3879704Z  * [new tag]             v0.4.0                 -> v0.4.0
+2025-04-15T09:13:02.3880956Z  * [new tag]             v0.4.0.post1           -> v0.4.0.post1
+2025-04-15T09:13:02.3882729Z  * [new tag]             v0.4.1                 -> v0.4.1
+2025-04-15T09:13:02.3884162Z  * [new tag]             v0.4.2                 -> v0.4.2
+2025-04-15T09:13:02.3885648Z  * [new tag]             v0.4.3                 -> v0.4.3
+2025-04-15T09:13:02.3886911Z  * [new tag]             v0.5.0                 -> v0.5.0
+2025-04-15T09:13:02.3888580Z  * [new tag]             v0.5.0.post1           -> v0.5.0.post1
+2025-04-15T09:13:02.3890039Z  * [new tag]             v0.5.1                 -> v0.5.1
+2025-04-15T09:13:02.3891496Z  * [new tag]             v0.5.2                 -> v0.5.2
+2025-04-15T09:13:02.3893375Z  * [new tag]             v0.5.3                 -> v0.5.3
+2025-04-15T09:13:02.3894727Z  * [new tag]             v0.5.3.post1           -> v0.5.3.post1
+2025-04-15T09:13:02.3896317Z  * [new tag]             v0.5.4                 -> v0.5.4
+2025-04-15T09:13:02.3897657Z  * [new tag]             v0.5.5                 -> v0.5.5
+2025-04-15T09:13:02.3899400Z  * [new tag]             v0.6.0                 -> v0.6.0
+2025-04-15T09:13:02.3900616Z  * [new tag]             v0.6.1                 -> v0.6.1
+2025-04-15T09:13:02.3902349Z  * [new tag]             v0.6.1.post1           -> v0.6.1.post1
+2025-04-15T09:13:02.3903615Z  * [new tag]             v0.6.1.post2           -> v0.6.1.post2
+2025-04-15T09:13:02.3905213Z  * [new tag]             v0.6.2                 -> v0.6.2
+2025-04-15T09:13:02.3906708Z  * [new tag]             v0.6.3                 -> v0.6.3
+2025-04-15T09:13:02.3908159Z  * [new tag]             v0.6.3.post1           -> v0.6.3.post1
+2025-04-15T09:13:02.3909439Z  * [new tag]             v0.6.4                 -> v0.6.4
+2025-04-15T09:13:02.3911085Z  * [new tag]             v0.6.4.post1           -> v0.6.4.post1
+2025-04-15T09:13:02.3912567Z  * [new tag]             v0.6.5                 -> v0.6.5
+2025-04-15T09:13:02.3914283Z  * [new tag]             v0.6.6                 -> v0.6.6
+2025-04-15T09:13:02.3915581Z  * [new tag]             v0.6.6.post1           -> v0.6.6.post1
+2025-04-15T09:13:02.3917223Z  * [new tag]             v0.7.0                 -> v0.7.0
+2025-04-15T09:13:02.3918830Z  * [new tag]             v0.7.1                 -> v0.7.1
+2025-04-15T09:13:02.3919865Z  * [new tag]             v0.7.2                 -> v0.7.2
+2025-04-15T09:13:02.3921510Z  * [new tag]             v0.7.3                 -> v0.7.3
+2025-04-15T09:13:02.3922691Z  * [new tag]             v0.8.0                 -> v0.8.0
+2025-04-15T09:13:02.3924582Z  * [new tag]             v0.8.0rc1              -> v0.8.0rc1
+2025-04-15T09:13:02.3925863Z  * [new tag]             v0.8.0rc2              -> v0.8.0rc2
+2025-04-15T09:13:02.3927071Z  * [new tag]             v0.8.1                 -> v0.8.1
+2025-04-15T09:13:02.3928312Z  * [new tag]             v0.8.2                 -> v0.8.2
+2025-04-15T09:13:02.3929543Z  * [new tag]             v0.8.3                 -> v0.8.3
+2025-04-15T09:13:02.3931181Z  * [new tag]             v0.8.3rc1              -> v0.8.3rc1
+2025-04-15T09:13:02.3932430Z  * [new tag]             v0.8.4                 -> v0.8.4
+2025-04-15T09:13:02.3936026Z  * [new ref]             2e47fef1e2c1a14d6bb277d7b190b11d237a3ea8 -> pull/15826/merge
+2025-04-15T09:13:02.3983169Z ##[endgroup]
+2025-04-15T09:13:02.3983715Z ##[group]Determining the checkout info
+2025-04-15T09:13:02.3984285Z ##[endgroup]
+2025-04-15T09:13:02.3989369Z [command]/usr/bin/git sparse-checkout disable
+2025-04-15T09:13:02.4027418Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-04-15T09:13:02.4053724Z ##[group]Checking out the ref
+2025-04-15T09:13:02.4057532Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/15826/merge
+2025-04-15T09:13:02.5881215Z Note: switching to 'refs/remotes/pull/15826/merge'.
+2025-04-15T09:13:02.5882113Z 
+2025-04-15T09:13:02.5882480Z You are in 'detached HEAD' state. You can look around, make experimental
+2025-04-15T09:13:02.5883155Z changes and commit them, and you can discard any commits you make in this
+2025-04-15T09:13:02.5883868Z state without impacting any branches by switching back to a branch.
+2025-04-15T09:13:02.5884250Z 
+2025-04-15T09:13:02.5884496Z If you want to create a new branch to retain commits you create, you may
+2025-04-15T09:13:02.5885022Z do so (now or later) by using -c with the switch command. Example:
+2025-04-15T09:13:02.5885297Z 
+2025-04-15T09:13:02.5885403Z   git switch -c <new-branch-name>
+2025-04-15T09:13:02.5885595Z 
+2025-04-15T09:13:02.5885722Z Or undo this operation with:
+2025-04-15T09:13:02.5885891Z 
+2025-04-15T09:13:02.5885982Z   git switch -
+2025-04-15T09:13:02.5886107Z 
+2025-04-15T09:13:02.5886331Z Turn off this advice by setting config variable advice.detachedHead to false
+2025-04-15T09:13:02.5886666Z 
+2025-04-15T09:13:02.5887069Z HEAD is now at 2e47fef1e Merge c51665e2e968c068c31d549e8bc6fba2b682bfd4 into 1575c1701a80befec8efe274b338cb26bc199275
+2025-04-15T09:13:02.5902557Z ##[endgroup]
+2025-04-15T09:13:02.5942363Z [command]/usr/bin/git log -1 --format=%H
+2025-04-15T09:13:02.5964625Z 2e47fef1e2c1a14d6bb277d7b190b11d237a3ea8

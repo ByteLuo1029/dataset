@@ -1,0 +1,43 @@
+2025-02-06T20:45:48.1473732Z ##[group]Run # set PYTHON_VER
+2025-02-06T20:45:48.1474046Z [36;1m# set PYTHON_VER[0m
+2025-02-06T20:45:48.1474261Z [36;1mPYTHON_VER=3.2[0m
+2025-02-06T20:45:48.1474560Z [36;1m[ "${PYTHON_VER#*-}" != "$PYTHON_VER" ] || PYTHON_VER="cpython-${PYTHON_VER}"[0m
+2025-02-06T20:45:48.1474937Z [36;1mecho "PYTHON_VER=$PYTHON_VER" >> "$GITHUB_ENV"[0m
+2025-02-06T20:45:48.1475239Z [36;1mecho "PYTHON_IMPL=cpython" >> "$GITHUB_ENV"[0m
+2025-02-06T20:45:48.1475593Z [36;1m# define a test to validate the Python version used by nosetests[0m
+2025-02-06T20:45:48.1475912Z [36;1mprintf '%s\n' \[0m
+2025-02-06T20:45:48.1476150Z [36;1m  'from __future__ import unicode_literals' \[0m
+2025-02-06T20:45:48.1476429Z [36;1m  'import sys, os, platform' \[0m
+2025-02-06T20:45:48.1476656Z [36;1m  'try:' \[0m
+2025-02-06T20:45:48.1476864Z [36;1m  '    import unittest2 as unittest' \[0m
+2025-02-06T20:45:48.1477124Z [36;1m  'except ImportError:' \[0m
+2025-02-06T20:45:48.1477572Z [36;1m  '    import unittest' \[0m
+2025-02-06T20:45:48.1477847Z [36;1m  'class TestPython(unittest.TestCase):' \[0m
+2025-02-06T20:45:48.1478109Z [36;1m  '    def setUp(self):' \[0m
+2025-02-06T20:45:48.1478385Z [36;1m  '        self.ver = os.environ["PYTHON_VER"].split("-")' \[0m
+2025-02-06T20:45:48.1478687Z [36;1m  '    def test_python_ver(self):' \[0m
+2025-02-06T20:45:48.1479074Z [36;1m  '        self.assertEqual(["%d" % v for v in sys.version_info[:2]], self.ver[-1].split(".")[:2])' \[0m
+2025-02-06T20:45:48.1479521Z [36;1m  '        self.assertTrue(sys.version.startswith(self.ver[-1]))' \[0m
+2025-02-06T20:45:48.1479996Z [36;1m  '        self.assertIn(self.ver[0], ",".join((sys.version, platform.python_implementation())).lower())' \[0m
+2025-02-06T20:45:48.1480406Z [36;1m  '    def test_python_impl(self):' \[0m
+2025-02-06T20:45:48.1480853Z [36;1m  '        self.assertIn(platform.python_implementation().lower(), (os.environ["PYTHON_IMPL"], self.ver[0]))' \[0m
+2025-02-06T20:45:48.1481540Z [36;1m  > test/test_python.py[0m
+2025-02-06T20:45:48.1538973Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-02-06T20:45:48.1539286Z env:
+2025-02-06T20:45:48.1539556Z   all-cpython-versions: 2.6, 2.7, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 3.10, 3.11, 3.12
+2025-02-06T20:45:48.1539921Z   main-cpython-versions: 2.7, 3.2, 3.5, 3.9, 3.11
+2025-02-06T20:45:48.1540212Z   pypy-versions: pypy-2.7, pypy-3.6, pypy-3.7
+2025-02-06T20:45:48.1540474Z   cpython-versions: main
+2025-02-06T20:45:48.1540677Z   test-set: core
+2025-02-06T20:45:48.1540851Z   next: 3.13
+2025-02-06T20:45:48.1541021Z   PIP: python -m pip
+2025-02-06T20:45:48.1541223Z   PIP_DISABLE_PIP_VERSION_CHECK: true
+2025-02-06T20:45:48.1541472Z   PIP_NO_PYTHON_VERSION_WARNING: true
+2025-02-06T20:45:48.1541762Z   pythonLocation: /opt/hostedtoolcache/Python/3.2.6/x64
+2025-02-06T20:45:48.1542141Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.2.6/x64/lib/pkgconfig
+2025-02-06T20:45:48.1542510Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.2.6/x64
+2025-02-06T20:45:48.1542841Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.2.6/x64
+2025-02-06T20:45:48.1543172Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.2.6/x64
+2025-02-06T20:45:48.1543503Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.2.6/x64/lib
+2025-02-06T20:45:48.1543828Z   PYTHONHOME: /opt/hostedtoolcache/Python/3.2.6/x64
+2025-02-06T20:45:48.1544088Z ##[endgroup]

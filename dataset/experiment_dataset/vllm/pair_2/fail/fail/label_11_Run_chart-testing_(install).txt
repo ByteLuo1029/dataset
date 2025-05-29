@@ -1,0 +1,287 @@
+﻿2025-04-15T09:31:42.2133685Z ##[group]Run export AWS_ACCESS_KEY_ID=minioadmin
+2025-04-15T09:31:42.2134311Z [36;1mexport AWS_ACCESS_KEY_ID=minioadmin[0m
+2025-04-15T09:31:42.2134830Z [36;1mexport AWS_SECRET_ACCESS_KEY=minioadmin[0m
+2025-04-15T09:31:42.2135645Z [36;1msleep 30 && kubectl -n ns-vllm logs -f "$(kubectl -n ns-vllm get pods | awk '/deployment/ {print $1;exit}')" &[0m
+2025-04-15T09:31:42.2141272Z [36;1mhelm install --wait --wait-for-jobs --timeout 5m0s --debug --create-namespace --namespace=ns-vllm test-vllm examples/online_serving/chart-helm -f examples/online_serving/chart-helm/values.yaml --set secrets.s3endpoint=http://minio:9000 --set secrets.s3bucketname=testbucket --set secrets.s3accesskeyid=$AWS_ACCESS_KEY_ID --set secrets.s3accesskey=$AWS_SECRET_ACCESS_KEY --set resources.requests.cpu=1 --set resources.requests.memory=4Gi --set resources.limits.cpu=2 --set resources.limits.memory=5Gi --set image.env[0].name=VLLM_CPU_KVCACHE_SPACE --set image.env[1].name=VLLM_LOGGING_LEVEL --set-string image.env[0].value="1" --set-string image.env[1].value="DEBUG" --set-string extraInit.s3modelpath="opt-125m/" --set-string 'resources.limits.nvidia\.com/gpu=0' --set-string 'resources.requests.nvidia\.com/gpu=0' --set-string image.repository="vllm-cpu-env"[0m
+2025-04-15T09:31:42.2232732Z shell: /usr/bin/bash -e {0}
+2025-04-15T09:31:42.2233094Z env:
+2025-04-15T09:31:42.2233489Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T09:31:42.2234167Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.2/x64/lib/pkgconfig
+2025-04-15T09:31:42.2234856Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T09:31:42.2235458Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T09:31:42.2236066Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T09:31:42.2236681Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.2/x64/lib
+2025-04-15T09:31:42.2237289Z   CT_CONFIG_DIR: /opt/hostedtoolcache/ct/3.10.1/amd64/etc
+2025-04-15T09:31:42.2237858Z   VIRTUAL_ENV: /opt/hostedtoolcache/ct/3.10.1/amd64/venv
+2025-04-15T09:31:42.2238593Z ##[endgroup]
+2025-04-15T09:31:42.2637246Z install.go:218: [debug] Original chart version: ""
+2025-04-15T09:31:42.2638549Z install.go:235: [debug] CHART PATH: /home/runner/work/vllm/vllm/examples/online_serving/chart-helm
+2025-04-15T09:31:42.2639266Z 
+2025-04-15T09:31:42.5070805Z client.go:142: [debug] creating 1 resource(s)
+2025-04-15T09:31:42.5162566Z client.go:142: [debug] creating 6 resource(s)
+2025-04-15T09:31:42.5446712Z wait.go:48: [debug] beginning wait for 6 resources with timeout of 5m0s
+2025-04-15T09:31:42.5531797Z ready.go:284: [debug] PersistentVolumeClaim is not bound: ns-vllm/test-vllm-storage-claim
+2025-04-15T09:31:44.6744634Z ready.go:284: [debug] PersistentVolumeClaim is not bound: ns-vllm/test-vllm-storage-claim
+2025-04-15T09:31:46.5474645Z ready.go:284: [debug] PersistentVolumeClaim is not bound: ns-vllm/test-vllm-storage-claim
+2025-04-15T09:31:48.5670907Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:31:50.5520825Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:31:52.5529236Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:31:54.5527783Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:31:56.5525663Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:31:58.5538008Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:32:00.5539611Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:32:02.5535212Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:32:04.5536162Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:32:06.5549851Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:32:08.5533662Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:32:10.5543228Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:32:12.3389744Z Defaulted container "vllm" out of: vllm, wait-download-model (init)
+2025-04-15T09:32:12.3421898Z DEBUG 04-15 09:32:11 [__init__.py:28] No plugins for group vllm.platform_plugins found.
+2025-04-15T09:32:12.3427614Z DEBUG 04-15 09:32:11 [__init__.py:34] Checking if TPU platform is available.
+2025-04-15T09:32:12.3428634Z DEBUG 04-15 09:32:11 [__init__.py:44] TPU platform is not available because: No module named 'libtpu'
+2025-04-15T09:32:12.3429486Z DEBUG 04-15 09:32:11 [__init__.py:52] Checking if CUDA platform is available.
+2025-04-15T09:32:12.3430775Z DEBUG 04-15 09:32:11 [__init__.py:76] Exception happens when checking CUDA platform: NVML Shared Library Not Found
+2025-04-15T09:32:12.3431794Z DEBUG 04-15 09:32:11 [__init__.py:93] CUDA platform is not available because: NVML Shared Library Not Found
+2025-04-15T09:32:12.3432624Z DEBUG 04-15 09:32:11 [__init__.py:100] Checking if ROCm platform is available.
+2025-04-15T09:32:12.3433445Z DEBUG 04-15 09:32:11 [__init__.py:114] ROCm platform is not available because: No module named 'amdsmi'
+2025-04-15T09:32:12.3434246Z DEBUG 04-15 09:32:11 [__init__.py:122] Checking if HPU platform is available.
+2025-04-15T09:32:12.3435076Z DEBUG 04-15 09:32:11 [__init__.py:129] HPU platform is not available because habana_frameworks is not found.
+2025-04-15T09:32:12.3435897Z DEBUG 04-15 09:32:11 [__init__.py:140] Checking if XPU platform is available.
+2025-04-15T09:32:12.5541229Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:32:14.2367837Z DEBUG 04-15 09:32:14 [__init__.py:150] XPU platform is not available because: No module named 'oneccl_bindings_for_pytorch'
+2025-04-15T09:32:14.2370583Z DEBUG 04-15 09:32:14 [__init__.py:158] Checking if CPU platform is available.
+2025-04-15T09:32:14.2383879Z DEBUG 04-15 09:32:14 [__init__.py:162] Confirmed CPU platform is available because vLLM is built with CPU.
+2025-04-15T09:32:14.2385775Z DEBUG 04-15 09:32:14 [__init__.py:180] Checking if Neuron platform is available.
+2025-04-15T09:32:14.2388949Z DEBUG 04-15 09:32:14 [__init__.py:187] Neuron platform is not available because: No module named 'transformers_neuronx'
+2025-04-15T09:32:14.2392289Z DEBUG 04-15 09:32:14 [__init__.py:158] Checking if CPU platform is available.
+2025-04-15T09:32:14.2405912Z DEBUG 04-15 09:32:14 [__init__.py:162] Confirmed CPU platform is available because vLLM is built with CPU.
+2025-04-15T09:32:14.2407730Z INFO 04-15 09:32:14 [__init__.py:239] Automatically detected platform cpu.
+2025-04-15T09:32:14.5529961Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:32:16.5542285Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:32:16.9456319Z DEBUG 04-15 09:32:16 [utils.py:135] Setting VLLM_WORKER_MULTIPROC_METHOD to 'spawn'
+2025-04-15T09:32:16.9545029Z DEBUG 04-15 09:32:16 [__init__.py:28] No plugins for group vllm.general_plugins found.
+2025-04-15T09:32:17.1832260Z INFO 04-15 09:32:17 [api_server.py:1034] vLLM API server version 0.8.5.dev30+g6e6c80bad
+2025-04-15T09:32:17.1860468Z INFO 04-15 09:32:17 [api_server.py:1035] args: Namespace(subparser='serve', model_tag='/data/', config='', host='0.0.0.0', port=8000, uvicorn_log_level='info', disable_uvicorn_access_log=False, allow_credentials=False, allowed_origins=['*'], allowed_methods=['*'], allowed_headers=['*'], api_key=None, lora_modules=None, prompt_adapters=None, chat_template=None, chat_template_content_format='auto', response_role='assistant', ssl_keyfile=None, ssl_certfile=None, ssl_ca_certs=None, enable_ssl_refresh=False, ssl_cert_reqs=0, root_path=None, middleware=[], return_tokens_as_token_ids=False, disable_frontend_multiprocessing=False, enable_request_id_headers=False, enable_auto_tool_choice=False, tool_call_parser=None, tool_parser_plugin='', model='/data/', task='auto', tokenizer=None, hf_config_path=None, skip_tokenizer_init=False, revision=None, code_revision=None, tokenizer_revision=None, tokenizer_mode='auto', trust_remote_code=False, allowed_local_media_path=None, load_format='auto', download_dir=None, model_loader_extra_config=None, use_tqdm_on_load=True, config_format=<ConfigFormat.AUTO: 'auto'>, dtype='bfloat16', kv_cache_dtype='auto', max_model_len=None, guided_decoding_backend='auto', logits_processor_pattern=None, model_impl='auto', distributed_executor_backend=None, pipeline_parallel_size=1, tensor_parallel_size=1, data_parallel_size=1, enable_expert_parallel=False, max_parallel_loading_workers=None, ray_workers_use_nsight=False, disable_custom_all_reduce=False, block_size=None, enable_prefix_caching=None, prefix_caching_hash_algo='builtin', disable_sliding_window=False, use_v2_block_manager=True, seed=None, swap_space=4, cpu_offload_gb=0, gpu_memory_utilization=0.9, num_gpu_blocks_override=None, max_logprobs=20, disable_log_stats=False, quantization=None, rope_scaling=None, rope_theta=None, hf_token=None, hf_overrides=None, enforce_eager=False, max_seq_len_to_capture=8192, tokenizer_pool_size=0, tokenizer_pool_type='ray', tokenizer_pool_extra_config=None, limit_mm_per_prompt=None, mm_processor_kwargs=None, disable_mm_preprocessor_cache=False, enable_lora=False, enable_lora_bias=False, max_loras=1, max_lora_rank=16, lora_extra_vocab_size=256, lora_dtype='auto', long_lora_scaling_factors=None, max_cpu_loras=None, fully_sharded_loras=False, enable_prompt_adapter=False, max_prompt_adapters=1, max_prompt_adapter_token=0, device='auto', num_scheduler_steps=1, speculative_config=None, ignore_patterns=[], preemption_mode=None, served_model_name=['opt-125m'], qlora_adapter_name_or_path=None, show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, disable_async_output_proc=False, max_num_batched_tokens=None, max_num_seqs=None, max_num_partial_prefills=1, max_long_partial_prefills=1, long_prefill_token_threshold=0, num_lookahead_slots=0, scheduler_delay_factor=0.0, enable_chunked_prefill=None, multi_step_stream_outputs=True, scheduling_policy='fcfs', disable_chunked_mm_input=False, scheduler_cls='vllm.core.scheduler.Scheduler', override_neuron_config=None, override_pooler_config=None, compilation_config=None, kv_transfer_config=None, worker_cls='auto', worker_extension_cls='', generation_config='auto', override_generation_config=None, enable_sleep_mode=False, calculate_kv_scales=False, additional_config=None, enable_reasoning=False, reasoning_parser=None, disable_cascade_attn=False, disable_log_requests=False, max_log_len=None, disable_fastapi_docs=False, enable_prompt_tokens_details=False, enable_server_load_tracking=False, dispatch_function=<function ServeSubcommand.cmd at 0x7f74ecfb8540>)
+2025-04-15T09:32:17.1895949Z Traceback (most recent call last):
+2025-04-15T09:32:17.1904979Z   File "/opt/venv/lib/python3.12/site-packages/transformers/configuration_utils.py", line 684, in _get_config_dict
+2025-04-15T09:32:17.1906548Z     config_dict = cls._dict_from_json_file(resolved_config_file)
+2025-04-15T09:32:17.1907036Z                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-04-15T09:32:17.1907903Z   File "/opt/venv/lib/python3.12/site-packages/transformers/configuration_utils.py", line 791, in _dict_from_json_file
+2025-04-15T09:32:17.1908896Z     return json.loads(text)
+2025-04-15T09:32:17.1909201Z            ^^^^^^^^^^^^^^^^
+2025-04-15T09:32:17.1909890Z   File "/opt/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/json/__init__.py", line 346, in loads
+2025-04-15T09:32:17.1910855Z     return _default_decoder.decode(s)
+2025-04-15T09:32:17.1911205Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-04-15T09:32:17.1911891Z   File "/opt/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/json/decoder.py", line 338, in decode
+2025-04-15T09:32:17.1912607Z     obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+2025-04-15T09:32:17.1912989Z                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-04-15T09:32:17.1913753Z   File "/opt/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/json/decoder.py", line 356, in raw_decode
+2025-04-15T09:32:17.1914695Z     raise JSONDecodeError("Expecting value", s, err.value) from None
+2025-04-15T09:32:17.1915401Z json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-04-15T09:32:17.1915827Z 
+2025-04-15T09:32:17.1916086Z During handling of the above exception, another exception occurred:
+2025-04-15T09:32:17.1916461Z 
+2025-04-15T09:32:17.1916584Z Traceback (most recent call last):
+2025-04-15T09:32:17.1917011Z   File "/opt/venv/bin/vllm", line 10, in <module>
+2025-04-15T09:32:17.1917401Z     sys.exit(main())
+2025-04-15T09:32:17.1917845Z              ^^^^^^
+2025-04-15T09:32:17.1919578Z   File "/opt/venv/lib/python3.12/site-packages/vllm/entrypoints/cli/main.py", line 51, in main
+2025-04-15T09:32:17.1920279Z     args.dispatch_function(args)
+2025-04-15T09:32:17.1920982Z   File "/opt/venv/lib/python3.12/site-packages/vllm/entrypoints/cli/serve.py", line 27, in cmd
+2025-04-15T09:32:17.1921629Z     uvloop.run(run_server(args))
+2025-04-15T09:32:17.1922200Z   File "/opt/venv/lib/python3.12/site-packages/uvloop/__init__.py", line 109, in run
+2025-04-15T09:32:17.1922760Z     return __asyncio.run(
+2025-04-15T09:32:17.1923033Z            ^^^^^^^^^^^^^^
+2025-04-15T09:32:17.1923666Z   File "/opt/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/asyncio/runners.py", line 195, in run
+2025-04-15T09:32:17.1924354Z     return runner.run(main)
+2025-04-15T09:32:17.1924634Z            ^^^^^^^^^^^^^^^^
+2025-04-15T09:32:17.1925263Z   File "/opt/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/asyncio/runners.py", line 118, in run
+2025-04-15T09:32:17.1925988Z     return self._loop.run_until_complete(task)
+2025-04-15T09:32:17.1930736Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-04-15T09:32:17.1931485Z   File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+2025-04-15T09:32:17.1933335Z   File "/opt/venv/lib/python3.12/site-packages/uvloop/__init__.py", line 61, in wrapper
+2025-04-15T09:32:17.1934123Z     return await main
+2025-04-15T09:32:17.1934381Z            ^^^^^^^^^^
+2025-04-15T09:32:17.1935418Z   File "/opt/venv/lib/python3.12/site-packages/vllm/entrypoints/openai/api_server.py", line 1069, in run_server
+2025-04-15T09:32:17.1936427Z     async with build_async_engine_client(args) as engine_client:
+2025-04-15T09:32:17.1937060Z                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-04-15T09:32:17.1937945Z   File "/opt/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/contextlib.py", line 210, in __aenter__
+2025-04-15T09:32:17.1938917Z     return await anext(self.gen)
+2025-04-15T09:32:17.1939425Z            ^^^^^^^^^^^^^^^^^^^^^
+2025-04-15T09:32:17.1940303Z   File "/opt/venv/lib/python3.12/site-packages/vllm/entrypoints/openai/api_server.py", line 146, in build_async_engine_client
+2025-04-15T09:32:17.1941166Z     async with build_async_engine_client_from_engine_args(
+2025-04-15T09:32:17.1941593Z                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-04-15T09:32:17.1942302Z   File "/opt/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/contextlib.py", line 210, in __aenter__
+2025-04-15T09:32:17.1942992Z     return await anext(self.gen)
+2025-04-15T09:32:17.1943303Z            ^^^^^^^^^^^^^^^^^^^^^
+2025-04-15T09:32:17.1944160Z   File "/opt/venv/lib/python3.12/site-packages/vllm/entrypoints/openai/api_server.py", line 166, in build_async_engine_client_from_engine_args
+2025-04-15T09:32:17.1945167Z     vllm_config = engine_args.create_engine_config(usage_context=usage_context)
+2025-04-15T09:32:17.1945965Z                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-04-15T09:32:17.1946713Z   File "/opt/venv/lib/python3.12/site-packages/vllm/engine/arg_utils.py", line 1168, in create_engine_config
+2025-04-15T09:32:17.1947425Z     model_config = self.create_model_config()
+2025-04-15T09:32:17.1947789Z                    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-04-15T09:32:17.1948721Z   File "/opt/venv/lib/python3.12/site-packages/vllm/engine/arg_utils.py", line 1056, in create_model_config
+2025-04-15T09:32:17.1950411Z     return ModelConfig(
+2025-04-15T09:32:17.1950690Z            ^^^^^^^^^^^^
+2025-04-15T09:32:17.1951404Z   File "/opt/venv/lib/python3.12/site-packages/vllm/config.py", line 431, in __init__
+2025-04-15T09:32:17.1952244Z     hf_config = get_config(self.hf_config_path or self.model,
+2025-04-15T09:32:17.1952793Z                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-04-15T09:32:17.1953529Z   File "/opt/venv/lib/python3.12/site-packages/vllm/transformers_utils/config.py", line 288, in get_config
+2025-04-15T09:32:17.1954275Z     config_dict, _ = PretrainedConfig.get_config_dict(
+2025-04-15T09:32:17.1954887Z                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-04-15T09:32:17.1955683Z   File "/opt/venv/lib/python3.12/site-packages/transformers/configuration_utils.py", line 590, in get_config_dict
+2025-04-15T09:32:17.1956599Z     config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)
+2025-04-15T09:32:17.1957166Z                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-04-15T09:32:17.1957939Z   File "/opt/venv/lib/python3.12/site-packages/transformers/configuration_utils.py", line 688, in _get_config_dict
+2025-04-15T09:32:17.1959191Z     raise OSError(f"It looks like the config file at '{resolved_config_file}' is not a valid JSON file.")
+2025-04-15T09:32:17.1959988Z OSError: It looks like the config file at '/data/config.json' is not a valid JSON file.
+2025-04-15T09:32:18.5525881Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:32:20.5564959Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:32:22.5545959Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:32:24.5568423Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:32:26.5546320Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:32:28.5534226Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:32:30.5537784Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:32:32.5541226Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:32:34.5533170Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:32:36.5526641Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:32:38.5549989Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:32:40.5521762Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:32:42.5533814Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:32:44.5522534Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:32:46.5535275Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:32:48.5535497Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:32:50.5536492Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:32:52.5543182Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:32:54.5539183Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:32:56.5539295Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:32:58.5550279Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:33:00.5697517Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:33:02.5551219Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:33:04.5541978Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:33:06.5543587Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:33:08.5525157Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:33:10.5537817Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:33:12.5518535Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:33:14.5522017Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:33:16.5542310Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:33:18.5522624Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:33:20.5536649Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:33:22.5529640Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:33:24.5533315Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:33:26.5536465Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:33:28.5534607Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:33:30.5528097Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:33:32.5541020Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:33:34.5544757Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:33:36.5580117Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:33:38.5533196Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:33:40.5548105Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:33:42.5543483Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:33:44.5548126Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:33:46.5543953Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:33:48.5541272Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:33:50.5536683Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:33:52.5529559Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:33:54.5519850Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:33:56.5522746Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:33:58.5527869Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:34:00.5527371Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:34:02.5523456Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:34:04.5537160Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:34:06.5541373Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:34:08.5531440Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:34:10.5533060Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:34:12.5513945Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:34:14.5532513Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:34:16.5539491Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:34:18.5531943Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:34:20.5523441Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:34:22.5522388Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:34:24.5523965Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:34:26.5541861Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:34:28.5537596Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:34:30.5534363Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:34:32.5531705Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:34:34.5530160Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:34:36.5523193Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:34:38.5515396Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:34:40.5532805Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:34:42.5660639Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:34:44.5532142Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:34:46.5534995Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:34:48.5533601Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:34:50.5546986Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:34:52.5565926Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:34:54.5553570Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:34:56.5541272Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:34:58.5548459Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:35:00.5533214Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:35:02.5534235Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:35:04.5527810Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:35:06.5530677Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:35:08.5532151Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:35:10.5524262Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:35:12.5536074Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:35:14.5547073Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:35:16.5524104Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:35:18.5534175Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:35:20.5529284Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:35:22.5525863Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:35:24.5537888Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:35:26.5531678Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:35:28.5532621Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:35:30.5535889Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:35:32.5525472Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:35:34.5528479Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:35:36.5524576Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:35:38.5543347Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:35:40.5520272Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:35:42.5526879Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:35:44.5531042Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:35:46.5520957Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:35:48.5533677Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:35:50.5529766Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:35:52.5523777Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:35:54.5520586Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:35:56.5522431Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:35:58.5533351Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:36:00.5535754Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:36:02.5538531Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:36:04.5540926Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:36:06.5527538Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:36:08.5547845Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:36:10.5521439Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:36:12.5530644Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:36:14.5521007Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:36:16.5533835Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:36:18.5527129Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:36:20.5525244Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:36:22.5535140Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:36:24.5543473Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:36:26.5543176Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:36:28.5529512Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:36:30.5534683Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:36:32.5537428Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:36:34.5533979Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:36:36.5544785Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:36:38.5622672Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:36:40.5527619Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:36:42.5556760Z Error: INSTALLATION FAILED: client rate limiter Wait returned an error: context deadline exceeded
+2025-04-15T09:36:42.5560470Z helm.go:84: [debug] client rate limiter Wait returned an error: context deadline exceeded
+2025-04-15T09:36:42.5561185Z INSTALLATION FAILED
+2025-04-15T09:36:42.5561506Z main.newInstallCmd.func2
+2025-04-15T09:36:42.5562283Z 	helm.sh/helm/v3/cmd/helm/install.go:158
+2025-04-15T09:36:42.5562724Z github.com/spf13/cobra.(*Command).execute
+2025-04-15T09:36:42.5563173Z 	github.com/spf13/cobra@v1.8.0/command.go:983
+2025-04-15T09:36:42.5563627Z github.com/spf13/cobra.(*Command).ExecuteC
+2025-04-15T09:36:42.5564075Z 	github.com/spf13/cobra@v1.8.0/command.go:1115
+2025-04-15T09:36:42.5564519Z github.com/spf13/cobra.(*Command).Execute
+2025-04-15T09:36:42.5564962Z 	github.com/spf13/cobra@v1.8.0/command.go:1039
+2025-04-15T09:36:42.5565355Z main.main
+2025-04-15T09:36:42.5565635Z 	helm.sh/helm/v3/cmd/helm/helm.go:83
+2025-04-15T09:36:42.5565993Z runtime.main
+2025-04-15T09:36:42.5566268Z 	runtime/proc.go:267
+2025-04-15T09:36:42.5566563Z runtime.goexit
+2025-04-15T09:36:42.5566850Z 	runtime/asm_amd64.s:1650
+2025-04-15T09:36:42.5596042Z ##[error]Process completed with exit code 1.

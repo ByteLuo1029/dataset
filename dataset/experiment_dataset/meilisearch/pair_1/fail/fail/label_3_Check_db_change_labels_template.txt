@@ -1,0 +1,21 @@
+##[group]Run <:*:>
+[<:NUM:>;1mURL=/repos/meilisearch/meilisearch/pulls/<:NUM:>/labels[0m
+[<:NUM:>;1mecho <:*:>
+[<:NUM:>;1mecho <:*:>
+[<:NUM:>;1mLABELS=$(gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: <:NUM:>-<:NUM:>-<:NUM:>" /repos/meilisearch/meilisearch/issues/<:NUM:>/labels -q .[].name)[0m
+[<:NUM:>;1mif [[ ! "$LABELS" =~ "db change" && ! "$LABELS" =~ "no db change" ]]; then[0m
+[<:NUM:>;1m echo "::error::Pull request must contain either the 'db change' or 'no db change' label."[0m
+[<:NUM:>;1m exit <:NUM:>[0m
+[<:NUM:>;1melse[0m
+[<:NUM:>;1m echo "The label is set"[0m
+[<:NUM:>;1mfi[0m
+shell: /usr/bin/bash -e {<:NUM:>}
+env:
+GH_TOKEN:
+##[endgroup]
+<:NUM:>
+/repos/meilisearch/meilisearch/pulls/<:NUM:>/labels
+gh: To use GitHub CLI in a GitHub Actions workflow, set the GH_TOKEN environment variable. Example:
+env:
+GH_TOKEN: ${{ github.token }}
+##[error]Process completed with exit code 4.

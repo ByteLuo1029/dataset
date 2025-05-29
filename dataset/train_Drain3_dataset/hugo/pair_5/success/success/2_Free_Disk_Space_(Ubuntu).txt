@@ -1,0 +1,1736 @@
+2025-04-11T17:01:15.2223133Z ##[group]Run jlumbroso/free-disk-space@54081f138730dfa15788a46383842cd2f914a1be
+2025-04-11T17:01:15.2224952Z with:
+2025-04-11T17:01:15.2225711Z   tool-cache: false
+2025-04-11T17:01:15.2226518Z   android: true
+2025-04-11T17:01:15.2227288Z   dotnet: true
+2025-04-11T17:01:15.2228040Z   haskell: true
+2025-04-11T17:01:15.2228829Z   large-packages: true
+2025-04-11T17:01:15.2229685Z   docker-images: true
+2025-04-11T17:01:15.2230522Z   swap-storage: true
+2025-04-11T17:01:15.2231734Z env:
+2025-04-11T17:01:15.2232684Z   GOPROXY: https://proxy.golang.org
+2025-04-11T17:01:15.2233671Z   GO111MODULE: on
+2025-04-11T17:01:15.2234442Z   SASS_VERSION: 1.80.3
+2025-04-11T17:01:15.2235766Z   DART_SASS_SHA_LINUX: 7c933edbad0a7d389192c5b79393485c088bd2c4398e32f5754c32af006a9ffd
+2025-04-11T17:01:15.2237815Z   DART_SASS_SHA_MACOS: 79e060b0e131c3bb3c16926bafc371dc33feab122bfa8c01aa337a072097967b
+2025-04-11T17:01:15.2239877Z   DART_SASS_SHA_WINDOWS: 0bc4708b37cd1bac4740e83ac5e3176e66b774f77fd5dd364da5b5cfc9bfb469
+2025-04-11T17:01:15.2241480Z ##[endgroup]
+2025-04-11T17:01:15.2371325Z ##[group]Run # ======
+2025-04-11T17:01:15.2373196Z [36;1m[0m
+2025-04-11T17:01:15.2373944Z [36;1m# ======[0m
+2025-04-11T17:01:15.2374704Z [36;1m# MACROS[0m
+2025-04-11T17:01:15.2375504Z [36;1m# ======[0m
+2025-04-11T17:01:15.2376264Z [36;1m[0m
+2025-04-11T17:01:15.2377099Z [36;1m# macro to print a line of equals[0m
+2025-04-11T17:01:15.2378131Z [36;1m# (silly but works)[0m
+2025-04-11T17:01:15.2379056Z [36;1mprintSeparationLine() {[0m
+2025-04-11T17:01:15.2380000Z [36;1m  str=${1:=}[0m
+2025-04-11T17:01:15.2380794Z [36;1m  num=${2:-80}[0m
+2025-04-11T17:01:15.2381616Z [36;1m  counter=1[0m
+2025-04-11T17:01:15.2382537Z [36;1m  output=""[0m
+2025-04-11T17:01:15.2383652Z [36;1m  while [ $counter -le $num ][0m
+2025-04-11T17:01:15.2384613Z [36;1m  do[0m
+2025-04-11T17:01:15.2385392Z [36;1m     output="${output}${str}"[0m
+2025-04-11T17:01:15.2386475Z [36;1m     counter=$((counter+1))[0m
+2025-04-11T17:01:15.2387410Z [36;1m  done[0m
+2025-04-11T17:01:15.2388186Z [36;1m  echo "${output}"[0m
+2025-04-11T17:01:15.2389045Z [36;1m}[0m
+2025-04-11T17:01:15.2389733Z [36;1m[0m
+2025-04-11T17:01:15.2390507Z [36;1m# macro to compute available space[0m
+2025-04-11T17:01:15.2391722Z [36;1m# REF: https://unix.stackexchange.com/a/42049/60849[0m
+2025-04-11T17:01:15.2393181Z [36;1m# REF: https://stackoverflow.com/a/450821/408734[0m
+2025-04-11T17:01:15.2394770Z [36;1mgetAvailableSpace() { echo $(df -a $1 | awk 'NR > 1 {avail+=$4} END {print avail}'); }[0m
+2025-04-11T17:01:15.2396194Z [36;1m[0m
+2025-04-11T17:01:15.2397122Z [36;1m# macro to make Kb human readable (assume the input is Kb)[0m
+2025-04-11T17:01:15.2398496Z [36;1m# REF: https://unix.stackexchange.com/a/44087/60849[0m
+2025-04-11T17:01:15.2400119Z [36;1mformatByteCount() { echo $(numfmt --to=iec-i --suffix=B --padding=7 $1'000'); }[0m
+2025-04-11T17:01:15.2401522Z [36;1m[0m
+2025-04-11T17:01:15.2402367Z [36;1m# macro to output saved space[0m
+2025-04-11T17:01:15.2403360Z [36;1mprintSavedSpace() {[0m
+2025-04-11T17:01:15.2404247Z [36;1m  saved=${1}[0m
+2025-04-11T17:01:15.2405025Z [36;1m  title=${2:-}[0m
+2025-04-11T17:01:15.2405826Z [36;1m[0m
+2025-04-11T17:01:15.2406698Z [36;1m  echo ""[0m
+2025-04-11T17:01:15.2407534Z [36;1m  printSeparationLine '*' 80[0m
+2025-04-11T17:01:15.2408533Z [36;1m  if [ ! -z "${title}" ]; then[0m
+2025-04-11T17:01:15.2409661Z [36;1m    echo "=> ${title}: Saved $(formatByteCount $saved)"[0m
+2025-04-11T17:01:15.2410769Z [36;1m  else[0m
+2025-04-11T17:01:15.2411616Z [36;1m    echo "=> Saved $(formatByteCount $saved)"[0m
+2025-04-11T17:01:15.2413665Z [36;1m  fi[0m
+2025-04-11T17:01:15.2414595Z [36;1m  printSeparationLine '*' 80[0m
+2025-04-11T17:01:15.2415576Z [36;1m  echo ""[0m
+2025-04-11T17:01:15.2416333Z [36;1m}[0m
+2025-04-11T17:01:15.2417022Z [36;1m[0m
+2025-04-11T17:01:15.2417836Z [36;1m# macro to print output of dh with caption[0m
+2025-04-11T17:01:15.2418907Z [36;1mprintDH() {[0m
+2025-04-11T17:01:15.2419708Z [36;1m  caption=${1:-}[0m
+2025-04-11T17:01:15.2420765Z [36;1m[0m
+2025-04-11T17:01:15.2421513Z [36;1m  printSeparationLine '=' 80[0m
+2025-04-11T17:01:15.2422639Z [36;1m  echo "${caption}"[0m
+2025-04-11T17:01:15.2423508Z [36;1m  echo ""[0m
+2025-04-11T17:01:15.2424298Z [36;1m  echo "$ dh -h /"[0m
+2025-04-11T17:01:15.2425172Z [36;1m  echo ""[0m
+2025-04-11T17:01:15.2425943Z [36;1m  df -h /[0m
+2025-04-11T17:01:15.2426733Z [36;1m  echo "$ dh -a /"[0m
+2025-04-11T17:01:15.2427595Z [36;1m  echo ""[0m
+2025-04-11T17:01:15.2428367Z [36;1m  df -a /[0m
+2025-04-11T17:01:15.2429150Z [36;1m  echo "$ dh -a"[0m
+2025-04-11T17:01:15.2429969Z [36;1m  echo ""[0m
+2025-04-11T17:01:15.2430727Z [36;1m  df -a[0m
+2025-04-11T17:01:15.2431554Z [36;1m  printSeparationLine '=' 80[0m
+2025-04-11T17:01:15.2432660Z [36;1m}[0m
+2025-04-11T17:01:15.2433366Z [36;1m[0m
+2025-04-11T17:01:15.2434047Z [36;1m[0m
+2025-04-11T17:01:15.2434731Z [36;1m[0m
+2025-04-11T17:01:15.2435416Z [36;1m# ======[0m
+2025-04-11T17:01:15.2436155Z [36;1m# SCRIPT[0m
+2025-04-11T17:01:15.2436893Z [36;1m# ======[0m
+2025-04-11T17:01:15.2437622Z [36;1m[0m
+2025-04-11T17:01:15.2438401Z [36;1m# Display initial disk space stats[0m
+2025-04-11T17:01:15.2439401Z [36;1m[0m
+2025-04-11T17:01:15.2440210Z [36;1mAVAILABLE_INITIAL=$(getAvailableSpace)[0m
+2025-04-11T17:01:15.2441456Z [36;1mAVAILABLE_ROOT_INITIAL=$(getAvailableSpace '/')[0m
+2025-04-11T17:01:15.2442668Z [36;1m[0m
+2025-04-11T17:01:15.2443410Z [36;1mprintDH "BEFORE CLEAN-UP:"[0m
+2025-04-11T17:01:15.2444343Z [36;1mecho ""[0m
+2025-04-11T17:01:15.2445072Z [36;1m[0m
+2025-04-11T17:01:15.2445745Z [36;1m[0m
+2025-04-11T17:01:15.2446570Z [36;1m# Option: Remove Android library[0m
+2025-04-11T17:01:15.2447532Z [36;1m[0m
+2025-04-11T17:01:15.2448434Z [36;1mif [[ true == 'true' ]]; then[0m
+2025-04-11T17:01:15.2449450Z [36;1m  BEFORE=$(getAvailableSpace)[0m
+2025-04-11T17:01:15.2450419Z [36;1m  [0m
+2025-04-11T17:01:15.2451255Z [36;1m  sudo rm -rf /usr/local/lib/android || true[0m
+2025-04-11T17:01:15.2452426Z [36;1m[0m
+2025-04-11T17:01:15.2453188Z [36;1m  AFTER=$(getAvailableSpace)[0m
+2025-04-11T17:01:15.2454183Z [36;1m  SAVED=$((AFTER-BEFORE))[0m
+2025-04-11T17:01:15.2455253Z [36;1m  printSavedSpace $SAVED "Android library"[0m
+2025-04-11T17:01:15.2456307Z [36;1mfi[0m
+2025-04-11T17:01:15.2456998Z [36;1m[0m
+2025-04-11T17:01:15.2457742Z [36;1m# Option: Remove .NET runtime[0m
+2025-04-11T17:01:15.2458687Z [36;1m[0m
+2025-04-11T17:01:15.2459411Z [36;1mif [[ true == 'true' ]]; then[0m
+2025-04-11T17:01:15.2460409Z [36;1m  BEFORE=$(getAvailableSpace)[0m
+2025-04-11T17:01:15.2461355Z [36;1m[0m
+2025-04-11T17:01:15.2462690Z [36;1m  # https://github.community/t/bigger-github-hosted-runners-disk-space/17267/11[0m
+2025-04-11T17:01:15.2464314Z [36;1m  sudo rm -rf /usr/share/dotnet || true[0m
+2025-04-11T17:01:15.2465335Z [36;1m  [0m
+2025-04-11T17:01:15.2466107Z [36;1m  AFTER=$(getAvailableSpace)[0m
+2025-04-11T17:01:15.2467090Z [36;1m  SAVED=$((AFTER-BEFORE))[0m
+2025-04-11T17:01:15.2468134Z [36;1m  printSavedSpace $SAVED ".NET runtime"[0m
+2025-04-11T17:01:15.2469178Z [36;1mfi[0m
+2025-04-11T17:01:15.2469885Z [36;1m[0m
+2025-04-11T17:01:15.2470794Z [36;1m# Option: Remove Haskell runtime[0m
+2025-04-11T17:01:15.2471788Z [36;1m[0m
+2025-04-11T17:01:15.2472617Z [36;1mif [[ true == 'true' ]]; then[0m
+2025-04-11T17:01:15.2473631Z [36;1m  BEFORE=$(getAvailableSpace)[0m
+2025-04-11T17:01:15.2474590Z [36;1m[0m
+2025-04-11T17:01:15.2475339Z [36;1m  sudo rm -rf /opt/ghc || true[0m
+2025-04-11T17:01:15.2476432Z [36;1m  sudo rm -rf /usr/local/.ghcup || true[0m
+2025-04-11T17:01:15.2477449Z [36;1m  [0m
+2025-04-11T17:01:15.2478223Z [36;1m  AFTER=$(getAvailableSpace)[0m
+2025-04-11T17:01:15.2479232Z [36;1m  SAVED=$((AFTER-BEFORE))[0m
+2025-04-11T17:01:15.2480316Z [36;1m  printSavedSpace $SAVED "Haskell runtime"[0m
+2025-04-11T17:01:15.2481386Z [36;1mfi[0m
+2025-04-11T17:01:15.2482170Z [36;1m[0m
+2025-04-11T17:01:15.2482940Z [36;1m# Option: Remove large packages[0m
+2025-04-11T17:01:15.2484597Z [36;1m# REF: https://github.com/apache/flink/blob/master/tools/azure-pipelines/free_disk_space.sh[0m
+2025-04-11T17:01:15.2486393Z [36;1m[0m
+2025-04-11T17:01:15.2487138Z [36;1mif [[ true == 'true' ]]; then[0m
+2025-04-11T17:01:15.2488140Z [36;1m  BEFORE=$(getAvailableSpace)[0m
+2025-04-11T17:01:15.2489093Z [36;1m  [0m
+2025-04-11T17:01:15.2491000Z [36;1m  sudo apt-get remove -y '^aspnetcore-.*' || echo "::warning::The command [sudo apt-get remove -y '^aspnetcore-.*'] failed to complete successfully. Proceeding..."[0m
+2025-04-11T17:01:15.2494601Z [36;1m  sudo apt-get remove -y '^dotnet-.*' --fix-missing || echo "::warning::The command [sudo apt-get remove -y '^dotnet-.*' --fix-missing] failed to complete successfully. Proceeding..."[0m
+2025-04-11T17:01:15.2498194Z [36;1m  sudo apt-get remove -y '^llvm-.*' --fix-missing || echo "::warning::The command [sudo apt-get remove -y '^llvm-.*' --fix-missing] failed to complete successfully. Proceeding..."[0m
+2025-04-11T17:01:15.2501692Z [36;1m  sudo apt-get remove -y 'php.*' --fix-missing || echo "::warning::The command [sudo apt-get remove -y 'php.*' --fix-missing] failed to complete successfully. Proceeding..."[0m
+2025-04-11T17:01:15.2505386Z [36;1m  sudo apt-get remove -y '^mongodb-.*' --fix-missing || echo "::warning::The command [sudo apt-get remove -y '^mongodb-.*' --fix-missing] failed to complete successfully. Proceeding..."[0m
+2025-04-11T17:01:15.2509079Z [36;1m  sudo apt-get remove -y '^mysql-.*' --fix-missing || echo "::warning::The command [sudo apt-get remove -y '^mysql-.*' --fix-missing] failed to complete successfully. Proceeding..."[0m
+2025-04-11T17:01:15.2514356Z [36;1m  sudo apt-get remove -y azure-cli google-chrome-stable firefox powershell mono-devel libgl1-mesa-dri --fix-missing || echo "::warning::The command [sudo apt-get remove -y azure-cli google-chrome-stable firefox powershell mono-devel libgl1-mesa-dri --fix-missing] failed to complete successfully. Proceeding..."[0m
+2025-04-11T17:01:15.2519908Z [36;1m  sudo apt-get remove -y google-cloud-sdk --fix-missing || echo "::debug::The command [sudo apt-get remove -y google-cloud-sdk --fix-missing] failed to complete successfully. Proceeding..."[0m
+2025-04-11T17:01:15.2523985Z [36;1m  sudo apt-get remove -y google-cloud-cli --fix-missing || echo "::debug::The command [sudo apt-get remove -y google-cloud-cli --fix-missing] failed to complete successfully. Proceeding..."[0m
+2025-04-11T17:01:15.2528475Z [36;1m  sudo apt-get autoremove -y || echo "::warning::The command [sudo apt-get autoremove -y] failed to complete successfully. Proceeding..."[0m
+2025-04-11T17:01:15.2531267Z [36;1m  sudo apt-get clean || echo "::warning::The command [sudo apt-get clean] failed to complete successfully. Proceeding..."[0m
+2025-04-11T17:01:15.2533159Z [36;1m[0m
+2025-04-11T17:01:15.2533914Z [36;1m  AFTER=$(getAvailableSpace)[0m
+2025-04-11T17:01:15.2534911Z [36;1m  SAVED=$((AFTER-BEFORE))[0m
+2025-04-11T17:01:15.2536020Z [36;1m  printSavedSpace $SAVED "Large misc. packages"[0m
+2025-04-11T17:01:15.2537118Z [36;1mfi[0m
+2025-04-11T17:01:15.2537824Z [36;1m[0m
+2025-04-11T17:01:15.2538574Z [36;1m# Option: Remove Docker images[0m
+2025-04-11T17:01:15.2539545Z [36;1m[0m
+2025-04-11T17:01:15.2540286Z [36;1mif [[ true == 'true' ]]; then[0m
+2025-04-11T17:01:15.2541292Z [36;1m  BEFORE=$(getAvailableSpace)[0m
+2025-04-11T17:01:15.2542381Z [36;1m[0m
+2025-04-11T17:01:15.2543243Z [36;1m  sudo docker image prune --all --force || true[0m
+2025-04-11T17:01:15.2544321Z [36;1m[0m
+2025-04-11T17:01:15.2545079Z [36;1m  AFTER=$(getAvailableSpace)[0m
+2025-04-11T17:01:15.2546078Z [36;1m  SAVED=$((AFTER-BEFORE))[0m
+2025-04-11T17:01:15.2547111Z [36;1m  printSavedSpace $SAVED "Docker images"[0m
+2025-04-11T17:01:15.2548149Z [36;1mfi[0m
+2025-04-11T17:01:15.2548848Z [36;1m[0m
+2025-04-11T17:01:15.2549600Z [36;1m# Option: Remove tool cache[0m
+2025-04-11T17:01:15.2551172Z [36;1m# REF: https://github.com/actions/virtual-environments/issues/2875#issuecomment-1163392159[0m
+2025-04-11T17:01:15.2552826Z [36;1m[0m
+2025-04-11T17:01:15.2553754Z [36;1mif [[ false == 'true' ]]; then[0m
+2025-04-11T17:01:15.2554780Z [36;1m  BEFORE=$(getAvailableSpace)[0m
+2025-04-11T17:01:15.2555764Z [36;1m[0m
+2025-04-11T17:01:15.2556615Z [36;1m  sudo rm -rf "$AGENT_TOOLSDIRECTORY" || true[0m
+2025-04-11T17:01:15.2557678Z [36;1m  [0m
+2025-04-11T17:01:15.2558452Z [36;1m  AFTER=$(getAvailableSpace)[0m
+2025-04-11T17:01:15.2559439Z [36;1m  SAVED=$((AFTER-BEFORE))[0m
+2025-04-11T17:01:15.2560460Z [36;1m  printSavedSpace $SAVED "Tool cache"[0m
+2025-04-11T17:01:15.2561459Z [36;1mfi[0m
+2025-04-11T17:01:15.2562256Z [36;1m[0m
+2025-04-11T17:01:15.2563014Z [36;1m# Option: Remove Swap storage[0m
+2025-04-11T17:01:15.2563947Z [36;1m[0m
+2025-04-11T17:01:15.2564694Z [36;1mif [[ true == 'true' ]]; then[0m
+2025-04-11T17:01:15.2565698Z [36;1m  BEFORE=$(getAvailableSpace)[0m
+2025-04-11T17:01:15.2566647Z [36;1m[0m
+2025-04-11T17:01:15.2567379Z [36;1m  sudo swapoff -a || true[0m
+2025-04-11T17:01:15.2568370Z [36;1m  sudo rm -f /mnt/swapfile || true[0m
+2025-04-11T17:01:15.2569364Z [36;1m  free -h[0m
+2025-04-11T17:01:15.2570115Z [36;1m  [0m
+2025-04-11T17:01:15.2570888Z [36;1m  AFTER=$(getAvailableSpace)[0m
+2025-04-11T17:01:15.2571890Z [36;1m  SAVED=$((AFTER-BEFORE))[0m
+2025-04-11T17:01:15.2573006Z [36;1m  printSavedSpace $SAVED "Swap storage"[0m
+2025-04-11T17:01:15.2574055Z [36;1mfi[0m
+2025-04-11T17:01:15.2574751Z [36;1m[0m
+2025-04-11T17:01:15.2575459Z [36;1m[0m
+2025-04-11T17:01:15.2576140Z [36;1m[0m
+2025-04-11T17:01:15.2576888Z [36;1m# Output saved space statistic[0m
+2025-04-11T17:01:15.2577856Z [36;1m[0m
+2025-04-11T17:01:15.2578646Z [36;1mAVAILABLE_END=$(getAvailableSpace)[0m
+2025-04-11T17:01:15.2579821Z [36;1mAVAILABLE_ROOT_END=$(getAvailableSpace '/')[0m
+2025-04-11T17:01:15.2581062Z [36;1m[0m
+2025-04-11T17:01:15.2581767Z [36;1mecho ""[0m
+2025-04-11T17:01:15.2582656Z [36;1mprintDH "AFTER CLEAN-UP:"[0m
+2025-04-11T17:01:15.2583580Z [36;1m[0m
+2025-04-11T17:01:15.2584278Z [36;1mecho ""[0m
+2025-04-11T17:01:15.2585015Z [36;1mecho ""[0m
+2025-04-11T17:01:15.2585755Z [36;1m[0m
+2025-04-11T17:01:15.2586467Z [36;1mecho "/dev/root:"[0m
+2025-04-11T17:01:15.2587705Z [36;1mprintSavedSpace $((AVAILABLE_ROOT_END - AVAILABLE_ROOT_INITIAL))[0m
+2025-04-11T17:01:15.2589054Z [36;1mecho "overall:"[0m
+2025-04-11T17:01:15.2590172Z [36;1mprintSavedSpace $((AVAILABLE_END - AVAILABLE_INITIAL))[0m
+2025-04-11T17:01:15.2644903Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-04-11T17:01:15.2646123Z env:
+2025-04-11T17:01:15.2646888Z   GOPROXY: https://proxy.golang.org
+2025-04-11T17:01:15.2647855Z   GO111MODULE: on
+2025-04-11T17:01:15.2648627Z   SASS_VERSION: 1.80.3
+2025-04-11T17:01:15.2649957Z   DART_SASS_SHA_LINUX: 7c933edbad0a7d389192c5b79393485c088bd2c4398e32f5754c32af006a9ffd
+2025-04-11T17:01:15.2652140Z   DART_SASS_SHA_MACOS: 79e060b0e131c3bb3c16926bafc371dc33feab122bfa8c01aa337a072097967b
+2025-04-11T17:01:15.2654157Z   DART_SASS_SHA_WINDOWS: 0bc4708b37cd1bac4740e83ac5e3176e66b774f77fd5dd364da5b5cfc9bfb469
+2025-04-11T17:01:15.2655648Z ##[endgroup]
+2025-04-11T17:01:15.2875426Z ================================================================================
+2025-04-11T17:01:15.2877427Z BEFORE CLEAN-UP:
+2025-04-11T17:01:15.2877991Z 
+2025-04-11T17:01:15.2878333Z $ dh -h /
+2025-04-11T17:01:15.2878764Z 
+2025-04-11T17:01:15.2879248Z Filesystem      Size  Used Avail Use% Mounted on
+2025-04-11T17:01:15.2880423Z /dev/root        72G   48G   25G  67% /
+2025-04-11T17:01:15.2881540Z $ dh -a /
+2025-04-11T17:01:15.2882209Z 
+2025-04-11T17:01:15.2887018Z Filesystem     1K-blocks     Used Available Use% Mounted on
+2025-04-11T17:01:15.2889208Z /dev/root       75085112 49674924  25393804  67% /
+2025-04-11T17:01:15.2890361Z $ dh -a
+2025-04-11T17:01:15.2890788Z 
+2025-04-11T17:01:15.2900601Z Filesystem     1K-blocks     Used Available Use% Mounted on
+2025-04-11T17:01:15.2902390Z /dev/root       75085112 49674924  25393804  67% /
+2025-04-11T17:01:15.2903537Z devtmpfs         8184112        0   8184112   0% /dev
+2025-04-11T17:01:15.2904665Z proc                   0        0         0    - /proc
+2025-04-11T17:01:15.2906010Z sysfs                  0        0         0    - /sys
+2025-04-11T17:01:15.2907311Z securityfs             0        0         0    - /sys/kernel/security
+2025-04-11T17:01:15.2908770Z tmpfs            8186896       84   8186812   1% /dev/shm
+2025-04-11T17:01:15.2909937Z devpts                 0        0         0    - /dev/pts
+2025-04-11T17:01:15.2911089Z tmpfs            3274760     1100   3273660   1% /run
+2025-04-11T17:01:15.2912418Z tmpfs               5120        0      5120   0% /run/lock
+2025-04-11T17:01:15.2913601Z cgroup2                0        0         0    - /sys/fs/cgroup
+2025-04-11T17:01:15.2914828Z pstore                 0        0         0    - /sys/fs/pstore
+2025-04-11T17:01:15.2916417Z bpf                    0        0         0    - /sys/fs/bpf
+2025-04-11T17:01:15.2918485Z systemd-1              -        -         -    - /proc/sys/fs/binfmt_misc
+2025-04-11T17:01:15.2920863Z hugetlbfs              0        0         0    - /dev/hugepages
+2025-04-11T17:01:15.2923329Z debugfs                0        0         0    - /sys/kernel/debug
+2025-04-11T17:01:15.2925460Z mqueue                 0        0         0    - /dev/mqueue
+2025-04-11T17:01:15.2927577Z tracefs                0        0         0    - /sys/kernel/tracing
+2025-04-11T17:01:15.2929782Z fusectl                0        0         0    - /sys/fs/fuse/connections
+2025-04-11T17:01:15.2932204Z configfs               0        0         0    - /sys/kernel/config
+2025-04-11T17:01:15.2934319Z /dev/sdb16        901520    59928    778464   8% /boot
+2025-04-11T17:01:15.2936342Z /dev/sdb15        106832     6246    100586   6% /boot/efi
+2025-04-11T17:01:15.2938546Z binfmt_misc            0        0         0    - /proc/sys/fs/binfmt_misc
+2025-04-11T17:01:15.2940132Z /dev/sda1       76829444  4194336  68686668   6% /mnt
+2025-04-11T17:01:15.2941320Z tmpfs            1637376       12   1637364   1% /run/user/1001
+2025-04-11T17:01:15.2942697Z ================================================================================
+2025-04-11T17:01:15.2943455Z 
+2025-04-11T17:01:27.1111288Z 
+2025-04-11T17:01:27.1117196Z ********************************************************************************
+2025-04-11T17:01:27.1229527Z => Android library: Saved 9.0GiB
+2025-04-11T17:01:27.1235709Z ********************************************************************************
+2025-04-11T17:01:27.1236050Z 
+2025-04-11T17:01:27.1370900Z 
+2025-04-11T17:01:27.1377430Z ********************************************************************************
+2025-04-11T17:01:27.1394756Z => .NET runtime: Saved 0B
+2025-04-11T17:01:27.1401182Z ********************************************************************************
+2025-04-11T17:01:27.1401823Z 
+2025-04-11T17:01:37.1797277Z 
+2025-04-11T17:01:37.1803624Z ********************************************************************************
+2025-04-11T17:01:37.1820443Z => Haskell runtime: Saved 6.2GiB
+2025-04-11T17:01:37.1827367Z ********************************************************************************
+2025-04-11T17:01:37.1828047Z 
+2025-04-11T17:01:37.3156298Z Reading package lists...
+2025-04-11T17:01:37.5120756Z Building dependency tree...
+2025-04-11T17:01:37.5163486Z Reading state information...
+2025-04-11T17:01:37.7943567Z Package 'aspnetcore-runtime-6.0' is not installed, so not removed
+2025-04-11T17:01:37.7944402Z Package 'aspnetcore-targeting-pack-6.0' is not installed, so not removed
+2025-04-11T17:01:37.7945394Z Package 'aspnetcore-runtime-dbg-8.0' is not installed, so not removed
+2025-04-11T17:01:37.7946144Z The following packages will be REMOVED:
+2025-04-11T17:01:37.7952176Z   aspnetcore-runtime-8.0 aspnetcore-targeting-pack-8.0 dotnet-sdk-8.0
+2025-04-11T17:01:38.2973317Z 0 upgraded, 0 newly installed, 3 to remove and 90 not upgraded.
+2025-04-11T17:01:38.2974056Z After this operation, 350 MB disk space will be freed.
+2025-04-11T17:01:38.3354527Z (Reading database ... 
+2025-04-11T17:01:38.3355184Z (Reading database ... 5%
+2025-04-11T17:01:38.3355724Z (Reading database ... 10%
+2025-04-11T17:01:38.3356568Z (Reading database ... 15%
+2025-04-11T17:01:38.3356983Z (Reading database ... 20%
+2025-04-11T17:01:38.3357424Z (Reading database ... 25%
+2025-04-11T17:01:38.3357740Z (Reading database ... 30%
+2025-04-11T17:01:38.3358047Z (Reading database ... 35%
+2025-04-11T17:01:38.3358347Z (Reading database ... 40%
+2025-04-11T17:01:38.3358655Z (Reading database ... 45%
+2025-04-11T17:01:38.3358923Z (Reading database ... 50%
+2025-04-11T17:01:38.3475983Z (Reading database ... 55%
+2025-04-11T17:01:38.3925870Z (Reading database ... 60%
+2025-04-11T17:01:38.4238050Z (Reading database ... 65%
+2025-04-11T17:01:38.4580563Z (Reading database ... 70%
+2025-04-11T17:01:38.5002972Z (Reading database ... 75%
+2025-04-11T17:01:38.5446275Z (Reading database ... 80%
+2025-04-11T17:01:38.6067625Z (Reading database ... 85%
+2025-04-11T17:01:38.6787538Z (Reading database ... 90%
+2025-04-11T17:01:38.7306864Z (Reading database ... 95%
+2025-04-11T17:01:38.7307432Z (Reading database ... 100%
+2025-04-11T17:01:38.7307933Z (Reading database ... 221799 files and directories currently installed.)
+2025-04-11T17:01:38.7353467Z Removing dotnet-sdk-8.0 (8.0.114-0ubuntu1~24.04.1) ...
+2025-04-11T17:01:41.8800298Z Removing aspnetcore-runtime-8.0 (8.0.14-0ubuntu1~24.04.1) ...
+2025-04-11T17:01:41.9115942Z Removing aspnetcore-targeting-pack-8.0 (8.0.14-0ubuntu1~24.04.1) ...
+2025-04-11T17:01:43.5251864Z Reading package lists...
+2025-04-11T17:01:43.8747454Z Building dependency tree...
+2025-04-11T17:01:43.8759430Z Reading state information...
+2025-04-11T17:01:44.1385630Z Package 'dotnet-hostfxr-6.0' is not installed, so not removed
+2025-04-11T17:01:44.1386269Z Package 'dotnet-runtime-6.0' is not installed, so not removed
+2025-04-11T17:01:44.1387193Z Package 'dotnet-sdk-6.0' is not installed, so not removed
+2025-04-11T17:01:44.1387763Z Package 'dotnet-targeting-pack-6.0' is not installed, so not removed
+2025-04-11T17:01:44.1388373Z Package 'dotnet-templates-6.0' is not installed, so not removed
+2025-04-11T17:01:44.1388911Z Package 'dotnet-apphost-pack-6.0' is not installed, so not removed
+2025-04-11T17:01:44.1389435Z Package 'dotnet-sdk-8.0' is not installed, so not removed
+2025-04-11T17:01:44.1389927Z Package 'dotnet-runtime-dbg-8.0' is not installed, so not removed
+2025-04-11T17:01:44.1390564Z Package 'dotnet-sdk-8.0-source-built-artifacts' is not installed, so not removed
+2025-04-11T17:01:44.1391434Z Package 'dotnet-sdk-dbg-8.0' is not installed, so not removed
+2025-04-11T17:01:44.1392404Z The following packages will be REMOVED:
+2025-04-11T17:01:44.1393105Z   dotnet-apphost-pack-8.0 dotnet-host-8.0 dotnet-hostfxr-8.0
+2025-04-11T17:01:44.1394024Z   dotnet-runtime-8.0 dotnet-targeting-pack-8.0 dotnet-templates-8.0
+2025-04-11T17:01:44.3981604Z 0 upgraded, 0 newly installed, 6 to remove and 84 not upgraded.
+2025-04-11T17:01:44.3982842Z After this operation, 125 MB disk space will be freed.
+2025-04-11T17:01:44.4185760Z (Reading database ... 
+2025-04-11T17:01:44.4186329Z (Reading database ... 5%
+2025-04-11T17:01:44.4186751Z (Reading database ... 10%
+2025-04-11T17:01:44.4187209Z (Reading database ... 15%
+2025-04-11T17:01:44.4187616Z (Reading database ... 20%
+2025-04-11T17:01:44.4188008Z (Reading database ... 25%
+2025-04-11T17:01:44.4188402Z (Reading database ... 30%
+2025-04-11T17:01:44.4188667Z (Reading database ... 35%
+2025-04-11T17:01:44.4190314Z (Reading database ... 40%
+2025-04-11T17:01:44.4190718Z (Reading database ... 45%
+2025-04-11T17:01:44.4191077Z (Reading database ... 50%
+2025-04-11T17:01:44.4211854Z (Reading database ... 55%
+2025-04-11T17:01:44.4335914Z (Reading database ... 60%
+2025-04-11T17:01:44.4359836Z (Reading database ... 65%
+2025-04-11T17:01:44.4384411Z (Reading database ... 70%
+2025-04-11T17:01:44.4434369Z (Reading database ... 75%
+2025-04-11T17:01:44.4468647Z (Reading database ... 80%
+2025-04-11T17:01:44.4689758Z (Reading database ... 85%
+2025-04-11T17:01:44.4963593Z (Reading database ... 90%
+2025-04-11T17:01:44.5050092Z (Reading database ... 95%
+2025-04-11T17:01:44.5050471Z (Reading database ... 100%
+2025-04-11T17:01:44.5051305Z (Reading database ... 217922 files and directories currently installed.)
+2025-04-11T17:01:44.5092601Z Removing dotnet-apphost-pack-8.0 (8.0.14-0ubuntu1~24.04.1) ...
+2025-04-11T17:01:44.5421820Z Removing dotnet-runtime-8.0 (8.0.14-0ubuntu1~24.04.1) ...
+2025-04-11T17:01:44.5649903Z Removing dotnet-hostfxr-8.0 (8.0.14-0ubuntu1~24.04.1) ...
+2025-04-11T17:01:44.5845692Z Removing dotnet-templates-8.0 (8.0.114-0ubuntu1~24.04.1) ...
+2025-04-11T17:01:44.6048216Z Removing dotnet-host-8.0 (8.0.14-0ubuntu1~24.04.1) ...
+2025-04-11T17:01:44.6494855Z Removing dotnet-targeting-pack-8.0 (8.0.14-0ubuntu1~24.04.1) ...
+2025-04-11T17:01:44.7316353Z Processing triggers for man-db (2.12.0-4build2) ...
+2025-04-11T17:01:53.3987144Z Reading package lists...
+2025-04-11T17:01:53.6646787Z Building dependency tree...
+2025-04-11T17:01:53.6655065Z Reading state information...
+2025-04-11T17:01:53.9009500Z Package 'llvm-14-linker-tools' is not installed, so not removed
+2025-04-11T17:01:53.9011683Z Package 'llvm-14-dev' is not installed, so not removed
+2025-04-11T17:01:53.9012680Z Package 'llvm-15-linker-tools' is not installed, so not removed
+2025-04-11T17:01:53.9013279Z Package 'llvm-15-dev' is not installed, so not removed
+2025-04-11T17:01:53.9013820Z Package 'llvm-15' is not installed, so not removed
+2025-04-11T17:01:53.9014408Z Package 'llvm-dev' is not installed, so not removed
+2025-04-11T17:01:53.9015093Z Package 'llvm-14-doc' is not installed, so not removed
+2025-04-11T17:01:53.9015760Z Package 'llvm-15-doc' is not installed, so not removed
+2025-04-11T17:01:53.9016404Z Package 'llvm-16-doc' is not installed, so not removed
+2025-04-11T17:01:53.9017052Z Package 'llvm-17-doc' is not installed, so not removed
+2025-04-11T17:01:53.9018355Z Package 'llvm-18-doc' is not installed, so not removed
+2025-04-11T17:01:53.9019030Z Package 'llvm-runtime' is not installed, so not removed
+2025-04-11T17:01:53.9019704Z Package 'llvm-14' is not installed, so not removed
+2025-04-11T17:01:53.9020332Z Package 'llvm-14-runtime' is not installed, so not removed
+2025-04-11T17:01:53.9021051Z Package 'llvm-14-tools' is not installed, so not removed
+2025-04-11T17:01:53.9021767Z Package 'llvm-14-examples' is not installed, so not removed
+2025-04-11T17:01:53.9022781Z Package 'llvm-15-runtime' is not installed, so not removed
+2025-04-11T17:01:53.9049982Z Package 'llvm-15-tools' is not installed, so not removed
+2025-04-11T17:01:53.9050533Z Package 'llvm-15-examples' is not installed, so not removed
+2025-04-11T17:01:53.9051075Z Package 'llvm-16-examples' is not installed, so not removed
+2025-04-11T17:01:53.9051463Z Package 'llvm-17-examples' is not installed, so not removed
+2025-04-11T17:01:53.9051829Z Package 'llvm-18-examples' is not installed, so not removed
+2025-04-11T17:01:53.9052308Z Package 'llvm-bolt' is not installed, so not removed
+2025-04-11T17:01:53.9052654Z Package 'llvm-spirv-14' is not installed, so not removed
+2025-04-11T17:01:53.9053001Z Package 'llvm-spirv-15' is not installed, so not removed
+2025-04-11T17:01:53.9053334Z Package 'llvm-spirv-16' is not installed, so not removed
+2025-04-11T17:01:53.9053674Z Package 'llvm-spirv-17' is not installed, so not removed
+2025-04-11T17:01:53.9054012Z Package 'llvm-spirv-18' is not installed, so not removed
+2025-04-11T17:01:53.9054346Z Package 'llvm-19-dev' is not installed, so not removed
+2025-04-11T17:01:53.9054700Z Package 'llvm-19-linker-tools' is not installed, so not removed
+2025-04-11T17:01:53.9055065Z Package 'llvm-19-doc' is not installed, so not removed
+2025-04-11T17:01:53.9055383Z Package 'llvm-19' is not installed, so not removed
+2025-04-11T17:01:53.9055716Z Package 'llvm-19-runtime' is not installed, so not removed
+2025-04-11T17:01:53.9056064Z Package 'llvm-19-tools' is not installed, so not removed
+2025-04-11T17:01:53.9056440Z Package 'llvm-19-examples' is not installed, so not removed
+2025-04-11T17:01:53.9056786Z Package 'llvm-spirv-19' is not installed, so not removed
+2025-04-11T17:01:53.9057107Z The following packages will be REMOVED:
+2025-04-11T17:01:53.9057460Z   clang-16 clang-17 clang-18 clang-tidy-16 clang-tidy-17 clang-tidy-18
+2025-04-11T17:01:53.9058178Z   clang-tools-16 clang-tools-17 clang-tools-18 llvm-16 llvm-16-dev
+2025-04-11T17:01:53.9058605Z   llvm-16-linker-tools llvm-16-runtime llvm-16-tools llvm-17 llvm-17-dev
+2025-04-11T17:01:53.9059034Z   llvm-17-linker-tools llvm-17-runtime llvm-17-tools llvm-18 llvm-18-dev
+2025-04-11T17:01:53.9059410Z   llvm-18-linker-tools llvm-18-runtime llvm-18-tools
+2025-04-11T17:01:54.1686809Z 0 upgraded, 0 newly installed, 24 to remove and 84 not upgraded.
+2025-04-11T17:01:54.1687308Z After this operation, 1575 MB disk space will be freed.
+2025-04-11T17:01:54.1877626Z (Reading database ... 
+2025-04-11T17:01:54.1878137Z (Reading database ... 5%
+2025-04-11T17:01:54.1878630Z (Reading database ... 10%
+2025-04-11T17:01:54.1879002Z (Reading database ... 15%
+2025-04-11T17:01:54.1879360Z (Reading database ... 20%
+2025-04-11T17:01:54.1879713Z (Reading database ... 25%
+2025-04-11T17:01:54.1880057Z (Reading database ... 30%
+2025-04-11T17:01:54.1880412Z (Reading database ... 35%
+2025-04-11T17:01:54.1880784Z (Reading database ... 40%
+2025-04-11T17:01:54.1881134Z (Reading database ... 45%
+2025-04-11T17:01:54.1881476Z (Reading database ... 50%
+2025-04-11T17:01:54.1899101Z (Reading database ... 55%
+2025-04-11T17:01:54.2002360Z (Reading database ... 60%
+2025-04-11T17:01:54.2027464Z (Reading database ... 65%
+2025-04-11T17:01:54.2050469Z (Reading database ... 70%
+2025-04-11T17:01:54.2094143Z (Reading database ... 75%
+2025-04-11T17:01:54.2125289Z (Reading database ... 80%
+2025-04-11T17:01:54.2309453Z (Reading database ... 85%
+2025-04-11T17:01:54.2561304Z (Reading database ... 90%
+2025-04-11T17:01:54.2644432Z (Reading database ... 95%
+2025-04-11T17:01:54.2644868Z (Reading database ... 100%
+2025-04-11T17:01:54.2645763Z (Reading database ... 217267 files and directories currently installed.)
+2025-04-11T17:01:54.2686940Z Removing clang-tidy-16 (1:16.0.6-23ubuntu4) ...
+2025-04-11T17:01:54.2911823Z Removing clang-tools-16 (1:16.0.6-23ubuntu4) ...
+2025-04-11T17:01:54.3225471Z Removing clang-16 (1:16.0.6-23ubuntu4) ...
+2025-04-11T17:01:54.3436946Z Removing clang-tidy-17 (1:17.0.6-9ubuntu1) ...
+2025-04-11T17:01:54.3638710Z Removing clang-tools-17 (1:17.0.6-9ubuntu1) ...
+2025-04-11T17:01:54.3926707Z Removing clang-17 (1:17.0.6-9ubuntu1) ...
+2025-04-11T17:01:54.4113933Z Removing clang-tidy-18 (1:18.1.3-1ubuntu1) ...
+2025-04-11T17:01:54.4378408Z Removing clang-tools-18 (1:18.1.3-1ubuntu1) ...
+2025-04-11T17:01:54.4746380Z Removing clang-18 (1:18.1.3-1ubuntu1) ...
+2025-04-11T17:01:54.4949709Z Removing llvm-16-dev (1:16.0.6-23ubuntu4) ...
+2025-04-11T17:01:54.8305730Z Removing llvm-16 (1:16.0.6-23ubuntu4) ...
+2025-04-11T17:01:54.8553523Z Removing llvm-16-linker-tools (1:16.0.6-23ubuntu4) ...
+2025-04-11T17:01:54.9559643Z Removing llvm-16-runtime (1:16.0.6-23ubuntu4) ...
+2025-04-11T17:01:54.9880059Z Removing llvm-16-tools (1:16.0.6-23ubuntu4) ...
+2025-04-11T17:01:55.0869667Z Removing llvm-17-dev (1:17.0.6-9ubuntu1) ...
+2025-04-11T17:01:55.3440966Z Removing llvm-17 (1:17.0.6-9ubuntu1) ...
+2025-04-11T17:01:55.3740013Z Removing llvm-17-linker-tools (1:17.0.6-9ubuntu1) ...
+2025-04-11T17:01:55.3989542Z Removing llvm-17-runtime (1:17.0.6-9ubuntu1) ...
+2025-04-11T17:01:55.4274425Z Removing llvm-17-tools (1:17.0.6-9ubuntu1) ...
+2025-04-11T17:01:55.5213017Z Removing llvm-18-dev (1:18.1.3-1ubuntu1) ...
+2025-04-11T17:01:55.9209000Z Removing llvm-18 (1:18.1.3-1ubuntu1) ...
+2025-04-11T17:01:55.9536143Z Removing llvm-18-linker-tools (1:18.1.3-1ubuntu1) ...
+2025-04-11T17:01:55.9790481Z Removing llvm-18-runtime (1:18.1.3-1ubuntu1) ...
+2025-04-11T17:01:56.0080287Z Removing llvm-18-tools (1:18.1.3-1ubuntu1) ...
+2025-04-11T17:01:56.1350396Z Processing triggers for systemd (255.4-1ubuntu8.6) ...
+2025-04-11T17:01:56.1750647Z Processing triggers for man-db (2.12.0-4build2) ...
+2025-04-11T17:02:00.2884942Z Processing triggers for libc-bin (2.39-0ubuntu8.4) ...
+2025-04-11T17:02:02.0361254Z Reading package lists...
+2025-04-11T17:02:02.2569911Z Building dependency tree...
+2025-04-11T17:02:02.2577942Z Reading state information...
+2025-04-11T17:02:02.5475646Z Package 'php-lua' is not installed, so not removed
+2025-04-11T17:02:02.5476536Z Package 'php-mysqlnd-ms' is not installed, so not removed
+2025-04-11T17:02:02.5477131Z Package 'php-radius' is not installed, so not removed
+2025-04-11T17:02:02.5477547Z Package 'php5.6-common' is not installed, so not removed
+2025-04-11T17:02:02.5477923Z Package 'php5.6-json' is not installed, so not removed
+2025-04-11T17:02:02.5478312Z Package 'php7.0-common' is not installed, so not removed
+2025-04-11T17:02:02.5478702Z Package 'php7.1-common' is not installed, so not removed
+2025-04-11T17:02:02.5479307Z Package 'php7.2-common' is not installed, so not removed
+2025-04-11T17:02:02.5479907Z Package 'php7.3-common' is not installed, so not removed
+2025-04-11T17:02:02.5480570Z Package 'php7.4-common' is not installed, so not removed
+2025-04-11T17:02:02.5481172Z Package 'php8.0-common' is not installed, so not removed
+2025-04-11T17:02:02.5481802Z Package 'php8.1-common' is not installed, so not removed
+2025-04-11T17:02:02.5482969Z Package 'php8.2-common' is not installed, so not removed
+2025-04-11T17:02:02.5483646Z Package 'php-pear-frontend-gtk' is not installed, so not removed
+2025-04-11T17:02:02.5484409Z Package 'php-pear-frontend-web' is not installed, so not removed
+2025-04-11T17:02:02.5485059Z Package 'php7.0-curl' is not installed, so not removed
+2025-04-11T17:02:02.5485685Z Package 'php7.2-sodium' is not installed, so not removed
+2025-04-11T17:02:02.5486273Z Package 'php5' is not installed, so not removed
+2025-04-11T17:02:02.5486809Z Package 'php5-cli' is not installed, so not removed
+2025-04-11T17:02:02.5487420Z Package 'php5-pgsql' is not installed, so not removed
+2025-04-11T17:02:02.5487985Z Package 'php5-curl' is not installed, so not removed
+2025-04-11T17:02:02.5489464Z Package 'php5-ldap' is not installed, so not removed
+2025-04-11T17:02:02.5490081Z Package 'gosa-plugin-phpgw' is not installed, so not removed
+2025-04-11T17:02:02.5490954Z Package 'gosa-plugin-phpgw-schema' is not installed, so not removed
+2025-04-11T17:02:02.5491739Z Package 'gosa-plugin-phpscheduleit' is not installed, so not removed
+2025-04-11T17:02:02.5492728Z Package 'gosa-plugin-phpscheduleit-schema' is not installed, so not removed
+2025-04-11T17:02:02.5493462Z Package 'php-apc' is not installed, so not removed
+2025-04-11T17:02:02.5494021Z Package 'php-suhosin' is not installed, so not removed
+2025-04-11T17:02:02.5494603Z Package 'php5-mysql' is not installed, so not removed
+2025-04-11T17:02:02.5495214Z Package 'libsparkline-php' is not installed, so not removed
+2025-04-11T17:02:02.5495859Z Package 'libapache2-mod-php5' is not installed, so not removed
+2025-04-11T17:02:02.5496434Z Package 'php5-fpm' is not installed, so not removed
+2025-04-11T17:02:02.5497015Z Package 'libgv-php5' is not installed, so not removed
+2025-04-11T17:02:02.5497694Z Package 'php-greew-oauth2-azure-provider' is not installed, so not removed
+2025-04-11T17:02:02.5498533Z Package 'php-hayageek-oauth2-yahoo' is not installed, so not removed
+2025-04-11T17:02:02.5499302Z Package 'php-league-oauth2-google' is not installed, so not removed
+2025-04-11T17:02:02.5500073Z Package 'php-thenetworg-oauth2-azure' is not installed, so not removed
+2025-04-11T17:02:02.5500781Z Package 'phpphylotree' is not installed, so not removed
+2025-04-11T17:02:02.5503129Z Package 'php-http-request2' is not installed, so not removed
+2025-04-11T17:02:02.5503803Z Package 'php-xcache' is not installed, so not removed
+2025-04-11T17:02:02.5504413Z Package 'php-async-aws-s3' is not installed, so not removed
+2025-04-11T17:02:02.5505143Z Package 'php-paragonie-random-compat' is not installed, so not removed
+2025-04-11T17:02:02.5505896Z Package 'php-console-color2' is not installed, so not removed
+2025-04-11T17:02:02.5506645Z Package 'php-doctrine-phpcr-odm' is not installed, so not removed
+2025-04-11T17:02:02.5507405Z Package 'php-alcaeus-mongo-php-adapter' is not installed, so not removed
+2025-04-11T17:02:02.5508188Z Package 'php-doctrine-mongodb-odm' is not installed, so not removed
+2025-04-11T17:02:02.5509375Z Package 'php-mtdowling-cron-expression' is not installed, so not removed
+2025-04-11T17:02:02.5509827Z Package 'php-semsol-arc2' is not installed, so not removed
+2025-04-11T17:02:02.5510236Z Package 'php-fzaninotto-faker' is not installed, so not removed
+2025-04-11T17:02:02.5510602Z Package 'php7.4' is not installed, so not removed
+2025-04-11T17:02:02.5510947Z Package 'php7.4-cli' is not installed, so not removed
+2025-04-11T17:02:02.5511315Z Package 'php-com-dotnet' is not installed, so not removed
+2025-04-11T17:02:02.5511668Z Package 'php-rar' is not installed, so not removed
+2025-04-11T17:02:02.5512516Z Package 'php-laminas-httphandlerrunner' is not installed, so not removed
+2025-04-11T17:02:02.5513037Z Package 'php-cordoval-hamcrest-php' is not installed, so not removed
+2025-04-11T17:02:02.5513512Z Package 'php-davedevelopment-hamcrest-php' is not installed, so not removed
+2025-04-11T17:02:02.5513989Z Package 'php-kodova-hamcrest-php' is not installed, so not removed
+2025-04-11T17:02:02.5514429Z Package 'php-league-flysystem-sftp' is not installed, so not removed
+2025-04-11T17:02:02.5514961Z Package 'php-league-flysystem-eventable-filesystem' is not installed, so not removed
+2025-04-11T17:02:02.5515495Z Package 'php-league-flysystem-rackspace' is not installed, so not removed
+2025-04-11T17:02:02.5515959Z Package 'php-league-flysystem-azure' is not installed, so not removed
+2025-04-11T17:02:02.5516422Z Package 'php-league-flysystem-webdav' is not installed, so not removed
+2025-04-11T17:02:02.5516898Z Package 'php-league-flysystem-aws-s3-v2' is not installed, so not removed
+2025-04-11T17:02:02.5517384Z Package 'php-league-flysystem-aws-s3-v3' is not installed, so not removed
+2025-04-11T17:02:02.5518179Z Package 'php-spatie-flysystem-dropbox' is not installed, so not removed
+2025-04-11T17:02:02.5518833Z Package 'php-srmklive-flysystem-dropbox-v2' is not installed, so not removed
+2025-04-11T17:02:02.5519348Z Package 'php-league-flysystem-cached-adapter' is not installed, so not removed
+2025-04-11T17:02:02.5519877Z Package 'php-league-flysystem-ziparchive' is not installed, so not removed
+2025-04-11T17:02:02.5520331Z Package 'php-league-uri-schemes' is not installed, so not removed
+2025-04-11T17:02:02.5520800Z Package 'php-jeremykendall-php-domain-parser' is not installed, so not removed
+2025-04-11T17:02:02.5521257Z Package 'php-php-64bit' is not installed, so not removed
+2025-04-11T17:02:02.5521613Z Package 'php-sqlite' is not installed, so not removed
+2025-04-11T17:02:02.5521932Z Package 'php-lzf' is not installed, so not removed
+2025-04-11T17:02:02.5522637Z Package 'php-pnctl' is not installed, so not removed
+2025-04-11T17:02:02.5523019Z Package 'php-mdb2-driver-fbsql' is not installed, so not removed
+2025-04-11T17:02:02.5523426Z Package 'php-mdb2-driver-ibase' is not installed, so not removed
+2025-04-11T17:02:02.5523823Z Package 'php-mdb2-driver-mssql' is not installed, so not removed
+2025-04-11T17:02:02.5524222Z Package 'php-mdb2-driver-mysqli' is not installed, so not removed
+2025-04-11T17:02:02.5524642Z Package 'php-mdb2-driver-oci8' is not installed, so not removed
+2025-04-11T17:02:02.5525038Z Package 'php-mdb2-driver-odbc' is not installed, so not removed
+2025-04-11T17:02:02.5525446Z Package 'php-mdb2-driver-querysim' is not installed, so not removed
+2025-04-11T17:02:02.5525884Z Package 'php-mdb2-driver-sqlite' is not installed, so not removed
+2025-04-11T17:02:02.5526292Z Package 'php-mdb2-driver-sqlsrv' is not installed, so not removed
+2025-04-11T17:02:02.5526721Z Package 'php-barnabywalters-mf-cleaner' is not installed, so not removed
+2025-04-11T17:02:02.5527166Z Package 'php-graylog2-gelf-php' is not installed, so not removed
+2025-04-11T17:02:02.5527564Z Package 'php-doctrine-couchdb' is not installed, so not removed
+2025-04-11T17:02:02.5527960Z Package 'php-ruflin-elastica' is not installed, so not removed
+2025-04-11T17:02:02.5528353Z Package 'php-elasticsearch' is not installed, so not removed
+2025-04-11T17:02:02.5528725Z Package 'php-aws-sdk-php' is not installed, so not removed
+2025-04-11T17:02:02.5529372Z Package 'php-rollbar' is not installed, so not removed
+2025-04-11T17:02:02.5529735Z Package 'php-nette-finder' is not installed, so not removed
+2025-04-11T17:02:02.5530089Z Package 'php-dbase' is not installed, so not removed
+2025-04-11T17:02:02.5530439Z Package 'php-libsodium' is not installed, so not removed
+2025-04-11T17:02:02.5530783Z Package 'php-relay' is not installed, so not removed
+2025-04-11T17:02:02.5531167Z Package 'php-ocramius-proxy-manager' is not installed, so not removed
+2025-04-11T17:02:02.5531642Z Package 'php-zendframework-zend-stdlib' is not installed, so not removed
+2025-04-11T17:02:02.5532422Z Package 'php-rhumsaa-uuid' is not installed, so not removed
+2025-04-11T17:02:02.5532874Z Package 'php-paragonie-random-lib' is not installed, so not removed
+2025-04-11T17:02:02.5533304Z Package 'php-ramsey-uuid-doctrine' is not installed, so not removed
+2025-04-11T17:02:02.5533701Z Package 'php-crypt-blowfish' is not installed, so not removed
+2025-04-11T17:02:02.5534078Z Package 'php-compat' is not installed, so not removed
+2025-04-11T17:02:02.5534443Z Package 'libssh2-php' is not installed, so not removed
+2025-04-11T17:02:02.5534829Z Package 'php-php-http-discovery' is not installed, so not removed
+2025-04-11T17:02:02.5535275Z Package 'php-symfony-security-guard' is not installed, so not removed
+2025-04-11T17:02:02.5535709Z Package 'php-numbers-words' is not installed, so not removed
+2025-04-11T17:02:02.5536081Z Package 'php7.0-thrift' is not installed, so not removed
+2025-04-11T17:02:02.5536440Z Package 'php7.2-thrift' is not installed, so not removed
+2025-04-11T17:02:02.5536795Z Package 'php-net-idna' is not installed, so not removed
+2025-04-11T17:02:02.5537143Z Package 'php-phpstan' is not installed, so not removed
+2025-04-11T17:02:02.5537681Z Package 'php-vimeo-psalm' is not installed, so not removed
+2025-04-11T17:02:02.5538060Z Package 'php-container-interop' is not installed, so not removed
+2025-04-11T17:02:02.5538526Z Package 'php-zendframework-zend-eventmanager' is not installed, so not removed
+2025-04-11T17:02:02.5538969Z Package 'php-recode' is not installed, so not removed
+2025-04-11T17:02:02.5539299Z Package 'php-gd2' is not installed, so not removed
+2025-04-11T17:02:02.5539690Z Package 'php-pragmarx-google2fa-qrcode' is not installed, so not removed
+2025-04-11T17:02:02.5540139Z Package 'php-bjeavons-zxcvbn-php' is not installed, so not removed
+2025-04-11T17:02:02.5540537Z Package 'php-pimlie-php-dkim' is not installed, so not removed
+2025-04-11T17:02:02.5540940Z Package 'libapache2-mod-php7.4' is not installed, so not removed
+2025-04-11T17:02:02.5541307Z Package 'php7.4-fpm' is not installed, so not removed
+2025-04-11T17:02:02.5541650Z Package 'php-crypt-gpg' is not installed, so not removed
+2025-04-11T17:02:02.5542246Z Package 'libapache2-mod-php' is not installed, so not removed
+2025-04-11T17:02:02.5542671Z Package 'libapache2-mod-php8.3' is not installed, so not removed
+2025-04-11T17:02:02.5543034Z Package 'php-json' is not installed, so not removed
+2025-04-11T17:02:02.5543347Z Package 'php' is not installed, so not removed
+2025-04-11T17:02:02.5543676Z Package 'php-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.5543996Z Package 'php-cgi' is not installed, so not removed
+2025-04-11T17:02:02.5544298Z Package 'php-cli' is not installed, so not removed
+2025-04-11T17:02:02.5544610Z Package 'php-amqp' is not installed, so not removed
+2025-04-11T17:02:02.5544924Z Package 'php-apcu' is not installed, so not removed
+2025-04-11T17:02:02.5545241Z Package 'php-ast' is not installed, so not removed
+2025-04-11T17:02:02.5545575Z Package 'php-ds' is not installed, so not removed
+2025-04-11T17:02:02.5545912Z Package 'php-facedetect' is not installed, so not removed
+2025-04-11T17:02:02.5546263Z Package 'php-gearman' is not installed, so not removed
+2025-04-11T17:02:02.5546600Z Package 'php-gmagick' is not installed, so not removed
+2025-04-11T17:02:02.5546941Z Package 'php-gnupg' is not installed, so not removed
+2025-04-11T17:02:02.5547292Z Package 'php-igbinary' is not installed, so not removed
+2025-04-11T17:02:02.5547955Z Package 'php-imagick' is not installed, so not removed
+2025-04-11T17:02:02.5548309Z Package 'php-libvirt-php' is not installed, so not removed
+2025-04-11T17:02:02.5548677Z Package 'php-mailparse' is not installed, so not removed
+2025-04-11T17:02:02.5549032Z Package 'php-memcache' is not installed, so not removed
+2025-04-11T17:02:02.5549384Z Package 'php-memcached' is not installed, so not removed
+2025-04-11T17:02:02.5549727Z Package 'php-mongodb' is not installed, so not removed
+2025-04-11T17:02:02.5550055Z Package 'php-msgpack' is not installed, so not removed
+2025-04-11T17:02:02.5550396Z Package 'php-oauth' is not installed, so not removed
+2025-04-11T17:02:02.5550754Z Package 'php-pcov' is not installed, so not removed
+2025-04-11T17:02:02.5551088Z Package 'php-ps' is not installed, so not removed
+2025-04-11T17:02:02.5551416Z Package 'php-psr' is not installed, so not removed
+2025-04-11T17:02:02.5551748Z Package 'php-raphf' is not installed, so not removed
+2025-04-11T17:02:02.5552551Z Package 'php-redis' is not installed, so not removed
+2025-04-11T17:02:02.5552883Z Package 'php-rrd' is not installed, so not removed
+2025-04-11T17:02:02.5553219Z Package 'php-smbclient' is not installed, so not removed
+2025-04-11T17:02:02.5553557Z Package 'php-ssh2' is not installed, so not removed
+2025-04-11T17:02:02.5553889Z Package 'php-stomp' is not installed, so not removed
+2025-04-11T17:02:02.5554209Z Package 'php-tideways' is not installed, so not removed
+2025-04-11T17:02:02.5554537Z Package 'php-uopz' is not installed, so not removed
+2025-04-11T17:02:02.5554898Z Package 'php-uploadprogress' is not installed, so not removed
+2025-04-11T17:02:02.5555252Z Package 'php-uuid' is not installed, so not removed
+2025-04-11T17:02:02.5555778Z Package 'php-xdebug' is not installed, so not removed
+2025-04-11T17:02:02.5556101Z Package 'php-xmlrpc' is not installed, so not removed
+2025-04-11T17:02:02.5556423Z Package 'php-yac' is not installed, so not removed
+2025-04-11T17:02:02.5556744Z Package 'php-yaml' is not installed, so not removed
+2025-04-11T17:02:02.5557070Z Package 'php-zmq' is not installed, so not removed
+2025-04-11T17:02:02.5557384Z Package 'php-curl' is not installed, so not removed
+2025-04-11T17:02:02.5557693Z Package 'php-dev' is not installed, so not removed
+2025-04-11T17:02:02.5558000Z Package 'php-gd' is not installed, so not removed
+2025-04-11T17:02:02.5558315Z Package 'php-gmp' is not installed, so not removed
+2025-04-11T17:02:02.5558634Z Package 'php-ldap' is not installed, so not removed
+2025-04-11T17:02:02.5558952Z Package 'php-mysql' is not installed, so not removed
+2025-04-11T17:02:02.5559271Z Package 'php-odbc' is not installed, so not removed
+2025-04-11T17:02:02.5559590Z Package 'php-xml' is not installed, so not removed
+2025-04-11T17:02:02.5559913Z Package 'php-pgsql' is not installed, so not removed
+2025-04-11T17:02:02.5560251Z Package 'php-pspell' is not installed, so not removed
+2025-04-11T17:02:02.5560583Z Package 'php-snmp' is not installed, so not removed
+2025-04-11T17:02:02.5560920Z Package 'php-sqlite3' is not installed, so not removed
+2025-04-11T17:02:02.5561245Z Package 'php-tidy' is not installed, so not removed
+2025-04-11T17:02:02.5561600Z Package 'php-tokenizer' is not installed, so not removed
+2025-04-11T17:02:02.5561948Z Package 'pkg-php-tools' is not installed, so not removed
+2025-04-11T17:02:02.5562514Z Package 'dh-php' is not installed, so not removed
+2025-04-11T17:02:02.5562843Z Package 'php-mbstring' is not installed, so not removed
+2025-04-11T17:02:02.5563183Z Package 'php-readline' is not installed, so not removed
+2025-04-11T17:02:02.5563507Z Package 'php-fpm' is not installed, so not removed
+2025-04-11T17:02:02.5563839Z Package 'php-codesniffer' is not installed, so not removed
+2025-04-11T17:02:02.5564222Z Package 'libphp-phpmailer' is not installed, so not removed
+2025-04-11T17:02:02.5564648Z Package 'php-phpmyadmin-motranslator' is not installed, so not removed
+2025-04-11T17:02:02.5565061Z Package 'php-phpseclib' is not installed, so not removed
+2025-04-11T17:02:02.5565639Z Package 'php-twig' is not installed, so not removed
+2025-04-11T17:02:02.5565982Z Package 'php-mapscript-ng' is not installed, so not removed
+2025-04-11T17:02:02.5566384Z Package 'php-composer-ca-bundle' is not installed, so not removed
+2025-04-11T17:02:02.5566837Z Package 'php-composer-class-map-generator' is not installed, so not removed
+2025-04-11T17:02:02.5567326Z Package 'php-composer-metadata-minifier' is not installed, so not removed
+2025-04-11T17:02:02.5567767Z Package 'php-composer-semver' is not installed, so not removed
+2025-04-11T17:02:02.5568189Z Package 'php-composer-spdx-licenses' is not installed, so not removed
+2025-04-11T17:02:02.5568631Z Package 'php-composer-xdebug-handler' is not installed, so not removed
+2025-04-11T17:02:02.5569054Z Package 'php-json-schema' is not installed, so not removed
+2025-04-11T17:02:02.5569416Z Package 'php-psr-log' is not installed, so not removed
+2025-04-11T17:02:02.5569788Z Package 'php-symfony-console' is not installed, so not removed
+2025-04-11T17:02:02.5570198Z Package 'php-symfony-filesystem' is not installed, so not removed
+2025-04-11T17:02:02.5570591Z Package 'php-symfony-finder' is not installed, so not removed
+2025-04-11T17:02:02.5570979Z Package 'php-symfony-process' is not installed, so not removed
+2025-04-11T17:02:02.5571363Z Package 'php-react-promise' is not installed, so not removed
+2025-04-11T17:02:02.5571741Z Package 'php-composer-pcre' is not installed, so not removed
+2025-04-11T17:02:02.5572295Z Package 'php-seld-signal-handler' is not installed, so not removed
+2025-04-11T17:02:02.5572666Z Package 'php-intl' is not installed, so not removed
+2025-04-11T17:02:02.5572979Z Package 'php-zip' is not installed, so not removed
+2025-04-11T17:02:02.5573534Z Package 'libawl-php' is not installed, so not removed
+2025-04-11T17:02:02.5573891Z Package 'libphp-simplepie' is not installed, so not removed
+2025-04-11T17:02:02.5574240Z Package 'php-geshi' is not installed, so not removed
+2025-04-11T17:02:02.5574590Z Package 'php-random-compat' is not installed, so not removed
+2025-04-11T17:02:02.5574961Z Package 'elpa-php-mode' is not installed, so not removed
+2025-04-11T17:02:02.5575304Z Package 'phpunit' is not installed, so not removed
+2025-04-11T17:02:02.5575622Z Package 'php-geos' is not installed, so not removed
+2025-04-11T17:02:02.5576038Z Package 'golang-github-phpdave11-gofpdi-dev' is not installed, so not removed
+2025-04-11T17:02:02.5576466Z Package 'php-imap' is not installed, so not removed
+2025-04-11T17:02:02.5576785Z Package 'php-fpdf' is not installed, so not removed
+2025-04-11T17:02:02.5577127Z Package 'icinga-php-library' is not installed, so not removed
+2025-04-11T17:02:02.5577528Z Package 'icinga-php-thirdparty' is not installed, so not removed
+2025-04-11T17:02:02.5577901Z Package 'php-soap' is not installed, so not removed
+2025-04-11T17:02:02.5578225Z Package 'php-icinga' is not installed, so not removed
+2025-04-11T17:02:02.5578558Z Package 'php-tcpdf' is not installed, so not removed
+2025-04-11T17:02:02.5578885Z Package 'kdevelop-php' is not installed, so not removed
+2025-04-11T17:02:02.5579255Z Package 'kdevelop-php-l10n' is not installed, so not removed
+2025-04-11T17:02:02.5579615Z Package 'php-mcrypt' is not installed, so not removed
+2025-04-11T17:02:02.5579940Z Package 'less.php' is not installed, so not removed
+2025-04-11T17:02:02.5580323Z Package 'libphp-serialization-perl' is not installed, so not removed
+2025-04-11T17:02:02.5580798Z Package 'libhtml-wikiconverter-phpwiki-perl' is not installed, so not removed
+2025-04-11T17:02:02.5581289Z Package 'libjs-php-date-formatter' is not installed, so not removed
+2025-04-11T17:02:02.5581697Z Package 'libmarkdown-php' is not installed, so not removed
+2025-04-11T17:02:02.5582232Z Package 'libnusoap-php' is not installed, so not removed
+2025-04-11T17:02:02.5582604Z Package 'php-econea-nusoap' is not installed, so not removed
+2025-04-11T17:02:02.5582975Z Package 'libow-php7t64' is not installed, so not removed
+2025-04-11T17:02:02.5583315Z Package 'libownet-php' is not installed, so not removed
+2025-04-11T17:02:02.5583863Z Package 'libphp-adodb' is not installed, so not removed
+2025-04-11T17:02:02.5584200Z Package 'php-sybase' is not installed, so not removed
+2025-04-11T17:02:02.5584542Z Package 'libphp-embed' is not installed, so not removed
+2025-04-11T17:02:02.5584899Z Package 'libphp8.3-embed' is not installed, so not removed
+2025-04-11T17:02:02.5585258Z Package 'libphp-jabber' is not installed, so not removed
+2025-04-11T17:02:02.5585610Z Package 'libphp-snoopy' is not installed, so not removed
+2025-04-11T17:02:02.5586000Z Package 'libphpy-dev' is not installed, so not removed
+2025-04-11T17:02:02.5586329Z Package 'libphpy1' is not installed, so not removed
+2025-04-11T17:02:02.5586681Z Package 'libxrdcephposix0' is not installed, so not removed
+2025-04-11T17:02:02.5587036Z Package 'php-spyc' is not installed, so not removed
+2025-04-11T17:02:02.5587398Z Package 'matomo-php-tracker' is not installed, so not removed
+2025-04-11T17:02:02.5587772Z Package 'php-wikidiff2' is not installed, so not removed
+2025-04-11T17:02:02.5588140Z Package 'php-luasandbox' is not installed, so not removed
+2025-04-11T17:02:02.5588500Z Package 'mlmmj-php-web' is not installed, so not removed
+2025-04-11T17:02:02.5588874Z Package 'mlmmj-php-web-admin' is not installed, so not removed
+2025-04-11T17:02:02.5589252Z Package 'php-net-socket' is not installed, so not removed
+2025-04-11T17:02:02.5589653Z Package 'node-codemirror-lang-php' is not installed, so not removed
+2025-04-11T17:02:02.5590048Z Package 'node-lezer-php' is not installed, so not removed
+2025-04-11T17:02:02.5590466Z Package 'phpmyadmin' is not installed, so not removed
+2025-04-11T17:02:02.5590791Z Package 'php-cas' is not installed, so not removed
+2025-04-11T17:02:02.5591304Z Package 'php-pclzip' is not installed, so not removed
+2025-04-11T17:02:02.5591631Z Package 'phpqrcode' is not installed, so not removed
+2025-04-11T17:02:02.5592252Z Package 'php-symfony-config' is not installed, so not removed
+2025-04-11T17:02:02.5592700Z Package 'php-symfony-dependency-injection' is not installed, so not removed
+2025-04-11T17:02:02.5593105Z Package 'phpmd' is not installed, so not removed
+2025-04-11T17:02:02.5593471Z Package 'php-algo26-idna-convert' is not installed, so not removed
+2025-04-11T17:02:02.5594156Z Package 'php-jakeasmith-http-build-url' is not installed, so not removed
+2025-04-11T17:02:02.5594608Z Package 'php-amphp-amp' is not installed, so not removed
+2025-04-11T17:02:02.5594973Z Package 'php-amqp-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.5595326Z Package 'php-amqplib' is not installed, so not removed
+2025-04-11T17:02:02.5595682Z Package 'php-apcu-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.5596104Z Package 'php-arthurhoaro-web-thumbnailer' is not installed, so not removed
+2025-04-11T17:02:02.5596540Z Package 'php-text-template' is not installed, so not removed
+2025-04-11T17:02:02.5596897Z Package 'php8.3-ast' is not installed, so not removed
+2025-04-11T17:02:02.5597243Z Package 'php-ast-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.5597611Z Package 'php-async-aws-core' is not installed, so not removed
+2025-04-11T17:02:02.5597982Z Package 'php-psr-cache' is not installed, so not removed
+2025-04-11T17:02:02.5598400Z Package 'php-symfony-deprecation-contracts' is not installed, so not removed
+2025-04-11T17:02:02.5598859Z Package 'php-symfony-http-client' is not installed, so not removed
+2025-04-11T17:02:02.5599319Z Package 'php-symfony-http-client-contracts' is not installed, so not removed
+2025-04-11T17:02:02.5599788Z Package 'php-symfony-service-contracts' is not installed, so not removed
+2025-04-11T17:02:02.5600280Z Package 'php-async-aws-ses' is not installed, so not removed
+2025-04-11T17:02:02.5600656Z Package 'php-async-aws-sns' is not installed, so not removed
+2025-04-11T17:02:02.5601018Z Package 'php-async-aws-sqs' is not installed, so not removed
+2025-04-11T17:02:02.5601375Z Package 'php-auth-sasl' is not installed, so not removed
+2025-04-11T17:02:02.5601736Z Package 'php-bacon-qr-code' is not installed, so not removed
+2025-04-11T17:02:02.5602363Z Package 'php-dasprid-enum' is not installed, so not removed
+2025-04-11T17:02:02.5602708Z Package 'php-bcmath' is not installed, so not removed
+2025-04-11T17:02:02.5603046Z Package 'php-brick-math' is not installed, so not removed
+2025-04-11T17:02:02.5603432Z Package 'php-brick-varexporter' is not installed, so not removed
+2025-04-11T17:02:02.5603801Z Package 'php-parser' is not installed, so not removed
+2025-04-11T17:02:02.5604117Z Package 'php-bz2' is not installed, so not removed
+2025-04-11T17:02:02.5604505Z Package 'php-cache-integration-tests' is not installed, so not removed
+2025-04-11T17:02:02.5604929Z Package 'php-cache-tag-interop' is not installed, so not removed
+2025-04-11T17:02:02.5605352Z Package 'php-christianriesen-base32' is not installed, so not removed
+2025-04-11T17:02:02.5605790Z Package 'php-christianriesen-otp' is not installed, so not removed
+2025-04-11T17:02:02.5606220Z Package 'php-code-lts-u2f-php-server' is not installed, so not removed
+2025-04-11T17:02:02.5606622Z Package 'php-codecoverage' is not installed, so not removed
+2025-04-11T17:02:02.5606990Z Package 'php-file-iterator' is not installed, so not removed
+2025-04-11T17:02:02.5607417Z Package 'phpunit-code-unit-reverse-lookup' is not installed, so not removed
+2025-04-11T17:02:02.5607856Z Package 'phpunit-complexity' is not installed, so not removed
+2025-04-11T17:02:02.5608239Z Package 'phpunit-environment' is not installed, so not removed
+2025-04-11T17:02:02.5608624Z Package 'phpunit-lines-of-code' is not installed, so not removed
+2025-04-11T17:02:02.5608999Z Package 'phpunit-version' is not installed, so not removed
+2025-04-11T17:02:02.5609396Z Package 'php-codeigniter-framework' is not installed, so not removed
+2025-04-11T17:02:02.5609967Z Package 'php-codeigniter-framework-doc' is not installed, so not removed
+2025-04-11T17:02:02.5610404Z Package 'php-console-commandline' is not installed, so not removed
+2025-04-11T17:02:02.5610787Z Package 'php-console-table' is not installed, so not removed
+2025-04-11T17:02:02.5611152Z Package 'php-constant-time' is not installed, so not removed
+2025-04-11T17:02:02.5611516Z Package 'php-dapphp-radius' is not installed, so not removed
+2025-04-11T17:02:02.5611862Z Package 'php-date' is not installed, so not removed
+2025-04-11T17:02:02.5612381Z Package 'php-datto-json-rpc' is not installed, so not removed
+2025-04-11T17:02:02.5612793Z Package 'php-datto-json-rpc-http' is not installed, so not removed
+2025-04-11T17:02:02.5613151Z Package 'php-db' is not installed, so not removed
+2025-04-11T17:02:02.5613489Z Package 'php-deepcopy' is not installed, so not removed
+2025-04-11T17:02:02.5613884Z Package 'php-dflydev-dot-access-data' is not installed, so not removed
+2025-04-11T17:02:02.5614270Z Package 'php-di' is not installed, so not removed
+2025-04-11T17:02:02.5614609Z Package 'php-psr-container' is not installed, so not removed
+2025-04-11T17:02:02.5614976Z Package 'php-di-invoker' is not installed, so not removed
+2025-04-11T17:02:02.5615392Z Package 'php-laravel-serializable-closure' is not installed, so not removed
+2025-04-11T17:02:02.5615854Z Package 'php-directory-scanner' is not installed, so not removed
+2025-04-11T17:02:02.5616216Z Package 'php-doc' is not installed, so not removed
+2025-04-11T17:02:02.5616597Z Package 'php-doctrine-annotations' is not installed, so not removed
+2025-04-11T17:02:02.5616996Z Package 'php-doctrine-lexer' is not installed, so not removed
+2025-04-11T17:02:02.5617360Z Package 'php-doctrine-cache' is not installed, so not removed
+2025-04-11T17:02:02.5617765Z Package 'php-doctrine-collections' is not installed, so not removed
+2025-04-11T17:02:02.5618188Z Package 'php-doctrine-deprecations' is not installed, so not removed
+2025-04-11T17:02:02.5618607Z Package 'php-doctrine-common' is not installed, so not removed
+2025-04-11T17:02:02.5619014Z Package 'php-doctrine-persistence' is not installed, so not removed
+2025-04-11T17:02:02.5619442Z Package 'php-doctrine-data-fixtures' is not installed, so not removed
+2025-04-11T17:02:02.5619853Z Package 'php-doctrine-dbal' is not installed, so not removed
+2025-04-11T17:02:02.5620393Z Package 'php-doctrine-orm' is not installed, so not removed
+2025-04-11T17:02:02.5620805Z Package 'php-doctrine-event-manager' is not installed, so not removed
+2025-04-11T17:02:02.5621236Z Package 'php-doctrine-inflector' is not installed, so not removed
+2025-04-11T17:02:02.5621657Z Package 'php-doctrine-instantiator' is not installed, so not removed
+2025-04-11T17:02:02.5622175Z Package 'php-symfony-cache' is not installed, so not removed
+2025-04-11T17:02:02.5622556Z Package 'php-symfony-yaml' is not installed, so not removed
+2025-04-11T17:02:02.5622997Z Package 'php-dragonmantank-cron-expression' is not installed, so not removed
+2025-04-11T17:02:02.5623458Z Package 'php-webmozart-assert' is not installed, so not removed
+2025-04-11T17:02:02.5623818Z Package 'php8.3-ds' is not installed, so not removed
+2025-04-11T17:02:02.5624163Z Package 'php-ds-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.5624504Z Package 'php-easyrdf' is not installed, so not removed
+2025-04-11T17:02:02.5624851Z Package 'php-ml-json-ld' is not installed, so not removed
+2025-04-11T17:02:02.5625207Z Package 'php-eluceo-ical' is not installed, so not removed
+2025-04-11T17:02:02.5625580Z Package 'php-email-validator' is not installed, so not removed
+2025-04-11T17:02:02.5625946Z Package 'php-embed' is not installed, so not removed
+2025-04-11T17:02:02.5626326Z Package 'php-oscarotero-html-parser' is not installed, so not removed
+2025-04-11T17:02:02.5626740Z Package 'php-psr-http-message' is not installed, so not removed
+2025-04-11T17:02:02.5627125Z Package 'php-psr-http-client' is not installed, so not removed
+2025-04-11T17:02:02.5627510Z Package 'php-psr-http-factory' is not installed, so not removed
+2025-04-11T17:02:02.5628238Z Package 'php-symfony-css-selector' is not installed, so not removed
+2025-04-11T17:02:02.5628619Z Package 'php-enchant' is not installed, so not removed
+2025-04-11T17:02:02.5628937Z Package 'php-excimer' is not installed, so not removed
+2025-04-11T17:02:02.5629287Z Package 'php8.3-facedetect' is not installed, so not removed
+2025-04-11T17:02:02.5629674Z Package 'php-facedetect-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.5630034Z Package 'php-faker' is not installed, so not removed
+2025-04-11T17:02:02.5630376Z Package 'php-fdomdocument' is not installed, so not removed
+2025-04-11T17:02:02.5630771Z Package 'php-fig-http-message-util' is not installed, so not removed
+2025-04-11T17:02:02.5631175Z Package 'php-fig-link-util' is not installed, so not removed
+2025-04-11T17:02:02.5631533Z Package 'php-psr-link' is not installed, so not removed
+2025-04-11T17:02:02.5631871Z Package 'php-font-lib' is not installed, so not removed
+2025-04-11T17:02:02.5632376Z Package 'php-fruitcake-php-cors' is not installed, so not removed
+2025-04-11T17:02:02.5632805Z Package 'php-symfony-http-foundation' is not installed, so not removed
+2025-04-11T17:02:02.5633180Z Package 'php-fxsl' is not installed, so not removed
+2025-04-11T17:02:02.5633516Z Package 'php8.3-gearman' is not installed, so not removed
+2025-04-11T17:02:02.5633881Z Package 'php-gearman-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.5634261Z Package 'php-getallheaders' is not installed, so not removed
+2025-04-11T17:02:02.5634611Z Package 'php-getid3' is not installed, so not removed
+2025-04-11T17:02:02.5634968Z Package 'php-gettext-languages' is not installed, so not removed
+2025-04-11T17:02:02.5635374Z Package 'php-oscarotero-gettext' is not installed, so not removed
+2025-04-11T17:02:02.5635814Z Package 'php-giggsey-libphonenumber' is not installed, so not removed
+2025-04-11T17:02:02.5636223Z Package 'php-giggsey-locale' is not installed, so not removed
+2025-04-11T17:02:02.5636595Z Package 'php8.3-gmagick' is not installed, so not removed
+2025-04-11T17:02:02.5636955Z Package 'php-gmagick-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.5637317Z Package 'php8.3-gnupg' is not installed, so not removed
+2025-04-11T17:02:02.5637672Z Package 'php-gnupg-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.5638231Z Package 'php-google-protobuf' is not installed, so not removed
+2025-04-11T17:02:02.5638627Z Package 'php-google-recaptcha' is not installed, so not removed
+2025-04-11T17:02:02.5639056Z Package 'php-graham-campbell-result-type' is not installed, so not removed
+2025-04-11T17:02:02.5639468Z Package 'php-phpoption' is not installed, so not removed
+2025-04-11T17:02:02.5639828Z Package 'php-gregwar-captcha' is not installed, so not removed
+2025-04-11T17:02:02.5640183Z Package 'php-guestfs' is not installed, so not removed
+2025-04-11T17:02:02.5640547Z Package 'php-guzzlehttp-guzzle' is not installed, so not removed
+2025-04-11T17:02:02.5640955Z Package 'php-guzzlehttp-promises' is not installed, so not removed
+2025-04-11T17:02:02.5641344Z Package 'php-guzzlehttp-psr7' is not installed, so not removed
+2025-04-11T17:02:02.5641701Z Package 'php-hamcrest' is not installed, so not removed
+2025-04-11T17:02:02.5642129Z Package 'php-htmlawed' is not installed, so not removed
+2025-04-11T17:02:02.5642496Z Package 'php-htmlpurifier' is not installed, so not removed
+2025-04-11T17:02:02.5642842Z Package 'php-http' is not installed, so not removed
+2025-04-11T17:02:02.5643168Z Package 'php8.3-http' is not installed, so not removed
+2025-04-11T17:02:02.5643507Z Package 'php-http-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.5643868Z Package 'php-http-httplug' is not installed, so not removed
+2025-04-11T17:02:02.5644226Z Package 'php-http-promise' is not installed, so not removed
+2025-04-11T17:02:02.5644655Z Package 'php-http-interop-http-factory-tests' is not installed, so not removed
+2025-04-11T17:02:02.5645115Z Package 'php-http-message-factory' is not installed, so not removed
+2025-04-11T17:02:02.5645682Z Package 'php-http-psr7-integration-tests' is not installed, so not removed
+2025-04-11T17:02:02.5646124Z Package 'php-http-webdav-server' is not installed, so not removed
+2025-04-11T17:02:02.5646487Z Package 'php-httpful' is not installed, so not removed
+2025-04-11T17:02:02.5646854Z Package 'php-igbinary-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.5647225Z Package 'php-image-text' is not installed, so not removed
+2025-04-11T17:02:02.5647588Z Package 'php-imagick-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.5647943Z Package 'php-interbase' is not installed, so not removed
+2025-04-11T17:02:02.5648278Z Package 'php-invoker' is not installed, so not removed
+2025-04-11T17:02:02.5648600Z Package 'php-jshrink' is not installed, so not removed
+2025-04-11T17:02:02.5648956Z Package 'php-kissifrot-php-ixr' is not installed, so not removed
+2025-04-11T17:02:02.5649313Z Package 'php-klogger' is not installed, so not removed
+2025-04-11T17:02:02.5649659Z Package 'php-lcobucci-clock' is not installed, so not removed
+2025-04-11T17:02:02.5650016Z Package 'php-psr-clock' is not installed, so not removed
+2025-04-11T17:02:02.5650364Z Package 'php-lcobucci-jwt' is not installed, so not removed
+2025-04-11T17:02:02.5650735Z Package 'php-league-commonmark' is not installed, so not removed
+2025-04-11T17:02:02.5651121Z Package 'php-league-config' is not installed, so not removed
+2025-04-11T17:02:02.5651517Z Package 'php-psr-event-dispatcher' is not installed, so not removed
+2025-04-11T17:02:02.5651903Z Package 'php-nette-schema' is not installed, so not removed
+2025-04-11T17:02:02.5652358Z Package 'php-league-csv' is not installed, so not removed
+2025-04-11T17:02:02.5652723Z Package 'php-league-flysystem' is not installed, so not removed
+2025-04-11T17:02:02.5653147Z Package 'php-league-mime-type-detection' is not installed, so not removed
+2025-04-11T17:02:02.5653593Z Package 'php-league-html-to-markdown' is not installed, so not removed
+2025-04-11T17:02:02.5653982Z Package 'php-league-uri' is not installed, so not removed
+2025-04-11T17:02:02.5654369Z Package 'php-league-uri-interfaces' is not installed, so not removed
+2025-04-11T17:02:02.5654795Z Package 'php-league-uri-components' is not installed, so not removed
+2025-04-11T17:02:02.5655188Z Package 'php-letodms-core' is not installed, so not removed
+2025-04-11T17:02:02.5655694Z Package 'php-libvirt-php-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.5656062Z Package 'php-log' is not installed, so not removed
+2025-04-11T17:02:02.5656366Z Package 'php-mdb2' is not installed, so not removed
+2025-04-11T17:02:02.5656674Z Package 'php-mail' is not installed, so not removed
+2025-04-11T17:02:02.5657014Z Package 'php-lorenzo-pinky' is not installed, so not removed
+2025-04-11T17:02:02.5657396Z Package 'php-net-smtp' is not installed, so not removed
+2025-04-11T17:02:02.5657737Z Package 'php-mail-mime' is not installed, so not removed
+2025-04-11T17:02:02.5658075Z Package 'php8.3-mailparse' is not installed, so not removed
+2025-04-11T17:02:02.5658452Z Package 'php-mailparse-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.5658833Z Package 'php-malkusch-lock' is not installed, so not removed
+2025-04-11T17:02:02.5659179Z Package 'php-predis' is not installed, so not removed
+2025-04-11T17:02:02.5659540Z Package 'php-mariadb-mysql-kbs' is not installed, so not removed
+2025-04-11T17:02:02.5659930Z Package 'php-masterminds-html5' is not installed, so not removed
+2025-04-11T17:02:02.5660329Z Package 'php-matthiasmullie-minify' is not installed, so not removed
+2025-04-11T17:02:02.5660788Z Package 'php-matthiasmullie-path-converter' is not installed, so not removed
+2025-04-11T17:02:02.5661266Z Package 'php-maxmind-web-service-common' is not installed, so not removed
+2025-04-11T17:02:02.5661681Z Package 'php-maxminddb' is not installed, so not removed
+2025-04-11T17:02:02.5662158Z Package 'php8.3-maxminddb' is not installed, so not removed
+2025-04-11T17:02:02.5662530Z Package 'php-maxminddb-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.5663021Z Package 'php8.3-mcrypt' is not installed, so not removed
+2025-04-11T17:02:02.5663378Z Package 'php-mcrypt-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.5663760Z Package 'php-mdb2-driver-mysql' is not installed, so not removed
+2025-04-11T17:02:02.5664153Z Package 'php-mdb2-driver-pgsql' is not installed, so not removed
+2025-04-11T17:02:02.5664544Z Package 'php-memcache-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.5664922Z Package 'php-memcached-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.5665306Z Package 'php-msgpack-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.5665661Z Package 'php-mf2' is not installed, so not removed
+2025-04-11T17:02:02.5666017Z Package 'php-mikey179-vfsstream' is not installed, so not removed
+2025-04-11T17:02:02.5666378Z Package 'php-ml-iri' is not installed, so not removed
+2025-04-11T17:02:02.5666694Z Package 'php-mock' is not installed, so not removed
+2025-04-11T17:02:02.5667034Z Package 'php-mock-phpunit' is not installed, so not removed
+2025-04-11T17:02:02.5667410Z Package 'php-mock-integration' is not installed, so not removed
+2025-04-11T17:02:02.5667771Z Package 'php-mockery' is not installed, so not removed
+2025-04-11T17:02:02.5668121Z Package 'php-mockery-doc' is not installed, so not removed
+2025-04-11T17:02:02.5668494Z Package 'php-mongodb-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.5668849Z Package 'php-monolog' is not installed, so not removed
+2025-04-11T17:02:02.5669183Z Package 'php-net-dime' is not installed, so not removed
+2025-04-11T17:02:02.5669515Z Package 'php-net-dns2' is not installed, so not removed
+2025-04-11T17:02:02.5669841Z Package 'php-net-ftp' is not installed, so not removed
+2025-04-11T17:02:02.5670170Z Package 'php-net-imap' is not installed, so not removed
+2025-04-11T17:02:02.5670490Z Package 'php-net-ipv6' is not installed, so not removed
+2025-04-11T17:02:02.5670823Z Package 'php-net-ldap2' is not installed, so not removed
+2025-04-11T17:02:02.5671171Z Package 'php-net-ldap3' is not installed, so not removed
+2025-04-11T17:02:02.5671500Z Package 'php-net-nntp' is not installed, so not removed
+2025-04-11T17:02:02.5671853Z Package 'php-net-publicsuffix' is not installed, so not removed
+2025-04-11T17:02:02.5672345Z Package 'php-net-sieve' is not installed, so not removed
+2025-04-11T17:02:02.5672798Z Package 'php-net-url' is not installed, so not removed
+2025-04-11T17:02:02.5673119Z Package 'php-net-url2' is not installed, so not removed
+2025-04-11T17:02:02.5673452Z Package 'php-net-whois' is not installed, so not removed
+2025-04-11T17:02:02.5673854Z Package 'php-netscape-bookmark-parser' is not installed, so not removed
+2025-04-11T17:02:02.5674264Z Package 'php-nette-utils' is not installed, so not removed
+2025-04-11T17:02:02.5674626Z Package 'php-nikic-fast-route' is not installed, so not removed
+2025-04-11T17:02:02.5674993Z Package 'php-nyholm-psr7' is not installed, so not removed
+2025-04-11T17:02:02.5675339Z Package 'php8.3-oauth' is not installed, so not removed
+2025-04-11T17:02:02.5675687Z Package 'php-oauth-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.5676053Z Package 'php-opis-closure' is not installed, so not removed
+2025-04-11T17:02:02.5676396Z Package 'php-parsedown' is not installed, so not removed
+2025-04-11T17:02:02.5676761Z Package 'php-parsedown-extra' is not installed, so not removed
+2025-04-11T17:02:02.5677131Z Package 'php-pcov-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.5677508Z Package 'php-pda-pheanstalk' is not installed, so not removed
+2025-04-11T17:02:02.5677888Z Package 'php-phar-io-manifest' is not installed, so not removed
+2025-04-11T17:02:02.5678256Z Package 'php-phar-io-version' is not installed, so not removed
+2025-04-11T17:02:02.5678620Z Package 'php-php-gettext' is not installed, so not removed
+2025-04-11T17:02:02.5678962Z Package 'php-phpdbg' is not installed, so not removed
+2025-04-11T17:02:02.5679379Z Package 'php-phpdocumentor-reflection-common' is not installed, so not removed
+2025-04-11T17:02:02.5680018Z Package 'php-phpdocumentor-reflection-docblock' is not installed, so not removed
+2025-04-11T17:02:02.5680517Z Package 'php-phpdocumentor-type-resolver' is not installed, so not removed
+2025-04-11T17:02:02.5680966Z Package 'php-phpstan-phpdoc-parser' is not installed, so not removed
+2025-04-11T17:02:02.5681421Z Package 'php-symfony-expression-language' is not installed, so not removed
+2025-04-11T17:02:02.5681867Z Package 'php-phpmyadmin-shapefile' is not installed, so not removed
+2025-04-11T17:02:02.5682397Z Package 'php-phpmyadmin-sql-parser' is not installed, so not removed
+2025-04-11T17:02:02.5682830Z Package 'php-symfony-polyfill-php80' is not installed, so not removed
+2025-04-11T17:02:02.5683207Z Package 'php-seclib' is not installed, so not removed
+2025-04-11T17:02:02.5683542Z Package 'php-phpseclib3' is not installed, so not removed
+2025-04-11T17:02:02.5683918Z Package 'php-phpspec-prophecy' is not installed, so not removed
+2025-04-11T17:02:02.5684324Z Package 'phpunit-comparator' is not installed, so not removed
+2025-04-11T17:02:02.5684729Z Package 'phpunit-recursion-context' is not installed, so not removed
+2025-04-11T17:02:02.5685182Z Package 'php-phpspec-prophecy-phpunit' is not installed, so not removed
+2025-04-11T17:02:02.5685574Z Package 'php-pinba' is not installed, so not removed
+2025-04-11T17:02:02.5685918Z Package 'php8.3-pinba' is not installed, so not removed
+2025-04-11T17:02:02.5686276Z Package 'php-pinba-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.5686651Z Package 'php-proxy-manager' is not installed, so not removed
+2025-04-11T17:02:02.5686996Z Package 'php8.3-ps' is not installed, so not removed
+2025-04-11T17:02:02.5687337Z Package 'php-ps-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.5687669Z Package 'php8.3-psr' is not installed, so not removed
+2025-04-11T17:02:02.5688020Z Package 'php-psr-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.5688399Z Package 'php-psr-simple-cache' is not installed, so not removed
+2025-04-11T17:02:02.5688835Z Package 'php-pubsubhubbub-publisher' is not installed, so not removed
+2025-04-11T17:02:02.5689262Z Package 'php-ramsey-collection' is not installed, so not removed
+2025-04-11T17:02:02.5689636Z Package 'php-ramsey-uuid' is not installed, so not removed
+2025-04-11T17:02:02.5690160Z Package 'php8.3-raphf' is not installed, so not removed
+2025-04-11T17:02:02.5690574Z Package 'php-raphf-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.5690953Z Package 'php-redis-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.5691302Z Package 'php-remctl' is not installed, so not removed
+2025-04-11T17:02:02.5691678Z Package 'php-roundcube-rtf-html-php' is not installed, so not removed
+2025-04-11T17:02:02.5692233Z Package 'php8.3-rrd' is not installed, so not removed
+2025-04-11T17:02:02.5692578Z Package 'php-rrd-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.5692932Z Package 'php-sabre-dav' is not installed, so not removed
+2025-04-11T17:02:02.5693301Z Package 'php-sabre-vobject' is not installed, so not removed
+2025-04-11T17:02:02.5693645Z Package 'php-sass' is not installed, so not removed
+2025-04-11T17:02:02.5693972Z Package 'php8.3-sass' is not installed, so not removed
+2025-04-11T17:02:02.5694320Z Package 'php-sass-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.5694698Z Package 'php-shellcommand' is not installed, so not removed
+2025-04-11T17:02:02.5695054Z Package 'php-slim-psr7' is not installed, so not removed
+2025-04-11T17:02:02.5695409Z Package 'php8.3-smbclient' is not installed, so not removed
+2025-04-11T17:02:02.5695778Z Package 'php-smbclient-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.5696141Z Package 'php-solr' is not installed, so not removed
+2025-04-11T17:02:02.5696465Z Package 'php8.3-solr' is not installed, so not removed
+2025-04-11T17:02:02.5696810Z Package 'php-solr-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.5697162Z Package 'php-sparkline' is not installed, so not removed
+2025-04-11T17:02:02.5697712Z Package 'php-sql-formatter' is not installed, so not removed
+2025-04-11T17:02:02.5698052Z Package 'php8.3-ssh2' is not installed, so not removed
+2025-04-11T17:02:02.5698390Z Package 'php-ssh2-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.5698738Z Package 'php8.3-stomp' is not installed, so not removed
+2025-04-11T17:02:02.5699101Z Package 'php-stomp-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.5699465Z Package 'php-swiftmailer' is not installed, so not removed
+2025-04-11T17:02:02.5699805Z Package 'php-symfony' is not installed, so not removed
+2025-04-11T17:02:02.5700151Z Package 'php-symfony-asset' is not installed, so not removed
+2025-04-11T17:02:02.5700546Z Package 'php-symfony-asset-mapper' is not installed, so not removed
+2025-04-11T17:02:02.5700968Z Package 'php-symfony-browser-kit' is not installed, so not removed
+2025-04-11T17:02:02.5701360Z Package 'php-symfony-clock' is not installed, so not removed
+2025-04-11T17:02:02.5701746Z Package 'php-symfony-debug-bundle' is not installed, so not removed
+2025-04-11T17:02:02.5702329Z Package 'php-symfony-doctrine-bridge' is not installed, so not removed
+2025-04-11T17:02:02.5702763Z Package 'php-symfony-dom-crawler' is not installed, so not removed
+2025-04-11T17:02:02.5703163Z Package 'php-symfony-dotenv' is not installed, so not removed
+2025-04-11T17:02:02.5703579Z Package 'php-symfony-error-handler' is not installed, so not removed
+2025-04-11T17:02:02.5704022Z Package 'php-symfony-event-dispatcher' is not installed, so not removed
+2025-04-11T17:02:02.5704430Z Package 'php-symfony-form' is not installed, so not removed
+2025-04-11T17:02:02.5704842Z Package 'php-symfony-framework-bundle' is not installed, so not removed
+2025-04-11T17:02:02.5705274Z Package 'php-symfony-http-kernel' is not installed, so not removed
+2025-04-11T17:02:02.5705667Z Package 'php-symfony-intl' is not installed, so not removed
+2025-04-11T17:02:02.5706030Z Package 'php-symfony-ldap' is not installed, so not removed
+2025-04-11T17:02:02.5706393Z Package 'php-symfony-lock' is not installed, so not removed
+2025-04-11T17:02:02.5706755Z Package 'php-symfony-mailer' is not installed, so not removed
+2025-04-11T17:02:02.5707146Z Package 'php-symfony-messenger' is not installed, so not removed
+2025-04-11T17:02:02.5707523Z Package 'php-symfony-mime' is not installed, so not removed
+2025-04-11T17:02:02.5708039Z Package 'php-symfony-monolog-bridge' is not installed, so not removed
+2025-04-11T17:02:02.5708450Z Package 'php-symfony-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5708862Z Package 'php-symfony-options-resolver' is not installed, so not removed
+2025-04-11T17:02:02.5709327Z Package 'php-symfony-password-hasher' is not installed, so not removed
+2025-04-11T17:02:02.5709776Z Package 'php-symfony-property-access' is not installed, so not removed
+2025-04-11T17:02:02.5710211Z Package 'php-symfony-property-info' is not installed, so not removed
+2025-04-11T17:02:02.5710671Z Package 'php-symfony-proxy-manager-bridge' is not installed, so not removed
+2025-04-11T17:02:02.5711130Z Package 'php-symfony-rate-limiter' is not installed, so not removed
+2025-04-11T17:02:02.5711535Z Package 'php-symfony-remote-event' is not installed, so not removed
+2025-04-11T17:02:02.5711936Z Package 'php-symfony-routing' is not installed, so not removed
+2025-04-11T17:02:02.5712456Z Package 'php-symfony-scheduler' is not installed, so not removed
+2025-04-11T17:02:02.5712879Z Package 'php-symfony-security-bundle' is not installed, so not removed
+2025-04-11T17:02:02.5713316Z Package 'php-symfony-security-core' is not installed, so not removed
+2025-04-11T17:02:02.5713738Z Package 'php-symfony-security-csrf' is not installed, so not removed
+2025-04-11T17:02:02.5714162Z Package 'php-symfony-security-http' is not installed, so not removed
+2025-04-11T17:02:02.5714570Z Package 'php-symfony-semaphore' is not installed, so not removed
+2025-04-11T17:02:02.5714973Z Package 'php-symfony-serializer' is not installed, so not removed
+2025-04-11T17:02:02.5715361Z Package 'php-symfony-stopwatch' is not installed, so not removed
+2025-04-11T17:02:02.5715871Z Package 'php-symfony-string' is not installed, so not removed
+2025-04-11T17:02:02.5716258Z Package 'php-symfony-templating' is not installed, so not removed
+2025-04-11T17:02:02.5716661Z Package 'php-symfony-translation' is not installed, so not removed
+2025-04-11T17:02:02.5717069Z Package 'php-symfony-twig-bridge' is not installed, so not removed
+2025-04-11T17:02:02.5717474Z Package 'php-symfony-twig-bundle' is not installed, so not removed
+2025-04-11T17:02:02.5717852Z Package 'php-symfony-uid' is not installed, so not removed
+2025-04-11T17:02:02.5718217Z Package 'php-symfony-validator' is not installed, so not removed
+2025-04-11T17:02:02.5718606Z Package 'php-symfony-var-dumper' is not installed, so not removed
+2025-04-11T17:02:02.5719011Z Package 'php-symfony-var-exporter' is not installed, so not removed
+2025-04-11T17:02:02.5719408Z Package 'php-symfony-web-link' is not installed, so not removed
+2025-04-11T17:02:02.5719839Z Package 'php-symfony-web-profiler-bundle' is not installed, so not removed
+2025-04-11T17:02:02.5720277Z Package 'php-symfony-webhook' is not installed, so not removed
+2025-04-11T17:02:02.5720654Z Package 'php-symfony-workflow' is not installed, so not removed
+2025-04-11T17:02:02.5721035Z Package 'php-symfony-contracts' is not installed, so not removed
+2025-04-11T17:02:02.5721445Z Package 'php-symfony-polyfill-php83' is not installed, so not removed
+2025-04-11T17:02:02.5721895Z Package 'php-symfony-all-my-sms-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5722461Z Package 'php-symfony-amazon-mailer' is not installed, so not removed
+2025-04-11T17:02:02.5722912Z Package 'php-symfony-amazon-sns-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5723375Z Package 'php-symfony-amazon-sqs-messenger' is not installed, so not removed
+2025-04-11T17:02:02.5723831Z Package 'php-symfony-amqp-messenger' is not installed, so not removed
+2025-04-11T17:02:02.5724283Z Package 'php-symfony-bandwidth-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5724761Z Package 'php-symfony-beanstalkd-messenger' is not installed, so not removed
+2025-04-11T17:02:02.5725207Z Package 'php-symfony-brevo-mailer' is not installed, so not removed
+2025-04-11T17:02:02.5725624Z Package 'php-symfony-brevo-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5726188Z Package 'php-symfony-cache-contracts' is not installed, so not removed
+2025-04-11T17:02:02.5726633Z Package 'php-symfony-chatwork-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5727093Z Package 'php-symfony-click-send-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5727560Z Package 'php-symfony-clickatell-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5728048Z Package 'php-symfony-contact-everyone-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5728567Z Package 'php-symfony-event-dispatcher-contracts' is not installed, so not removed
+2025-04-11T17:02:02.5729076Z Package 'php-symfony-translation-contracts' is not installed, so not removed
+2025-04-11T17:02:02.5729600Z Package 'php-symfony-crowdin-translation-provider' is not installed, so not removed
+2025-04-11T17:02:02.5730219Z Package 'php-symfony-discord-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5730777Z Package 'php-symfony-doctrine-messenger' is not installed, so not removed
+2025-04-11T17:02:02.5731387Z Package 'php-symfony-engagespot-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5732285Z Package 'php-symfony-esendex-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5732893Z Package 'php-symfony-expo-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5733436Z Package 'php-symfony-fake-chat-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5733989Z Package 'php-symfony-fake-sms-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5734569Z Package 'php-symfony-firebase-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5735137Z Package 'php-symfony-forty-six-elks-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5735927Z Package 'php-symfony-free-mobile-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5736503Z Package 'php-symfony-gateway-api-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5737046Z Package 'php-symfony-gitter-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5737637Z Package 'php-symfony-go-ip-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5738181Z Package 'php-symfony-google-chat-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5738708Z Package 'php-symfony-google-mailer' is not installed, so not removed
+2025-04-11T17:02:02.5739308Z Package 'php-symfony-html-sanitizer' is not installed, so not removed
+2025-04-11T17:02:02.5739829Z Package 'php-symfony-infobip-mailer' is not installed, so not removed
+2025-04-11T17:02:02.5740408Z Package 'php-symfony-infobip-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5740924Z Package 'php-symfony-iqsms-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5741471Z Package 'php-symfony-isendpro-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5742203Z Package 'php-symfony-kaz-info-teh-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5742815Z Package 'php-symfony-light-sms-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5760884Z Package 'php-symfony-line-notify-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5761516Z Package 'php-symfony-linked-in-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5762192Z Package 'php-symfony-loco-translation-provider' is not installed, so not removed
+2025-04-11T17:02:02.5762748Z Package 'php-symfony-lokalise-translation-provider' is not installed, so not removed
+2025-04-11T17:02:02.5763266Z Package 'php-symfony-mail-pace-mailer' is not installed, so not removed
+2025-04-11T17:02:02.5763735Z Package 'php-symfony-mailchimp-mailer' is not installed, so not removed
+2025-04-11T17:02:02.5764196Z Package 'php-symfony-mailer-send-mailer' is not installed, so not removed
+2025-04-11T17:02:02.5764673Z Package 'php-symfony-mailgun-mailer' is not installed, so not removed
+2025-04-11T17:02:02.5765096Z Package 'php-symfony-mailjet-mailer' is not installed, so not removed
+2025-04-11T17:02:02.5765532Z Package 'php-symfony-mailjet-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5766300Z Package 'php-symfony-mastodon-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5766769Z Package 'php-symfony-mattermost-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5767210Z Package 'php-symfony-mercure' is not installed, so not removed
+2025-04-11T17:02:02.5767632Z Package 'php-symfony-mercure-bundle' is not installed, so not removed
+2025-04-11T17:02:02.5768065Z Package 'php-symfony-mercure-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5768540Z Package 'php-symfony-message-bird-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5769032Z Package 'php-symfony-message-media-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5769543Z Package 'php-symfony-microsoft-teams-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5770015Z Package 'php-symfony-mobyt-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5770438Z Package 'php-symfony-novu-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5770860Z Package 'php-symfony-ntfy-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5771297Z Package 'php-symfony-octopush-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5771749Z Package 'php-symfony-oh-my-smtp-mailer' is not installed, so not removed
+2025-04-11T17:02:02.5772469Z Package 'php-symfony-one-signal-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5772936Z Package 'php-symfony-orange-sms-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5773396Z Package 'php-symfony-ovh-cloud-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5773855Z Package 'php-symfony-pager-duty-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5774453Z Package 'php-symfony-phpunit-bridge' is not installed, so not removed
+2025-04-11T17:02:02.5774947Z Package 'php-symfony-phrase-translation-provider' is not installed, so not removed
+2025-04-11T17:02:02.5775437Z Package 'php-symfony-plivo-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5775852Z Package 'php-symfony-polyfill' is not installed, so not removed
+2025-04-11T17:02:02.5776269Z Package 'php-symfony-polyfill-apcu' is not installed, so not removed
+2025-04-11T17:02:02.5776703Z Package 'php-symfony-polyfill-ctype' is not installed, so not removed
+2025-04-11T17:02:02.5777136Z Package 'php-symfony-polyfill-php72' is not installed, so not removed
+2025-04-11T17:02:02.5777568Z Package 'php-symfony-polyfill-php73' is not installed, so not removed
+2025-04-11T17:02:02.5778003Z Package 'php-symfony-polyfill-php74' is not installed, so not removed
+2025-04-11T17:02:02.5778432Z Package 'php-symfony-polyfill-php81' is not installed, so not removed
+2025-04-11T17:02:02.5778893Z Package 'php-symfony-polyfill-php82' is not installed, so not removed
+2025-04-11T17:02:02.5779331Z Package 'php-symfony-polyfill-iconv' is not installed, so not removed
+2025-04-11T17:02:02.5779796Z Package 'php-symfony-polyfill-intl-grapheme' is not installed, so not removed
+2025-04-11T17:02:02.5780304Z Package 'php-symfony-polyfill-intl-icu' is not installed, so not removed
+2025-04-11T17:02:02.5780822Z Package 'php-symfony-polyfill-intl-messageformatter' is not installed, so not removed
+2025-04-11T17:02:02.5781341Z Package 'php-symfony-polyfill-intl-idn' is not installed, so not removed
+2025-04-11T17:02:02.5781840Z Package 'php-symfony-polyfill-intl-normalizer' is not installed, so not removed
+2025-04-11T17:02:02.5782493Z Package 'php-symfony-polyfill-mbstring' is not installed, so not removed
+2025-04-11T17:02:02.5782943Z Package 'php-symfony-polyfill-util' is not installed, so not removed
+2025-04-11T17:02:02.5783378Z Package 'php-symfony-polyfill-xml' is not installed, so not removed
+2025-04-11T17:02:02.5783814Z Package 'php-symfony-polyfill-uuid' is not installed, so not removed
+2025-04-11T17:02:02.5784245Z Package 'php-symfony-postmark-mailer' is not installed, so not removed
+2025-04-11T17:02:02.5784730Z Package 'php-symfony-psr-http-message-bridge' is not installed, so not removed
+2025-04-11T17:02:02.5785358Z Package 'php-symfony-pushover-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5785816Z Package 'php-symfony-redis-messenger' is not installed, so not removed
+2025-04-11T17:02:02.5786266Z Package 'php-symfony-redlink-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5786741Z Package 'php-symfony-ring-central-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5787221Z Package 'php-symfony-rocket-chat-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5787661Z Package 'php-symfony-runtime' is not installed, so not removed
+2025-04-11T17:02:02.5788082Z Package 'php-symfony-scaleway-mailer' is not installed, so not removed
+2025-04-11T17:02:02.5788520Z Package 'php-symfony-security-acl' is not installed, so not removed
+2025-04-11T17:02:02.5788967Z Package 'php-symfony-sendberry-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5789419Z Package 'php-symfony-sendgrid-mailer' is not installed, so not removed
+2025-04-11T17:02:02.5789881Z Package 'php-symfony-sendinblue-mailer' is not installed, so not removed
+2025-04-11T17:02:02.5790349Z Package 'php-symfony-sendinblue-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5790883Z Package 'php-symfony-simple-textin-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5791348Z Package 'php-symfony-sinch-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5791774Z Package 'php-symfony-slack-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5792445Z Package 'php-symfony-sms-biuras-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5792933Z Package 'php-symfony-sms-factor-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5793544Z Package 'php-symfony-sms77-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5793987Z Package 'php-symfony-smsapi-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5794420Z Package 'php-symfony-smsc-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5794866Z Package 'php-symfony-smsmode-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5795311Z Package 'php-symfony-spot-hit-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5795769Z Package 'php-symfony-telegram-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5796216Z Package 'php-symfony-telnyx-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5796662Z Package 'php-symfony-termii-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5797117Z Package 'php-symfony-turbo-sms-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5797565Z Package 'php-symfony-twilio-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5798017Z Package 'php-symfony-twitter-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5798462Z Package 'php-symfony-vonage-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5798906Z Package 'php-symfony-yunpian-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5799359Z Package 'php-symfony-zendesk-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5799795Z Package 'php-symfony-zulip-notifier' is not installed, so not removed
+2025-04-11T17:02:02.5800192Z Package 'php-text-captcha' is not installed, so not removed
+2025-04-11T17:02:02.5800587Z Package 'php-text-password' is not installed, so not removed
+2025-04-11T17:02:02.5800965Z Package 'php-text-figlet' is not installed, so not removed
+2025-04-11T17:02:02.5801359Z Package 'php-text-languagedetect' is not installed, so not removed
+2025-04-11T17:02:02.5801752Z Package 'php-text-wiki' is not installed, so not removed
+2025-04-11T17:02:02.5802206Z Package 'php-thrift' is not installed, so not removed
+2025-04-11T17:02:02.5802557Z Package 'php8.3-tideways' is not installed, so not removed
+2025-04-11T17:02:02.5802935Z Package 'php-tideways-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.5803399Z Package 'php-tijsverkoyen-css-to-inline-styles' is not installed, so not removed
+2025-04-11T17:02:02.5803968Z Package 'php-timer' is not installed, so not removed
+2025-04-11T17:02:02.5804303Z Package 'php-twig-doc' is not installed, so not removed
+2025-04-11T17:02:02.7303106Z Package 'php-twig-cache-extra' is not installed, so not removed
+2025-04-11T17:02:02.7304058Z Package 'php-twig-cssinliner-extra' is not installed, so not removed
+2025-04-11T17:02:02.7304889Z Package 'php-twig-extra-bundle' is not installed, so not removed
+2025-04-11T17:02:02.7305631Z Package 'php-twig-html-extra' is not installed, so not removed
+2025-04-11T17:02:02.7306397Z Package 'php-twig-i18n-extension' is not installed, so not removed
+2025-04-11T17:02:02.7307166Z Package 'php-twig-inky-extra' is not installed, so not removed
+2025-04-11T17:02:02.7307977Z Package 'php-twig-intl-extra' is not installed, so not removed
+2025-04-11T17:02:02.7308751Z Package 'php-twig-markdown-extra' is not installed, so not removed
+2025-04-11T17:02:02.7309529Z Package 'php-twig-string-extra' is not installed, so not removed
+2025-04-11T17:02:02.7310255Z Package 'php8.3-uopz' is not installed, so not removed
+2025-04-11T17:02:02.7310901Z Package 'php-uopz-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.7311621Z Package 'php8.3-uploadprogress' is not installed, so not removed
+2025-04-11T17:02:02.7312824Z Package 'php-uploadprogress-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.7313585Z Package 'php8.3-uuid' is not installed, so not removed
+2025-04-11T17:02:02.7314232Z Package 'php-uuid-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.7314893Z Package 'php-validate' is not installed, so not removed
+2025-04-11T17:02:02.7315570Z Package 'php-vlucas-phpdotenv' is not installed, so not removed
+2025-04-11T17:02:02.7316771Z Package 'php-voku-portable-ascii' is not installed, so not removed
+2025-04-11T17:02:02.7317519Z Package 'php-wmerrors' is not installed, so not removed
+2025-04-11T17:02:02.7318233Z Package 'php-xdebug-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.7318933Z Package 'php-xml-svg' is not installed, so not removed
+2025-04-11T17:02:02.7319648Z Package 'php8.3-xmlrpc' is not installed, so not removed
+2025-04-11T17:02:02.7320347Z Package 'php-xmlrpc-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.7321027Z Package 'php8.3-yac' is not installed, so not removed
+2025-04-11T17:02:02.7321682Z Package 'php-yac-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.7322570Z Package 'php-yaml-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.7323240Z Package 'php-zend-code' is not installed, so not removed
+2025-04-11T17:02:02.7323936Z Package 'php-zend-eventmanager' is not installed, so not removed
+2025-04-11T17:02:02.7324646Z Package 'php-zend-stdlib' is not installed, so not removed
+2025-04-11T17:02:02.7325345Z Package 'php-zeroc-ice' is not installed, so not removed
+2025-04-11T17:02:02.7326034Z Package 'php-zeta-base' is not installed, so not removed
+2025-04-11T17:02:02.7326749Z Package 'php-zeta-console-tools' is not installed, so not removed
+2025-04-11T17:02:02.7327504Z Package 'php-zeta-unit-test' is not installed, so not removed
+2025-04-11T17:02:02.7328229Z Package 'php-zmq-all-dev' is not installed, so not removed
+2025-04-11T17:02:02.7329049Z Package 'php-zumba-json-serializer' is not installed, so not removed
+2025-04-11T17:02:02.7329852Z Package 'php8.3-libvirt-php' is not installed, so not removed
+2025-04-11T17:02:02.7330512Z Package 'phpab' is not installed, so not removed
+2025-04-11T17:02:02.7331091Z Package 'phpcpd' is not installed, so not removed
+2025-04-11T17:02:02.7331757Z Package 'phpunit-cli-parser' is not installed, so not removed
+2025-04-11T17:02:02.7332659Z Package 'phpldapadmin' is not installed, so not removed
+2025-04-11T17:02:02.7333311Z Package 'phpliteadmin' is not installed, so not removed
+2025-04-11T17:02:02.7334031Z Package 'phpliteadmin-themes' is not installed, so not removed
+2025-04-11T17:02:02.7334702Z Package 'phploc' is not installed, so not removed
+2025-04-11T17:02:02.7335314Z Package 'phppgadmin' is not installed, so not removed
+2025-04-11T17:02:02.7336289Z Package 'phpsysinfo' is not installed, so not removed
+2025-04-11T17:02:02.7336952Z Package 'phpunit-code-unit' is not installed, so not removed
+2025-04-11T17:02:02.7337631Z Package 'phpunit-diff' is not installed, so not removed
+2025-04-11T17:02:02.7338292Z Package 'phpunit-exporter' is not installed, so not removed
+2025-04-11T17:02:02.7339002Z Package 'phpunit-global-state' is not installed, so not removed
+2025-04-11T17:02:02.7339756Z Package 'phpunit-object-enumerator' is not installed, so not removed
+2025-04-11T17:02:02.7340558Z Package 'phpunit-resource-operations' is not installed, so not removed
+2025-04-11T17:02:02.7341296Z Package 'phpunit-type' is not installed, so not removed
+2025-04-11T17:02:02.7342228Z Package 'phpunit-object-reflector' is not installed, so not removed
+2025-04-11T17:02:02.7342975Z Package 'phpwebcounter' is not installed, so not removed
+2025-04-11T17:02:02.7343665Z Package 'phpwebcounter-extra' is not installed, so not removed
+2025-04-11T17:02:02.7344344Z Package 'python3-phply' is not installed, so not removed
+2025-04-11T17:02:02.7345059Z Package 'python3-phpserialize' is not installed, so not removed
+2025-04-11T17:02:02.7345863Z Package 'python3-sphinxcontrib.phpdomain' is not installed, so not removed
+2025-04-11T17:02:02.7346629Z Package 'simplesamlphp' is not installed, so not removed
+2025-04-11T17:02:02.7347274Z Package 'slbackup-php' is not installed, so not removed
+2025-04-11T17:02:02.7347911Z Package 'uwsgi-plugin-php' is not installed, so not removed
+2025-04-11T17:02:02.7348557Z Package 'weechat-php' is not installed, so not removed
+2025-04-11T17:02:02.7349157Z Package 'php-mythtv' is not installed, so not removed
+2025-04-11T17:02:02.7349704Z The following packages will be REMOVED:
+2025-04-11T17:02:02.7350664Z   php-common php-pear php8.3 php8.3-amqp php8.3-apcu php8.3-bcmath php8.3-bz2
+2025-04-11T17:02:02.7351489Z   php8.3-cgi php8.3-cli php8.3-common php8.3-curl php8.3-dba php8.3-dev
+2025-04-11T17:02:02.7352537Z   php8.3-enchant php8.3-fpm php8.3-gd php8.3-gmp php8.3-igbinary
+2025-04-11T17:02:02.7353332Z   php8.3-imagick php8.3-imap php8.3-interbase php8.3-intl php8.3-ldap
+2025-04-11T17:02:02.7354074Z   php8.3-mbstring php8.3-memcache php8.3-memcached php8.3-mongodb
+2025-04-11T17:02:02.7354815Z   php8.3-msgpack php8.3-mysql php8.3-odbc php8.3-opcache php8.3-pcov
+2025-04-11T17:02:02.7355615Z   php8.3-pgsql php8.3-phpdbg php8.3-pspell php8.3-readline php8.3-redis
+2025-04-11T17:02:02.7356394Z   php8.3-snmp php8.3-soap php8.3-sqlite3 php8.3-sybase php8.3-tidy
+2025-04-11T17:02:02.7357180Z   php8.3-xdebug php8.3-xml php8.3-xsl php8.3-yaml php8.3-zip php8.3-zmq
+2025-04-11T17:02:02.9806671Z 0 upgraded, 0 newly installed, 48 to remove and 84 not upgraded.
+2025-04-11T17:02:02.9986124Z After this operation, 58.9 MB disk space will be freed.
+2025-04-11T17:02:02.9986714Z (Reading database ... 
+2025-04-11T17:02:02.9987085Z (Reading database ... 5%
+2025-04-11T17:02:02.9987446Z (Reading database ... 10%
+2025-04-11T17:02:02.9987803Z (Reading database ... 15%
+2025-04-11T17:02:02.9988193Z (Reading database ... 20%
+2025-04-11T17:02:02.9990127Z (Reading database ... 25%
+2025-04-11T17:02:02.9990544Z (Reading database ... 30%
+2025-04-11T17:02:02.9990914Z (Reading database ... 35%
+2025-04-11T17:02:02.9991290Z (Reading database ... 40%
+2025-04-11T17:02:02.9991653Z (Reading database ... 45%
+2025-04-11T17:02:02.9992209Z (Reading database ... 50%
+2025-04-11T17:02:03.0003444Z (Reading database ... 55%
+2025-04-11T17:02:03.0095704Z (Reading database ... 60%
+2025-04-11T17:02:03.0118094Z (Reading database ... 65%
+2025-04-11T17:02:03.0138622Z (Reading database ... 70%
+2025-04-11T17:02:03.0174836Z (Reading database ... 75%
+2025-04-11T17:02:03.0198923Z (Reading database ... 80%
+2025-04-11T17:02:03.0461669Z (Reading database ... 85%
+2025-04-11T17:02:03.0802876Z (Reading database ... 90%
+2025-04-11T17:02:03.0921368Z (Reading database ... 95%
+2025-04-11T17:02:03.0921799Z (Reading database ... 100%
+2025-04-11T17:02:03.0922552Z (Reading database ... 207223 files and directories currently installed.)
+2025-04-11T17:02:03.0988920Z Removing php8.3-zip (8.3.6-0ubuntu0.24.04.4) ...
+2025-04-11T17:02:03.3777626Z Removing php8.3-sybase (8.3.6-0ubuntu0.24.04.4) ...
+2025-04-11T17:02:03.5220137Z Removing php-pear (1:1.10.13+submodules+notgz+2022032202-2build1) ...
+2025-04-11T17:02:03.5845175Z Removing php8.3 (8.3.6-0ubuntu0.24.04.4) ...
+2025-04-11T17:02:03.6438027Z Removing php8.3-amqp (1.11.0-5ubuntu1) ...
+2025-04-11T17:02:03.7738657Z Removing php8.3-apcu (5.1.22+4.0.11-2ubuntu1) ...
+2025-04-11T17:02:03.8976346Z Removing php8.3-bcmath (8.3.6-0ubuntu0.24.04.4) ...
+2025-04-11T17:02:04.0308076Z Removing php8.3-bz2 (8.3.6-0ubuntu0.24.04.4) ...
+2025-04-11T17:02:04.2129142Z Removing php8.3-zmq (1.1.3-24ubuntu1) ...
+2025-04-11T17:02:04.3944050Z Removing php8.3-yaml (2.2.2+2.1.0+2.0.4+1.3.2-6ubuntu1) ...
+2025-04-11T17:02:04.5331019Z Removing php8.3-cgi (8.3.6-0ubuntu0.24.04.4) ...
+2025-04-11T17:02:07.0428389Z apache2_invoke php8.3-cgi prerm: No action required
+2025-04-11T17:02:07.0761464Z Removing php8.3-dev (8.3.6-0ubuntu0.24.04.4) ...
+2025-04-11T17:02:07.1315352Z Removing php8.3-xdebug (3.2.0+3.1.6+2.9.8+2.8.1+2.5.5-3ubuntu1) ...
+2025-04-11T17:02:07.2481388Z Removing php8.3-phpdbg (8.3.6-0ubuntu0.24.04.4) ...
+2025-04-11T17:02:08.9776165Z Removing php8.3-redis (5.3.7+4.3.0-3ubuntu1) ...
+2025-04-11T17:02:09.0722223Z Removing php8.3-xsl (8.3.6-0ubuntu0.24.04.4) ...
+2025-04-11T17:02:09.0946475Z Removing php8.3-soap (8.3.6-0ubuntu0.24.04.4) ...
+2025-04-11T17:02:09.2033222Z Removing php8.3-curl (8.3.6-0ubuntu0.24.04.4) ...
+2025-04-11T17:02:09.2989400Z Removing php8.3-dba (8.3.6-0ubuntu0.24.04.4) ...
+2025-04-11T17:02:09.4162800Z Removing php8.3-enchant (8.3.6-0ubuntu0.24.04.4) ...
+2025-04-11T17:02:09.5652427Z Removing php8.3-pcov (1.0.11-5ubuntu1) ...
+2025-04-11T17:02:09.7117854Z Removing php8.3-fpm (8.3.6-0ubuntu0.24.04.4) ...
+2025-04-11T17:02:11.3941559Z apache2_invoke php8.3-fpm prerm: No action required
+2025-04-11T17:02:11.4355828Z Removing php8.3-gd (8.3.6-0ubuntu0.24.04.4) ...
+2025-04-11T17:02:11.5097432Z Removing php8.3-gmp (8.3.6-0ubuntu0.24.04.4) ...
+2025-04-11T17:02:11.5717870Z Removing php8.3-memcached (3.2.0+2.2.0-4ubuntu3) ...
+2025-04-11T17:02:11.6319711Z Removing php8.3-igbinary (3.2.13-1ubuntu3) ...
+2025-04-11T17:02:11.6916950Z Removing php8.3-imagick (3.7.0-4ubuntu3) ...
+2025-04-11T17:02:11.7536996Z Removing php8.3-imap (8.3.6-0ubuntu0.24.04.4) ...
+2025-04-11T17:02:11.8166841Z Removing php8.3-interbase (8.3.6-0ubuntu0.24.04.4) ...
+2025-04-11T17:02:11.8887863Z Removing php8.3-intl (8.3.6-0ubuntu0.24.04.4) ...
+2025-04-11T17:02:11.9534593Z Removing php8.3-ldap (8.3.6-0ubuntu0.24.04.4) ...
+2025-04-11T17:02:12.0213068Z Removing php8.3-mbstring (8.3.6-0ubuntu0.24.04.4) ...
+2025-04-11T17:02:12.0835357Z Removing php8.3-memcache (8.0+4.0.5.2+3.0.9~20170802.e702b5f9+-8ubuntu1) ...
+2025-04-11T17:02:12.1431167Z Removing php8.3-mongodb (1.15.0+1.11.1+1.9.2+1.7.5-1ubuntu3) ...
+2025-04-11T17:02:12.2188674Z Removing php8.3-msgpack (1:2.2.0~rc2-3ubuntu1) ...
+2025-04-11T17:02:12.2809911Z Removing php8.3-mysql (8.3.6-0ubuntu0.24.04.4) ...
+2025-04-11T17:02:12.4286716Z Removing php8.3-odbc (8.3.6-0ubuntu0.24.04.4) ...
+2025-04-11T17:02:12.5465867Z Removing php8.3-pgsql (8.3.6-0ubuntu0.24.04.4) ...
+2025-04-11T17:02:12.6569527Z Removing php8.3-pspell (8.3.6-0ubuntu0.24.04.4) ...
+2025-04-11T17:02:12.7539294Z Removing php8.3-snmp (8.3.6-0ubuntu0.24.04.4) ...
+2025-04-11T17:02:12.8645367Z Removing php8.3-sqlite3 (8.3.6-0ubuntu0.24.04.4) ...
+2025-04-11T17:02:12.9822682Z Removing php8.3-tidy (8.3.6-0ubuntu0.24.04.4) ...
+2025-04-11T17:02:13.0479494Z Removing php8.3-xml (8.3.6-0ubuntu0.24.04.4) ...
+2025-04-11T17:02:13.4317658Z Removing php8.3-cli (8.3.6-0ubuntu0.24.04.4) ...
+2025-04-11T17:02:14.0313133Z Removing php8.3-opcache (8.3.6-0ubuntu0.24.04.4) ...
+2025-04-11T17:02:14.0736924Z Removing php8.3-readline (8.3.6-0ubuntu0.24.04.4) ...
+2025-04-11T17:02:14.1147321Z Removing php8.3-common (8.3.6-0ubuntu0.24.04.4) ...
+2025-04-11T17:02:14.3066661Z Removing php-common (2:93ubuntu2) ...
+2025-04-11T17:02:14.3331770Z Stopping 'phpsessionclean.service', but its triggering units are still active:
+2025-04-11T17:02:14.3333011Z 
+2025-04-11T17:02:14.3333177Z phpsessionclean.timer
+2025-04-11T17:02:14.3333430Z 
+2025-04-11T17:02:14.9202734Z Processing triggers for man-db (2.12.0-4build2) ...
+2025-04-11T17:02:21.0824448Z Reading package lists...
+2025-04-11T17:02:21.2802550Z Building dependency tree...
+2025-04-11T17:02:21.2811690Z Reading state information...
+2025-04-11T17:02:21.5221437Z Package 'mongodb-dev' is not installed, so not removed
+2025-04-11T17:02:21.5222508Z Package 'mongodb-server' is not installed, so not removed
+2025-04-11T17:02:21.5223145Z 0 upgraded, 0 newly installed, 0 to remove and 84 not upgraded.
+2025-04-11T17:02:21.5457482Z Reading package lists...
+2025-04-11T17:02:21.7034423Z Building dependency tree...
+2025-04-11T17:02:21.7041436Z Reading state information...
+2025-04-11T17:02:21.9230540Z Package 'mysql-client-5.7' is not installed, so not removed
+2025-04-11T17:02:21.9231287Z Package 'mysql-client-core-5.7' is not installed, so not removed
+2025-04-11T17:02:21.9231925Z Package 'mysql-server-5.5' is not installed, so not removed
+2025-04-11T17:02:21.9232836Z Package 'mysql-server-5.7' is not installed, so not removed
+2025-04-11T17:02:21.9233338Z Package 'mysql-server-core-5.7' is not installed, so not removed
+2025-04-11T17:02:21.9234017Z Package 'mysql-client-core-5.5' is not installed, so not removed
+2025-04-11T17:02:21.9234665Z Package 'mysql-client-core-5.6' is not installed, so not removed
+2025-04-11T17:02:21.9235146Z Package 'mysql-client-5.5' is not installed, so not removed
+2025-04-11T17:02:21.9235602Z Package 'mysql-client-5.6' is not installed, so not removed
+2025-04-11T17:02:21.9236183Z Package 'mysql-cluster-community-client-plugins' is not installed, so not removed
+2025-04-11T17:02:21.9237295Z Package 'mysql-server-core-5.5' is not installed, so not removed
+2025-04-11T17:02:21.9237804Z Package 'mysql-server-core-5.6' is not installed, so not removed
+2025-04-11T17:02:21.9238285Z Package 'mysql-server-5.6' is not installed, so not removed
+2025-04-11T17:02:21.9238770Z Package 'mysql-testsuite-5.5' is not installed, so not removed
+2025-04-11T17:02:21.9239261Z Package 'mysql-testsuite-5.6' is not installed, so not removed
+2025-04-11T17:02:21.9239740Z Package 'mysql-testsuite-5.7' is not installed, so not removed
+2025-04-11T17:02:21.9240214Z Package 'mysql-testsuite' is not installed, so not removed
+2025-04-11T17:02:21.9240680Z Package 'mysql-testsuite-8.0' is not installed, so not removed
+2025-04-11T17:02:21.9241068Z Package 'mysql-router' is not installed, so not removed
+2025-04-11T17:02:21.9241431Z Package 'mysql-sandbox' is not installed, so not removed
+2025-04-11T17:02:21.9241778Z Package 'mysql-shell' is not installed, so not removed
+2025-04-11T17:02:21.9242381Z Package 'mysql-source-8.0' is not installed, so not removed
+2025-04-11T17:02:21.9242712Z The following packages will be REMOVED:
+2025-04-11T17:02:21.9243077Z   libmysqlclient-dev libmysqlclient21 mysql-client mysql-client-8.0
+2025-04-11T17:02:21.9243530Z   mysql-client-core-8.0 mysql-common mysql-server mysql-server-8.0
+2025-04-11T17:02:21.9243885Z   mysql-server-core-8.0 sphinxsearch
+2025-04-11T17:02:22.1675372Z 0 upgraded, 0 newly installed, 10 to remove and 84 not upgraded.
+2025-04-11T17:02:22.1676105Z After this operation, 208 MB disk space will be freed.
+2025-04-11T17:02:22.1856185Z (Reading database ... 
+2025-04-11T17:02:22.1856654Z (Reading database ... 5%
+2025-04-11T17:02:22.1857046Z (Reading database ... 10%
+2025-04-11T17:02:22.1857462Z (Reading database ... 15%
+2025-04-11T17:02:22.1857839Z (Reading database ... 20%
+2025-04-11T17:02:22.1858215Z (Reading database ... 25%
+2025-04-11T17:02:22.1858605Z (Reading database ... 30%
+2025-04-11T17:02:22.1858997Z (Reading database ... 35%
+2025-04-11T17:02:22.1859278Z (Reading database ... 40%
+2025-04-11T17:02:22.1859527Z (Reading database ... 45%
+2025-04-11T17:02:22.1859791Z (Reading database ... 50%
+2025-04-11T17:02:22.1860043Z (Reading database ... 55%
+2025-04-11T17:02:22.1965427Z (Reading database ... 60%
+2025-04-11T17:02:22.1987197Z (Reading database ... 65%
+2025-04-11T17:02:22.2008161Z (Reading database ... 70%
+2025-04-11T17:02:22.2038467Z (Reading database ... 75%
+2025-04-11T17:02:22.2069952Z (Reading database ... 80%
+2025-04-11T17:02:22.2091633Z (Reading database ... 85%
+2025-04-11T17:02:22.2350808Z (Reading database ... 90%
+2025-04-11T17:02:22.2676401Z (Reading database ... 95%
+2025-04-11T17:02:22.2676934Z (Reading database ... 100%
+2025-04-11T17:02:22.2677595Z (Reading database ... 206228 files and directories currently installed.)
+2025-04-11T17:02:22.2719620Z Removing libmysqlclient-dev (8.0.41-0ubuntu0.24.04.1) ...
+2025-04-11T17:02:22.2962850Z Removing sphinxsearch (2.2.11-8build1) ...
+2025-04-11T17:02:22.3983372Z Removing libmysqlclient21:amd64 (8.0.41-0ubuntu0.24.04.1) ...
+2025-04-11T17:02:22.4157811Z Removing mysql-client (8.0.41-0ubuntu0.24.04.1) ...
+2025-04-11T17:02:22.4388078Z Removing mysql-server (8.0.41-0ubuntu0.24.04.1) ...
+2025-04-11T17:02:22.4566154Z Removing mysql-server-8.0 (8.0.41-0ubuntu0.24.04.1) ...
+2025-04-11T17:02:22.6945644Z update-alternatives: using /etc/mysql/my.cnf.fallback to provide /etc/mysql/my.cnf (my.cnf) in auto mode
+2025-04-11T17:02:22.7461600Z Removing mysql-client-8.0 (8.0.41-0ubuntu0.24.04.1) ...
+2025-04-11T17:02:22.7701795Z Removing mysql-client-core-8.0 (8.0.41-0ubuntu0.24.04.1) ...
+2025-04-11T17:02:22.7935208Z Removing mysql-common (5.8+1.1.0build1) ...
+2025-04-11T17:02:22.8631774Z Removing mysql-server-core-8.0 (8.0.41-0ubuntu0.24.04.1) ...
+2025-04-11T17:02:22.9201572Z Processing triggers for man-db (2.12.0-4build2) ...
+2025-04-11T17:02:27.0607416Z Processing triggers for libc-bin (2.39-0ubuntu8.4) ...
+2025-04-11T17:02:28.3035500Z Reading package lists...
+2025-04-11T17:02:28.5082961Z Building dependency tree...
+2025-04-11T17:02:28.5090764Z Reading state information...
+2025-04-11T17:02:28.7094204Z Package 'mono-devel' is not installed, so not removed
+2025-04-11T17:02:28.7095019Z The following packages will be REMOVED:
+2025-04-11T17:02:28.7098019Z   azure-cli firefox google-chrome-stable libgl1 libgl1-mesa-dri libglx-mesa0
+2025-04-11T17:02:28.7107115Z   libglx0 powershell xvfb
+2025-04-11T17:02:28.9920065Z 0 upgraded, 0 newly installed, 9 to remove and 82 not upgraded.
+2025-04-11T17:02:28.9920989Z After this operation, 1541 MB disk space will be freed.
+2025-04-11T17:02:29.0135471Z (Reading database ... 
+2025-04-11T17:02:29.0136059Z (Reading database ... 5%
+2025-04-11T17:02:29.0136459Z (Reading database ... 10%
+2025-04-11T17:02:29.0136836Z (Reading database ... 15%
+2025-04-11T17:02:29.0137971Z (Reading database ... 20%
+2025-04-11T17:02:29.0138350Z (Reading database ... 25%
+2025-04-11T17:02:29.0138709Z (Reading database ... 30%
+2025-04-11T17:02:29.0139084Z (Reading database ... 35%
+2025-04-11T17:02:29.0139450Z (Reading database ... 40%
+2025-04-11T17:02:29.0139870Z (Reading database ... 45%
+2025-04-11T17:02:29.0140231Z (Reading database ... 50%
+2025-04-11T17:02:29.0140609Z (Reading database ... 55%
+2025-04-11T17:02:29.0279119Z (Reading database ... 60%
+2025-04-11T17:02:29.0308156Z (Reading database ... 65%
+2025-04-11T17:02:29.0335492Z (Reading database ... 70%
+2025-04-11T17:02:29.0365553Z (Reading database ... 75%
+2025-04-11T17:02:29.0424061Z (Reading database ... 80%
+2025-04-11T17:02:29.0452561Z (Reading database ... 85%
+2025-04-11T17:02:29.0724089Z (Reading database ... 90%
+2025-04-11T17:02:29.1113217Z (Reading database ... 95%
+2025-04-11T17:02:29.1114016Z (Reading database ... 100%
+2025-04-11T17:02:29.1114574Z (Reading database ... 205953 files and directories currently installed.)
+2025-04-11T17:02:29.1179638Z Removing azure-cli (2.71.0-1~noble) ...
+2025-04-11T17:02:34.0228244Z Removing firefox (136.0.4+build1-0ubuntu0.24.04.1~mt1) ...
+2025-04-11T17:02:34.2388534Z Removing google-chrome-stable (135.0.7049.52-1) ...
+2025-04-11T17:02:34.4321203Z Removing xvfb (2:21.1.12-1ubuntu1.3) ...
+2025-04-11T17:02:34.4496393Z Removing libgl1:amd64 (1.7.0-1build1) ...
+2025-04-11T17:02:34.4989988Z Removing libglx0:amd64 (1.7.0-1build1) ...
+2025-04-11T17:02:34.5281320Z Removing libglx-mesa0:amd64 (24.2.8-1ubuntu1~24.04.1) ...
+2025-04-11T17:02:34.5595149Z Removing libgl1-mesa-dri:amd64 (24.2.8-1ubuntu1~24.04.1) ...
+2025-04-11T17:02:34.6859451Z Removing powershell (7.4.7-1.deb) ...
+2025-04-11T17:02:34.7988690Z Processing triggers for libc-bin (2.39-0ubuntu8.4) ...
+2025-04-11T17:02:34.8139962Z Processing triggers for man-db (2.12.0-4build2) ...
+2025-04-11T17:02:38.9574771Z Processing triggers for hicolor-icon-theme (0.17-2) ...
+2025-04-11T17:02:40.5235510Z Reading package lists...
+2025-04-11T17:02:40.8230524Z Building dependency tree...
+2025-04-11T17:02:40.8241243Z Reading state information...
+2025-04-11T17:02:41.1778212Z Package 'google-cloud-sdk' is not installed, so not removed
+2025-04-11T17:02:41.1778696Z 0 upgraded, 0 newly installed, 0 to remove and 82 not upgraded.
+2025-04-11T17:02:41.2041329Z Reading package lists...
+2025-04-11T17:02:41.4727256Z Building dependency tree...
+2025-04-11T17:02:41.4744697Z Reading state information...
+2025-04-11T17:02:41.9038772Z The following packages will be REMOVED:
+2025-04-11T17:02:41.9067063Z   google-cloud-cli google-cloud-cli-anthoscli
+2025-04-11T17:02:42.2070645Z 0 upgraded, 0 newly installed, 2 to remove and 82 not upgraded.
+2025-04-11T17:02:42.2071369Z After this operation, 647 MB disk space will be freed.
+2025-04-11T17:02:42.2239549Z (Reading database ... 
+2025-04-11T17:02:42.2240032Z (Reading database ... 5%
+2025-04-11T17:02:42.2240409Z (Reading database ... 10%
+2025-04-11T17:02:42.2240778Z (Reading database ... 15%
+2025-04-11T17:02:42.2241252Z (Reading database ... 20%
+2025-04-11T17:02:42.2241617Z (Reading database ... 25%
+2025-04-11T17:02:42.2242159Z (Reading database ... 30%
+2025-04-11T17:02:42.2242520Z (Reading database ... 35%
+2025-04-11T17:02:42.2242872Z (Reading database ... 40%
+2025-04-11T17:02:42.2243535Z (Reading database ... 45%
+2025-04-11T17:02:42.2243884Z (Reading database ... 50%
+2025-04-11T17:02:42.2244226Z (Reading database ... 55%
+2025-04-11T17:02:42.2494461Z (Reading database ... 60%
+2025-04-11T17:02:42.2549287Z (Reading database ... 65%
+2025-04-11T17:02:42.2603258Z (Reading database ... 70%
+2025-04-11T17:02:42.2674586Z (Reading database ... 75%
+2025-04-11T17:02:42.2811649Z (Reading database ... 80%
+2025-04-11T17:02:42.2870353Z (Reading database ... 85%
+2025-04-11T17:02:42.3020797Z (Reading database ... 90%
+2025-04-11T17:02:42.3691841Z (Reading database ... 95%
+2025-04-11T17:02:42.3693269Z (Reading database ... 100%
+2025-04-11T17:02:42.3693767Z (Reading database ... 169701 files and directories currently installed.)
+2025-04-11T17:02:42.3807273Z Removing google-cloud-cli-anthoscli (517.0.0-0) ...
+2025-04-11T17:03:01.7321527Z Removing google-cloud-cli (517.0.0-0) ...
+2025-04-11T17:04:07.2537299Z Processing triggers for man-db (2.12.0-4build2) ...
+2025-04-11T17:04:09.3583902Z Processing triggers for libc-bin (2.39-0ubuntu8.4) ...
+2025-04-11T17:04:10.7652807Z Reading package lists...
+2025-04-11T17:04:10.9333542Z Building dependency tree...
+2025-04-11T17:04:10.9341385Z Reading state information...
+2025-04-11T17:04:11.2448860Z The following packages will be REMOVED:
+2025-04-11T17:04:11.2453354Z   dictionaries-common emacsen-common firebird3.0-common firebird3.0-common-doc
+2025-04-11T17:04:11.2454460Z   freetds-common hunspell-en-us icu-devtools imagemagick-6-common lib32gcc-s1
+2025-04-11T17:04:11.2455317Z   lib32stdc++6 libaom3 libaspell15 libc-client2007e libc6-i386 libcanberra0t64
+2025-04-11T17:04:11.2455959Z   libcgi-fast-perl libcgi-pm-perl libclang-common-16-dev
+2025-04-11T17:04:11.2456521Z   libclang-common-17-dev libclang-common-18-dev libclang-rt-16-dev
+2025-04-11T17:04:11.2457258Z   libclang-rt-17-dev libclang-rt-18-dev libclang1-16t64 libclang1-17t64
+2025-04-11T17:04:11.2458106Z   libclone-perl libdbusmenu-glib4 libdbusmenu-gtk3-4 libde265-0 libenchant-2-2
+2025-04-11T17:04:11.2459040Z   libencode-locale-perl libevent-pthreads-2.1-7t64 libfbclient2 libfcgi-bin
+2025-04-11T17:04:11.2459887Z   libfcgi-perl libfcgi0t64 libffi-dev libfftw3-double3 libfontenc1 libgc1
+2025-04-11T17:04:11.2460599Z   libgd3 libglvnd0 libhashkit2t64 libheif-plugin-aomdec
+2025-04-11T17:04:11.2461318Z   libheif-plugin-libde265 libheif1 libhtml-parser-perl libhtml-tagset-perl
+2025-04-11T17:04:11.2463380Z   libhtml-template-perl libhttp-date-perl libhttp-message-perl
+2025-04-11T17:04:11.2464122Z   libhunspell-1.7-0 libice6 libicu-dev libio-html-perl liblldb-16t64
+2025-04-11T17:04:11.2464877Z   liblldb-17t64 liblqr-1-0 liblttng-ust-common1t64 liblttng-ust-ctl5t64
+2025-04-11T17:04:11.2465647Z   liblttng-ust1t64 liblwp-mediatypes-perl libmagickcore-6.q16-7t64
+2025-04-11T17:04:11.2466412Z   libmagickwand-6.q16-7t64 libmecab2 libmemcached11t64 libncurses-dev
+2025-04-11T17:04:11.2467157Z   libnorm1t64 libobjc-13-dev libobjc4 libodbc2 libogg0 libopenjp2-7
+2025-04-11T17:04:11.2467863Z   libpcre2-16-0 libpcre2-32-0 libpcre2-dev libpcre2-posix3 libpfm4
+2025-04-11T17:04:11.2468547Z   libpgm-5.3-0t64 libprotobuf-lite32t64 libqdbm14t64 librabbitmq4 libraw23t64
+2025-04-11T17:04:11.2474517Z   libre2-10 libsm6 libsnappy1v5 libsybdb5 libtdb1 libtidy5deb1
+2025-04-11T17:04:11.2475273Z   libtimedate-perl libtommath1 liburi-perl libvorbis0a libvorbisfile3
+2025-04-11T17:04:11.2476059Z   libwebpdemux2 libwebpmux3 libxaw7 libxcb-glx0 libxfont2 libxkbfile1
+2025-04-11T17:04:11.2476582Z   libxml2-dev libxmu6 libxpm4 libxt6t64 libxxf86vm1 libz3-4 libz3-dev
+2025-04-11T17:04:11.2478761Z   libzip4t64 libzmq5 libzstd-dev mecab-ipadic mecab-ipadic-utf8 mecab-utils
+2025-04-11T17:04:11.2489975Z   mlock netstandard-targeting-pack-2.1-8.0 shtool sound-theme-freedesktop
+2025-04-11T17:04:11.2490685Z   x11-xkb-utils xserver-common xul-ext-ubufox
+2025-04-11T17:04:11.5609401Z 0 upgraded, 0 newly installed, 120 to remove and 81 not upgraded.
+2025-04-11T17:04:11.5610182Z After this operation, 472 MB disk space will be freed.
+2025-04-11T17:04:11.5795522Z (Reading database ... 
+2025-04-11T17:04:11.5796489Z (Reading database ... 5%
+2025-04-11T17:04:11.5797838Z (Reading database ... 10%
+2025-04-11T17:04:11.5798269Z (Reading database ... 15%
+2025-04-11T17:04:11.5798642Z (Reading database ... 20%
+2025-04-11T17:04:11.5798994Z (Reading database ... 25%
+2025-04-11T17:04:11.5799347Z (Reading database ... 30%
+2025-04-11T17:04:11.5799746Z (Reading database ... 35%
+2025-04-11T17:04:11.5800087Z (Reading database ... 40%
+2025-04-11T17:04:11.5800431Z (Reading database ... 45%
+2025-04-11T17:04:11.5800777Z (Reading database ... 50%
+2025-04-11T17:04:11.5801123Z (Reading database ... 55%
+2025-04-11T17:04:11.5933231Z (Reading database ... 60%
+2025-04-11T17:04:11.5961103Z (Reading database ... 65%
+2025-04-11T17:04:11.5986214Z (Reading database ... 70%
+2025-04-11T17:04:11.6014972Z (Reading database ... 75%
+2025-04-11T17:04:11.6069851Z (Reading database ... 80%
+2025-04-11T17:04:11.6094548Z (Reading database ... 85%
+2025-04-11T17:04:11.6159375Z (Reading database ... 90%
+2025-04-11T17:04:11.6256883Z (Reading database ... 95%
+2025-04-11T17:04:11.6257335Z (Reading database ... 100%
+2025-04-11T17:04:11.6257828Z (Reading database ... 119965 files and directories currently installed.)
+2025-04-11T17:04:11.6287512Z Removing libenchant-2-2:amd64 (2.3.3-2build2) ...
+2025-04-11T17:04:11.6602926Z Removing hunspell-en-us (1:2020.12.07-2) ...
+2025-04-11T17:04:11.7553410Z Removing dictionaries-common (1.29.7) ...
+2025-04-11T17:04:11.9156589Z Removing 'diversion of /usr/share/dict/words to /usr/share/dict/words.pre-dictionaries-common by dictionaries-common'
+2025-04-11T17:04:11.9634843Z Removing emacsen-common (3.0.5) ...
+2025-04-11T17:04:12.0108333Z Removing libfbclient2:amd64 (3.0.11.33703.ds4-2ubuntu2) ...
+2025-04-11T17:04:12.0371151Z Removing firebird3.0-common (3.0.11.33703.ds4-2ubuntu2) ...
+2025-04-11T17:04:12.0729207Z Removing firebird3.0-common-doc (3.0.11.33703.ds4-2ubuntu2) ...
+2025-04-11T17:04:12.0889234Z Removing libsybdb5:amd64 (1.3.17+ds-2build3) ...
+2025-04-11T17:04:12.1124683Z Removing freetds-common (1.3.17+ds-2build3) ...
+2025-04-11T17:04:12.2974398Z Removing libxml2-dev:amd64 (2.9.14+dfsg-1.3ubuntu3.2) ...
+2025-04-11T17:04:12.3237514Z Removing libicu-dev:amd64 (74.2-1ubuntu3.1) ...
+2025-04-11T17:04:12.3498272Z Removing icu-devtools (74.2-1ubuntu3.1) ...
+2025-04-11T17:04:12.3656038Z Removing libmagickwand-6.q16-7t64:amd64 (8:6.9.12.98+dfsg1-5.2build2) ...
+2025-04-11T17:04:12.3813243Z Removing libmagickcore-6.q16-7t64:amd64 (8:6.9.12.98+dfsg1-5.2build2) ...
+2025-04-11T17:04:12.5542237Z Removing imagemagick-6-common (8:6.9.12.98+dfsg1-5.2build2) ...
+2025-04-11T17:04:12.5673530Z Removing libclang-rt-18-dev:amd64 (1:18.1.3-1ubuntu1) ...
+2025-04-11T17:04:12.6194423Z Removing libclang-rt-16-dev:amd64 (1:16.0.6-23ubuntu4) ...
+2025-04-11T17:04:12.6411839Z Removing lib32stdc++6 (14.2.0-4ubuntu2~24.04) ...
+2025-04-11T17:04:12.6574780Z Removing lib32gcc-s1 (14.2.0-4ubuntu2~24.04) ...
+2025-04-11T17:04:12.6773153Z Removing libaspell15:amd64 (0.60.8.1-1build1) ...
+2025-04-11T17:04:12.7042975Z Removing libc-client2007e (8:2007f~dfsg-7build3) ...
+2025-04-11T17:04:12.7287594Z Removing libc6-i386 (2.39-0ubuntu8.4) ...
+2025-04-11T17:04:12.7780202Z Removing libcanberra0t64:amd64 (0.30-10ubuntu10) ...
+2025-04-11T17:04:12.8776706Z Removing libcgi-fast-perl (1:2.17-1) ...
+2025-04-11T17:04:12.9042800Z Removing libhtml-template-perl (2.97-2) ...
+2025-04-11T17:04:12.9240712Z Removing libcgi-pm-perl (4.63-1) ...
+2025-04-11T17:04:12.9448357Z Removing libclang-common-16-dev (1:16.0.6-23ubuntu4) ...
+2025-04-11T17:04:12.9754339Z Removing libclang-common-17-dev:amd64 (1:17.0.6-9ubuntu1) ...
+2025-04-11T17:04:13.0029795Z Removing libclang-common-18-dev:amd64 (1:18.1.3-1ubuntu1) ...
+2025-04-11T17:04:13.0387765Z Removing libclang-rt-17-dev:amd64 (1:17.0.6-9ubuntu1) ...
+2025-04-11T17:04:13.0671360Z Removing libclang1-16t64 (1:16.0.6-23ubuntu4) ...
+2025-04-11T17:04:13.1688265Z Removing libclang1-17t64 (1:17.0.6-9ubuntu1) ...
+2025-04-11T17:04:13.1916700Z Removing libhttp-message-perl (6.45-1ubuntu1) ...
+2025-04-11T17:04:13.2091901Z Removing libclone-perl:amd64 (0.46-1build3) ...
+2025-04-11T17:04:13.2247388Z Removing libdbusmenu-gtk3-4:amd64 (18.10.20180917~bzr492+repack1-3.1ubuntu5) ...
+2025-04-11T17:04:13.2494052Z Removing libdbusmenu-glib4:amd64 (18.10.20180917~bzr492+repack1-3.1ubuntu5) ...
+2025-04-11T17:04:13.2734585Z Removing libencode-locale-perl (1.05-3) ...
+2025-04-11T17:04:13.3061658Z Removing libevent-pthreads-2.1-7t64:amd64 (2.1.12-stable-9ubuntu2) ...
+2025-04-11T17:04:13.3387768Z Removing libfcgi-bin (2.4.2-2.1build1) ...
+2025-04-11T17:04:13.3559887Z Removing libfcgi-perl (0.82+ds-3build2) ...
+2025-04-11T17:04:13.3726205Z Removing libfcgi0t64:amd64 (2.4.2-2.1build1) ...
+2025-04-11T17:04:13.3976180Z Removing libffi-dev:amd64 (3.4.6-1build1) ...
+2025-04-11T17:04:13.4169613Z Removing libfftw3-double3:amd64 (3.3.10-1ubuntu3) ...
+2025-04-11T17:04:13.4392557Z Removing libxfont2:amd64 (1:2.0.6-1build1) ...
+2025-04-11T17:04:13.4619479Z Removing libfontenc1:amd64 (1:1.1.8-1build1) ...
+2025-04-11T17:04:13.4833767Z Removing libobjc-13-dev:amd64 (13.3.0-6ubuntu2~24.04) ...
+2025-04-11T17:04:13.4993328Z Removing libobjc4:amd64 (14.2.0-4ubuntu2~24.04) ...
+2025-04-11T17:04:13.6037486Z Removing libgc1:amd64 (1:8.2.6-1build1) ...
+2025-04-11T17:04:13.6605693Z Removing libgd3:amd64 (2.3.3-9ubuntu5) ...
+2025-04-11T17:04:13.6759469Z Removing libglvnd0:amd64 (1.7.0-1build1) ...
+2025-04-11T17:04:13.6966613Z Removing libmemcached11t64:amd64 (1.1.4-1.1build3) ...
+2025-04-11T17:04:13.7146443Z Removing libhashkit2t64:amd64 (1.1.4-1.1build3) ...
+2025-04-11T17:04:13.7315370Z Removing libhtml-parser-perl:amd64 (3.81-1build3) ...
+2025-04-11T17:04:13.7491451Z Removing libhtml-tagset-perl (3.20-6) ...
+2025-04-11T17:04:13.7641086Z Removing libhttp-date-perl (6.06-1) ...
+2025-04-11T17:04:13.7828979Z Removing libhunspell-1.7-0:amd64 (1.7.2+really1.7.2-10build3) ...
+2025-04-11T17:04:13.8211960Z Removing xserver-common (2:21.1.12-1ubuntu1.3) ...
+2025-04-11T17:04:13.8392420Z Removing x11-xkb-utils (7.7+8build2) ...
+2025-04-11T17:04:13.8561059Z Removing libxaw7:amd64 (2:1.0.14-1build2) ...
+2025-04-11T17:04:13.8829568Z Removing libxmu6:amd64 (2:1.1.3-3build2) ...
+2025-04-11T17:04:13.9036533Z Removing libxt6t64:amd64 (1:1.2.1-1.2build1) ...
+2025-04-11T17:04:13.9173878Z Removing libsm6:amd64 (2:1.2.3-1build3) ...
+2025-04-11T17:04:14.0159513Z Removing libice6:amd64 (2:1.0.10-1build3) ...
+2025-04-11T17:04:14.0380961Z Removing libio-html-perl (1.004-3) ...
+2025-04-11T17:04:14.0537810Z Removing liblldb-16t64 (1:16.0.6-23ubuntu4) ...
+2025-04-11T17:04:14.0714204Z Removing liblldb-17t64 (1:17.0.6-9ubuntu1) ...
+2025-04-11T17:04:14.0959166Z Removing liblqr-1-0:amd64 (0.4.2-2.1build2) ...
+2025-04-11T17:04:14.1131221Z Removing liblttng-ust1t64:amd64 (2.13.7-1.1ubuntu2) ...
+2025-04-11T17:04:14.1377991Z Removing liblttng-ust-ctl5t64:amd64 (2.13.7-1.1ubuntu2) ...
+2025-04-11T17:04:14.1601767Z Removing liblttng-ust-common1t64:amd64 (2.13.7-1.1ubuntu2) ...
+2025-04-11T17:04:14.1811765Z Removing liblwp-mediatypes-perl (6.04-2) ...
+2025-04-11T17:04:14.1995819Z Removing mecab-ipadic-utf8 (2.7.0-20070801+main-3) ...
+2025-04-11T17:04:14.2358913Z update-alternatives: using /var/lib/mecab/dic/ipadic to provide /var/lib/mecab/dic/debian (mecab-dictionary) in auto mode
+2025-04-11T17:04:14.2564691Z Removing mecab-ipadic (2.7.0-20070801+main-3) ...
+2025-04-11T17:04:14.3379779Z Removing mecab-utils (0.996-14ubuntu4) ...
+2025-04-11T17:04:14.3553383Z Removing libmecab2:amd64 (0.996-14ubuntu4) ...
+2025-04-11T17:04:14.3785167Z Removing libncurses-dev:amd64 (6.4+20240113-1ubuntu2) ...
+2025-04-11T17:04:14.4025047Z Removing libzmq5:amd64 (4.3.5-1build2) ...
+2025-04-11T17:04:14.4278077Z Removing libnorm1t64:amd64 (1.5.9+dfsg-3.1build1) ...
+2025-04-11T17:04:14.4442470Z Removing libodbc2:amd64 (2.3.12-1ubuntu0.24.04.1) ...
+2025-04-11T17:04:14.4609579Z Removing libvorbisfile3:amd64 (1.3.7-1build3) ...
+2025-04-11T17:04:14.5072396Z Removing libvorbis0a:amd64 (1.3.7-1build3) ...
+2025-04-11T17:04:14.5273236Z Removing libogg0:amd64 (1.3.5-3build1) ...
+2025-04-11T17:04:14.5467457Z Removing libopenjp2-7:amd64 (2.5.0-2ubuntu0.3) ...
+2025-04-11T17:04:14.5671729Z Removing libpcre2-dev:amd64 (10.42-4ubuntu2.1) ...
+2025-04-11T17:04:14.5876651Z Removing libpcre2-16-0:amd64 (10.42-4ubuntu2.1) ...
+2025-04-11T17:04:14.6103315Z Removing libpcre2-32-0:amd64 (10.42-4ubuntu2.1) ...
+2025-04-11T17:04:14.6278763Z Removing libpcre2-posix3:amd64 (10.42-4ubuntu2.1) ...
+2025-04-11T17:04:14.6501118Z Removing libpfm4:amd64 (4.13.0+git32-g0d4ed0e-1) ...
+2025-04-11T17:04:14.6725192Z Removing libpgm-5.3-0t64:amd64 (5.3.128~dfsg-2.1build1) ...
+2025-04-11T17:04:14.6943326Z Removing libprotobuf-lite32t64:amd64 (3.21.12-8.2build1) ...
+2025-04-11T17:04:14.7150696Z Removing libqdbm14t64 (1.8.78-12.1build2) ...
+2025-04-11T17:04:14.7383614Z Removing librabbitmq4:amd64 (0.11.0-1build2) ...
+2025-04-11T17:04:14.7539396Z Removing libraw23t64:amd64 (0.21.2-2.1build1) ...
+2025-04-11T17:04:14.7954297Z Removing libre2-10:amd64 (20230301-3build1) ...
+2025-04-11T17:04:14.8110738Z Removing libsnappy1v5:amd64 (1.1.10-1build1) ...
+2025-04-11T17:04:14.8261481Z Removing libtdb1:amd64 (1.4.10-1build1) ...
+2025-04-11T17:04:14.9007859Z Removing libtidy5deb1:amd64 (2:5.6.0-11ubuntu2) ...
+2025-04-11T17:04:14.9269736Z Removing libtimedate-perl (2.3300-2) ...
+2025-04-11T17:04:14.9453731Z Removing libtommath1:amd64 (1.2.1-2build1) ...
+2025-04-11T17:04:14.9706531Z Removing liburi-perl (5.27-1) ...
+2025-04-11T17:04:14.9897437Z Removing libwebpdemux2:amd64 (1.3.2-0.4build3) ...
+2025-04-11T17:04:15.0645392Z Removing libwebpmux3:amd64 (1.3.2-0.4build3) ...
+2025-04-11T17:04:15.0895573Z Removing libxcb-glx0:amd64 (1.15-1ubuntu2) ...
+2025-04-11T17:04:15.1139062Z Removing libxkbfile1:amd64 (1:1.1.0-1build4) ...
+2025-04-11T17:04:15.1388747Z Removing libxpm4:amd64 (1:3.5.17-1build2) ...
+2025-04-11T17:04:15.1629784Z Removing libxxf86vm1:amd64 (1:1.1.4-1build4) ...
+2025-04-11T17:04:15.2071625Z Removing libz3-dev:amd64 (4.8.12-3.1build1) ...
+2025-04-11T17:04:15.2325932Z Removing libz3-4:amd64 (4.8.12-3.1build1) ...
+2025-04-11T17:04:15.2545765Z Removing libzip4t64:amd64 (1.7.3-1.1ubuntu2) ...
+2025-04-11T17:04:15.2913705Z Removing libzstd-dev:amd64 (1.5.5+dfsg2-2build1.1) ...
+2025-04-11T17:04:15.3134585Z Removing mlock (8:2007f~dfsg-7build3) ...
+2025-04-11T17:04:15.3335334Z Removing netstandard-targeting-pack-2.1-8.0 (8.0.114-0ubuntu1~24.04.1) ...
+2025-04-11T17:04:15.3769040Z Removing shtool (2.0.8-10) ...
+2025-04-11T17:04:15.3965710Z Removing sound-theme-freedesktop (0.8-2ubuntu1) ...
+2025-04-11T17:04:15.4161353Z Removing xul-ext-ubufox (3.4-0ubuntu1.17.10.4) ...
+2025-04-11T17:04:15.4906846Z Removing libheif1:amd64 (1.17.6-1ubuntu4.1) ...
+2025-04-11T17:04:15.5189554Z Removing libheif-plugin-libde265:amd64 (1.17.6-1ubuntu4.1) ...
+2025-04-11T17:04:15.5392414Z Removing libde265-0:amd64 (1.0.15-1build3) ...
+2025-04-11T17:04:15.5815458Z Removing libheif-plugin-aomdec:amd64 (1.17.6-1ubuntu4.1) ...
+2025-04-11T17:04:15.5999811Z Removing libaom3:amd64 (3.8.2-2ubuntu0.1) ...
+2025-04-11T17:04:15.6440932Z Processing triggers for man-db (2.12.0-4build2) ...
+2025-04-11T17:04:18.1246501Z Processing triggers for postgresql-common (274.pgdg24.04+1) ...
+2025-04-11T17:04:18.2882677Z Building PostgreSQL dictionaries from installed myspell/hunspell packages...
+2025-04-11T17:04:18.2883267Z Removing obsolete dictionary files:
+2025-04-11T17:04:18.2885465Z   /var/cache/postgresql/dicts/en_us.affix
+2025-04-11T17:04:18.2900286Z   /var/cache/postgresql/dicts/en_us.dict
+2025-04-11T17:04:18.2900841Z   /usr/share/postgresql/16/tsearch_data/en_us.affix
+2025-04-11T17:04:18.2901368Z   /usr/share/postgresql/16/tsearch_data/en_us.dict
+2025-04-11T17:04:18.3124373Z Processing triggers for install-info (7.1-3build2) ...
+2025-04-11T17:04:18.4042463Z Processing triggers for libc-bin (2.39-0ubuntu8.4) ...
+2025-04-11T17:04:19.4735314Z 
+2025-04-11T17:04:19.4743728Z ********************************************************************************
+2025-04-11T17:04:19.4765803Z => Large misc. packages: Saved 5.2GiB
+2025-04-11T17:04:19.4771765Z ********************************************************************************
+2025-04-11T17:04:19.4772452Z 
+2025-04-11T17:04:19.5768236Z Total reclaimed space: 0B
+2025-04-11T17:04:19.5886886Z 
+2025-04-11T17:04:19.5893615Z ********************************************************************************
+2025-04-11T17:04:19.5915377Z => Docker images: Saved 0B
+2025-04-11T17:04:19.5921377Z ********************************************************************************
+2025-04-11T17:04:19.5921759Z 
+2025-04-11T17:04:20.3455112Z                total        used        free      shared  buff/cache   available
+2025-04-11T17:04:20.3455683Z Mem:            15Gi       918Mi        13Gi        65Mi       1.5Gi        14Gi
+2025-04-11T17:04:20.3456019Z Swap:             0B          0B          0B
+2025-04-11T17:04:20.3489632Z 
+2025-04-11T17:04:20.3496114Z ********************************************************************************
+2025-04-11T17:04:20.3513332Z => Swap storage: Saved 4.0GiB
+2025-04-11T17:04:20.3519692Z ********************************************************************************
+2025-04-11T17:04:20.3520068Z 
+2025-04-11T17:04:20.3580501Z 
+2025-04-11T17:04:20.3587381Z ================================================================================
+2025-04-11T17:04:20.3587894Z AFTER CLEAN-UP:
+2025-04-11T17:04:20.3588110Z 
+2025-04-11T17:04:20.3588240Z $ dh -h /
+2025-04-11T17:04:20.3588408Z 
+2025-04-11T17:04:20.3597897Z Filesystem      Size  Used Avail Use% Mounted on
+2025-04-11T17:04:20.3598338Z /dev/root        72G   27G   46G  38% /
+2025-04-11T17:04:20.3599900Z $ dh -a /
+2025-04-11T17:04:20.3600094Z 
+2025-04-11T17:04:20.3609901Z Filesystem     1K-blocks     Used Available Use% Mounted on
+2025-04-11T17:04:20.3610348Z /dev/root       75085112 27872492  47196236  38% /
+2025-04-11T17:04:20.3611529Z $ dh -a
+2025-04-11T17:04:20.3611735Z 
+2025-04-11T17:04:20.3623352Z Filesystem     1K-blocks     Used Available Use% Mounted on
+2025-04-11T17:04:20.3623853Z /dev/root       75085112 27872492  47196236  38% /
+2025-04-11T17:04:20.3624328Z devtmpfs         8184112        0   8184112   0% /dev
+2025-04-11T17:04:20.3624962Z proc                   0        0         0    - /proc
+2025-04-11T17:04:20.3625671Z sysfs                  0        0         0    - /sys
+2025-04-11T17:04:20.3626444Z securityfs             0        0         0    - /sys/kernel/security
+2025-04-11T17:04:20.3627241Z tmpfs            8186896       84   8186812   1% /dev/shm
+2025-04-11T17:04:20.3628301Z devpts                 0        0         0    - /dev/pts
+2025-04-11T17:04:20.3629016Z tmpfs            3274760     1096   3273664   1% /run
+2025-04-11T17:04:20.3629719Z tmpfs               5120        0      5120   0% /run/lock
+2025-04-11T17:04:20.3630468Z cgroup2                0        0         0    - /sys/fs/cgroup
+2025-04-11T17:04:20.3631236Z pstore                 0        0         0    - /sys/fs/pstore
+2025-04-11T17:04:20.3632203Z bpf                    0        0         0    - /sys/fs/bpf
+2025-04-11T17:04:20.3633007Z systemd-1              -        -         -    - /proc/sys/fs/binfmt_misc
+2025-04-11T17:04:20.3633878Z hugetlbfs              0        0         0    - /dev/hugepages
+2025-04-11T17:04:20.3634490Z debugfs                0        0         0    - /sys/kernel/debug
+2025-04-11T17:04:20.3635038Z mqueue                 0        0         0    - /dev/mqueue
+2025-04-11T17:04:20.3635576Z tracefs                0        0         0    - /sys/kernel/tracing
+2025-04-11T17:04:20.3636171Z fusectl                0        0         0    - /sys/fs/fuse/connections
+2025-04-11T17:04:20.3636779Z configfs               0        0         0    - /sys/kernel/config
+2025-04-11T17:04:20.3637340Z /dev/sdb16        901520    59928    778464   8% /boot
+2025-04-11T17:04:20.3637867Z /dev/sdb15        106832     6246    100586   6% /boot/efi
+2025-04-11T17:04:20.3638448Z binfmt_misc            0        0         0    - /proc/sys/fs/binfmt_misc
+2025-04-11T17:04:20.3639006Z /dev/sda1       76829444       28  72880976   1% /mnt
+2025-04-11T17:04:20.3639529Z tmpfs            1637376       12   1637364   1% /run/user/1001
+2025-04-11T17:04:20.3640045Z ================================================================================
+2025-04-11T17:04:20.3640599Z 
+2025-04-11T17:04:20.3640607Z 
+2025-04-11T17:04:20.3640733Z /dev/root:
+2025-04-11T17:04:20.3640904Z 
+2025-04-11T17:04:20.3645273Z ********************************************************************************
+2025-04-11T17:04:20.3662391Z => Saved 21GiB
+2025-04-11T17:04:20.3668654Z ********************************************************************************
+2025-04-11T17:04:20.3669012Z 
+2025-04-11T17:04:20.3669133Z overall:
+2025-04-11T17:04:20.3669311Z 
+2025-04-11T17:04:20.3675542Z ********************************************************************************
+2025-04-11T17:04:20.3692390Z => Saved 25GiB
+2025-04-11T17:04:20.3698742Z ********************************************************************************
+2025-04-11T17:04:20.3699086Z 

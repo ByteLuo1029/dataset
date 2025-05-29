@@ -1,0 +1,100 @@
+﻿2025-04-15T09:27:06.7975101Z ##[group]Run docker network create vllm-net
+2025-04-15T09:27:06.7975469Z [36;1mdocker network create vllm-net[0m
+2025-04-15T09:27:06.7975808Z [36;1mdocker run -d -p 9000:9000 --name minio --net vllm-net \[0m
+2025-04-15T09:27:06.7976164Z [36;1m           -e "MINIO_ACCESS_KEY=minioadmin" \[0m
+2025-04-15T09:27:06.7976455Z [36;1m           -e "MINIO_SECRET_KEY=minioadmin" \[0m
+2025-04-15T09:27:06.7976725Z [36;1m           -v /tmp/data:/data \[0m
+2025-04-15T09:27:06.7976982Z [36;1m           -v /tmp/config:/root/.minio \[0m
+2025-04-15T09:27:06.7977253Z [36;1m           minio/minio server /data[0m
+2025-04-15T09:27:06.7977523Z [36;1mexport AWS_ACCESS_KEY_ID=minioadmin[0m
+2025-04-15T09:27:06.7977809Z [36;1mexport AWS_SECRET_ACCESS_KEY=minioadmin[0m
+2025-04-15T09:27:06.7978102Z [36;1mexport AWS_EC2_METADATA_DISABLED=true[0m
+2025-04-15T09:27:06.7978773Z [36;1mmkdir opt-125m[0m
+2025-04-15T09:27:06.7979636Z [36;1mcd opt-125m && curl -O -Ls "https://huggingface.co/facebook/opt-125m/resolve/main/{pytorch_model.bin,config.json,generation_config.json,merges.txt,special_tokens_map.json,tokenizer_config.json,vocab.json}" && cd ..[0m
+2025-04-15T09:27:06.7980665Z [36;1maws --endpoint-url http://127.0.0.1:9000/ s3 mb s3://testbucket[0m
+2025-04-15T09:27:06.7981190Z [36;1maws --endpoint-url http://127.0.0.1:9000/ s3 cp opt-125m/ s3://testbucket/opt-125m --recursive[0m
+2025-04-15T09:27:06.8027904Z shell: /usr/bin/bash -e {0}
+2025-04-15T09:27:06.8028133Z env:
+2025-04-15T09:27:06.8028582Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T09:27:06.8028990Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.2/x64/lib/pkgconfig
+2025-04-15T09:27:06.8029389Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T09:27:06.8029723Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T09:27:06.8030056Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T09:27:06.8030387Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.2/x64/lib
+2025-04-15T09:27:06.8030726Z   CT_CONFIG_DIR: /opt/hostedtoolcache/ct/3.10.1/amd64/etc
+2025-04-15T09:27:06.8031042Z   VIRTUAL_ENV: /opt/hostedtoolcache/ct/3.10.1/amd64/venv
+2025-04-15T09:27:06.8031302Z ##[endgroup]
+2025-04-15T09:27:06.9446310Z a93390f9cb54e64905faa3d401e8badfc2390f1987d3a0ea1bfce018c2e26c2d
+2025-04-15T09:27:06.9592420Z Unable to find image 'minio/minio:latest' locally
+2025-04-15T09:27:07.1618685Z latest: Pulling from minio/minio
+2025-04-15T09:27:07.2206887Z d949f716ce77: Pulling fs layer
+2025-04-15T09:27:07.2209255Z 8c577d69454d: Pulling fs layer
+2025-04-15T09:27:07.2210252Z 546fbfcace65: Pulling fs layer
+2025-04-15T09:27:07.2212775Z a68b380b887b: Pulling fs layer
+2025-04-15T09:27:07.2213512Z 476692aa7e4f: Pulling fs layer
+2025-04-15T09:27:07.2213907Z c0fb136fda0a: Pulling fs layer
+2025-04-15T09:27:07.2214290Z fdc61cbe6d7e: Pulling fs layer
+2025-04-15T09:27:07.2214648Z fb024c1bcc90: Pulling fs layer
+2025-04-15T09:27:07.2215022Z 9d8ba80ec174: Pulling fs layer
+2025-04-15T09:27:07.2215358Z 7d182d4b9a27: Pulling fs layer
+2025-04-15T09:27:07.2215695Z a68b380b887b: Waiting
+2025-04-15T09:27:07.2216173Z 476692aa7e4f: Waiting
+2025-04-15T09:27:07.2216362Z c0fb136fda0a: Waiting
+2025-04-15T09:27:07.2216648Z fdc61cbe6d7e: Waiting
+2025-04-15T09:27:07.2216844Z fb024c1bcc90: Waiting
+2025-04-15T09:27:07.2217015Z 9d8ba80ec174: Waiting
+2025-04-15T09:27:07.2217185Z 7d182d4b9a27: Waiting
+2025-04-15T09:27:07.2685275Z 8c577d69454d: Verifying Checksum
+2025-04-15T09:27:07.2685748Z 8c577d69454d: Download complete
+2025-04-15T09:27:07.2737968Z 546fbfcace65: Verifying Checksum
+2025-04-15T09:27:07.2738728Z 546fbfcace65: Download complete
+2025-04-15T09:27:07.3214088Z a68b380b887b: Verifying Checksum
+2025-04-15T09:27:07.3214586Z a68b380b887b: Download complete
+2025-04-15T09:27:07.3218585Z d949f716ce77: Verifying Checksum
+2025-04-15T09:27:07.3219387Z d949f716ce77: Download complete
+2025-04-15T09:27:07.3797451Z fdc61cbe6d7e: Verifying Checksum
+2025-04-15T09:27:07.3798553Z fdc61cbe6d7e: Download complete
+2025-04-15T09:27:07.4432762Z fb024c1bcc90: Verifying Checksum
+2025-04-15T09:27:07.4435726Z fb024c1bcc90: Download complete
+2025-04-15T09:27:07.4530854Z c0fb136fda0a: Verifying Checksum
+2025-04-15T09:27:07.4531419Z c0fb136fda0a: Download complete
+2025-04-15T09:27:07.4987862Z 9d8ba80ec174: Verifying Checksum
+2025-04-15T09:27:07.4991199Z 9d8ba80ec174: Download complete
+2025-04-15T09:27:07.5016734Z 7d182d4b9a27: Verifying Checksum
+2025-04-15T09:27:07.5017819Z 7d182d4b9a27: Download complete
+2025-04-15T09:27:07.5229375Z 476692aa7e4f: Verifying Checksum
+2025-04-15T09:27:07.5229851Z 476692aa7e4f: Download complete
+2025-04-15T09:27:07.5984586Z d949f716ce77: Pull complete
+2025-04-15T09:27:08.1364067Z 8c577d69454d: Pull complete
+2025-04-15T09:27:08.2080131Z 546fbfcace65: Pull complete
+2025-04-15T09:27:08.2205105Z a68b380b887b: Pull complete
+2025-04-15T09:27:08.7989795Z 476692aa7e4f: Pull complete
+2025-04-15T09:27:08.9688659Z c0fb136fda0a: Pull complete
+2025-04-15T09:27:09.0133715Z fdc61cbe6d7e: Pull complete
+2025-04-15T09:27:09.0318936Z fb024c1bcc90: Pull complete
+2025-04-15T09:27:09.0420373Z 9d8ba80ec174: Pull complete
+2025-04-15T09:27:09.0683394Z 7d182d4b9a27: Pull complete
+2025-04-15T09:27:09.0731362Z Digest: sha256:8834ae47a2de3509b83e0e70da9369c24bbbc22de42f2a2eddc530eee88acd1b
+2025-04-15T09:27:09.0744860Z Status: Downloaded newer image for minio/minio:latest
+2025-04-15T09:27:09.0896216Z 9a7e5003336f8d43b81b67d1116e30889ed773897d1e4d617ad4d0f92043189c
+2025-04-15T09:27:21.2715652Z make_bucket: testbucket
+2025-04-15T09:27:21.9273707Z Completed 68 Bytes/476 Bytes (2.0 KiB/s) with 7 file(s) remaining
+2025-04-15T09:27:21.9274735Z upload: opt-125m/generation_config.json to s3://testbucket/opt-125m/generation_config.json
+2025-04-15T09:27:21.9291256Z Completed 68 Bytes/476 Bytes (2.0 KiB/s) with 6 file(s) remaining
+2025-04-15T09:27:21.9292002Z Completed 136 Bytes/476 Bytes (3.7 KiB/s) with 6 file(s) remaining
+2025-04-15T09:27:21.9292880Z upload: opt-125m/special_tokens_map.json to s3://testbucket/opt-125m/special_tokens_map.json
+2025-04-15T09:27:21.9299658Z Completed 136 Bytes/476 Bytes (3.7 KiB/s) with 5 file(s) remaining
+2025-04-15T09:27:21.9311405Z Completed 204 Bytes/476 Bytes (5.4 KiB/s) with 5 file(s) remaining
+2025-04-15T09:27:21.9312152Z Completed 272 Bytes/476 Bytes (7.1 KiB/s) with 5 file(s) remaining
+2025-04-15T09:27:21.9312644Z Completed 340 Bytes/476 Bytes (8.7 KiB/s) with 5 file(s) remaining
+2025-04-15T09:27:21.9313067Z upload: opt-125m/config.json to s3://testbucket/opt-125m/config.json
+2025-04-15T09:27:21.9313691Z Completed 340 Bytes/476 Bytes (8.7 KiB/s) with 4 file(s) remaining
+2025-04-15T09:27:21.9314485Z upload: opt-125m/pytorch_model.bin to s3://testbucket/opt-125m/pytorch_model.bin
+2025-04-15T09:27:21.9315322Z Completed 340 Bytes/476 Bytes (8.7 KiB/s) with 3 file(s) remaining
+2025-04-15T09:27:21.9315931Z upload: opt-125m/vocab.json to s3://testbucket/opt-125m/vocab.json
+2025-04-15T09:27:21.9336814Z Completed 340 Bytes/476 Bytes (8.7 KiB/s) with 2 file(s) remaining
+2025-04-15T09:27:21.9342563Z Completed 408 Bytes/476 Bytes (9.8 KiB/s) with 2 file(s) remaining
+2025-04-15T09:27:21.9343344Z upload: opt-125m/merges.txt to s3://testbucket/opt-125m/merges.txt
+2025-04-15T09:27:21.9344543Z Completed 408 Bytes/476 Bytes (9.8 KiB/s) with 1 file(s) remaining
+2025-04-15T09:27:21.9345076Z Completed 476 Bytes/476 Bytes (11.2 KiB/s) with 1 file(s) remaining
+2025-04-15T09:27:21.9345550Z upload: opt-125m/tokenizer_config.json to s3://testbucket/opt-125m/tokenizer_config.json

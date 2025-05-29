@@ -1,0 +1,94 @@
+psf/black@stable
+
+options: --check --diff
+src: .
+jupyter:
+use_pyproject: false
+summary:
+##[endgroup]
+##[group]Run # Even when black fails, do not close the shell
+[36;1m# Even when black fails, do not close the shell[0m
+[36;1mset +e[0m
+[36;1m[0m
+[36;1mif [ "$RUNNER_OS" == "Windows" ]; then[0m
+[36;1m  runner="python"[0m
+36
+[36;1m  runner="python3"[0m
+36
+[36;1m[0m
+[36;1mout=$(${runner} $GITHUB_ACTION_PATH/action/main.py)[0m
+[36;1mexit_code=$?[0m
+[36;1m[0m
+[36;1m# Display the raw output in the step[0m
+36 "${out}"[0m
+[36;1m[0m
+[36;1mif [ "true" == "true" ]; then[0m
+[36;1m  # Display the Markdown output in the job summary[0m
+[36;1m  echo "\`\`\`python" >> $GITHUB_STEP_SUMMARY[0m
+[36;1m  echo "${out}" >> $GITHUB_STEP_SUMMARY[0m
+[36;1m  echo "\`\`\`" >> $GITHUB_STEP_SUMMARY[0m
+36
+[36;1m[0m
+[36;1m# Exit with the exit-code returned by Black[0m
+[36;1mexit ${exit_code}[0m
+0
+
+INPUT_OPTIONS: --check --diff
+INPUT_SRC: .
+INPUT_JUPYTER: false
+INPUT_BLACK_ARGS:
+INPUT_VERSION:
+INPUT_USE_PYPROJECT: false
+pythonioencoding: utf-8
+##[endgroup]
+Installing black[colorama]==25.1.0...
+--- /home/runner/work/django/django/tests/auth_tests/test_forms.py	2025-04-15 07:59:05.493516+00:00
++++ /home/runner/work/django/django/tests/auth_tests/test_forms.py	2025-04-15 07:59:28.788445+00:00
+@@ -1453,11 +1453,11 @@
+hashed_html = "<p><strong>No password set.</p>"
+self.assertHTMLEqual(render_password_as_hash(None), hashed_html)
+self.assertHTMLEqual(
+widget.render("name", None, {}),
+f'<div>{hashed_html}<p><a role="button" class="button" href="../password/">'
+-            'Set password</a></p></div>',
++            "Set password</a></p></div>",
+)
+2025-04-15T07:59:48.0985025Z
+@override_settings(
+PASSWORD_HASHERS=["django.contrib.auth.hashers.PBKDF2PasswordHasher"]
+)
+@@ -1470,11 +1470,11 @@
+)
+self.assertHTMLEqual(render_password_as_hash(value), hashed_html)
+self.assertHTMLEqual(
+widget.render("name", value, {}),
+f'<div>{hashed_html}<p><a role="button" class="button" href="../password/">'
+-            'Reset password</a></p></div>',
++            "Reset password</a></p></div>",
+)
+2025-04-15T07:59:48.0989707Z
+def test_readonly_field_has_changed(self):
+field = ReadOnlyPasswordHashField()
+self.assertIs(field.disabled, True)
+would reformat /home/runner/work/django/django/tests/auth_tests/test_forms.py
+--- /home/runner/work/django/django/tests/auth_tests/test_views.py	2025-04-15 07:59:05.494516+00:00
++++ /home/runner/work/django/django/tests/auth_tests/test_views.py	2025-04-15 07:59:29.649205+00:00
+@@ -1715,11 +1715,12 @@
+hash_string[:6],
+),
+html=True,
+)
+self.assertNotContains(
+-            response, '<a role="button" class="button" href="../password/">Reset password</a>'
++            response,
++            '<a role="button" class="button" href="../password/">Reset password</a>',
+)
+# Value in POST data is ignored.
+data = self.get_user_data(u)
+data["password"] = "shouldnotchange"
+change_url = reverse("auth_test_admin:auth_user_change", args=(u.pk,))
+would reformat /home/runner/work/django/django/tests/auth_tests/test_views.py
+2025-04-15T07:59:48.0996746Z
+Oh no! 💥 💔 💥
+2 files would be reformatted, 2830 files would be left unchanged.
+##[error]Process completed with exit code 1.

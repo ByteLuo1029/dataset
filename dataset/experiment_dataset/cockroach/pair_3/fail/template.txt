@@ -1,0 +1,88 @@
+Requested labels: ubuntu-latest
+Job defined at: cockroachdb/cockroach/.github/workflows/code-cover-publish.yaml@refs/heads/master
+Waiting for a runner to pick up this job...
+Job is waiting for a hosted runner to come online.
+Job is about to start running on the hosted runner: GitHub Actions 249 (hosted)
+Current runner version: '2.323.0'
+##[group]Operating System
+Ubuntu
+24.04.2
+LTS
+##[endgroup]
+##[group]Runner Image
+Image: ubuntu-24.04
+Version: 20250406.1.0
+Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250406.1/images/ubuntu/Ubuntu2404-Readme.md
+Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250406.1
+##[endgroup]
+##[group]Runner Image Provisioner
+2.0.422.1
+##[endgroup]
+##[group]GITHUB_TOKEN Permissions
+Actions: write
+Attestations: <:*:>
+Checks: <:*:>
+Contents: <:*:>
+Deployments: <:*:>
+Discussions: <:*:>
+Issues: <:*:>
+Metadata: read
+Models: read
+Packages: <:*:>
+Pages: <:*:>
+PullRequests: <:*:>
+RepositoryProjects: <:*:>
+SecurityEvents: <:*:>
+Statuses: <:*:>
+##[endgroup]
+Secret source: <:*:>
+Prepare workflow directory
+Prepare all required actions
+Getting action download info
+##[group]Download immutable action package <:*:>
+Version: 7.0.1
+Digest: sha256:<:SEQ:>
+Source commit SHA: <:SEQ:>
+##[endgroup]
+##[group]Download immutable action package <:*:>
+Version: 1.3.0
+Digest: sha256:<:SEQ:>
+Source commit SHA: <:SEQ:>
+##[endgroup]
+##[group]Download immutable action package <:*:>
+Version: 1.0.3
+Digest: sha256:<:SEQ:>
+Source commit SHA: <:SEQ:>
+##[endgroup]
+Complete job name: <:*:>
+##[group]Run <:*:>
+with:
+script: var artifacts = await github.rest.actions.listWorkflowRunArtifacts({
+context.repo.owner,
+context.repo.repo,
+14465470601,
+});
+var matchArtifact = artifacts.data.artifacts.filter((artifact) => {
+  return artifact.name == "cover"
+})[0];
+var download = await github.rest.actions.downloadArtifact({
+context.repo.owner,
+context.repo.repo,
+matchArtifact.id,
+'zip',
+});
+var fs = require('fs');
+fs.writeFileSync('/home/runner/work/cockroach/cockroach/cover.zip', Buffer.from(download.data));
+github-token: ***
+debug: false
+user-agent: actions/github-script
+result-encoding: json
+retries: 0
+retry-exempt-status-codes: 400,401,403,404,422
+##[endgroup]
+TypeError: Cannot read properties of undefined (reading 'id')
+at eval (eval at callAsyncFunction (/home/runner/work/_actions/actions/github-script/v7.0.1/dist/index.js:35424:16), <anonymous>:14:31)
+at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+at async main (/home/runner/work/_actions/actions/github-script/v7.0.1/dist/index.js:35522:20)
+##[error]Unhandled error: TypeError: Cannot read properties of undefined (reading 'id')
+Cleaning up orphan processes

@@ -1,0 +1,65 @@
+##[group]Run git fetch --depth=1 origin master
+[36;1mgit fetch --depth=1 origin master[0m
+[36;1mOLD_FILES=$(git diff-index --name-only --diff-filter=ad FETCH_HEAD)[0m
+[36;1mNEW_FILES=$(git diff-index --name-only --diff-filter=d FETCH_HEAD)[0m
+[36;1m[0m
+[36;1m# This is necessary because the typos command interprets the[0m
+[36;1m# empty string as "check all files" rather than "check no files".[0m
+[36;1mif [ -z "$NEW_FILES" ]; then[0m
+[36;1m  echo "All edited files were deleted. Skipping typos check."[0m
+[<:NUM:>;1m exit <:NUM:>[0m
+[<:NUM:>;1mfi[0m
+[36;1m[0m
+[36;1mmkdir -p "/home/runner/work/_temp/typos"[0m
+[36;1mRELEASE_ASSET_URL="$([0m
+[36;1m  gh api /repos/crate-ci/typos/releases/latest \[0m
+[36;1m  --jq '."assets"[] | select(."name" | test("^typos-.+-x86_64-unknown-linux-musl\\.tar\\.gz$")) | ."browser_download_url"'[0m
+[36;1m)"[0m
+[36;1mwget --secure-protocol=TLSv1_3 --max-redirect=1 --retry-on-host-error --retry-connrefused --tries=3 \[0m
+[36;1m  --quiet --output-document=- "${RELEASE_ASSET_URL}" \[0m
+[36;1m  | tar -xz -C "/home/runner/work/_temp/typos" ./typos[0m
+[36;1m"/home/runner/work/_temp/typos/typos" --version[0m
+[36;1m[0m
+[36;1mecho -n $NEW_FILES | xargs "/home/runner/work/_temp/typos/typos" --format json >> /home/runner/work/_temp/new_typos.jsonl || true[0m
+[36;1mgit checkout FETCH_HEAD -- $OLD_FILES[0m
+[36;1mif [ -z "$OLD_FILES" ]; then[0m
+[36;1m  touch "/home/runner/work/_temp/old_typos.jsonl" # No old files, so no old typos.[0m
+[<:NUM:>;1melse[0m
+[36;1m  echo -n $OLD_FILES | xargs "/home/runner/work/_temp/typos/typos" --format json >> /home/runner/work/_temp/old_typos.jsonl || true[0m
+[<:NUM:>;1mfi[0m
+[36;1m[0m
+[36;1m[0m
+[36;1mpython -c '[0m
+[36;1mimport sys, json[0m
+[36;1mold = set()[0m
+[36;1mwith open(sys.argv[1]) as old_file:[0m
+[36;1m  for line in old_file:[0m
+[36;1m    j = json.loads(line)[0m
+[36;1m    if j["type"] == "typo":[0m
+[36;1m      old.add(j["typo"])[0m
+[36;1mclean = True[0m
+[36;1mwith open(sys.argv[2]) as new_file:[0m
+[36;1m  for line in new_file:[0m
+[36;1m    new = json.loads(line)[0m
+[36;1m    if new["type"] == "typo" and new["typo"] not in old:[0m
+[36;1m      if len(new["typo"]) > 6: # Short typos might be false positives. Long are probably real.[0m
+[36;1m        clean = False[0m
+[36;1m      print("::warning file={},line={},col={}::perhaps \"{}\" should be \"{}\".".format([0m
+[36;1m        new["path"], new["line_num"], new["byte_offset"],[0m
+[36;1m        new["typo"], " or ".join(new["corrections"])))[0m
+[36;1msys.exit(1 if not clean else 0)' "/home/runner/work/_temp/old_typos.jsonl" "/home/runner/work/_temp/new_typos.jsonl"[0m
+shell: /usr/bin/bash -e {<:NUM:>}
+env:
+GH TOKEN: ***
+##[endgroup]
+From <:*:>
+* branch            master     -> FETCH_HEAD
+* [new <:*:> <:*:> -> <:*:>
+typos-cli 1.31.1
+##[warning]perhaps "ERRONOUS" should be "ERRONEOUS".
+##[warning]perhaps "ERRONOUS" should be "ERRONEOUS".
+##[warning]perhaps "ERRONOUS" should be "ERRONEOUS".
+##[warning]perhaps "ERRONOUS" should be "ERRONEOUS".
+##[warning]perhaps "ERRONOUS" should be "ERRONEOUS".
+##[warning]perhaps "ERRONOUS" should be "ERRONEOUS".
+##[error]Process completed with exit code 1.

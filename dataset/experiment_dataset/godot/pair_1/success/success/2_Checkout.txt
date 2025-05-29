@@ -1,0 +1,126 @@
+2025-04-15T07:53:51.6132278Z ##[group]Run actions/checkout@v4
+2025-04-15T07:53:51.6133148Z with:
+2025-04-15T07:53:51.6133522Z   submodules: recursive
+2025-04-15T07:53:51.6133958Z   repository: godotengine/godot
+2025-04-15T07:53:51.6134759Z   token: ***
+2025-04-15T07:53:51.6135139Z   ssh-strict: true
+2025-04-15T07:53:51.6135528Z   ssh-user: git
+2025-04-15T07:53:51.6135926Z   persist-credentials: true
+2025-04-15T07:53:51.6136363Z   clean: true
+2025-04-15T07:53:51.6136784Z   sparse-checkout-cone-mode: true
+2025-04-15T07:53:51.6137257Z   fetch-depth: 1
+2025-04-15T07:53:51.6137630Z   fetch-tags: false
+2025-04-15T07:53:51.6138021Z   show-progress: true
+2025-04-15T07:53:51.6138423Z   lfs: false
+2025-04-15T07:53:51.6138801Z   set-safe-directory: true
+2025-04-15T07:53:51.6139467Z env:
+2025-04-15T07:53:51.6139835Z   GODOT_CPP_BRANCH: 4.4
+2025-04-15T07:53:51.6140987Z   SCONSFLAGS: verbose=yes warnings=extra werror=yes module_text_server_fb_enabled=yes strict_checks=yes "accesskit_sdk_path=/home/runner/work/godot/godot/accesskit-c-0.15.1/"
+2025-04-15T07:53:51.6142238Z   DOTNET_NOLOGO: true
+2025-04-15T07:53:51.6142910Z   DOTNET_CLI_TELEMETRY_OPTOUT: true
+2025-04-15T07:53:51.6143738Z   TSAN_OPTIONS: suppressions=/home/runner/work/godot/godot/misc/error_suppressions/tsan.txt
+2025-04-15T07:53:51.6145028Z   UBSAN_OPTIONS: suppressions=/home/runner/work/godot/godot/misc/error_suppressions/ubsan.txt
+2025-04-15T07:53:51.6145872Z ##[endgroup]
+2025-04-15T07:53:51.8223989Z Syncing repository: godotengine/godot
+2025-04-15T07:53:51.8226118Z ##[group]Getting Git version info
+2025-04-15T07:53:51.8226801Z Working directory is '/home/runner/work/godot/godot'
+2025-04-15T07:53:51.8227686Z [command]/usr/bin/git version
+2025-04-15T07:53:51.8277887Z git version 2.49.0
+2025-04-15T07:53:51.8308000Z ##[endgroup]
+2025-04-15T07:53:51.8322130Z Temporarily overriding HOME='/home/runner/work/_temp/b5660a9f-0760-4a75-9dab-34442c9c6870' before making global git config changes
+2025-04-15T07:53:51.8327647Z Adding repository directory to the temporary git global config as a safe directory
+2025-04-15T07:53:51.8328809Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/godot/godot
+2025-04-15T07:53:51.8364243Z Deleting the contents of '/home/runner/work/godot/godot'
+2025-04-15T07:53:51.8368395Z ##[group]Initializing the repository
+2025-04-15T07:53:51.8372424Z [command]/usr/bin/git init /home/runner/work/godot/godot
+2025-04-15T07:53:51.8456702Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-04-15T07:53:51.8458300Z hint: is subject to change. To configure the initial branch name to use in all
+2025-04-15T07:53:51.8460353Z hint: of your new repositories, which will suppress this warning, call:
+2025-04-15T07:53:51.8461381Z hint:
+2025-04-15T07:53:51.8461897Z hint: 	git config --global init.defaultBranch <name>
+2025-04-15T07:53:51.8462476Z hint:
+2025-04-15T07:53:51.8463418Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-04-15T07:53:51.8465233Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-04-15T07:53:51.8466515Z hint:
+2025-04-15T07:53:51.8467157Z hint: 	git branch -m <name>
+2025-04-15T07:53:51.8468238Z Initialized empty Git repository in /home/runner/work/godot/godot/.git/
+2025-04-15T07:53:51.8479116Z [command]/usr/bin/git remote add origin https://github.com/godotengine/godot
+2025-04-15T07:53:51.8513221Z ##[endgroup]
+2025-04-15T07:53:51.8513942Z ##[group]Disabling automatic garbage collection
+2025-04-15T07:53:51.8517870Z [command]/usr/bin/git config --local gc.auto 0
+2025-04-15T07:53:51.8547655Z ##[endgroup]
+2025-04-15T07:53:51.8548335Z ##[group]Setting up auth
+2025-04-15T07:53:51.8554772Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-04-15T07:53:51.8585711Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-04-15T07:53:51.8882746Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-15T07:53:51.8911991Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-04-15T07:53:51.9141003Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-04-15T07:53:51.9179847Z ##[endgroup]
+2025-04-15T07:53:51.9188821Z ##[group]Fetching the repository
+2025-04-15T07:53:51.9190232Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +2a7f8ba09d34d288cc3806880782917a946063fc:refs/remotes/pull/105347/merge
+2025-04-15T07:54:01.7499765Z From https://github.com/godotengine/godot
+2025-04-15T07:54:01.7501133Z  * [new ref]         2a7f8ba09d34d288cc3806880782917a946063fc -> pull/105347/merge
+2025-04-15T07:54:01.7595830Z ##[endgroup]
+2025-04-15T07:54:01.7596748Z ##[group]Determining the checkout info
+2025-04-15T07:54:01.7597700Z ##[endgroup]
+2025-04-15T07:54:01.7602826Z [command]/usr/bin/git sparse-checkout disable
+2025-04-15T07:54:01.7644106Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-04-15T07:54:01.7671179Z ##[group]Checking out the ref
+2025-04-15T07:54:01.7675366Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/105347/merge
+2025-04-15T07:54:02.8085301Z Updating files:  83% (10536/12578)
+2025-04-15T07:54:02.8154911Z Updating files:  84% (10566/12578)
+2025-04-15T07:54:02.8240865Z Updating files:  85% (10692/12578)
+2025-04-15T07:54:02.8333202Z Updating files:  86% (10818/12578)
+2025-04-15T07:54:02.8433277Z Updating files:  87% (10943/12578)
+2025-04-15T07:54:02.8617634Z Updating files:  88% (11069/12578)
+2025-04-15T07:54:02.8727547Z Updating files:  89% (11195/12578)
+2025-04-15T07:54:02.8830949Z Updating files:  90% (11321/12578)
+2025-04-15T07:54:02.8933306Z Updating files:  91% (11446/12578)
+2025-04-15T07:54:02.9060780Z Updating files:  92% (11572/12578)
+2025-04-15T07:54:02.9208659Z Updating files:  93% (11698/12578)
+2025-04-15T07:54:02.9372655Z Updating files:  94% (11824/12578)
+2025-04-15T07:54:02.9471191Z Updating files:  95% (11950/12578)
+2025-04-15T07:54:02.9671321Z Updating files:  96% (12075/12578)
+2025-04-15T07:54:02.9833669Z Updating files:  97% (12201/12578)
+2025-04-15T07:54:03.0339687Z Updating files:  98% (12327/12578)
+2025-04-15T07:54:03.0518413Z Updating files:  99% (12453/12578)
+2025-04-15T07:54:03.0518992Z Updating files: 100% (12578/12578)
+2025-04-15T07:54:03.0519414Z Updating files: 100% (12578/12578), done.
+2025-04-15T07:54:03.0632947Z Note: switching to 'refs/remotes/pull/105347/merge'.
+2025-04-15T07:54:03.0633509Z 
+2025-04-15T07:54:03.0633910Z You are in 'detached HEAD' state. You can look around, make experimental
+2025-04-15T07:54:03.0636288Z changes and commit them, and you can discard any commits you make in this
+2025-04-15T07:54:03.0637349Z state without impacting any branches by switching back to a branch.
+2025-04-15T07:54:03.0638164Z 
+2025-04-15T07:54:03.0638595Z If you want to create a new branch to retain commits you create, you may
+2025-04-15T07:54:03.0639630Z do so (now or later) by using -c with the switch command. Example:
+2025-04-15T07:54:03.0640200Z 
+2025-04-15T07:54:03.0640463Z   git switch -c <new-branch-name>
+2025-04-15T07:54:03.0640928Z 
+2025-04-15T07:54:03.0641192Z Or undo this operation with:
+2025-04-15T07:54:03.0641553Z 
+2025-04-15T07:54:03.0641746Z   git switch -
+2025-04-15T07:54:03.0642001Z 
+2025-04-15T07:54:03.0642460Z Turn off this advice by setting config variable advice.detachedHead to false
+2025-04-15T07:54:03.0643184Z 
+2025-04-15T07:54:03.0643947Z HEAD is now at 2a7f8ba Merge e213737d66acd26d8729d943c109b578c3d3353b into e5ccaa79e2a2d5551369bd6cc1f8ed654a791275
+2025-04-15T07:54:03.0678024Z ##[endgroup]
+2025-04-15T07:54:03.0678675Z ##[group]Setting up auth for fetching submodules
+2025-04-15T07:54:03.0687157Z [command]/usr/bin/git config --global http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-04-15T07:54:03.0729407Z [command]/usr/bin/git config --global --unset-all url.https://github.com/.insteadOf
+2025-04-15T07:54:03.0763101Z [command]/usr/bin/git config --global --add url.https://github.com/.insteadOf git@github.com:
+2025-04-15T07:54:03.0797393Z [command]/usr/bin/git config --global --add url.https://github.com/.insteadOf org-6318500@github.com:
+2025-04-15T07:54:03.0824632Z ##[endgroup]
+2025-04-15T07:54:03.0825130Z ##[group]Fetching submodules
+2025-04-15T07:54:03.0830403Z [command]/usr/bin/git submodule sync --recursive
+2025-04-15T07:54:03.1095732Z [command]/usr/bin/git -c protocol.version=2 submodule update --init --force --depth=1 --recursive
+2025-04-15T07:54:03.1349626Z [command]/usr/bin/git submodule foreach --recursive git config --local gc.auto 0
+2025-04-15T07:54:03.1590131Z ##[endgroup]
+2025-04-15T07:54:03.1590641Z ##[group]Persisting credentials for submodules
+2025-04-15T07:54:03.1600744Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'url\.https\:\/\/github\.com\/\.insteadOf' && git config --local --unset-all 'url.https://github.com/.insteadOf' || :"
+2025-04-15T07:54:03.1833698Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local 'http.https://github.com/.extraheader' 'AUTHORIZATION: basic ***' && git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2025-04-15T07:54:03.2067945Z [command]/usr/bin/git submodule foreach --recursive git config --local --add 'url.https://github.com/.insteadOf' 'git@github.com:'
+2025-04-15T07:54:03.2301972Z [command]/usr/bin/git submodule foreach --recursive git config --local --add 'url.https://github.com/.insteadOf' 'org-6318500@github.com:'
+2025-04-15T07:54:03.2530607Z ##[endgroup]
+2025-04-15T07:54:03.2572693Z [command]/usr/bin/git log -1 --format=%H
+2025-04-15T07:54:03.2594988Z 2a7f8ba09d34d288cc3806880782917a946063fc

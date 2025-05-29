@@ -1,0 +1,11 @@
+##[group]Run echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+[36;1mecho 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules[0m
+[36;1msudo udevadm control --reload-rules[0m
+[36;1msudo udevadm trigger --name-match=kvm[0m
+[36;1mls /dev/kvm[0m
+shell: /usr/bin/bash -e {<:NUM:>}
+env:
+GRADLE_OPTS: -Dorg.gradle.jvmargs=-Xmx4g -Dorg.gradle.daemon=false -Dkotlin.incremental=false
+##[endgroup]
+KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"
+/dev/kvm

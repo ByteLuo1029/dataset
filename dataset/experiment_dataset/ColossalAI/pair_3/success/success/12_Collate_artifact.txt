@@ -1,0 +1,32 @@
+2025-04-09T09:03:16.5594583Z ##[group]Run mkdir report
+2025-04-09T09:03:16.5595693Z [36;1mmkdir report[0m
+2025-04-09T09:03:16.5596634Z [36;1mecho $PR_NUMBER > ./report/pr_number[0m
+2025-04-09T09:03:16.5597633Z [36;1m[0m
+2025-04-09T09:03:16.5598395Z [36;1m# generate coverage.xml if any[0m
+2025-04-09T09:03:16.5599714Z [36;1mif [ "$anyLibraryFileChanged" == "true" ] && [ -e .coverage ]; then[0m
+2025-04-09T09:03:16.5600966Z [36;1m  allFiles=""[0m
+2025-04-09T09:03:16.5601899Z [36;1m  for file in $changedLibraryFiles; do[0m
+2025-04-09T09:03:16.5602944Z [36;1m    if [ "$allFiles" == "" ]; then[0m
+2025-04-09T09:03:16.5603886Z [36;1m      allFiles=$file[0m
+2025-04-09T09:03:16.5604696Z [36;1m    else[0m
+2025-04-09T09:03:16.5605476Z [36;1m      allFiles=$allFiles,$file[0m
+2025-04-09T09:03:16.5606359Z [36;1m    fi[0m
+2025-04-09T09:03:16.5607096Z [36;1m  done[0m
+2025-04-09T09:03:16.5607779Z [36;1m[0m
+2025-04-09T09:03:16.5608899Z [36;1m  coverage report --data-file .coverage --include $allFiles > ./coverage.txt[0m
+2025-04-09T09:03:16.5610296Z [36;1m[0m
+2025-04-09T09:03:16.5611263Z [36;1m  covPercentage=$(tail -n 1 coverage.txt  | grep -o '[1-9]*%$')[0m
+2025-04-09T09:03:16.5612499Z [36;1m  covNum=${covPercentage::-1}[0m
+2025-04-09T09:03:16.5613487Z [36;1m  mv coverage.txt ./report[0m
+2025-04-09T09:03:16.5614487Z [36;1m  echo $covNum > ./report/cov_number[0m
+2025-04-09T09:03:16.5615407Z [36;1melse[0m
+2025-04-09T09:03:16.5616213Z [36;1m  echo "No coverage report is generated"[0m
+2025-04-09T09:03:16.5617157Z [36;1mfi[0m
+2025-04-09T09:03:16.5618279Z shell: bash --noprofile --norc -e -o pipefail {0}
+2025-04-09T09:03:16.5619267Z env:
+2025-04-09T09:03:16.5619951Z   PR_NUMBER: 6254
+2025-04-09T09:03:16.5621324Z   changedLibraryFiles: tests/test_device/test_init_logical_pg.py tests/test_fp8/test_fp8_allreduce.py
+2025-04-09T09:03:16.5622928Z   anyLibraryFileChanged: true
+2025-04-09T09:03:16.5623842Z   changedExtenisonFiles: 
+2025-04-09T09:03:16.5624666Z ##[endgroup]
+2025-04-09T09:03:16.7465664Z No coverage report is generated

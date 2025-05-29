@@ -1,0 +1,38 @@
+##[group]Run pnpm lint
+[36;1mpnpm lint[0m
+shell: /usr/bin/bash -e {<:NUM:>}
+env:
+NPM_CONFIG_USERCONFIG: /home/runner/work/_temp/.npmrc
+NODE_AUTH_TOKEN: XXXXX-XXXXX-XXXXX-XXXXX
+PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+##[endgroup]
+2025-04-14T19:33:22.7285039Z
+> fuels-ts@0.0.0 lint /home/runner/work/fuels-ts/fuels-ts
+> run-s type:check-tests lint:check prettier:check type:check
+2025-04-14T19:33:22.7286917Z
+2025-04-14T19:33:23.2583184Z
+> fuels-ts@0.0.0 type:check-tests /home/runner/work/fuels-ts/fuels-ts
+> tsc -p tsconfig.test.json
+2025-04-14T19:33:23.2585613Z
+2025-04-14T19:33:33.7942760Z
+> fuels-ts@0.0.0 lint:check /home/runner/work/fuels-ts/fuels-ts
+> eslint . --ext .ts --max-warnings 0
+2025-04-14T19:33:33.7944335Z
+Pages directory cannot be found at /home/runner/work/fuels-ts/fuels-ts/pages or /home/runner/work/fuels-ts/fuels-ts/src/pages. If using a custom path, please configure with the `no-html-link-for-pages` rule in your eslint config file.
+2025-04-14T19:34:09.0666355Z
+> fuels-ts@0.0.0 prettier:check /home/runner/work/fuels-ts/fuels-ts
+> prettier --check packages --check apps/docs
+2025-04-14T19:34:09.0668330Z
+Checking formatting...
+[warn] packages/account/src/account.ts
+[warn] packages/account/src/connectors/types/data-type.ts
+[warn] packages/account/src/providers/operations.graphql
+[warn] packages/account/src/providers/provider.ts
+[warn] packages/account/src/wallet/base-wallet-unlocked.ts
+[warn] packages/fuel-gauge/src/transaction-response.test.ts
+[warn] packages/fuel-gauge/src/transaction-summary.test.ts
+[warn] Code style issues found in 7 files. Run Prettier with --write to fix.
+ELIFECYCLE  Command failed with exit code 1.
+ERROR: "prettier:check" exited with 1.
+ELIFECYCLE  Command failed with exit code 1.
+##[error]Process completed with exit code 1.

@@ -1,0 +1,233 @@
+##[group]Run <:*:>
+with:
+driver: docker-container
+<:*:> false
+<:*:> true
+<:*:> true
+<:*:> true
+env:
+REGISTRY: ghcr.io
+IMAGE_NAME: binary-husky/gpt_academic_with_latex_arm
+##[endgroup]
+##[group]Docker info
+[command]/usr/bin/docker version
+Client: Docker Engine - Community
+Version:           26.1.3
+API version:       1.45
+Go version:        go1.21.10
+Git commit:        b72abbb
+Built:             Thu May 16 08:33:35 2024
+OS/Arch:           linux/amd64
+Context:           default
+2025-02-08T12:51:15.7377553Z
+Server: Docker Engine - Community
+Engine:
+Version:          26.1.3
+API version:      1.45 (minimum version 1.24)
+Go version:       go1.21.10
+Git commit:       8e96db1
+Built:            Thu May 16 08:33:35 2024
+OS/Arch:          linux/amd64
+<:*:> false
+containerd:
+Version:          1.7.25
+GitCommit:        bcc810d6b9066471b0b6fa75f557a15a1cbf31bb
+runc:
+Version:          1.2.4
+GitCommit:        v1.2.4-0-g6c52b3f
+docker-init:
+Version:          0.19.0
+GitCommit:        de40ad0
+[command]/usr/bin/docker info
+Client: Docker Engine - Community
+Version:    26.1.3
+Context:    default
+Debug Mode: false
+Plugins:
+buildx: Docker Buildx (Docker Inc.)
+Version:  v0.20.1
+Path:     /usr/libexec/docker/cli-plugins/docker-buildx
+compose: Docker Compose (Docker Inc.)
+Version:  v2.27.1
+Path:     /usr/libexec/docker/cli-plugins/docker-compose
+2025-02-08T12:51:15.7840937Z
+Server:
+Containers: 0
+Running: 0
+Paused: 0
+Stopped: 0
+Images: 1
+Server Version: 26.1.3
+Storage Driver: overlay2
+Backing Filesystem: extfs
+Supports d_type: true
+Using metacopy: false
+Native Overlay Diff: false
+<:*:> false
+Logging Driver: json-file
+Cgroup Driver: systemd
+Cgroup Version: 2
+Plugins:
+Volume: local
+Network: bridge host ipvlan macvlan null overlay
+Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+Swarm: inactive
+Runtimes: io.containerd.runc.v2 runc
+Default Runtime: runc
+Init Binary: docker-init
+containerd version: bcc810d6b9066471b0b6fa75f557a15a1cbf31bb
+runc version: v1.2.4-0-g6c52b3f
+init version: de40ad0
+Security Options:
+apparmor
+seccomp
+Profile: builtin
+cgroupns
+Kernel Version: 6.8.0-1020-azure
+Operating System: Ubuntu 24.04.1 LTS
+OSType: linux
+Architecture: x86_64
+CPUs: 4
+Total Memory: 15.62GiB
+Name: fv-az1336-587
+ID: 5da1e875-f4d9-42c6-906c-34f1b814e6b3
+Docker Root Dir: /var/lib/docker
+Debug Mode: false
+Username: githubactions
+<:*:> false
+Insecure Registries:
+127.0.0.0/8
+Live Restore Enabled: false
+2025-02-08T12:51:15.7855805Z
+##[endgroup]
+##[group]Buildx version
+[command]/usr/bin/docker buildx version
+github.com/docker/buildx v0.20.1 245093b99ab74aa2c729a496759afca0704d6470
+##[endgroup]
+##[group]Inspecting default docker context
+[
+{
+"Name": "default",
+"Metadata": {},
+"Endpoints": {
+"docker": {
+"Host": "unix:///var/run/docker.sock",
+<:*:> false
+}
+},
+"TLSMaterial": {},
+"Storage": {
+"MetadataPath": "<IN MEMORY>",
+"TLSPath": "<IN MEMORY>"
+}
+}
+]
+##[endgroup]
+##[group]Creating a new builder instance
+[command]/usr/bin/docker buildx create --name builder-5db1e4ce-fb8c-4273-9384-e3f4274fb815 --driver docker-container --buildkitd-flags --allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host --use
+builder-5db1e4ce-fb8c-4273-9384-e3f4274fb815
+##[endgroup]
+##[group]Booting builder
+[command]/usr/bin/docker buildx inspect --bootstrap --builder builder-5db1e4ce-fb8c-4273-9384-e3f4274fb815
+#1 [internal] booting buildkit
+#1 pulling image moby/buildkit:buildx-stable-1
+#1 pulling image moby/buildkit:buildx-stable-1 3.2s done
+#1 creating container buildx_buildkit_builder-5db1e4ce-fb8c-4273-9384-e3f4274fb8150
+#1 creating container buildx_buildkit_builder-5db1e4ce-fb8c-4273-9384-e3f4274fb8150 0.4s done
+#1 DONE 3.5s
+Name:          builder-5db1e4ce-fb8c-4273-9384-e3f4274fb815
+Driver:        docker-container
+Last Activity: 2025-02-08 12:51:16 +0000 UTC
+2025-02-08T12:51:19.6226274Z
+Nodes:
+Name:                  builder-5db1e4ce-fb8c-4273-9384-e3f4274fb8150
+Endpoint:              unix:///var/run/docker.sock
+Status:                running
+BuildKit daemon flags: --allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host
+BuildKit version:      v0.19.0
+Platforms:             linux/amd64, linux/amd64/v2, linux/amd64/v3, linux/arm64, linux/riscv64, linux/ppc64le, linux/s390x, linux/386, linux/arm/v7, linux/arm/v6
+Labels:
+org.mobyproject.buildkit.worker.executor:         oci
+org.mobyproject.buildkit.worker.hostname:         ac06f4127166
+org.mobyproject.buildkit.worker.network:          host
+org.mobyproject.buildkit.worker.oci.process-mode: sandbox
+<:*:> false
+org.mobyproject.buildkit.worker.snapshotter:      overlayfs
+GC Policy rule#0:
+<:*:> false
+Filters:        type==source.local,type==exec.cachemount,type==source.git.checkout
+Keep Duration:  48h0m0s
+Max Used Space: 488.3MiB
+GC Policy rule#1:
+<:*:> false
+Keep Duration:  1440h0m0s
+Reserved Space: 7.451GiB
+Max Used Space: 54.02GiB
+Min Free Space: 13.97GiB
+GC Policy rule#2:
+<:*:> false
+Reserved Space: 7.451GiB
+Max Used Space: 54.02GiB
+Min Free Space: 13.97GiB
+GC Policy rule#3:
+<:*:> true
+Reserved Space: 7.451GiB
+Max Used Space: 54.02GiB
+Min Free Space: 13.97GiB
+##[endgroup]
+##[group]Inspect builder
+{
+"nodes": [
+{
+"name": "builder-5db1e4ce-fb8c-4273-9384-e3f4274fb8150",
+"endpoint": "unix:///var/run/docker.sock",
+"status": "running",
+"buildkitd-flags": "--allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host",
+"buildkit": "v0.19.0",
+"platforms": "linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/arm64,linux/riscv64,linux/ppc64le,linux/s390x,linux/386,linux/arm/v7,linux/arm/v6",
+"features": {
+"Automatically load images to the Docker Engine image store": true,
+"Cache export": true,
+"Docker exporter": true,
+"Multi-platform build": true,
+"OCI exporter": true
+},
+"labels": {
+"org.mobyproject.buildkit.worker.executor": "oci",
+"org.mobyproject.buildkit.worker.hostname": "ac06f4127166",
+"org.mobyproject.buildkit.worker.network": "host",
+"org.mobyproject.buildkit.worker.oci.process-mode": "sandbox",
+"org.mobyproject.buildkit.worker.selinux.enabled": "false",
+"org.mobyproject.buildkit.worker.snapshotter": "overlayfs"
+},
+"gcPolicy": [
+{
+"all": false,
+"filter": [
+"type==source.local",
+"type==exec.cachemount",
+"type==source.git.checkout"
+],
+"keepDuration": "48h0m0s"
+},
+{
+"all": false,
+"keepDuration": "1440h0m0s"
+},
+{
+<:*:> false
+},
+{
+<:*:> true
+}
+]
+}
+],
+"name": "builder-5db1e4ce-fb8c-4273-9384-e3f4274fb815",
+"driver": "docker-container",
+"lastActivity": "2025-02-08T12:51:16.000Z"
+}
+##[endgroup]
+##[group]BuildKit version
+builder-5db1e4ce-fb8c-4273-9384-e3f4274fb8150: v0.19.0
+##[endgroup]

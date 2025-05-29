@@ -1,0 +1,78 @@
+2025-04-15T04:30:41.8380176Z ##[group]Run actions/checkout@v4
+2025-04-15T04:30:41.8381079Z with:
+2025-04-15T04:30:41.8381479Z   lfs: true
+2025-04-15T04:30:41.8381901Z   repository: open-webui/open-webui
+2025-04-15T04:30:41.8382580Z   token: ***
+2025-04-15T04:30:41.8382976Z   ssh-strict: true
+2025-04-15T04:30:41.8383400Z   ssh-user: git
+2025-04-15T04:30:41.8383838Z   persist-credentials: true
+2025-04-15T04:30:41.8384487Z   clean: true
+2025-04-15T04:30:41.8384922Z   sparse-checkout-cone-mode: true
+2025-04-15T04:30:41.8385443Z   fetch-depth: 1
+2025-04-15T04:30:41.8385869Z   fetch-tags: false
+2025-04-15T04:30:41.8386294Z   show-progress: true
+2025-04-15T04:30:41.8386737Z   submodules: false
+2025-04-15T04:30:41.8387173Z   set-safe-directory: true
+2025-04-15T04:30:41.8387885Z env:
+2025-04-15T04:30:41.8388396Z   HF_TOKEN: ***
+2025-04-15T04:30:41.8388816Z ##[endgroup]
+2025-04-15T04:30:42.0781508Z Syncing repository: open-webui/open-webui
+2025-04-15T04:30:42.0784348Z ##[group]Getting Git version info
+2025-04-15T04:30:42.0785470Z Working directory is '/home/runner/work/open-webui/open-webui'
+2025-04-15T04:30:42.0786988Z [command]/usr/bin/git version
+2025-04-15T04:30:42.0888079Z git version 2.49.0
+2025-04-15T04:30:42.0939487Z [command]/usr/bin/git lfs version
+2025-04-15T04:30:42.1441919Z git-lfs/3.6.1 (GitHub; linux amd64; go 1.23.3)
+2025-04-15T04:30:42.1455026Z ##[endgroup]
+2025-04-15T04:30:42.1471821Z Temporarily overriding HOME='/home/runner/work/_temp/4a1e1a4b-11f0-4268-bf77-24628c0208c6' before making global git config changes
+2025-04-15T04:30:42.1474406Z Adding repository directory to the temporary git global config as a safe directory
+2025-04-15T04:30:42.1479024Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/open-webui/open-webui
+2025-04-15T04:30:42.1517086Z Deleting the contents of '/home/runner/work/open-webui/open-webui'
+2025-04-15T04:30:42.1521325Z ##[group]Initializing the repository
+2025-04-15T04:30:42.1526383Z [command]/usr/bin/git init /home/runner/work/open-webui/open-webui
+2025-04-15T04:30:42.1612252Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-04-15T04:30:42.1613423Z hint: is subject to change. To configure the initial branch name to use in all
+2025-04-15T04:30:42.1614548Z hint: of your new repositories, which will suppress this warning, call:
+2025-04-15T04:30:42.1615240Z hint:
+2025-04-15T04:30:42.1615818Z hint: 	git config --global init.defaultBranch <name>
+2025-04-15T04:30:42.1616422Z hint:
+2025-04-15T04:30:42.1616975Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-04-15T04:30:42.1618246Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-04-15T04:30:42.1619228Z hint:
+2025-04-15T04:30:42.1619638Z hint: 	git branch -m <name>
+2025-04-15T04:30:42.1620967Z Initialized empty Git repository in /home/runner/work/open-webui/open-webui/.git/
+2025-04-15T04:30:42.1631913Z [command]/usr/bin/git remote add origin https://github.com/open-webui/open-webui
+2025-04-15T04:30:42.1668069Z ##[endgroup]
+2025-04-15T04:30:42.1668840Z ##[group]Disabling automatic garbage collection
+2025-04-15T04:30:42.1672079Z [command]/usr/bin/git config --local gc.auto 0
+2025-04-15T04:30:42.1697817Z ##[endgroup]
+2025-04-15T04:30:42.1698547Z ##[group]Setting up auth
+2025-04-15T04:30:42.1704778Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-04-15T04:30:42.1733509Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-04-15T04:30:42.2011758Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-15T04:30:42.2043868Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-04-15T04:30:42.2266920Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-04-15T04:30:42.2300041Z ##[endgroup]
+2025-04-15T04:30:42.2303497Z [command]/usr/bin/git lfs install --local
+2025-04-15T04:30:42.2653109Z Updated Git hooks.
+2025-04-15T04:30:42.2653790Z Git LFS initialized.
+2025-04-15T04:30:42.2676738Z ##[group]Fetching the repository
+2025-04-15T04:30:42.2686064Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +44e27854951bc531867adc60253cb15cc00b982b:refs/remotes/origin/dev
+2025-04-15T04:30:43.7883807Z From https://github.com/open-webui/open-webui
+2025-04-15T04:30:43.7885848Z  * [new ref]         44e27854951bc531867adc60253cb15cc00b982b -> origin/dev
+2025-04-15T04:30:43.7916053Z ##[endgroup]
+2025-04-15T04:30:43.7917487Z ##[group]Determining the checkout info
+2025-04-15T04:30:43.7918898Z ##[endgroup]
+2025-04-15T04:30:43.7919964Z ##[group]Fetching LFS objects
+2025-04-15T04:30:43.7923452Z [command]/usr/bin/git lfs fetch origin refs/remotes/origin/dev
+2025-04-15T04:30:43.8137940Z fetch: Fetching reference refs/remotes/origin/dev
+2025-04-15T04:30:43.9035637Z ##[endgroup]
+2025-04-15T04:30:43.9039672Z [command]/usr/bin/git sparse-checkout disable
+2025-04-15T04:30:43.9079943Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-04-15T04:30:43.9108806Z ##[group]Checking out the ref
+2025-04-15T04:30:43.9111709Z [command]/usr/bin/git checkout --progress --force -B dev refs/remotes/origin/dev
+2025-04-15T04:30:44.4976360Z Switched to a new branch 'dev'
+2025-04-15T04:30:44.4977299Z branch 'dev' set up to track 'origin/dev'.
+2025-04-15T04:30:44.5350391Z ##[endgroup]
+2025-04-15T04:30:44.5389683Z [command]/usr/bin/git log -1 --format=%H
+2025-04-15T04:30:44.5413101Z 44e27854951bc531867adc60253cb15cc00b982b

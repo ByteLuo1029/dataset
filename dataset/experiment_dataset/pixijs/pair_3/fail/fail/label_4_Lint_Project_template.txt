@@ -1,0 +1,33 @@
+Prepare all required actions
+##[group]Run <:*:>
+env:
+NPM_CONFIG_USERCONFIG: /home/runner/work/_temp/.npmrc
+NODE_AUTH_TOKEN: XXXXX-XXXXX-XXXXX-XXXXX
+##[endgroup]
+##[group]Run npm run ci:lint
+[36;1mnpm run ci:lint[0m
+shell: /usr/bin/bash --noprofile --norc -e -o pipefail {<:NUM:>}
+env:
+NPM_CONFIG_USERCONFIG: /home/runner/work/_temp/.npmrc
+NODE_AUTH_TOKEN: XXXXX-XXXXX-XXXXX-XXXXX
+##[endgroup]
+2025-03-27T11:48:12.3586697Z
+> pixi.js@8.9.0 ci:lint
+> run-s lint test:types test:index prune
+2025-03-27T11:48:12.3588662Z
+2025-03-27T11:48:12.6957736Z
+> pixi.js@8.9.0 lint
+> eslint ./ --cache --max-warnings 0
+2025-03-27T11:48:12.6960861Z
+2025-03-27T11:48:46.6811610Z
+> pixi.js@8.9.0 test:types
+> tsc --noEmit
+2025-03-27T11:48:46.6813425Z
+##[error]tests/visual/scenes/mesh/culling-texture.scene.ts(23,13): error TS2322: Type 'Uint16Array' is not assignable to type 'Uint32Array'.
+Types of property 'findLast' are incompatible.
+Type '{ <S extends number>(predicate: (value: number, index: number, array: Uint16Array) => value is S, thisArg?: any): S; (predicate: (value: number, index: number, array: Uint16Array) => unknown, thisArg?: any): number; }' is not assignable to type '{ <S extends number>(predicate: (value: number, index: number, array: Uint32Array) => value is S, thisArg?: any): S; (predicate: (value: number, index: number, array: Uint32Array) => unknown, thisArg?: any): number; }'.
+Types of parameters 'predicate' and 'predicate' are incompatible.
+Type '(value: number, index: number, array: Uint32Array) => unknown' is not assignable to type '(value: number, index: number, array: Uint16Array) => value is any'.
+Signature '(value: number, index: number, array: Uint32Array): unknown' must be a type predicate.
+ERROR: "test:types" exited with 2.
+##[error]Process completed with exit code 1.

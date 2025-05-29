@@ -1,0 +1,75 @@
+2025-04-14T13:42:07.1484278Z ##[group]Run make tidy-check-diff
+2025-04-14T13:42:07.1484605Z [36;1mmake tidy-check-diff[0m
+2025-04-14T13:42:07.1535397Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-04-14T13:42:07.1535997Z env:
+2025-04-14T13:42:07.1536301Z   GH_TOKEN: 
+2025-04-14T13:42:07.1536604Z   CC: gcc
+2025-04-14T13:42:07.1536903Z   CXX: g++
+2025-04-14T13:42:07.1537185Z   GEN: ninja
+2025-04-14T13:42:07.1537802Z   TIDY_THREADS: 4
+2025-04-14T13:42:07.1538077Z   TIDY_CHECKS: 
+2025-04-14T13:42:07.1538335Z ##[endgroup]
+2025-04-14T13:42:07.1844667Z mkdir -p ./build/tidy && \
+2025-04-14T13:42:07.1845166Z cd build/tidy && \
+2025-04-14T13:42:07.1845911Z cmake -DCLANG_TIDY=1 -DDISABLE_UNITY=1 -DBUILD_EXTENSIONS=parquet -DBUILD_PYTHON_PKG=TRUE -DBUILD_SHELL=0 ../.. && \
+2025-04-14T13:42:07.1846896Z cd ../../ && \
+2025-04-14T13:42:07.1848681Z git diff origin/main . ':(exclude)tools' ':(exclude)extension' ':(exclude)test' ':(exclude)benchmark' ':(exclude)third_party' ':(exclude)src/common/adbc' ':(exclude)src/main/capi' | python3 scripts/clang-tidy-diff.py -path build/tidy -quiet -j 4   -p1
+2025-04-14T13:42:08.1360793Z -- The C compiler identification is GNU 13.3.0
+2025-04-14T13:42:08.2705274Z -- The CXX compiler identification is GNU 13.3.0
+2025-04-14T13:42:08.3668404Z -- Detecting C compiler ABI info
+2025-04-14T13:42:08.5508976Z -- Detecting C compiler ABI info - done
+2025-04-14T13:42:08.5686867Z -- Check for working C compiler: /usr/bin/gcc - skipped
+2025-04-14T13:42:08.5760620Z -- Detecting C compile features
+2025-04-14T13:42:08.5766310Z -- Detecting C compile features - done
+2025-04-14T13:42:08.5986499Z -- Detecting CXX compiler ABI info
+2025-04-14T13:42:08.6736515Z -- Detecting CXX compiler ABI info - done
+2025-04-14T13:42:08.6916832Z -- Check for working CXX compiler: /usr/bin/g++ - skipped
+2025-04-14T13:42:08.6920823Z -- Detecting CXX compile features
+2025-04-14T13:42:08.6927584Z -- Detecting CXX compile features - done
+2025-04-14T13:42:08.7329483Z -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+2025-04-14T13:42:08.8026343Z -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+2025-04-14T13:42:08.8082143Z -- Found Threads: TRUE
+2025-04-14T13:42:08.8264229Z -- Found Git: /usr/bin/git (found version "2.49.0")
+2025-04-14T13:42:09.0553806Z -- git hash 23b5320b46, version v1.3.0-dev2425, extension folder 23b5320b46
+2025-04-14T13:42:09.0557173Z -- Setting build type to 'Release'.
+2025-04-14T13:42:09.0562468Z -- Load extension 'parquet' from '/home/runner/work/duckdb/duckdb/extensions' @ 23b5320b46
+2025-04-14T13:42:09.0566568Z -- Load extension 'core_functions' from '/home/runner/work/duckdb/duckdb/extensions' @ 23b5320b46
+2025-04-14T13:42:09.1451128Z CMake Warning at tools/pythonpkg/CMakeLists.txt:5 (find_package):
+2025-04-14T13:42:09.1452272Z   By not providing "FindPythonLibs.cmake" in CMAKE_MODULE_PATH this project
+2025-04-14T13:42:09.1453133Z   has asked CMake to find a package configuration file provided by
+2025-04-14T13:42:09.1453778Z   "PythonLibs", but CMake did not find one.
+2025-04-14T13:42:09.1454109Z 
+2025-04-14T13:42:09.1454455Z   Could not find a package configuration file provided by "PythonLibs" with
+2025-04-14T13:42:09.1455088Z   any of the following names:
+2025-04-14T13:42:09.1455355Z 
+2025-04-14T13:42:09.1455514Z     PythonLibsConfig.cmake
+2025-04-14T13:42:09.1455897Z     pythonlibs-config.cmake
+2025-04-14T13:42:09.1456150Z 
+2025-04-14T13:42:09.1456474Z   Add the installation prefix of "PythonLibs" to CMAKE_PREFIX_PATH or set
+2025-04-14T13:42:09.1457249Z   "PythonLibs_DIR" to a directory containing one of the above files.  If
+2025-04-14T13:42:09.1458004Z   "PythonLibs" provides a separate development package or SDK, be sure it has
+2025-04-14T13:42:09.1458630Z   been installed.
+2025-04-14T13:42:09.1458824Z 
+2025-04-14T13:42:09.1458831Z 
+2025-04-14T13:42:09.1596277Z -- Extensions linked into DuckDB: [parquet, core_functions]
+2025-04-14T13:42:09.1742679Z -- Configuring done (1.5s)
+2025-04-14T13:42:09.8616790Z -- Generating done (0.7s)
+2025-04-14T13:42:09.8621749Z -- Build files have been written to: /home/runner/work/duckdb/duckdb/build/tidy
+2025-04-14T13:42:36.0035021Z 
+2025-04-14T13:42:36.0036923Z 29433 warnings generated.
+2025-04-14T13:42:36.0038346Z 
+2025-04-14T13:42:36.2955482Z 
+2025-04-14T13:42:36.2960525Z 29508 warnings generated.
+2025-04-14T13:42:36.2962506Z 
+2025-04-14T13:42:42.0877274Z 30040 warnings generated.
+2025-04-14T13:42:42.0877652Z 
+2025-04-14T13:42:42.0877675Z 
+2025-04-14T13:42:48.2478841Z 30648 warnings generated.
+2025-04-14T13:42:48.2479605Z 
+2025-04-14T13:42:48.2479617Z 
+2025-04-14T13:42:54.5128062Z 30022 warnings generated.
+2025-04-14T13:42:54.5128312Z 
+2025-04-14T13:42:54.5128323Z 
+2025-04-14T13:42:57.3957275Z 30290 warnings generated.
+2025-04-14T13:42:57.3957664Z 
+2025-04-14T13:42:57.3957678Z 

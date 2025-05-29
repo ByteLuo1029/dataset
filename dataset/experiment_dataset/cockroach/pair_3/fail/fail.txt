@@ -1,0 +1,89 @@
+2025-04-15T09:00:32.4709533Z Requested labels: ubuntu-latest
+2025-04-15T09:00:32.4709767Z Job defined at: cockroachdb/cockroach/.github/workflows/code-cover-publish.yaml@refs/heads/master
+2025-04-15T09:00:32.4709880Z Waiting for a runner to pick up this job...
+2025-04-15T09:00:33.0164999Z Job is waiting for a hosted runner to come online.
+2025-04-15T09:00:36.9922435Z Job is about to start running on the hosted runner: GitHub Actions 249 (hosted)
+2025-04-15T09:00:39.0063212Z Current runner version: '2.323.0'
+2025-04-15T09:00:39.0088625Z ##[group]Operating System
+2025-04-15T09:00:39.0089401Z Ubuntu
+2025-04-15T09:00:39.0089993Z 24.04.2
+2025-04-15T09:00:39.0090497Z LTS
+2025-04-15T09:00:39.0091023Z ##[endgroup]
+2025-04-15T09:00:39.0091584Z ##[group]Runner Image
+2025-04-15T09:00:39.0092180Z Image: ubuntu-24.04
+2025-04-15T09:00:39.0092777Z Version: 20250406.1.0
+2025-04-15T09:00:39.0093860Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250406.1/images/ubuntu/Ubuntu2404-Readme.md
+2025-04-15T09:00:39.0095390Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250406.1
+2025-04-15T09:00:39.0096385Z ##[endgroup]
+2025-04-15T09:00:39.0096920Z ##[group]Runner Image Provisioner
+2025-04-15T09:00:39.0097553Z 2.0.422.1
+2025-04-15T09:00:39.0098073Z ##[endgroup]
+2025-04-15T09:00:39.0100332Z ##[group]GITHUB_TOKEN Permissions
+2025-04-15T09:00:39.0102337Z Actions: write
+2025-04-15T09:00:39.0103085Z Attestations: write
+2025-04-15T09:00:39.0103849Z Checks: write
+2025-04-15T09:00:39.0104357Z Contents: write
+2025-04-15T09:00:39.0105162Z Deployments: write
+2025-04-15T09:00:39.0105712Z Discussions: write
+2025-04-15T09:00:39.0106296Z Issues: write
+2025-04-15T09:00:39.0106825Z Metadata: read
+2025-04-15T09:00:39.0107298Z Models: read
+2025-04-15T09:00:39.0107848Z Packages: write
+2025-04-15T09:00:39.0108376Z Pages: write
+2025-04-15T09:00:39.0108903Z PullRequests: write
+2025-04-15T09:00:39.0109501Z RepositoryProjects: write
+2025-04-15T09:00:39.0110077Z SecurityEvents: write
+2025-04-15T09:00:39.0110624Z Statuses: write
+2025-04-15T09:00:39.0111199Z ##[endgroup]
+2025-04-15T09:00:39.0114204Z Secret source: Actions
+2025-04-15T09:00:39.0115299Z Prepare workflow directory
+2025-04-15T09:00:39.0447041Z Prepare all required actions
+2025-04-15T09:00:39.0484105Z Getting action download info
+2025-04-15T09:00:39.2687352Z ##[group]Download immutable action package 'actions/github-script@v7.0.1'
+2025-04-15T09:00:39.2688411Z Version: 7.0.1
+2025-04-15T09:00:39.2689337Z Digest: sha256:bce02966afe3a75123f766b765abe432fac5464b74976015dc06b811ac9054c7
+2025-04-15T09:00:39.2690476Z Source commit SHA: 60a0d83039c74a4aee543508d2ffcb1c3799cdea
+2025-04-15T09:00:39.2691169Z ##[endgroup]
+2025-04-15T09:00:39.5468575Z ##[group]Download immutable action package 'google-github-actions/auth@v1'
+2025-04-15T09:00:39.5469415Z Version: 1.3.0
+2025-04-15T09:00:39.5470113Z Digest: sha256:05f73dc64b896d1bff766960308ca552118c7016ffeebc91b3a234cf215a6ad5
+2025-04-15T09:00:39.5471034Z Source commit SHA: 3a3c4c57d294ef65efaaee4ff17b22fa88dd3c69
+2025-04-15T09:00:39.5471705Z ##[endgroup]
+2025-04-15T09:00:39.7078134Z ##[group]Download immutable action package 'google-github-actions/upload-cloud-storage@v1'
+2025-04-15T09:00:39.7079077Z Version: 1.0.3
+2025-04-15T09:00:39.7079794Z Digest: sha256:522ede2cbe07c141d5bd3b1e47b6a6c79b0f99b5e208683beb52826c7a04d5c0
+2025-04-15T09:00:39.7080724Z Source commit SHA: e95a15f226403ed658d3e65f40205649f342ba2c
+2025-04-15T09:00:39.7081425Z ##[endgroup]
+2025-04-15T09:00:40.0428676Z Complete job name: code-cover-publish
+2025-04-15T09:00:40.1260720Z ##[group]Run actions/github-script@v7.0.1
+2025-04-15T09:00:40.1262242Z with:
+2025-04-15T09:00:40.1271271Z   script: var artifacts = await github.rest.actions.listWorkflowRunArtifacts({
+   owner: context.repo.owner,
+   repo: context.repo.repo,
+   run_id: 14465470601,
+});
+var matchArtifact = artifacts.data.artifacts.filter((artifact) => {
+  return artifact.name == "cover"
+})[0];
+var download = await github.rest.actions.downloadArtifact({
+   owner: context.repo.owner,
+   repo: context.repo.repo,
+   artifact_id: matchArtifact.id,
+   archive_format: 'zip',
+});
+var fs = require('fs');
+fs.writeFileSync('/home/runner/work/cockroach/cockroach/cover.zip', Buffer.from(download.data));
+
+2025-04-15T09:00:40.1279459Z   github-token: ***
+2025-04-15T09:00:40.1280364Z   debug: false
+2025-04-15T09:00:40.1281286Z   user-agent: actions/github-script
+2025-04-15T09:00:40.1282410Z   result-encoding: json
+2025-04-15T09:00:40.1283322Z   retries: 0
+2025-04-15T09:00:40.1284723Z   retry-exempt-status-codes: 400,401,403,404,422
+2025-04-15T09:00:40.1286284Z ##[endgroup]
+2025-04-15T09:00:40.5228437Z TypeError: Cannot read properties of undefined (reading 'id')
+2025-04-15T09:00:40.5232956Z     at eval (eval at callAsyncFunction (/home/runner/work/_actions/actions/github-script/v7.0.1/dist/index.js:35424:16), <anonymous>:14:31)
+2025-04-15T09:00:40.5237850Z     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-15T09:00:40.5241637Z     at async main (/home/runner/work/_actions/actions/github-script/v7.0.1/dist/index.js:35522:20)
+2025-04-15T09:00:40.5286881Z ##[error]Unhandled error: TypeError: Cannot read properties of undefined (reading 'id')
+2025-04-15T09:00:40.5884443Z Cleaning up orphan processes

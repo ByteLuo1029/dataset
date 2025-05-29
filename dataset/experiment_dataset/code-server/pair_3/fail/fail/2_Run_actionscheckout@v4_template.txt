@@ -1,0 +1,114 @@
+##[group]Run <:*:>
+with:
+submodules: <:*:>
+repository: <:*:>
+token: ***
+ssh-strict: true
+ssh-user: git
+persist-credentials: <:*:>
+clean: true
+sparse-checkout-cone-mode: true
+fetch-depth: <:NUM:>
+fetch-tags: false
+show-progress: true
+lfs: false
+set-safe-directory: true
+env:
+CODECOV_TOKEN:
+DISABLE_V8_COMPILE_CACHE: 1
+##[endgroup]
+Syncing repository: <:*:>
+##[group]Getting Git version info
+Working directory is <:*:>
+[command]/usr/bin/git version
+git version <:NUM:>.<:NUM:>.<:NUM:>
+##[endgroup]
+Temporarily overriding HOME='/home/runner/work/_temp/5bcea925-ef25-4d40-aa00-f945155b0658' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+[command]/usr/bin/git config --global --add safe.directory /home/runner/work/code-server/code-server
+Deleting the contents of <:*:>
+##[group]Initializing the repository
+[command]/usr/bin/git init <:*:>
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint:
+hint: git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint: git branch -m <name>
+Initialized empty Git repository in <:*:>
+[command]/usr/bin/git remote add origin <:*:>
+##[endgroup]
+##[group]Disabling automatic garbage collection
+[command]/usr/bin/git config --local gc.auto 0
+##[endgroup]
+##[group]Setting up auth
+[command]/usr/bin/git config --local --name-only --get-regexp <:*:>
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp <:*:> && git config --local --unset-all <:*:> || :"
+[command]/usr/bin/git config --local --name-only --get-regexp <:*:>
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp <:*:> && git config --local --unset-all <:*:> || :"
+[command]/usr/bin/git config <:*:> http.https://github.com/.extraheader AUTHORIZATION: basic ***
+##[endgroup]
+##[group]Fetching the repository
+[command]/usr/bin/git -c protocol.version=<:NUM:> fetch <:*:> <:*:> <:*:> <:*:> <:*:> <:*:>
+From <:*:>
+* [new ref] <:SEQ:>-> <:*:>
+##[endgroup]
+##[group]Determining the checkout info
+##[endgroup]
+[command]/usr/bin/git sparse-checkout disable
+[command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+##[group]Checking out the ref
+[command]/usr/bin/git checkout --progress --force refs/remotes/pull/<:NUM:>/merge
+Note: switching to 'refs/remotes/pull/<:NUM:>/merge'.
+2025-04-14T19:00:47.2822994Z
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+2025-04-14T19:00:47.2825550Z
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+2025-04-14T19:00:47.2827255Z
+git switch -c <new-branch-name>
+2025-04-14T19:00:47.2827738Z
+Or undo this operation with:
+2025-04-14T19:00:47.2828178Z
+git switch -
+2025-04-14T19:00:47.2828560Z
+Turn off this advice by setting config variable advice.detachedHead to false
+2025-04-14T19:00:47.2829395Z
+HEAD is now at <:*:> Merge <:SEQ:> into <:SEQ:>
+##[endgroup]
+##[group]Setting up auth for fetching submodules
+[command]/usr/bin/git config <:*:> http.https://github.com/.extraheader AUTHORIZATION: basic ***
+[command]/usr/bin/git config --global --unset-all url.https://github.com/.insteadOf
+[command]/usr/bin/git config --global --add url.https://github.com/.insteadOf git@github.com:
+[command]/usr/bin/git config --global --add url.https://github.com/.insteadOf org-95932066@github.com:
+##[endgroup]
+##[group]Fetching submodules
+[command]/usr/bin/git submodule sync
+[command]/usr/bin/git -c protocol.version=2 submodule update --init --force --depth=1
+Submodule <:*:> <:*:> registered for path <:*:>
+Cloning into '/home/runner/work/code-server/code-server/lib/vscode'...
+From <:*:>
+* branch <:SEQ:>-> FETCH HEAD
+Submodule path <:*:> checked out '<:SEQ:>'
+[command]/usr/bin/git submodule foreach git config --local gc.auto 0
+Entering <:*:>
+##[endgroup]
+##[group]Persisting credentials for submodules
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp <:*:> && git config --local --unset-all <:*:> || :"
+Entering <:*:>
+[command]/usr/bin/git submodule foreach sh -c "git config --local 'http.https://github.com/.extraheader' 'AUTHORIZATION: basic ***' && git config --local --show-origin --name-only --get-regexp remote.origin.url"
+Entering <:*:>
+<:*:> remote.origin.url
+[command]/usr/bin/git submodule foreach git config --local --add 'url.https://github.com/.insteadOf' 'git@github.com:'
+Entering <:*:>
+[command]/usr/bin/git submodule foreach git config --local --add 'url.https://github.com/.insteadOf' 'org-95932066@github.com:'
+Entering <:*:>
+##[endgroup]
+[command]/usr/bin/git log <:NUM:> <:*:>
+<:SEQ:>

@@ -1,0 +1,14 @@
+##[group]Run <:*:>
+with:
+script: const labels = context.payload.pull_request.labels.map(label => label.name.toLowerCase());
+if (!labels.some(label => label.startsWith('cl-'))) {
+  core.setFailed("Every PR must have at least one label starting with 'cl-'.");
+}
+github-token: ***
+debug: false
+user-agent: actions/github-script
+result-encoding: json
+retries: 0
+retry-exempt-status-codes: 400,401,403,404,422
+##[endgroup]
+##[error]Every PR must have at least one label starting with 'cl-'.

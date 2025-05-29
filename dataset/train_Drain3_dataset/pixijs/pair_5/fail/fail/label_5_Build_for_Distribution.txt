@@ -1,0 +1,96 @@
+2025-03-21T22:34:04.5887956Z ##[group]Run npm run dist
+2025-03-21T22:34:04.5888276Z [36;1mnpm run dist[0m
+2025-03-21T22:34:04.5946471Z shell: /usr/bin/bash -e {0}
+2025-03-21T22:34:04.5946742Z env:
+2025-03-21T22:34:04.5947051Z   NODE_AUTH_TOKEN: ***
+2025-03-21T22:34:04.5947316Z   AWS_ACCESS_KEY_ID: ***
+2025-03-21T22:34:04.5947852Z   AWS_SECRET_ACCESS_KEY: ***
+2025-03-21T22:34:04.5948124Z   AWS_S3_BUCKET: ***
+2025-03-21T22:34:04.5948386Z   AWS_REGION: ***
+2025-03-21T22:34:04.5948600Z   SOURCE_DIR: .s3_uploads
+2025-03-21T22:34:04.5948892Z   NPM_CONFIG_USERCONFIG: /home/runner/work/_temp/.npmrc
+2025-03-21T22:34:04.5949198Z ##[endgroup]
+2025-03-21T22:34:04.8219781Z 
+2025-03-21T22:34:04.8220346Z > ***@8.9.0 dist
+2025-03-21T22:34:04.8221089Z > run-s build docs && copyfiles -u 1 "dist/**/*" .s3_uploads/
+2025-03-21T22:34:04.8221568Z 
+2025-03-21T22:34:05.1609054Z 
+2025-03-21T22:34:05.1609976Z > ***@8.9.0 prebuild
+2025-03-21T22:34:05.1610515Z > npm run clean
+2025-03-21T22:34:05.1610756Z 
+2025-03-21T22:34:05.3760426Z 
+2025-03-21T22:34:05.3761188Z > ***@8.9.0 clean
+2025-03-21T22:34:05.3761591Z > run-s clean:*
+2025-03-21T22:34:05.3761740Z 
+2025-03-21T22:34:05.6958023Z 
+2025-03-21T22:34:05.6958993Z > ***@8.9.0 clean:build
+2025-03-21T22:34:05.6959655Z > rimraf "{lib,dist,out}" --glob
+2025-03-21T22:34:05.6959900Z 
+2025-03-21T22:34:05.9680250Z 
+2025-03-21T22:34:05.9680912Z > ***@8.9.0 clean:uploads
+2025-03-21T22:34:05.9681457Z > rimraf .pr_uploads .s3_uploads --glob
+2025-03-21T22:34:05.9681678Z 
+2025-03-21T22:34:06.0375265Z 
+2025-03-21T22:34:06.0375868Z > ***@8.9.0 build
+2025-03-21T22:34:06.0376654Z > run-s build:pkg build:rollup build:tsc build:dts build:dts-bundle
+2025-03-21T22:34:06.0377174Z 
+2025-03-21T22:34:06.3627652Z 
+2025-03-21T22:34:06.3628859Z > ***@8.9.0 build:pkg
+2025-03-21T22:34:06.3629798Z > ts-node ./scripts/utils/exports.ts
+2025-03-21T22:34:06.3630647Z 
+2025-03-21T22:34:09.3539681Z 
+2025-03-21T22:34:09.3540603Z > ***@8.9.0 build:rollup
+2025-03-21T22:34:09.3541214Z > npx rollup -c --failAfterWarnings
+2025-03-21T22:34:09.3541538Z 
+2025-03-21T22:34:09.7041955Z (node:2234) V8: file:///home/runner/work/pixijs/pixijs/rollup.config.mjs:9 'assert' is deprecated in import statements and support will be removed in a future version; use 'with' instead
+2025-03-21T22:34:09.7044759Z (Use `node --trace-warnings ...` to show where the warning was created)
+2025-03-21T22:34:09.8206189Z [36m
+2025-03-21T22:34:09.8218718Z [1m/home/runner/work/pixijs/pixijs/src/environment-browser/browserAll.ts, /home/runner/work/pixijs/pixijs/src/environment-webworker/webworkerAll.ts, /home/runner/work/pixijs/pixijs/src/index.ts, /home/runner/work/pixijs/pixijs/src/rendering/init.ts, /home/runner/work/pixijs/pixijs/src/spritesheet/init.ts, /home/runner/work/pixijs/pixijs/src/rendering/renderers/shared/texture/utils/textureFrom.ts, /home/runner/work/pixijs/pixijs/src/gif/init.ts, /home/runner/work/pixijs/pixijs/src/accessibility/init.ts, /home/runner/work/pixijs/pixijs/src/advanced-blend-modes/init.ts, /home/runner/work/pixijs/pixijs/src/app/init.ts, /home/runner/work/pixijs/pixijs/src/compressed-textures/dds/init.ts, /home/runner/work/pixijs/pixijs/src/compressed-textures/ktx/init.ts, /home/runner/work/pixijs/pixijs/src/compressed-textures/ktx2/init.ts, /home/runner/work/pixijs/pixijs/src/compressed-textures/basis/init.ts, /home/runner/work/pixijs/pixijs/src/events/init.ts, /home/runner/work/pixijs/pixijs/src/dom/init.ts, /home/runner/work/pixijs/pixijs/src/filters/init.ts, /home/runner/work/pixijs/pixijs/src/math-extras/init.ts, /home/runner/work/pixijs/pixijs/src/scene/sprite-tiling/init.ts, /home/runner/work/pixijs/pixijs/src/scene/text/init.ts, /home/runner/work/pixijs/pixijs/src/scene/text-bitmap/init.ts, /home/runner/work/pixijs/pixijs/src/scene/text-html/init.ts, /home/runner/work/pixijs/pixijs/src/scene/graphics/init.ts, /home/runner/work/pixijs/pixijs/src/scene/mesh/init.ts, /home/runner/work/pixijs/pixijs/src/prepare/init.ts, /home/runner/work/pixijs/pixijs/src/unsafe-eval/init.ts, /home/runner/work/pixijs/pixijs/src/scene/sprite-nine-slice/init.ts, /home/runner/work/pixijs/pixijs/src/scene/particle-container/init.ts[22m → [1mlib, lib[22m...[39m
+2025-03-21T22:34:13.9473580Z [32mcreated [1mlib, lib[22m in [1m4.1s[22m[39m
+2025-03-21T22:34:13.9474432Z [36m
+2025-03-21T22:34:13.9475818Z [1m/home/runner/work/pixijs/pixijs/src/bundle.browser.ts[22m → [1mdist/***, dist/pixi.mjs[22m...[39m
+2025-03-21T22:34:17.0339372Z [32mcreated [1mdist/***, dist/pixi.mjs[22m in [1m3s[22m[39m
+2025-03-21T22:34:17.0340155Z [36m
+2025-03-21T22:34:17.0341365Z [1m/home/runner/work/pixijs/pixijs/src/bundle.browser.ts[22m → [1mdist/pixi.min.js, dist/pixi.min.mjs[22m...[39m
+2025-03-21T22:34:19.9455500Z [32mcreated [1mdist/pixi.min.js, dist/pixi.min.mjs[22m in [1m2.9s[22m[39m
+2025-03-21T22:34:19.9456284Z [36m
+2025-03-21T22:34:19.9457261Z [1m/home/runner/work/pixijs/pixijs/src/bundle.math-extras.ts[22m → [1mdist/packages/math-extras.js[22m...[39m
+2025-03-21T22:34:19.9777068Z [32mcreated [1mdist/packages/math-extras.js[22m in [1m32ms[22m[39m
+2025-03-21T22:34:19.9778656Z [36m
+2025-03-21T22:34:19.9779990Z [1m/home/runner/work/pixijs/pixijs/src/bundle.math-extras.ts[22m → [1mdist/packages/math-extras.min.js[22m...[39m
+2025-03-21T22:34:19.9994922Z [32mcreated [1mdist/packages/math-extras.min.js[22m in [1m22ms[22m[39m
+2025-03-21T22:34:19.9996497Z [36m
+2025-03-21T22:34:19.9998206Z [1m/home/runner/work/pixijs/pixijs/src/bundle.unsafe-eval.ts[22m → [1mdist/packages/unsafe-eval.js[22m...[39m
+2025-03-21T22:34:20.0775657Z [32mcreated [1mdist/packages/unsafe-eval.js[22m in [1m78ms[22m[39m
+2025-03-21T22:34:20.0776417Z [36m
+2025-03-21T22:34:20.0777281Z [1m/home/runner/work/pixijs/pixijs/src/bundle.unsafe-eval.ts[22m → [1mdist/packages/unsafe-eval.min.js[22m...[39m
+2025-03-21T22:34:20.1442650Z [32mcreated [1mdist/packages/unsafe-eval.min.js[22m in [1m66ms[22m[39m
+2025-03-21T22:34:20.1443957Z [36m
+2025-03-21T22:34:20.1445301Z [1m/home/runner/work/pixijs/pixijs/src/bundle.advanced-blend-modes.ts[22m → [1mdist/packages/advanced-blend-modes.js[22m...[39m
+2025-03-21T22:34:20.1947057Z [32mcreated [1mdist/packages/advanced-blend-modes.js[22m in [1m51ms[22m[39m
+2025-03-21T22:34:20.1948353Z [36m
+2025-03-21T22:34:20.1950207Z [1m/home/runner/work/pixijs/pixijs/src/bundle.advanced-blend-modes.ts[22m → [1mdist/packages/advanced-blend-modes.min.js[22m...[39m
+2025-03-21T22:34:20.2410204Z [32mcreated [1mdist/packages/advanced-blend-modes.min.js[22m in [1m46ms[22m[39m
+2025-03-21T22:34:20.2411034Z [36m
+2025-03-21T22:34:20.2411658Z [1m/home/runner/work/pixijs/pixijs/src/bundle.gif.ts[22m → [1mdist/packages/gif.js[22m...[39m
+2025-03-21T22:34:20.3312237Z [32mcreated [1mdist/packages/gif.js[22m in [1m90ms[22m[39m
+2025-03-21T22:34:20.3312991Z [36m
+2025-03-21T22:34:20.3314075Z [1m/home/runner/work/pixijs/pixijs/src/bundle.gif.ts[22m → [1mdist/packages/gif.min.js[22m...[39m
+2025-03-21T22:34:20.4284915Z [32mcreated [1mdist/packages/gif.min.js[22m in [1m98ms[22m[39m
+2025-03-21T22:34:20.4285619Z [36m
+2025-03-21T22:34:20.4286844Z [1m/home/runner/work/pixijs/pixijs/src/bundle.webworker.ts[22m → [1mdist/webworker.js, dist/webworker.mjs[22m...[39m
+2025-03-21T22:34:23.3714648Z [32mcreated [1mdist/webworker.js, dist/webworker.mjs[22m in [1m2.9s[22m[39m
+2025-03-21T22:34:23.3715432Z [36m
+2025-03-21T22:34:23.3716901Z [1m/home/runner/work/pixijs/pixijs/src/bundle.webworker.ts[22m → [1mdist/webworker.min.js, dist/webworker.min.mjs[22m...[39m
+2025-03-21T22:34:26.2674798Z [32mcreated [1mdist/webworker.min.js, dist/webworker.min.mjs[22m in [1m2.8s[22m[39m
+2025-03-21T22:34:26.5631902Z 
+2025-03-21T22:34:26.5632664Z > ***@8.9.0 build:tsc
+2025-03-21T22:34:26.5633077Z > tsc -p tsconfig.types.json
+2025-03-21T22:34:26.5633277Z 
+2025-03-21T22:34:32.0906831Z ##[error]src/scene/text-html/HTMLTextSystem.ts(71,42): error TS2345: Argument of type 'HTMLTextOptions' is not assignable to parameter of type '{ text: string; style: HTMLTextStyle; resolution: number; }'.
+2025-03-21T22:34:32.0915961Z   Types of property 'text' are incompatible.
+2025-03-21T22:34:32.0916917Z     Type 'TextString' is not assignable to type 'string'.
+2025-03-21T22:34:32.0917772Z       Type 'number' is not assignable to type 'string'.
+2025-03-21T22:34:32.2051197Z ERROR: "build:tsc" exited with 2.
+2025-03-21T22:34:32.2144477Z ERROR: "build" exited with 1.
+2025-03-21T22:34:32.2236267Z ##[error]Process completed with exit code 1.

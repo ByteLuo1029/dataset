@@ -1,0 +1,36 @@
+2025-04-15T00:56:31.3935544Z ##[group]Run actions/github-script@v7
+2025-04-15T00:56:31.3935839Z with:
+2025-04-15T00:56:31.3936032Z   result-encoding: string
+2025-04-15T00:56:31.3937985Z   script: const { owner, repo } = context.repo;
+const prNumber = process.env.PR_NUMBER;
+const environment = 'docs-preview';
+const task = prNumber ? `docs-preview-${prNumber}` : undefined;
+const deployment = await github.rest.repos.createDeployment({
+    owner,
+    repo,
+    environment,
+    task,
+    ref: process.env.REF,
+    auto_merge: false,
+    transient_environment: true,
+    required_contexts: [],
+})
+await github.rest.repos.createDeploymentStatus({
+    deployment_id: deployment.data.id,
+    owner,
+    repo,
+    state: "in_progress",
+    log_url: `https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+})
+return deployment.data.id
+
+2025-04-15T00:56:31.3940345Z   github-token: ***
+2025-04-15T00:56:31.3940551Z   debug: false
+2025-04-15T00:56:31.3940757Z   user-agent: actions/github-script
+2025-04-15T00:56:31.3941020Z   retries: 0
+2025-04-15T00:56:31.3941236Z   retry-exempt-status-codes: 400,401,403,404,422
+2025-04-15T00:56:31.3941503Z env:
+2025-04-15T00:56:31.3941746Z   GITHUB_PR_REF_NAME: markjhoy/default_token_pruning_sparse_vector
+2025-04-15T00:56:31.3942066Z   PR_NUMBER: 126739
+2025-04-15T00:56:31.3942287Z   REF: eeebfd82f2900b309c7e5a5a317b35edfcaacfb9
+2025-04-15T00:56:31.3942546Z ##[endgroup]

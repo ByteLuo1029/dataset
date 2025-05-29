@@ -1,0 +1,66 @@
+2025-04-14T22:49:12.0971077Z ##[group]Run actions/checkout@v4
+2025-04-14T22:49:12.0972524Z with:
+2025-04-14T22:49:12.0972958Z   persist-credentials: false
+2025-04-14T22:49:12.0973511Z   repository: python/cpython
+2025-04-14T22:49:12.0974213Z   token: ***
+2025-04-14T22:49:12.0974596Z   ssh-strict: true
+2025-04-14T22:49:12.0974985Z   ssh-user: git
+2025-04-14T22:49:12.0975392Z   clean: true
+2025-04-14T22:49:12.0975782Z   sparse-checkout-cone-mode: true
+2025-04-14T22:49:12.0976241Z   fetch-depth: 1
+2025-04-14T22:49:12.0976619Z   fetch-tags: false
+2025-04-14T22:49:12.0977036Z   show-progress: true
+2025-04-14T22:49:12.0977442Z   lfs: false
+2025-04-14T22:49:12.0977815Z   submodules: false
+2025-04-14T22:49:12.0978233Z   set-safe-directory: true
+2025-04-14T22:49:12.0979071Z env:
+2025-04-14T22:49:12.0979439Z   FORCE_COLOR: 1
+2025-04-14T22:49:12.0979850Z   IncludeUwp: true
+2025-04-14T22:49:12.0980232Z   ARCH: arm64
+2025-04-14T22:49:12.0980595Z ##[endgroup]
+2025-04-14T22:49:12.3659326Z Syncing repository: python/cpython
+2025-04-14T22:49:12.3662057Z ##[group]Getting Git version info
+2025-04-14T22:49:12.3662765Z Working directory is 'C:\a\cpython\cpython'
+2025-04-14T22:49:12.4366577Z [command]"C:\Program Files\Git\bin\git.exe" version
+2025-04-14T22:49:13.2366428Z git version 2.48.1.windows.1
+2025-04-14T22:49:13.2423340Z ##[endgroup]
+2025-04-14T22:49:13.2447406Z Temporarily overriding HOME='C:\a\_temp\b8d9e38c-ec2a-4121-9305-15c5d2254401' before making global git config changes
+2025-04-14T22:49:13.2448866Z Adding repository directory to the temporary git global config as a safe directory
+2025-04-14T22:49:13.2463052Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory C:\a\cpython\cpython
+2025-04-14T22:49:13.3839569Z Deleting the contents of 'C:\a\cpython\cpython'
+2025-04-14T22:49:13.3847747Z ##[group]Initializing the repository
+2025-04-14T22:49:13.3857633Z [command]"C:\Program Files\Git\bin\git.exe" init C:\a\cpython\cpython
+2025-04-14T22:49:13.5001839Z Initialized empty Git repository in C:/a/cpython/cpython/.git/
+2025-04-14T22:49:13.5052596Z [command]"C:\Program Files\Git\bin\git.exe" remote add origin https://github.com/python/cpython
+2025-04-14T22:49:13.5582494Z ##[endgroup]
+2025-04-14T22:49:13.5584191Z ##[group]Disabling automatic garbage collection
+2025-04-14T22:49:13.5591432Z [command]"C:\Program Files\Git\bin\git.exe" config --local gc.auto 0
+2025-04-14T22:49:13.6045374Z ##[endgroup]
+2025-04-14T22:49:13.6047069Z ##[group]Setting up auth
+2025-04-14T22:49:13.6048776Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2025-04-14T22:49:13.6459142Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2025-04-14T22:49:17.3052652Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-14T22:49:17.3435165Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2025-04-14T22:49:18.5113687Z [command]"C:\Program Files\Git\bin\git.exe" config --local http.https://github.com/.extraheader "AUTHORIZATION: basic ***"
+2025-04-14T22:49:18.5543936Z ##[endgroup]
+2025-04-14T22:49:18.5544722Z ##[group]Fetching the repository
+2025-04-14T22:49:18.5560184Z [command]"C:\Program Files\Git\bin\git.exe" -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +2944ab107872466b42876c4b73de19a9d67f2b9a:refs/remotes/pull/116443/merge
+2025-04-14T22:49:21.3279545Z From https://github.com/python/cpython
+2025-04-14T22:49:21.3280211Z  * [new ref]         2944ab107872466b42876c4b73de19a9d67f2b9a -> pull/116443/merge
+2025-04-14T22:49:21.3807928Z ##[endgroup]
+2025-04-14T22:49:21.3808555Z ##[group]Determining the checkout info
+2025-04-14T22:49:21.3812843Z ##[endgroup]
+2025-04-14T22:49:21.3823684Z [command]"C:\Program Files\Git\bin\git.exe" sparse-checkout disable
+2025-04-14T22:49:21.4378068Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all extensions.worktreeConfig
+2025-04-14T22:49:21.4771407Z ##[group]Checking out the ref
+2025-04-14T22:49:21.4772097Z [command]"C:\Program Files\Git\bin\git.exe" checkout --progress --force refs/remotes/pull/116443/merge
+2025-04-14T22:49:21.5415017Z ##[error]error: invalid path 'Misc/NEWS.d/next/Core_and_Builtins/2024-03-06-22-33-33.gh-issue-116436.y8Thkt.rst '
+2025-04-14T22:49:21.5443567Z ##[group]Removing auth
+2025-04-14T22:49:21.5456306Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2025-04-14T22:49:21.5834952Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2025-04-14T22:49:22.7565817Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-14T22:49:22.7886994Z http.https://github.com/.extraheader
+2025-04-14T22:49:22.7939954Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all http.https://github.com/.extraheader
+2025-04-14T22:49:22.8333295Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2025-04-14T22:49:23.9759620Z ##[endgroup]
+2025-04-14T22:49:23.9791457Z ##[error]The process 'C:\Program Files\Git\bin\git.exe' failed with exit code 128

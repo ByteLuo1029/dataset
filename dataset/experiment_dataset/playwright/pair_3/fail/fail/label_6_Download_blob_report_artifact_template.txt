@@ -1,0 +1,278 @@
+Prepare all required actions
+Getting action download info
+##[group]Download immutable action package <:*:>
+Version: 7.0.1
+Digest: sha256:<:SEQ:>
+Source commit SHA: <:SEQ:>
+##[endgroup]
+##[group]Run <:*:>
+with:
+namePrefix: blob-report
+path: <:*:>
+##[endgroup]
+##[group]Run mkdir -p 'all-blob-reports/artifacts'
+[36;1mmkdir -p 'all-blob-reports/artifacts'[0m
+shell: /usr/bin/bash --noprofile --norc -e -o pipefail {<:NUM:>}
+##[endgroup]
+##[group]Run <:*:>
+with:
+script: console.log(`downloading artifacts for workflow_run: ${context.payload.workflow_run.id}`);
+${JSON.stringify(context.payload.workflow_run, null, 2)}`);
+const allArtifacts = await github.paginate(github.rest.actions.listWorkflowRunArtifacts, {
+  ...context.repo,
+context.payload.workflow_run.id
+});
+console.log('total = ', allArtifacts.length);
+const artifacts = allArtifacts.filter(a => a.name.startsWith('blob-report'));
+const fs = require('fs');
+for (const artifact of artifacts) {
+  const result = await github.rest.actions.downloadArtifact({
+    ...context.repo,
+artifact.id,
+'zip'
+  });
+  console.log(`Downloaded ${artifact.name}.zip (${result.data.byteLength} bytes)`);
+  fs.writeFileSync(`all-blob-reports/artifacts/${artifact.name}.zip`, Buffer.from(result.data));
+}
+github-token: ***
+debug: false
+user-agent: actions/github-script
+result-encoding: json
+retries: 0
+retry-exempt-status-codes: 400,401,403,404,422
+##[endgroup]
+downloading artifacts for workflow_run: 14464375454
+workflow_run: {
+"actor": {
+"avatar_url": "https://avatars.githubusercontent.com/u/14912729?v=4",
+"events_url": "https://api.github.com/users/Skn0tt/events{/privacy}",
+"followers_url": "https://api.github.com/users/Skn0tt/followers",
+"following_url": "https://api.github.com/users/Skn0tt/following{/other_user}",
+"gists_url": "https://api.github.com/users/Skn0tt/gists{/gist_id}",
+"gravatar_id": "",
+"html_url": "https://github.com/Skn0tt",
+"id": 14912729,
+"login": "Skn0tt",
+"node_id": "MDQ6VXNlcjE0OTEyNzI5",
+"organizations_url": "https://api.github.com/users/Skn0tt/orgs",
+"received_events_url": "https://api.github.com/users/Skn0tt/received_events",
+"repos_url": "https://api.github.com/users/Skn0tt/repos",
+"site_admin": false,
+"starred_url": "https://api.github.com/users/Skn0tt/starred{/owner}{/repo}",
+"subscriptions_url": "https://api.github.com/users/Skn0tt/subscriptions",
+"type": "User",
+"url": "https://api.github.com/users/Skn0tt",
+"user_view_type": "public"
+},
+"artifacts_url": "https://api.github.com/repos/microsoft/playwright/actions/runs/14464375454/artifacts",
+"cancel_url": "https://api.github.com/repos/microsoft/playwright/actions/runs/14464375454/cancel",
+"check_suite_id": 37187233049,
+"check_suite_node_id": "CS_kwDODTssw88AAAAIqIglGQ",
+"check_suite_url": "https://api.github.com/repos/microsoft/playwright/check-suites/37187233049",
+"conclusion": "cancelled",
+"created_at": "2025-04-15T08:03:31Z",
+"display_title": "chore: refactor error context",
+"event": "pull_request",
+"head_branch": "error-context-refactor",
+"head_commit": {
+"author": {
+"email": "info@simonknott.de",
+"name": "Simon Knott"
+},
+"committer": {
+"email": "info@simonknott.de",
+"name": "Simon Knott"
+},
+"id": "e8302005c115bd60c42580cf9e7d3d58f3da8c44",
+"message": "rename",
+"timestamp": "2025-04-15T07:58:51Z",
+"tree_id": "6c39a3de9a615e9fde37682379df4fe4ed574dce"
+},
+"head_repository": {
+"archive_url": "https://api.github.com/repos/Skn0tt/playwright/{archive_format}{/ref}",
+"assignees_url": "https://api.github.com/repos/Skn0tt/playwright/assignees{/user}",
+"blobs_url": "https://api.github.com/repos/Skn0tt/playwright/git/blobs{/sha}",
+"branches_url": "https://api.github.com/repos/Skn0tt/playwright/branches{/branch}",
+"collaborators_url": "https://api.github.com/repos/Skn0tt/playwright/collaborators{/collaborator}",
+"comments_url": "https://api.github.com/repos/Skn0tt/playwright/comments{/number}",
+"commits_url": "https://api.github.com/repos/Skn0tt/playwright/commits{/sha}",
+"compare_url": "https://api.github.com/repos/Skn0tt/playwright/compare/{base}...{head}",
+"contents_url": "https://api.github.com/repos/Skn0tt/playwright/contents/{+path}",
+"contributors_url": "https://api.github.com/repos/Skn0tt/playwright/contributors",
+"deployments_url": "https://api.github.com/repos/Skn0tt/playwright/deployments",
+"description": "Playwright is a framework for Web Testing and Automation. It allows testing Chromium, Firefox and WebKit with a single API. ",
+"downloads_url": "https://api.github.com/repos/Skn0tt/playwright/downloads",
+"events_url": "https://api.github.com/repos/Skn0tt/playwright/events",
+"fork": true,
+"forks_url": "https://api.github.com/repos/Skn0tt/playwright/forks",
+"full_name": "Skn0tt/playwright",
+"git_commits_url": "https://api.github.com/repos/Skn0tt/playwright/git/commits{/sha}",
+"git_refs_url": "https://api.github.com/repos/Skn0tt/playwright/git/refs{/sha}",
+"git_tags_url": "https://api.github.com/repos/Skn0tt/playwright/git/tags{/sha}",
+"hooks_url": "https://api.github.com/repos/Skn0tt/playwright/hooks",
+"html_url": "https://github.com/Skn0tt/playwright",
+"id": 763554482,
+"issue_comment_url": "https://api.github.com/repos/Skn0tt/playwright/issues/comments{/number}",
+"issue_events_url": "https://api.github.com/repos/Skn0tt/playwright/issues/events{/number}",
+"issues_url": "https://api.github.com/repos/Skn0tt/playwright/issues{/number}",
+"keys_url": "https://api.github.com/repos/Skn0tt/playwright/keys{/key_id}",
+"labels_url": "https://api.github.com/repos/Skn0tt/playwright/labels{/name}",
+"languages_url": "https://api.github.com/repos/Skn0tt/playwright/languages",
+"merges_url": "https://api.github.com/repos/Skn0tt/playwright/merges",
+"milestones_url": "https://api.github.com/repos/Skn0tt/playwright/milestones{/number}",
+"name": "playwright",
+"node_id": "R_kgDOLYLqsg",
+"notifications_url": "https://api.github.com/repos/Skn0tt/playwright/notifications{?since,all,participating}",
+"owner": {
+"avatar_url": "https://avatars.githubusercontent.com/u/14912729?v=4",
+"events_url": "https://api.github.com/users/Skn0tt/events{/privacy}",
+"followers_url": "https://api.github.com/users/Skn0tt/followers",
+"following_url": "https://api.github.com/users/Skn0tt/following{/other_user}",
+"gists_url": "https://api.github.com/users/Skn0tt/gists{/gist_id}",
+"gravatar_id": "",
+"html_url": "https://github.com/Skn0tt",
+"id": 14912729,
+"login": "Skn0tt",
+"node_id": "MDQ6VXNlcjE0OTEyNzI5",
+"organizations_url": "https://api.github.com/users/Skn0tt/orgs",
+"received_events_url": "https://api.github.com/users/Skn0tt/received_events",
+"repos_url": "https://api.github.com/users/Skn0tt/repos",
+"site_admin": false,
+"starred_url": "https://api.github.com/users/Skn0tt/starred{/owner}{/repo}",
+"subscriptions_url": "https://api.github.com/users/Skn0tt/subscriptions",
+"type": "User",
+"url": "https://api.github.com/users/Skn0tt",
+"user_view_type": "public"
+},
+"private": false,
+"pulls_url": "https://api.github.com/repos/Skn0tt/playwright/pulls{/number}",
+"releases_url": "https://api.github.com/repos/Skn0tt/playwright/releases{/id}",
+"stargazers_url": "https://api.github.com/repos/Skn0tt/playwright/stargazers",
+"statuses_url": "https://api.github.com/repos/Skn0tt/playwright/statuses/{sha}",
+"subscribers_url": "https://api.github.com/repos/Skn0tt/playwright/subscribers",
+"subscription_url": "https://api.github.com/repos/Skn0tt/playwright/subscription",
+"tags_url": "https://api.github.com/repos/Skn0tt/playwright/tags",
+"teams_url": "https://api.github.com/repos/Skn0tt/playwright/teams",
+"trees_url": "https://api.github.com/repos/Skn0tt/playwright/git/trees{/sha}",
+"url": "https://api.github.com/repos/Skn0tt/playwright"
+},
+"head_sha": "e8302005c115bd60c42580cf9e7d3d58f3da8c44",
+"html_url": "https://github.com/microsoft/playwright/actions/runs/14464375454",
+"id": 14464375454,
+"jobs_url": "https://api.github.com/repos/microsoft/playwright/actions/runs/14464375454/jobs",
+"logs_url": "https://api.github.com/repos/microsoft/playwright/actions/runs/14464375454/logs",
+"name": "tests 1",
+"node_id": "WFR_kwLODTssw88AAAADXiTang",
+"path": ".github/workflows/tests_primary.yml",
+"previous_attempt_url": null,
+"pull_requests": [],
+"referenced_workflows": [],
+"repository": {
+"archive_url": "https://api.github.com/repos/microsoft/playwright/{archive_format}{/ref}",
+"assignees_url": "https://api.github.com/repos/microsoft/playwright/assignees{/user}",
+"blobs_url": "https://api.github.com/repos/microsoft/playwright/git/blobs{/sha}",
+"branches_url": "https://api.github.com/repos/microsoft/playwright/branches{/branch}",
+"collaborators_url": "https://api.github.com/repos/microsoft/playwright/collaborators{/collaborator}",
+"comments_url": "https://api.github.com/repos/microsoft/playwright/comments{/number}",
+"commits_url": "https://api.github.com/repos/microsoft/playwright/commits{/sha}",
+"compare_url": "https://api.github.com/repos/microsoft/playwright/compare/{base}...{head}",
+"contents_url": "https://api.github.com/repos/microsoft/playwright/contents/{+path}",
+"contributors_url": "https://api.github.com/repos/microsoft/playwright/contributors",
+"deployments_url": "https://api.github.com/repos/microsoft/playwright/deployments",
+"description": "Playwright is a framework for Web Testing and Automation. It allows testing Chromium, Firefox and WebKit with a single API. ",
+"downloads_url": "https://api.github.com/repos/microsoft/playwright/downloads",
+"events_url": "https://api.github.com/repos/microsoft/playwright/events",
+"fork": false,
+"forks_url": "https://api.github.com/repos/microsoft/playwright/forks",
+"full_name": "microsoft/playwright",
+"git_commits_url": "https://api.github.com/repos/microsoft/playwright/git/commits{/sha}",
+"git_refs_url": "https://api.github.com/repos/microsoft/playwright/git/refs{/sha}",
+"git_tags_url": "https://api.github.com/repos/microsoft/playwright/git/tags{/sha}",
+"hooks_url": "https://api.github.com/repos/microsoft/playwright/hooks",
+"html_url": "https://github.com/microsoft/playwright",
+"id": 221981891,
+"issue_comment_url": "https://api.github.com/repos/microsoft/playwright/issues/comments{/number}",
+"issue_events_url": "https://api.github.com/repos/microsoft/playwright/issues/events{/number}",
+"issues_url": "https://api.github.com/repos/microsoft/playwright/issues{/number}",
+"keys_url": "https://api.github.com/repos/microsoft/playwright/keys{/key_id}",
+"labels_url": "https://api.github.com/repos/microsoft/playwright/labels{/name}",
+"languages_url": "https://api.github.com/repos/microsoft/playwright/languages",
+"merges_url": "https://api.github.com/repos/microsoft/playwright/merges",
+"milestones_url": "https://api.github.com/repos/microsoft/playwright/milestones{/number}",
+"name": "playwright",
+"node_id": "MDEwOlJlcG9zaXRvcnkyMjE5ODE4OTE=",
+"notifications_url": "https://api.github.com/repos/microsoft/playwright/notifications{?since,all,participating}",
+"owner": {
+"avatar_url": "https://avatars.githubusercontent.com/u/6154722?v=4",
+"events_url": "https://api.github.com/users/microsoft/events{/privacy}",
+"followers_url": "https://api.github.com/users/microsoft/followers",
+"following_url": "https://api.github.com/users/microsoft/following{/other_user}",
+"gists_url": "https://api.github.com/users/microsoft/gists{/gist_id}",
+"gravatar_id": "",
+"html_url": "https://github.com/microsoft",
+"id": 6154722,
+"login": "microsoft",
+"node_id": "MDEyOk9yZ2FuaXphdGlvbjYxNTQ3MjI=",
+"organizations_url": "https://api.github.com/users/microsoft/orgs",
+"received_events_url": "https://api.github.com/users/microsoft/received_events",
+"repos_url": "https://api.github.com/users/microsoft/repos",
+"site_admin": false,
+"starred_url": "https://api.github.com/users/microsoft/starred{/owner}{/repo}",
+"subscriptions_url": "https://api.github.com/users/microsoft/subscriptions",
+"type": "Organization",
+"url": "https://api.github.com/users/microsoft",
+"user_view_type": "public"
+},
+"private": false,
+"pulls_url": "https://api.github.com/repos/microsoft/playwright/pulls{/number}",
+"releases_url": "https://api.github.com/repos/microsoft/playwright/releases{/id}",
+"stargazers_url": "https://api.github.com/repos/microsoft/playwright/stargazers",
+"statuses_url": "https://api.github.com/repos/microsoft/playwright/statuses/{sha}",
+"subscribers_url": "https://api.github.com/repos/microsoft/playwright/subscribers",
+"subscription_url": "https://api.github.com/repos/microsoft/playwright/subscription",
+"tags_url": "https://api.github.com/repos/microsoft/playwright/tags",
+"teams_url": "https://api.github.com/repos/microsoft/playwright/teams",
+"trees_url": "https://api.github.com/repos/microsoft/playwright/git/trees{/sha}",
+"url": "https://api.github.com/repos/microsoft/playwright"
+},
+"rerun_url": "https://api.github.com/repos/microsoft/playwright/actions/runs/14464375454/rerun",
+"run_attempt": 1,
+"run_number": 30618,
+"run_started_at": "2025-04-15T08:03:31Z",
+"status": "completed",
+"triggering_actor": {
+"avatar_url": "https://avatars.githubusercontent.com/u/14912729?v=4",
+"events_url": "https://api.github.com/users/Skn0tt/events{/privacy}",
+"followers_url": "https://api.github.com/users/Skn0tt/followers",
+"following_url": "https://api.github.com/users/Skn0tt/following{/other_user}",
+"gists_url": "https://api.github.com/users/Skn0tt/gists{/gist_id}",
+"gravatar_id": "",
+"html_url": "https://github.com/Skn0tt",
+"id": 14912729,
+"login": "Skn0tt",
+"node_id": "MDQ6VXNlcjE0OTEyNzI5",
+"organizations_url": "https://api.github.com/users/Skn0tt/orgs",
+"received_events_url": "https://api.github.com/users/Skn0tt/received_events",
+"repos_url": "https://api.github.com/users/Skn0tt/repos",
+"site_admin": false,
+"starred_url": "https://api.github.com/users/Skn0tt/starred{/owner}{/repo}",
+"subscriptions_url": "https://api.github.com/users/Skn0tt/subscriptions",
+"type": "User",
+"url": "https://api.github.com/users/Skn0tt",
+"user_view_type": "public"
+},
+"updated_at": "2025-04-15T08:04:24Z",
+"url": "https://api.github.com/repos/microsoft/playwright/actions/runs/14464375454",
+"workflow_id": 8973349,
+"workflow_url": "https://api.github.com/repos/microsoft/playwright/actions/workflows/8973349"
+}
+total =  0
+##[group]Run unzip -n 'all-blob-reports/artifacts/*.zip' -d all-blob-reports
+[36;1munzip -n 'all-blob-reports/artifacts/*.zip' -d all-blob-reports[0m
+[36;1mrm -rf 'all-blob-reports/artifacts'[0m
+shell: /usr/bin/bash --noprofile --norc -e -o pipefail {<:NUM:>}
+##[endgroup]
+unzip:  cannot find or open all-blob-reports/artifacts/*.zip, all-blob-reports/artifacts/*.zip.zip or all-blob-reports/artifacts/*.zip.ZIP.
+2025-04-15T08:05:19.5039350Z
+No zipfiles found.
+##[error]Process completed with exit code 9.

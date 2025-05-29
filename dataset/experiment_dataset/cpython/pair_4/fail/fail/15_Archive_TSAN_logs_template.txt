@@ -1,0 +1,57 @@
+##[debug]Evaluating condition for step: 'Archive TSAN logs'
+##[debug]Evaluating: always()
+##[debug]Evaluating always:
+<:*:> true
+<:*:> true
+##[debug]Starting: Archive TSAN logs
+##[debug]Loading inputs
+##[debug]Evaluating: format('tsan-logs-{0}', ((fromJSON(inputs.free-threading) && 'free-threading') || 'default'))
+##[debug]Evaluating format:
+##[debug]..Evaluating String:
+##[debug]..=> 'tsan-logs-{0}'
+##[debug]..Evaluating Or:
+##[debug]....Evaluating And:
+##[debug]......Evaluating fromJSON:
+##[debug]........Evaluating Index:
+##[debug]..........Evaluating inputs:
+##[debug]..........=> Object
+##[debug]..........Evaluating String:
+##[debug]..........=> 'free-threading'
+<:*:> true
+<:*:> true
+##[debug]......Evaluating String:
+##[debug]......=> 'free-threading'
+##[debug]....=> 'free-threading'
+##[debug]..=> 'free-threading'
+##[debug]=> 'tsan-logs-free-threading'
+##[debug]Result: 'tsan-logs-free-threading'
+##[debug]Loading env
+##[group]Run <:*:>
+with:
+name: tsan-logs-free-threading
+path: tsan_log.*
+if-no-files-found: ignore
+compression-level: 6
+<:*:> false
+<:*:> false
+env:
+FORCE_COLOR: 1
+IMAGE_OS_VERSION: ubuntu24-20250406.1.0
+TSAN_OPTIONS: log_path=/home/runner/work/cpython/cpython/tsan_log suppressions=/home/runner/work/cpython/cpython/Tools/tsan/suppressions_free_threading.txt handle_segv=0
+CC: clang
+CXX: clang++
+PATH: /usr/lib/ccache:/snap/bin:/home/runner/.local/bin:/opt/pipx_bin:/home/runner/.cargo/bin:/home/runner/.config/composer/vendor/bin:/usr/local/.ghcup/bin:/home/runner/.dotnet/tools:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+##[endgroup]
+##[debug]followSymbolicLinks 'true'
+##[debug]implicitDescendants 'true'
+##[debug]omitBrokenSymbolicLinks 'true'
+##[debug]excludeHiddenFiles 'true'
+##[debug]followSymbolicLinks 'true'
+##[debug]implicitDescendants 'true'
+##[debug]matchDirectories 'true'
+##[debug]omitBrokenSymbolicLinks 'true'
+##[debug]excludeHiddenFiles 'true'
+##[debug]Search path '/home/runner/work/cpython/cpython'
+No files were found with the provided path: tsan_log.*. No artifacts will be uploaded.
+##[debug]Node Action run completed with exit code 0
+##[debug]Finishing: Archive TSAN logs

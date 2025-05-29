@@ -1,0 +1,221 @@
+##[group]Checking docker version
+##[command]/usr/bin/docker version --format '{{.Server.APIVersion}}'
+'1.45'
+Docker daemon API version: '1.45'
+##[command]/usr/bin/docker version --format '{{.Client.APIVersion}}'
+'1.45'
+Docker client API version: '1.45'
+##[endgroup]
+##[group]Clean up resources from previous jobs
+##[command]/usr/bin/docker ps --all --quiet --no-trunc --filter "label=6fc8e1"
+##[command]/usr/bin/docker network prune --force --filter "label=6fc8e1"
+##[endgroup]
+##[group]Create local container network
+##[command]/usr/bin/docker network create --label 6fc8e1 github_network_cb2bd18529824a649b1e9bec535ac39b
+<:SEQ:>
+##[endgroup]
+##[group]Starting mysql service container
+##[command]/usr/bin/docker pull mysql:9
+9: Pulling from library/mysql
+cea172a6e83b: Pulling fs layer
+daac2c594bdd: Pulling fs layer
+cb8acbf2440c: Pulling fs layer
+fae51f7de1fb: Pulling fs layer
+b2ead3e96e6b: Pulling fs layer
+769c3ac51f88: Pulling fs layer
+79f239a40e62: Pulling fs layer
+c11056354384: Pulling fs layer
+49978e7ccddf: Pulling fs layer
+548990e33276: Pulling fs layer
+79f239a40e62: Waiting
+c11056354384: Waiting
+49978e7ccddf: Waiting
+548990e33276: Waiting
+fae51f7de1fb: Waiting
+769c3ac51f88: Waiting
+b2ead3e96e6b: Waiting
+daac2c594bdd: Verifying Checksum
+daac2c594bdd: Download complete
+cb8acbf2440c: Verifying Checksum
+cb8acbf2440c: Download complete
+b2ead3e96e6b: Verifying Checksum
+b2ead3e96e6b: Download complete
+fae51f7de1fb: Verifying Checksum
+fae51f7de1fb: Download complete
+cea172a6e83b: Verifying Checksum
+cea172a6e83b: Download complete
+769c3ac51f88: Verifying Checksum
+769c3ac51f88: Download complete
+c11056354384: Verifying Checksum
+c11056354384: Download complete
+548990e33276: Download complete
+79f239a40e62: Verifying Checksum
+79f239a40e62: Download complete
+cea172a6e83b: Pull complete
+49978e7ccddf: Verifying Checksum
+49978e7ccddf: Download complete
+daac2c594bdd: Pull complete
+cb8acbf2440c: Pull complete
+fae51f7de1fb: Pull complete
+b2ead3e96e6b: Pull complete
+769c3ac51f88: Pull complete
+79f239a40e62: Pull complete
+c11056354384: Pull complete
+49978e7ccddf: Pull complete
+548990e33276: Pull complete
+Digest: sha256:<:SEQ:>
+Status: Downloaded newer image for mysql:9
+docker.io/library/mysql:9
+##[command]/usr/bin/docker create --name 540642265531442ea8983614a01904f1_mysql9_653cef --label 6fc8e1 --network github_network_cb2bd18529824a649b1e9bec535ac39b --network-alias mysql -p 3306:3306 --health-cmd "mysqladmin ping" --health-interval 10s --health-timeout 5s --health-retries 5 -e "MYSQL_ALLOW_EMPTY_PASSWORD=yes" -e "MYSQL_DATABASE=pandas" -e GITHUB_ACTIONS=true -e CI=true mysql:9
+<:SEQ:>
+##[command]/usr/bin/docker start 64802a335a762c299c305d6956ba2113fd6c5232ecbe1e2dfede568665342aad
+<:SEQ:>
+##[command]/usr/bin/docker ps --all --filter id=64802a335a762c299c305d6956ba2113fd6c5232ecbe1e2dfede568665342aad --filter status=running --no-trunc --format "{{.ID}} {{.Status}}"
+64802a335a762c299c305d6956ba2113fd6c5232ecbe1e2dfede568665342aad Up Less than a second (health: starting)
+##[command]/usr/bin/docker port 64802a335a762c299c305d6956ba2113fd6c5232ecbe1e2dfede568665342aad
+3306/tcp -> 0.0.0.0:3306
+3306/tcp -> [::]:3306
+##[endgroup]
+##[group]Starting postgres service container
+##[command]/usr/bin/docker pull postgres:17
+17: Pulling from library/postgres
+8a628cdd7ccc: Pulling fs layer
+e4847368ad17: Pulling fs layer
+97cdd47d9131: Pulling fs layer
+2817206b0512: Pulling fs layer
+3a6f8814136c: Pulling fs layer
+07db60713289: Pulling fs layer
+0c942aac37b1: Pulling fs layer
+8c63b71925de: Pulling fs layer
+97f28320a07a: Pulling fs layer
+2a08aad74366: Pulling fs layer
+6cea4d95608f: Pulling fs layer
+c1b7de8085d1: Pulling fs layer
+f15c43cffa70: Pulling fs layer
+6948dc7760c1: Pulling fs layer
+8c63b71925de: Waiting
+97f28320a07a: Waiting
+2a08aad74366: Waiting
+6cea4d95608f: Waiting
+c1b7de8085d1: Waiting
+f15c43cffa70: Waiting
+6948dc7760c1: Waiting
+2817206b0512: Waiting
+07db60713289: Waiting
+3a6f8814136c: Waiting
+0c942aac37b1: Waiting
+e4847368ad17: Verifying Checksum
+e4847368ad17: Download complete
+97cdd47d9131: Verifying Checksum
+97cdd47d9131: Download complete
+8a628cdd7ccc: Verifying Checksum
+8a628cdd7ccc: Download complete
+2817206b0512: Download complete
+3a6f8814136c: Verifying Checksum
+3a6f8814136c: Download complete
+0c942aac37b1: Verifying Checksum
+0c942aac37b1: Download complete
+07db60713289: Verifying Checksum
+07db60713289: Download complete
+8c63b71925de: Download complete
+2a08aad74366: Verifying Checksum
+2a08aad74366: Download complete
+6cea4d95608f: Verifying Checksum
+6cea4d95608f: Download complete
+c1b7de8085d1: Verifying Checksum
+c1b7de8085d1: Download complete
+f15c43cffa70: Verifying Checksum
+f15c43cffa70: Download complete
+8a628cdd7ccc: Pull complete
+6948dc7760c1: Download complete
+e4847368ad17: Pull complete
+97cdd47d9131: Pull complete
+2817206b0512: Pull complete
+97f28320a07a: Verifying Checksum
+97f28320a07a: Download complete
+3a6f8814136c: Pull complete
+07db60713289: Pull complete
+0c942aac37b1: Pull complete
+8c63b71925de: Pull complete
+97f28320a07a: Pull complete
+2a08aad74366: Pull complete
+6cea4d95608f: Pull complete
+c1b7de8085d1: Pull complete
+f15c43cffa70: Pull complete
+6948dc7760c1: Pull complete
+Digest: sha256:<:SEQ:>
+Status: Downloaded newer image for postgres:17
+docker.io/library/postgres:17
+##[command]/usr/bin/docker create --name c9869ac642024a46a40b7274964d0c60_postgres17_c24795 --label 6fc8e1 --network github_network_cb2bd18529824a649b1e9bec535ac39b --network-alias postgres -p 5432:5432 --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5 -e "PGUSER=postgres" -e "POSTGRES_USER=postgres" -e "POSTGRES_PASSWORD=postgres" -e "POSTGRES_DB=pandas" -e GITHUB_ACTIONS=true -e CI=true postgres:17
+<:SEQ:>
+##[command]/usr/bin/docker start 2c1744892c7c327658b3af810a53ca7561696c0fc554b69e7091723145f1fc6a
+<:SEQ:>
+##[command]/usr/bin/docker ps --all --filter id=2c1744892c7c327658b3af810a53ca7561696c0fc554b69e7091723145f1fc6a --filter status=running --no-trunc --format "{{.ID}} {{.Status}}"
+2c1744892c7c327658b3af810a53ca7561696c0fc554b69e7091723145f1fc6a Up Less than a second (health: starting)
+##[command]/usr/bin/docker port 2c1744892c7c327658b3af810a53ca7561696c0fc554b69e7091723145f1fc6a
+5432/tcp -> 0.0.0.0:5432
+5432/tcp -> [::]:5432
+##[endgroup]
+##[group]Starting moto service container
+##[command]/usr/bin/docker pull motoserver/moto:5.0.27
+5.0.27: Pulling from motoserver/moto
+af302e5c37e9: Pulling fs layer
+76530857599c: Pulling fs layer
+951ef0438920: Pulling fs layer
+e670a00cb8f8: Pulling fs layer
+9bbcc2a00177: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+7e74c760e0b3: Pulling fs layer
+dcac1f951d09: Pulling fs layer
+4f4fb700ef54: Waiting
+7e74c760e0b3: Waiting
+dcac1f951d09: Waiting
+e670a00cb8f8: Waiting
+9bbcc2a00177: Waiting
+76530857599c: Verifying Checksum
+76530857599c: Download complete
+951ef0438920: Verifying Checksum
+951ef0438920: Download complete
+e670a00cb8f8: Verifying Checksum
+e670a00cb8f8: Download complete
+af302e5c37e9: Verifying Checksum
+af302e5c37e9: Download complete
+9bbcc2a00177: Verifying Checksum
+9bbcc2a00177: Download complete
+4f4fb700ef54: Verifying Checksum
+4f4fb700ef54: Download complete
+dcac1f951d09: Verifying Checksum
+dcac1f951d09: Download complete
+af302e5c37e9: Pull complete
+7e74c760e0b3: Verifying Checksum
+7e74c760e0b3: Download complete
+76530857599c: Pull complete
+951ef0438920: Pull complete
+e670a00cb8f8: Pull complete
+9bbcc2a00177: Pull complete
+4f4fb700ef54: Pull complete
+7e74c760e0b3: Pull complete
+dcac1f951d09: Pull complete
+Digest: sha256:<:SEQ:>
+Status: Downloaded newer image for motoserver/moto:5.0.27
+docker.io/motoserver/moto:5.0.27
+##[command]/usr/bin/docker create --name 3c5e1e5bd9134cada7dea7dc02115361_motoservermoto5027_f03aff --label 6fc8e1 --network github_network_cb2bd18529824a649b1e9bec535ac39b --network-alias moto -p 5000:5000  -e "AWS_ACCESS_KEY_ID=foobar_key" -e "AWS_SECRET_ACCESS_KEY=foobar_secret" -e GITHUB_ACTIONS=true -e CI=true motoserver/moto:5.0.27
+<:SEQ:>
+##[command]/usr/bin/docker start ef1ec67ab7adea524d4194b1a100a98d94873bdb4607624a92a3752f1222e805
+<:SEQ:>
+##[command]/usr/bin/docker ps --all --filter id=ef1ec67ab7adea524d4194b1a100a98d94873bdb4607624a92a3752f1222e805 --filter status=running --no-trunc --format "{{.ID}} {{.Status}}"
+ef1ec67ab7adea524d4194b1a100a98d94873bdb4607624a92a3752f1222e805 Up Less than a second
+##[command]/usr/bin/docker port ef1ec67ab7adea524d4194b1a100a98d94873bdb4607624a92a3752f1222e805
+5000/tcp -> 0.0.0.0:5000
+5000/tcp -> [::]:5000
+##[endgroup]
+##[group]Waiting for all services to be ready
+##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" 64802a335a762c299c305d6956ba2113fd6c5232ecbe1e2dfede568665342aad
+healthy
+mysql service is healthy.
+##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" 2c1744892c7c327658b3af810a53ca7561696c0fc554b69e7091723145f1fc6a
+healthy
+postgres service is healthy.
+##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" ef1ec67ab7adea524d4194b1a100a98d94873bdb4607624a92a3752f1222e805
+moto service is healthy.
+##[endgroup]

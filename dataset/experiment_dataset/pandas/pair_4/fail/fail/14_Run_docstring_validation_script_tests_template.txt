@@ -1,0 +1,75 @@
+##[group]Run pytest scripts
+[36;1mpytest scripts[0m
+shell: /usr/bin/bash -el {0}
+env:
+ENV_FILE: environment.yml
+PANDAS_CI: 1
+MAMBA_ROOT_PREFIX: /home/runner/micromamba
+MAMBA_EXE: /home/runner/micromamba-bin/micromamba
+CONDARC: /home/runner/work/pandas/pandas/ci/.condarc
+PYTHONHOME:
+PYTHONPATH:
+##[endgroup]
+============================= test session starts ==============================
+platform linux -- Python 3.10.17, pytest-8.3.5, pluggy-1.5.0
+PySide6 6.9.0 -- Qt runtime 6.9.0 -- Qt compiled 6.9.0
+rootdir: /home/runner/work/pandas/pandas
+configfile: pyproject.toml
+plugins: qt-4.4.0, xdist-3.6.1, cython-0.3.1, localserver-0.0.0, hypothesis-6.131.0, anyio-4.9.0, cov-6.1.1
+collected 91 items
+2025-04-14T19:02:38.3864049Z
+scripts/tests/test_check_test_naming.py .........
+scripts/tests/test_inconsistent_namespace_check.py ............
+scripts/tests/test_sort_whatsnew_note.py .
+scripts/tests/test_validate_docstrings.py ...........file1:file_line1:ER02:pandas.DataFrame.align:err desc
+file1:file_line1:ER01:pandas.DataFrame.align:err desc
+file1:file_line1:ER02:pandas.Index.all:err desc
+file1:file_line1:ER01:pandas.Index.all:err desc
+file1:file_line1:ER02:pandas.DataFrame.align:err desc
+file1:file_line1:ER02:pandas.Index.all:err desc
+file1:file_line1:ER01:pandas.Index.all:err desc
+2025-04-14T19:02:40.3210206Z
+################################################################################
+############################ Docstring (docstring1) ############################
+################################################################################
+2025-04-14T19:02:40.3212176Z
+docstring1
+2025-04-14T19:02:40.3212436Z
+################################################################################
+################################## Validation ##################################
+################################################################################
+2025-04-14T19:02:40.3214012Z
+3 Errors found for `docstring1`:
+ER01	err desc
+ER02	err desc
+ER03	err desc
+........................module1.py:23:ER02:docstring1:err desc
+module1.py:23:ER03:docstring1:err desc
+module1.py:23:ER01:docstring1:err desc
+module2.py:925:ER05:docstring2:err desc
+module2.py:925:ER04:docstring2:err desc
+..{"docstring1": {"errors": [["ER01", "err desc"], ["ER02", "err desc"], ["ER03", "err desc"]]}, "docstring2": {"errors": [["ER04", "err desc"], ["ER05", "err desc"]]}}.series.py:142:ER01:Series.foo:err desc
+frame.py:598:ER01:DataFrame.bar:err desc
+series.py:279:ER01:Series.foobar:err desc
+series.py:142:ER03:Series.foo:err desc
+.
+scripts/tests/test_validate_exception_location.py .........
+scripts/tests/test_validate_min_versions_in_sync.py .....
+scripts/tests/test_validate_unwanted_patterns.py ................
+2025-04-14T19:02:40.8997931Z
+------ generated xml file: /home/runner/work/pandas/pandas/test-data.xml -------
+============================= slowest 30 durations =============================
+0.93s call     scripts/tests/test_validate_docstrings.py::TestValidator::test_validate_all_ignore_deprecated
+0.12s call     scripts/tests/test_validate_docstrings.py::TestPandasDocstringClass::test_encode_content_write_to_file[pandas.Series.str.islower]
+0.12s call     scripts/tests/test_validate_docstrings.py::TestValidator::test_bad_docstrings[BadDocstrings-missing_whitespace_around_arithmetic_operator-msgs5]
+0.12s call     scripts/tests/test_validate_docstrings.py::TestValidator::test_bad_docstrings[BadDocstrings-redundant_import-msgs3]
+0.12s call     scripts/tests/test_validate_docstrings.py::TestValidator::test_bad_docstrings[BadDocstrings-missing_whitespace_after_comma-msgs7]
+0.12s call     scripts/tests/test_validate_docstrings.py::TestValidator::test_bad_docstrings[BadDocstrings-unused_import-msgs4]
+0.12s call     scripts/tests/test_validate_docstrings.py::TestValidator::test_bad_docstrings[BadDocstrings-redundant_import-msgs2]
+0.11s call     scripts/tests/test_validate_docstrings.py::TestValidator::test_bad_docstrings[BadDocstrings-indentation_is_not_a_multiple_of_four-msgs6]
+0.11s call     scripts/tests/test_validate_docstrings.py::TestPandasDocstringClass::test_encode_content_write_to_file[pandas.Series.str.isdecimal]
+0.01s call     scripts/tests/test_validate_docstrings.py::TestValidator::test_bad_class
+0.01s call     scripts/tests/test_validate_min_versions_in_sync.py::test_pin_min_versions_to_yaml_file[src_toml0-src_yaml0-expected_yaml0]
+2025-04-14T19:02:40.9012896Z
+(19 durations < 0.005s hidden.  Use -vv to show these durations.)
+============================== 91 passed in 2.95s ==============================

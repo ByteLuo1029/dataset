@@ -1,0 +1,191 @@
+2025-04-10T09:49:18.7872984Z ##[group]Run CURL_CA_BUNDLE="" PYTHONPATH=$PWD FAST_TEST=1 pytest \
+2025-04-10T09:49:18.7873443Z [36;1mCURL_CA_BUNDLE="" PYTHONPATH=$PWD FAST_TEST=1 pytest \[0m
+2025-04-10T09:49:18.7873747Z [36;1m-m "not largedist" \[0m
+2025-04-10T09:49:18.7874001Z [36;1m--durations=0 \[0m
+2025-04-10T09:49:18.7874226Z [36;1m--ignore tests/test_analyzer \[0m
+2025-04-10T09:49:18.7874501Z [36;1m--ignore tests/test_auto_parallel \[0m
+2025-04-10T09:49:18.7874762Z [36;1m--ignore tests/test_fx \[0m
+2025-04-10T09:49:18.7875009Z [36;1m--ignore tests/test_autochunk \[0m
+2025-04-10T09:49:18.7875261Z [36;1m--ignore tests/test_gptq \[0m
+2025-04-10T09:49:18.7875500Z [36;1m--ignore tests/test_infer_ops \[0m
+2025-04-10T09:49:18.7875744Z [36;1m--ignore tests/test_legacy \[0m
+2025-04-10T09:49:18.7875995Z [36;1m--ignore tests/test_smoothquant \[0m
+2025-04-10T09:49:18.7876312Z [36;1mtests/test_booster/test_mixed_precision/test_fp16_torch.py[0m
+2025-04-10T09:49:18.7876768Z shell: bash --noprofile --norc -e -o pipefail {0}
+2025-04-10T09:49:18.7877061Z env:
+2025-04-10T09:49:18.7877383Z   LD_LIBRARY_PATH: /github/home/.tensornvme/lib:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+2025-04-10T09:49:18.7877769Z   LLAMA_PATH: /data/scratch/llama-tiny
+2025-04-10T09:49:18.7878193Z   MOE_TENSOR_PATH: /data/scratch/moe_tensors
+2025-04-10T09:49:18.7878470Z   HF_ENDPOINT: https://hf-mirror.com
+2025-04-10T09:49:18.7878705Z ##[endgroup]
+2025-04-10T09:49:27.0234480Z ============================= test session starts ==============================
+2025-04-10T09:49:27.0234959Z platform linux -- Python 3.10.14, pytest-7.4.4, pluggy-1.5.0
+2025-04-10T09:49:27.0235298Z rootdir: /__w/ColossalAI/ColossalAI
+2025-04-10T09:49:27.0235592Z configfile: pytest.ini
+2025-04-10T09:49:27.0235881Z plugins: hypothesis-6.131.0, anyio-4.9.0, testmon-2.0.7b1
+2025-04-10T09:49:27.0236169Z collected 1 item
+2025-04-10T09:49:27.0236315Z 
+2025-04-10T09:49:35.5428069Z tests/test_booster/test_mixed_precision/test_fp16_torch.py F             [100%]
+2025-04-10T09:49:35.5428477Z 
+2025-04-10T09:49:35.5428599Z =================================== FAILURES ===================================
+2025-04-10T09:49:35.5428961Z ____________________________ test_torch_ddp_plugin _____________________________
+2025-04-10T09:49:35.5429201Z 
+2025-04-10T09:49:35.5429305Z args = (), kwargs = {}, try_count = 1
+2025-04-10T09:49:35.5429474Z 
+2025-04-10T09:49:35.5429592Z     def _run_until_success(*args, **kwargs):
+2025-04-10T09:49:35.5429858Z         try_count = 0
+2025-04-10T09:49:35.5430095Z         assert max_try is None or isinstance(
+2025-04-10T09:49:35.5430358Z             max_try, int
+2025-04-10T09:49:35.5430649Z         ), f"Expected max_try to be None or int, but got {type(max_try)}"
+2025-04-10T09:49:35.5430946Z     
+2025-04-10T09:49:35.5431149Z         while max_try is None or try_count < max_try:
+2025-04-10T09:49:35.5431417Z             try:
+2025-04-10T09:49:35.5431620Z                 try_count += 1
+2025-04-10T09:49:35.5431882Z >               ret = func(*args, **kwargs)
+2025-04-10T09:49:35.5432044Z 
+2025-04-10T09:49:35.5432145Z colossalai/testing/utils.py:133: 
+2025-04-10T09:49:35.5432406Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2025-04-10T09:49:35.5432796Z tests/test_booster/test_mixed_precision/test_fp16_torch.py:39: in test_torch_ddp_plugin
+2025-04-10T09:49:35.5433169Z     spawn(run_torch_amp, 1)
+2025-04-10T09:49:35.5433408Z colossalai/testing/utils.py:252: in spawn
+2025-04-10T09:49:35.5433668Z     mp.spawn(wrapped_func, nprocs=nprocs)
+2025-04-10T09:49:35.5434096Z /opt/conda/envs/pytorch/lib/python3.10/site-packages/torch/multiprocessing/spawn.py:241: in spawn
+2025-04-10T09:49:35.5434624Z     return start_processes(fn, args, nprocs, join, daemon, start_method="spawn")
+2025-04-10T09:49:35.5435160Z /opt/conda/envs/pytorch/lib/python3.10/site-packages/torch/multiprocessing/spawn.py:197: in start_processes
+2025-04-10T09:49:35.5435623Z     while not context.join():
+2025-04-10T09:49:35.5435877Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2025-04-10T09:49:35.5436360Z 
+2025-04-10T09:49:35.5436572Z self = <torch.multiprocessing.spawn.ProcessContext object at 0x7f1c3ce9bf70>
+2025-04-10T09:49:35.5436936Z timeout = None
+2025-04-10T09:49:35.5437047Z 
+2025-04-10T09:49:35.5437150Z     def join(self, timeout=None):
+2025-04-10T09:49:35.5437424Z         r"""Join one or more processes within spawn context.
+2025-04-10T09:49:35.5437686Z     
+2025-04-10T09:49:35.5437929Z         Attempt to join one or more processes in this spawn context.
+2025-04-10T09:49:35.5438274Z         If one of them exited with a non-zero exit status, this function
+2025-04-10T09:49:35.5438652Z         kills the remaining processes and raises an exception with the cause
+2025-04-10T09:49:35.5438966Z         of the first process exiting.
+2025-04-10T09:49:35.5439191Z     
+2025-04-10T09:49:35.5439433Z         Returns ``True`` if all processes have been joined successfully,
+2025-04-10T09:49:35.5439779Z         ``False`` if there are more processes that need to be joined.
+2025-04-10T09:49:35.5440048Z     
+2025-04-10T09:49:35.5440206Z         Args:
+2025-04-10T09:49:35.5440448Z             timeout (float): Wait this long before giving up on waiting.
+2025-04-10T09:49:35.5440720Z         """
+2025-04-10T09:49:35.5441095Z         # Ensure this function can be called even when we're done.
+2025-04-10T09:49:35.5441387Z         if len(self.sentinels) == 0:
+2025-04-10T09:49:35.5441615Z             return True
+2025-04-10T09:49:35.5441811Z     
+2025-04-10T09:49:35.5442034Z         # Wait for any process to fail or all of them to succeed.
+2025-04-10T09:49:35.5442353Z         ready = multiprocessing.connection.wait(
+2025-04-10T09:49:35.5442642Z             self.sentinels.keys(),
+2025-04-10T09:49:35.5442875Z             timeout=timeout,
+2025-04-10T09:49:35.5443091Z         )
+2025-04-10T09:49:35.5443268Z     
+2025-04-10T09:49:35.5443452Z         error_index = None
+2025-04-10T09:49:35.5443671Z         for sentinel in ready:
+2025-04-10T09:49:35.5443908Z             index = self.sentinels.pop(sentinel)
+2025-04-10T09:49:35.5444178Z             process = self.processes[index]
+2025-04-10T09:49:35.5444425Z             process.join()
+2025-04-10T09:49:35.5444649Z             if process.exitcode != 0:
+2025-04-10T09:49:35.5444892Z                 error_index = index
+2025-04-10T09:49:35.5445110Z                 break
+2025-04-10T09:49:35.5445294Z     
+2025-04-10T09:49:35.5445470Z         # Return if there was no error.
+2025-04-10T09:49:35.5445711Z         if error_index is None:
+2025-04-10T09:49:35.5445970Z             # Return whether or not all processes have been joined.
+2025-04-10T09:49:35.5446259Z             return len(self.sentinels) == 0
+2025-04-10T09:49:35.5446482Z     
+2025-04-10T09:49:35.5446710Z         # Assume failure. Terminate processes that are still alive.
+2025-04-10T09:49:35.5447007Z         for process in self.processes:
+2025-04-10T09:49:35.5447251Z             if process.is_alive():
+2025-04-10T09:49:35.5447476Z                 process.terminate()
+2025-04-10T09:49:35.5447706Z             process.join()
+2025-04-10T09:49:35.5447907Z     
+2025-04-10T09:49:35.5448131Z         # There won't be an error on the queue if the process crashed.
+2025-04-10T09:49:35.5448487Z         failed_process = self.processes[error_index]
+2025-04-10T09:49:35.5448769Z         if self.error_queues[error_index].empty():
+2025-04-10T09:49:35.5449064Z             exitcode = self.processes[error_index].exitcode
+2025-04-10T09:49:35.5449331Z             if exitcode < 0:
+2025-04-10T09:49:35.5449584Z                 name = signal.Signals(-exitcode).name
+2025-04-10T09:49:35.5449859Z >               raise ProcessExitedException(
+2025-04-10T09:49:35.5450169Z                     "process %d terminated with signal %s" % (error_index, name),
+2025-04-10T09:49:35.5450478Z                     error_index=error_index,
+2025-04-10T09:49:35.5450735Z                     error_pid=failed_process.pid,
+2025-04-10T09:49:35.5450989Z                     exit_code=exitcode,
+2025-04-10T09:49:35.5451230Z                     signal_name=name,
+2025-04-10T09:49:35.5451538Z                 )
+2025-04-10T09:49:35.5451920Z E               torch.multiprocessing.spawn.ProcessExitedException: process 0 terminated with signal SIGFPE
+2025-04-10T09:49:35.5452262Z 
+2025-04-10T09:49:35.5452581Z /opt/conda/envs/pytorch/lib/python3.10/site-packages/torch/multiprocessing/spawn.py:140: ProcessExitedException
+2025-04-10T09:49:35.5453120Z ----------------------------- Captured stdout call -----------------------------
+2025-04-10T09:49:35.5453496Z [04/10/25 09:49:32] INFO     colossalai - colossalai - INFO:                    
+2025-04-10T09:49:35.5453849Z                              /__w/ColossalAI/ColossalAI/colossalai/initialize.py
+2025-04-10T09:49:35.5454146Z                              :75 launch                                         
+2025-04-10T09:49:35.5454469Z                     INFO     colossalai - colossalai - INFO: Distributed        
+2025-04-10T09:49:35.5454801Z                              environment is initialized, world size: 1          
+2025-04-10T09:49:35.5455141Z ----------------------------- Captured stderr call -----------------------------
+2025-04-10T09:49:35.5456486Z /opt/conda/envs/pytorch/lib/python3.10/site-packages/diffusers/models/transformers/transformer_2d.py:34: FutureWarning: `Transformer2DModelOutput` is deprecated and will be removed in version 1.0.0. Importing `Transformer2DModelOutput` from `diffusers.models.transformer_2d` is deprecated and this will be removed in a future version. Please use `from diffusers.models.modeling_outputs import Transformer2DModelOutput`, instead.
+2025-04-10T09:49:35.5457927Z   deprecate("Transformer2DModelOutput", "1.0.0", deprecation_message)
+2025-04-10T09:49:35.5458840Z /opt/conda/envs/pytorch/lib/python3.10/site-packages/huggingface_hub/file_download.py:896: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+2025-04-10T09:49:35.5459669Z   warnings.warn(
+2025-04-10T09:49:35.5460607Z /opt/conda/envs/pytorch/lib/python3.10/site-packages/urllib3/connectionpool.py:1064: InsecureRequestWarning: Unverified HTTPS request is being made to host 'vpn.luchentech.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+2025-04-10T09:49:35.5461561Z   warnings.warn(
+2025-04-10T09:49:35.5462473Z /opt/conda/envs/pytorch/lib/python3.10/site-packages/urllib3/connectionpool.py:1064: InsecureRequestWarning: Unverified HTTPS request is being made to host 'vpn.luchentech.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+2025-04-10T09:49:35.5463409Z   warnings.warn(
+2025-04-10T09:49:35.5464298Z /opt/conda/envs/pytorch/lib/python3.10/site-packages/urllib3/connectionpool.py:1064: InsecureRequestWarning: Unverified HTTPS request is being made to host 'vpn.luchentech.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+2025-04-10T09:49:35.5465237Z   warnings.warn(
+2025-04-10T09:49:35.5465466Z =============================== warnings summary ===============================
+2025-04-10T09:49:35.5465754Z colossalai/interface/model.py:45
+2025-04-10T09:49:35.5466188Z   /__w/ColossalAI/ColossalAI/colossalai/interface/model.py:45: DeprecationWarning: invalid escape sequence '\S'
+2025-04-10T09:49:35.5466751Z     to_return = {re.sub(f"lora_\S\.{adapter_name}\.(weight|bias)", "base_layer", k) for k in to_return}
+2025-04-10T09:49:35.5467029Z 
+2025-04-10T09:49:35.5467125Z colossalai/interface/model.py:45
+2025-04-10T09:49:35.5467553Z   /__w/ColossalAI/ColossalAI/colossalai/interface/model.py:45: DeprecationWarning: invalid escape sequence '\.'
+2025-04-10T09:49:35.5468094Z     to_return = {re.sub(f"lora_\S\.{adapter_name}\.(weight|bias)", "base_layer", k) for k in to_return}
+2025-04-10T09:49:35.5468354Z 
+2025-04-10T09:49:35.5468539Z colossalai/checkpoint_io/utils.py:862
+2025-04-10T09:49:35.5469056Z   /__w/ColossalAI/ColossalAI/colossalai/checkpoint_io/utils.py:862: DeprecationWarning: invalid escape sequence '\.'
+2025-04-10T09:49:35.5469520Z     reg = re.compile("(.*?).index((\..*)?).json")
+2025-04-10T09:49:35.5469705Z 
+2025-04-10T09:49:35.5469803Z colossalai/nn/optimizer/cpu_adam.py:12
+2025-04-10T09:49:35.5470300Z   /__w/ColossalAI/ColossalAI/colossalai/nn/optimizer/cpu_adam.py:12: DeprecationWarning: invalid escape sequence '\:'
+2025-04-10T09:49:35.5470747Z     """
+2025-04-10T09:49:35.5470856Z 
+2025-04-10T09:49:35.5470961Z colossalai/nn/optimizer/fused_adam.py:15
+2025-04-10T09:49:35.5471432Z   /__w/ColossalAI/ColossalAI/colossalai/nn/optimizer/fused_adam.py:15: DeprecationWarning: invalid escape sequence '\:'
+2025-04-10T09:49:35.5471890Z     """Implements Adam algorithm.
+2025-04-10T09:49:35.5472039Z 
+2025-04-10T09:49:35.5472137Z colossalai/nn/optimizer/hybrid_adam.py:12
+2025-04-10T09:49:35.5472612Z   /__w/ColossalAI/ColossalAI/colossalai/nn/optimizer/hybrid_adam.py:12: DeprecationWarning: invalid escape sequence '\:'
+2025-04-10T09:49:35.5473074Z     """Implements Adam algorithm.
+2025-04-10T09:49:35.5473227Z 
+2025-04-10T09:49:35.5473510Z ../../../opt/conda/envs/pytorch/lib/python3.10/site-packages/diffusers/models/transformers/transformer_2d.py:34
+2025-04-10T09:49:35.5475037Z   /opt/conda/envs/pytorch/lib/python3.10/site-packages/diffusers/models/transformers/transformer_2d.py:34: FutureWarning: `Transformer2DModelOutput` is deprecated and will be removed in version 1.0.0. Importing `Transformer2DModelOutput` from `diffusers.models.transformer_2d` is deprecated and this will be removed in a future version. Please use `from diffusers.models.modeling_outputs import Transformer2DModelOutput`, instead.
+2025-04-10T09:49:35.5476401Z     deprecate("Transformer2DModelOutput", "1.0.0", deprecation_message)
+2025-04-10T09:49:35.5476634Z 
+2025-04-10T09:49:36.0423096Z ../../../opt/conda/envs/pytorch/lib/python3.10/site-packages/huggingface_hub/file_download.py:896
+2025-04-10T09:49:36.0424196Z   /opt/conda/envs/pytorch/lib/python3.10/site-packages/huggingface_hub/file_download.py:896: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+2025-04-10T09:49:36.0425129Z     warnings.warn(
+2025-04-10T09:49:36.0425261Z 
+2025-04-10T09:49:36.0425501Z ../../../opt/conda/envs/pytorch/lib/python3.10/site-packages/urllib3/connectionpool.py:1064
+2025-04-10T09:49:36.0426031Z ../../../opt/conda/envs/pytorch/lib/python3.10/site-packages/urllib3/connectionpool.py:1064
+2025-04-10T09:49:36.0426537Z ../../../opt/conda/envs/pytorch/lib/python3.10/site-packages/urllib3/connectionpool.py:1064
+2025-04-10T09:49:36.0427024Z ../../../opt/conda/envs/pytorch/lib/python3.10/site-packages/urllib3/connectionpool.py:1064
+2025-04-10T09:49:36.0427512Z ../../../opt/conda/envs/pytorch/lib/python3.10/site-packages/urllib3/connectionpool.py:1064
+2025-04-10T09:49:36.0428683Z   /opt/conda/envs/pytorch/lib/python3.10/site-packages/urllib3/connectionpool.py:1064: InsecureRequestWarning: Unverified HTTPS request is being made to host 'vpn.luchentech.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+2025-04-10T09:49:36.0429676Z     warnings.warn(
+2025-04-10T09:49:36.0429797Z 
+2025-04-10T09:49:36.0429912Z <frozen importlib._bootstrap>:283
+2025-04-10T09:49:36.0430456Z   <frozen importlib._bootstrap>:283: DeprecationWarning: the load_module() method is deprecated and slated for removal in Python 3.12; use exec_module() instead
+2025-04-10T09:49:36.0430905Z 
+2025-04-10T09:49:36.0431095Z -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+2025-04-10T09:49:36.0431462Z ============================== slowest durations ===============================
+2025-04-10T09:49:36.0431964Z 8.44s call     tests/test_booster/test_mixed_precision/test_fp16_torch.py::test_torch_ddp_plugin
+2025-04-10T09:49:36.0432486Z 0.07s setup    tests/test_booster/test_mixed_precision/test_fp16_torch.py::test_torch_ddp_plugin
+2025-04-10T09:49:36.0432977Z 
+2025-04-10T09:49:36.0433132Z (1 durations < 0.005s hidden.  Use -vv to show these durations.)
+2025-04-10T09:49:36.0433489Z =========================== short test summary info ============================
+2025-04-10T09:49:36.0434187Z FAILED tests/test_booster/test_mixed_precision/test_fp16_torch.py::test_torch_ddp_plugin - torch.multiprocessing.spawn.ProcessExitedException: process 0 terminated with signal SIGFPE
+2025-04-10T09:49:36.0434881Z ======================= 1 failed, 14 warnings in 15.93s ========================
+2025-04-10T09:49:36.8611775Z ##[error]Process completed with exit code 1.

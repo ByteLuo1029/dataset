@@ -1,0 +1,191 @@
+##[group]Run <:*:>
+with:
+sparse-checkout: apps
+repository: <:*:>
+token: ***
+ssh-strict: true
+ssh-user: git
+persist-credentials: <:*:>
+clean: true
+sparse-checkout-cone-mode: true
+fetch-depth: <:NUM:>
+fetch-tags: false
+show-progress: true
+lfs: false
+submodules: <:*:>
+set-safe-directory: true
+##[endgroup]
+Syncing repository: <:*:>
+##[group]Getting Git version info
+Working directory is <:*:>
+[command]/usr/bin/git version
+git version <:NUM:>.<:NUM:>.<:NUM:>
+##[endgroup]
+Temporarily overriding HOME='/home/runner/work/_temp/61a636d6-a554-4e75-ab77-7b2c3d704085' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+[command]/usr/bin/git config --global --add safe.directory /home/runner/work/supabase/supabase
+Deleting the contents of <:*:>
+##[group]Initializing the repository
+[command]/usr/bin/git init <:*:>
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint:
+hint: git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint: git branch -m <name>
+Initialized empty Git repository in <:*:>
+[command]/usr/bin/git remote add origin <:*:>
+##[endgroup]
+##[group]Disabling automatic garbage collection
+[command]/usr/bin/git config --local gc.auto 0
+##[endgroup]
+##[group]Setting up auth
+[command]/usr/bin/git config --local --name-only --get-regexp <:*:>
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp <:*:> && git config --local --unset-all <:*:> || :"
+[command]/usr/bin/git config --local --name-only --get-regexp <:*:>
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp <:*:> && git config --local --unset-all <:*:> || :"
+[command]/usr/bin/git config <:*:> http.https://github.com/.extraheader AUTHORIZATION: basic ***
+##[endgroup]
+##[group]Fetching the repository
+[command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --filter=blob:none --depth=1 origin +ed95dd62d7ff8e9ecce5056f8f949e2a96c21e5d:refs/remotes/pull/27087/merge
+From <:*:>
+* [new ref] <:SEQ:>-> <:*:>
+##[endgroup]
+##[group]Determining the checkout info
+##[endgroup]
+##[group]Setting up sparse checkout
+[command]/usr/bin/git sparse-checkout set apps
+##[endgroup]
+##[group]Checking out the ref
+[command]/usr/bin/git checkout --progress --force refs/remotes/pull/<:NUM:>/merge
+Updating files:   0% (2/9508)
+Updating files:   1% (96/9508)
+Updating files:   2% (191/9508)
+Updating files:   3% (286/9508)
+Updating files:   4% (381/9508)
+Updating files:   5% (476/9508)
+Updating files:   6% (571/9508)
+Updating files:   7% (666/9508)
+Updating files:   8% (761/9508)
+Updating files:   9% (856/9508)
+Updating files:  10% (951/9508)
+Updating files:  11% (1046/9508)
+Updating files:  12% (1141/9508)
+Updating files:  13% (1237/9508)
+Updating files:  14% (1332/9508)
+Updating files:  15% (1427/9508)
+Updating files:  16% (1522/9508)
+Updating files:  17% (1617/9508)
+Updating files:  18% (1712/9508)
+Updating files:  19% (1807/9508)
+Updating files:  20% (1902/9508)
+Updating files:  21% (1997/9508)
+Updating files:  22% (2092/9508)
+Updating files:  23% (2187/9508)
+Updating files:  24% (2282/9508)
+Updating files:  25% (2377/9508)
+Updating files:  25% (2412/9508)
+Updating files:  26% (2473/9508)
+Updating files:  27% (2568/9508)
+Updating files:  28% (2663/9508)
+Updating files:  29% (2758/9508)
+Updating files:  30% (2853/9508)
+Updating files:  31% (2948/9508)
+Updating files:  32% (3043/9508)
+Updating files:  33% (3138/9508)
+Updating files:  34% (3233/9508)
+Updating files:  35% (3328/9508)
+Updating files:  36% (3423/9508)
+Updating files:  37% (3518/9508)
+Updating files:  38% (3614/9508)
+Updating files:  39% (3709/9508)
+Updating files:  40% (3804/9508)
+Updating files:  41% (3899/9508)
+Updating files:  42% (3994/9508)
+Updating files:  43% (4089/9508)
+Updating files:  44% (4184/9508)
+Updating files:  45% (4279/9508)
+Updating files:  46% (4374/9508)
+Updating files:  47% (4469/9508)
+Updating files:  48% (4564/9508)
+Updating files:  49% (4659/9508)
+Updating files:  50% (4754/9508)
+Updating files:  51% (4850/9508)
+Updating files:  52% (4945/9508)
+Updating files:  53% (5040/9508)
+Updating files:  54% (5135/9508)
+Updating files:  55% (5230/9508)
+Updating files:  56% (5325/9508)
+Updating files:  57% (5420/9508)
+Updating files:  58% (5515/9508)
+Updating files:  59% (5610/9508)
+Updating files:  60% (5705/9508)
+Updating files:  61% (5800/9508)
+Updating files:  62% (5895/9508)
+Updating files:  63% (5991/9508)
+Updating files:  64% (6086/9508)
+Updating files:  65% (6181/9508)
+Updating files:  66% (6276/9508)
+Updating files:  67% (6371/9508)
+Updating files:  68% (6466/9508)
+Updating files:  69% (6561/9508)
+Updating files:  70% (6656/9508)
+Updating files:  71% (6751/9508)
+Updating files:  72% (6846/9508)
+Updating files:  73% (6941/9508)
+Updating files:  74% (7036/9508)
+Updating files:  75% (7131/9508)
+Updating files:  75% (7176/9508)
+Updating files:  76% (7227/9508)
+Updating files:  77% (7322/9508)
+Updating files:  78% (7417/9508)
+Updating files:  79% (7512/9508)
+Updating files:  80% (7607/9508)
+Updating files:  81% (7702/9508)
+Updating files:  81% (7745/9508)
+Updating files:  82% (7797/9508)
+Updating files:  83% (7892/9508)
+Updating files:  84% (7987/9508)
+Updating files:  85% (8082/9508)
+Updating files:  86% (8177/9508)
+Updating files:  87% (8272/9508)
+Updating files:  88% (8368/9508)
+Updating files:  89% (8463/9508)
+Updating files:  90% (8558/9508)
+Updating files:  91% (8653/9508)
+Updating files:  92% (8748/9508)
+Updating files:  92% (8810/9508)
+Updating files:  93% (8843/9508)
+Updating files:  94% (8938/9508)
+Updating files:  95% (9033/9508)
+Updating files:  96% (9128/9508)
+Updating files:  97% (9223/9508)
+Updating files:  98% (9318/9508)
+Updating files:  99% (9413/9508)
+Updating files: 100% (9508/9508)
+Updating files: 100% (9508/9508), done.
+Note: switching to 'refs/remotes/pull/<:NUM:>/merge'.
+2025-04-15T07:14:13.8366495Z
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+2025-04-15T07:14:13.8369413Z
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+2025-04-15T07:14:13.8370870Z
+git switch -c <new-branch-name>
+2025-04-15T07:14:13.8371317Z
+Or undo this operation with:
+2025-04-15T07:14:13.8371846Z
+git switch -
+2025-04-15T07:14:13.8404071Z
+Turn off this advice by setting config variable advice.detachedHead to false
+2025-04-15T07:14:13.8404872Z
+HEAD is now at <:*:> Merge <:SEQ:> into <:SEQ:>
+##[endgroup]
+[command]/usr/bin/git log <:NUM:> <:*:>
+<:SEQ:>

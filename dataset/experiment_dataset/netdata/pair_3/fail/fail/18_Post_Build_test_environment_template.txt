@@ -1,0 +1,70 @@
+Post job cleanup.
+Post job cleanup.
+##[group]Generating build summary
+exporting build record to /home/runner/work/_temp/docker-actions-toolkit-3qNlJD/export
+[command]/usr/bin/mkfifo /home/runner/work/_temp/docker-actions-toolkit-3qNlJD/buildx-in-X02l1j.fifo
+[command]/usr/bin/mkfifo /home/runner/work/_temp/docker-actions-toolkit-3qNlJD/buildx-out-XtW7W0.fifo
+[command]docker buildx --builder builder-cb6887f1-0b79-4df5-be34-b384e84c9afc dial-stdio
+[command]docker run --rm -i -v /home/runner/.docker/buildx/refs:/buildx-refs -v /home/runner/work/_temp/docker-actions-toolkit-3qNlJD/export:/out docker.io/dockereng/export-build:latest --ref-state-dir=/buildx-refs --node=builder-cb6887f1-0b79-4df5-be34-b384e84c9afc/builder-cb6887f1-0b79-4df5-be34-b384e84c9afc0 --ref=yurr24bwlrr1mij6d3ai8m293 --uid=1001 --gid=118
+Unable to find image 'dockereng/export-build:latest' locally
+ERROR: no builder "builder-cb6887f1-0b79-4df5-be34-b384e84c9afc" found
+Process "buildx dial-stdio" exited with code 1
+latest: Pulling from dockereng/export-build
+5f398fcfd265: Pulling fs layer
+152e015ae384: Pulling fs layer
+152e015ae384: Verifying Checksum
+152e015ae384: Download complete
+5f398fcfd265: Download complete
+5f398fcfd265: Pull complete
+152e015ae384: Pull complete
+Digest: sha256:<:SEQ:>
+Status: Downloaded newer image for dockereng/export-build:latest
+2025/04/15 08:40:48 error: Unavailable: connection error: desc = "error reading server preface: EOF"
+github.com/moby/buildkit/util/stack.Enable
+/go/pkg/mod/github.com/moby/buildkit@v0.15.0/util/stack/stack.go:78
+github.com/moby/buildkit/util/grpcerrors.FromGRPC
+/go/pkg/mod/github.com/moby/buildkit@v0.15.0/util/grpcerrors/grpcerrors.go:198
+github.com/moby/buildkit/util/grpcerrors.UnaryClientInterceptor
+/go/pkg/mod/github.com/moby/buildkit@v0.15.0/util/grpcerrors/intercept.go:41
+google.golang.org/grpc.(*ClientConn).Invoke
+/go/pkg/mod/google.golang.org/grpc@v1.59.0/call.go:35
+github.com/moby/buildkit/api/services/control.(*controlClient).ListWorkers
+/go/pkg/mod/github.com/moby/buildkit@v0.15.0/api/services/control/control.pb.go:2324
+github.com/moby/buildkit/client.(*Client).ListWorkers
+/go/pkg/mod/github.com/moby/buildkit@v0.15.0/client/workers.go:31
+main.run
+/src/main.go:104
+main.main
+/src/main.go:81
+runtime.main
+/usr/local/go/src/runtime/proc.go:271
+runtime.goexit
+/usr/local/go/src/runtime/asm_amd64.s:1695
+failed to list workers
+github.com/moby/buildkit/client.(*Client).ListWorkers
+/go/pkg/mod/github.com/moby/buildkit@v0.15.0/client/workers.go:33
+main.run
+/src/main.go:104
+main.main
+/src/main.go:81
+runtime.main
+/usr/local/go/src/runtime/proc.go:271
+runtime.goexit
+/usr/local/go/src/runtime/asm_amd64.s:1695
+failed to list workers
+main.run
+/src/main.go:106
+main.main
+/src/main.go:81
+runtime.main
+/usr/local/go/src/runtime/proc.go:271
+runtime.goexit
+/usr/local/go/src/runtime/asm_amd64.s:1695
+Process "docker run" exited with code 1
+##[warning]Process "docker run" closed with code 1
+##[endgroup]
+##[group]Removing temp folder /home/runner/work/_temp/docker-actions-toolkit-ywZyYY
+##[endgroup]
+##[group]Post cache
+State not set
+##[endgroup]

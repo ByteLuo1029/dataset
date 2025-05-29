@@ -1,0 +1,162 @@
+2025-04-14T22:09:36.1066044Z ##[group]Run actions/checkout@v4
+2025-04-14T22:09:36.1067695Z with:
+2025-04-14T22:09:36.1068208Z   persist-credentials: false
+2025-04-14T22:09:36.1068774Z   repository: python/cpython
+2025-04-14T22:09:36.1069595Z   token: ***
+2025-04-14T22:09:36.1070035Z   ssh-strict: true
+2025-04-14T22:09:36.1070482Z   ssh-user: git
+2025-04-14T22:09:36.1070958Z   clean: true
+2025-04-14T22:09:36.1071415Z   sparse-checkout-cone-mode: true
+2025-04-14T22:09:36.1071949Z   fetch-depth: 1
+2025-04-14T22:09:36.1072398Z   fetch-tags: false
+2025-04-14T22:09:36.1072850Z   show-progress: true
+2025-04-14T22:09:36.1073316Z   lfs: false
+2025-04-14T22:09:36.1075149Z   submodules: false
+2025-04-14T22:09:36.1075852Z   set-safe-directory: true
+2025-04-14T22:09:36.1077049Z env:
+2025-04-14T22:09:36.1077612Z   FORCE_COLOR: 1
+2025-04-14T22:09:36.1078190Z   IncludeUwp: true
+2025-04-14T22:09:36.1078652Z   ARCH: arm64
+2025-04-14T22:09:36.1079076Z ##[endgroup]
+2025-04-14T22:09:36.4159034Z Syncing repository: python/cpython
+2025-04-14T22:09:36.4161109Z ##[group]Getting Git version info
+2025-04-14T22:09:36.4161809Z Working directory is 'C:\a\cpython\cpython'
+2025-04-14T22:09:36.4822537Z [command]"C:\Program Files\Git\bin\git.exe" version
+2025-04-14T22:09:37.4284260Z git version 2.48.1.windows.1
+2025-04-14T22:09:37.4343312Z ##[endgroup]
+2025-04-14T22:09:37.4368483Z Temporarily overriding HOME='C:\a\_temp\5e706ca8-5418-4bce-a14a-16f6ba91cf60' before making global git config changes
+2025-04-14T22:09:37.4370103Z Adding repository directory to the temporary git global config as a safe directory
+2025-04-14T22:09:37.4383242Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory C:\a\cpython\cpython
+2025-04-14T22:09:37.6224688Z Deleting the contents of 'C:\a\cpython\cpython'
+2025-04-14T22:09:37.6234487Z ##[group]Initializing the repository
+2025-04-14T22:09:37.6244098Z [command]"C:\Program Files\Git\bin\git.exe" init C:\a\cpython\cpython
+2025-04-14T22:09:37.7744454Z Initialized empty Git repository in C:/a/cpython/cpython/.git/
+2025-04-14T22:09:37.7799120Z [command]"C:\Program Files\Git\bin\git.exe" remote add origin https://github.com/python/cpython
+2025-04-14T22:09:37.8350869Z ##[endgroup]
+2025-04-14T22:09:37.8352803Z ##[group]Disabling automatic garbage collection
+2025-04-14T22:09:37.8361035Z [command]"C:\Program Files\Git\bin\git.exe" config --local gc.auto 0
+2025-04-14T22:09:37.8775672Z ##[endgroup]
+2025-04-14T22:09:37.8777536Z ##[group]Setting up auth
+2025-04-14T22:09:37.8791319Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2025-04-14T22:09:37.9209567Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2025-04-14T22:09:41.2439656Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-14T22:09:41.2822898Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2025-04-14T22:09:42.4376715Z [command]"C:\Program Files\Git\bin\git.exe" config --local http.https://github.com/.extraheader "AUTHORIZATION: basic ***"
+2025-04-14T22:09:42.4786698Z ##[endgroup]
+2025-04-14T22:09:42.4787615Z ##[group]Fetching the repository
+2025-04-14T22:09:42.4803464Z [command]"C:\Program Files\Git\bin\git.exe" -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +cb6cb28fe63dc68a61d6aecd280df6eae62411d3:refs/remotes/pull/132534/merge
+2025-04-14T22:09:45.9399910Z From https://github.com/python/cpython
+2025-04-14T22:09:45.9401618Z  * [new ref]         cb6cb28fe63dc68a61d6aecd280df6eae62411d3 -> pull/132534/merge
+2025-04-14T22:09:46.0275651Z ##[endgroup]
+2025-04-14T22:09:46.0276251Z ##[group]Determining the checkout info
+2025-04-14T22:09:46.0284675Z ##[endgroup]
+2025-04-14T22:09:46.0290010Z [command]"C:\Program Files\Git\bin\git.exe" sparse-checkout disable
+2025-04-14T22:09:46.0873942Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all extensions.worktreeConfig
+2025-04-14T22:09:46.1272669Z ##[group]Checking out the ref
+2025-04-14T22:09:46.1283578Z [command]"C:\Program Files\Git\bin\git.exe" checkout --progress --force refs/remotes/pull/132534/merge
+2025-04-14T22:09:47.1907248Z Updating files:  27% (1432/5132)
+2025-04-14T22:09:47.2258746Z Updating files:  28% (1437/5132)
+2025-04-14T22:09:47.2627191Z Updating files:  29% (1489/5132)
+2025-04-14T22:09:47.2978310Z Updating files:  30% (1540/5132)
+2025-04-14T22:09:47.3330834Z Updating files:  31% (1591/5132)
+2025-04-14T22:09:47.3618436Z Updating files:  32% (1643/5132)
+2025-04-14T22:09:47.4451552Z Updating files:  33% (1694/5132)
+2025-04-14T22:09:47.4845045Z Updating files:  34% (1745/5132)
+2025-04-14T22:09:47.5294617Z Updating files:  35% (1797/5132)
+2025-04-14T22:09:47.5775916Z Updating files:  36% (1848/5132)
+2025-04-14T22:09:47.6120488Z Updating files:  37% (1899/5132)
+2025-04-14T22:09:47.6441282Z Updating files:  38% (1951/5132)
+2025-04-14T22:09:47.6790844Z Updating files:  39% (2002/5132)
+2025-04-14T22:09:47.7150437Z Updating files:  40% (2053/5132)
+2025-04-14T22:09:47.7477903Z Updating files:  41% (2105/5132)
+2025-04-14T22:09:47.7768278Z Updating files:  42% (2156/5132)
+2025-04-14T22:09:47.8321516Z Updating files:  43% (2207/5132)
+2025-04-14T22:09:47.8540311Z Updating files:  44% (2259/5132)
+2025-04-14T22:09:47.8878930Z Updating files:  45% (2310/5132)
+2025-04-14T22:09:47.9172117Z Updating files:  46% (2361/5132)
+2025-04-14T22:09:47.9451834Z Updating files:  47% (2413/5132)
+2025-04-14T22:09:47.9695125Z Updating files:  48% (2464/5132)
+2025-04-14T22:09:47.9971967Z Updating files:  49% (2515/5132)
+2025-04-14T22:09:48.0317195Z Updating files:  50% (2566/5132)
+2025-04-14T22:09:48.0618809Z Updating files:  51% (2618/5132)
+2025-04-14T22:09:48.0962694Z Updating files:  52% (2669/5132)
+2025-04-14T22:09:48.1289546Z Updating files:  53% (2720/5132)
+2025-04-14T22:09:48.1655043Z Updating files:  54% (2772/5132)
+2025-04-14T22:09:48.1874603Z Updating files:  55% (2823/5132)
+2025-04-14T22:09:48.1930204Z Updating files:  55% (2859/5132)
+2025-04-14T22:09:48.2111393Z Updating files:  56% (2874/5132)
+2025-04-14T22:09:48.3331202Z Updating files:  57% (2926/5132)
+2025-04-14T22:09:48.3639475Z Updating files:  58% (2977/5132)
+2025-04-14T22:09:48.3950703Z Updating files:  59% (3028/5132)
+2025-04-14T22:09:48.4298599Z Updating files:  60% (3080/5132)
+2025-04-14T22:09:48.4478350Z Updating files:  61% (3131/5132)
+2025-04-14T22:09:48.4849429Z Updating files:  62% (3182/5132)
+2025-04-14T22:09:48.5152721Z Updating files:  63% (3234/5132)
+2025-04-14T22:09:48.5632654Z Updating files:  64% (3285/5132)
+2025-04-14T22:09:48.6043660Z Updating files:  65% (3336/5132)
+2025-04-14T22:09:48.6552565Z Updating files:  66% (3388/5132)
+2025-04-14T22:09:48.6857621Z Updating files:  67% (3439/5132)
+2025-04-14T22:09:48.7106183Z Updating files:  68% (3490/5132)
+2025-04-14T22:09:48.8977400Z Updating files:  69% (3542/5132)
+2025-04-14T22:09:48.9282003Z Updating files:  70% (3593/5132)
+2025-04-14T22:09:48.9595976Z Updating files:  71% (3644/5132)
+2025-04-14T22:09:48.9949366Z Updating files:  72% (3696/5132)
+2025-04-14T22:09:49.0278372Z Updating files:  73% (3747/5132)
+2025-04-14T22:09:49.0588997Z Updating files:  74% (3798/5132)
+2025-04-14T22:09:49.0881653Z Updating files:  75% (3849/5132)
+2025-04-14T22:09:49.1127148Z Updating files:  76% (3901/5132)
+2025-04-14T22:09:49.1353133Z Updating files:  77% (3952/5132)
+2025-04-14T22:09:49.1748324Z Updating files:  78% (4003/5132)
+2025-04-14T22:09:49.1888657Z Updating files:  79% (4055/5132)
+2025-04-14T22:09:49.2061983Z Updating files:  79% (4077/5132)
+2025-04-14T22:09:49.3213635Z Updating files:  80% (4106/5132)
+2025-04-14T22:09:49.3604965Z Updating files:  81% (4157/5132)
+2025-04-14T22:09:49.3981978Z Updating files:  82% (4209/5132)
+2025-04-14T22:09:49.4340699Z Updating files:  83% (4260/5132)
+2025-04-14T22:09:49.4797950Z Updating files:  84% (4311/5132)
+2025-04-14T22:09:49.5094968Z Updating files:  85% (4363/5132)
+2025-04-14T22:09:49.5389149Z Updating files:  86% (4414/5132)
+2025-04-14T22:09:49.5694647Z Updating files:  87% (4465/5132)
+2025-04-14T22:09:49.6030792Z Updating files:  88% (4517/5132)
+2025-04-14T22:09:49.6375249Z Updating files:  89% (4568/5132)
+2025-04-14T22:09:49.6707870Z Updating files:  90% (4619/5132)
+2025-04-14T22:09:49.7005802Z Updating files:  91% (4671/5132)
+2025-04-14T22:09:49.7322018Z Updating files:  92% (4722/5132)
+2025-04-14T22:09:49.7617570Z Updating files:  93% (4773/5132)
+2025-04-14T22:09:49.7923742Z Updating files:  94% (4825/5132)
+2025-04-14T22:09:49.8204362Z Updating files:  95% (4876/5132)
+2025-04-14T22:09:49.8469767Z Updating files:  96% (4927/5132)
+2025-04-14T22:09:49.8726471Z Updating files:  97% (4979/5132)
+2025-04-14T22:09:49.9208508Z Updating files:  98% (5030/5132)
+2025-04-14T22:09:49.9547168Z Updating files:  99% (5081/5132)
+2025-04-14T22:09:49.9547531Z Updating files: 100% (5132/5132)
+2025-04-14T22:09:49.9547785Z Updating files: 100% (5132/5132), done.
+2025-04-14T22:09:49.9702501Z Note: switching to 'refs/remotes/pull/132534/merge'.
+2025-04-14T22:09:49.9702761Z 
+2025-04-14T22:09:49.9702993Z You are in 'detached HEAD' state. You can look around, make experimental
+2025-04-14T22:09:49.9703429Z changes and commit them, and you can discard any commits you make in this
+2025-04-14T22:09:49.9703873Z state without impacting any branches by switching back to a branch.
+2025-04-14T22:09:49.9704120Z 
+2025-04-14T22:09:49.9704284Z If you want to create a new branch to retain commits you create, you may
+2025-04-14T22:09:49.9704687Z do so (now or later) by using -c with the switch command. Example:
+2025-04-14T22:09:49.9704917Z 
+2025-04-14T22:09:49.9705007Z   git switch -c <new-branch-name>
+2025-04-14T22:09:49.9705174Z 
+2025-04-14T22:09:49.9705259Z Or undo this operation with:
+2025-04-14T22:09:49.9705418Z 
+2025-04-14T22:09:49.9705495Z   git switch -
+2025-04-14T22:09:49.9705600Z 
+2025-04-14T22:09:49.9705788Z Turn off this advice by setting config variable advice.detachedHead to false
+2025-04-14T22:09:49.9706058Z 
+2025-04-14T22:09:49.9706371Z HEAD is now at cb6cb28 Merge 34c60398388ff64e0cc82668df4ed160bdf0f671 into 102f825c5112cbe6985edc0971822b07bd778135
+2025-04-14T22:09:49.9917887Z ##[endgroup]
+2025-04-14T22:09:50.0359878Z [command]"C:\Program Files\Git\bin\git.exe" log -1 --format=%H
+2025-04-14T22:09:50.0711569Z cb6cb28fe63dc68a61d6aecd280df6eae62411d3
+2025-04-14T22:09:50.0767895Z ##[group]Removing auth
+2025-04-14T22:09:50.0778897Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2025-04-14T22:09:50.1157021Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2025-04-14T22:09:51.2873454Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-14T22:09:51.3211600Z http.https://github.com/.extraheader
+2025-04-14T22:09:51.3263175Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all http.https://github.com/.extraheader
+2025-04-14T22:09:51.3695123Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2025-04-14T22:09:52.5215860Z ##[endgroup]

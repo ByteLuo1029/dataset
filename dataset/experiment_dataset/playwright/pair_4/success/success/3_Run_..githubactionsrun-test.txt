@@ -1,0 +1,721 @@
+2025-04-15T07:08:34.2135575Z Prepare all required actions
+2025-04-15T07:08:34.2137048Z Getting action download info
+2025-04-15T07:08:34.4000845Z ##[group]Download immutable action package 'actions/setup-node@v4'
+2025-04-15T07:08:34.4002490Z Version: 4.4.0
+2025-04-15T07:08:34.4004147Z Digest: sha256:9427cefe82346e992fb5b949e3569b39d537ae41aa3086483b14eceebfc16bc1
+2025-04-15T07:08:34.4006151Z Source commit SHA: 49933ea5288caeca8642d1e84afbd3f7d6820020
+2025-04-15T07:08:34.4007575Z ##[endgroup]
+2025-04-15T07:08:34.6300284Z Download action repository 'azure/login@v2' (SHA:a457da9ea143d694b1b9c7c869ebb04ebe844ef5)
+2025-04-15T07:08:34.9430915Z ##[group]Run ./.github/actions/run-test
+2025-04-15T07:08:34.9432032Z with:
+2025-04-15T07:08:34.9432909Z   browsers-to-install: chromium-tip-of-tree
+2025-04-15T07:08:34.9434296Z   command: npm run test -- --project=chromium-*
+2025-04-15T07:08:34.9435540Z   bot-name: ubuntu-22.04-chromium-tip-of-tree
+2025-04-15T07:08:34.9436984Z   flakiness-client-id: ***
+2025-04-15T07:08:34.9438389Z   flakiness-tenant-id: ***
+2025-04-15T07:08:34.9439684Z   flakiness-subscription-id: ***
+2025-04-15T07:08:34.9440686Z   node-version: 18
+2025-04-15T07:08:34.9441490Z   shell: bash
+2025-04-15T07:08:34.9442238Z env:
+2025-04-15T07:08:34.9442954Z   FORCE_COLOR: 1
+2025-04-15T07:08:34.9444042Z   ELECTRON_SKIP_BINARY_DOWNLOAD: 1
+2025-04-15T07:08:34.9445061Z   DEBUG_GIT_COMMIT_INFO: 1
+2025-04-15T07:08:34.9446027Z   PWTEST_CHANNEL: chromium-tip-of-tree
+2025-04-15T07:08:34.9447057Z ##[endgroup]
+2025-04-15T07:08:34.9628043Z ##[group]Run actions/setup-node@v4
+2025-04-15T07:08:34.9629096Z with:
+2025-04-15T07:08:34.9629861Z   node-version: 18
+2025-04-15T07:08:34.9630709Z   always-auth: false
+2025-04-15T07:08:34.9631585Z   check-latest: false
+2025-04-15T07:08:34.9632714Z   token: ***
+2025-04-15T07:08:34.9633651Z env:
+2025-04-15T07:08:34.9634398Z   FORCE_COLOR: 1
+2025-04-15T07:08:34.9635274Z   ELECTRON_SKIP_BINARY_DOWNLOAD: 1
+2025-04-15T07:08:34.9636310Z   DEBUG_GIT_COMMIT_INFO: 1
+2025-04-15T07:08:34.9637312Z   PWTEST_CHANNEL: chromium-tip-of-tree
+2025-04-15T07:08:34.9638401Z ##[endgroup]
+2025-04-15T07:08:35.1374114Z Found in cache @ /opt/hostedtoolcache/node/18.20.8/x64
+2025-04-15T07:08:35.1380730Z ##[group]Environment details
+2025-04-15T07:08:35.4876120Z node: v18.20.8
+2025-04-15T07:08:35.4877700Z npm: 10.8.2
+2025-04-15T07:08:35.4879358Z yarn: 1.22.22
+2025-04-15T07:08:35.4881559Z ##[endgroup]
+2025-04-15T07:08:35.5014707Z Prepare all required actions
+2025-04-15T07:08:35.5087190Z ##[group]Run ./.github/actions/enable-microphone-access
+2025-04-15T07:08:35.5088398Z env:
+2025-04-15T07:08:35.5089144Z   FORCE_COLOR: 1
+2025-04-15T07:08:35.5090036Z   ELECTRON_SKIP_BINARY_DOWNLOAD: 1
+2025-04-15T07:08:35.5091071Z   DEBUG_GIT_COMMIT_INFO: 1
+2025-04-15T07:08:35.5092075Z   PWTEST_CHANNEL: chromium-tip-of-tree
+2025-04-15T07:08:35.5093133Z ##[endgroup]
+2025-04-15T07:08:35.5139653Z ##[group]Run if [[ "$(uname)" != "Darwin" ]]; then
+2025-04-15T07:08:35.5140964Z [36;1mif [[ "$(uname)" != "Darwin" ]]; then[0m
+2025-04-15T07:08:35.5142125Z [36;1m  echo "Not macOS, exiting"[0m
+2025-04-15T07:08:35.5143202Z [36;1m  exit 0[0m
+2025-04-15T07:08:35.5144173Z [36;1mfi[0m
+2025-04-15T07:08:35.5145131Z [36;1mecho "Allowing microphone access to all apps"[0m
+2025-04-15T07:08:35.5146502Z [36;1mversion=$(sw_vers -productVersion | cut -d. -f1)[0m
+2025-04-15T07:08:35.5147885Z [36;1mif [[ "$version" == "14" || "$version" == "15" ]]; then[0m
+2025-04-15T07:08:35.5151580Z [36;1m  sqlite3 $HOME/Library/Application\ Support/com.apple.TCC/TCC.db "INSERT OR IGNORE INTO access VALUES ('kTCCServiceMicrophone','/usr/local/opt/runner/provisioner/provisioner',1,2,4,1,NULL,NULL,0,'UNUSED',NULL,0,1687786159,NULL,NULL,'UNUSED',1687786159);"[0m
+2025-04-15T07:08:35.5155420Z [36;1melif [[ "$version" == "12" || "$version" == "13" ]]; then[0m
+2025-04-15T07:08:35.5158841Z [36;1m  sqlite3 $HOME/Library/Application\ Support/com.apple.TCC/TCC.db "INSERT OR REPLACE INTO access VALUES('kTCCServiceMicrophone','/usr/local/opt/runner/provisioner/provisioner',1,2,4,1,NULL,NULL,0,'UNUSED',NULL,0,1687786159);"[0m
+2025-04-15T07:08:35.5162361Z [36;1melse[0m
+2025-04-15T07:08:35.5163497Z [36;1m  echo "Skipping unsupported macOS version $version"[0m
+2025-04-15T07:08:35.5164720Z [36;1m  exit 0[0m
+2025-04-15T07:08:35.5165546Z [36;1mfi[0m
+2025-04-15T07:08:35.5166494Z [36;1mecho "Successfully allowed microphone access"[0m
+2025-04-15T07:08:35.5267791Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-04-15T07:08:35.5269061Z env:
+2025-04-15T07:08:35.5269827Z   FORCE_COLOR: 1
+2025-04-15T07:08:35.5270710Z   ELECTRON_SKIP_BINARY_DOWNLOAD: 1
+2025-04-15T07:08:35.5271747Z   DEBUG_GIT_COMMIT_INFO: 1
+2025-04-15T07:08:35.5272754Z   PWTEST_CHANNEL: chromium-tip-of-tree
+2025-04-15T07:08:35.5273962Z ##[endgroup]
+2025-04-15T07:08:35.5400061Z Not macOS, exiting
+2025-04-15T07:08:35.5460966Z ##[group]Run echo "::group::npm ci"
+2025-04-15T07:08:35.5462041Z [36;1mecho "::group::npm ci"[0m
+2025-04-15T07:08:35.5462986Z [36;1mnpm ci[0m
+2025-04-15T07:08:35.5463997Z [36;1mecho "::endgroup::"[0m
+2025-04-15T07:08:35.5519845Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-04-15T07:08:35.5521058Z env:
+2025-04-15T07:08:35.5521794Z   FORCE_COLOR: 1
+2025-04-15T07:08:35.5522653Z   ELECTRON_SKIP_BINARY_DOWNLOAD: 1
+2025-04-15T07:08:35.5523851Z   DEBUG_GIT_COMMIT_INFO: 1
+2025-04-15T07:08:35.5524843Z   PWTEST_CHANNEL: chromium-tip-of-tree
+2025-04-15T07:08:35.5525862Z ##[endgroup]
+2025-04-15T07:08:35.5613682Z ##[group]npm ci
+2025-04-15T07:08:38.0639766Z npm warn deprecated xterm-addon-fit@0.7.0: This package is now deprecated. Move to @xterm/addon-fit instead.
+2025-04-15T07:08:38.3162123Z npm warn deprecated readdir-scoped-modules@1.1.0: This functionality has been moved to @npmcli/fs
+2025-04-15T07:08:38.4117479Z npm warn deprecated read-package-json@2.1.2: This package is no longer supported. Please use @npmcli/package-json instead.
+2025-04-15T07:08:38.5056924Z npm warn deprecated osenv@0.1.5: This package is no longer supported.
+2025-04-15T07:08:38.8348492Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+2025-04-15T07:08:38.9373218Z npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+2025-04-15T07:08:39.0228599Z npm warn deprecated read-installed@4.0.3: This package is no longer supported.
+2025-04-15T07:08:39.3675579Z npm warn deprecated debuglog@1.0.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-04-15T07:08:39.6232264Z npm warn deprecated @types/immutable@3.8.7: This is a stub types definition for Facebook's Immutable (https://github.com/facebook/immutable-js). Facebook's Immutable provides its own type definitions, so you don't need @types/immutable installed!
+2025-04-15T07:08:39.7781299Z npm warn deprecated boolean@3.2.0: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-04-15T07:08:41.6484458Z npm warn deprecated xterm@5.3.0: This package is now deprecated. Move to @xterm/xterm instead.
+2025-04-15T07:08:49.3338164Z 
+2025-04-15T07:08:49.3338943Z added 557 packages, and audited 580 packages in 14s
+2025-04-15T07:08:49.3339416Z 
+2025-04-15T07:08:49.3339871Z 147 packages are looking for funding
+2025-04-15T07:08:49.3344830Z   run `npm fund` for details
+2025-04-15T07:08:49.3528076Z 
+2025-04-15T07:08:49.3528937Z 2 moderate severity vulnerabilities
+2025-04-15T07:08:49.3529474Z 
+2025-04-15T07:08:49.3529740Z To address all issues, run:
+2025-04-15T07:08:49.3530272Z   npm audit fix
+2025-04-15T07:08:49.3530549Z 
+2025-04-15T07:08:49.3841900Z Run `npm audit` for details.
+2025-04-15T07:08:49.3843256Z ##[endgroup]
+2025-04-15T07:08:49.3868110Z ##[group]Run echo "::group::npm run build"
+2025-04-15T07:08:49.3868542Z [36;1mecho "::group::npm run build"[0m
+2025-04-15T07:08:49.3868825Z [36;1mnpm run build[0m
+2025-04-15T07:08:49.3869104Z [36;1mecho "::endgroup::"[0m
+2025-04-15T07:08:49.3923141Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-04-15T07:08:49.3923900Z env:
+2025-04-15T07:08:49.3924096Z   FORCE_COLOR: 1
+2025-04-15T07:08:49.3924329Z   ELECTRON_SKIP_BINARY_DOWNLOAD: 1
+2025-04-15T07:08:49.3924621Z   DEBUG_GIT_COMMIT_INFO: 1
+2025-04-15T07:08:49.3924885Z   PWTEST_CHANNEL: chromium-tip-of-tree
+2025-04-15T07:08:49.3925156Z ##[endgroup]
+2025-04-15T07:08:49.3998523Z ##[group]npm run build
+2025-04-15T07:08:49.5188381Z 
+2025-04-15T07:08:49.5188983Z > playwright-internal@1.52.0-next build
+2025-04-15T07:08:49.5189387Z > node utils/build/build.js
+2025-04-15T07:08:49.5189576Z 
+2025-04-15T07:08:49.6789403Z ==== Running npm ci --save=false --fund=false --audit=false in /home/runner/work/playwright/playwright/tests/playwright-test/stable-test-runner
+2025-04-15T07:08:50.3896918Z 
+2025-04-15T07:08:50.3903227Z added 3 packages in 642ms
+2025-04-15T07:08:50.3976364Z ==== Running npm ci --save=false --fund=false --audit=false --omit=optional in /home/runner/work/playwright/playwright/packages/playwright/bundles/babel
+2025-04-15T07:08:51.6595002Z 
+2025-04-15T07:08:51.6599523Z added 75 packages in 1s
+2025-04-15T07:08:51.6711441Z ==== Running npm ci --save=false --fund=false --audit=false --omit=optional in /home/runner/work/playwright/playwright/packages/playwright/bundles/expect
+2025-04-15T07:08:52.4967895Z 
+2025-04-15T07:08:52.4968735Z added 51 packages in 757ms
+2025-04-15T07:08:52.5088404Z ==== Running npm ci --save=false --fund=false --audit=false --omit=optional in /home/runner/work/playwright/playwright/packages/playwright/bundles/utils
+2025-04-15T07:08:53.2017390Z 
+2025-04-15T07:08:53.2018052Z added 26 packages in 622ms
+2025-04-15T07:08:53.2095508Z ==== Running npm ci --save=false --fund=false --audit=false --omit=optional in /home/runner/work/playwright/playwright/packages/playwright-core/bundles/utils
+2025-04-15T07:08:54.1246049Z 
+2025-04-15T07:08:54.1246992Z added 45 packages in 847ms
+2025-04-15T07:08:54.1345836Z ==== Running npm ci --save=false --fund=false --audit=false --omit=optional in /home/runner/work/playwright/playwright/packages/playwright-core/bundles/zip
+2025-04-15T07:08:54.7479768Z 
+2025-04-15T07:08:54.7480341Z added 16 packages in 545ms
+2025-04-15T07:08:54.7553304Z ==== Running node /home/runner/work/playwright/playwright/utils/generate_third_party_notice.js in /home/runner/work/playwright/playwright
+2025-04-15T07:08:58.9058953Z ==== Running node utils/generate_clip_paths.js in /home/runner/work/playwright/playwright
+2025-04-15T07:08:58.9710142Z ==== Running node utils/generate_injected.js in /home/runner/work/playwright/playwright
+2025-04-15T07:08:59.0907065Z ==== Running npx esbuild "/home/runner/work/playwright/playwright/packages/playwright/src/**/*.ts" --outdir="/home/runner/work/playwright/playwright/packages/playwright/lib" --platform=node --format=cjs in /home/runner/work/playwright/playwright
+2025-04-15T07:08:59.4940777Z 
+2025-04-15T07:08:59.4941704Z   packages/playwright/lib/index.js                     28.8kb
+2025-04-15T07:08:59.4942503Z   packages/playwright/lib/reporters/html.js            23.7kb
+2025-04-15T07:08:59.4943302Z   packages/playwright/lib/worker/workerMain.js         21.5kb
+2025-04-15T07:08:59.4944244Z   packages/playwright/lib/reporters/base.js            21.1kb
+2025-04-15T07:08:59.4944930Z   packages/playwright/lib/program.js                   20.4kb
+2025-04-15T07:08:59.4945733Z   packages/playwright/lib/runner/testServer.js         20.3kb
+2025-04-15T07:08:59.4946366Z   packages/playwright/lib/runner/dispatcher.js         18.4kb
+2025-04-15T07:08:59.4946810Z   packages/playwright/lib/matchers/matchers.js         18.1kb
+2025-04-15T07:08:59.4947258Z   packages/playwright/lib/matchers/toMatchSnapshot.js  18.0kb
+2025-04-15T07:08:59.4947701Z   packages/playwright/lib/reporters/merge.js           17.8kb
+2025-04-15T07:08:59.4948129Z   packages/playwright/lib/worker/testInfo.js           17.7kb
+2025-04-15T07:08:59.4948580Z   packages/playwright/lib/common/configLoader.js       17.4kb
+2025-04-15T07:08:59.4949010Z   packages/playwright/lib/runner/tasks.js              16.2kb
+2025-04-15T07:08:59.4950165Z   packages/playwright/lib/runner/watchMode.js          15.5kb
+2025-04-15T07:08:59.4950932Z   packages/playwright/lib/util.js                      15.1kb
+2025-04-15T07:08:59.4951380Z   packages/playwright/lib/isomorphic/teleReceiver.js   14.7kb
+2025-04-15T07:08:59.4951850Z   packages/playwright/lib/common/testType.js           14.1kb
+2025-04-15T07:08:59.4952284Z   packages/playwright/lib/runner/loadUtils.js          14.0kb
+2025-04-15T07:08:59.4952711Z   packages/playwright/lib/matchers/expect.js           13.4kb
+2025-04-15T07:08:59.4953135Z   packages/playwright/lib/worker/testTracing.js        13.2kb
+2025-04-15T07:08:59.4953760Z   ...and 72 more output files...
+2025-04-15T07:08:59.4953936Z 
+2025-04-15T07:08:59.4954294Z ⚡ Done in 53ms
+2025-04-15T07:08:59.5041474Z ==== Running npx esbuild "/home/runner/work/playwright/playwright/packages/playwright-core/src/**/*.ts" --outdir="/home/runner/work/playwright/playwright/packages/playwright-core/lib" --platform=node --format=cjs in /home/runner/work/playwright/playwright
+2025-04-15T07:08:59.9733733Z 
+2025-04-15T07:08:59.9734804Z   packages/playwright-core/lib/generated/injectedScriptSource.js      273.8kb
+2025-04-15T07:08:59.9735537Z   packages/playwright-core/lib/protocol/validator.js                  212.5kb
+2025-04-15T07:08:59.9736137Z   packages/playwright-core/lib/generated/consoleApiSource.js           77.7kb
+2025-04-15T07:08:59.9736868Z   packages/playwright-core/lib/server/frames.js                        64.7kb
+2025-04-15T07:08:59.9737407Z   packages/playwright-core/lib/server/registry/index.js                62.8kb
+2025-04-15T07:08:59.9737963Z   packages/playwright-core/lib/generated/pollingRecorderSource.js      58.5kb
+2025-04-15T07:08:59.9738527Z   packages/playwright-core/lib/server/webkit/wkPage.js                 49.6kb
+2025-04-15T07:08:59.9739072Z   packages/playwright-core/lib/server/chromium/crPage.js               45.1kb
+2025-04-15T07:08:59.9739604Z   packages/playwright-core/lib/server/dom.js                           36.4kb
+2025-04-15T07:08:59.9740176Z   packages/playwright-core/lib/server/registry/nativeDeps.js           31.3kb
+2025-04-15T07:08:59.9740719Z   packages/playwright-core/lib/server/page.js                          29.9kb
+2025-04-15T07:08:59.9741278Z   packages/playwright-core/lib/server/chromium/crNetworkManager.js     29.8kb
+2025-04-15T07:08:59.9741817Z   packages/playwright-core/lib/client/page.js                          28.3kb
+2025-04-15T07:08:59.9742350Z   packages/playwright-core/lib/utils/isomorphic/cssTokenizer.js        26.2kb
+2025-04-15T07:08:59.9742882Z   packages/playwright-core/lib/cli/program.js                          25.9kb
+2025-04-15T07:08:59.9743649Z   packages/playwright-core/lib/server/fetch.js                         25.3kb
+2025-04-15T07:08:59.9744242Z   packages/playwright-core/lib/server/browserContext.js                25.1kb
+2025-04-15T07:08:59.9744797Z   packages/playwright-core/lib/utils/isomorphic/locatorGenerators.js   24.7kb
+2025-04-15T07:08:59.9745338Z   packages/playwright-core/lib/client/network.js                       24.5kb
+2025-04-15T07:08:59.9745876Z   packages/playwright-core/lib/server/har/harTracer.js                 23.7kb
+2025-04-15T07:08:59.9746291Z   ...and 261 more output files...
+2025-04-15T07:08:59.9746460Z 
+2025-04-15T07:08:59.9746764Z ⚡ Done in 124ms
+2025-04-15T07:08:59.9850535Z ==== Running npx esbuild "/home/runner/work/playwright/playwright/packages/playwright-dashboard/src/**/*.ts" --outdir="/home/runner/work/playwright/playwright/packages/playwright-dashboard/lib" --platform=node --format=cjs in /home/runner/work/playwright/playwright
+2025-04-15T07:09:00.3437912Z 
+2025-04-15T07:09:00.3439883Z   packages/playwright-dashboard/lib/markdownReporter.js     5.4kb
+2025-04-15T07:09:00.3440835Z   packages/playwright-dashboard/lib/ghaMarkdownReporter.js  5.1kb
+2025-04-15T07:09:00.3441326Z 
+2025-04-15T07:09:00.3441722Z ⚡ Done in 2ms
+2025-04-15T07:09:00.3528179Z ==== Running npx esbuild "/home/runner/work/playwright/playwright/packages/playwright-ct-core/src/**/*.ts" --outdir="/home/runner/work/playwright/playwright/packages/playwright-ct-core/lib" --platform=node --format=cjs in /home/runner/work/playwright/playwright
+2025-04-15T07:09:00.7251600Z 
+2025-04-15T07:09:00.7252447Z   packages/playwright-ct-core/lib/vitePlugin.js               9.9kb
+2025-04-15T07:09:00.7253676Z   packages/playwright-ct-core/lib/viteUtils.js                7.2kb
+2025-04-15T07:09:00.7254552Z   packages/playwright-ct-core/lib/tsxTransform.js             6.5kb
+2025-04-15T07:09:00.7255414Z   packages/playwright-ct-core/lib/router.js                   6.1kb
+2025-04-15T07:09:00.7256242Z   packages/playwright-ct-core/lib/generated/indexSource.js    4.4kb
+2025-04-15T07:09:00.7257057Z   packages/playwright-ct-core/lib/devServer.js                4.3kb
+2025-04-15T07:09:00.7257925Z   packages/playwright-ct-core/lib/mount.js                    4.3kb
+2025-04-15T07:09:00.7258731Z   packages/playwright-ct-core/lib/injected/serializers.js     3.6kb
+2025-04-15T07:09:00.7259360Z   packages/playwright-ct-core/lib/injected/importRegistry.js  2.1kb
+2025-04-15T07:09:00.7260175Z   packages/playwright-ct-core/lib/program.js                  1.1kb
+2025-04-15T07:09:00.7261026Z   packages/playwright-ct-core/lib/injected/index.js           312b 
+2025-04-15T07:09:00.7261475Z 
+2025-04-15T07:09:00.7261939Z ⚡ Done in 7ms
+2025-04-15T07:09:00.7354116Z ==== Running npm run build in /home/runner/work/playwright/playwright/packages/playwright/bundles/babel
+2025-04-15T07:09:00.9012007Z 
+2025-04-15T07:09:00.9012555Z > babel-bundle@0.0.1 build
+2025-04-15T07:09:00.9012987Z > npm run esbuild -- --minify
+2025-04-15T07:09:00.9013210Z 
+2025-04-15T07:09:01.0615912Z 
+2025-04-15T07:09:01.0616548Z > babel-bundle@0.0.1 esbuild
+2025-04-15T07:09:01.0617658Z > esbuild ./src/babelBundleImpl.ts --bundle --outdir=../../lib/transform --format=cjs --platform=node --target=ES2019 --external:playwright --minify
+2025-04-15T07:09:01.0618343Z 
+2025-04-15T07:09:01.1682838Z 
+2025-04-15T07:09:01.1683951Z   ../../lib/transform/babelBundleImpl.js  1.3mb ⚠️
+2025-04-15T07:09:01.1684363Z 
+2025-04-15T07:09:01.1684533Z ⚡ Done in 100ms
+2025-04-15T07:09:01.1829463Z ==== Running npm run build in /home/runner/work/playwright/playwright/packages/playwright/bundles/expect
+2025-04-15T07:09:01.3447302Z 
+2025-04-15T07:09:01.3447928Z > expect-bundle@0.0.1 build
+2025-04-15T07:09:01.3448537Z > npm run esbuild -- --minify
+2025-04-15T07:09:01.3448849Z 
+2025-04-15T07:09:01.5003067Z 
+2025-04-15T07:09:01.5003835Z > expect-bundle@0.0.1 esbuild
+2025-04-15T07:09:01.5004845Z > esbuild ./src/expectBundleImpl.ts --bundle --outdir=../../lib/common --format=cjs --platform=node --target=ES2019 --minify
+2025-04-15T07:09:01.5005426Z 
+2025-04-15T07:09:01.5359322Z 
+2025-04-15T07:09:01.5359982Z   ../../lib/common/expectBundleImpl.js  249.6kb
+2025-04-15T07:09:01.5360372Z 
+2025-04-15T07:09:01.5360783Z ⚡ Done in 29ms
+2025-04-15T07:09:01.5501299Z ==== Running npm run build in /home/runner/work/playwright/playwright/packages/playwright/bundles/utils
+2025-04-15T07:09:01.7092375Z 
+2025-04-15T07:09:01.7093000Z > utils-bundle@0.0.1 build
+2025-04-15T07:09:01.7093855Z > npm run esbuild -- --minify
+2025-04-15T07:09:01.7094183Z 
+2025-04-15T07:09:01.8717238Z 
+2025-04-15T07:09:01.8717687Z > utils-bundle@0.0.1 esbuild
+2025-04-15T07:09:01.8718280Z > node build.js --minify
+2025-04-15T07:09:01.8718581Z 
+2025-04-15T07:09:01.9728103Z ==== Running npm run build in /home/runner/work/playwright/playwright/packages/playwright-core/bundles/utils
+2025-04-15T07:09:02.1442598Z 
+2025-04-15T07:09:02.1443151Z > utils-bundle@0.0.1 build
+2025-04-15T07:09:02.1443716Z > npm run esbuild -- --minify
+2025-04-15T07:09:02.1443907Z 
+2025-04-15T07:09:02.3077518Z 
+2025-04-15T07:09:02.3078162Z > utils-bundle@0.0.1 esbuild
+2025-04-15T07:09:02.3078631Z > node build.js --minify
+2025-04-15T07:09:02.3078855Z 
+2025-04-15T07:09:02.4532646Z ==== Running npm run build in /home/runner/work/playwright/playwright/packages/playwright-core/bundles/zip
+2025-04-15T07:09:02.6114690Z 
+2025-04-15T07:09:02.6115080Z > zip-bundle@0.0.1 build
+2025-04-15T07:09:02.6115612Z > npm run esbuild -- --minify
+2025-04-15T07:09:02.6116249Z 
+2025-04-15T07:09:02.7757716Z 
+2025-04-15T07:09:02.7758272Z > zip-bundle@0.0.1 esbuild
+2025-04-15T07:09:02.7758784Z > node build.js --minify
+2025-04-15T07:09:02.7758993Z 
+2025-04-15T07:09:02.8543687Z ==== Running npm run build in /home/runner/work/playwright/playwright/packages/playwright-client
+2025-04-15T07:09:03.0208762Z 
+2025-04-15T07:09:03.0209422Z > @playwright/client@0.0.0 build
+2025-04-15T07:09:03.0210364Z > esbuild ./src/index.ts --outdir=lib --format=cjs --bundle --platform=node --target=ES2019
+2025-04-15T07:09:03.0210845Z 
+2025-04-15T07:09:03.0534166Z 
+2025-04-15T07:09:03.0534707Z   lib/index.js  395.3kb
+2025-04-15T07:09:03.0535014Z 
+2025-04-15T07:09:03.0535506Z ⚡ Done in 26ms
+2025-04-15T07:09:03.0613212Z ==== Running npx vite --config vite.sw.config.ts build in /home/runner/work/playwright/playwright/packages/trace-viewer
+2025-04-15T07:09:03.6289706Z [36mvite v6.2.6 [32mbuilding for production...[36m[39m
+2025-04-15T07:09:03.6770467Z transforming...
+2025-04-15T07:09:04.0972578Z [32m✓[39m 35 modules transformed.
+2025-04-15T07:09:04.1660471Z rendering chunks...
+2025-04-15T07:09:04.1690224Z computing gzip size...
+2025-04-15T07:09:04.1740763Z [2mpublic/[22m[36msw.bundle.js  [39m[1m[2m94.25 kB[22m[1m[22m[2m │ gzip: 32.93 kB[22m
+2025-04-15T07:09:04.1741846Z [32m✓ built in 522ms[39m
+2025-04-15T07:09:04.2010255Z ==== Running npx vite build in /home/runner/work/playwright/playwright/packages/html-reporter
+2025-04-15T07:09:04.7630570Z [36mvite v6.2.6 [32mbuilding for production...[36m[39m
+2025-04-15T07:09:04.8268926Z transforming...
+2025-04-15T07:09:05.8797527Z [32m✓[39m 87 modules transformed.
+2025-04-15T07:09:06.0216298Z rendering chunks...
+2025-04-15T07:09:06.0437861Z computing gzip size...
+2025-04-15T07:09:06.0605651Z [2mdist/[22m[32mindex.html                 [39m[1m[2m456.38 kB[22m[1m[22m[2m │ gzip: 174.19 kB[22m
+2025-04-15T07:09:06.0606702Z [2mdist/[22m[2massets/[22m[35mstyle-PnV1rYJ2.css  [39m[1m[2m104.86 kB[22m[1m[22m[2m │ gzip:  17.51 kB[22m
+2025-04-15T07:09:06.0607603Z [2mdist/[22m[2massets/[22m[36mindex-DR6ASKEW.js   [39m[1m[2m351.11 kB[22m[1m[22m[2m │ gzip: 156.27 kB[22m
+2025-04-15T07:09:06.0608940Z [32m✓ built in 1.27s[39m
+2025-04-15T07:09:06.0878926Z ==== Running npx vite build in /home/runner/work/playwright/playwright/packages/recorder
+2025-04-15T07:09:06.6538911Z [36mvite v6.2.6 [32mbuilding for production...[36m[39m
+2025-04-15T07:09:06.7173296Z transforming...
+2025-04-15T07:09:08.9616792Z [32m✓[39m 163 modules transformed.
+2025-04-15T07:09:09.2550482Z rendering chunks...
+2025-04-15T07:09:09.2778732Z computing gzip size...
+2025-04-15T07:09:09.2914060Z [2m../playwright-core/lib/vite/recorder/[22m[32mindex.html                            [39m[1m[2m  1.06 kB[22m[1m[22m[2m │ gzip:  0.65 kB[22m
+2025-04-15T07:09:09.2915900Z [2m../playwright-core/lib/vite/recorder/[22m[2massets/[22m[32mcodicon-DCmgc-ay.ttf           [39m[1m[2m 80.34 kB[22m[1m[22m
+2025-04-15T07:09:09.2917625Z [2m../playwright-core/lib/vite/recorder/[22m[2massets/[22m[35mcodeMirrorModule-C3UTv-Ge.css  [39m[1m[2m  6.01 kB[22m[1m[22m[2m │ gzip:  1.57 kB[22m
+2025-04-15T07:09:09.2919219Z [2m../playwright-core/lib/vite/recorder/[22m[2massets/[22m[35mindex-eHBmevrY.css             [39m[1m[2m 92.01 kB[22m[1m[22m[2m │ gzip: 15.29 kB[22m
+2025-04-15T07:09:09.2920831Z [2m../playwright-core/lib/vite/recorder/[22m[2massets/[22m[36mcodeMirrorModule-DVQi6prl.js   [39m[1m[2m293.14 kB[22m[1m[22m[2m │ gzip: 96.81 kB[22m
+2025-04-15T07:09:09.2922166Z [2m../playwright-core/lib/vite/recorder/[22m[2massets/[22m[36mindex-97EUAAbk.js              [39m[1m[2m310.50 kB[22m[1m[22m[2m │ gzip: 96.98 kB[22m
+2025-04-15T07:09:09.2923211Z [32m✓ built in 2.61s[39m
+2025-04-15T07:09:09.3249735Z ==== Running npx vite build in /home/runner/work/playwright/playwright/packages/trace-viewer
+2025-04-15T07:09:09.8893832Z [36mvite v6.2.6 [32mbuilding for production...[36m[39m
+2025-04-15T07:09:09.9554901Z transforming...
+2025-04-15T07:09:13.6548316Z [32m✓[39m 274 modules transformed.
+2025-04-15T07:09:13.8968198Z rendering chunks...
+2025-04-15T07:09:14.0979165Z computing gzip size...
+2025-04-15T07:09:14.1209322Z [2m../playwright-core/lib/vite/traceViewer/[22m[32muiMode.html                             [39m[1m[2m  0.63 kB[22m[1m[22m[2m │ gzip:   0.35 kB[22m
+2025-04-15T07:09:14.1211646Z [2m../playwright-core/lib/vite/traceViewer/[22m[32msnapshot.html                           [39m[1m[2m  0.80 kB[22m[1m[22m[2m │ gzip:   0.42 kB[22m
+2025-04-15T07:09:14.1213973Z [2m../playwright-core/lib/vite/traceViewer/[22m[32mindex.html                              [39m[1m[2m  2.26 kB[22m[1m[22m[2m │ gzip:   1.01 kB[22m
+2025-04-15T07:09:14.1215814Z [2m../playwright-core/lib/vite/traceViewer/[22m[32mcodicon.DCmgc-ay.ttf                    [39m[1m[2m 80.34 kB[22m[1m[22m
+2025-04-15T07:09:14.1217839Z [2m../playwright-core/lib/vite/traceViewer/[22m[35mindex.CFOW-Ezb.css                      [39m[1m[2m  1.38 kB[22m[1m[22m[2m │ gzip:   0.59 kB[22m
+2025-04-15T07:09:14.1220340Z [2m../playwright-core/lib/vite/traceViewer/[22m[35mxtermModule.Beg8tuEN.css                [39m[1m[2m  3.97 kB[22m[1m[22m[2m │ gzip:   1.64 kB[22m
+2025-04-15T07:09:14.1222508Z [2m../playwright-core/lib/vite/traceViewer/[22m[35mcodeMirrorModule.C3UTv-Ge.css           [39m[1m[2m  6.01 kB[22m[1m[22m[2m │ gzip:   1.57 kB[22m
+2025-04-15T07:09:14.1224793Z [2m../playwright-core/lib/vite/traceViewer/[22m[35muiMode.BatfzHMG.css                     [39m[1m[2m 59.97 kB[22m[1m[22m[2m │ gzip:   9.13 kB[22m
+2025-04-15T07:09:14.1226720Z [2m../playwright-core/lib/vite/traceViewer/[22m[35mdefaultSettingsView.QdHITyLI.css        [39m[1m[2m110.58 kB[22m[1m[22m[2m │ gzip:  18.83 kB[22m
+2025-04-15T07:09:14.1227725Z [33m
+2025-04-15T07:09:14.1228308Z (!) Some chunks are larger than 500 kB after minification. Consider:
+2025-04-15T07:09:14.1229036Z - Using dynamic import() to code-split the application
+2025-04-15T07:09:14.1230314Z - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+2025-04-15T07:09:14.1231761Z - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
+2025-04-15T07:09:14.1233350Z [2m../playwright-core/lib/vite/traceViewer/[22m[36mindex.DEz423L4.js                       [39m[1m[2m  6.83 kB[22m[1m[22m[2m │ gzip:   2.80 kB[22m
+2025-04-15T07:09:14.1235446Z [2m../playwright-core/lib/vite/traceViewer/[22m[36muiMode.tOVLG4Iq.js                      [39m[1m[2m 34.77 kB[22m[1m[22m[2m │ gzip:  11.99 kB[22m
+2025-04-15T07:09:14.1237429Z [2m../playwright-core/lib/vite/traceViewer/[22m[2massets/[22m[36mxtermModule-BoAIEibi.js          [39m[1m[2m283.88 kB[22m[1m[22m[2m │ gzip:  70.59 kB[22m
+2025-04-15T07:09:14.1239598Z [2m../playwright-core/lib/vite/traceViewer/[22m[2massets/[22m[36mcodeMirrorModule-DmECmEzQ.js     [39m[1m[2m293.16 kB[22m[1m[22m[2m │ gzip:  96.81 kB[22m
+2025-04-15T07:09:14.1241843Z [2m../playwright-core/lib/vite/traceViewer/[22m[2massets/[22m[36mdefaultSettingsView-DyspnYaq.js  [39m[1m[33m574.41 kB[39m[22m[2m │ gzip: 175.84 kB[22m
+2025-04-15T07:09:14.1243011Z [32m✓ built in 4.21s[39m
+2025-04-15T07:09:14.1673859Z ==== Running node /home/runner/work/playwright/playwright/utils/generate_injected.js in /home/runner/work/playwright/playwright
+2025-04-15T07:09:14.2861849Z ==== Running node /home/runner/work/playwright/playwright/utils/generate_channels.js in /home/runner/work/playwright/playwright
+2025-04-15T07:09:14.4981840Z ==== Running node /home/runner/work/playwright/playwright/utils/generate_types/index.js in /home/runner/work/playwright/playwright
+2025-04-15T07:09:17.7281495Z ##[endgroup]
+2025-04-15T07:09:17.7315921Z ##[group]Run echo "::group::npx playwright install --with-deps"
+2025-04-15T07:09:17.7316672Z [36;1mecho "::group::npx playwright install --with-deps"[0m
+2025-04-15T07:09:17.7317424Z [36;1mnpx playwright install --with-deps chromium-tip-of-tree[0m
+2025-04-15T07:09:17.7318352Z [36;1mecho "::endgroup::"[0m
+2025-04-15T07:09:17.7394307Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-04-15T07:09:17.7394865Z env:
+2025-04-15T07:09:17.7395171Z   FORCE_COLOR: 1
+2025-04-15T07:09:17.7395536Z   ELECTRON_SKIP_BINARY_DOWNLOAD: 1
+2025-04-15T07:09:17.7395971Z   DEBUG_GIT_COMMIT_INFO: 1
+2025-04-15T07:09:17.7396405Z   PWTEST_CHANNEL: chromium-tip-of-tree
+2025-04-15T07:09:17.7396853Z ##[endgroup]
+2025-04-15T07:09:17.7482188Z ##[group]npx playwright install --with-deps
+2025-04-15T07:09:18.6445054Z Installing dependencies...
+2025-04-15T07:09:18.6511873Z Switching to root user to install dependencies...
+2025-04-15T07:09:18.7495333Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [142 B]
+2025-04-15T07:09:18.7829711Z Hit:2 http://azure.archive.ubuntu.com/ubuntu jammy InRelease
+2025-04-15T07:09:18.7871807Z Get:3 http://azure.archive.ubuntu.com/ubuntu jammy-updates InRelease [128 kB]
+2025-04-15T07:09:18.7909470Z Get:4 http://azure.archive.ubuntu.com/ubuntu jammy-backports InRelease [127 kB]
+2025-04-15T07:09:18.7947959Z Get:5 http://azure.archive.ubuntu.com/ubuntu jammy-security InRelease [129 kB]
+2025-04-15T07:09:18.8020251Z Hit:6 https://packages.microsoft.com/repos/azure-cli jammy InRelease
+2025-04-15T07:09:18.8692545Z Get:7 https://packages.microsoft.com/ubuntu/22.04/prod jammy InRelease [3632 B]
+2025-04-15T07:09:18.9811200Z Get:8 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [2468 kB]
+2025-04-15T07:09:19.0025255Z Get:9 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main Translation-en [405 kB]
+2025-04-15T07:09:19.0057619Z Get:10 http://azure.archive.ubuntu.com/ubuntu jammy-updates/restricted amd64 Packages [3269 kB]
+2025-04-15T07:09:19.0251296Z Get:11 http://azure.archive.ubuntu.com/ubuntu jammy-updates/restricted Translation-en [580 kB]
+2025-04-15T07:09:19.0325537Z Get:12 http://azure.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 Packages [1200 kB]
+2025-04-15T07:09:19.0389348Z Get:13 http://azure.archive.ubuntu.com/ubuntu jammy-updates/universe Translation-en [296 kB]
+2025-04-15T07:09:19.1506845Z Get:14 http://azure.archive.ubuntu.com/ubuntu jammy-security/main amd64 Packages [2222 kB]
+2025-04-15T07:09:19.1617390Z Get:15 http://azure.archive.ubuntu.com/ubuntu jammy-security/main Translation-en [342 kB]
+2025-04-15T07:09:19.1646593Z Get:16 http://azure.archive.ubuntu.com/ubuntu jammy-security/restricted amd64 Packages [3145 kB]
+2025-04-15T07:09:19.1806693Z Get:17 http://azure.archive.ubuntu.com/ubuntu jammy-security/restricted Translation-en [558 kB]
+2025-04-15T07:09:19.2259192Z Get:18 http://azure.archive.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [972 kB]
+2025-04-15T07:09:19.2327124Z Get:19 http://azure.archive.ubuntu.com/ubuntu jammy-security/universe Translation-en [209 kB]
+2025-04-15T07:09:19.3242633Z Get:20 https://packages.microsoft.com/ubuntu/22.04/prod jammy/main arm64 Packages [56.3 kB]
+2025-04-15T07:09:19.3343735Z Get:21 https://packages.microsoft.com/ubuntu/22.04/prod jammy/main amd64 Packages [210 kB]
+2025-04-15T07:09:28.4911208Z Fetched 16.3 MB in 2s (8555 kB/s)
+2025-04-15T07:09:29.3026192Z Reading package lists...
+2025-04-15T07:09:29.3535399Z Reading package lists...
+2025-04-15T07:09:29.5278327Z Building dependency tree...
+2025-04-15T07:09:29.5289938Z Reading state information...
+2025-04-15T07:09:29.6687354Z fonts-liberation is already the newest version (1:1.07.4-11).
+2025-04-15T07:09:29.6688324Z fonts-liberation set to manually installed.
+2025-04-15T07:09:29.6689231Z libasound2 is already the newest version (1.2.6.1-1ubuntu1).
+2025-04-15T07:09:29.6690056Z libasound2 set to manually installed.
+2025-04-15T07:09:29.6690761Z libatk-bridge2.0-0 is already the newest version (2.38.0-3).
+2025-04-15T07:09:29.6691457Z libatk-bridge2.0-0 set to manually installed.
+2025-04-15T07:09:29.6692105Z libatk1.0-0 is already the newest version (2.36.0-3build1).
+2025-04-15T07:09:29.6692707Z libatk1.0-0 set to manually installed.
+2025-04-15T07:09:29.6693190Z libatspi2.0-0 is already the newest version (2.44.0-3).
+2025-04-15T07:09:29.6694203Z libatspi2.0-0 set to manually installed.
+2025-04-15T07:09:29.6694678Z libcairo2 is already the newest version (1.16.0-5ubuntu2).
+2025-04-15T07:09:29.6695214Z libcairo2 set to manually installed.
+2025-04-15T07:09:29.6695643Z libfontconfig1 is already the newest version (2.13.1-4.2ubuntu5).
+2025-04-15T07:09:29.6696199Z libfontconfig1 set to manually installed.
+2025-04-15T07:09:29.6696618Z libxcb1 is already the newest version (1.14-3ubuntu3).
+2025-04-15T07:09:29.6696977Z libxcb1 set to manually installed.
+2025-04-15T07:09:29.6697399Z libxcomposite1 is already the newest version (1:0.4.5-1build2).
+2025-04-15T07:09:29.6697803Z libxcomposite1 set to manually installed.
+2025-04-15T07:09:29.6698347Z libxdamage1 is already the newest version (1:1.1.5-2build2).
+2025-04-15T07:09:29.6698971Z libxdamage1 set to manually installed.
+2025-04-15T07:09:29.6699611Z libxext6 is already the newest version (2:1.3.4-1build1).
+2025-04-15T07:09:29.6700533Z libxext6 set to manually installed.
+2025-04-15T07:09:29.6701198Z libxfixes3 is already the newest version (1:6.0.0-1).
+2025-04-15T07:09:29.6701590Z libxfixes3 set to manually installed.
+2025-04-15T07:09:29.6702206Z libxkbcommon0 is already the newest version (1.4.0-1).
+2025-04-15T07:09:29.6702927Z libxkbcommon0 set to manually installed.
+2025-04-15T07:09:29.6703819Z libxrandr2 is already the newest version (2:1.5.2-1build1).
+2025-04-15T07:09:29.6704374Z libxrandr2 set to manually installed.
+2025-04-15T07:09:29.6705039Z fonts-noto-color-emoji is already the newest version (2.047-0ubuntu0.22.04.1).
+2025-04-15T07:09:29.6705987Z libcups2 is already the newest version (2.4.1op1-1ubuntu4.11).
+2025-04-15T07:09:29.6706687Z libcups2 set to manually installed.
+2025-04-15T07:09:29.6707457Z libdbus-1-3 is already the newest version (1.12.20-2ubuntu4.1).
+2025-04-15T07:09:29.6708151Z libdbus-1-3 set to manually installed.
+2025-04-15T07:09:29.6708876Z libdrm2 is already the newest version (2.4.113-2~ubuntu0.22.04.1).
+2025-04-15T07:09:29.6709574Z libdrm2 set to manually installed.
+2025-04-15T07:09:29.6710313Z libfreetype6 is already the newest version (2.11.1+dfsg-1ubuntu0.3).
+2025-04-15T07:09:29.6711051Z libfreetype6 set to manually installed.
+2025-04-15T07:09:29.6711784Z libgbm1 is already the newest version (23.2.1-1ubuntu3.1~22.04.3).
+2025-04-15T07:09:29.6712455Z libgbm1 set to manually installed.
+2025-04-15T07:09:29.6713132Z libglib2.0-0 is already the newest version (2.72.4-0ubuntu2.4).
+2025-04-15T07:09:29.6714036Z libglib2.0-0 set to manually installed.
+2025-04-15T07:09:29.6714779Z libnspr4 is already the newest version (2:4.35-0ubuntu0.22.04.1).
+2025-04-15T07:09:29.6715611Z libnss3 is already the newest version (2:3.98-0ubuntu0.22.04.2).
+2025-04-15T07:09:29.6716474Z libpango-1.0-0 is already the newest version (1.50.6+ds-2ubuntu1).
+2025-04-15T07:09:29.6717179Z libpango-1.0-0 set to manually installed.
+2025-04-15T07:09:29.6717961Z libwayland-client0 is already the newest version (1.20.0-1ubuntu0.1).
+2025-04-15T07:09:29.6718738Z libwayland-client0 set to manually installed.
+2025-04-15T07:09:29.6719470Z libx11-6 is already the newest version (2:1.7.5-1ubuntu0.3).
+2025-04-15T07:09:29.6720114Z libx11-6 set to manually installed.
+2025-04-15T07:09:29.6720829Z xvfb is already the newest version (2:21.1.4-2ubuntu1.7~22.04.14).
+2025-04-15T07:09:29.6721609Z The following additional packages will be installed:
+2025-04-15T07:09:29.6722227Z   xfonts-encodings xfonts-utils
+2025-04-15T07:09:29.6722723Z Recommended packages:
+2025-04-15T07:09:29.6723245Z   fonts-ipafont-mincho fonts-tlwg-loma
+2025-04-15T07:09:29.6839856Z The following NEW packages will be installed:
+2025-04-15T07:09:29.6840896Z   fonts-freefont-ttf fonts-ipafont-gothic fonts-tlwg-loma-otf fonts-unifont
+2025-04-15T07:09:29.6845218Z   fonts-wqy-zenhei xfonts-cyrillic xfonts-encodings xfonts-scalable
+2025-04-15T07:09:29.6845986Z   xfonts-utils
+2025-04-15T07:09:29.6991076Z 0 upgraded, 9 newly installed, 0 to remove and 66 not upgraded.
+2025-04-15T07:09:29.6991857Z Need to get 18.4 MB of archives.
+2025-04-15T07:09:29.6992954Z After this operation, 56.8 MB of additional disk space will be used.
+2025-04-15T07:09:29.6993831Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [142 B]
+2025-04-15T07:09:29.7556358Z Get:2 http://azure.archive.ubuntu.com/ubuntu jammy/universe amd64 fonts-ipafont-gothic all 00303-21ubuntu1 [3513 kB]
+2025-04-15T07:09:30.0341263Z Get:3 http://azure.archive.ubuntu.com/ubuntu jammy/main amd64 fonts-freefont-ttf all 20120503-10build1 [2388 kB]
+2025-04-15T07:09:30.1388091Z Get:4 http://azure.archive.ubuntu.com/ubuntu jammy/universe amd64 fonts-tlwg-loma-otf all 1:0.7.3-1 [107 kB]
+2025-04-15T07:09:30.1736116Z Get:5 http://azure.archive.ubuntu.com/ubuntu jammy/universe amd64 fonts-unifont all 1:14.0.01-1 [3551 kB]
+2025-04-15T07:09:30.3224414Z Get:6 http://azure.archive.ubuntu.com/ubuntu jammy/universe amd64 fonts-wqy-zenhei all 0.9.45-8 [7472 kB]
+2025-04-15T07:09:30.5453151Z Get:7 http://azure.archive.ubuntu.com/ubuntu jammy/main amd64 xfonts-encodings all 1:1.0.5-0ubuntu2 [578 kB]
+2025-04-15T07:09:30.6096718Z Get:8 http://azure.archive.ubuntu.com/ubuntu jammy/main amd64 xfonts-utils amd64 1:7.7+6build2 [94.6 kB]
+2025-04-15T07:09:30.6430119Z Get:9 http://azure.archive.ubuntu.com/ubuntu jammy/universe amd64 xfonts-cyrillic all 1:1.0.5 [386 kB]
+2025-04-15T07:09:30.6802196Z Get:10 http://azure.archive.ubuntu.com/ubuntu jammy/main amd64 xfonts-scalable all 1:1.0.3-1.2ubuntu1 [306 kB]
+2025-04-15T07:09:30.9746913Z Fetched 18.4 MB in 1s (18.5 MB/s)
+2025-04-15T07:09:31.0002989Z Selecting previously unselected package fonts-ipafont-gothic.
+2025-04-15T07:09:31.0276238Z (Reading database ... 
+2025-04-15T07:09:31.0276821Z (Reading database ... 5%
+2025-04-15T07:09:31.0277244Z (Reading database ... 10%
+2025-04-15T07:09:31.0277645Z (Reading database ... 15%
+2025-04-15T07:09:31.0278034Z (Reading database ... 20%
+2025-04-15T07:09:31.0278421Z (Reading database ... 25%
+2025-04-15T07:09:31.0278803Z (Reading database ... 30%
+2025-04-15T07:09:31.0279182Z (Reading database ... 35%
+2025-04-15T07:09:31.0279598Z (Reading database ... 40%
+2025-04-15T07:09:31.0279988Z (Reading database ... 45%
+2025-04-15T07:09:31.0280372Z (Reading database ... 50%
+2025-04-15T07:09:31.0804536Z (Reading database ... 55%
+2025-04-15T07:09:31.1184358Z (Reading database ... 60%
+2025-04-15T07:09:31.1563325Z (Reading database ... 65%
+2025-04-15T07:09:31.1940234Z (Reading database ... 70%
+2025-04-15T07:09:31.2518032Z (Reading database ... 75%
+2025-04-15T07:09:31.2996600Z (Reading database ... 80%
+2025-04-15T07:09:31.3774575Z (Reading database ... 85%
+2025-04-15T07:09:31.4173772Z (Reading database ... 90%
+2025-04-15T07:09:31.4780863Z (Reading database ... 95%
+2025-04-15T07:09:31.4781320Z (Reading database ... 100%
+2025-04-15T07:09:31.4781932Z (Reading database ... 271514 files and directories currently installed.)
+2025-04-15T07:09:31.4840393Z Preparing to unpack .../0-fonts-ipafont-gothic_00303-21ubuntu1_all.deb ...
+2025-04-15T07:09:31.4953515Z Unpacking fonts-ipafont-gothic (00303-21ubuntu1) ...
+2025-04-15T07:09:31.7421314Z Selecting previously unselected package fonts-freefont-ttf.
+2025-04-15T07:09:31.7592241Z Preparing to unpack .../1-fonts-freefont-ttf_20120503-10build1_all.deb ...
+2025-04-15T07:09:31.7602608Z Unpacking fonts-freefont-ttf (20120503-10build1) ...
+2025-04-15T07:09:31.9392090Z Selecting previously unselected package fonts-tlwg-loma-otf.
+2025-04-15T07:09:31.9558186Z Preparing to unpack .../2-fonts-tlwg-loma-otf_1%3a0.7.3-1_all.deb ...
+2025-04-15T07:09:31.9566942Z Unpacking fonts-tlwg-loma-otf (1:0.7.3-1) ...
+2025-04-15T07:09:31.9814868Z Selecting previously unselected package fonts-unifont.
+2025-04-15T07:09:31.9980875Z Preparing to unpack .../3-fonts-unifont_1%3a14.0.01-1_all.deb ...
+2025-04-15T07:09:31.9992772Z Unpacking fonts-unifont (1:14.0.01-1) ...
+2025-04-15T07:09:32.0897124Z Selecting previously unselected package fonts-wqy-zenhei.
+2025-04-15T07:09:32.1064181Z Preparing to unpack .../4-fonts-wqy-zenhei_0.9.45-8_all.deb ...
+2025-04-15T07:09:32.1172851Z Unpacking fonts-wqy-zenhei (0.9.45-8) ...
+2025-04-15T07:09:32.6188935Z Selecting previously unselected package xfonts-encodings.
+2025-04-15T07:09:32.6356039Z Preparing to unpack .../5-xfonts-encodings_1%3a1.0.5-0ubuntu2_all.deb ...
+2025-04-15T07:09:32.6365886Z Unpacking xfonts-encodings (1:1.0.5-0ubuntu2) ...
+2025-04-15T07:09:32.6697336Z Selecting previously unselected package xfonts-utils.
+2025-04-15T07:09:32.6864396Z Preparing to unpack .../6-xfonts-utils_1%3a7.7+6build2_amd64.deb ...
+2025-04-15T07:09:32.6875507Z Unpacking xfonts-utils (1:7.7+6build2) ...
+2025-04-15T07:09:32.7293588Z Selecting previously unselected package xfonts-cyrillic.
+2025-04-15T07:09:32.7461826Z Preparing to unpack .../7-xfonts-cyrillic_1%3a1.0.5_all.deb ...
+2025-04-15T07:09:32.7475868Z Unpacking xfonts-cyrillic (1:1.0.5) ...
+2025-04-15T07:09:32.7957061Z Selecting previously unselected package xfonts-scalable.
+2025-04-15T07:09:32.8126453Z Preparing to unpack .../8-xfonts-scalable_1%3a1.0.3-1.2ubuntu1_all.deb ...
+2025-04-15T07:09:32.8150972Z Unpacking xfonts-scalable (1:1.0.3-1.2ubuntu1) ...
+2025-04-15T07:09:32.8648428Z Setting up fonts-wqy-zenhei (0.9.45-8) ...
+2025-04-15T07:09:32.8787848Z Setting up fonts-freefont-ttf (20120503-10build1) ...
+2025-04-15T07:09:32.8814414Z Setting up fonts-tlwg-loma-otf (1:0.7.3-1) ...
+2025-04-15T07:09:32.8844077Z Setting up xfonts-encodings (1:1.0.5-0ubuntu2) ...
+2025-04-15T07:09:32.8873818Z Setting up fonts-ipafont-gothic (00303-21ubuntu1) ...
+2025-04-15T07:09:32.8956965Z update-alternatives: using /usr/share/fonts/opentype/ipafont-gothic/ipag.ttf to provide /usr/share/fonts/truetype/fonts-japanese-gothic.ttf (fonts-japanese-gothic.ttf) in auto mode
+2025-04-15T07:09:32.8976160Z Setting up fonts-unifont (1:14.0.01-1) ...
+2025-04-15T07:09:32.9000638Z Setting up xfonts-utils (1:7.7+6build2) ...
+2025-04-15T07:09:32.9049661Z Setting up xfonts-cyrillic (1:1.0.5) ...
+2025-04-15T07:09:32.9387538Z Setting up xfonts-scalable (1:1.0.3-1.2ubuntu1) ...
+2025-04-15T07:09:32.9669223Z Processing triggers for man-db (2.10.2-1) ...
+2025-04-15T07:09:33.5117941Z Processing triggers for fontconfig (2.13.1-4.2ubuntu5) ...
+2025-04-15T07:09:33.8011926Z NEEDRESTART-VER: 3.5
+2025-04-15T07:09:34.0946505Z NEEDRESTART-KCUR: 6.8.0-1025-azure
+2025-04-15T07:09:34.0947052Z NEEDRESTART-KEXP: 6.8.0-1025-azure
+2025-04-15T07:09:34.0947449Z NEEDRESTART-KSTA: 1
+2025-04-15T07:09:35.9605239Z Downloading Chromium Tip Of Tree 137.0.7105.0 (playwright build v1320)[2m from https://cdn.playwright.dev/dbazure/download/playwright/builds/chromium-tip-of-tree/1320/chromium-tip-of-tree-linux.zip[22m
+2025-04-15T07:09:36.1930208Z |                                                                                |   0% of 169.2 MiB
+2025-04-15T07:09:36.8610904Z |■■■■■■■■                                                                        |  10% of 169.2 MiB
+2025-04-15T07:09:37.1939810Z |■■■■■■■■■■■■■■■■                                                                |  20% of 169.2 MiB
+2025-04-15T07:09:37.7511132Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 169.2 MiB
+2025-04-15T07:09:38.1853136Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 169.2 MiB
+2025-04-15T07:09:38.6970438Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 169.2 MiB
+2025-04-15T07:09:39.0564291Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 169.2 MiB
+2025-04-15T07:09:39.4311396Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 169.2 MiB
+2025-04-15T07:09:39.9227721Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 169.2 MiB
+2025-04-15T07:09:40.2899194Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 169.2 MiB
+2025-04-15T07:09:40.5352365Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 169.2 MiB
+2025-04-15T07:09:44.1118305Z Chromium Tip Of Tree 137.0.7105.0 (playwright build v1320) downloaded to /home/runner/.cache/ms-playwright/chromium_tip_of_tree-1320
+2025-04-15T07:09:44.1122066Z Downloading FFMPEG playwright build v1011[2m from https://cdn.playwright.dev/dbazure/download/playwright/builds/ffmpeg/1011/ffmpeg-linux.zip[22m
+2025-04-15T07:09:44.2805059Z |                                                                                |   0% of 2.3 MiB
+2025-04-15T07:09:44.2872669Z |■■■■■■■■                                                                        |  10% of 2.3 MiB
+2025-04-15T07:09:44.2908829Z |■■■■■■■■■■■■■■■■                                                                |  20% of 2.3 MiB
+2025-04-15T07:09:44.2945928Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 2.3 MiB
+2025-04-15T07:09:44.2976197Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 2.3 MiB
+2025-04-15T07:09:44.3008187Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 2.3 MiB
+2025-04-15T07:09:44.3031235Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 2.3 MiB
+2025-04-15T07:09:44.3057414Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 2.3 MiB
+2025-04-15T07:09:44.3079587Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 2.3 MiB
+2025-04-15T07:09:44.3102616Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 2.3 MiB
+2025-04-15T07:09:44.3125748Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 2.3 MiB
+2025-04-15T07:09:44.3766279Z FFMPEG playwright build v1011 downloaded to /home/runner/.cache/ms-playwright/ffmpeg-1011
+2025-04-15T07:09:44.4488996Z ##[endgroup]
+2025-04-15T07:09:44.4514299Z ##[group]Run if [[ "$(uname)" == "Linux" ]]; then
+2025-04-15T07:09:44.4514644Z [36;1mif [[ "$(uname)" == "Linux" ]]; then[0m
+2025-04-15T07:09:44.4515145Z [36;1m  xvfb-run --auto-servernum --server-args="-screen 0 1280x960x24" -- npm run test -- --project=chromium-*[0m
+2025-04-15T07:09:44.4515665Z [36;1melse[0m
+2025-04-15T07:09:44.4515892Z [36;1m  npm run test -- --project=chromium-*[0m
+2025-04-15T07:09:44.4516166Z [36;1mfi[0m
+2025-04-15T07:09:44.4569455Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-04-15T07:09:44.4569784Z env:
+2025-04-15T07:09:44.4569964Z   FORCE_COLOR: 1
+2025-04-15T07:09:44.4570179Z   ELECTRON_SKIP_BINARY_DOWNLOAD: 1
+2025-04-15T07:09:44.4570438Z   DEBUG_GIT_COMMIT_INFO: 1
+2025-04-15T07:09:44.4570687Z   PWTEST_CHANNEL: chromium-tip-of-tree
+2025-04-15T07:09:44.4571006Z   PWTEST_BOT_NAME: ubuntu-22.04-chromium-tip-of-tree
+2025-04-15T07:09:44.4571297Z ##[endgroup]
+2025-04-15T07:09:44.9034143Z 
+2025-04-15T07:09:44.9034846Z > playwright-internal@1.52.0-next test
+2025-04-15T07:09:44.9035794Z > playwright test --config=tests/library/playwright.config.ts --project=chromium-*
+2025-04-15T07:09:44.9036252Z 
+2025-04-15T07:09:45.7482859Z GitCommitInfo: ci info {
+2025-04-15T07:09:45.7484276Z   commitHref: [32m'https://github.com/microsoft/playwright/commit/76ee48dc9d4034536e3ec5b2c7ce8be3b79418a8'[39m,
+2025-04-15T07:09:45.7485527Z   commitHash: [32m'76ee48dc9d4034536e3ec5b2c7ce8be3b79418a8'[39m,
+2025-04-15T07:09:45.7486292Z   prHref: [90mundefined[39m,
+2025-04-15T07:09:45.7486786Z   prTitle: [90mundefined[39m,
+2025-04-15T07:09:45.7487184Z   prBaseHash: [90mundefined[39m,
+2025-04-15T07:09:45.7487950Z   buildHref: [32m'https://github.com/microsoft/playwright/actions/runs/14463404267'[39m
+2025-04-15T07:09:45.7488492Z }
+2025-04-15T07:09:45.7490136Z GitCommitInfo: running "git log -1 --pretty=format:"%H---786eec917292---%h---786eec917292---%s---786eec917292---%B---786eec917292---%an---786eec917292---%ae---786eec917292---%at---786eec917292---%cn---786eec917292---%ce---786eec917292---%ct---786eec917292---" && git rev-parse --abbrev-ref HEAD"
+2025-04-15T07:09:45.7571291Z GitCommitInfo: success
+2025-04-15T07:09:45.7576449Z GitCommitInfo: commit info {
+2025-04-15T07:09:45.7576978Z   shortHash: [32m'76ee48d'[39m,
+2025-04-15T07:09:45.7577684Z   hash: [32m'76ee48dc9d4034536e3ec5b2c7ce8be3b79418a8'[39m,
+2025-04-15T07:09:45.7578224Z   subject: [32m'chore: followup on static annotations (#35579)'[39m,
+2025-04-15T07:09:45.7578768Z   body: [32m'chore: followup on static annotations (#35579)\n'[39m +
+2025-04-15T07:09:45.7579129Z     [32m'\n'[39m +
+2025-04-15T07:09:45.7579522Z     [32m'Signed-off-by: Simon Knott <info@simonknott.de>\n'[39m +
+2025-04-15T07:09:45.7580007Z     [32m'Co-authored-by: Dmitry Gozman <dgozman@gmail.com>'[39m,
+2025-04-15T07:09:45.7580328Z   author: {
+2025-04-15T07:09:45.7580593Z     name: [32m'Simon Knott'[39m,
+2025-04-15T07:09:45.7580926Z     email: [32m'info@simonknott.de'[39m,
+2025-04-15T07:09:45.7581257Z     time: [33m1744700862000[39m
+2025-04-15T07:09:45.7581496Z   },
+2025-04-15T07:09:45.7582010Z   committer: { name: [32m'GitHub'[39m, email: [32m'noreply@github.com'[39m, time: [33m1744700862000[39m },
+2025-04-15T07:09:45.7582483Z   branch: [32m'main'[39m
+2025-04-15T07:09:45.7582718Z }
+2025-04-15T07:09:52.6618589Z 
+2025-04-15T07:09:52.6619591Z [2mRunning [22m4171[2m tests using [22m2[2m workers[22m
+2025-04-15T07:10:03.0588680Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:10:08.5899997Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:10:11.2496347Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:10:19.5176962Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:10:28.0557994Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:10:35.0460119Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[33m°[39m[33m°[39m[33m°[39m[33m°[39m[33m°[39m[33m°[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:10:56.3304765Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:11:08.9834850Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m(node:3709) [DEP0123] DeprecationWarning: Setting the TLS ServerName to an IP address is not permitted by RFC 6066. This will be ignored in a future version.
+2025-04-15T07:11:08.9837733Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2025-04-15T07:11:09.8982025Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:11:31.6110894Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:11:55.2821108Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:11:56.7448678Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:12:15.3565706Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:12:53.9867656Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[33m°[39m[33m°[39m[33m°[39m[33m°[39m[33m°[39m[33m°[39m[33m°[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:13:53.7978483Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:14:57.3764292Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:15:12.6432474Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[33m°[39m[33m°[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:15:29.3877551Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:15:44.4030359Z [32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:16:11.9262901Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:16:30.6065640Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:17:10.0332324Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[33m°[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:17:37.3042655Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[33m°[39m[33m°[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:17:38.0152813Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:17:38.5298228Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[33m°[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:17:41.3679069Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:18:04.7885040Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:18:33.1164883Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:18:52.8074047Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:19:21.1131466Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:19:54.1490102Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:20:07.4106559Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:20:16.3012660Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:20:24.8019985Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:20:32.6947691Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:20:59.1711361Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:21:26.1097074Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:21:34.9348295Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:21:42.0472700Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:21:48.9068951Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:21:56.8316032Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:22:04.2178660Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[33m°[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:22:14.0819728Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:22:25.5826264Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:22:33.8533806Z [32m·[39m[32m·[39m[33m°[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m
+2025-04-15T07:22:43.4403030Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:22:53.8045904Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:23:13.9786760Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:23:32.6378034Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:23:42.4878833Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:23:52.0716630Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m
+2025-04-15T07:24:01.0365574Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:24:14.0077195Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[33m°[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:24:31.0198266Z [32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m[32m·[39m
+2025-04-15T07:24:31.0230071Z [33m  85 skipped[39m
+2025-04-15T07:24:31.0230535Z [32m  4086 passed[39m[2m (14.8m)[22m
+2025-04-15T07:24:37.8574616Z ##[group]Run azure/login@v2
+2025-04-15T07:24:37.8575076Z with:
+2025-04-15T07:24:37.8575623Z   client-id: ***
+2025-04-15T07:24:37.8575898Z   tenant-id: ***
+2025-04-15T07:24:37.8576163Z   subscription-id: ***
+2025-04-15T07:24:37.8592249Z   enable-AzPSSession: false
+2025-04-15T07:24:37.8592583Z   environment: azurecloud
+2025-04-15T07:24:37.8592839Z   allow-no-subscriptions: false
+2025-04-15T07:24:37.8593120Z   audience: api://AzureADTokenExchange
+2025-04-15T07:24:37.8593608Z   auth-type: SERVICE_PRINCIPAL
+2025-04-15T07:24:37.8593853Z env:
+2025-04-15T07:24:37.8594036Z   FORCE_COLOR: 1
+2025-04-15T07:24:37.8594253Z   ELECTRON_SKIP_BINARY_DOWNLOAD: 1
+2025-04-15T07:24:37.8594508Z   DEBUG_GIT_COMMIT_INFO: 1
+2025-04-15T07:24:37.8594752Z   PWTEST_CHANNEL: chromium-tip-of-tree
+2025-04-15T07:24:37.8595021Z ##[endgroup]
+2025-04-15T07:24:37.8974067Z Running Azure CLI Login.
+2025-04-15T07:25:03.1354893Z [command]/usr/bin/az cloud set -n azurecloud
+2025-04-15T07:25:03.3622814Z Done setting cloud: "azurecloud"
+2025-04-15T07:25:03.5073819Z Federated token details:
+2025-04-15T07:25:03.5074544Z  issuer - https://token.actions.githubusercontent.com
+2025-04-15T07:25:03.5075584Z  subject claim - repo:microsoft/playwright:environment:allow-uploading-flakiness-results
+2025-04-15T07:25:03.5076472Z  audience - api://AzureADTokenExchange
+2025-04-15T07:25:03.5077404Z  job_workflow_ref - microsoft/playwright/.github/workflows/tests_primary.yml@refs/heads/main
+2025-04-15T07:25:03.5079695Z Attempting Azure CLI login by using OIDC...
+2025-04-15T07:25:04.8601309Z Subscription is set successfully.
+2025-04-15T07:25:04.8602180Z Azure CLI login succeeds by using OIDC.
+2025-04-15T07:25:04.8673847Z ##[group]Run echo "::group::./utils/upload_flakiness_dashboard.sh"
+2025-04-15T07:25:04.8674601Z [36;1mecho "::group::./utils/upload_flakiness_dashboard.sh"[0m
+2025-04-15T07:25:04.8675369Z [36;1m./utils/upload_flakiness_dashboard.sh ./test-results/report.json[0m
+2025-04-15T07:25:04.8676052Z [36;1mecho "::endgroup::"[0m
+2025-04-15T07:25:04.8750258Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-04-15T07:25:04.8750916Z env:
+2025-04-15T07:25:04.8751258Z   FORCE_COLOR: 1
+2025-04-15T07:25:04.8751606Z   ELECTRON_SKIP_BINARY_DOWNLOAD: 1
+2025-04-15T07:25:04.8752014Z   DEBUG_GIT_COMMIT_INFO: 1
+2025-04-15T07:25:04.8752359Z   PWTEST_CHANNEL: chromium-tip-of-tree
+2025-04-15T07:25:04.8752819Z ##[endgroup]
+2025-04-15T07:25:04.8852498Z ##[group]./utils/upload_flakiness_dashboard.sh
+2025-04-15T07:25:05.0802076Z Uploading 585412b03b0491ded468357dbaa636acae480660.gz
+2025-04-15T07:25:08.0124263Z 
+2025-04-15T07:25:08.0125270Z Alive[################################################################]  100.0000%
+2025-04-15T07:25:08.0126085Z Finished[#############################################################]  100.0000%
+2025-04-15T07:25:08.0766802Z {
+2025-04-15T07:25:08.0767451Z   "client_request_id": "c1be50f4-19ca-11f0-88b2-513a8a6c27c4",
+2025-04-15T07:25:08.0768097Z   "content_md5": "hlHXbo4xgYPnQwZxVPsEOw==",
+2025-04-15T07:25:08.0768598Z   "date": "2025-04-15T07:25:07+00:00",
+2025-04-15T07:25:08.0769056Z   "encryption_key_sha256": null,
+2025-04-15T07:25:08.0769826Z   "encryption_scope": null,
+2025-04-15T07:25:08.0770245Z   "etag": "\"0x8DD7BEEA659E667\"",
+2025-04-15T07:25:08.0770692Z   "lastModified": "2025-04-15T07:25:07+00:00",
+2025-04-15T07:25:08.0771238Z   "request_id": "c500d252-e01e-0007-4ad7-ad5f7c000000",
+2025-04-15T07:25:08.0771751Z   "request_server_encrypted": true,
+2025-04-15T07:25:08.0772160Z   "version": "2022-11-02",
+2025-04-15T07:25:08.0772510Z   "version_id": null
+2025-04-15T07:25:08.0772826Z }
+2025-04-15T07:25:09.2382528Z 
+2025-04-15T07:25:09.2383585Z Alive[################################################################]  100.0000%
+2025-04-15T07:25:09.2384345Z Finished[#############################################################]  100.0000%
+2025-04-15T07:25:09.3014569Z {
+2025-04-15T07:25:09.3015314Z   "client_request_id": "c25b6395-19ca-11f0-88b2-513a8a6c27c4",
+2025-04-15T07:25:09.3016038Z   "content_md5": "hlHXbo4xgYPnQwZxVPsEOw==",
+2025-04-15T07:25:09.3016623Z   "date": "2025-04-15T07:25:09+00:00",
+2025-04-15T07:25:09.3017691Z   "encryption_key_sha256": null,
+2025-04-15T07:25:09.3018205Z   "encryption_scope": null,
+2025-04-15T07:25:09.3018700Z   "etag": "\"0x8DD7BEEA714D21C\"",
+2025-04-15T07:25:09.3019223Z   "lastModified": "2025-04-15T07:25:09+00:00",
+2025-04-15T07:25:09.3021540Z   "request_id": "57d3ff24-401e-0001-0fd7-ada804000000",
+2025-04-15T07:25:09.3022133Z   "request_server_encrypted": true,
+2025-04-15T07:25:09.3022550Z   "version": "2022-11-02",
+2025-04-15T07:25:09.3022897Z   "version_id": null
+2025-04-15T07:25:09.3023199Z }
+2025-04-15T07:25:09.3929165Z ##[endgroup]

@@ -1,0 +1,42 @@
+##[group]Run <:*:>
+with:
+working-directory: charmbracelet/bubbletea
+args: --config="D:\a\bubbletea\bubbletea/charmbracelet/meta/golangci.yml" --timeout=5m
+install-mode: binary
+github-token: ***
+<:*:> true
+<:*:> false
+<:*:> false
+<:*:> false
+<:*:> false
+cache-invalidation-interval: 7
+##[endgroup]
+##[group]prepare environment
+Checking for go.mod: charmbracelet\bubbletea\go.mod
+Cache not found for input keys: golangci-lint.cache-Windows-charmbracelet/bubbletea-2884-a41e129518298f55dbe75a34369bfc28c0379178, golangci-lint.cache-Windows-charmbracelet/bubbletea-2884-
+Finding needed golangci-lint version...
+Requested golangci-lint 'latest', using 'v2.1.1', calculation took 47ms
+Installation mode: binary
+Installing golangci-lint binary v2.1.1...
+Downloading binary https://github.com/golangci/golangci-lint/releases/download/v2.1.1/golangci-lint-2.1.1-windows-amd64.zip ...
+[command]"C:\Program Files\PowerShell\7\pwsh.exe" -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Unrestricted -Command "$ErrorActionPreference = 'Stop' ; try { Add-Type -AssemblyName System.IO.Compression.ZipFile } catch { } ; try { [System.IO.Compression.ZipFile]::ExtractToDirectory('D:\a\_temp\2b17b5be-ddc1-4c4b-929a-0fa436c62f7a', 'D:\a\_temp\d6b8e636-e67f-4e2b-a409-623f0b3ee388', $true) } catch { if (($_.Exception.GetType().FullName -eq 'System.Management.Automation.MethodException') -or ($_.Exception.GetType().FullName -eq 'System.Management.Automation.RuntimeException') ){ Expand-Archive -LiteralPath 'D:\a\_temp\2b17b5be-ddc1-4c4b-929a-0fa436c62f7a' -DestinationPath 'D:\a\_temp\d6b8e636-e67f-4e2b-a409-623f0b3ee388' -Force } else { throw $_ } } ;"
+Installed golangci-lint into D:\a\_temp\d6b8e636-e67f-4e2b-a409-623f0b3ee388\golangci-lint-2.1.1-windows-amd64\golangci-lint in 1137ms
+Prepared env in 1779ms
+##[endgroup]
+##[group]run golangci-lint
+Running [D:\a\_temp\d6b8e636-e67f-4e2b-a409-623f0b3ee388\golangci-lint-2.1.1-windows-amd64\golangci-lint config path --config="D:\a\bubbletea\bubbletea/charmbracelet/meta/golangci.yml"] in [D:\a\bubbletea\bubbletea\charmbracelet\bubbletea] ...
+Running [D:\a\_temp\d6b8e636-e67f-4e2b-a409-623f0b3ee388\golangci-lint-2.1.1-windows-amd64\golangci-lint config verify --config="D:\a\bubbletea\bubbletea/charmbracelet/meta/golangci.yml"] in [D:\a\bubbletea\bubbletea\charmbracelet\bubbletea] ...
+Running [D:\a\_temp\d6b8e636-e67f-4e2b-a409-623f0b3ee388\golangci-lint-2.1.1-windows-amd64\golangci-lint run --path-prefix=charmbracelet/bubbletea --config="D:\a\bubbletea\bubbletea/charmbracelet/meta/golangci.yml" --timeout=5m] in [D:\a\bubbletea\bubbletea\charmbracelet\bubbletea] ...
+##[error]charmbracelet\bubbletea\tty_windows.go:59:12: G302: Expect file permissions to be 0600 or less (gosec)
+f, err := os.OpenFile("CONIN$", os.O_RDWR, 0o644)
+^
+##[error]charmbracelet\bubbletea\key_windows.go:120:2: QF1002: could use tagged switch on btn (staticcheck)
+switch {
+^
+2 issues:
+* gosec: 1
+* staticcheck: 1
+2025-04-14T09:20:53.9072801Z
+##[error]issues found
+Ran golangci-lint in 24520ms
+##[endgroup]

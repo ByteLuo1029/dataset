@@ -1,0 +1,251 @@
+##[group]Run cd packages/markitdown; hatch test
+[36;1mcd packages/markitdown; hatch test[0m
+shell: /usr/bin/bash -e {<:NUM:>}
+env:
+pythonLocation: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+PKG CONFIG PATH: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64/lib/pkgconfig
+Python ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+<:*:> ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+<:*:> ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.9/x64/lib:/opt/hostedtoolcache/Python/3.11.11/x64/lib:/opt/hostedtoolcache/Python/3.10.16/x64/lib
+##[endgroup]
+Creating environment: hatch-test.py3.12
+Installing project in development mode
+Checking dependencies
+Syncing dependencies
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.3.5, pluggy-1.5.0
+rootdir: /home/runner/work/markitdown/markitdown/packages/markitdown
+configfile: pyproject.toml
+plugins: rerunfailures-14.0, anyio-4.9.0, xdist-3.6.1, mock-3.14.0
+collected 172 items
+2025-04-13T15:50:26.3906489Z
+tests/test_cli_misc.py ..                                                [  1%]
+tests/test_cli_vectors.py ......F...........F...........F.....ssssssssss [ 27%]
+ss..                                                                     [ 30%]
+tests/test_module_misc.py ......ss.ss                                    [ 36%]
+tests/test_module_vectors.py ........................F..............F... [ 61%]
+...........F.....sssssssssssssss.........F..............F.........       [100%]
+2025-04-13T15:51:16.0877706Z
+=================================== FAILURES ===================================
+_____________________ test_output_to_stdout[test_vector6] ______________________
+2025-04-13T15:51:16.0879314Z
+shared_tmp_dir = PosixPath('/tmp/pytest-of-runner/pytest-0/pytest_tmp0')
+test_vector = FileTestVector(filename='test_mskanji.csv', mimetype='text/csv', charset='cp932', url=None, must_include=['名前,年齢,住所', '佐藤太郎,30,東京', '三木英子,25,大阪', '髙橋淳,35,名古屋'], must_not_include=[])
+2025-04-13T15:51:16.0882526Z
+@pytest.mark.parametrize("test_vector", CLI_TEST_VECTORS)
+def test_output_to_stdout(shared_tmp_dir, test_vector) -> None:
+"""Test that the CLI outputs to stdout correctly."""
+2025-04-13T15:51:16.0884847Z
+result = subprocess.run(
+[
+"python",
+"-m",
+"markitdown",
+os.path.join(TEST_FILES_DIR, test_vector.filename),
+],
+capture_output=True,
+text=True,
+)
+2025-04-13T15:51:16.0889483Z
+assert result.returncode == 0, f"CLI exited with error: {result.stderr}"
+for test_string in test_vector.must_include:
+>           assert test_string in result.stdout
+E           assert '名前,年齢,住所' in '| ���O | �N�� | �Z�� |\n| --- | --- | --- |\n| �������Y | 30 | ���� |\n| �O�؉p�q | 25 | ��� |\n| �����~ | 35 | ���É� |\n'
+E            +  where '| ���O | �N�� | �Z�� |\n| --- | --- | --- |\n| �������Y | 30 | ���� |\n| �O�؉p�q | 25 | ��� |\n| �����~ | 35 | ���É� |\n' = CompletedProcess(args=['python', '-m', 'markitdown', '/home/runner/work/markitdown/markitdown/packages/markitdown/test...ut may not work\n  warn("Couldn\'t find ffmpeg or avconv - defaulting to ffmpeg, but may not work", RuntimeWarning)\n').stdout
+2025-04-13T15:51:16.0898954Z
+tests/test_cli_vectors.py:67: AssertionError
+______________________ test_output_to_file[test_vector6] _______________________
+2025-04-13T15:51:16.0900377Z
+shared_tmp_dir = PosixPath('/tmp/pytest-of-runner/pytest-0/pytest_tmp0')
+test_vector = FileTestVector(filename='test_mskanji.csv', mimetype='text/csv', charset='cp932', url=None, must_include=['名前,年齢,住所', '佐藤太郎,30,東京', '三木英子,25,大阪', '髙橋淳,35,名古屋'], must_not_include=[])
+2025-04-13T15:51:16.0903474Z
+@pytest.mark.parametrize("test_vector", CLI_TEST_VECTORS)
+def test_output_to_file(shared_tmp_dir, test_vector) -> None:
+"""Test that the CLI outputs to a file correctly."""
+2025-04-13T15:51:16.0904870Z
+output_file = os.path.join(shared_tmp_dir, test_vector.filename + ".output")
+result = subprocess.run(
+[
+"python",
+"-m",
+"markitdown",
+"-o",
+output_file,
+os.path.join(TEST_FILES_DIR, test_vector.filename),
+],
+capture_output=True,
+text=True,
+)
+2025-04-13T15:51:16.0908762Z
+assert result.returncode == 0, f"CLI exited with error: {result.stderr}"
+assert os.path.exists(output_file), f"Output file not created: {output_file}"
+2025-04-13T15:51:16.0909921Z
+with open(output_file, "r") as f:
+output_data = f.read()
+for test_string in test_vector.must_include:
+>               assert test_string in output_data
+E               AssertionError: assert '名前,年齢,住所' in '| ���O | �N�� | �Z�� |\n| --- | --- | --- |\n| �������Y | 30 | ���� |\n| �O�؉p�q | 25 | ��� |\n| �����~ | 35 | ���É� |'
+2025-04-13T15:51:16.0912089Z
+tests/test_cli_vectors.py:96: AssertionError
+______________ test_input_from_stdin_without_hints[test_vector6] _______________
+2025-04-13T15:51:16.0912876Z
+shared_tmp_dir = PosixPath('/tmp/pytest-of-runner/pytest-0/pytest_tmp0')
+test_vector = FileTestVector(filename='test_mskanji.csv', mimetype='text/csv', charset='cp932', url=None, must_include=['名前,年齢,住所', '佐藤太郎,30,東京', '三木英子,25,大阪', '髙橋淳,35,名古屋'], must_not_include=[])
+2025-04-13T15:51:16.0914584Z
+@pytest.mark.parametrize("test_vector", CLI_TEST_VECTORS)
+def test_input_from_stdin_without_hints(shared_tmp_dir, test_vector) -> None:
+"""Test that the CLI readds from stdin correctly."""
+2025-04-13T15:51:16.0915920Z
+test_input = b""
+with open(os.path.join(TEST_FILES_DIR, test_vector.filename), "rb") as stream:
+test_input = stream.read()
+2025-04-13T15:51:16.0917331Z
+result = subprocess.run(
+[
+"python",
+"-m",
+"markitdown",
+os.path.join(TEST_FILES_DIR, test_vector.filename),
+],
+input=test_input,
+capture_output=True,
+text=False,
+)
+2025-04-13T15:51:16.0920295Z
+stdout = result.stdout.decode(locale.getpreferredencoding())
+assert (
+result.returncode == 0
+), f"CLI exited with error: {result.stderr.decode('utf-8')}"
+for test_string in test_vector.must_include:
+>           assert test_string in stdout
+E           AssertionError: assert '名前,年齢,住所' in '| ���O | �N�� | �Z�� |\n| --- | --- | --- |\n| �������Y | 30 | ���� |\n| �O�؉p�q | 25 | ��� |\n| �����~ | 35 | ���É� |\n'
+2025-04-13T15:51:16.0923088Z
+tests/test_cli_vectors.py:129: AssertionError
+_______________________ test_convert_local[test_vector9] _______________________
+2025-04-13T15:51:16.0923835Z
+test_vector = FileTestVector(filename='test_mskanji.csv', mimetype='text/csv', charset='cp932', url=None, must_include=['名前,年齢,住所', '佐藤太郎,30,東京', '三木英子,25,大阪', '髙橋淳,35,名古屋'], must_not_include=[])
+2025-04-13T15:51:16.0925201Z
+@pytest.mark.parametrize("test_vector", GENERAL_TEST_VECTORS)
+def test_convert_local(test_vector):
+"""Test the conversion of a local file."""
+markitdown = MarkItDown()
+2025-04-13T15:51:16.0926646Z
+result = markitdown.convert(
+os.path.join(TEST_FILES_DIR, test_vector.filename), url=test_vector.url
+)
+for string in test_vector.must_include:
+>           assert string in result.markdown
+E           AssertionError: assert '名前,年齢,住所' in '| ���O | �N�� | �Z�� |\n| --- | --- | --- |\n| �������Y | 30 | ���� |\n| �O�؉p�q | 25 | ��� |\n| �����~ | 35 | ���É� |'
+E            +  where '| ���O | �N�� | �Z�� |\n| --- | --- | --- |\n| �������Y | 30 | ���� |\n| �O�؉p�q | 25 | ��� |\n| �����~ | 35 | ���É� |' = <markitdown._base_converter.DocumentConverterResult object at 0x7f31f441aae0>.markdown
+2025-04-13T15:51:16.0930371Z
+tests/test_module_vectors.py:69: AssertionError
+_________________ test_convert_stream_with_hints[test_vector9] _________________
+2025-04-13T15:51:16.0931202Z
+test_vector = FileTestVector(filename='test_mskanji.csv', mimetype='text/csv', charset='cp932', url=None, must_include=['名前,年齢,住所', '佐藤太郎,30,東京', '三木英子,25,大阪', '髙橋淳,35,名古屋'], must_not_include=[])
+2025-04-13T15:51:16.0932441Z
+@pytest.mark.parametrize("test_vector", GENERAL_TEST_VECTORS)
+def test_convert_stream_with_hints(test_vector):
+"""Test the conversion of a stream with full stream info."""
+markitdown = MarkItDown()
+2025-04-13T15:51:16.0934001Z
+stream_info = StreamInfo(
+extension=os.path.splitext(test_vector.filename)[1],
+mimetype=test_vector.mimetype,
+charset=test_vector.charset,
+)
+2025-04-13T15:51:16.0935737Z
+with open(os.path.join(TEST_FILES_DIR, test_vector.filename), "rb") as stream:
+result = markitdown.convert(
+stream, stream_info=stream_info, url=test_vector.url
+)
+for string in test_vector.must_include:
+>               assert string in result.markdown
+E               AssertionError: assert '名前,年齢,住所' in '| ���O | �N�� | �Z�� |\n| --- | --- | --- |\n| �������Y | 30 | ���� |\n| �O�؉p�q | 25 | ��� |\n| �����~ | 35 | ���É� |'
+E                +  where '| ���O | �N�� | �Z�� |\n| --- | --- | --- |\n| �������Y | 30 | ���� |\n| �O�؉p�q | 25 | ��� |\n| �����~ | 35 | ���É� |' = <markitdown._base_converter.DocumentConverterResult object at 0x7f31f63ba8d0>.markdown
+2025-04-13T15:51:16.0939967Z
+tests/test_module_vectors.py:90: AssertionError
+_______________ test_convert_stream_without_hints[test_vector9] ________________
+2025-04-13T15:51:16.0940797Z
+test_vector = FileTestVector(filename='test_mskanji.csv', mimetype='text/csv', charset='cp932', url=None, must_include=['名前,年齢,住所', '佐藤太郎,30,東京', '三木英子,25,大阪', '髙橋淳,35,名古屋'], must_not_include=[])
+2025-04-13T15:51:16.0942193Z
+@pytest.mark.parametrize("test_vector", GENERAL_TEST_VECTORS)
+def test_convert_stream_without_hints(test_vector):
+"""Test the conversion of a stream with no stream info."""
+markitdown = MarkItDown()
+2025-04-13T15:51:16.0943761Z
+with open(os.path.join(TEST_FILES_DIR, test_vector.filename), "rb") as stream:
+result = markitdown.convert(stream, url=test_vector.url)
+for string in test_vector.must_include:
+>               assert string in result.markdown
+E               AssertionError: assert '名前,年齢,住所' in '| ���O | �N�� | �Z�� |\n| --- | --- | --- |\n| �������Y | 30 | ���� |\n| �O�؉p�q | 25 | ��� |\n| �����~ | 35 | ���É� |'
+E                +  where '| ���O | �N�� | �Z�� |\n| --- | --- | --- |\n| �������Y | 30 | ���� |\n| �O�؉p�q | 25 | ��� |\n| �����~ | 35 | ���É� |' = <markitdown._base_converter.DocumentConverterResult object at 0x7f31f7bf4890>.markdown
+2025-04-13T15:51:16.0947176Z
+tests/test_module_vectors.py:103: AssertionError
+_____________________ test_convert_file_uri[test_vector9] ______________________
+2025-04-13T15:51:16.0948327Z
+test_vector = FileTestVector(filename='test_mskanji.csv', mimetype='text/csv', charset='cp932', url=None, must_include=['名前,年齢,住所', '佐藤太郎,30,東京', '三木英子,25,大阪', '髙橋淳,35,名古屋'], must_not_include=[])
+2025-04-13T15:51:16.0949585Z
+@pytest.mark.parametrize("test_vector", GENERAL_TEST_VECTORS)
+def test_convert_file_uri(test_vector):
+"""Test the conversion of a file:// URI."""
+markitdown = MarkItDown()
+2025-04-13T15:51:16.0951004Z
+result = markitdown.convert(
+Path(os.path.join(TEST_FILES_DIR, test_vector.filename)).as_uri(),
+url=test_vector.url,
+)
+for string in test_vector.must_include:
+>           assert string in result.markdown
+E           AssertionError: assert '名前,年齢,住所' in '| ���O | �N�� | �Z�� |\n| --- | --- | --- |\n| �������Y | 30 | ���� |\n| �O�؉p�q | 25 | ��� |\n| �����~ | 35 | ���É� |'
+E            +  where '| ���O | �N�� | �Z�� |\n| --- | --- | --- |\n| �������Y | 30 | ���� |\n| �O�؉p�q | 25 | ��� |\n| �����~ | 35 | ���É� |' = <markitdown._base_converter.DocumentConverterResult object at 0x7f31f9ef8260>.markdown
+2025-04-13T15:51:16.0954697Z
+tests/test_module_vectors.py:139: AssertionError
+_____________________ test_convert_data_uri[test_vector9] ______________________
+2025-04-13T15:51:16.0955641Z
+test_vector = FileTestVector(filename='test_mskanji.csv', mimetype='text/csv', charset='cp932', url=None, must_include=['名前,年齢,住所', '佐藤太郎,30,東京', '三木英子,25,大阪', '髙橋淳,35,名古屋'], must_not_include=[])
+2025-04-13T15:51:16.0956932Z
+@pytest.mark.parametrize("test_vector", GENERAL_TEST_VECTORS)
+def test_convert_data_uri(test_vector):
+"""Test the conversion of a data URI."""
+markitdown = MarkItDown()
+2025-04-13T15:51:16.0958444Z
+data = ""
+with open(os.path.join(TEST_FILES_DIR, test_vector.filename), "rb") as stream:
+data = base64.b64encode(stream.read()).decode("utf-8")
+mimetype = test_vector.mimetype
+data_uri = f"data:{mimetype};base64,{data}"
+2025-04-13T15:51:16.0960347Z
+result = markitdown.convert(
+data_uri,
+url=test_vector.url,
+)
+for string in test_vector.must_include:
+>           assert string in result.markdown
+E           AssertionError: assert '名前,年齢,住所' in '| ���O | �N�� | �Z�� |\n| --- | --- | --- |\n| �������Y | 30 | ���� |\n| �O�؉p�q | 25 | ��� |\n| �����~ | 35 | ���É� |'
+E            +  where '| ���O | �N�� | �Z�� |\n| --- | --- | --- |\n| �������Y | 30 | ���� |\n| �O�؉p�q | 25 | ��� |\n| �����~ | 35 | ���É� |' = <markitdown._base_converter.DocumentConverterResult object at 0x7f31f44e3020>.markdown
+2025-04-13T15:51:16.0963940Z
+tests/test_module_vectors.py:160: AssertionError
+=============================== warnings summary ===============================
+../../../../../.local/share/hatch/env/virtual/markitdown/H_uUSwZ6/hatch-test.py3.12/lib/python3.12/site-packages/pydub/utils.py:170
+/home/runner/.local/share/hatch/env/virtual/markitdown/H_uUSwZ6/hatch-test.py3.12/lib/python3.12/site-packages/pydub/utils.py:170: RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work
+warn("Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work", RuntimeWarning)
+2025-04-13T15:51:16.0967868Z
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_cli_vectors.py::test_output_to_stdout[test_vector6] - assert '名前,年齢,住所' in '| ���O | �N�� | �Z�� |\n| --- | --- | --- |\n| �������Y | 30 | ���� |\n| �O�؉p�q | 25 | ��� |\n| �����~ | 35 | ���É� |\n'
++  where '| ���O | �N�� | �Z�� |\n| --- | --- | --- |\n| �������Y | 30 | ���� |\n| �O�؉p�q | 25 | ��� |\n| �����~ | 35 | ���É� |\n' = CompletedProcess(args=['python', '-m', 'markitdown', '/home/runner/work/markitdown/markitdown/packages/markitdown/test...ut may not work\n  warn("Couldn\'t find ffmpeg or avconv - defaulting to ffmpeg, but may not work", RuntimeWarning)\n').stdout
+FAILED tests/test_cli_vectors.py::test_output_to_file[test_vector6] - AssertionError: assert '名前,年齢,住所' in '| ���O | �N�� | �Z�� |\n| --- | --- | --- |\n| �������Y | 30 | ���� |\n| �O�؉p�q | 25 | ��� |\n| �����~ | 35 | ���É� |'
+FAILED tests/test_cli_vectors.py::test_input_from_stdin_without_hints[test_vector6] - AssertionError: assert '名前,年齢,住所' in '| ���O | �N�� | �Z�� |\n| --- | --- | --- |\n| �������Y | 30 | ���� |\n| �O�؉p�q | 25 | ��� |\n| �����~ | 35 | ���É� |\n'
+FAILED tests/test_module_vectors.py::test_convert_local[test_vector9] - AssertionError: assert '名前,年齢,住所' in '| ���O | �N�� | �Z�� |\n| --- | --- | --- |\n| �������Y | 30 | ���� |\n| �O�؉p�q | 25 | ��� |\n| �����~ | 35 | ���É� |'
++  where '| ���O | �N�� | �Z�� |\n| --- | --- | --- |\n| �������Y | 30 | ���� |\n| �O�؉p�q | 25 | ��� |\n| �����~ | 35 | ���É� |' = <markitdown._base_converter.DocumentConverterResult object at 0x7f31f441aae0>.markdown
+FAILED tests/test_module_vectors.py::test_convert_stream_with_hints[test_vector9] - AssertionError: assert '名前,年齢,住所' in '| ���O | �N�� | �Z�� |\n| --- | --- | --- |\n| �������Y | 30 | ���� |\n| �O�؉p�q | 25 | ��� |\n| �����~ | 35 | ���É� |'
++  where '| ���O | �N�� | �Z�� |\n| --- | --- | --- |\n| �������Y | 30 | ���� |\n| �O�؉p�q | 25 | ��� |\n| �����~ | 35 | ���É� |' = <markitdown._base_converter.DocumentConverterResult object at 0x7f31f63ba8d0>.markdown
+FAILED tests/test_module_vectors.py::test_convert_stream_without_hints[test_vector9] - AssertionError: assert '名前,年齢,住所' in '| ���O | �N�� | �Z�� |\n| --- | --- | --- |\n| �������Y | 30 | ���� |\n| �O�؉p�q | 25 | ��� |\n| �����~ | 35 | ���É� |'
++  where '| ���O | �N�� | �Z�� |\n| --- | --- | --- |\n| �������Y | 30 | ���� |\n| �O�؉p�q | 25 | ��� |\n| �����~ | 35 | ���É� |' = <markitdown._base_converter.DocumentConverterResult object at 0x7f31f7bf4890>.markdown
+FAILED tests/test_module_vectors.py::test_convert_file_uri[test_vector9] - AssertionError: assert '名前,年齢,住所' in '| ���O | �N�� | �Z�� |\n| --- | --- | --- |\n| �������Y | 30 | ���� |\n| �O�؉p�q | 25 | ��� |\n| �����~ | 35 | ���É� |'
++  where '| ���O | �N�� | �Z�� |\n| --- | --- | --- |\n| �������Y | 30 | ���� |\n| �O�؉p�q | 25 | ��� |\n| �����~ | 35 | ���É� |' = <markitdown._base_converter.DocumentConverterResult object at 0x7f31f9ef8260>.markdown
+FAILED tests/test_module_vectors.py::test_convert_data_uri[test_vector9] - AssertionError: assert '名前,年齢,住所' in '| ���O | �N�� | �Z�� |\n| --- | --- | --- |\n| �������Y | 30 | ���� |\n| �O�؉p�q | 25 | ��� |\n| �����~ | 35 | ���É� |'
++  where '| ���O | �N�� | �Z�� |\n| --- | --- | --- |\n| �������Y | 30 | ���� |\n| �O�؉p�q | 25 | ��� |\n| �����~ | 35 | ���É� |' = <markitdown._base_converter.DocumentConverterResult object at 0x7f31f44e3020>.markdown
+============ 8 failed, 133 passed, 31 skipped, 1 warning in 53.42s =============
+##[error]Process completed with exit code 1.

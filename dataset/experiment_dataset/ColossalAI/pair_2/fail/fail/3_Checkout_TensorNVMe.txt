@@ -1,0 +1,171 @@
+2025-04-11T03:53:28.0107992Z ##[group]Run actions/checkout@v2
+2025-04-11T03:53:28.0108507Z with:
+2025-04-11T03:53:28.0108732Z   repository: hpcaitech/TensorNVMe
+2025-04-11T03:53:28.0109004Z   path: TensorNVMe
+2025-04-11T03:53:28.0109387Z   token: ***
+2025-04-11T03:53:28.0109604Z   ssh-strict: true
+2025-04-11T03:53:28.0109837Z   persist-credentials: true
+2025-04-11T03:53:28.0110088Z   clean: true
+2025-04-11T03:53:28.0110299Z   fetch-depth: 1
+2025-04-11T03:53:28.0110515Z   lfs: false
+2025-04-11T03:53:28.0110724Z   submodules: false
+2025-04-11T03:53:28.0110945Z   set-safe-directory: true
+2025-04-11T03:53:28.0111266Z ##[endgroup]
+2025-04-11T03:53:28.0159522Z ##[command]/usr/bin/docker exec  920416532ddad0112e30de68b3d3249d8793b2fa61e8416f9de3eb685dff9f0f sh -c "cat /etc/*release | grep ^ID"
+2025-04-11T03:53:28.2376613Z Syncing repository: hpcaitech/TensorNVMe
+2025-04-11T03:53:28.2377918Z ##[group]Getting Git version info
+2025-04-11T03:53:28.2378290Z Working directory is '/__w/ColossalAI/ColossalAI/TensorNVMe'
+2025-04-11T03:53:28.2378822Z [command]/usr/bin/git version
+2025-04-11T03:53:28.2379149Z git version 2.25.1
+2025-04-11T03:53:28.2384042Z ##[endgroup]
+2025-04-11T03:53:28.2394260Z Temporarily overriding HOME='/__w/_temp/fbfe2622-2566-432d-b025-a8650df70e60' before making global git config changes
+2025-04-11T03:53:28.2394872Z Adding repository directory to the temporary git global config as a safe directory
+2025-04-11T03:53:28.2397272Z [command]/usr/bin/git config --global --add safe.directory /__w/ColossalAI/ColossalAI/TensorNVMe
+2025-04-11T03:53:28.2423539Z ##[group]Initializing the repository
+2025-04-11T03:53:28.2426223Z [command]/usr/bin/git init /__w/ColossalAI/ColossalAI/TensorNVMe
+2025-04-11T03:53:28.2448817Z Initialized empty Git repository in /__w/ColossalAI/ColossalAI/TensorNVMe/.git/
+2025-04-11T03:53:28.2455671Z [command]/usr/bin/git remote add origin https://github.com/hpcaitech/TensorNVMe
+2025-04-11T03:53:28.2475193Z ##[endgroup]
+2025-04-11T03:53:28.2475565Z ##[group]Disabling automatic garbage collection
+2025-04-11T03:53:28.2478225Z [command]/usr/bin/git config --local gc.auto 0
+2025-04-11T03:53:28.2498674Z ##[endgroup]
+2025-04-11T03:53:28.2499004Z ##[group]Setting up auth
+2025-04-11T03:53:28.2504318Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-04-11T03:53:28.2526500Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-04-11T03:53:28.2697202Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-11T03:53:28.2716821Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-04-11T03:53:28.2882157Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-04-11T03:53:28.2906698Z ##[endgroup]
+2025-04-11T03:53:28.2907052Z ##[group]Determining the default branch
+2025-04-11T03:53:28.2909494Z Retrieving the default branch name
+2025-04-11T03:53:28.9579577Z Default branch 'main'
+2025-04-11T03:53:28.9580500Z ##[endgroup]
+2025-04-11T03:53:28.9580932Z ##[group]Fetching the repository
+2025-04-11T03:53:28.9583757Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --progress --no-recurse-submodules --depth=1 origin +refs/heads/main:refs/remotes/origin/main
+2025-04-11T03:53:30.3110887Z remote: Enumerating objects: 60, done.        
+2025-04-11T03:53:30.3111304Z remote: Counting objects:   1% (1/60)        
+2025-04-11T03:53:30.3111612Z remote: Counting objects:   3% (2/60)        
+2025-04-11T03:53:30.3111910Z remote: Counting objects:   5% (3/60)        
+2025-04-11T03:53:30.3112211Z remote: Counting objects:   6% (4/60)        
+2025-04-11T03:53:30.3166136Z remote: Counting objects:   8% (5/60)        
+2025-04-11T03:53:30.3166435Z remote: Counting objects:  10% (6/60)        
+2025-04-11T03:53:30.3167079Z remote: Counting objects:  11% (7/60)        
+2025-04-11T03:53:30.3167361Z remote: Counting objects:  13% (8/60)        
+2025-04-11T03:53:30.3167718Z remote: Counting objects:  15% (9/60)        
+2025-04-11T03:53:30.3168000Z remote: Counting objects:  16% (10/60)        
+2025-04-11T03:53:30.3168311Z remote: Counting objects:  18% (11/60)        
+2025-04-11T03:53:30.3168609Z remote: Counting objects:  20% (12/60)        
+2025-04-11T03:53:30.3168901Z remote: Counting objects:  21% (13/60)        
+2025-04-11T03:53:30.3169181Z remote: Counting objects:  23% (14/60)        
+2025-04-11T03:53:30.3169459Z remote: Counting objects:  25% (15/60)        
+2025-04-11T03:53:30.3169807Z remote: Counting objects:  26% (16/60)        
+2025-04-11T03:53:30.3170082Z remote: Counting objects:  28% (17/60)        
+2025-04-11T03:53:30.3170352Z remote: Counting objects:  30% (18/60)        
+2025-04-11T03:53:30.3170630Z remote: Counting objects:  31% (19/60)        
+2025-04-11T03:53:30.3170905Z remote: Counting objects:  33% (20/60)        
+2025-04-11T03:53:30.3171184Z remote: Counting objects:  35% (21/60)        
+2025-04-11T03:53:30.3171459Z remote: Counting objects:  36% (22/60)        
+2025-04-11T03:53:30.3171729Z remote: Counting objects:  38% (23/60)        
+2025-04-11T03:53:30.3172008Z remote: Counting objects:  40% (24/60)        
+2025-04-11T03:53:30.3172348Z remote: Counting objects:  41% (25/60)        
+2025-04-11T03:53:30.3172685Z remote: Counting objects:  43% (26/60)        
+2025-04-11T03:53:30.3173029Z remote: Counting objects:  45% (27/60)        
+2025-04-11T03:53:30.3173305Z remote: Counting objects:  46% (28/60)        
+2025-04-11T03:53:30.3173586Z remote: Counting objects:  48% (29/60)        
+2025-04-11T03:53:30.3173860Z remote: Counting objects:  50% (30/60)        
+2025-04-11T03:53:30.3174135Z remote: Counting objects:  51% (31/60)        
+2025-04-11T03:53:30.3174413Z remote: Counting objects:  53% (32/60)        
+2025-04-11T03:53:30.3174687Z remote: Counting objects:  55% (33/60)        
+2025-04-11T03:53:30.3174961Z remote: Counting objects:  56% (34/60)        
+2025-04-11T03:53:30.3175238Z remote: Counting objects:  58% (35/60)        
+2025-04-11T03:53:30.3175514Z remote: Counting objects:  60% (36/60)        
+2025-04-11T03:53:30.3175788Z remote: Counting objects:  61% (37/60)        
+2025-04-11T03:53:30.3176215Z remote: Counting objects:  63% (38/60)        
+2025-04-11T03:53:30.3176490Z remote: Counting objects:  65% (39/60)        
+2025-04-11T03:53:30.3176771Z remote: Counting objects:  66% (40/60)        
+2025-04-11T03:53:30.3177048Z remote: Counting objects:  68% (41/60)        
+2025-04-11T03:53:30.3177332Z remote: Counting objects:  70% (42/60)        
+2025-04-11T03:53:30.3177612Z remote: Counting objects:  71% (43/60)        
+2025-04-11T03:53:30.3177884Z remote: Counting objects:  73% (44/60)        
+2025-04-11T03:53:30.3178163Z remote: Counting objects:  75% (45/60)        
+2025-04-11T03:53:30.3178439Z remote: Counting objects:  76% (46/60)        
+2025-04-11T03:53:30.3178718Z remote: Counting objects:  78% (47/60)        
+2025-04-11T03:53:30.3179001Z remote: Counting objects:  80% (48/60)        
+2025-04-11T03:53:30.3179269Z remote: Counting objects:  81% (49/60)        
+2025-04-11T03:53:30.3179545Z remote: Counting objects:  83% (50/60)        
+2025-04-11T03:53:30.3179825Z remote: Counting objects:  85% (51/60)        
+2025-04-11T03:53:30.3180104Z remote: Counting objects:  86% (52/60)        
+2025-04-11T03:53:30.3180380Z remote: Counting objects:  88% (53/60)        
+2025-04-11T03:53:30.3180660Z remote: Counting objects:  90% (54/60)        
+2025-04-11T03:53:30.3180932Z remote: Counting objects:  91% (55/60)        
+2025-04-11T03:53:30.3181216Z remote: Counting objects:  93% (56/60)        
+2025-04-11T03:53:30.3181495Z remote: Counting objects:  95% (57/60)        
+2025-04-11T03:53:30.3181776Z remote: Counting objects:  96% (58/60)        
+2025-04-11T03:53:30.3182060Z remote: Counting objects:  98% (59/60)        
+2025-04-11T03:53:30.3182332Z remote: Counting objects: 100% (60/60)        
+2025-04-11T03:53:30.3182757Z remote: Counting objects: 100% (60/60), done.        
+2025-04-11T03:53:30.3183082Z remote: Compressing objects:   1% (1/51)        
+2025-04-11T03:53:30.3183387Z remote: Compressing objects:   3% (2/51)        
+2025-04-11T03:53:30.3183704Z remote: Compressing objects:   5% (3/51)        
+2025-04-11T03:53:30.3184123Z remote: Compressing objects:   7% (4/51)        
+2025-04-11T03:53:30.3184514Z remote: Compressing objects:   9% (5/51)        
+2025-04-11T03:53:30.3184808Z remote: Compressing objects:  11% (6/51)        
+2025-04-11T03:53:30.3185116Z remote: Compressing objects:  13% (7/51)        
+2025-04-11T03:53:30.3185420Z remote: Compressing objects:  15% (8/51)        
+2025-04-11T03:53:30.3185721Z remote: Compressing objects:  17% (9/51)        
+2025-04-11T03:53:30.3186025Z remote: Compressing objects:  19% (10/51)        
+2025-04-11T03:53:30.3186331Z remote: Compressing objects:  21% (11/51)        
+2025-04-11T03:53:30.3186643Z remote: Compressing objects:  23% (12/51)        
+2025-04-11T03:53:30.3186957Z remote: Compressing objects:  25% (13/51)        
+2025-04-11T03:53:30.3187261Z remote: Compressing objects:  27% (14/51)        
+2025-04-11T03:53:30.3187557Z remote: Compressing objects:  29% (15/51)        
+2025-04-11T03:53:30.3187846Z remote: Compressing objects:  31% (16/51)        
+2025-04-11T03:53:30.3188145Z remote: Compressing objects:  33% (17/51)        
+2025-04-11T03:53:30.3188535Z remote: Compressing objects:  35% (18/51)        
+2025-04-11T03:53:30.3188839Z remote: Compressing objects:  37% (19/51)        
+2025-04-11T03:53:30.3189132Z remote: Compressing objects:  39% (20/51)        
+2025-04-11T03:53:30.3189422Z remote: Compressing objects:  41% (21/51)        
+2025-04-11T03:53:30.3189704Z remote: Compressing objects:  43% (22/51)        
+2025-04-11T03:53:30.3189996Z remote: Compressing objects:  45% (23/51)        
+2025-04-11T03:53:30.3190282Z remote: Compressing objects:  47% (24/51)        
+2025-04-11T03:53:30.3190571Z remote: Compressing objects:  49% (25/51)        
+2025-04-11T03:53:30.3190864Z remote: Compressing objects:  50% (26/51)        
+2025-04-11T03:53:30.3191142Z remote: Compressing objects:  52% (27/51)        
+2025-04-11T03:53:30.3191430Z remote: Compressing objects:  54% (28/51)        
+2025-04-11T03:53:30.3191717Z remote: Compressing objects:  56% (29/51)        
+2025-04-11T03:53:30.3192140Z remote: Compressing objects:  58% (30/51)        
+2025-04-11T03:53:30.3192434Z remote: Compressing objects:  60% (31/51)        
+2025-04-11T03:53:30.3192724Z remote: Compressing objects:  62% (32/51)        
+2025-04-11T03:53:30.3193038Z remote: Compressing objects:  64% (33/51)        
+2025-04-11T03:53:30.3193339Z remote: Compressing objects:  66% (34/51)        
+2025-04-11T03:53:30.3193637Z remote: Compressing objects:  68% (35/51)        
+2025-04-11T03:53:30.3193935Z remote: Compressing objects:  70% (36/51)        
+2025-04-11T03:53:30.3194233Z remote: Compressing objects:  72% (37/51)        
+2025-04-11T03:53:30.3194524Z remote: Compressing objects:  74% (38/51)        
+2025-04-11T03:53:30.3194821Z remote: Compressing objects:  76% (39/51)        
+2025-04-11T03:53:30.3195114Z remote: Compressing objects:  78% (40/51)        
+2025-04-11T03:53:30.3195410Z remote: Compressing objects:  80% (41/51)        
+2025-04-11T03:53:30.3195708Z remote: Compressing objects:  82% (42/51)        
+2025-04-11T03:53:30.3196002Z remote: Compressing objects:  84% (43/51)        
+2025-04-11T03:53:30.3196300Z remote: Compressing objects:  86% (44/51)        
+2025-04-11T03:53:30.3196597Z remote: Compressing objects:  88% (45/51)        
+2025-04-11T03:53:30.3196893Z remote: Compressing objects:  90% (46/51)        
+2025-04-11T03:53:30.3197189Z remote: Compressing objects:  92% (47/51)        
+2025-04-11T03:53:30.3197478Z remote: Compressing objects:  94% (48/51)        
+2025-04-11T03:53:30.3197775Z remote: Compressing objects:  96% (49/51)        
+2025-04-11T03:53:30.3198076Z remote: Compressing objects:  98% (50/51)        
+2025-04-11T03:53:30.3198371Z remote: Compressing objects: 100% (51/51)        
+2025-04-11T03:53:30.3198814Z remote: Compressing objects: 100% (51/51), done.        
+2025-04-11T03:53:30.5291201Z remote: Total 60 (delta 6), reused 24 (delta 1), pack-reused 0 (from 0)        
+2025-04-11T03:53:30.5452900Z From https://github.com/hpcaitech/TensorNVMe
+2025-04-11T03:53:30.5453228Z  * [new branch]      main       -> origin/main
+2025-04-11T03:53:30.5468011Z ##[endgroup]
+2025-04-11T03:53:30.5468519Z ##[group]Determining the checkout info
+2025-04-11T03:53:30.5470266Z ##[endgroup]
+2025-04-11T03:53:30.5470634Z ##[group]Checking out the ref
+2025-04-11T03:53:30.5474129Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2025-04-11T03:53:30.5556871Z Switched to a new branch 'main'
+2025-04-11T03:53:30.5557842Z Branch 'main' set up to track remote branch 'main' from 'origin'.
+2025-04-11T03:53:30.5561171Z ##[endgroup]
+2025-04-11T03:53:30.5586944Z [command]/usr/bin/git log -1 --format='%H'
+2025-04-11T03:53:30.5604162Z '6403388f7c8929f43e407c8f7f39c6453d78c5d4'

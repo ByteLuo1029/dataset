@@ -1,0 +1,4044 @@
+##[group]Run pnpm test:nodes
+[36;1mpnpm test:nodes[0m
+0
+
+TURBO_FORCE: true
+COVERAGE_ENABLED: true
+GITHUB_REPO_NAME: n8n-io/n8n
+TURBOGHA_PORT: 41230
+TURBO_API: http://localhost:41230
+TURBO_TOKEN: turbogha
+TURBO_TEAM: turbogha
+##[endgroup]
+2025-04-15T08:41:16.9806735Z
+> n8n-monorepo@1.89.0 test:nodes /home/runner/_work/n8n/n8n
+> turbo run test:nodes --concurrency=1
+2025-04-15T08:41:16.9807759Z
+• Packages in scope: @n8n/api-types, @n8n/chat, @n8n/client-oauth2, @n8n/codemirror-lang, @n8n/composables, @n8n/config, @n8n/design-system, @n8n/di, @n8n/eslint-config, @n8n/extension-sdk, @n8n/imap, @n8n/json-schema-to-zod, @n8n/n8n-benchmark, @n8n/n8n-extension-insights, @n8n/n8n-nodes-langchain, @n8n/permissions, @n8n/storybook, @n8n/task-runner, @n8n/typescript-config, @n8n/utils, @n8n/vitest-config, n8n, n8n-core, n8n-cypress, n8n-editor-ui, n8n-node-dev, n8n-nodes-base, n8n-workflow
+• Running test:nodes in 28 packages
+• Remote caching enabled
+##[group]@n8n/json-schema-to-zod:test
+cache bypass, force executing 3a55834af624c1ef
+2025-04-15T08:41:20.7018151Z
+> @n8n/json-schema-to-zod@1.3.0 test /home/runner/_work/n8n/n8n/packages/@n8n/json-schema-to-zod
+> jest
+2025-04-15T08:41:20.7018988Z
+PASS test/parsers/parse-number.test.ts
+parseNumber
+✓ should handle integer (3 ms)
+✓ should handle maximum with exclusiveMinimum (1 ms)
+✓ should handle maximum with exclusiveMinimum
+✓ should handle maximum with exclusiveMaximum (1 ms)
+✓ should handle numeric exclusiveMaximum
+✓ should accept errorMessage (1 ms)
+2025-04-15T08:41:20.7021503Z
+PASS test/parsers/parse-string.test.ts
+parseString
+✓ DateTime format (5 ms)
+✓ email
+✓ ip (9 ms)
+✓ uri
+✓ uuid
+✓ time (1 ms)
+✓ date
+✓ duration
+✓ base64 (1 ms)
+✓ should accept errorMessage
+2025-04-15T08:41:20.7023621Z
+PASS test/parsers/parse-schema.test.ts
+parseSchema
+✓ should be usable without providing refs (2 ms)
+✓ should return a seen and processed ref
+✓ should be possible to describe a readonly schema (1 ms)
+✓ should handle nullable
+✓ should handle enum
+✓ should handle multiple type (1 ms)
+✓ should handle if-then-else type (1 ms)
+✓ should handle anyOf
+✓ should handle oneOf (1 ms)
+2025-04-15T08:41:20.7026112Z
+PASS test/json-schema-to-zod.test.ts
+jsonSchemaToZod
+✓ should accept json schema 7 and 4 (4 ms)
+✓ can exclude defaults
+✓ should include describes
+✓ can exclude describes (1 ms)
+✓ will remove optionality if default is present (1 ms)
+✓ will handle falsy defaults (1 ms)
+✓ will ignore undefined as default
+✓ should be possible to define a custom parser (1 ms)
+2025-04-15T08:41:20.7028383Z
+PASS test/parsers/parse-object.test.ts
+parseObject
+✓ should handle with missing properties (4 ms)
+✓ should handle with empty properties
+✓ With properties - should handle optional and required properties (1 ms)
+✓ With properties - should handle additionalProperties when set to false
+✓ With properties - should handle additionalProperties when set to true (1 ms)
+✓ With properties - should handle additionalProperties when provided a schema
+✓ Without properties - should handle additionalProperties when set to false
+✓ Without properties - should handle additionalProperties when set to true (1 ms)
+✓ Without properties - should handle additionalProperties when provided a schema
+✓ Without properties - should include falsy defaults
+✓ eh (2 ms)
+✓ Functional tests - run (4 ms)
+✓ Functional tests - properties (2 ms)
+✓ Functional tests - properties and additionalProperties
+✓ Functional tests - properties and single-item patternProperties (2 ms)
+✓ Functional tests - properties, additionalProperties and patternProperties (1 ms)
+✓ Functional tests - additionalProperties
+✓ Functional tests - additionalProperties and patternProperties (1 ms)
+✓ Functional tests - single-item patternProperties
+✓ Functional tests - patternProperties (1 ms)
+✓ Functional tests - patternProperties and properties
+2025-04-15T08:41:20.7034660Z
+PASS test/parsers/parse-one-of.test.ts
+parseOneOf
+✓ should create a union from two or more schemas (4 ms)
+✓ should extract a single schema (1 ms)
+✓ should return z.any() if array is empty
+2025-04-15T08:41:20.7035679Z
+PASS test/parsers/parse-array.test.ts
+parseArray
+✓ should create tuple with items array (3 ms)
+✓ should create array with items object (1 ms)
+✓ should create min for minItems
+✓ should create max for maxItems (1 ms)
+2025-04-15T08:41:20.7036891Z
+PASS test/parsers/parse-all-of.test.ts
+parseAllOf
+✓ should create never if empty (2 ms)
+✓ should handle true values
+✓ should handle false values
+2025-04-15T08:41:20.7038000Z
+PASS test/parsers/parse-enum.test.ts
+parseEnum
+✓ should create never with empty enum (4 ms)
+✓ should create literal with single item enum (1 ms)
+✓ should create enum array with string enums
+✓ should create union with mixed enums (1 ms)
+2025-04-15T08:41:20.7039212Z
+PASS test/parsers/parse-any-of.test.ts
+parseAnyOf
+✓ should create a union from two or more schemas (5 ms)
+✓ should extract a single schema
+✓ should return z.any() if array is empty (1 ms)
+2025-04-15T08:41:20.7040334Z
+PASS test/parsers/parse-not.test.ts
+parseNot
+✓ parseNot (3 ms)
+2025-04-15T08:41:20.7040811Z
+PASS test/parsers/parse-nullable.test.ts
+parseNullable
+✓ parseSchema should not add default twice (5 ms)
+2025-04-15T08:41:20.7041377Z
+PASS test/utils/omit.test.ts
+omit
+✓ omit (3 ms)
+2025-04-15T08:41:20.7041815Z
+PASS test/utils/half.test.ts
+half
+✓ half (3 ms)
+2025-04-15T08:41:20.7042236Z
+PASS test/parsers/parse-const.test.ts
+parseConst
+✓ should handle falsy constants (3 ms)
+2025-04-15T08:41:20.7042766Z
+Test Suites: 15 passed, 15 total
+Tests:       76 passed, 76 total
+Snapshots:   0 total
+Time:        2.659 s
+Ran all test suites.
+##[endgroup]
+##[group]@n8n/n8n-nodes-langchain:test
+cache bypass, force executing 4aa76629a01475af
+2025-04-15T08:41:34.7542074Z
+> @n8n/n8n-nodes-langchain@1.89.0 test /home/runner/_work/n8n/n8n/packages/@n8n/nodes-langchain
+> jest
+2025-04-15T08:41:34.7542713Z
+PASS nodes/chains/ChainLLM/test/chainExecutor.test.ts
+chainExecutor
+getOutputParserForLLM
+✓ should return NaiveJsonOutputParser for OpenAI-like models with json_object response format (5 ms)
+✓ should return NaiveJsonOutputParser for Ollama models with json format
+✓ should return StringOutputParser for models without JSON format settings (1 ms)
+NaiveJsonOutputParser
+✓ should parse valid JSON directly (1 ms)
+✓ should handle nested JSON objects
+✓ should use parent class parser for malformed JSON (1 ms)
+✓ should handle JSON with surrounding text by using parent parser
+✓ should correctly parse JSON with markdown text inside properties
+✓ should correctly parse JSON with markdown code blocks containing JSON
+✓ should handle JSON with special characters in markdown content (1 ms)
+executeChain
+✓ should execute a simple chain without output parsers (2 ms)
+✓ should execute a chain with a single output parser (1 ms)
+✓ should wrap non-array responses in an array
+✓ should pass the execution cancel signal to the chain (10 ms)
+✓ should support chat models (2 ms)
+✓ should use JsonOutputParser for OpenAI models with json_object response format (1 ms)
+✓ should use JsonOutputParser for Ollama models with json format (1 ms)
+2025-04-15T08:41:34.7549514Z
+PASS nodes/chains/ChainLLM/test/ChainLlm.node.test.ts
+ChainLlm Node
+description
+✓ should have the expected properties (6 ms)
+execute
+✓ should execute the chain with the correct parameters (2 ms)
+✓ should handle multiple input items (1 ms)
+✓ should use the prompt parameter directly for older versions (1 ms)
+✓ should throw an error if prompt is empty (19 ms)
+✓ should continue on failure when configured (1 ms)
+✓ should handle multiple response items from executeChain (1 ms)
+✓ should unwrap object responses when node version is 1.6 or higher (1 ms)
+✓ should unwrap object responses when output parser is provided regardless of version (1 ms)
+✓ should wrap object responses as text when node version is lower than 1.6 and no output parser (1 ms)
+✓ should handle a mix of different response types with the correct wrapping
+✓ should handle LLM responses containing JSON with markdown content (4 ms)
+2025-04-15T08:41:34.7554097Z
+PASS nodes/agents/Agent/test/ToolsAgent.test.ts
+getOutputParserSchema
+✓ should return a default schema if getSchema returns undefined (17 ms)
+✓ should return the custom schema if provided (1 ms)
+extractBinaryMessages
+✓ should extract a binary message from the input data when no id is provided (1 ms)
+✓ should extract a binary message using binary stream if id is provided (1 ms)
+fixEmptyContentMessage
+✓ should replace empty string inputs with empty objects
+handleParsedStepOutput
+✓ should stringify the output if memory is provided (1 ms)
+✓ should not stringify the output if memory is not provided (1 ms)
+getChatModel
+✓ should return the model if it is a valid chat model
+✓ should throw if the model is not a valid chat model (14 ms)
+getOptionalMemory
+✓ should return the memory if available
+getTools
+✓ should retrieve tools without appending if outputParser is not provided (1 ms)
+✓ should retrieve tools and append the structured output parser tool if outputParser is provided (1 ms)
+prepareMessages
+✓ should include a binary message if binary data is present and passthroughBinaryImages is true (1 ms)
+✓ should not include a binary message if no binary data is present
+✓ should not include system_message in prompt templates if not provided after version 1.9 (1 ms)
+✓ should include system_message in prompt templates if provided after version 1.9 (1 ms)
+✓ should include system_message in prompt templates if not provided before version 1.9 (1 ms)
+✓ should include system_message with formatting_instructions in prompt templates if provided before version 1.9
+✓ should add formatting instructions when omitting system message after version 1.9 (1 ms)
+preparePrompt
+✓ should return a ChatPromptTemplate instance (1 ms)
+2025-04-15T08:41:34.7562669Z
+PASS nodes/output_parser/OutputParserStructured/test/OutputParserStructured.node.test.ts
+OutputParserStructured
+supplyData
+Version 1.1 and below
+✓ should parse a complex nested schema (7 ms)
+✓ should handle optional fields correctly (1 ms)
+✓ should handle arrays of objects (1 ms)
+✓ should handle empty objects (1 ms)
+✓ should throw error for null values in non-nullable fields (18 ms)
+Version 1.2 and above
+✓ should parse output using schema generated from complex JSON example (2 ms)
+✓ should validate enum values (1 ms)
+✓ should handle recursive structures (1 ms)
+✓ should handle missing required properties (2 ms)
+✓ should throw on wrong type (1 ms)
+✓ should parse array output (1 ms)
+2025-04-15T08:41:34.7571591Z
+PASS nodes/vendors/OpenAi/test/OpenAi.node.test.ts
+OpenAi, Assistant resource
+✓ create => should throw an error if an assistant with the same name already exists (4 ms)
+✓ create => should call apiRequest with correct parameters (1 ms)
+✓ create => should throw error if more then 20 files selected (1 ms)
+✓ delete => should call apiRequest with correct parameters
+✓ list => should call apiRequest with correct parameters (1 ms)
+✓ update => should call apiRequest with correct parameters (1 ms)
+✓ update => should call apiRequest with file_ids as an array for search (1 ms)
+✓ update => should call apiRequest with file_ids as strings for search
+OpenAi, Audio resource
+✓ generate => should call apiRequest with correct parameters (1 ms)
+✓ transcribe => should call apiRequest with correct parameters (1 ms)
+✓ translate => should call apiRequest with correct parameters (2 ms)
+OpenAi, File resource
+✓ deleteFile => should call apiRequest with correct parameters
+✓ list => should return list of files (1 ms)
+✓ upload => should call apiRequest with correct parameters (1 ms)
+OpenAi, Image resource
+✓ generate => should call apiRequest with correct parameters, return binary
+✓ generate => should call apiRequest with correct parameters, return urls
+✓ analyze => should call apiRequest with correct parameters (1 ms)
+OpenAi, Text resource
+✓ classify => should call apiRequest with correct parameters (1 ms)
+✓ message => should call apiRequest with correct parameters, no tool call (1 ms)
+2025-04-15T08:41:34.7578563Z
+PASS nodes/tools/ToolWorkflow/v2/ToolWorkflowV2.test.ts
+WorkflowTool::WorkflowToolService
+createTool
+✓ should create a basic dynamic tool when schema is not used (5 ms)
+✓ should create a tool that can handle successful execution (3 ms)
+✓ should handle errors during tool execution (1 ms)
+handleToolResponse
+✓ should handle number response
+✓ should handle object response (1 ms)
+✓ should handle string response
+✓ should throw error for invalid response type (23 ms)
+executeSubWorkflow
+✓ should successfully execute workflow and return response
+✓ should successfully execute workflow and return first item of many (1 ms)
+✓ should successfully execute workflow and return all items (1 ms)
+✓ should throw error when workflow execution fails (1 ms)
+✓ should throw error when workflow returns no response
+getSubWorkflowInfo
+✓ should handle database source correctly (1 ms)
+✓ should handle parameter source correctly (1 ms)
+✓ should throw error for invalid JSON in parameter source (8 ms)
+2025-04-15T08:41:34.7583846Z
+PASS utils/tests/helpers.test.ts
+escapeSingleCurlyBrackets
+✓ should return undefined when input is undefined (3 ms)
+✓ should escape single curly brackets
+✓ should not escape already double curly brackets
+✓ should handle mixed single and double curly brackets
+✓ should handle empty string
+✓ should handle string with no curly brackets
+✓ should handle string with only opening curly bracket (1 ms)
+✓ should handle string with only closing curly bracket
+✓ should handle string with multiple single curly brackets
+✓ should handle string with alternating single and double curly brackets (1 ms)
+✓ should handle string with curly brackets at the start and end
+✓ should handle string with special characters
+✓ should handle string with numbers in curly brackets
+✓ should handle string with whitespace in curly brackets
+✓ should handle multi-line input with single curly brackets
+✓ should handle multi-line input with mixed single and double curly brackets (1 ms)
+✓ should handle multi-line input with curly brackets at line starts and ends
+✓ should handle multi-line input with nested curly brackets
+✓ should handle string with triple uneven curly brackets - opening
+✓ should handle string with triple uneven curly brackets - closing
+✓ should handle string with triple uneven curly brackets - mixed opening and closing
+✓ should handle string with triple uneven curly brackets - multiple occurrences
+✓ should handle multi-line input with triple uneven curly brackets (3 ms)
+getConnectedTools
+✓ should return empty array when no tools are connected (1 ms)
+✓ should return tools without modification when enforceUniqueNames is false
+✓ should throw error when duplicate tool names exist and enforceUniqueNames is true (22 ms)
+✓ should escape curly brackets in tool descriptions when escapeCurlyBrackets is true
+✓ should convert N8nTool to dynamic tool when convertStructuredTool is true (1 ms)
+✓ should not convert N8nTool when convertStructuredTool is false
+✓ should flatten tools from a toolkit
+unwrapNestedOutput
+✓ should unwrap doubly nested output
+✓ should not modify regular output object (1 ms)
+✓ should not modify object without output property
+✓ should not modify when output is not an object
+✓ should not modify when object has multiple properties
+✓ should not modify when inner output has multiple properties
+✓ should handle null values properly
+✓ should handle empty object values properly (1 ms)
+2025-04-15T08:41:34.7595511Z
+PASS nodes/vector_store/shared/MemoryManager/test/StoreCleanupService.test.ts
+StoreCleanupService
+TTL-based cleanup
+✓ should identify inactive stores correctly (14 ms)
+✓ should never identify stores as inactive when TTL is disabled
+✓ should clean up inactive stores (2 ms)
+✓ should not run TTL cleanup when disabled (1 ms)
+Memory-based cleanup
+✓ should clean up oldest stores to make room for new data (5 ms)
+✓ should run TTL cleanup before memory cleanup (5 ms)
+✓ should not perform memory cleanup when limit is disabled
+✓ should handle empty stores during cleanup
+✓ should update the cache when stores are removed (1 ms)
+2025-04-15T08:41:34.7598678Z
+PASS nodes/mcp/McpClientTool/McpClientTool.node.test.ts
+McpClientTool
+loadOptions: getTools
+✓ should return a list of tools (5 ms)
+✓ should handle errors (5 ms)
+supplyData
+✓ should return a valid toolkit with usable tools (that returns a string) (4 ms)
+✓ should support selecting tools to expose (2 ms)
+✓ should support selecting tools to exclude (1 ms)
+✓ should support header auth (2 ms)
+✓ should support bearer auth (1 ms)
+2025-04-15T08:41:34.7601246Z
+PASS nodes/tools/ToolHttpRequest/test/ToolHttpRequest.node.test.ts
+ToolHttpRequest
+Binary response
+✓ should return the error when receiving a binary response (6 ms)
+✓ should return the response text when receiving a text response (1 ms)
+✓ should return the response text when receiving a text response with a charset (1 ms)
+✓ should return the response object when receiving a JSON response (1 ms)
+✓ should handle authentication with predefined credentials (1 ms)
+✓ should handle authentication with generic credentials (1 ms)
+✓ should return the error when receiving text that contains a null character (1 ms)
+✓ should return the error when receiving a JSON response containing a null character (1 ms)
+Optimize response
+✓ should extract body from the response HTML (5 ms)
+2025-04-15T08:41:34.7605098Z
+PASS nodes/vector_store/shared/createVectorStoreNode/operations/__tests__/insertOperation.test.ts
+handleInsertOperation
+✓ should process all input items and populate vector store (4 ms)
+✓ should stop processing if execution is cancelled
+✓ should handle different document input types (1 ms)
+✓ should pass the correct documents to populateVectorStore (1 ms)
+✓ should batch documents when node version is 1.1 and above (1 ms)
+✓ should run populateVectorStore for each item when node version is 1 (1 ms)
+✓ should use default batch size of 200 when not specified
+2025-04-15T08:41:34.7607853Z
+PASS nodes/vector_store/shared/MemoryManager/test/MemoryVectorStoreManager.test.ts
+MemoryVectorStoreManager
+✓ should create an instance of MemoryVectorStoreManager (3 ms)
+✓ should return existing instance (1 ms)
+✓ should update embeddings in existing instance
+✓ should update embeddings in existing vector store instances (1 ms)
+✓ should set up the TTL cleanup interval
+✓ should not set up the TTL cleanup interval when TTL is disabled (1 ms)
+✓ should track memory usage when adding documents (1 ms)
+✓ should clear store metadata when clearing store (1 ms)
+✓ should request cleanup when adding documents that would exceed memory limit
+✓ should recalculate memory usage periodically (1 ms)
+✓ should provide accurate stats about vector stores (1 ms)
+2025-04-15T08:41:34.7611384Z
+PASS nodes/chains/ChainLLM/test/imageUtils.test.ts
+imageUtils
+dataUriFromImageData
+✓ should convert image data to data URI (4 ms)
+✓ should throw UnsupportedMimeTypeError for non-images (10 ms)
+createImageMessage
+✓ should throw an error for invalid message type (1 ms)
+✓ should handle image URL messages (4 ms)
+✓ should handle image URL messages with auto detail (1 ms)
+✓ should throw an error when binary data is missing
+✓ should handle binary image data for regular models (1 ms)
+✓ should handle image data differently for GoogleGenerativeAI models
+✓ should handle image data differently for Ollama models (1 ms)
+✓ should pass through UnsupportedMimeTypeError
+2025-04-15T08:41:34.7614871Z
+PASS nodes/vector_store/shared/MemoryManager/test/MemoryCalculator.test.ts
+MemoryCalculator
+estimateBatchSize
+✓ should return 0 for empty document arrays (4 ms)
+✓ should calculate size for simple documents (1 ms)
+✓ should account for content length in size calculation (1 ms)
+✓ should account for metadata complexity in size calculation
+✓ should scale with the number of documents (1 ms)
+calculateVectorStoreSize
+✓ should return 0 for empty vector stores (1 ms)
+✓ should calculate size for vector stores with content (1 ms)
+✓ should account for vector count in size calculation (1 ms)
+✓ should handle vectors with no content or metadata
+✓ should handle null or undefined vector arrays
+2025-04-15T08:41:34.7618354Z
+PASS nodes/vector_store/shared/createVectorStoreNode/operations/__tests__/retrieveAsToolOperation.test.ts
+handleRetrieveAsToolOperation
+✓ should create a dynamic tool with the correct name and description (6 ms)
+✓ should create a tool that can search the vector store (2 ms)
+✓ should include metadata in results when includeDocumentMetadata is true (1 ms)
+✓ should exclude metadata in results when includeDocumentMetadata is false (1 ms)
+✓ should limit results based on topK parameter (1 ms)
+✓ should release vector store client even if search fails (8 ms)
+2025-04-15T08:41:34.7620944Z
+PASS nodes/chains/ChainLLM/test/promptUtils.test.ts
+promptUtils
+createPromptTemplate
+✓ should create a simple prompt template for non-chat models (3 ms)
+✓ should create a prompt template with format instructions
+✓ should create a chat prompt template for chat models
+✓ should process text messages correctly (1 ms)
+✓ should escape curly braces in messages (1 ms)
+✓ should handle image messages by calling createImageMessage (1 ms)
+✓ should throw an error for invalid message types (13 ms)
+✓ should add the query to an existing human message with content if it exists (2 ms)
+2025-04-15T08:41:34.7623870Z
+PASS nodes/chains/ChainRetrievalQA/test/ChainRetrievalQa.node.test.ts
+ChainRetrievalQa
+✓ should process a query using a chat model (version 1.3) (10 ms)
+✓ should process a query using a chat model (version 1.4) (2 ms)
+✓ should process a query using a chat model (version 1.5) (2 ms)
+✓ should process a query using a text completion model (version 1.3) (2 ms)
+✓ should process a query using a text completion model (version 1.4) (3 ms)
+✓ should process a query using a text completion model (version 1.5) (2 ms)
+✓ should use a custom system prompt if provided (version 1.3) (2 ms)
+✓ should use a custom system prompt if provided (version 1.4) (2 ms)
+✓ should use a custom system prompt if provided (version 1.5) (2 ms)
+✓ should throw an error if the query is undefined (version 1.3) (22 ms)
+✓ should throw an error if the query is undefined (version 1.4) (1 ms)
+✓ should throw an error if the query is undefined (version 1.5)
+✓ should add error to json if continueOnFail is true (version 1.3) (3 ms)
+✓ should add error to json if continueOnFail is true (version 1.4) (1 ms)
+✓ should add error to json if continueOnFail is true (version 1.5) (2 ms)
+2025-04-15T08:41:34.7628989Z
+PASS nodes/output_parser/OutputParserAutofixing/test/OutputParserAutofixing.node.test.ts
+OutputParserAutofixing
+Configuration
+✓ should throw error when prompt template does not contain {error} placeholder (17 ms)
+✓ should throw error when prompt template is empty (1 ms)
+✓ should use default prompt when none specified (1 ms)
+Parsing
+✓ should successfully parse valid output without needing to fix it (6 ms)
+✓ should not retry on non-OutputParserException errors (2 ms)
+✓ should retry on OutputParserException and succeed (1 ms)
+✓ should handle failed retry attempt (1 ms)
+✓ should throw non-OutputParserException errors immediately without retry (1 ms)
+2025-04-15T08:41:34.7632382Z
+PASS nodes/vector_store/shared/createVectorStoreNode/__tests__/utils.test.ts
+Vector Store Utilities
+transformDescriptionForOperationMode
+✓ should add displayOptions for a single mode (6 ms)
+✓ should add displayOptions for multiple modes (1 ms)
+✓ should preserve other properties of the fields
+isUpdateSupported
+✓ should return true when update is in operationModes (1 ms)
+✓ should return false when update is not in operationModes
+✓ should return false when operationModes is undefined (1 ms)
+getOperationModeOptions
+✓ should return options for specified operation modes
+✓ should return default operation modes when not specified (1 ms)
+✓ should include output connection type properties from OPERATION_MODE_DESCRIPTIONS (1 ms)
+2025-04-15T08:41:34.7635950Z
+PASS nodes/vector_store/shared/createVectorStoreNode/operations/__tests__/loadOperation.test.ts
+handleLoadOperation
+✓ should retrieve documents from vector store with similarity search (5 ms)
+✓ should include document metadata when includeDocumentMetadata is true (2 ms)
+✓ should exclude document metadata when includeDocumentMetadata is false
+✓ should use the topK parameter to limit results (1 ms)
+✓ should properly set pairedItem property in results (10 ms)
+✓ should log AI event with query after search is complete (1 ms)
+✓ should release vector store client even if an error occurs (10 ms)
+2025-04-15T08:41:34.7638890Z
+PASS nodes/chains/InformationExtractor/test/InformationExtraction.node.test.ts
+InformationExtractor
+From Attribute Descriptions
+✓ should generate a schema from attribute descriptions with optional fields (4 ms)
+✓ should make a request to LLM and return the extracted attributes (5 ms)
+✓ should not fail if LLM could not extract some attribute (1 ms)
+✓ should fail if LLM could not extract some required attribute (2 ms)
+✓ should fail if LLM extracted an attribute with the wrong type (2 ms)
+✓ retries if LLM fails to extract some required attribute (2 ms)
+✓ retries if LLM extracted an attribute with a wrong type (1 ms)
+2025-04-15T08:41:34.7641737Z
+PASS nodes/vector_store/shared/createVectorStoreNode/operations/__tests__/updateOperation.test.ts
+handleUpdateOperation
+✓ should throw error if update is not supported (25 ms)
+✓ should update documents with their IDs (3 ms)
+✓ should release vector store client even if update fails (1 ms)
+✓ should use proper document ID from node parameters (1 ms)
+2025-04-15T08:41:34.7643555Z
+PASS nodes/vector_store/shared/createVectorStoreNode/createVectorStoreNode.test.ts
+createVectorStoreNode
+retrieve mode
+✓ supplies vector store as data (9 ms)
+retrieve-as-tool mode
+✓ supplies DynamicTool that queries vector store and returns documents with metadata (3 ms)
+✓ supplies DynamicTool that queries vector store and returns documents without metadata (2 ms)
+2025-04-15T08:41:34.7645404Z
+PASS nodes/vector_store/shared/createVectorStoreNode/operations/__tests__/operationHandlers.test.ts
+Vector Store Operation Handlers
+handleLoadOperation
+✓ should properly process load operation (5 ms)
+✓ should exclude metadata when includeDocumentMetadata is false (1 ms)
+handleUpdateOperation
+✓ should throw error when update is not supported (10 ms)
+handleRetrieveOperation
+✓ should return vector store with log wrapper and close function (10 ms)
+handleRetrieveAsToolOperation
+✓ should return a tool with the correct name and description (2 ms)
+2025-04-15T08:41:34.7648282Z
+PASS nodes/llms/LMChatOpenAi/methods/__tests__/loadModels.test.ts
+searchModels
+✓ should return filtered models if custom API endpoint is not provided (9 ms)
+✓ should initialize OpenAI with correct credentials
+✓ should use default OpenAI URL if no custom URL provided
+✓ should include all models for custom API endpoints (1 ms)
+✓ should filter models based on search term (1 ms)
+✓ should handle case-insensitive search (1 ms)
+✓ should return models sorted alphabetically by id
+2025-04-15T08:41:34.7650678Z
+PASS nodes/output_parser/OutputParserItemList/test/OutputParserItemList.node.test.ts
+OutputParserItemList
+supplyData
+✓ should create a parser with default options (4 ms)
+✓ should create a parser with custom number of items (1 ms)
+✓ should create a parser with unlimited number of items
+✓ should create a parser with custom separator (1 ms)
+parse
+✓ should parse a list with default separator (1 ms)
+✓ should parse a list with custom separator
+✓ should limit the number of items returned (1 ms)
+✓ should throw an error if not enough items are returned (8 ms)
+2025-04-15T08:41:34.7653606Z
+PASS nodes/mcp/McpTrigger/__test__/McpServer.test.ts
+McpServer
+connectTransport
+✓ should set up a transport and server (5 ms)
+✓ should set up close handler that cleans up resources (1 ms)
+handlePostMessage
+✓ should call transport.handlePostMessage when transport exists (3 ms)
+✓ should return 401 when transport does not exist (1 ms)
+2025-04-15T08:41:34.7655470Z
+PASS utils/N8nTool.test.ts
+Test N8nTool wrapper as DynamicStructuredTool
+✓ should wrap a tool (3 ms)
+Test N8nTool wrapper - DynamicTool fallback
+✓ should convert the tool to a dynamic tool (1 ms)
+✓ should format fallback description correctly (1 ms)
+✓ should handle empty parameter list correctly
+✓ should parse correct parameters (1 ms)
+✓ should recover when 1 parameter is passed directly (2 ms)
+✓ should recover when JS object is passed instead of JSON (1 ms)
+2025-04-15T08:41:34.7657724Z
+PASS nodes/llms/LMChatAnthropic/methods/__tests__/searchModels.test.ts
+searchModels
+✓ should fetch models from Anthropic API (4 ms)
+✓ should sort models by created_at date, most recent first (1 ms)
+✓ should filter models based on search term
+✓ should handle case-insensitive search
+✓ should handle when no models match the filter
+2025-04-15T08:41:34.7659361Z
+PASS nodes/agents/Agent/agents/SqlAgent/other/handlers/postgres.test.ts
+Postgres SSL settings
+✓ ssl is disabled + allowUnauthorizedCerts is false (6 ms)
+✓ ssl is disabled + allowUnauthorizedCerts is true (1 ms)
+✓ ssl is disabled + allowUnauthorizedCerts is undefined (1 ms)
+✓ ssl is allow + allowUnauthorizedCerts is false (1 ms)
+✓ ssl is allow + allowUnauthorizedCerts is true
+✓ ssl is allow + allowUnauthorizedCerts is undefined (1 ms)
+✓ ssl is require + allowUnauthorizedCerts is false
+✓ ssl is require + allowUnauthorizedCerts is true (1 ms)
+✓ ssl is require + allowUnauthorizedCerts is undefined
+2025-04-15T08:41:34.7662308Z
+PASS nodes/vector_store/shared/createVectorStoreNode/operations/__tests__/retrieveOperation.test.ts
+handleRetrieveOperation
+✓ should retrieve vector store with metadata filters (6 ms)
+✓ should create a closeFunction that releases the vector store client (1 ms)
+✓ should handle vector store client when no releaseVectorStoreClient is provided (1 ms)
+2025-04-15T08:41:34.7663952Z
+PASS nodes/chains/ChainLLM/test/responseFormatter.test.ts
+responseFormatter
+formatResponse
+✓ should format string responses (3 ms)
+✓ should trim string responses
+✓ should handle array responses
+✓ should handle object responses when unwrapping is enabled
+✓ should stringify object responses when unwrapping is disabled
+✓ should handle primitive non-string responses
+✓ should handle complex object structures when unwrapping is enabled
+✓ should stringify complex object structures when unwrapping is disabled
+2025-04-15T08:41:34.7666651Z
+PASS nodes/vector_store/shared/MemoryManager/test/config.test.ts
+Vector Store Config
+getConfig
+✓ should return default values when no environment variables set (4 ms)
+✓ should use values from environment variables when set
+✓ should handle invalid environment variable values (1 ms)
+mbToBytes
+✓ should convert MB to bytes
+✓ should handle zero and negative values (1 ms)
+hoursToMs
+✓ should convert hours to milliseconds (1 ms)
+✓ should handle zero and negative values
+2025-04-15T08:41:34.7669149Z
+PASS nodes/mcp/McpTrigger/__test__/McpTrigger.node.test.ts
+McpTrigger Node
+webhook method
+✓ should handle setup webhook (5 ms)
+✓ should handle default webhook for tool execution (1 ms)
+✓ should handle default webhook when no tool was executed (1 ms)
+2025-04-15T08:41:34.7670462Z
+PASS nodes/agents/Agent/test/utils.test.ts
+checkForStructuredTools
+✓ should not throw error when no DynamicStructuredTools are present (3 ms)
+✓ should throw NodeOperationError when DynamicStructuredTools are present (14 ms)
+✓ should list multiple dynamic tools in error message (1 ms)
+✓ should throw error with mixed tool types and list only dynamic tools in error message
+2025-04-15T08:41:34.7672206Z
+PASS nodes/llms/n8nLlmFailedAttemptHandler.test.ts
+makeN8nLlmFailedAttemptHandler
+✓ should throw a wrapped error, when NO custom handler is provided (11 ms)
+✓ should wrapped error when custom handler is provided (2 ms)
+✓ should throw wrapped exception from custom handler (2 ms)
+✓ should not throw if retries are left
+✓ should throw NodeApiError if no retries are left
+✓ should throw NodeApiError if no retries are left with custom handler (1 ms)
+2025-04-15T08:41:34.7674578Z
+PASS nodes/llms/n8nDefaultFailedAttemptHandler.test.ts
+n8nDefaultFailedAttemptHandler
+✓ should throw error if message starts with "Cancel" (7 ms)
+✓ should throw error if message starts with "AbortError" (1 ms)
+✓ should throw error if name is "AbortError"
+✓ should throw error if code is "ECONNABORTED" (1 ms)
+✓ should throw error if status is in STATUS_NO_RETRY (1 ms)
+✓ should not throw error if status is not in STATUS_NO_RETRY
+✓ should not throw error if no conditions are met (1 ms)
+2025-04-15T08:41:34.7676838Z
+PASS nodes/vendors/OpenAi/helpers/error-handling.test.ts
+error-handling
+getCustomErrorMessage
+✓ should return the correct custom error message for known error codes (3 ms)
+✓ should return undefined for unknown error codes
+isOpenAiError
+✓ should return true if the error is an instance of OpenAIError
+✓ should return false if the error is not an instance of OpenAIError
+openAiFailedAttemptHandler
+✓ should handle RateLimitError and modify the error message
+✓ should throw the error if it is not a RateLimitError
+2025-04-15T08:41:34.7679511Z
+PASS nodes/vendors/OpenAi/transport/test/transport.test.ts
+apiRequest
+✓ should call requestWithAuthentication with credentials URL if one is provided (4 ms)
+✓ should call requestWithAuthentication with default URL if credentials URL is not provided (1 ms)
+2025-04-15T08:41:34.7680778Z
+PASS nodes/chains/ChainLLM/test/config.test.ts
+config
+getInputs
+✓ should return basic inputs for all parameters (4 ms)
+✓ should exclude the OutputParser when hasOutputParser is false (1 ms)
+✓ should include the OutputParser when hasOutputParser is true
+nodeProperties
+✓ should have the expected properties (1 ms)
+2025-04-15T08:41:34.7682518Z
+PASS nodes/vector_store/VectorStoreZep/VectorStoreZep.node.test.ts
+VectorStoreZep
+✓ should get vector store cloud client (44 ms)
+✓ should get vector store self-hosted client (5 ms)
+2025-04-15T08:41:34.7683427Z
+PASS nodes/mcp/McpTrigger/__test__/FlushingSSEServerTransport.test.ts
+FlushingSSEServerTransport
+✓ should call flush after sending a message (6 ms)
+2025-04-15T08:41:34.7684161Z
+PASS nodes/vendors/OpenAi/test/utils.test.ts
+OpenAI message history
+✓ should only get a limited number of messages (6 ms)
+2025-04-15T08:41:34.7684766Z
+PASS nodes/tools/ToolThink/test/ToolThink.node.test.ts
+ToolThink
+Tool response
+✓ should return the same text as response when receiving a text input (5 ms)
+2025-04-15T08:41:34.7685728Z
+Test Suites: 44 passed, 44 total
+Tests:       362 passed, 362 total
+Snapshots:   1 passed, 1 total
+Time:        13.429 s
+Ran all test suites.
+##[endgroup]
+##[group]n8n-nodes-base:test
+cache bypass, force executing 37beb2ebf1b9948b
+2025-04-15T08:44:07.5058963Z
+> n8n-nodes-base@1.88.0 test /home/runner/_work/n8n/n8n/packages/nodes-base
+> jest
+2025-04-15T08:44:07.5059432Z
+PASS nodes/Form/test/utils.test.ts
+FormTrigger, parseFormDescription
+✓ should remove HTML tags and truncate to 150 characters (3 ms)
+FormTrigger, sanitizeHtml
+✓ should remove forbidden HTML tags (1 ms)
+FormTrigger, formWebhook
+✓ should call response render (3 ms)
+✓ should sanitize form descriptions (1 ms)
+✓ should return workflowData on POST request (1 ms)
+FormTrigger, prepareFormData
+✓ should return valid form data with given parameters (1 ms)
+✓ should handle missing optional fields gracefully
+✓ should set redirectUrl with http if protocol is missing
+✓ should return invalid form data when formFields are empty (1 ms)
+✓ should correctly handle multiselect fields
+✓ should correctly handle multiselect fields with unique ids
+prepareFormReturnItem
+✓ should handle empty form submission (1 ms)
+✓ should process text fields correctly
+✓ should process number fields correctly (3 ms)
+✓ should handle file uploads (1 ms)
+✓ should handle multiple file uploads
+✓ should format date fields
+✓ should handle multiselect fields (1 ms)
+✓ should use workflow timezone when specified
+✓ should include workflow static data for form trigger node
+✓ should return html if field name is set
+resolveRawData
+✓ should return the input string if it does not start with "=" (1 ms)
+✓ should remove leading "=" characters
+✓ should resolve a single expression
+✓ should resolve multiple expressions
+✓ should handle object resolutions
+✓ should handle nested object properties (1 ms)
+✓ should handle boolean values
+✓ should handle expressions with whitespace
+✓ should return the original string if no resolvables are found
+✓ should handle non-existent properties gracefully
+✓ should handle mixed resolvable and non-resolvable content
+✓ should handle boolean values correctly (2 ms)
+✓ should handle arrays correctly
+✓ should handle nested objects correctly (1 ms)
+✓ should handle arrays of objects correctly
+✓ should handle empty arrays correctly
+✓ should handle a mix of different data types
+✓ should handle nested array access
+✓ should handle object-to-string conversion
+FormTrigger, isFormConnected
+✓ should return false if Wait node is connected but resume parameter is not form
+✓ should return true if Wait node is connected and resume parameter is form (1 ms)
+✓ should return true if Form node is connected
+validateResponseModeConfiguration
+✓ throws error if responseMode is "responseNode" but no Respond to Webhook node is connected (31 ms)
+✓ throws error if "Respond to Webhook" node is connected but "responseMode" is not "responseNode" in typeVersion <= 2.1 (1 ms)
+✓ throws error if "Respond to Webhook" node is connected, version >= 2.2
+✓ does not throw an error mode in not "responseNode" and no "Respond to Webhook" node is connected (1 ms)
+prepareFormFields
+✓ should resolve expressions in html fields
+✓ should prepare hiddenField
+addFormResponseDataToReturnItem
+✓ should use fieldName if fieldLabel is missing (1 ms)
+✓ should handle null values
+✓ should process html fields and set elementName (1 ms)
+✓ should parse number fields correctly
+✓ should trim text fields
+✓ should parse multiselect fields from JSON
+✓ should convert single file values to an array if multipleFiles is true
+2025-04-15T08:44:07.5086556Z
+PASS nodes/Postgres/test/v2/operations.test.ts
+Test PostgresV2, deleteTable operation
+✓ deleteCommand: delete, should call runQueries with (6 ms)
+✓ deleteCommand: truncate, should call runQueries with
+✓ deleteCommand: drop, should call runQueries with (1 ms)
+Test PostgresV2, executeQuery operation
+✓ should call runQueries with
+✓ should call runQueries and insert enclosed placeholder into values (1 ms)
+✓ should call runQueries and not insert enclosed placeholder into values because queryReplacement is defined
+✓ should call runQueries and insert enclosed placeholder into values because treatQueryParametersInSingleQuotesAsText is true
+✓ should call runQueries with falsy query replacements
+✓ should allow users to use $$ instead of strings
+✓ should allow users to use $$ instead of strings while using query parameters
+✓ should execute queries with null key/value pairs (1 ms)
+✓ should execute queries with multiple json key/value pairs
+✓ should execute queries with single json key/value pair
+✓ should not parse out expressions if there are valid JSON query parameters (1 ms)
+✓ should parse out expressions if is invalid JSON in query parameters
+Test PostgresV2, insert operation
+✓ dataMode: define, should call runQueries with (12 ms)
+✓ dataMode: autoMapInputData, should call runQueries with (1 ms)
+✓ dataMode: define, should accept an array with values if column is of type json (2 ms)
+✓ should insert default values if no values are provided
+Test PostgresV2, select operation
+✓ returnAll, should call runQueries with
+✓ limit, whereClauses, sortRules, should call runQueries with (1 ms)
+Test PostgresV2, update operation
+✓ dataMode: define, should call runQueries with
+✓ dataMode: autoMapInputData, should call runQueries with (1 ms)
+Test PostgresV2, upsert operation
+✓ dataMode: define, should call runQueries with
+✓ dataMode: autoMapInputData, should call runQueries with (1 ms)
+When matching on all columns
+✓ dataMode: define, should call runQueries with
+✓ dataMode: autoMapInputData, should call runQueries with
+2025-04-15T08:44:07.5096955Z
+PASS nodes/Gong/test/Gong.node.test.ts
+Gong Node
+Credentials
+✓ should use correct credentials (378 ms)
+Call description
+✓ should get call with no options true (11 ms)
+✓ should get call with all options true (37 ms)
+✓ should get all calls with filters (22 ms)
+✓ should get limit 50 calls with no options and filters (11 ms)
+✓ should return empty result if no calls found for user (26 ms)
+✓ should handle error response (32 ms)
+User description
+✓ should get user (7 ms)
+✓ should get all users (12 ms)
+✓ should handle error response (7 ms)
+2025-04-15T08:44:07.5099984Z
+PASS nodes/Microsoft/Entra/test/UserDescription.test.ts
+Microsoft Entra Node
+User description
+✓ should add user to group (519 ms)
+✓ should create user (20 ms)
+✓ should delete user (7 ms)
+✓ should get user (7 ms)
+✓ should get user with options (11 ms)
+✓ should get all users with simple output (21 ms)
+✓ should get limit 10 users with raw output (12 ms)
+✓ should get all users with options and filter (24 ms)
+✓ should remove user from group (8 ms)
+✓ should update user (16 ms)
+2025-04-15T08:44:07.5102651Z
+PASS nodes/Microsoft/Entra/test/GroupDescription.test.ts
+Microsoft Entra Node
+Group description
+✓ should create group (468 ms)
+✓ should delete group (17 ms)
+✓ should get group (7 ms)
+✓ should get group with fields output and members (14 ms)
+✓ should get all groups with simple output (39 ms)
+✓ should get limit 10 groups with raw output (14 ms)
+✓ should get all groups with options and filter (105 ms)
+✓ should update group (9 ms)
+2025-04-15T08:44:07.5105054Z
+PASS nodes/Google/Sheet/test/v2/utils/utils.test.ts
+Test Google Sheets, addRowNumber
+✓ should add row nomber (5 ms)
+Test Google Sheets, trimToFirstEmptyRow
+✓ should trimToFirstEmptyRow without row numbers (2 ms)
+✓ should trimToFirstEmptyRow with row numbers
+Test Google Sheets, removeEmptyRows
+✓ should removeEmptyRows without row numbers
+✓ should removeEmptyRows with row numbers (1 ms)
+Test Google Sheets, trimLeadingEmptyRows
+✓ should trimLeadingEmptyRows without row numbers
+✓ should trimLeadingEmptyRows with row numbers
+Test Google Sheets, removeEmptyColumns
+✓ should removeEmptyColumns without row numbers (1 ms)
+Test Google Sheets, prepareSheetData
+✓ should prepareSheetData without row numbers
+Test Google Sheets, autoMapInputData
+✓ should autoMapInputData (2 ms)
+Test Google Sheets, lookupValues
+✓ should return rows by combining filters by OR
+✓ should return rows by combining filters by AND (1 ms)
+Test Google Sheets, checkForSchemaChanges
+✓ should not to throw error
+✓ should throw error when columns were renamed (22 ms)
+✓ should filter out empty columns  without throwing an error
+Test Google Sheets, getSpreadsheetId
+✓ should throw an error if value is empty (1 ms)
+✓ should return the ID from a valid URL
+✓ should return an empty string for an invalid URL
+✓ should return the value for documentIdType byId or byList
+Test Google Sheets, Google Sheets Sheet URL Regex
+✓ should match a valid Google Sheets URL
+✓ should not match an invalid Google Sheets URL (1 ms)
+✓ should not match a URL that does not match the pattern
+✓ should extract the gid from a valid Google Sheets URL
+Test Google Sheets, getColumnNumber
+✓ should return the correct number for single-letter columns
+✓ should return the correct number for multi-letter columns
+Test Google Sheets, hexToRgb
+✓ should correctly convert a full hex code to RGB
+✓ should correctly convert a shorthand hex code to RGB
+✓ should return null for invalid hex codes (3 ms)
+Test Google Sheets, getRangeString
+✓ should return the range in A1 notation when "specifyRangeA1" is set (1 ms)
+✓ should return only the sheet name if no range is specified
+✓ should return only the sheet name if rangeDefinition is not "specifyRangeA1"
+Test Google Sheets, getExistingSheetNames
+✓ should return an array of sheet names
+✓ should return an empty array if no sheets are present
+✓ should handle a case where sheets are undefined
+Test Google Sheets, mapFields
+✓ should map fields for node version < 4 (1 ms)
+✓ should map columns for node version >= 4
+✓ should throw an error if no values are added in version >= 4 (1 ms)
+✓ should return an empty array when inputSize is 0
+Test Google Sheets, getSheetId
+✓ should return 0 when value is "gid=0"
+✓ should return a parsed integer when value is a numeric string
+✓ should return NaN for non-numeric strings
+Test Google Sheets, getColumnName
+✓ should return "A" for column number 1
+✓ should return "Z" for column number 26
+✓ should return "AA" for column number 27
+✓ should return "AZ" for column number 52
+✓ should return "BA" for column number 53
+✓ should return "ZZ" for column number 702
+✓ should return "AAA" for column number 703
+2025-04-15T08:44:07.5120530Z
+PASS utils/sendAndWait/test/util.test.ts
+Send and Wait utils tests
+getSendAndWaitProperties
+✓ should return properties with correct display options (3 ms)
+getSendAndWaitConfig
+✓ should return correct config for single approval (1 ms)
+✓ should return correct config for double approval (1 ms)
+createEmail
+✓ should create a valid email object (1 ms)
+✓ should throw NodeOperationError for invalid email address (19 ms)
+sendAndWaitWebhook
+✓ should handle approved webhook (1 ms)
+✓ should handle disapproved webhook
+✓ should handle freeText GET webhook (1 ms)
+✓ should handle freeText POST webhook
+✓ should handle customForm GET webhook
+✓ should handle customForm POST webhook (10 ms)
+✓ should return noWebhookResponse if method GET and user-agent is bot (1 ms)
+configureWaitTillDate
+✓ should return WAIT_INDEFINITELY if limitWaitTime is empty
+✓ should calculate future date correctly for afterTimeInterval with minutes
+✓ should calculate future date correctly for afterTimeInterval with hours
+✓ should calculate future date correctly for afterTimeInterval with days (1 ms)
+✓ should return the specified maxDateAndTime for maxDateAndTime limitType
+✓ should throw NodeOperationError for invalid maxDateAndTime format (1 ms)
+✓ should throw NodeOperationError for invalid resumeAmount or resumeUnit (5 ms)
+✓ should return WAIT_INDEFINITELY when limitWaitTime is false
+✓ should calculate minutes correctly in root location
+✓ should calculate hours correctly in root location (1 ms)
+✓ should calculate days correctly in root location
+✓ should handle maxDateAndTime in root location
+✓ should throw error for invalid date in root location (1 ms)
+✓ should throw error for invalid resumeAmount in root location
+2025-04-15T08:44:07.5128977Z
+PASS nodes/Postgres/test/v2/utils.test.ts
+Test PostgresV2, isJSON
+✓ should return true for valid JSON (3 ms)
+✓ should return false for invalid JSON
+Test PostgresV2, evaluateExpression
+✓ should evaluate undefined to an empty string (1 ms)
+✓ should evaluate null to a string with value null
+✓ should evaluate object to a string
+✓ should evaluate everything else to a string
+Test PostgresV2, wrapData
+✓ should wrap object in json (1 ms)
+✓ should wrap each object in array in json
+✓ json key from source should be inside json
+Test PostgresV2, prepareErrorItem
+✓ should return error info item
+Test PostgresV2, parsePostgresError
+✓ should return NodeOperationError (1 ms)
+✓ should update message that includes ECONNREFUSED (1 ms)
+✓ should update message with syntax error
+Test PostgresV2, addWhereClauses
+✓ should add where clauses to query (1 ms)
+✓ should combine where clauses by OR
+✓ should ignore incorrect combine condition ad use AND
+Test PostgresV2, addSortRules
+✓ should ORDER BY ASC (1 ms)
+✓ should ORDER BY DESC
+✓ should ignore incorrect direction
+✓ should add multiple sort rules
+Test PostgresV2, addReturning
+✓ should add RETURNING
+✓ should add RETURNING * (1 ms)
+Test PostgresV2, replaceEmptyStringsByNulls
+✓ should replace empty string by null
+✓ should do nothing
+Test PostgresV2, prepareItem
+✓ should convert fixedCollection values to object
+Test PostgresV2, checkItemAgainstSchema
+✓ should not throw error (1 ms)
+✓ should throw error on not existing column
+✓ should throw error on not nullable column
+Test PostgresV2, hasJsonDataType
+✓ returns true if there are columns which are of type json
+✓ returns false if there are columns which are of type json
+Test PostgresV2, convertValuesToJsonWithPgp
+✓ should use pgp to properly convert values to JSON (9 ms)
+Test PostgresV2, convertArraysToPostgresFormat
+✓ should convert js arrays to postgres format
+Test PostgresV2, addExecutionHints
+✓ should add batching insert hint to executeQuery operation
+✓ should add run per item hint to select operation
+2025-04-15T08:44:07.5140192Z
+PASS nodes/Webhook/test/utils.test.ts
+Webhook Utils
+getResponseCode
+✓ should return the response code if it exists (3 ms)
+✓ should return the custom response code if it exists
+✓ should return the default response code if no response code is provided
+getResponseData
+✓ should return the response data if it exists
+✓ should return the options response data if response mode is "onReceived"
+✓ should return "noData" if options noResponseBody is true
+✓ should return undefined if no response data is provided (1 ms)
+configuredOutputs
+✓ should return an array with a single output if httpMethod is not an array
+✓ should return an array of outputs if httpMethod is an array
+setupOutputConnection
+✓ should return a function that sets the webhookUrl and executionMode in the output data
+✓ should return a function that sets the webhookUrl and executionMode in the output data for multiple methods (1 ms)
+isIpWhitelisted
+✓ should return true if whitelist is undefined
+✓ should return true if whitelist is an empty string
+✓ should return true if ip is in the whitelist
+✓ should return true if any ip in ips is in the whitelist
+✓ should return false if ip and ips are not in the whitelist
+✓ should return true if any ip in ips matches any address in the whitelist array (1 ms)
+✓ should return true if ip matches any address in the whitelist array
+✓ should return false if ip and ips do not match any address in the whitelist array
+✓ should handle comma-separated whitelist string
+✓ should trim whitespace in comma-separated whitelist string (1 ms)
+checkResponseModeConfiguration
+✓ should throw an error if response mode is "responseNode" but no Respond to Webhook node is found (12 ms)
+✓ should throw an error if response mode is not "responseNode" but a Respond to Webhook node is found
+validateWebhookAuthentication
+✓ should return early if authentication is "none" (1 ms)
+✓ should throw an error if basicAuth is enabled but no authentication data is defined on the node (1 ms)
+✓ should throw an error if basicAuth is enabled but the provided authentication data is wrong
+✓ should throw an error if headerAuth is enabled but no authentication data is defined on the node (1 ms)
+✓ should throw an error if headerAuth is enabled but the provided authentication data is wrong
+✓ should throw an error if jwtAuth is enabled but no authentication data is defined on the node (1 ms)
+✓ should throw an error if jwtAuth is enabled but no token is provided
+✓ should throw an error if jwtAuth is enabled but the provided token is invalid (1 ms)
+✓ should return the decoded JWT payload if jwtAuth is enabled and the token is valid
+2025-04-15T08:44:07.5152642Z
+PASS nodes/Form/test/Form.node.test.ts
+Form Node
+execute method
+✓ should throw an error if Form Trigger node is not set (22 ms)
+✓ should put execution to wait if operation is not completion (1 ms)
+✓ should throw an error if completion is not the last Form node (1 ms)
+✓ should return input data for completion operation
+webhook method
+✓ should render form for GET request (2 ms)
+✓ should return form data for POST request (10 ms)
+✓ should handle completion operation and render completion page (2 ms)
+✓ should pass customCss to form template
+✓ should pass customCss to form completion template (1 ms)
+✓ should handle completion operation and redirect
+2025-04-15T08:44:07.5156000Z
+PASS nodes/Github/__tests__/SearchFunctions.test.ts
+Search Functions
+getUsers
+✓ should fetch users (3 ms)
+✓ should handle pagination (1 ms)
+✓ should use paginationToken when provided
+getRepositories
+✓ should fetch repositories (1 ms)
+✓ should fetch repositories without filter
+✓ should use paginationToken when provided (1 ms)
+✓ should handle empty repositories
+getWorkflows
+✓ should fetch workflows
+✓ should handle pagination (1 ms)
+✓ should use paginationToken when provided and return next page token
+✓ should handle empty workflows (1 ms)
+getRefs
+✓ should fetch branches and tags using git/refs endpoint
+✓ should use paginationToken when provided (1 ms)
+✓ should filter refs based on the provided filter
+✓ should handle pagination correctly (1 ms)
+2025-04-15T08:44:07.5160284Z
+PASS nodes/Github/__tests__/node/Github.node.test.ts
+Test Github Node
+Workflow Dispatch
+✓ nodes/Github/__tests__/node/GithubTestWorkflow (92 ms)
+Error Handling
+✓ should throw NodeOperationError for invalid JSON inputs (30 ms)
+✓ should throw NodeOperationError for 404 errors when dispatching a workflow (1 ms)
+✓ should throw NodeApiError for general API errors (2 ms)
+✓ should throw NodeApiError for general API errors in dispatchAndWait operation (1 ms)
+Workflow Operations
+✓ should use extractValue for workflowId in disable operation (1 ms)
+✓ should use extractValue for workflowId in enable operation (1 ms)
+✓ should use extractValue for workflowId in get operation
+✓ should use extractValue for workflowId in getUsage operation
+Parameter Extraction
+✓ should use extractValue for workflowId parameter (1 ms)
+2025-04-15T08:44:07.5164463Z
+PASS nodes/Microsoft/AzureCosmosDb/test/helpers/utils.test.ts
+getPartitionKey
+✓ should return partition key when found (3 ms)
+✓ should throw NodeOperationError if partition key is not found (13 ms)
+✓ should throw NodeApiError for 404 error (1 ms)
+validatePartitionKey
+✓ should throw NodeOperationError when partition key is missing for "create" operation (1 ms)
+✓ should throw NodeOperationError when partition key is missing for "update" operation
+✓ should throw NodeOperationError when partition key is missing for "get" operation (1 ms)
+✓ should throw NodeOperationError when invalid JSON is provided for customProperties (1 ms)
+simplifyData
+✓ should return the same data when "simple" parameter is false
+✓ should simplify the data when "simple" parameter is true (1 ms)
+validateQueryParameters
+✓ should throw NodeOperationError when parameter values do not match
+✓ should successfully map parameters when they match
+✓ should correctly map parameters when query contains multiple dynamic values
+✓ should extract and map parameter names correctly using regex
+processJsonInput
+✓ should return parsed JSON when input is a valid JSON string
+✓ should return input data when it is already an object (1 ms)
+✓ should throw OperationalError for invalid JSON string (1 ms)
+✓ should throw OperationalError for invalid non-string and non-object input
+validateCustomProperties
+✓ should merge custom properties into requestOptions.body for valid input (1 ms)
+✓ should throw NodeOperationError when customProperties are empty, undefined, null, or contain only invalid values
+2025-04-15T08:44:07.5172193Z
+PASS nodes/Microsoft/Excel/test/v2/utils/utils.test.ts
+Test MicrosoftExcelV2, prepareOutput
+✓ should return empty array (2 ms)
+✓ should return raw response
+✓ should return raw response in custom property
+✓ should return formated response (1 ms)
+✓ should return response with selected first data row
+✓ should return response with selected first data row (1 ms)
+Test MicrosoftExcelV2, updateByDefinedValues
+✓ should update single row (1 ms)
+✓ should update multiple rows (1 ms)
+✓ should update all occurances (1 ms)
+✓ should append rows
+Test MicrosoftExcelV2, updateByAutoMaping
+✓ should update single row (1 ms)
+✓ should append single row
+✓ should append skip row with match column undefined (1 ms)
+✓ should update multiple rows (4 ms)
+✓ should update all occurrences
+✓ should append rows (1 ms)
+Test MicrosoftExcelV2, checkRange
+✓ should not throw error (5 ms)
+✓ should throw error (17 ms)
+2025-04-15T08:44:07.5177040Z
+PASS nodes/Redis/__tests__/Redis.node.test.ts
+Redis Node
+setupRedisClient
+✓ should not configure TLS by default (5 ms)
+✓ should configure TLS
+✓ should set user on auth (1 ms)
+redisConnectionTest
+✓ should return success when connection is established (1 ms)
+✓ should return error when connection fails
+operations
+info operation
+✓ should return info (2 ms)
+✓ should continue and return an error when continue on fail is enabled and an error is thrown (1 ms)
+✓ should throw an error when continue on fail is disabled and an error is thrown (15 ms)
+delete operation
+✓ should delete
+✓ should continue and return an error when continue on fail is enabled and an error is thrown
+✓ should throw an error when continue on fail is disabled and an error is thrown (1 ms)
+get operation
+✓ keyType = automatic (1 ms)
+✓ keyType = hash (1 ms)
+✓ should continue and return an error when continue on fail is enabled and an error is thrown (3 ms)
+✓ should throw an error when continue on fail is disabled and an error is thrown (1 ms)
+keys operation
+✓ getValues = false (1 ms)
+✓ getValues = true
+✓ should continue and return an error when continue on fail is enabled and an error is thrown (1 ms)
+✓ should throw an error when continue on fail is disabled and an error is thrown (2 ms)
+2025-04-15T08:44:07.5183817Z
+PASS nodes/MySql/test/v2/operations.test.ts
+Test MySql V2, operations
+✓ should have all operations (3 ms)
+✓ deleteTable: drop, should call runQueries with (3 ms)
+✓ deleteTable: truncate, should call runQueries with (1 ms)
+✓ deleteTable: delete, should call runQueries with (1 ms)
+✓ executeQuery, should call runQueries with (4 ms)
+✓ executeQuery, should parse numbers
+✓ select, should call runQueries with (11 ms)
+✓ insert, should call runQueries with (1 ms)
+✓ update, should call runQueries with (1 ms)
+✓ upsert, should call runQueries with
+2025-04-15T08:44:07.5186567Z
+PASS nodes/Google/Gmail/test/v2/GmailV2.node.test.ts
+Test Gmail Node v2
+Messages
+✓ nodes/Google/Gmail/test/v2/messages.workflow (1332 ms)
+✓ should make the correct network calls
+Labels
+✓ nodes/Google/Gmail/test/v2/labels.workflow (47 ms)
+✓ should make the correct network calls
+Drafts
+✓ nodes/Google/Gmail/test/v2/drafts.workflow (69 ms)
+✓ should make the correct network calls
+Threads
+✓ nodes/Google/Gmail/test/v2/threads.workflow (76 ms)
+✓ should make the correct network calls
+loadOptions
+getLabels
+✓ should return a list of Gmail labels (1 ms)
+getThreadMessages
+✓ should return a list of Gmail thread messages
+getGmailAliases
+✓ should return a list of Gmail aliases (1 ms)
+2025-04-15T08:44:07.5190666Z
+PASS nodes/Okta/test/UserFunctions.test.ts
+oktaApiRequest
+✓ should make a GET request and return data (3 ms)
+✓ should handle errors from oktaApiRequest (11 ms)
+getUsers
+✓ should return users with filtering
+✓ should return all users when no filter is applied
+✓ should handle empty results from oktaApiRequest
+simplifyGetAllResponse
+✓ should return items unchanged when simplify parameter is not set
+✓ should simplify items correctly (1 ms)
+✓ should return an empty array when items is an empty array
+simplifyGetResponse
+✓ should return the item unchanged when simplify parameter is not set (1 ms)
+✓ should simplify the item correctly
+getCursorPaginator
+✓ should return all items when returnAll is true (1 ms)
+✓ should return items until nextCursor is undefined
+✓ should handle empty response data (1 ms)
+2025-04-15T08:44:07.5195034Z
+PASS nodes/Telegram/tests/GenericFunctions.test.ts
+Telegram > GenericFunctions
+apiRequest
+✓ should make a successful API request (4 ms)
+✓ should handle an API request with no body and query (1 ms)
+✓ should handle an API request with no additional options (1 ms)
+✓ should throw a NodeApiError on request failure (17 ms)
+addAdditionalFields
+✓ should add additional fields and attribution for sendMessage operation
+✓ should add reply markup for inlineKeyboard (1 ms)
+✓ should add reply markup for forceReply
+✓ should add reply markup for replyKeyboardRemove (1 ms)
+✓ should handle nodeVersion 1.2 and set disable_web_page_preview
+getPropertyName
+✓ should return the property name by removing "send" and converting to lowercase (1 ms)
+✓ should return the original string in lowercase if it does not contain "send"
+✓ should return an empty string if the input is "send" (1 ms)
+✓ should handle empty strings
+getSecretToken
+✓ should return a valid secret token
+✓ should remove invalid characters from the secret token
+2025-04-15T08:44:07.5200290Z
+PASS nodes/Airtop/test/utils.test.ts
+Test convertScreenshotToBinary
+✓ should convert base64 screenshot data to buffer (2 ms)
+✓ should handle empty base64 data (1 ms)
+Test Airtop utils
+validateRequiredStringField
+✓ should validate non-empty string field
+✓ should trim whitespace from string field
+✓ should throw error for empty string field (22 ms)
+✓ should throw error for whitespace-only string field
+validateProfileName
+✓ should validate valid profile names (1 ms)
+✓ should allow empty profile name
+✓ should throw error for invalid profile name
+validateTimeoutMinutes
+✓ should validate valid timeout (1 ms)
+✓ should throw error for timeout below minimum (7 ms)
+✓ should throw error for timeout above maximum
+validateSaveProfileOnTermination
+✓ should validate when save profile is false
+✓ should validate when save profile is true with profile name (1 ms)
+✓ should throw error when save profile is true without profile name
+validateSessionId
+✓ should validate session ID
+✓ should throw error for empty session ID (1 ms)
+✓ should trim whitespace from session ID
+validateSessionAndWindowId
+✓ should validate session and window IDs
+✓ should throw error for empty session ID (1 ms)
+✓ should throw error for empty window ID
+✓ should trim whitespace from IDs
+validateUrl
+✓ should validate valid URL (1 ms)
+✓ should throw error for invalid URL (1 ms)
+✓ should return empty string for empty URL
+✓ should throw error for URL without http or https (9 ms)
+validateAirtopApiResponse
+✓ should not throw error for valid response
+✓ should throw error for response with errors (2 ms)
+shouldCreateNewSession
+✓ should return true when 'sessionMode' is 'new'
+✓ should return false when 'sessionMode' is 'existing' (1 ms)
+✓ should return false when 'sessionMode' is empty
+✓ should return false when 'sessionMode' is not set
+createSessionAndWindow
+✓ should create a new session and window when sessionMode is 'new' (1 ms)
+2025-04-15T08:44:07.5210821Z
+PASS nodes/RespondToWebhook/test/RespondToWebhook.test.ts
+RespondToWebhook Node
+execute method
+✓ should throw an error if no WEBHOOK_NODE_TYPES in parents (27 ms)
+✓ should not throw an error if WEBHOOK_NODE_TYPES is in parents (1 ms)
+✓ should correctly apply response options (1 ms)
+✓ should correctly return a json response (1 ms)
+✓ should correctly return a stringified json response
+✓ should correctly return a jwt response (2 ms)
+✓ should correctly return a text response (1 ms)
+✓ should correctly return a redirect
+✓ should correctly return incoming items (1 ms)
+✓ should correctly return binary
+✓ should correctly handle continue on fail (1 ms)
+2025-04-15T08:44:07.5214237Z
+PASS nodes/Google/Gmail/test/v1/GmailV1.node.test.ts
+Test Gmail Node v1
+Messages
+✓ nodes/Google/Gmail/test/v1/messages.workflow (464 ms)
+✓ should make the correct network calls
+Labels
+✓ nodes/Google/Gmail/test/v1/labels.workflow (39 ms)
+✓ should make the correct network calls
+Message Labels
+✓ nodes/Google/Gmail/test/v1/message-labels.workflow (25 ms)
+✓ should make the correct network calls
+Drafts
+✓ nodes/Google/Gmail/test/v1/drafts.workflow (52 ms)
+✓ should make the correct network calls
+2025-04-15T08:44:07.5217151Z
+PASS utils/__tests__/utilities.test.ts
+Test fuzzyCompare
+✓ should do strict comparison (4 ms)
+✓ should do fuzzy comparison (1 ms)
+✓ should treat null, 0 and "0" as equal
+✓ should not treat null, 0 and "0" as equal (1 ms)
+Test wrapData
+✓ should wrap object in json
+✓ should wrap each object in array in json (1 ms)
+✓ json key from source should be inside json
+Test keysToLowercase
+✓ should convert keys to lowercase (1 ms)
+✓ should return original value if it is not an object
+Test getResolvables
+✓ should return empty array when there are no resolvables
+✓ should properly handle resovables in SQL query
+✓ should properly handle resovables in HTML string
+shuffleArray
+✓ should shuffle array (4 ms)
+flattenKeys
+✓ should handle empty object
+✓ should flatten object with nested object
+✓ should handle object with nested arrays
+✓ should flatten object with nested object and specified prefix
+✓ should handle object with nested arrays and specified prefix (1 ms)
+compareItems
+✓ should return true if all values of specified keys are equal
+✓ should return false if any values of specified keys are not equal
+✓ should return true if all values of specified keys are equal using dot notation (1 ms)
+✓ should return false if any values of specified keys are not equal using dot notation
+✓ should return true if all values of specified keys are equal using bracket notation
+sortItemKeysByPriorityList
+✓ should reorder keys based on priority list (1 ms)
+✓ should sort keys not in the priority list alphabetically (4 ms)
+✓ should sort all keys alphabetically when priority list is empty (1 ms)
+✓ should handle an empty data array
+✓ should handle a single object in the data array
+✓ should handle duplicate keys in the priority list gracefully
+2025-04-15T08:44:07.5226036Z
+PASS nodes/HttpRequest/test/utils/utils.test.ts
+HTTP Node Utils
+prepareRequestBody
+✓ should call default reducer (4 ms)
+✓ should call process dot notations (1 ms)
+setAgentOptions
+✓ should not have agentOptions as it's undefined
+✓ should have agentOptions set
+sanitizeUiMessage
+✓ should remove large Buffers (1 ms)
+✓ should remove keys that contain sensitive data and do not modify requestOptions (1 ms)
+✓ should remove secrets
+✓ should redact the authorization header when the key is lowercase (1 ms)
+✓ should redact the authorization header when the key is uppercase
+✓ should redact the x-api-key header when the key is lowercase
+✓ should redact the x-api-key header when the key is uppercase (1 ms)
+✓ should redact the x-auth-token header when the key is lowercase
+✓ should redact the x-auth-token header when the key is uppercase
+✓ should redact the cookie header when the key is lowercase
+✓ should redact the cookie header when the key is uppercase
+✓ should redact the proxy-authorization header when the key is lowercase
+✓ should redact the proxy-authorization header when the key is uppercase (1 ms)
+✓ should redact the sslclientcert header when the key is lowercase
+✓ should redact the sslclientcert header when the key is uppercase
+✓ should leave headers unchanged if Authorization header is not present
+✓ should handle case when headers are undefined (3 ms)
+replaceNullValues
+✓ should replace null json with an empty object
+✓ should not modify json if it is already an object (1 ms)
+getSecrets
+✓ should return secrets for sensitive properties
+✓ should not return non-sensitive properties
+✓ should not include non-string values in sensitive properties
+✓ should return an empty array if properties and credentials are empty
+✓ should not include null or undefined values in sensitive properties
+2025-04-15T08:44:07.5235039Z
+PASS nodes/Merge/test/v3/operations.test.ts
+Test MergeV3, combineBySql operation
+✓ LEFT JOIN (12 ms)
+✓ LEFT JOIN, missing input 2(empty array) (1 ms)
+✓ LEFT JOIN, missing data in input 2 (1 ms)
+✓ LEFT JOIN, invalid syntax (2 ms)
+✓ RIGHT JOIN (1 ms)
+✓ INNER JOIN (1 ms)
+✓ FULL OUTER JOIN (1 ms)
+✓ CROSS JOIN (16 ms)
+✓ should collect pairedItems data, if version >= 3.1 and SELECT query (1 ms)
+Test MergeV3, append operation
+✓ append inputs (1 ms)
+Test MergeV3, combineByFields operation
+✓ merge inputs (2 ms)
+Test MergeV3, combineByPosition operation
+✓ combine inputs (1 ms)
+Test MergeV3, chooseBranch operation
+✓ choose input
+Test MergeV3, combineAll operation
+✓ combine inputs
+2025-04-15T08:44:07.5239029Z
+PASS nodes/Kafka/KafkaTrigger.node.test.ts
+KafkaTrigger Node
+✓ should connect to Kafka and subscribe to topic (7 ms)
+✓ should handle authentication when credentials are provided (1 ms)
+✓ should throw an error if authentication is enabled but credentials are missing (18 ms)
+✓ should use schema registry when enabled (2 ms)
+✓ should parse JSON message when jsonParseMessage is true (1 ms)
+✓ should include headers when returnHeaders is true (1 ms)
+✓ should handle manual trigger mode (2 ms)
+✓ should handle sequential processing when parallelProcessing is false (1 ms)
+2025-04-15T08:44:07.5241871Z
+PASS nodes/SeaTable/__tests__/v2/GenericFunctions.test.ts
+Seatable > v2 > GenericFunctions
+rowExport
+✓ should export only allowed columns from row (3 ms)
+✓ should handle empty row
+✓ should handle row with missing fields
+splitStringColumnsToArrays
+✓ should convert collaborator strings to arrays (1 ms)
+✓ should convert multiple-select strings to arrays
+✓ should convert number strings to numbers
+✓ should convert rate and duration strings to integers
+✓ should convert checkbox strings to booleans
+✓ should handle multiple column types in one row (1 ms)
+✓ should handle empty/invalid inputs
+enrichColumns
+✓ should preserve base IRow properties (1 ms)
+✓ should enrich collaborator columns
+✓ should enrich creator and last-modifier columns (1 ms)
+✓ should enrich image columns
+✓ should handle empty/missing data gracefully
+simplify_new
+✓ should remove keys starting with underscore
+✓ should handle empty object
+✓ should preserve non-underscore keys
+2025-04-15T08:44:07.5247059Z
+PASS nodes/Form/test/FormTriggerV2.node.test.ts
+FormTrigger
+✓ should render a form template with correct fields (7 ms)
+✓ should return workflowData on POST request (11 ms)
+✓ should throw on invalid webhook authentication (1 ms)
+✓ should apply customCss property to form render (1 ms)
+✓ should handle files (3 ms)
+Respond to Webhook
+✓ should throw when misconfigured (2 ms)
+2025-04-15T08:44:07.5249112Z
+PASS nodes/Google/Calendar/test/node/event.getAll.test.ts
+Google Calendar Node
+Google Calendar > Event > Get Many
+✓ should configure get all request parameters in version 1.3 (10 ms)
+✓ should configure get all recurringEventHandling equals next in version 1.3 (6 ms)
+✓ should configure get all recurringEventHandling equals first in version 1.3 (1 ms)
+✓ should configure get all should have hint in version 1.3 (1 ms)
+2025-04-15T08:44:07.5251115Z
+PASS nodes/Jira/JiraTrigger.node.test.ts
+JiraTrigger
+Webhook lifecycle
+✓ should register a webhook subscription on Jira 10 (6 ms)
+✓ should register a webhook subscription on Jira 9 (1 ms)
+✓ should register a webhook subscription on Jira Cloud (8 ms)
+Webhook
+✓ should receive a webhook event (1 ms)
+2025-04-15T08:44:07.5252737Z
+PASS nodes/Notion/test/node/v2/block/append.test.ts
+Test NotionV2, block => append
+✓ nodes/Notion/test/node/v2/block/append.workflow (1306 ms)
+2025-04-15T08:44:07.5253542Z
+PASS nodes/Airtop/test/node/extraction/getPaginated.test.ts
+Test Airtop, getPaginated operation
+✓ should extract data with minimal parameters (4 ms)
+✓ should extract data with output schema (1 ms)
+✓ interactionMode > Should extract data with 'auto' mode (1 ms)
+✓ interactionMode > Should extract data with 'accurate' mode
+✓ interactionMode > Should extract data with 'cost-efficient' mode (1 ms)
+✓ paginationMode > Should extract data with 'auto' mode
+✓ paginationMode > Should extract data with 'paginated' mode (3 ms)
+✓ paginationMode > Should extract data with 'infinite-scroll' mode
+✓ should extract data using a new session (1 ms)
+✓ should throw error when 'sessionId' is empty and session mode is 'existing' (14 ms)
+✓ should throw error when 'windowId' is empty and session mode is 'existing'
+2025-04-15T08:44:07.5257213Z
+PASS nodes/Google/Gmail/test/GmailTrigger.test.ts
+GmailTrigger
+✓ should return incoming emails (50 ms)
+✓ should simplify output when enabled (18 ms)
+✓ should filter out emails that were already processed (4 ms)
+✓ should handle duplicates and different date fields (50 ms)
+2025-04-15T08:44:07.5258570Z
+PASS nodes/Form/test/formCompletionUtils.test.ts
+formCompletionUtils
+renderFormCompletion
+✓ should render the form completion (4 ms)
+✓ throw an error if no binary data with the field name is found (11 ms)
+✓ should render if respond with binary is set and binary mode is filesystem (2 ms)
+✓ should render if respond with binary is set and binary mode is default (1 ms)
+2025-04-15T08:44:07.5260448Z
+PASS nodes/Notion/test/node/v2/database/getAll.test.ts
+Test NotionV2, database => getAll
+✓ nodes/Notion/test/node/v2/database/getAll.workflow (103 ms)
+2025-04-15T08:44:07.5261222Z
+PASS nodes/Google/Sheet/test/v2/methods/listSearch.test.ts
+Google Sheets Search Functions
+spreadSheetsSearch
+✓ should return search results without filter (3 ms)
+✓ should handle search with filter
+✓ should escape single quotes in filter (1 ms)
+✓ should handle pagination token
+sheetsSearch
+✓ should return empty results when no documentId is provided (1 ms)
+✓ should return sheets list for valid spreadsheet
+✓ should handle default sheet id when sheetId is not provided
+✓ should throw error when no data is returned (5 ms)
+✓ should filter out non-GRID type sheets (1 ms)
+2025-04-15T08:44:07.5264125Z
+PASS nodes/HttpRequest/test/node/HttpRequestV3.test.ts
+HttpRequestV3
+✓ should make a GET request (11 ms)
+✓ should handle authentication (1 ms)
+Authentication Handling
+✓ should handle httpBasicAuth authentication (1 ms)
+✓ should handle httpDigestAuth authentication
+✓ should handle httpHeaderAuth authentication (1 ms)
+✓ should handle httpQueryAuth authentication (1 ms)
+✓ should handle oAuth1Api authentication
+✓ should handle oAuth2Api authentication
+2025-04-15T08:44:07.5266580Z
+PASS nodes/Microsoft/Outlook/test/v2/node/event/create.test.ts
+Test MicrosoftOutlookV2, contact => event
+✓ nodes/Microsoft/Outlook/test/v2/node/event/create.workflow (1576 ms)
+2025-04-15T08:44:07.5267409Z
+PASS nodes/Airtop/test/node/window/create.test.ts
+Test Airtop, window create operation
+✓ should create a window with minimal parameters (3 ms)
+✓ should create a window with live view
+✓ should create a window with live view and disabled resize (1 ms)
+✓ should create a window with live view and navigation bar (1 ms)
+✓ should create a window with live view and screen resolution
+✓ should create a window with all live view options (1 ms)
+✓ should throw error when 'sessionId' parameter is empty (17 ms)
+✓ should throw error when screen resolution format is invalid (4 ms)
+2025-04-15T08:44:07.5270035Z
+PASS nodes/Slack/test/v2/utils.test.ts
+Slack Utility Functions
+getTarget
+✓ should return correct target id (8 ms)
+createSendAndWaitMessageBody
+✓ should create message with single button - pre 2.3 plain_text (2 ms)
+✓ should create message with double buttons - pre 2.3 plain_text
+✓ should create message with single button - 2.3+ mrkdwn (1 ms)
+✓ should create message with double buttons - 2.3+ mrkdwn
+2025-04-15T08:44:07.5272218Z
+PASS nodes/Splunk/test/v2/utils.test.ts
+Splunk, formatEntry
+✓ should format the entry correctly when doNotFormatContent is false (3 ms)
+✓ should format the entry correctly when doNotFormatContent is true (2 ms)
+✓ should handle entries without id correctly (1 ms)
+Splunk, extractErrorDescription
+✓ should extract the error description correctly when messages are present
+✓ should return the raw error when messages are not present
+✓ should return the raw error when response is not present
+Splunk, getId
+✓ should return id extracted from the id parameter if it is url (1 ms)
+✓ should return the unchanged id
+Splunk, populate
+✓ should populate destination object with source object properties
+✓ should not modify destination object if source object is empty (1 ms)
+Splunk, formatFeed
+✓ should return an empty array when feed entries are not present
+✓ should format feed entries correctly when entries are an array
+✓ should format feed entry correctly when entry is a single object
+Splunk, setCount
+✓ should set count to 0 if returnAll (1 ms)
+✓ should set count to limit if returnAll is false
+Splunk, parseXml
+✓ should parse valid XML string correctly (1 ms)
+✓ should throw an error if XML string is invalid (8 ms)
+2025-04-15T08:44:07.5278244Z
+PASS nodes/Set/test/v2/utils.test.ts
+test Set2, composeReturnItem
+✓ should compose return item including no other fields (3 ms)
+✓ should compose return item including selected fields (1 ms)
+✓ should include binary when expected in version <3.4
+✓ should include binary when expected in version >=3.4 (1 ms)
+test Set2, parseJsonParameter
+✓ should parse valid JSON string
+✓ should tolerate single quotes in string
+✓ should tolerate unquoted keys (1 ms)
+✓ should tolerate trailing comma
+✓ should tolerate trailing commas in objects
+test Set2, validateEntry
+✓ should convert number to string (1 ms)
+✓ should convert array to string
+✓ should convert object to string
+✓ should convert boolean to string
+✓ should convert undefined to string
+2025-04-15T08:44:07.5282128Z
+PASS nodes/MailerLite/tests/GenericFunctions.test.ts
+MailerLite -> mailerliteApiRequest
+✓ should make a successful API request for type version 1 (9 ms)
+✓ should make a successful API request for type version 2 (1 ms)
+✓ should make an API request with an empty body
+✓ should throw an error if the API request fails (10 ms)
+MailerLite -> mailerliteApiRequestAllItems
+✓ should handle pagination for type version 1
+✓ should handle pagination for type version 2 (1 ms)
+MailerLite -> getCustomFields
+✓ should return custom fields for type version 1
+✓ should return custom fields for type version 2 (1 ms)
+2025-04-15T08:44:07.5285096Z
+PASS nodes/MySql/test/v2/runQueries.test.ts
+Test MySql V2, runQueries
+✓ should execute in "Single" mode, should return success true (2 ms)
+✓ should execute in "independently" mode, should return success true (1 ms)
+✓ should execute in "transaction" mode, should return success true (12 ms)
+in single query batch mode
+✓ should set paired items correctly (9 ms)
+2025-04-15T08:44:07.5287211Z
+PASS nodes/MySql/test/v2/utils.test.ts
+Test MySql V2, prepareQueryAndReplacements
+✓ should transform query and values (4 ms)
+Test MySql V2, wrapData
+✓ should wrap object in json
+✓ should wrap each object in array in json
+✓ json key from source should be inside json (1 ms)
+Test MySql V2, addWhereClauses
+✓ add where clauses to query
+✓ add where clauses to query combined by OR (1 ms)
+Test MySql V2, addSortRules
+✓ should add ORDER by
+Test MySql V2, replaceEmptyStringsByNulls
+✓ should replace empty strings
+✓ should not replace empty strings (3 ms)
+Test MySql V2, escapeSqlIdentifier
+✓ should escape fully qualified identifier (1 ms)
+✓ should escape table name only
+✓ should escape fully qualified identifier with backticks
+✓ should escape identifier with dots
+Test MySql V2, splitQueryToStatements
+✓ should split query into statements
+✓ should not split by ; inside string literal (1 ms)
+2025-04-15T08:44:07.5291932Z
+PASS nodes/Microsoft/Entra/test/MicrosoftEntra.node.test.ts
+Microsoft Entra Node
+Credentials
+✓ should use correct credentials (60 ms)
+Load options
+✓ should load group properties (5 ms)
+✓ should load user properties (4 ms)
+List search
+✓ should list search groups (6 ms)
+✓ should list search users (1 ms)
+2025-04-15T08:44:07.5293759Z
+PASS nodes/RabbitMQ/test/GenericFunctions.test.ts
+RabbitMQ GenericFunctions
+parseMessage
+✓ should handle binary data (3 ms)
+✓ should handle JSON data (1 ms)
+✓ should return only content, when requested (1 ms)
+rabbitmqConnect
+✓ should connect to RabbitMQ (1 ms)
+✓ should connect to RabbitMQ over SSL
+rabbitmqCreateChannel
+✓ should create a channel (4 ms)
+rabbitmqConnectQueue
+✓ should assert a queue
+✓ should check a queue
+rabbitmqConnectExchange
+✓ should assert a queue (3 ms)
+✓ should check a queue (1 ms)
+MessageTracker
+✓ should track received messages
+✓ should track answered messages
+✓ should return the number of unanswered messages
+✓ should close the channel and connection
+2025-04-15T08:44:07.5298075Z
+PASS nodes/Notion/test/GenericFunctions.test.ts
+Test NotionV2, formatBlocks
+✓ should format to_do block (3 ms)
+Test Notion
+extractPageId From URL
+✓ should return the part after "p="
+✓ should return the last part after splitting by "-" when URL contains multiple "-" (1 ms)
+✓ should return the last part after splitting by "-" when URL contains one "-"
+✓ should return just the id when there is an instance name (1 ms)
+✓ should return the id when there is no instance name
+Test Notion, getPageId
+✓ should return page ID directly when mode is id (1 ms)
+✓ should extract page ID from URL with p parameter (1 ms)
+✓ should extract page ID from URL using regex (5 ms)
+✓ should throw error when page ID cannot be extracted (32 ms)
+✓ should throw error when page value is empty (1 ms)
+✓ should throw error when page value is undefined (1 ms)
+✓ should throw error when page value is not a string (1 ms)
+2025-04-15T08:44:07.5302548Z
+PASS nodes/Google/Sheet/test/v2/transport/index.test.ts
+Google Sheets Transport
+apiRequest
+✓ should make successful request with service account authentication (4 ms)
+✓ should make successful request with OAuth2 authentication (1 ms)
+✓ should handle custom headers and query parameters
+✓ should handle PERMISSION_DENIED error with custom description (8 ms)
+✓ should handle SSL certificate errors (1 ms)
+apiRequestAllItems
+✓ should fetch all pages of results (1 ms)
+✓ should handle empty response
+2025-04-15T08:44:07.5305121Z
+PASS nodes/Google/Sheet/test/v2/node/update.test.ts
+Google Sheet - Update
+✓ should update by row_number and not insert it as a new column (4 ms)
+✓ should update rows by column values with special character (3 ms)
+row_number input error
+✓ displays a helpful error message when row_number is undefined (10 ms)
+✓ displays a helpful error message when row_number is null (3 ms)
+2025-04-15T08:44:07.5306905Z
+PASS nodes/Microsoft/Sql/test/utils.test.ts
+MSSQL tests
+✓ should perform insert operation (5 ms)
+✓ should perform update operation (1 ms)
+✓ should perform delete operation (1 ms)
+mssqlChunk
+✓ should chunk insert values correctly (3 ms)
+executeSqlQueryAndPrepareResults
+✓ should handle SELECT query with single record (1 ms)
+✓ should handle SELECT query with multiple records
+✓ should handle non-SELECT query (1 ms)
+✓ should handle query with no affected rows
+✓ should throw an error when query fails (7 ms)
+2025-04-15T08:44:07.5309947Z
+PASS nodes/Compression/test/node/Compression.test.ts
+Execute Compression Node
+✓ nodes/Compression/test/node/workflow.compression.json (332 ms)
+2025-04-15T08:44:07.5310669Z
+PASS nodes/Google/Sheet/test/v2/helpers/GoogleSheet.test.ts
+GoogleSheet
+clearData
+✓ should make correct API call to clear data (4 ms)
+getData
+✓ should retrieve data with correct parameters (1 ms)
+convertSheetDataArrayToObjectArray
+✓ should convert sheet data to object array correctly
+✓ should handle empty rows when addEmpty is false (1 ms)
+lookupValues
+✓ should find matching rows with OR combination
+✓ should find matching rows with AND combination
+✓ should throw error for invalid key row (23 ms)
+appendSheetData
+✓ should correctly prepare and append data (1 ms)
+appendEmptyRowsOrColumns
+✓ should throw error when no rows or columns specified (1 ms)
+✓ should make correct API call to append rows and columns
+2025-04-15T08:44:07.5314083Z
+PASS nodes/Microsoft/Storage/test/listSearch/listSearch.test.ts
+Azure Storage Node
+List search
+✓ should list search blobs (10 ms)
+✓ should list search containers (2 ms)
+2025-04-15T08:44:07.5314562Z
+PASS nodes/Schedule/test/GenericFunctions.test.ts
+toCronExpression
+✓ should return cron expression for cronExpression field (4 ms)
+✓ should return cron expression for seconds interval (1 ms)
+✓ should return cron expression for minutes interval
+✓ should return cron expression for hours interval
+✓ should return cron expression for days interval (1 ms)
+✓ should return cron expression for weeks interval
+✓ should return cron expression for months interval
+recurrenceCheck
+✓ should return true if activated=false (1 ms)
+✓ should return false if intervalSize is falsey
+✓ should return true only once for a day cron (1 ms)
+intervalToRecurrence
+✓ should return recurrence rule for seconds interval (1 ms)
+✓ should return recurrence rule for minutes interval
+✓ should return recurrence rule for hours interval (10 ms)
+✓ should return recurrence rule for days interval (1 ms)
+✓ should return recurrence rule for weeks interval
+✓ should return recurrence rule for months interval (1 ms)
+2025-04-15T08:44:07.5317040Z
+PASS nodes/Microsoft/AzureCosmosDb/test/helpers/errorHandler.test.ts
+handleError
+✓ should return data when no error occurs (4 ms)
+✓ should throw NodeApiError for container conflict (17 ms)
+✓ should throw NodeApiError for container not found (1 ms)
+✓ should throw NodeApiError for item not found (1 ms)
+✓ should throw generic error if no specific mapping exists (1 ms)
+✓ should handle error details correctly when match is successful (1 ms)
+✓ should handle error when match does not return expected format (1 ms)
+✓ should throw NodeApiError with proper details if error details are present
+✓ should throw NodeApiError with fallback message if no details found
+2025-04-15T08:44:07.5318711Z
+PASS nodes/Google/Sheet/test/v2/methods/loadOptions.test.ts
+Google Sheets Functions
+getSheets
+✓ should return an empty array if documentId is null (3 ms)
+✓ should throw an error if no data is returned (18 ms)
+✓ should return sheets with GRID type (1 ms)
+getSheetHeaderRow
+✓ should return an empty array if documentId is null
+✓ should throw an error if no data is returned (1 ms)
+✓ should return column headers
+getSheetHeaderRowAndAddColumn
+✓ should add a new column and exclude the column to match on
+getSheetHeaderRowWithGeneratedColumnNames
+✓ should generate column names for empty values
+getSheetHeaderRowAndSkipEmpty
+✓ should skip columns with empty values
+2025-04-15T08:44:07.5320401Z
+PASS nodes/Microsoft/Outlook/test/v2/utils/utils.test.ts
+Test MicrosoftOutlookV2, makeRecipient
+✓ should create recipient object (4 ms)
+Test MicrosoftOutlookV2, prepareContactFields
+✓ should create contact object
+Test MicrosoftOutlookV2, prepareFilterString
+✓ should create filter string (1 ms)
+Test MicrosoftOutlookV2, simplifyOutputMessages
+✓ should create recipient object
+Test MicrosoftOutlookV2, createMessage
+✓ should create message object
+2025-04-15T08:44:07.5321617Z
+PASS nodes/Slack/test/v2/node/message/search.test.ts
+Test SlackV2, message => search
+✓ nodes/Slack/test/v2/node/message/search.workflow (1292 ms)
+2025-04-15T08:44:07.5321958Z
+PASS nodes/Airtop/test/node/extraction/query.test.ts
+Test Airtop, query page operation
+✓ should query the page with minimal parameters using existing session (5 ms)
+✓ should query the page with output schema using existing session (1 ms)
+✓ should query the page using a new session (1 ms)
+✓ should throw error when 'sessionId' is empty in 'existing' session mode (21 ms)
+✓ should throw error when 'windowId' is empty in 'existing' session mode (1 ms)
+2025-04-15T08:44:07.5322999Z
+console.warn
+Deprecation warning: value provided is not in a recognized RFC2822 or ISO format. moment construction falls back to js Date(), which is not reliable across all browsers and versions. Non RFC2822/ISO date formats are discouraged. Please refer to http://momentjs.com/guides/#/warnings/js-date/ for more info.
+Arguments:
+[0] _isAMomentObject: true, _isUTC: false, _useUTC: false, _l: undefined, _i: foo bar baz, _f: undefined, _strict: undefined, _locale: [object Object]
+Error:
+at Function.createFromInputFallback (/home/runner/_work/n8n/n8n/node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:324:25)
+at configFromString (/home/runner/_work/n8n/n8n/node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:2550:19)
+at configFromInput (/home/runner/_work/n8n/n8n/node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:2993:13)
+at prepareConfig (/home/runner/_work/n8n/n8n/node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:2976:13)
+at createFromConfig (/home/runner/_work/n8n/n8n/node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:2943:44)
+at createLocalOrUTC (/home/runner/_work/n8n/n8n/node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:3037:16)
+at createLocal (/home/runner/_work/n8n/n8n/node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:3041:16)
+at hooks (/home/runner/_work/n8n/n8n/node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:16:29)
+at getValue (/home/runner/_work/n8n/n8n/packages/nodes-base/nodes/Salesforce/GenericFunctions.ts:182:12)
+at Object.<anonymous> (/home/runner/_work/n8n/n8n/packages/nodes-base/nodes/Salesforce/__test__/GenericFunctions.test.ts:24:27)
+at Promise.then.completed (/home/runner/_work/n8n/n8n/node_modules/.pnpm/jest-circus@29.6.2/node_modules/jest-circus/build/utils.js:300:28)
+at new Promise (<anonymous>)
+at callAsyncCircusFn (/home/runner/_work/n8n/n8n/node_modules/.pnpm/jest-circus@29.6.2/node_modules/jest-circus/build/utils.js:233:10)
+at _callCircusTest (/home/runner/_work/n8n/n8n/node_modules/.pnpm/jest-circus@29.6.2/node_modules/jest-circus/build/run.js:315:40)
+at processTicksAndRejections (node:internal/process/task_queues:95:5)
+at _runTest (/home/runner/_work/n8n/n8n/node_modules/.pnpm/jest-circus@29.6.2/node_modules/jest-circus/build/run.js:251:3)
+at _runTestsForDescribeBlock (/home/runner/_work/n8n/n8n/node_modules/.pnpm/jest-circus@29.6.2/node_modules/jest-circus/build/run.js:125:9)
+at _runTestsForDescribeBlock (/home/runner/_work/n8n/n8n/node_modules/.pnpm/jest-circus@29.6.2/node_modules/jest-circus/build/run.js:120:9)
+at _runTestsForDescribeBlock (/home/runner/_work/n8n/n8n/node_modules/.pnpm/jest-circus@29.6.2/node_modules/jest-circus/build/run.js:120:9)
+at run (/home/runner/_work/n8n/n8n/node_modules/.pnpm/jest-circus@29.6.2/node_modules/jest-circus/build/run.js:70:3)
+at runAndTransformResultsToJestFormat (/home/runner/_work/n8n/n8n/node_modules/.pnpm/jest-circus@29.6.2/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
+at jestAdapter (/home/runner/_work/n8n/n8n/node_modules/.pnpm/jest-circus@29.6.2/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
+at runTestInternal (/home/runner/_work/n8n/n8n/node_modules/.pnpm/jest-runner@29.6.2/node_modules/jest-runner/build/runTest.js:367:16)
+at runTest (/home/runner/_work/n8n/n8n/node_modules/.pnpm/jest-runner@29.6.2/node_modules/jest-runner/build/runTest.js:444:34)
+at Object.worker (/home/runner/_work/n8n/n8n/node_modules/.pnpm/jest-runner@29.6.2/node_modules/jest-runner/build/testWorker.js:106:12)
+2025-04-15T08:44:07.5330780Z
+[0m [90m 180 |[39m
+[90m 181 |[39m [36mexport[39m [36mfunction[39m getValue(value[33m:[39m any) {
+[31m[1m>[22m[39m[90m 182 |[39m 	[36mif[39m (moment(value [36mas[39m string)[33m.[39misValid()) {
+[90m     |[39m 	          [31m[1m^[22m[39m
+[90m 183 |[39m 		[36mreturn[39m value[33m;[39m
+[90m 184 |[39m 	} [36melse[39m [36mif[39m ([36mtypeof[39m value [33m===[39m [32m'string'[39m) {
+[90m 185 |[39m 		[36mreturn[39m [32m`'${value}'`[39m[33m;[39m[0m
+2025-04-15T08:44:07.5331911Z
+at warn (../../node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:287:21)
+at Function.createFromInputFallback (../../node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:319:17)
+at configFromString (../../node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:2550:19)
+at configFromInput (../../node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:2993:13)
+at prepareConfig (../../node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:2976:13)
+at createFromConfig (../../node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:2943:44)
+at createLocalOrUTC (../../node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:3037:16)
+at createLocal (../../node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:3041:16)
+at hooks (../../node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:16:29)
+at getValue (nodes/Salesforce/GenericFunctions.ts:182:12)
+at Object.<anonymous> (nodes/Salesforce/__test__/GenericFunctions.test.ts:24:27)
+2025-04-15T08:44:07.5333819Z
+PASS nodes/Salesforce/__test__/GenericFunctions.test.ts
+Salesforce -> GenericFunctions
+getValue
+✓ should return date string as is (3 ms)
+✓ should return string in single quotes (37 ms)
+✓ should return number as is
+✓ should return boolean as is (1 ms)
+sortOptions
+✓ should sort options alphabetically by name (1 ms)
+getConditions
+✓ should handle equals operation (6 ms)
+✓ should handle other operations
+✓ should return undefined when constitions is not an array (1 ms)
+✓ should return undefined when constitions is an empty array
+getDefaultFields
+✓ should return default fields (7 ms)
+getQuery
+✓ should return query when the fields are comma separated
+✓ should return query when the fields are strings in an array
+✓ should return query with default fields when the fields are missing (1 ms)
+✓ should return query with a condition
+✓ should return query with a limit
+✓ should return query with a condition and a limit (1 ms)
+2025-04-15T08:44:07.5336456Z
+PASS nodes/Slack/test/v2/GenericFunctions.test.ts
+Slack V2 > GenericFunctions
+slackApiRequest
+✓ should handle paid_teams_only error (21 ms)
+slackApiRequestAllItems
+✓ should use default limit of 100 when no limit is provided (2 ms)
+✓ should use provided limit value when specified (1 ms)
+✓ should use count instead of limit for files.list endpoint
+✓ should handle files.list pagination (1 ms)
+✓ should handle regular pagination with paging info (1 ms)
+✓ should handle matches in response
+2025-04-15T08:44:07.5337673Z
+PASS nodes/Supabase/tests/Supabase.node.test.ts
+Test Supabase Node
+✓ should allow filtering on the same field multiple times (6 ms)
+✓ should not set schema headers if no custom schema is used (1 ms)
+✓ should set the schema headers for GET calls if custom schema is used
+✓ should set the schema headers for POST calls if custom schema is used
+✓ should show descriptive message when error is caught (2 ms)
+2025-04-15T08:44:07.5338636Z
+PASS nodes/Github/__tests__/GenericFunctions.test.ts
+GenericFunctions
+githubApiRequest
+✓ should make a successful API request (4 ms)
+✓ should throw a NodeApiError on API failure (30 ms)
+getFileSha
+✓ should return the SHA of a file (6 ms)
+✓ should throw a NodeOperationError if SHA is missing (1 ms)
+githubApiRequestAllItems
+✓ should fetch all items with pagination (2 ms)
+isBase64
+✓ should return true for valid Base64 strings
+✓ should return false for invalid Base64 strings (1 ms)
+validateJSON
+✓ should return parsed JSON for valid JSON strings (1 ms)
+✓ should return undefined for invalid JSON strings
+2025-04-15T08:44:07.5340345Z
+PASS nodes/Google/BigQuery/test/v2/utils/utils.test.ts
+Google BigQuery v2 Utils
+✓ should prepareOutput (6 ms)
+2025-04-15T08:44:07.5340622Z
+PASS nodes/Google/Sheet/test/v2/actions/spreadsheet/create.operation.test.ts
+Spreadsheet Create Operation
+execute
+✓ should create a basic spreadsheet with title only (5 ms)
+✓ should create spreadsheet with multiple sheets (1 ms)
+✓ should handle all options when creating spreadsheet (1 ms)
+✓ should handle multiple input items (1 ms)
+✓ should handle empty sheet properties (1 ms)
+✓ should preserve undefined values for optional properties (1 ms)
+2025-04-15T08:44:07.5342069Z
+PASS nodes/Files/ReadWriteFile/test/ReadWriteFile.test.ts
+Test ReadWriteFile Node
+✓ nodes/Files/ReadWriteFile/test/ReadWriteFile.workflow.json (473 ms)
+2025-04-15T08:44:07.5342449Z
+PASS nodes/Transform/RemoveDuplicates/v2/test/RemoveDuplicates.test.ts
+RemoveDuplicatesV2
+✓ should Remove items repeated within current input based on all fields (6 ms)
+✓ should Remove items repeated within current input based on selected fields (1 ms)
+✓ should remove items seen in previous executions (1 ms)
+✓ should clean database when managing key values (1 ms)
+2025-04-15T08:44:07.5343437Z
+PASS nodes/Airtop/test/session-utils.test.ts
+executeRequestWithSessionManagement
+When 'sessionMode' is 'new'
+✓ should create a new session and window when 'sessionMode' is 'new' (5 ms)
+✓ should not terminate session when 'autoTerminateSession' is false
+✓ should terminate session when 'autoTerminateSession' is true (1 ms)
+✓ should call the operation passed in the 'request' parameter (1 ms)
+When 'sessionMode' is 'existing'
+✓ should not create a new session and window
+✓ should call the operation passed in the 'request' parameter
+2025-04-15T08:44:07.5344720Z
+PASS nodes/SpreadsheetFile/test/SpreadsheetFile.test.ts
+Execute Spreadsheet File Node
+✓ execute workflow.json (797 ms)
+✓ execute workflow.bom.json (46 ms)
+✓ execute includeempty.json (8 ms)
+✓ execute utf8.json (5 ms)
+2025-04-15T08:44:07.5345327Z
+PASS nodes/Google/YouTube/__test__/node/YouTube.node.test.ts
+Test YouTube Node
+Channel
+✓ nodes/Google/YouTube/__test__/node/channels.workflow (975 ms)
+✓ should make the correct network calls (3 ms)
+Playlist
+✓ nodes/Google/YouTube/__test__/node/playlists.workflow (59 ms)
+✓ should make the correct network calls (1 ms)
+Video Categories
+✓ nodes/Google/YouTube/__test__/node/videoCategories.workflow (17 ms)
+✓ should make the correct network calls (1 ms)
+Playlist Item
+✓ nodes/Google/YouTube/__test__/node/playlistItems.workflow (52 ms)
+2025-04-15T08:44:07.5346973Z
+PASS nodes/Airtop/test/node/session/create.test.ts
+Test Airtop, session create operation
+✓ should create a session with minimal parameters (7 ms)
+✓ should create a session with save profile enabled (1 ms)
+✓ should create a session with integrated proxy
+✓ should create a session with custom proxy
+✓ should throw error when custom proxy URL is invalid (23 ms)
+✓ should throw error when custom proxy URL is empty (1 ms)
+2025-04-15T08:44:07.5347953Z
+PASS nodes/Lemlist/test/GenericFunctions.test.ts
+GenericFunctions
+lemlistApiRequest
+✓ should make an authenticated API request to Lemlist (4 ms)
+lemlistApiRequestAllItems
+✓ should return all results (1 ms)
+getEvents
+✓ should return a list of events with capitalized names (10 ms)
+2025-04-15T08:44:07.5348796Z
+PASS nodes/Twitter/test/Twitter.test.ts
+Test Twitter Request Node
+✓ nodes/Twitter/test/Workflow_Twitter_UnitTest (618 ms)
+X / Twitter Node unit tests
+returnId
+✓ should return the id when mode is id (1 ms)
+✓ should extract the tweetId from url when the domain is twitter.com (1 ms)
+✓ should extract the tweetId from url when the domain is x.com
+✓ should throw an error when mode is not valid (12 ms)
+should throw an error when the URL is not valid
+✓ https://twitter.com/user/ (1 ms)
+✓ https://twitter.com/user/status/ (1 ms)
+✓ https://twitter.com/user/profile/12345 (1 ms)
+✓ https://twitter.com/search?param=12345 (1 ms)
+2025-04-15T08:44:07.5350346Z
+PASS nodes/Aws/SES/test/AwsSes.node.test.ts
+AwsSes Node
+✓ should create customVerificationEmail (755 ms)
+✓ should URIencode params for sending email with template (26 ms)
+2025-04-15T08:44:07.5350784Z
+PASS utils/__tests__/connection-pool-manager.test.ts
+✓ getInstance returns a singleton (3 ms)
+getConnection
+✓ calls fallBackHandler only once and returns the first value (1 ms)
+✓ creates different pools for different node versions (1 ms)
+✓ calls cleanUpHandler after TTL expires (1 ms)
+onShutdown
+✓ calls all clean up handlers
+✓ calls all clean up handlers when `exit` is emitted on process (1 ms)
+2025-04-15T08:44:07.5351863Z
+PASS nodes/Notion/test/node/v2/block/getAll.test.ts
+Test NotionV2, block => getAll
+✓ nodes/Notion/test/node/v2/block/getAll.workflow (111 ms)
+2025-04-15T08:44:07.5352188Z
+PASS nodes/Salesforce/__test__/node/Salesforce.node.test.ts
+Salesforce Node
+users
+✓ nodes/Salesforce/__test__/node/users.workflow (1366 ms)
+✓ should make the correct network calls
+tasks
+✓ nodes/Salesforce/__test__/node/tasks.workflow (51 ms)
+✓ should make the correct network calls
+accounts
+✓ nodes/Salesforce/__test__/node/accounts.workflow (69 ms)
+✓ should make the correct network calls
+search
+✓ nodes/Salesforce/__test__/node/search.workflow (7 ms)
+✓ should make the correct network calls
+opportunities
+✓ nodes/Salesforce/__test__/node/opportunities.workflow (66 ms)
+✓ should make the correct network calls
+2025-04-15T08:44:07.5353986Z
+PASS nodes/Aws/Rekognition/test/AwsRekognition.node.test.ts
+Test AWS Rekogntion Node
+Image Labels Recognition
+✓ nodes/Aws/Rekognition/test/AwsRekognitionTestWorkflow (391 ms)
+2025-04-15T08:44:07.5354425Z
+PASS nodes/Slack/test/v2/node/channel/history.test.ts
+Test SlackV2, channel => history
+✓ nodes/Slack/test/v2/node/channel/history.workflow (176 ms)
+2025-04-15T08:44:07.5354868Z
+PASS nodes/Airtop/test/node/extraction/scrape.test.ts
+Test Airtop, scrape operation
+✓ should scrape content with minimal parameters using existing session (4 ms)
+✓ should scrape content with additional parameters using existing session
+✓ should scrape content using a new session (1 ms)
+✓ should throw error when sessionId is empty in 'existing' session mode (16 ms)
+✓ should throw error when windowId is empty in 'existing' session mode (1 ms)
+2025-04-15T08:44:07.5355903Z
+PASS nodes/Google/Calendar/test/node/event.update.test.ts
+Google Calendar Node
+Google Calendar > Event > Update
+✓ should update replace attendees in version 1.1 (5 ms)
+✓ should update replace attendees (1 ms)
+✓ should update add attendees
+2025-04-15T08:44:07.5356517Z
+PASS nodes/S3/__tests__/GenericFunctions.test.ts
+S3 Node Generic Functions
+s3ApiRequest
+✓ should throw error if endpoint does not start with http (17 ms)
+✓ should handle force path style (1 ms)
+✓ should handle supabase url (1 ms)
+s3ApiRequestREST
+✓ should parse JSON response
+✓ should return raw response on parse error (1 ms)
+s3ApiRequestSOAP
+✓ should parse XML response
+✓ should handle XML parsing errors (1 ms)
+s3ApiRequestSOAPAllItems
+✓ should handle pagination with continuation token (1 ms)
+2025-04-15T08:44:07.5357847Z
+PASS nodes/Redis/__tests__/RedisTrigger.node.test.ts
+Redis Trigger Node
+✓ should emit in manual mode (5 ms)
+✓ should emit in trigger mode (1 ms)
+✓ should parse JSON messages when configured
+2025-04-15T08:44:07.5358431Z
+PASS nodes/MQTT/test/MqttTrigger.node.test.ts
+MQTT Trigger Node
+✓ should emit in manual mode (13 ms)
+✓ should emit in trigger mode (2 ms)
+✓ should parse JSON messages when configured (4 ms)
+2025-04-15T08:44:07.5358914Z
+PASS nodes/Code/test/Code.node.test.ts
+Test Code Node
+✓ nodes/Code/test/Code.workflow (66 ms)
+✓ nodes/Code/test/workflow.do_not_obfuscate_validation_error (6 ms)
+Code Node unit test
+runOnceForAllItems
+valid return data
+✓ should handle null (2 ms)
+✓ should handle pre-normalized result (1 ms)
+✓ should handle an index key (2 ms)
+✓ should handle when returned data is not an array (1 ms)
+✓ should handle when returned data is an array with items missing `json` key (1 ms)
+✓ should handle when returned data missing `json` key (2 ms)
+invalid return data
+✓ return error if `.json` is undefined (2 ms)
+✓ return error if `.json` is null (2 ms)
+✓ return error if `.json` is date (1 ms)
+✓ return error if `.json` is string (1 ms)
+✓ return error if `.json` is boolean (2 ms)
+✓ return error if `.json` is array (1 ms)
+runOnceForEachItem
+valid return data
+✓ should handle pre-normalized result (1 ms)
+✓ should handle when returned data missing `json` key (1 ms)
+invalid return data
+✓ return error if `.json` is undefined (2 ms)
+✓ return error if `.json` is null (1 ms)
+✓ return error if `.json` is date (1 ms)
+✓ return error if `.json` is string (2 ms)
+✓ return error if `.json` is boolean (8 ms)
+✓ return error if `.json` is array (1 ms)
+2025-04-15T08:44:07.5362253Z
+PASS nodes/Notion/test/node/v2/database/search.test.ts
+Test NotionV2, database => search
+✓ nodes/Notion/test/node/v2/database/search.workflow (100 ms)
+2025-04-15T08:44:07.5362611Z
+PASS nodes/Google/Gmail/test/v2/utils.test.ts
+Google Gmail v2, prepareTimestamp
+✓ should return a valid timestamp from ISO (15 ms)
+✓ should return a valid timestamp from integer in miliseconds (1 ms)
+✓ should return a valid timestamp from integer in seconds
+✓ should return a valid timestamp from string in miliseconds (1 ms)
+✓ should return a valid timestamp from string in seconds
+✓ should return a valid timestamp from luxon DateTime (1 ms)
+✓ should return a valid timestamp from luxon DateTime ISO (2 ms)
+✓ should throw error on invalid data (18 ms)
+parseRawEmail
+✓ should return a date string (14 ms)
+2025-04-15T08:44:07.5364171Z
+PASS nodes/Microsoft/AzureCosmosDb/test/credentials/sharedKey.test.ts
+Azure Cosmos DB
+authenticate
+✓ should generate a valid authorization header (3 ms)
+✓ should throw an error when unable to determine the resource type from the URL (5 ms)
+✓ should throw OperationalError if no resource type found in URL path (1 ms)
+✓ should properly construct the resourceId and payload
+2025-04-15T08:44:07.5365121Z
+PASS nodes/Microsoft/Storage/test/credentials/sharedKey.test.ts
+Azure Storage Node
+should use correct shared key credentials
+✓ nodes/Microsoft/Storage/test/workflows/credentials_sharedKey.workflow (89 ms)
+authenticate
+✓ should remove undefined query parameters and headers (1 ms)
+✓ should default method to GET if not provided
+✓ should generate a valid authorization header (1 ms)
+2025-04-15T08:44:07.5366173Z
+PASS nodes/Splunk/test/v2/node/search.test.ts
+Splunk, search resource
+✓ create operation (4 ms)
+✓ deleteJob operation
+✓ get operation
+✓ getAll operation (1 ms)
+✓ getResult operation (1 ms)
+2025-04-15T08:44:07.5366853Z
+PASS nodes/Postgres/test/Postgres.node.functions.test.ts
+pgUpdate
+✓ runs query to update db (5 ms)
+✓ runs query to update db if updateKey is not in columns (1 ms)
+✓ runs query to update db with cast as updateKey
+✓ runs query to update db with cast in target columns (1 ms)
+pgInsert
+✓ runs query to insert (1 ms)
+✓ runs query to insert with type casting (1 ms)
+2025-04-15T08:44:07.5367827Z
+PASS nodes/Airtop/test/node/interaction/type.test.ts
+Test Airtop, type operation
+✓ should execute type with minimal parameters (4 ms)
+✓ should throw error when 'text' parameter is empty (15 ms)
+✓ should include 'elementDescription' parameter when specified (1 ms)
+✓ should include 'pressEnterKey' parameter when specified
+✓ should include 'waitForNavigation' parameter when specified (1 ms)
+✓ should include 'visualScope' parameter when specified
+2025-04-15T08:44:07.5368892Z
+PASS nodes/HttpRequest/test/node/HttpRequest.test.ts
+Test HTTP Request Node
+✓ nodes/HttpRequest/test/node/workflow.delete (635 ms)
+✓ nodes/HttpRequest/test/node/workflow.get (23 ms)
+✓ nodes/HttpRequest/test/node/workflow.pagination (547 ms)
+✓ nodes/HttpRequest/test/node/workflow.patch (6 ms)
+✓ nodes/HttpRequest/test/node/workflow.post (12 ms)
+✓ nodes/HttpRequest/test/node/workflow.put (6 ms)
+✓ nodes/HttpRequest/test/node/workflow.use_error_output (6 ms)
+2025-04-15T08:44:07.5370114Z
+PASS nodes/Microsoft/AzureCosmosDb/test/container/getAll.test.ts
+Azure Cosmos DB - Get All Containers
+✓ nodes/Microsoft/AzureCosmosDb/test/container/getAll.workflow (578 ms)
+2025-04-15T08:44:07.5370529Z
+PASS nodes/Google/Sheet/test/v2/node/delete.test.ts
+Google Sheet - Delete
+✓ should delete a single row (4 ms)
+✓ should delete multiple rows (1 ms)
+✓ should delete a single column
+✓ should delete multiple columns (1 ms)
+✓ should return wrapped success response
+2025-04-15T08:44:07.5371251Z
+PASS nodes/Schedule/test/ScheduleTrigger.node.test.ts
+ScheduleTrigger
+trigger
+✓ should emit on defined schedule (31 ms)
+✓ should emit on schedule defined as a cron expression (12 ms)
+✓ should throw on invalid cron expressions (2 ms)
+✓ should emit when manually executed (1 ms)
+✓ should throw on invalid cron expressions in manual mode
+2025-04-15T08:44:07.5372114Z
+PASS nodes/HighLevel/v2/test/ContactIdentifierPreSendAction.test.ts
+contactIdentifierPreSendAction
+✓ should add email to requestOptions.body if identifier is a valid email (3 ms)
+✓ should add phone to requestOptions.body if identifier is a valid phone
+✓ should add contactId to requestOptions.body if identifier is neither email nor phone (1 ms)
+✓ should use updateFields.contactIdentifier if contactIdentifier is not provided
+✓ should initialize body as an empty object if it is undefined (1 ms)
+2025-04-15T08:44:07.5373493Z
+PASS nodes/Set/test/v2/raw.test.ts
+test Set2, rawMode/json Mode
+fixed mode
+✓ should parse json with the jsonOutput in node parameter and compose a return item (5 ms)
+expression mode
+✓ should parse json with resolved expression data and compose a return item (1 ms)
+error handling
+✓ should return an error object with pairedItem when continueOnFail is true (1 ms)
+✓ should throw an error when continueOnFail is false (14 ms)
+2025-04-15T08:44:07.5374561Z
+PASS nodes/Microsoft/AzureCosmosDb/test/listSearch/listSearch.test.ts
+Azure Cosmos DB
+List search
+✓ should list search containers (8 ms)
+✓ should list search items (1 ms)
+2025-04-15T08:44:07.5375055Z
+PASS credentials/test/Aws.credentials.test.ts
+Aws Credential
+✓ should have correct properties (3 ms)
+authenticate
+✓ should call sign with correct parameters (1 ms)
+✓ should return correct options with custom endpoint
+✓ should return correct options with temporary credentials (1 ms)
+✓ should return correct options for a global AWS service
+2025-04-15T08:44:07.5375930Z
+PASS nodes/Google/Drive/test/v2/node/file/upload.test.ts
+test GoogleDriveV2: file upload
+✓ should upload buffers (4 ms)
+✓ should stream large files in 2MB chunks (41 ms)
+2025-04-15T08:44:07.5376446Z
+PASS nodes/Microsoft/Teams/test/v2/node/task/getAll.test.ts
+Test MicrosoftTeamsV2, task => getAll
+✓ nodes/Microsoft/Teams/test/v2/node/task/getAll.workflow (1056 ms)
+2025-04-15T08:44:07.5376834Z
+PASS nodes/ExecuteWorkflow/ExecuteWorkflow/ExecuteWorkflow.node.test.ts
+ExecuteWorkflow
+✓ should execute workflow in "each" mode and wait for sub-workflow completion (3 ms)
+✓ should execute workflow in "once" mode and not wait for sub-workflow completion
+✓ should handle errors and continue on fail (1 ms)
+✓ should throw error if not continuing on fail (14 ms)
+2025-04-15T08:44:07.5377709Z
+PASS nodes/Linear/test/GenericFunctions.test.ts
+Linear -> GenericFunctions
+linearApiRequest
+✓ should make a successful API request (3 ms)
+✓ should handle API request errors (9 ms)
+capitalizeFirstLetter
+✓ should capitalize the first letter of a string
+✓ should return an empty string if input is empty (1 ms)
+✓ should handle single character strings
+✓ should not change the case of the rest of the string
+sort
+✓ should sort objects by name in ascending order (1 ms)
+✓ should handle case insensitivity
+✓ should return 0 for objects with the same name
+2025-04-15T08:44:07.5379229Z
+PASS nodes/Splunk/test/v2/node/user.test.ts
+Splunk, user resource
+✓ create operation (4 ms)
+✓ deleteUser operation
+✓ get operation (1 ms)
+✓ getAll operation (1 ms)
+✓ update operation (6 ms)
+2025-04-15T08:44:07.5379790Z
+PASS nodes/Baserow/__tests__/GenericFunctions.test.ts
+Baserow > GenericFunctions
+baserowApiRequest
+✓ should return data on success (3 ms)
+✓ should throw NodeApiError on failure (13 ms)
+baserowApiRequestAllItems
+✓ should accumulate all pages (1 ms)
+getJwtToken
+✓ should return a token
+✓ should throw NodeApiError if request fails (1 ms)
+getFieldNamesAndIds
+✓ should return field names and ids
+toOptions
+✓ should map items to options (1 ms)
+TableFieldMapper
+✓ should create name-to-id and id-to-name mappings
+2025-04-15T08:44:07.5381223Z
+PASS nodes/Webflow/test/GenericFunctions.test.ts
+Webflow -> webflowApiRequestAllItems
+✓ should return all items for type version 1 (3 ms)
+✓ should return all items for type version 2
+Webflow -> webflowApiRequest
+✓ should use live in the url for v2 when live is true
+✓ should skip live in the url for v2 when live is false (1 ms)
+2025-04-15T08:44:07.5382099Z
+PASS nodes/Google/Sheet/test/v2/actions/spreadsheet/delete.operation.test.ts
+GoogleSheetsDeleteSpreadsheet
+✓ should successfully delete a spreadsheet (3 ms)
+✓ should handle multiple input items (1 ms)
+✓ should handle API errors gracefully (12 ms)
+✓ should validate document ID parameter
+Resource Locator Modes
+✓ should handle list mode correctly (1 ms)
+✓ should handle URL mode correctly (1 ms)
+✓ should handle ID mode correctly (1 ms)
+2025-04-15T08:44:07.5383207Z
+PASS nodes/Splunk/test/v2/node/report.test.ts
+Splunk, report resource
+✓ create operation (10 ms)
+✓ deleteReport operation
+✓ get operation (1 ms)
+✓ getAll operation
+2025-04-15T08:44:07.5383696Z
+PASS nodes/Peekalink/test/Peekalink.node.test.ts
+Peekalink Node
+✓ should run isAvailable operation (85 ms)
+✓ should run preview operation (7 ms)
+2025-04-15T08:44:07.5384176Z
+PASS nodes/TheHiveProject/test/transport.test.ts
+Test TheHiveProject, theHiveApiQuery
+✓ should make list query request (4 ms)
+✓ should make get query request
+✓ should make return count query request (12 ms)
+✓ should set limit to query request
+2025-04-15T08:44:07.5384783Z
+PASS nodes/Discord/test/v2/utils.test.ts
+Test Discord > createSimplifyFunction
+✓ should create function (3 ms)
+✓ should return object containing only specified fields (1 ms)
+Test Discord > prepareOptions
+✓ should return correct flag value (1 ms)
+✓ should convert message_reference
+Test Discord > prepareEmbeds
+✓ should return return empty object removing empty strings (1 ms)
+Test Discord > checkAccessToGuild
+✓ should throw error (18 ms)
+✓ should pass (1 ms)
+Test Discord > setupChannelGetter & checkAccessToChannel
+✓ should setup channel getter and get channel id
+2025-04-15T08:44:07.5386181Z
+PASS nodes/TheHiveProject/test/utils.test.ts
+Test TheHiveProject, splitAndTrim
+✓ should split and trim string, removing empty entries (49 ms)
+✓ should return unchanged array
+Test TheHiveProject, fixFieldType
+✓ should split and trim tags (1 ms)
+✓ should convert date strings to milis
+Test TheHiveProject, prepareInputItem
+✓ should return object with fields present in schema (1 ms)
+Test TheHiveProject, constructFilter
+✓ should add default operator _eq
+✓ should return filter _gte
+✓ should return filter _in
+✓ should return filter _between (1 ms)
+2025-04-15T08:44:07.5387661Z
+PASS nodes/Google/Sheet/test/v2/methods/resourceMapping.test.ts
+Google Sheets, getMappingColumns
+✓ should map columns and add row number for update operation (4 ms)
+✓ should map columns and add row number for appendOrUpdate operation (1 ms)
+2025-04-15T08:44:07.5388218Z
+console.warn
+Deprecation warning: value provided is not in a recognized RFC2822 or ISO format. moment construction falls back to js Date(), which is not reliable across all browsers and versions. Non RFC2822/ISO date formats are discouraged. Please refer to http://momentjs.com/guides/#/warnings/js-date/ for more info.
+Arguments:
+[0] _isAMomentObject: true, _isUTC: false, _useUTC: false, _l: undefined, _i: invalid-date, _f: undefined, _strict: undefined, _locale: [object Object]
+Error:
+at Function.createFromInputFallback (/home/runner/_work/n8n/n8n/node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:324:25)
+at configFromString (/home/runner/_work/n8n/n8n/node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:2550:19)
+at configFromInput (/home/runner/_work/n8n/n8n/node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:2993:13)
+at prepareConfig (/home/runner/_work/n8n/n8n/node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:2976:13)
+at createFromConfig (/home/runner/_work/n8n/n8n/node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:2943:44)
+at createLocalOrUTC (/home/runner/_work/n8n/n8n/node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:3037:16)
+at createLocal (/home/runner/_work/n8n/n8n/node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:3041:16)
+at hooks (/home/runner/_work/n8n/n8n/node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:16:29)
+at /home/runner/_work/n8n/n8n/packages/nodes-base/nodes/Google/Calendar/GenericFunctions.ts:287:31
+at Array.some (<anonymous>)
+at some (/home/runner/_work/n8n/n8n/packages/nodes-base/nodes/Google/Calendar/GenericFunctions.ts:282:14)
+at Object.<anonymous> (/home/runner/_work/n8n/n8n/packages/nodes-base/nodes/Google/Calendar/test/GeneircFunctions.test.ts:80:43)
+at Promise.then.completed (/home/runner/_work/n8n/n8n/node_modules/.pnpm/jest-circus@29.6.2/node_modules/jest-circus/build/utils.js:300:28)
+at new Promise (<anonymous>)
+at callAsyncCircusFn (/home/runner/_work/n8n/n8n/node_modules/.pnpm/jest-circus@29.6.2/node_modules/jest-circus/build/utils.js:233:10)
+at _callCircusTest (/home/runner/_work/n8n/n8n/node_modules/.pnpm/jest-circus@29.6.2/node_modules/jest-circus/build/run.js:315:40)
+at processTicksAndRejections (node:internal/process/task_queues:95:5)
+at _runTest (/home/runner/_work/n8n/n8n/node_modules/.pnpm/jest-circus@29.6.2/node_modules/jest-circus/build/run.js:251:3)
+at _runTestsForDescribeBlock (/home/runner/_work/n8n/n8n/node_modules/.pnpm/jest-circus@29.6.2/node_modules/jest-circus/build/run.js:125:9)
+at _runTestsForDescribeBlock (/home/runner/_work/n8n/n8n/node_modules/.pnpm/jest-circus@29.6.2/node_modules/jest-circus/build/run.js:120:9)
+at run (/home/runner/_work/n8n/n8n/node_modules/.pnpm/jest-circus@29.6.2/node_modules/jest-circus/build/run.js:70:3)
+at runAndTransformResultsToJestFormat (/home/runner/_work/n8n/n8n/node_modules/.pnpm/jest-circus@29.6.2/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
+at jestAdapter (/home/runner/_work/n8n/n8n/node_modules/.pnpm/jest-circus@29.6.2/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
+at runTestInternal (/home/runner/_work/n8n/n8n/node_modules/.pnpm/jest-runner@29.6.2/node_modules/jest-runner/build/runTest.js:367:16)
+at runTest (/home/runner/_work/n8n/n8n/node_modules/.pnpm/jest-runner@29.6.2/node_modules/jest-runner/build/runTest.js:444:34)
+at Object.worker (/home/runner/_work/n8n/n8n/node_modules/.pnpm/jest-runner@29.6.2/node_modules/jest-runner/build/testWorker.js:106:12)
+2025-04-15T08:44:07.5395722Z
+[0m [90m 285 |[39m 		[36mconst[39m eventStart [33m=[39m event[33m.[39mstart[33m.[39mdateTime [33m||[39m event[33m.[39mstart[33m.[39mdate[33m;[39m
+[90m 286 |[39m
+[31m[1m>[22m[39m[90m 287 |[39m 		[36mconst[39m eventDateTime [33m=[39m moment(eventStart)[33m.[39mtz(timezone)[33m;[39m
+[90m     |[39m 		                            [31m[1m^[22m[39m
+[90m 288 |[39m 		[36mif[39m ([33m![39meventDateTime[33m.[39misValid()) [36mreturn[39m [36mfalse[39m[33m;[39m
+[90m 289 |[39m
+[90m 290 |[39m 		[36mconst[39m targetYear [33m=[39m eventDateTime[33m.[39myear()[33m;[39m[0m
+2025-04-15T08:44:07.5397166Z
+at warn (../../node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:287:21)
+at Function.createFromInputFallback (../../node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:319:17)
+at configFromString (../../node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:2550:19)
+at configFromInput (../../node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:2993:13)
+at prepareConfig (../../node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:2976:13)
+at createFromConfig (../../node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:2943:44)
+at createLocalOrUTC (../../node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:3037:16)
+at createLocal (../../node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:3041:16)
+at hooks (../../node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:16:29)
+at nodes/Google/Calendar/GenericFunctions.ts:287:31
+at Array.some (<anonymous>)
+at some (nodes/Google/Calendar/GenericFunctions.ts:282:14)
+at Object.<anonymous> (nodes/Google/Calendar/test/GeneircFunctions.test.ts:80:43)
+2025-04-15T08:44:07.5399264Z
+PASS nodes/Google/Calendar/test/GeneircFunctions.test.ts
+addTimezoneToDate
+✓ should add timezone to date (18 ms)
+dateObjectToISO
+✓ should return ISO string for DateTime instance (9 ms)
+✓ should return ISO string for Date instance (1 ms)
+✓ should return string when input is not a DateTime or Date instance
+eventExtendYearIntoFuture
+✓ should return true if any event extends into the next year
+✓ should return false if no event extends into the next year (1 ms)
+✓ should return false for invalid event start dates (35 ms)
+✓ should return false for events without a recurringEventId
+✓ should handle events with only a date and no time
+2025-04-15T08:44:07.5400908Z
+PASS nodes/Microsoft/Storage/test/blob/get.test.ts
+Azure Storage Node
+should get blob
+✓ nodes/Microsoft/Storage/test/workflows/blob_get.workflow (81 ms)
+2025-04-15T08:44:07.5401357Z
+PASS nodes/HighLevel/v2/test/HighLevelApiRequest.test.ts
+GenericFunctions - highLevelApiRequest
+✓ should make a successful request with all parameters (3 ms)
+✓ should default to the base URL when no custom URL is provided (1 ms)
+✓ should remove the body property if it is empty
+✓ should remove the query string property if it is empty (1 ms)
+2025-04-15T08:44:07.5402176Z
+PASS nodes/HighLevel/v2/test/AddLocationIdPreSendAction.test.ts
+addLocationIdPreSendAction
+✓ should add locationId to query parameters for contact getAll operation (5 ms)
+✓ should add locationId to the body for contact create operation (1 ms)
+✓ should add locationId to query parameters for opportunity getAll operation
+✓ should add locationId to the body for opportunity create operation
+✓ should not modify requestOptions if no resource or operation matches
+2025-04-15T08:44:07.5403345Z
+PASS nodes/HighLevel/v2/test/AddNotePostReceiveAction.test.ts
+GenericFunctions - highLevelApiRequest
+✓ should make a successful request with all parameters (10 ms)
+✓ should default to the base URL when no custom URL is provided
+✓ should remove the body property if it is empty (1 ms)
+✓ should remove the query string property if it is empty
+2025-04-15T08:44:07.5404157Z
+PASS nodes/Airtop/test/node/window/takeScreenshot.test.ts
+Test Airtop, take screenshot operation
+✓ should take screenshot successfully (5 ms)
+✓ should transform screenshot to binary data (1 ms)
+✓ should throw error when sessionId is empty (18 ms)
+✓ should throw error when windowId is empty
+2025-04-15T08:44:07.5404840Z
+PASS nodes/Google/Sheet/test/v2/node/clear.test.ts
+Google Sheet - Clear
+✓ should clear the whole sheet (4 ms)
+✓ should clear specific rows (1 ms)
+✓ should clear specific columns
+✓ should clear a specific range (7 ms)
+✓ should keep the first row when clearing the whole sheet
+2025-04-15T08:44:07.5405543Z
+PASS nodes/Google/Sheet/test/v2/node/create.test.ts
+Google Sheet - Create
+✓ should create a new sheet with given title and options (3 ms)
+✓ should skip creating a sheet if the title already exists (1 ms)
+2025-04-15T08:44:07.5406257Z
+PASS nodes/Pipedrive/test/PipedriveTrigger.node.test.ts
+PipedriveTrigger
+Webhook Methods
+checkExists
+✓ should return true if webhook already exists (5 ms)
+✓ should return false if no matching webhook exists (1 ms)
+create
+✓ should create a webhook successfully (1 ms)
+2025-04-15T08:44:07.5407123Z
+PASS nodes/Google/BusinessProfile/test/HandleDatesPresend.test.ts
+GenericFunctions - handleDatesPresend
+✓ should return options unchanged if no date-time parameters are provided (3 ms)
+✓ should merge startDateTime parameter into event schedule
+✓ should merge startDate and endDateTime parameters into event schedule (1 ms)
+✓ should merge additional options into event schedule
+✓ should modify the body with event schedule containing only date (1 ms)
+2025-04-15T08:44:07.5408184Z
+PASS nodes/WriteBinaryFile/test/WriteBinaryFile.test.ts
+Test Write Binary File Node
+✓ nodes/WriteBinaryFile/test/WriteBinaryFile.workflow.json (243 ms)
+2025-04-15T08:44:07.5408564Z
+PASS nodes/Microsoft/Outlook/test/v2/node/draft/create.test.ts
+Test MicrosoftOutlookV2, draft => create
+✓ nodes/Microsoft/Outlook/test/v2/node/draft/create.workflow (246 ms)
+2025-04-15T08:44:07.5408971Z
+PASS nodes/N8nTrigger/test/trigger.test.ts
+N8nTrigger
+trigger
+✓ should emit event when activation mode matches selected events (5 ms)
+✓ should not emit event when activation mode does not match selected events
+✓ should return manual trigger function
+✓ should emit correct event for instance started
+✓ should emit correct event for workflow updated (1 ms)
+description
+✓ should have correct properties
+✓ should have required properties configuration (1 ms)
+2025-04-15T08:44:07.5410174Z
+PASS nodes/Airtop/test/node/interaction/hover.test.ts
+Test Airtop, hover operation
+✓ should execute hover with minimal parameters (3 ms)
+✓ should throw error when 'elementDescription' parameter is empty (20 ms)
+✓ should include 'visualScope' parameter when specified (1 ms)
+✓ should include 'waitForNavigation' parameter when specified
+2025-04-15T08:44:07.5410977Z
+PASS nodes/Google/Sheet/test/v2/node/appendOrUpdate.test.ts
+Google Sheet - Append or Update
+✓ should insert input data if sheet is empty (7 ms)
+2025-04-15T08:44:07.5411367Z
+PASS nodes/Elastic/Elasticsearch/tests/GenericFunctions.test.ts
+Elasticsearch -> elasticsearchApiRequest
+✓ should make a successful GET API request (3 ms)
+✓ should make a successful POST API request (1 ms)
+✓ should handle API request errors (11 ms)
+✓ should ignore trailing slashes in the base URL (1 ms)
+2025-04-15T08:44:07.5412197Z
+PASS nodes/Airtop/test/node/interaction/click.test.ts
+Test Airtop, click operation
+✓ should execute click with minimal parameters (5 ms)
+✓ should throw error when 'elementDescription' parameter is empty (32 ms)
+✓ should include 'visualScope' parameter when specified (1 ms)
+✓ should include 'waitForNavigation' parameter when specified (1 ms)
+2025-04-15T08:44:07.5413117Z
+PASS nodes/Jira/test/node.methods.test.ts
+Jira Node, methods
+listSearch.getCustomFields
+✓ should call correct endpoint and return custom fields for server version (4 ms)
+✓ should call correct endpoint and return custom fields for cloud version
+2025-04-15T08:44:07.5413725Z
+PASS nodes/HighLevel/v2/test/TaskUpdatePreSendAction.test.ts
+taskUpdatePreSendAction
+✓ should not modify requestOptions if title and dueDate are provided (4 ms)
+✓ should fetch missing title and dueDate from the API (14 ms)
+✓ should only fetch title if dueDate is provided
+✓ should only fetch dueDate if title is provided (1 ms)
+2025-04-15T08:44:07.5414505Z
+PASS nodes/Form/test/formNodeUtils.test.ts
+formNodeUtils
+✓ should sanitize custom html (5 ms)
+2025-04-15T08:44:07.5414780Z
+PASS nodes/Google/Sheet/test/v2/node/remove.test.ts
+Google Sheet - Remove
+✓ should process a single item (4 ms)
+✓ should process multiple items
+2025-04-15T08:44:07.5415164Z
+PASS nodes/RssFeedRead/test/RssFeedRead.test.ts
+RssFeedReadTrigger
+poll
+✓ should throw an error if the feed URL is empty (9 ms)
+✓ should return new items from the feed (1 ms)
+✓ should gracefully handle missing timestamps (1 ms)
+✓ should return null if the feed is empty
+2025-04-15T08:44:07.5415882Z
+PASS nodes/MoveBinaryData/test/MoveBinaryData.test.ts
+Test Move Binary Data Node
+✓ nodes/MoveBinaryData/test/MoveBinaryData.workflow.json (349 ms)
+2025-04-15T08:44:07.5416237Z
+PASS nodes/Google/Chat/test/genericFunctions.test.ts
+Test GoogleChat, googleApiRequest
+✓ should call requestWithAuthentication when authentication set to OAuth2 (4 ms)
+✓ should call request when authentication set to serviceAccount (1 ms)
+✓ should call request when noCredentials equals true (3 ms)
+2025-04-15T08:44:07.5416939Z
+PASS nodes/Microsoft/Outlook/test/v2/node/message/reply.test.ts
+Test MicrosoftOutlookV2, message => reply
+✓ nodes/Microsoft/Outlook/test/v2/node/message/reply.workflow (221 ms)
+2025-04-15T08:44:07.5417359Z
+PASS nodes/Google/Drive/test/v2/node/fileFolder/search.test.ts
+test GoogleDriveV2: fileFolder search
+✓ returnAll = false (4 ms)
+✓ returnAll = true (1 ms)
+2025-04-15T08:44:07.5417763Z
+PASS nodes/Merge/test/v3/utils.test.ts
+rowToExecutionData
+✓ should return empty json and pairedItem when input is empty (5 ms)
+✓ should separate json properties and pairedItem properties
+✓ should ignore undefined pairedItem values
+✓ should handle only json properties without pairedItem (1 ms)
+modifySelectQuery
+✓ should return the original query if no SELECT match is found
+✓ should return the original query if SELECT * is used
+✓ should append pairedItem columns when input tables exist
+✓ should handle multiple input tables correctly
+✓ should not modify query if no input tables are found (1 ms)
+2025-04-15T08:44:07.5419401Z
+PASS nodes/ReadBinaryFile/test/ReadBinaryFile.test.ts
+Test Read Binary File Node
+✓ nodes/ReadBinaryFile/test/ReadBinaryFile.workflow.json (25 ms)
+2025-04-15T08:44:07.5419763Z
+PASS nodes/Airtable/test/v2/node/record/create.test.ts
+Test AirtableV2, create operation
+✓ should create a record, autoMapInputData (4 ms)
+✓ should create a record, defineBelow
+2025-04-15T08:44:07.5420189Z
+PASS nodes/Discord/test/v2/node/message/sendAndWait.test.ts
+Test DiscordV2, message => sendAndWait
+✓ should send message and put execution to wait (7 ms)
+2025-04-15T08:44:07.5420540Z
+PASS nodes/Microsoft/Outlook/test/v2/node/message/sendAndWait.test.ts
+Test MicrosoftOutlookV2, message => sendAndWait
+✓ should send message and put execution to wait (5 ms)
+2025-04-15T08:44:07.5420942Z
+PASS nodes/Microsoft/Teams/test/v2/node/chatMessage/getAll.test.ts
+Test MicrosoftTeamsV2, chatMessage => getAll
+✓ nodes/Microsoft/Teams/test/v2/node/chatMessage/getAll.workflow (150 ms)
+2025-04-15T08:44:07.5421450Z
+PASS nodes/Google/BusinessProfile/test/HandlePagination.test.ts
+GenericFunctions - handlePagination
+✓ should stop fetching when the limit is reached and returnAll is false (17 ms)
+✓ should handle empty results (1 ms)
+✓ should fetch all items when returnAll is true (1 ms)
+2025-04-15T08:44:07.5422097Z
+PASS nodes/Telegram/tests/node/sendAndWait.operation.test.ts
+Test Telegram, message => sendAndWait
+✓ should send message and put execution to wait (6 ms)
+2025-04-15T08:44:07.5422458Z
+PASS utils/__tests__/binary.test.ts
+convertJsonToSpreadsheetBinary
+for fileFormat xlsx
+✓ should convert from JSON (5 ms)
+for fileFormat csv
+✓ should convert from JSON (1 ms)
+✓ should handle custom delimiter (1 ms)
+2025-04-15T08:44:07.5423057Z
+PASS nodes/Airtable/test/v2/node/record/search.test.ts
+Test AirtableV2, search operation
+✓ should return all records (4 ms)
+✓ should return all records
+2025-04-15T08:44:07.5423445Z
+PASS nodes/Microsoft/Teams/test/v2/node/chatMessage/sendAndWait.test.ts
+Test MicrosoftTeamsV2, chatMessage => sendAndWait
+✓ should send message and put execution to wait (8 ms)
+2025-04-15T08:44:07.5423960Z
+PASS nodes/Transform/Summarize/test/unitTests/splitData.test.ts
+Test Summarize Node, aggregateAndSplitData
+✓ should not convert strings to numbers (5 ms)
+✓ should not convert numbers to strings (1 ms)
+with skipEmptySplitFields=true
+✓ should skip empty split fields (1 ms)
+2025-04-15T08:44:07.5424719Z
+PASS nodes/EvaluationMetrics/EvaluationMetrics.node.test.ts
+EvaluationMetrics Node
+execute
+✓ should output the defined metrics (16 ms)
+✓ should handle no metrics defined
+✓ should convert string values to numbers (1 ms)
+✓ should throw error for non-numeric string values (9 ms)
+2025-04-15T08:44:07.5425454Z
+PASS nodes/HighLevel/v2/test/HighLevelApiPagination.test.ts
+highLevelApiPagination
+✓ should paginate and return all items when returnAll is true (18 ms)
+✓ should return only the first page of items when returnAll is false (1 ms)
+✓ should handle cases with no items
+2025-04-15T08:44:07.5426119Z
+PASS nodes/Airtop/test/node/window/load.test.ts
+Test Airtop, window load operation
+✓ should load URL with minimal parameters (4 ms)
+✓ should throw error when URL is empty (29 ms)
+✓ should throw error when URL is invalid (1 ms)
+✓ should include 'waitUntil' parameter when specified (1 ms)
+2025-04-15T08:44:07.5426829Z
+PASS nodes/Google/Chat/test/node/sendAndWait.operation.test.ts
+Test GoogleChat, message => sendAndWait
+✓ should send message and put execution to wait (13 ms)
+2025-04-15T08:44:07.5427191Z
+PASS nodes/EmailSend/test/v2/sendAndWait.operation.test.ts
+Test EmailSendV2, email => sendAndWait
+✓ should send message and put execution to wait (6 ms)
+2025-04-15T08:44:07.5427556Z
+PASS nodes/Google/BusinessProfile/test/GoogleApiRequest.test.ts
+googleApiRequest
+✓ should make a GET request and return data (3 ms)
+✓ should make a POST request with body and return data (1 ms)
+✓ should remove the body for GET requests
+✓ should throw NodeApiError on API failure (15 ms)
+2025-04-15T08:44:07.5428282Z
+PASS nodes/Airtop/test/node/session/save.test.ts
+Test Airtop, session save operation
+✓ should save a profile on session termination successfully (4 ms)
+✓ should throw error when sessionId is empty (8 ms)
+✓ should throw error when sessionId is whitespace (1 ms)
+✓ should throw error when profileName is empty (1 ms)
+✓ should throw error when profileName is whitespace (1 ms)
+2025-04-15T08:44:07.5429168Z
+PASS nodes/WhatsApp/tests/utils.test.ts
+sanitizePhoneNumber
+✓ should remove hyphens, parentheses, and plus signs from the phone number (3 ms)
+✓ should return an empty string if input is empty
+✓ should return the same number if no special characters are present
+✓ should handle numbers with spaces correctly (not removing them)
+createMessage
+✓ should return a valid HTTP request object (1 ms)
+✓ should handle a single option correctly (1 ms)
+2025-04-15T08:44:07.5430451Z
+PASS nodes/Microsoft/Storage/test/blob/getAll.test.ts
+Azure Storage Node
+should get all blobs
+✓ nodes/Microsoft/Storage/test/workflows/blob_getAll.workflow (92 ms)
+2025-04-15T08:44:07.5430972Z
+PASS nodes/Kafka/Kafka.node.test.ts
+Kafka Node
+✓ nodes/Kafka/test/workflow (314 ms)
+✓ should publish the correct kafka messages (2 ms)
+2025-04-15T08:44:07.5431403Z
+PASS nodes/Slack/test/v2/node/channel/getAll.test.ts
+Test SlackV2, channel => getAll
+✓ nodes/Slack/test/v2/node/channel/getAll.workflow (148 ms)
+2025-04-15T08:44:07.5431754Z
+error message from node
+PASS nodes/StopAndError/test/node/StopAndError.test.ts
+Execute Stop and Error Node
+✓ should run stopAndError node (180 ms)
+2025-04-15T08:44:07.5432130Z
+PASS nodes/HighLevel/v2/test/AddCustomFieldsPreSendAction.test.ts
+addCustomFieldsPreSendAction
+✓ should format custom fields correctly when provided (5 ms)
+✓ should not modify request body if customFields is not provided (1 ms)
+✓ should handle customFields with empty values (1 ms)
+2025-04-15T08:44:07.5432825Z
+PASS nodes/Google/Drive/test/v2/utils.test.ts
+test GoogleDriveV2, prepareQueryString
+✓ should return id, name (4 ms)
+✓ should return * (37 ms)
+✓ should return string joined by , (1 ms)
+test GoogleDriveV2, setFileProperties
+✓ should return empty object
+✓ should return object with properties (1 ms)
+✓ should return object with appProperties
+test GoogleDriveV2, setUpdateCommonParams
+✓ should return empty object
+✓ should return qs with params
+2025-04-15T08:44:07.5433995Z
+PASS nodes/Microsoft/OneDrive/test/node/file.download.test.ts
+Test MicrosoftOneDrive, file > download
+✓ should call helpers.httpRequest when request to /drive/items/{fileId}/content fails (5 ms)
+2025-04-15T08:44:07.5434445Z
+PASS nodes/Transform/Summarize/test/unitTests/execute.test.ts
+Test Summarize Node, execute
+✓ should handle field not found with hints if version > 1 (5 ms)
+✓ should throw error if node version is < 1.1 and fields not found (18 ms)
+2025-04-15T08:44:07.5435000Z
+PASS nodes/QuickChart/test/QuickChart.node.test.ts
+Test QuickChart Node
+✓ nodes/QuickChart/test/QuickChart.workflow.json (361 ms)
+2025-04-15T08:44:07.5435329Z
+PASS nodes/If/test/v2/IfV2.node.test.ts
+Test IF v2 Node Tests
+Test IF v2 Node Workflow Tests
+✓ nodes/If/test/v2/IfV2.boolean (240 ms)
+✓ nodes/If/test/v2/IfV2.date-time (16 ms)
+✓ nodes/If/test/v2/IfV2.number (5 ms)
+✓ nodes/If/test/v2/IfV2.other (7 ms)
+✓ nodes/If/test/v2/IfV2.string (6 ms)
+Test IF V2 Node Unit Tests
+✓ should return items if continue on fail is true
+✓ should throw an error if continue on fail is false and if there is an error (7 ms)
+✓ should assign a paired item if paired item is undefined
+2025-04-15T08:44:07.5436828Z
+PASS nodes/MySql/test/v1/GenericFunctions.test.ts
+MySQL / v1 / Generic Functions
+searchTables
+✓ should return matching tables (3 ms)
+✓ should handle empty search query
+✓ should handle database errors (3 ms)
+2025-04-15T08:44:07.5437401Z
+PASS nodes/Google/Sheet/test/v2/node/read.test.ts
+Google Sheet - Read
+✓ should return structured sheet data when no filters are applied (4 ms)
+✓ should call lookupValues when filters are provided
+✓ should return an empty array when sheet data is empty (1 ms)
+2025-04-15T08:44:07.5438042Z
+PASS nodes/Microsoft/Storage/test/container/getAll.test.ts
+Azure Storage Node
+should get all containers
+✓ nodes/Microsoft/Storage/test/workflows/container_getAll.workflow (89 ms)
+2025-04-15T08:44:07.5438502Z
+PASS nodes/QuickBooks/__tests__/GenericFunctions.test.ts
+processLines
+✓ should process AccountBasedExpenseLineDetail for bill resource (2 ms)
+✓ should process ItemBasedExpenseLineDetail for bill resource
+✓ should process SalesItemLineDetail for estimate resource
+✓ should process SalesItemLineDetail for invoice resource with Qty
+✓ should process SalesItemLineDetail for invoice resource without Qty (1 ms)
+2025-04-15T08:44:07.5439546Z
+PASS nodes/HighLevel/v2/test/DateTimeToEpochPreSendAction.test.ts
+dateTimeToEpochPreSendAction
+✓ should convert startDate and endDate to epoch time (5 ms)
+✓ should convert only startDate if endDate is not provided (1 ms)
+✓ should convert only endDate if startDate is not provided
+✓ should not modify requestOptions if neither startDate nor endDate are provided (1 ms)
+✓ should not modify requestOptions if qs is undefined (5 ms)
+2025-04-15T08:44:07.5440603Z
+PASS nodes/Microsoft/Storage/test/blob/create.test.ts
+Azure Storage Node
+should create blob
+✓ nodes/Microsoft/Storage/test/workflows/blob_create.workflow (127 ms)
+2025-04-15T08:44:07.5441096Z
+PASS nodes/Github/__tests__/node/Github.dispatchAndWait.node.test.ts
+Test Github Node - Dispatch and Wait
+Workflow Dispatch and Wait
+✓ nodes/Github/__tests__/node/GithubDispatchAndWaitWorkflow (88 ms)
+2025-04-15T08:44:07.5441584Z
+PASS nodes/RssFeedRead/test/node/RssFeedRead.test.ts
+Test RSS Feed Trigger Node
+✓ nodes/RssFeedRead/test/node/workflow.rss (214 ms)
+2025-04-15T08:44:07.5442022Z
+PASS nodes/Google/Drive/test/v2/node/file/createFromText.test.ts
+test GoogleDriveV2: file createFromText
+✓ should be called with (8 ms)
+2025-04-15T08:44:07.5442350Z
+PASS nodes/Microsoft/Outlook/test/v2/node/contact/update.test.ts
+Test MicrosoftOutlookV2, contact => update
+✓ nodes/Microsoft/Outlook/test/v2/node/contact/update.workflow (203 ms)
+2025-04-15T08:44:07.5442884Z
+PASS nodes/MQTT/test/Mqtt.node.test.ts
+MQTT Node
+✓ should publish input data (4 ms)
+✓ should publish a custom message (1 ms)
+2025-04-15T08:44:07.5443251Z
+PASS nodes/WhatsApp/tests/node/sendAndWait.test.ts
+Test WhatsApp Business Cloud, sendAndWait operation
+✓ should send message and put execution to wait (5 ms)
+2025-04-15T08:44:07.5443602Z
+PASS nodes/Google/BusinessProfile/test/AddUpdateMask.test.ts
+GenericFunctions - addUpdateMask
+✓ should add updateMask with mapped properties to the query string (2 ms)
+✓ should handle empty additionalOptions and not add updateMask
+✓ should include unmapped properties in the updateMask
+✓ should merge updateMask with existing query string (1 ms)
+2025-04-15T08:44:07.5444428Z
+PASS nodes/HighLevel/v2/test/GetPipelineStages.test.ts
+getPipelineStages
+✓ should return pipeline stages for create operation (3 ms)
+✓ should return pipeline stages for update operation
+✓ should return an empty array if pipeline is not found (1 ms)
+2025-04-15T08:44:07.5445047Z
+PASS nodes/Notion/test/node/v2/databasePage/create.test.ts
+Test NotionV2, databasePage => create
+✓ nodes/Notion/test/node/v2/databasePage/create.workflow (115 ms)
+2025-04-15T08:44:07.5445429Z
+PASS nodes/Google/BusinessProfile/test/SearchReviews.test.ts
+GenericFunctions - searchReviews
+✓ should return reviews with filtering (3 ms)
+✓ should handle empty results
+✓ should handle pagination (1 ms)
+2025-04-15T08:44:07.5445950Z
+PASS nodes/ICalendar/test/node/ICalendar.test.ts
+Execute iCalendar Node
+✓ nodes/ICalendar/test/node/workflow.iCalendar.json (214 ms)
+2025-04-15T08:44:07.5446479Z
+PASS nodes/HighLevel/v2/test/SplitTagsPreSendAction.test.ts
+splitTagsPreSendAction
+✓ should return requestOptions unchanged if tags are already an array (3 ms)
+✓ should split a comma-separated string of tags into an array
+✓ should trim whitespace around tags when splitting a string
+✓ should return requestOptions unchanged if tags are not provided (1 ms)
+✓ should return requestOptions unchanged if body is undefined
+2025-04-15T08:44:07.5447485Z
+PASS nodes/EmailReadImap/test/v2/utils.test.ts
+Test IMap V2 utils
+getNewEmails
+✓ should return new emails (4 ms)
+2025-04-15T08:44:07.5447818Z
+PASS nodes/Postgres/test/v2/resourceMapping.test.ts
+Postgres, resourceMapping
+✓ should mark id as not required if identity_generation is "BY_DEFAULT" (3 ms)
+2025-04-15T08:44:07.5448181Z
+PASS nodes/Airtable/test/v2/node/record/update.test.ts
+Test AirtableV2, update operation
+✓ should update a record by id, autoMapInputData (3 ms)
+✓ should update a record by field name, autoMapInputData (1 ms)
+2025-04-15T08:44:07.5448775Z
+PASS nodes/ExecuteWorkflow/ExecuteWorkflowTrigger/ExecuteWorkflowTrigger.node.test.ts
+ExecuteWorkflowTrigger
+✓ should return its input data on V1 or V1.1 passthrough (3 ms)
+✓ should filter out parent input in `Using Fields below` mode (1 ms)
+2025-04-15T08:44:07.5449365Z
+PASS nodes/GraphQL/test/GraphQL.node.test.ts
+GraphQL Node
+✓ nodes/GraphQL/test/workflow.error_invalid_expression (281 ms)
+✓ nodes/GraphQL/test/workflow (20 ms)
+2025-04-15T08:44:07.5449783Z
+PASS nodes/Discord/test/v2/node/channel/getAll.test.ts
+Test DiscordV2, channel => getAll
+✓ nodes/Discord/test/v2/node/channel/getAll.workflow (408 ms)
+2025-04-15T08:44:07.5450149Z
+PASS nodes/Google/BusinessProfile/test/SearchPosts.test.ts
+GenericFunctions - searchPosts
+✓ should return posts with filtering (4 ms)
+✓ should handle empty results
+✓ should handle pagination
+2025-04-15T08:44:07.5450664Z
+PASS nodes/Google/Sheet/test/v2/node/append.test.ts
+Google Sheet - Append
+✓ should insert input data if sheet is empty (5 ms)
+2025-04-15T08:44:07.5450973Z
+PASS nodes/Google/BusinessProfile/test/SearchLocations.test.ts
+GenericFunctions - searchLocations
+✓ should return locations with filtering (3 ms)
+✓ should handle empty results
+✓ should handle pagination (1 ms)
+2025-04-15T08:44:07.5451564Z
+PASS nodes/Microsoft/Storage/test/credentials/oauth2.test.ts
+Azure Storage Node
+should use correct oauth2 credentials
+✓ nodes/Microsoft/Storage/test/workflows/credentials_oauth2.workflow (93 ms)
+2025-04-15T08:44:07.5452134Z
+PASS nodes/HighLevel/v2/test/TaskPostReceiceAction.test.ts
+taskPostReceiceAction
+✓ should add contactId to each item in items (10 ms)
+✓ should not modify other fields in items (1 ms)
+✓ should return an empty array if items is empty
+2025-04-15T08:44:07.5452716Z
+PASS nodes/Microsoft/Teams/test/v2/node/task/create.test.ts
+Test MicrosoftTeamsV2, task => create
+✓ nodes/Microsoft/Teams/test/v2/node/task/create.workflow (143 ms)
+2025-04-15T08:44:07.5453110Z
+PASS nodes/HighLevel/v2/test/DueDatePreSendAction.test.ts
+dueDatePreSendAction
+✓ should add formatted dueDate to requestOptions.body if dueDate is provided directly (13 ms)
+✓ should add formatted dueDate to requestOptions.body if dueDate is provided in updateFields
+✓ should initialize body as an empty object if it is undefined (1 ms)
+2025-04-15T08:44:07.5453936Z
+PASS nodes/Airtop/test/node/window/close.test.ts
+Test Airtop, window close operation
+✓ should close a window successfully (7 ms)
+✓ should throw error when sessionId is empty (13 ms)
+✓ should throw error when windowId is empty (1 ms)
+2025-04-15T08:44:07.5454570Z
+console.log
+Error adding next occurrence RRULE:FREQ=DAILY;UNTIL=20240805T000000Z
+2025-04-15T08:44:07.5454761Z
+at log (nodes/Google/Calendar/GenericFunctions.ts:203:13)
+2025-04-15T08:44:07.5454885Z
+PASS nodes/Google/Calendar/test/addNextOccurrence.test.ts
+addNextOccurrence
+✓ should not modify event if no recurrence exists (3 ms)
+✓ should handle event with no RRULE correctly
+✓ should ignore recurrence if until date is in the past (75 ms)
+✓ should handle errors gracefully without breaking and return unchanged event (1 ms)
+2025-04-15T08:44:07.5455681Z
+PASS nodes/Airtable/test/v2/node/base/getMany.test.ts
+Test AirtableV2, base => getMany
+✓ should return all bases (4 ms)
+✓ should return one base with edit permission (1 ms)
+2025-04-15T08:44:07.5456111Z
+PASS nodes/ReadBinaryFiles/test/ReadBinaryFiles.test.ts
+Test Read Binary Files Node
+✓ nodes/ReadBinaryFiles/test/ReadBinaryFiles.workflow.json (40 ms)
+2025-04-15T08:44:07.5456483Z
+PASS nodes/Microsoft/Outlook/test/v2/node/contact/create.test.ts
+Test MicrosoftOutlookV2, contact => create
+✓ nodes/Microsoft/Outlook/test/v2/node/contact/create.workflow (197 ms)
+2025-04-15T08:44:07.5456905Z
+PASS nodes/Transform/Summarize/test/unitTests/checkIfFieldExists.test.ts
+Test Summarize Node, checkIfFieldExists
+✓ should not throw error if all fields exist (5 ms)
+✓ should throw NodeOperationError if any field does not exist (11 ms)
+✓ should throw NodeOperationError with error message containing the field name that doesn't exist
+✓ should not throw error if field is empty string
+2025-04-15T08:44:07.5457804Z
+PASS nodes/Telegram/tests/Workflow/workflow.test.ts
+Telegram
+Run Telegram workflow
+✓ nodes/Telegram/tests/Workflow/workflow (323 ms)
+2025-04-15T08:44:07.5458259Z
+PASS nodes/Google/BusinessProfile/test/SearchAccounts.test.ts
+GenericFunctions - searchAccounts
+✓ should return accounts with filtering (3 ms)
+✓ should handle empty results (1 ms)
+✓ should handle pagination
+2025-04-15T08:44:07.5458807Z
+PASS nodes/Microsoft/Teams/test/v2/node/channelMessage/getAll.test.ts
+Test MicrosoftTeamsV2, channelMessage => getAll
+✓ nodes/Microsoft/Teams/test/v2/node/channelMessage/getAll.workflow (154 ms)
+2025-04-15T08:44:07.5459267Z
+PASS nodes/Google/Drive/test/v2/node/file/move.test.ts
+test GoogleDriveV2: file move
+✓ should be called with (4 ms)
+2025-04-15T08:44:07.5459564Z
+PASS nodes/Microsoft/AzureCosmosDb/test/item/update.test.ts
+Azure Cosmos DB - Update Item
+✓ nodes/Microsoft/AzureCosmosDb/test/item/update.workflow (79 ms)
+2025-04-15T08:44:07.5459947Z
+PASS nodes/Microsoft/Teams/test/v2/node/channel/getAll.test.ts
+Test MicrosoftTeamsV2, channel => getAll
+✓ nodes/Microsoft/Teams/test/v2/node/channel/getAll.workflow (141 ms)
+2025-04-15T08:44:07.5460440Z
+PASS nodes/HighLevel/v2/test/ValidEmailAndPhonePreSendAction.test.ts
+validEmailAndPhonePreSendAction
+✓ should return requestOptions unchanged if email and phone are valid (3 ms)
+✓ should not modify requestOptions if no email or phone is provided
+✓ should not modify requestOptions if body is undefined
+2025-04-15T08:44:07.5461222Z
+PASS nodes/Microsoft/AzureCosmosDb/test/container/create.test.ts
+Azure Cosmos DB - Create Container
+✓ nodes/Microsoft/AzureCosmosDb/test/container/create.workflow (82 ms)
+2025-04-15T08:44:07.5461629Z
+PASS nodes/HighLevel/v2/test/IsEmailValid.test.ts
+isEmailValid
+✓ should return true for a valid email address (3 ms)
+✓ should return false for an invalid email address
+✓ should return true for an email address with subdomain
+✓ should return false for an email address without a domain (1 ms)
+✓ should return false for an email address without a username
+✓ should return true for an email address with a plus sign
+✓ should return false for an email address with invalid characters
+✓ should return false for an email address without a top-level domain
+✓ should return true for an email address with a valid top-level domain
+✓ should return false for an empty email string (1 ms)
+2025-04-15T08:44:07.5463247Z
+PASS nodes/EmailReadImap/test/v2/EmailReadImapV2.node.test.ts
+Test IMap V2
+✓ should run return a close function on success (5 ms)
+2025-04-15T08:44:07.5463575Z
+PASS nodes/Microsoft/AzureCosmosDb/test/item/get.test.ts
+Azure Cosmos DB - Get Item
+✓ nodes/Microsoft/AzureCosmosDb/test/item/get.workflow (90 ms)
+2025-04-15T08:44:07.5464011Z
+PASS nodes/Airtable/test/v2/utils.test.ts
+test AirtableV2, removeIgnored
+✓ should remove ignored fields (4 ms)
+✓ should return the same data if ignore field does not present
+✓ should return the same data if empty string (1 ms)
+test AirtableV2, findMatches
+✓ should find match
+✓ should find all matches
+2025-04-15T08:44:07.5464783Z
+PASS nodes/MQTT/test/GenericFunctions.test.ts
+createClient
+✓ should create a client with minimal credentials (5 ms)
+✓ should reject with ApplicationError on connection error and close connection (12 ms)
+2025-04-15T08:44:07.5465291Z
+PASS nodes/Google/Drive/test/v2/node/folder/deleteFolder.test.ts
+test GoogleDriveV2: folder deleteFolder
+✓ should be called with PATCH (3 ms)
+✓ should be called with DELETE
+2025-04-15T08:44:07.5465714Z
+PASS nodes/Airtop/test/node/interaction/helpers.test.ts
+Test Airtop interaction helpers
+constructInteractionRequest
+✓ should construct basic request with default values (3 ms)
+✓ should include 'visualScope' parameter when specified
+✓ should include 'waitForNavigation' parameter when specified
+✓ should merge additional parameters (1 ms)
+2025-04-15T08:44:07.5466651Z
+PASS nodes/Code/test/utils.test.ts
+addPostExecutionWarning
+✓ should add execution hints when returnData length differs from inputItemsLength (4 ms)
+✓ should add execution hints when any item has undefined pairedItem
+✓ should not add execution hints when all items match inputItemsLength and have defined pairedItem (1 ms)
+2025-04-15T08:44:07.5467438Z
+PASS nodes/Notion/test/node/v2/page/create.test.ts
+Test NotionV2, page => create
+✓ nodes/Notion/test/node/v2/page/create.workflow (111 ms)
+2025-04-15T08:44:07.5467766Z
+PASS nodes/Airtop/test/node/session/terminate.test.ts
+Test Airtop, session terminate operation
+✓ should terminate a session successfully (6 ms)
+✓ should throw error when sessionId is empty (25 ms)
+✓ should throw error when sessionId is whitespace
+2025-04-15T08:44:07.5468360Z
+PASS nodes/Microsoft/AzureCosmosDb/test/item/create.test.ts
+Azure Cosmos DB - Create Item
+✓ nodes/Microsoft/AzureCosmosDb/test/item/create.workflow (102 ms)
+2025-04-15T08:44:07.5468742Z
+PASS nodes/Microsoft/Storage/test/blob/getAllLimitOptions.test.ts
+Azure Storage Node
+should get all blobs with limit and options
+✓ nodes/Microsoft/Storage/test/workflows/blob_getAllLimitOptions.workflow (87 ms)
+2025-04-15T08:44:07.5469259Z
+PASS nodes/Microsoft/AzureCosmosDb/test/item/getAll.test.ts
+Azure Cosmos DB - Get All Items
+✓ nodes/Microsoft/AzureCosmosDb/test/item/getAll.workflow (82 ms)
+2025-04-15T08:44:07.5469737Z
+PASS nodes/Code/test/JsCodeValidator.test.ts
+JsCodeValidator
+validateNoDisallowedMethodsInRunForEach
+✓ should not throw error if disallow method is used within single line comments (4 ms)
+✓ should not throw error if disallow method is used in single multi line comments
+✓ should not throw error if disallow method is used within multi line comments (1 ms)
+✓ should throw error if disallow method is used (9 ms)
+2025-04-15T08:44:07.5470704Z
+PASS nodes/Notion/test/node/v2/databasePage/getAll.test.ts
+Test NotionV2, databasePage => getAll
+✓ nodes/Notion/test/node/v2/databasePage/getAll.workflow (130 ms)
+2025-04-15T08:44:07.5471137Z
+PASS nodes/Microsoft/Teams/test/v2/node/chatMessage/get.test.ts
+Test MicrosoftTeamsV2, chatMessage => get
+✓ nodes/Microsoft/Teams/test/v2/node/chatMessage/get.workflow (147 ms)
+2025-04-15T08:44:07.5471556Z
+PASS nodes/Microsoft/Teams/test/v2/node/task/get.test.ts
+Test MicrosoftTeamsV2, task => get
+✓ nodes/Microsoft/Teams/test/v2/node/task/get.workflow (156 ms)
+2025-04-15T08:44:07.5471922Z
+PASS nodes/Spotify/__tests__/GenericFunctions.test.ts
+Spotify -> GenericFunctions
+✓ should make a request with the correct options (4 ms)
+✓ should throw a NodeApiError on request failure (6 ms)
+2025-04-15T08:44:07.5472479Z
+PASS utils/workflowInputsResourceMapping/__tests__/GenericFunctions.test.ts
+getWorkflowInputValues
+✓ should correctly map the binary property (5 ms)
+2025-04-15T08:44:07.5472851Z
+PASS nodes/Wordpress/__tests__/GenericFunctions.test.ts
+Wordpress > GenericFunctions
+wordpressApiRequest
+✓ should make a successful request (5 ms)
+✓ should throw NodeApiError on failure (8 ms)
+wordpressApiRequestAllItems
+✓ should accumulate all pages (1 ms)
+2025-04-15T08:44:07.5473530Z
+PASS nodes/Microsoft/Excel/test/v2/node/table/lookup.test.ts
+Test MicrosoftExcelV2, table => lookup
+✓ nodes/Microsoft/Excel/test/v2/node/table/lookup.workflow (1252 ms)
+2025-04-15T08:44:07.5473924Z
+PASS nodes/Google/Drive/test/v2/node/drive/list.test.ts
+test GoogleDriveV2: drive list
+✓ should be called with limit (3 ms)
+✓ should be called with returnAll true
+2025-04-15T08:44:07.5474335Z
+PASS nodes/Code/test/JsTaskRunnerSandbox.test.ts
+JsTaskRunnerSandbox
+runCodeForEachItem
+✓ should chunk the input items and execute the code for each chunk (23 ms)
+2025-04-15T08:44:07.5474747Z
+PASS nodes/Google/Drive/test/v2/node/file/copy.test.ts
+test GoogleDriveV2: file copy
+✓ should be called with (5 ms)
+2025-04-15T08:44:07.5475053Z
+PASS nodes/Google/Drive/test/v2/node/file/share.test.ts
+test GoogleDriveV2: file share
+✓ should be called with (5 ms)
+2025-04-15T08:44:07.5475442Z
+PASS nodes/Transform/RemoveDuplicates/test/RemoveDuplicates.test.ts
+Test Remove Duplicates Node
+✓ nodes/Transform/RemoveDuplicates/test/workflow.removeDuplicates (237 ms)
+Test Remove Duplicates Node, validateInputData util
+✓ Should throw error for version 1 (11 ms)
+✓ Should ignore null values and not throw error for version grater than 1 (1 ms)
+✓ Should throw error for different types, version grater than 1
+2025-04-15T08:44:07.5476407Z
+PASS nodes/Microsoft/Excel/test/v2/node/worksheet/upsert.test.ts
+Test MicrosoftExcelV2, worksheet => upsert
+✓ nodes/Microsoft/Excel/test/v2/node/worksheet/upsert.workflow (170 ms)
+2025-04-15T08:44:07.5476824Z
+PASS nodes/Microsoft/Teams/test/v2/node/chatMessage/create.test.ts
+Test MicrosoftTeamsV2, chatMessage => create
+✓ nodes/Microsoft/Teams/test/v2/node/chatMessage/create.workflow (155 ms)
+2025-04-15T08:44:07.5477264Z
+PASS nodes/Microsoft/Teams/test/v2/node/channelMessage/create.test.ts
+Test MicrosoftTeamsV2, channelMessage => create
+✓ nodes/Microsoft/Teams/test/v2/node/channelMessage/create.workflow (166 ms)
+2025-04-15T08:44:07.5477801Z
+PASS nodes/Notion/test/node/v2/page/search.test.ts
+Test NotionV2, page => search
+✓ nodes/Notion/test/node/v2/page/search.workflow (115 ms)
+2025-04-15T08:44:07.5478128Z
+PASS nodes/Notion/test/node/v2/databasePage/update.test.ts
+Test NotionV2, databasePage => update
+✓ nodes/Notion/test/node/v2/databasePage/update.workflow (127 ms)
+2025-04-15T08:44:07.5478520Z
+PASS nodes/Microsoft/Storage/test/container/getAllLimitOptions.test.ts
+Azure Storage Node
+should get all containers with limit and options
+✓ nodes/Microsoft/Storage/test/workflows/container_getAllLimitOptions.workflow (94 ms)
+2025-04-15T08:44:07.5479072Z
+PASS nodes/Microsoft/Excel/test/v2/node/worksheet/update.test.ts
+Test MicrosoftExcelV2, worksheet => update
+✓ nodes/Microsoft/Excel/test/v2/node/worksheet/update.workflow (180 ms)
+2025-04-15T08:44:07.5479494Z
+PASS nodes/Oura/test/oura.node.test.ts
+Oura
+ouraApiRequest
+✓ should make an authenticated API request to Oura (5 ms)
+Run Oura workflow
+✓ nodes/Oura/test/oura_test_workflow (210 ms)
+2025-04-15T08:44:07.5480020Z
+PASS nodes/Github/__tests__/node/Github.webhook.test.ts
+Github Node - Webhook Method
+✓ should process webhook request and return workflowData (4 ms)
+2025-04-15T08:44:07.5480373Z
+PASS nodes/Google/Drive/test/v2/node/drive/create.test.ts
+test GoogleDriveV2: drive create
+✓ should be called with (3 ms)
+2025-04-15T08:44:07.5480676Z
+PASS nodes/Microsoft/Outlook/test/v2/node/calendar/getAll.test.ts
+Test MicrosoftOutlookV2, calendar => getAll
+✓ nodes/Microsoft/Outlook/test/v2/node/calendar/getAll.workflow (197 ms)
+2025-04-15T08:44:07.5481141Z
+PASS nodes/Microsoft/AzureCosmosDb/test/container/get.test.ts
+Azure Cosmos DB - Get Container
+✓ nodes/Microsoft/AzureCosmosDb/test/container/get.workflow (75 ms)
+2025-04-15T08:44:07.5481666Z
+PASS nodes/Microsoft/AzureCosmosDb/test/item/delete.test.ts
+Azure Cosmos DB - Delete Item
+✓ nodes/Microsoft/AzureCosmosDb/test/item/delete.workflow (80 ms)
+2025-04-15T08:44:07.5482046Z
+PASS nodes/Notion/test/node/v2/page/archive.test.ts
+Test NotionV2, page => archive
+✓ nodes/Notion/test/node/v2/page/archive.workflow (113 ms)
+2025-04-15T08:44:07.5482381Z
+PASS nodes/Notion/test/node/v2/database/get.test.ts
+Test NotionV2, database => get
+✓ nodes/Notion/test/node/v2/database/get.workflow (92 ms)
+2025-04-15T08:44:07.5482716Z
+PASS nodes/Notion/test/node/v2/databasePage/get.test.ts
+Test NotionV2, databasePage => get
+✓ nodes/Notion/test/node/v2/databasePage/get.workflow (101 ms)
+2025-04-15T08:44:07.5483076Z
+PASS nodes/Google/Drive/test/v2/node/file/download.test.ts
+test GoogleDriveV2: file download
+✓ should be called with (8 ms)
+2025-04-15T08:44:07.5483472Z
+PASS nodes/Google/Drive/test/v2/node/file/update.test.ts
+test GoogleDriveV2: file update
+✓ should be called with (3 ms)
+2025-04-15T08:44:07.5483774Z
+PASS nodes/Slack/test/v2/node/message/update.test.ts
+Test SlackV2, message => update
+✓ nodes/Slack/test/v2/node/message/update.workflow (143 ms)
+2025-04-15T08:44:07.5484117Z
+PASS nodes/Slack/test/v2/node/message/post.test.ts
+Test SlackV2, message => post
+✓ nodes/Slack/test/v2/node/message/post.workflow (137 ms)
+2025-04-15T08:44:07.5484436Z
+PASS nodes/Discord/test/v2/node/message/send.test.ts
+Test DiscordV2, message => send
+✓ nodes/Discord/test/v2/node/message/send.workflow (158 ms)
+2025-04-15T08:44:07.5484784Z
+PASS nodes/MySql/test/v1/executeQuery.test.ts
+Test MySqlV1, executeQuery
+✓ nodes/MySql/test/v1/executeQuery.workflow (499 ms)
+2025-04-15T08:44:07.5485080Z
+PASS nodes/Postgres/test/v2/runQueries.test.ts
+Test PostgresV2, runQueries
+✓ should execute, should return success true (14 ms)
+2025-04-15T08:44:07.5485373Z
+PASS nodes/Baserow/__tests__/workflow/workflow.test.ts
+Baserow > Workflows
+Run workflow
+✓ nodes/Baserow/__tests__/workflow/workflow (344 ms)
+2025-04-15T08:44:07.5485749Z
+PASS nodes/Google/Drive/test/v2/node/folder/share.test.ts
+test GoogleDriveV2: folder share
+✓ should be called with (5 ms)
+2025-04-15T08:44:07.5486155Z
+PASS nodes/Webhook/test/Webhook.test.ts
+Test Webhook Node
+✓ nodes/Webhook/test/Webhook.formdata.test (10 ms)
+handleFormData
+✓ should handle when no files are present (2 ms)
+✓ should handle when files are present (1 ms)
+2025-04-15T08:44:07.5486923Z
+PASS nodes/Airtable/test/v2/node/base/getSchema.test.ts
+Test AirtableV2, base => getSchema
+✓ should return all bases (5 ms)
+2025-04-15T08:44:07.5487233Z
+PASS nodes/Google/Drive/test/v2/node/folder/create.test.ts
+test GoogleDriveV2: folder create
+✓ should be called with (4 ms)
+2025-04-15T08:44:07.5487535Z
+PASS nodes/HighLevel/v2/test/GetContacts.test.ts
+getContacts
+✓ should return a list of contacts (4 ms)
+✓ should handle empty contacts list
+2025-04-15T08:44:07.5487918Z
+PASS nodes/HighLevel/v2/test/GetUsers.test.ts
+getUsers
+✓ should return a list of users (4 ms)
+✓ should handle empty users list
+2025-04-15T08:44:07.5488270Z
+PASS nodes/Microsoft/Excel/test/v2/node/worksheet/append.test.ts
+Test MicrosoftExcelV2, worksheet => append
+✓ nodes/Microsoft/Excel/test/v2/node/worksheet/append.workflow (172 ms)
+2025-04-15T08:44:07.5488693Z
+PASS nodes/Microsoft/Outlook/test/v2/node/calendar/create.test.ts
+Test MicrosoftOutlookV2, calendar => create
+✓ nodes/Microsoft/Outlook/test/v2/node/calendar/create.workflow (227 ms)
+2025-04-15T08:44:07.5489230Z
+PASS nodes/HighLevel/v2/test/GetPipelines.test.ts
+getPipelines
+✓ should return a list of pipelines (3 ms)
+✓ should handle empty pipelines list
+2025-04-15T08:44:07.5489609Z
+PASS nodes/Google/Sheet/test/GoogleSheetsTrigger.test.ts
+GoogleSheetsTrigger
+rowAdded event
+✓ should return rows without header (51 ms)
+2025-04-15T08:44:07.5489973Z
+PASS nodes/Microsoft/Storage/test/container/get.test.ts
+Azure Storage Node
+should get container
+✓ nodes/Microsoft/Storage/test/workflows/container_get.workflow (85 ms)
+2025-04-15T08:44:07.5490405Z
+PASS nodes/Splunk/test/v2/node/alert.test.ts
+Splunk, alert resource
+✓ getMetrics operation (3 ms)
+✓ getReport operation (1 ms)
+2025-04-15T08:44:07.5490763Z
+PASS nodes/Google/BigQuery/test/v2/node/insert.autoMapMode.test.ts
+Test Google BigQuery V2, insert auto map
+✓ nodes/Google/BigQuery/test/v2/node/insert.autoMapMode.workflow (719 ms)
+2025-04-15T08:44:07.5491249Z
+PASS nodes/Microsoft/Excel/test/v2/node/table/getRows.test.ts
+Test MicrosoftExcelV2, table => getRows
+✓ nodes/Microsoft/Excel/test/v2/node/table/getRows.workflow (87 ms)
+2025-04-15T08:44:07.5491638Z
+PASS nodes/Discord/test/v2/node/message/getAll.test.ts
+Test DiscordV2, message => getAll
+✓ nodes/Discord/test/v2/node/message/getAll.workflow (162 ms)
+2025-04-15T08:44:07.5491989Z
+PASS nodes/Airtable/test/v2/node/record/get.test.ts
+Test AirtableV2, create operation
+✓ should create a record, autoMapInputData (5 ms)
+2025-04-15T08:44:07.5492298Z
+PASS nodes/Microsoft/Outlook/test/v2/node/folder/create.test.ts
+Test MicrosoftOutlookV2, contact => folder
+✓ nodes/Microsoft/Outlook/test/v2/node/folder/create.workflow (232 ms)
+2025-04-15T08:44:07.5492805Z
+PASS nodes/Microsoft/Outlook/test/v2/node/calendar/update.test.ts
+Test MicrosoftOutlookV2, calendar => update
+✓ nodes/Microsoft/Outlook/test/v2/node/calendar/update.workflow (200 ms)
+2025-04-15T08:44:07.5493234Z
+PASS nodes/Google/Drive/test/v2/node/drive/update.test.ts
+test GoogleDriveV2: drive update
+✓ should be called with (4 ms)
+2025-04-15T08:44:07.5493542Z
+PASS nodes/Google/BigQuery/test/v2/node/insert.manualMode.test.ts
+Test Google BigQuery V2, insert define manually
+✓ nodes/Google/BigQuery/test/v2/node/insert.manualMode.workflow (98 ms)
+2025-04-15T08:44:07.5493975Z
+PASS nodes/Totp/test/Totp.node.test.ts
+Execute TOTP node
+✓ Generate TOTP Token (189 ms)
+2025-04-15T08:44:07.5494225Z
+PASS nodes/Google/YouTube/__test__/GenericFunctions.test.ts
+validateAndSetDate
+✓ should convert a valid ISO date and set it with the specified timezone (15 ms)
+✓ should throw NodeOperationError for an invalid date (6 ms)
+2025-04-15T08:44:07.5494870Z
+PASS nodes/Brandfetch/test/GenericFunctions.test.ts
+Brandfetch
+brandfetchApiRequest
+✓ should make an authenticated API request to Brandfetch (3 ms)
+2025-04-15T08:44:07.5495260Z
+PASS nodes/Google/Drive/test/v2/node/file/deleteFile.test.ts
+test GoogleDriveV2: file deleteFile
+✓ should be called with (3 ms)
+2025-04-15T08:44:07.5495590Z
+PASS nodes/WhatsApp/tests/utils.trigger.test.ts
+filterStatuses
+✓ returns events with no statuses when allowedStatuses is empty (4 ms)
+✓ returns all events when 'all' is in allowedStatuses
+✓ filters events correctly when specific statuses are provided (1 ms)
+✓ returns only event with matching status
+✓ returns unchanged event when allowedStatuses is undefined (1 ms)
+2025-04-15T08:44:07.5496490Z
+PASS nodes/Slack/test/v2/node/channel/get.test.ts
+Test SlackV2, channel => get
+✓ nodes/Slack/test/v2/node/channel/get.workflow (154 ms)
+2025-04-15T08:44:07.5496815Z
+PASS nodes/HighLevel/v2/test/DateToIsoSuperssMillis.test.ts
+dateToIsoSupressMillis
+✓ should return an ISO string without milliseconds (UTC) (12 ms)
+✓ should handle dates without milliseconds correctly
+✓ should handle time zone offsets correctly (1 ms)
+✓ should handle edge case for empty input
+✓ should handle edge case for null input (1 ms)
+2025-04-15T08:44:07.5497654Z
+PASS nodes/Slack/test/v2/node/channel/create.test.ts
+Test SlackV2, channel => create
+✓ nodes/Slack/test/v2/node/channel/create.workflow (145 ms)
+2025-04-15T08:44:07.5497995Z
+PASS nodes/Microsoft/Outlook/test/v2/node/calendar/get.test.ts
+Test MicrosoftOutlookV2, calendar => get
+✓ nodes/Microsoft/Outlook/test/v2/node/calendar/get.workflow (203 ms)
+2025-04-15T08:44:07.5498487Z
+PASS nodes/Microsoft/Storage/test/container/create.test.ts
+Azure Storage Node
+should create container
+✓ nodes/Microsoft/Storage/test/workflows/container_create.workflow (79 ms)
+2025-04-15T08:44:07.5498944Z
+PASS nodes/Start/__tests__/StartNode.test.ts
+Execute Start Node
+✓ should run start node (123 ms)
+2025-04-15T08:44:07.5499203Z
+PASS nodes/Cron/test/Cron.node.test.ts
+Cron Node
+✓ should return a function to trigger (3 ms)
+2025-04-15T08:44:07.5499470Z
+PASS nodes/Microsoft/Excel/test/v2/node/table/append.test.ts
+Test MicrosoftExcelV2, table => append
+✓ nodes/Microsoft/Excel/test/v2/node/table/append.workflow (109 ms)
+2025-04-15T08:44:07.5499863Z
+PASS nodes/Discord/test/v2/node/webhook/sendLegacy.test.ts
+Test DiscordV2, webhook => sendLegacy
+✓ nodes/Discord/test/v2/node/webhook/sendLegacy.workflow (319 ms)
+2025-04-15T08:44:07.5500240Z
+PASS nodes/Microsoft/Teams/test/v2/node/channel/get.test.ts
+Test MicrosoftTeamsV2, channel => get
+✓ nodes/Microsoft/Teams/test/v2/node/channel/get.workflow (142 ms)
+2025-04-15T08:44:07.5500716Z
+PASS nodes/Google/BigQuery/test/v2/node/executeQuery.test.ts
+Test Google BigQuery V2, executeQuery
+✓ nodes/Google/BigQuery/test/v2/node/executeQuery.workflow (92 ms)
+2025-04-15T08:44:07.5501150Z
+PASS nodes/Discord/test/v2/node/member/getAll.test.ts
+Test DiscordV2, member => getAll
+✓ nodes/Discord/test/v2/node/member/getAll.workflow (187 ms)
+2025-04-15T08:44:07.5501498Z
+PASS nodes/Google/Drive/test/v2/node/drive/get.test.ts
+test GoogleDriveV2: drive get
+✓ should be called with (3 ms)
+2025-04-15T08:44:07.5501795Z
+PASS nodes/Notion/test/node/v2/user/getAll.test.ts
+Test NotionV2, user => getAll
+✓ nodes/Notion/test/node/v2/user/getAll.workflow (104 ms)
+2025-04-15T08:44:07.5502126Z
+PASS nodes/Aws/S3/test/V2/AwsS3.node.test.ts
+Test S3 V2 Node
+File Upload
+✓ nodes/Aws/S3/test/V2/AwsS3.file.upload.V2.workflow (843 ms)
+2025-04-15T08:44:07.5502503Z
+PASS nodes/Google/Drive/test/v2/node/drive/deleteDrive.test.ts
+test GoogleDriveV2: drive deleteDrive
+✓ should be called with (4 ms)
+2025-04-15T08:44:07.5502826Z
+PASS nodes/Aws/S3/test/V1/AwsS3.node.test.ts
+Test S3 V1 Node
+File Upload
+✓ nodes/Aws/S3/test/V1/AwsS3.file.upload.V1.workflow (373 ms)
+2025-04-15T08:44:07.5503198Z
+PASS nodes/Wordpress/__tests__/workflow/post/post.test.ts
+Wordpress > Post Workflows
+✓ nodes/Wordpress/__tests__/workflow/post/post.workflow (410 ms)
+2025-04-15T08:44:07.5503554Z
+PASS nodes/Microsoft/AzureCosmosDb/test/item/query.test.ts
+Azure Cosmos DB - Query Items
+✓ nodes/Microsoft/AzureCosmosDb/test/item/query.workflow (97 ms)
+2025-04-15T08:44:07.5504009Z
+PASS nodes/Wordpress/__tests__/workflow/user/user.test.ts
+Wordpress > User Workflows
+✓ nodes/Wordpress/__tests__/workflow/user/user.workflow (82 ms)
+2025-04-15T08:44:07.5504354Z
+PASS nodes/HighLevel/v2/test/IsPhoneValid.test.ts
+isPhoneValid
+✓ should return true for a valid phone number (3 ms)
+✓ should return false for an invalid phone number
+✓ should return false for a phone number with invalid characters (1 ms)
+✓ should return false for an empty phone number
+✓ should return false for a phone number with only special characters
+2025-04-15T08:44:07.5505232Z
+PASS nodes/Microsoft/Teams/test/v2/node/channel/create.test.ts
+Test MicrosoftTeamsV2, channel => create
+✓ nodes/Microsoft/Teams/test/v2/node/channel/create.workflow (137 ms)
+2025-04-15T08:44:07.5505626Z
+The API Key connection was deprecated by Airtable, please use Access Token or OAuth2 instead.
+PASS nodes/Airtable/test/v2/node/record/deleteRecord.test.ts
+Test AirtableV2, deleteRecord operation
+✓ should delete a record (4 ms)
+2025-04-15T08:44:07.5506252Z
+PASS nodes/Airtable/test/Airtable.node.test.ts
+Execute Airtable Node
+✓ List Airtable Records (723 ms)
+2025-04-15T08:44:07.5506516Z
+PASS nodes/Microsoft/Storage/test/container/delete.test.ts
+Azure Storage Node
+should delete container
+✓ nodes/Microsoft/Storage/test/workflows/container_delete.workflow (105 ms)
+2025-04-15T08:44:07.5506973Z
+PASS nodes/Wordpress/__tests__/workflow/page/page.test.ts
+Wordpress > Page Workflows
+✓ nodes/Wordpress/__tests__/workflow/page/page.workflow (77 ms)
+2025-04-15T08:44:07.5507315Z
+PASS nodes/Microsoft/Storage/test/blob/delete.test.ts
+Azure Storage Node
+should delete blob
+✓ nodes/Microsoft/Storage/test/workflows/blob_delete.workflow (88 ms)
+2025-04-15T08:44:07.5507731Z
+PASS nodes/Microsoft/Excel/test/v2/node/worksheet/readRows.test.ts
+Test MicrosoftExcelV2, worksheet => readRows
+✓ nodes/Microsoft/Excel/test/v2/node/worksheet/readRows.workflow (107 ms)
+2025-04-15T08:44:07.5508172Z
+PASS nodes/N8n/test/node/N8n.test.ts
+Test N8n Node, expect base_url to be received from credentials
+✓ nodes/N8n/test/node/workflow.n8n.workflows (438 ms)
+2025-04-15T08:44:07.5508520Z
+PASS nodes/Microsoft/Excel/test/v2/node/table/getColumns.test.ts
+Test MicrosoftExcelV2, table => getColumns
+✓ nodes/Microsoft/Excel/test/v2/node/table/getColumns.workflow (97 ms)
+2025-04-15T08:44:07.5508935Z
+PASS nodes/Npm/test/Npm.node.test.ts
+Test npm Node
+✓ nodes/Npm/test/Npm.workflow.test (389 ms)
+2025-04-15T08:44:07.5509199Z
+PASS nodes/Spotify/__tests__/workflow/workflow.test.ts
+Spotify
+Run workflow
+✓ nodes/Spotify/__tests__/workflow/Spotify.workflow (380 ms)
+2025-04-15T08:44:07.5509693Z
+PASS nodes/Microsoft/Outlook/test/v2/node/folderMessage/getAll.test.ts
+Test MicrosoftOutlookV2, folderMessage => getAll
+✓ nodes/Microsoft/Outlook/test/v2/node/folderMessage/getAll.workflow (190 ms)
+2025-04-15T08:44:07.5510175Z
+PASS nodes/MailerLite/tests/v1/MailerLite.v1.workflow.test.ts
+MailerLite
+Run v1 workflow
+✓ nodes/MailerLite/tests/v1/MailerLite.v1.workflow (284 ms)
+2025-04-15T08:44:07.5510594Z
+PASS nodes/Microsoft/Excel/test/v2/node/workbook/addWorksheet.test.ts
+Test MicrosoftExcelV2, workbook => addWorksheet
+✓ nodes/Microsoft/Excel/test/v2/node/workbook/addWorksheet.workflow (91 ms)
+2025-04-15T08:44:07.5511101Z
+PASS nodes/MailerLite/tests/v2/MailerLite.v2.workflow.test.ts
+MailerLite
+Run v2 workflow
+✓ nodes/MailerLite/tests/v2/MailerLite.v2.workflow (84 ms)
+2025-04-15T08:44:07.5511510Z
+PASS nodes/Discord/test/v2/node/message/get.test.ts
+Test DiscordV2, message => get
+✓ nodes/Discord/test/v2/node/message/get.workflow (161 ms)
+2025-04-15T08:44:07.5511937Z
+PASS nodes/Aws/Comprehend/test/AwsComprehend.node.test.ts
+Test AWS Comprehend Node
+Detect Language
+✓ nodes/Aws/Comprehend/test/AwsComprehendTestWorkflow (311 ms)
+2025-04-15T08:44:07.5512353Z
+PASS nodes/ExecutionData/test/ExecutionData.node.test.ts
+ExecutionData Node
+✓ should return its input data (3 ms)
+ExecutionData -> Should run the workflow
+✓ nodes/ExecutionData/test/ExecutionData.workflow (51 ms)
+2025-04-15T08:44:07.5512892Z
+PASS nodes/Microsoft/Excel/test/v2/node/table/addTable.test.ts
+Test MicrosoftExcelV2, table => addTable
+✓ nodes/Microsoft/Excel/test/v2/node/table/addTable.workflow (101 ms)
+2025-04-15T08:44:07.5513306Z
+PASS nodes/HttpRequest/test/binaryData/HttpRequest.test.ts
+Test Binary Data Download
+✓ nodes/HttpRequest/test/binaryData/binaryData.test (153 ms)
+2025-04-15T08:44:07.5513656Z
+PASS nodes/Microsoft/AzureCosmosDb/test/container/delete.test.ts
+Azure Cosmos DB - Delete Container
+✓ nodes/Microsoft/AzureCosmosDb/test/container/delete.workflow (79 ms)
+2025-04-15T08:44:07.5514068Z
+PASS nodes/Microsoft/Outlook/test/v2/node/draft/send.test.ts
+Test MicrosoftOutlookV2, draft => send
+✓ nodes/Microsoft/Outlook/test/v2/node/draft/send.workflow (207 ms)
+2025-04-15T08:44:07.5514467Z
+PASS nodes/PhilipsHue/test/workflow.test.ts
+PhilipsHue
+Run workflow
+✓ nodes/PhilipsHue/test/workflow (258 ms)
+2025-04-15T08:44:07.5514811Z
+PASS nodes/Slack/test/v2/node/user/updateProfile.test.ts
+Test SlackV2, user => updateProfile
+✓ nodes/Slack/test/v2/node/user/updateProfile.workflow (170 ms)
+2025-04-15T08:44:07.5515283Z
+PASS nodes/Microsoft/Excel/test/v2/node/table/convertToRange.test.ts
+Test MicrosoftExcelV2, table => convertToRange
+✓ nodes/Microsoft/Excel/test/v2/node/table/convertToRange.workflow (78 ms)
+2025-04-15T08:44:07.5515735Z
+PASS nodes/Microsoft/Excel/test/v2/node/worksheet/getAll.test.ts
+Test MicrosoftExcelV2, worksheet => getAll
+✓ nodes/Microsoft/Excel/test/v2/node/worksheet/getAll.workflow (84 ms)
+2025-04-15T08:44:07.5516165Z
+PASS nodes/Microsoft/Teams/test/v2/node/task/update.test.ts
+Test MicrosoftTeamsV2, task => update
+✓ nodes/Microsoft/Teams/test/v2/node/task/update.workflow (160 ms)
+2025-04-15T08:44:07.5516552Z
+PASS nodes/Discord/test/v2/node/channel/get.test.ts
+Test DiscordV2, channel => get
+✓ nodes/Discord/test/v2/node/channel/get.workflow (347 ms)
+2025-04-15T08:44:07.5516882Z
+PASS nodes/HttpRequest/test/encodingQuoted/HttpRequest.test.ts
+Test Quoted Response Encoding
+✓ nodes/HttpRequest/test/encodingQuoted/encodingQuoted.test (70 ms)
+2025-04-15T08:44:07.5517284Z
+PASS nodes/Microsoft/Outlook/test/v2/node/message/move.test.ts
+Test MicrosoftOutlookV2, message => move
+✓ nodes/Microsoft/Outlook/test/v2/node/message/move.workflow (212 ms)
+2025-04-15T08:44:07.5517794Z
+PASS nodes/HttpRequest/test/encoding/HttpRequest.test.ts
+Test Response Encoding
+✓ nodes/HttpRequest/test/encoding/encoding.test (79 ms)
+2025-04-15T08:44:07.5518138Z
+PASS nodes/CompareDatasets/test/utils/utils.test.ts
+Test Compare Datasets Node utils
+✓ test checkInput (4 ms)
+2025-04-15T08:44:07.5518424Z
+PASS nodes/Files/ReadWriteFile/test/utils.test.ts
+Read/Write Files from Disk, escapeSpecialCharacters
+✓ should escape parentheses in a string (3 ms)
+✓ should not modify strings that do not contain parentheses
+2025-04-15T08:44:07.5518921Z
+PASS nodes/Discord/test/v2/node/channel/create.test.ts
+Test DiscordV2, channel => create
+✓ nodes/Discord/test/v2/node/channel/create.workflow (156 ms)
+2025-04-15T08:44:07.5519284Z
+PASS nodes/Discord/test/v2/node/channel/update.test.ts
+Test DiscordV2, channel => update
+✓ nodes/Discord/test/v2/node/channel/update.workflow (154 ms)
+2025-04-15T08:44:07.5519640Z
+PASS nodes/Microsoft/Outlook/test/v2/node/message/send.test.ts
+Test MicrosoftOutlookV2, message => send
+✓ nodes/Microsoft/Outlook/test/v2/node/message/send.workflow (188 ms)
+2025-04-15T08:44:07.5520030Z
+PASS nodes/Stripe/__tests__/helpers.test.ts
+adjustMetadata
+✓ it should adjust multiple metadata values (3 ms)
+2025-04-15T08:44:07.5520317Z
+PASS nodes/Slack/test/v2/node/file/upload.test.ts
+Test SlackV2, file => upload
+✓ nodes/Slack/test/v2/node/file/upload.workflow (294 ms)
+2025-04-15T08:44:07.5520642Z
+PASS nodes/Crypto/test/Crypto.test.ts
+Test Crypto Node
+✓ nodes/Crypto/test/CryptoTest.workflow (304 ms)
+2025-04-15T08:44:07.5521009Z
+PASS nodes/Microsoft/Excel/test/v2/node/workbook/getAll.test.ts
+Test MicrosoftExcelV2, workbook => getAll
+✓ nodes/Microsoft/Excel/test/v2/node/workbook/getAll.workflow (86 ms)
+2025-04-15T08:44:07.5521451Z
+PASS nodes/SendGrid/test/SendGrid.node.test.ts
+Test SendGrid Node
+Mail
+✓ nodes/SendGrid/test/mail.workflow (496 ms)
+✓ should make the correct network calls
+2025-04-15T08:44:07.5521903Z
+PASS nodes/Microsoft/Teams/test/v2/node/task/deleteTask.test.ts
+Test MicrosoftTeamsV2, task => deleteTask
+✓ nodes/Microsoft/Teams/test/v2/node/task/deleteTask.workflow (168 ms)
+2025-04-15T08:44:07.5522314Z
+PASS nodes/Notion/test/node/v2/user/get.test.ts
+Test NotionV2, user => get
+✓ nodes/Notion/test/node/v2/user/get.workflow (122 ms)
+2025-04-15T08:44:07.5522610Z
+PASS nodes/Slack/test/v2/node/message/getPermalink.test.ts
+Test SlackV2, message => getPermalink
+✓ nodes/Slack/test/v2/node/message/getPermalink.workflow (171 ms)
+2025-04-15T08:44:07.5523089Z
+console.warn
+Deprecation warning: value provided is not in a recognized RFC2822 or ISO format. moment construction falls back to js Date(), which is not reliable across all browsers and versions. Non RFC2822/ISO date formats are discouraged. Please refer to http://momentjs.com/guides/#/warnings/js-date/ for more info.
+Arguments:
+[0] _isAMomentObject: true, _isUTC: false, _useUTC: false, _l: undefined, _i: 2023/04/11, _f: undefined, _strict: undefined, _locale: [object Object]
+Error:
+at Function.createFromInputFallback (/home/runner/_work/n8n/n8n/node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:324:25)
+at configFromString (/home/runner/_work/n8n/n8n/node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:2550:19)
+at configFromInput (/home/runner/_work/n8n/n8n/node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:2993:13)
+at prepareConfig (/home/runner/_work/n8n/n8n/node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:2976:13)
+at createFromConfig (/home/runner/_work/n8n/n8n/node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:2943:44)
+at createLocalOrUTC (/home/runner/_work/n8n/n8n/node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:3037:16)
+at createLocal (/home/runner/_work/n8n/n8n/node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:3041:16)
+at hooks (/home/runner/_work/n8n/n8n/node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:16:29)
+at ExecuteContext.parseDate (/home/runner/_work/n8n/n8n/packages/nodes-base/nodes/DateTime/V2/GenericFunctions.ts:47:41)
+at ExecuteContext.call (/home/runner/_work/n8n/n8n/packages/nodes-base/nodes/DateTime/V2/DateTimeV2.node.ts:180:34)
+at WorkflowExecute.runNode (/home/runner/_work/n8n/n8n/packages/core/src/execution-engine/workflow-execute.ts:1156:32)
+at /home/runner/_work/n8n/n8n/packages/core/src/execution-engine/workflow-execute.ts:1508:38
+at /home/runner/_work/n8n/n8n/packages/core/src/execution-engine/workflow-execute.ts:2065:11
+2025-04-15T08:44:07.5527380Z
+[0m [90m 45 |[39m 				parsedDate [33m=[39m [33mDateTime[39m[33m.[39mfromFormat(date [36mas[39m string[33m,[39m options[33m.[39mfromFormat)[33m;[39m
+[90m 46 |[39m 			} [36melse[39m {
+[31m[1m>[22m[39m[90m 47 |[39m 				parsedDate [33m=[39m [33mDateTime[39m[33m.[39mfromISO(moment(date)[33m.[39mtoISOString())[33m;[39m
+[90m    |[39m 				                                    [31m[1m^[22m[39m
+[90m 48 |[39m 			}
+[90m 49 |[39m 		}
+[90m 50 |[39m[0m
+2025-04-15T08:44:07.5528474Z
+at warn (../../node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:287:21)
+at Function.createFromInputFallback (../../node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:319:17)
+at configFromString (../../node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:2550:19)
+at configFromInput (../../node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:2993:13)
+at prepareConfig (../../node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:2976:13)
+at createFromConfig (../../node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:2943:44)
+at createLocalOrUTC (../../node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:3037:16)
+at createLocal (../../node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:3041:16)
+at hooks (../../node_modules/.pnpm/moment@2.29.4/node_modules/moment/moment.js:16:29)
+at ExecuteContext.parseDate (nodes/DateTime/V2/GenericFunctions.ts:47:41)
+at ExecuteContext.call (nodes/DateTime/V2/DateTimeV2.node.ts:180:34)
+at WorkflowExecute.runNode (../core/src/execution-engine/workflow-execute.ts:1156:32)
+at ../core/src/execution-engine/workflow-execute.ts:1508:38
+at ../core/src/execution-engine/workflow-execute.ts:2065:11
+2025-04-15T08:44:07.5530955Z
+PASS nodes/DateTime/test/node/DateTime.test.ts
+Test DateTime Node
+✓ nodes/DateTime/test/node/DateTimeWorkflowV2 (554 ms)
+✓ nodes/DateTime/test/node/DateTimeWorklfow.test (73 ms)
+✓ nodes/DateTime/test/node/workflow.includeInputFields_v2 (44 ms)
+✓ nodes/DateTime/test/node/workflow.luxonDateTime (11 ms)
+✓ nodes/DateTime/test/node/workflow.nullDate_v2 (3 ms)
+✓ nodes/DateTime/test/node/workflow.timestamp (6 ms)
+✓ nodes/DateTime/test/node/workflow.timestamp_v2 (4 ms)
+2025-04-15T08:44:07.5532146Z
+PASS nodes/Microsoft/Excel/test/v2/node/worksheet/clear.test.ts
+Test MicrosoftExcelV2, worksheet => clear
+✓ nodes/Microsoft/Excel/test/v2/node/worksheet/clear.workflow (80 ms)
+2025-04-15T08:44:07.5532559Z
+PASS nodes/OpenWeatherMap/test/OpenWeatherMap.test.ts
+OpenWeatherMap
+Run OpenWeatherMap workflow
+✓ nodes/OpenWeatherMap/test/workflow (202 ms)
+2025-04-15T08:44:07.5532924Z
+PASS nodes/Microsoft/Excel/test/v2/node/worksheet/deleteWorksheet.test.ts
+Test MicrosoftExcelV2, worksheet => deleteWorksheet
+✓ nodes/Microsoft/Excel/test/v2/node/worksheet/deleteWorksheet.workflow (80 ms)
+2025-04-15T08:44:07.5533513Z
+PASS nodes/Microsoft/Teams/test/v2/node/channel/update.test.ts
+Test MicrosoftTeamsV2, channel => update
+✓ nodes/Microsoft/Teams/test/v2/node/channel/update.workflow (135 ms)
+2025-04-15T08:44:07.5533918Z
+PASS nodes/Microsoft/Teams/test/v2/utils.test.ts
+Test MicrosoftTeamsV2, filterSortSearchListItems
+✓ should filter, sort and search list items (4 ms)
+2025-04-15T08:44:07.5534248Z
+PASS nodes/Microsoft/Excel/test/v2/node/table/deleteTable.test.ts
+Test MicrosoftExcelV2, table => deleteTable
+✓ nodes/Microsoft/Excel/test/v2/node/table/deleteTable.workflow (82 ms)
+2025-04-15T08:44:07.5534670Z
+PASS nodes/Microsoft/Teams/test/v2/node/channel/deleteChannel.test.ts
+Test MicrosoftTeamsV2, channel => deleteChannel
+✓ nodes/Microsoft/Teams/test/v2/node/channel/deleteChannel.workflow (142 ms)
+2025-04-15T08:44:07.5535120Z
+PASS nodes/Slack/test/v2/node/message/delete.test.ts
+Test SlackV2, message => delete
+✓ nodes/Slack/test/v2/node/message/delete.workflow (181 ms)
+2025-04-15T08:44:07.5535552Z
+PASS nodes/Microsoft/Outlook/test/v2/node/calendar/delete.test.ts
+Test MicrosoftOutlookV2, calendar => delete
+✓ nodes/Microsoft/Outlook/test/v2/node/calendar/delete.workflow (230 ms)
+2025-04-15T08:44:07.5535969Z
+PASS nodes/Discord/test/v2/node/member/roleRemove.test.ts
+Test DiscordV2, member => roleRemove
+✓ nodes/Discord/test/v2/node/member/roleRemove.workflow (208 ms)
+2025-04-15T08:44:07.5536336Z
+PASS nodes/Wait/test/Wait.node.test.ts
+Execute Wait Node
+✓ nodes/Wait/test/Wait.workflow (834 ms)
+2025-04-15T08:44:07.5536610Z
+PASS nodes/Discord/test/v2/node/message/react.test.ts
+Test DiscordV2, message => react
+✓ nodes/Discord/test/v2/node/message/react.workflow (165 ms)
+2025-04-15T08:44:07.5536957Z
+PASS nodes/Discord/test/v2/node/member/roleAdd.test.ts
+Test DiscordV2, member => roleAdd
+✓ nodes/Discord/test/v2/node/member/roleAdd.workflow (155 ms)
+2025-04-15T08:44:07.5537316Z
+PASS nodes/Discord/test/v2/node/message/deleteMessage.test.ts
+Test DiscordV2, message => deleteMessage
+✓ nodes/Discord/test/v2/node/message/deleteMessage.workflow (155 ms)
+2025-04-15T08:44:07.5537722Z
+PASS nodes/Microsoft/Excel/test/v2/node/workbook/deleteWorkbook.test.ts
+Test MicrosoftExcelV2, workbook => deleteWorkbook
+✓ nodes/Microsoft/Excel/test/v2/node/workbook/deleteWorkbook.workflow (89 ms)
+2025-04-15T08:44:07.5538185Z
+PASS nodes/Discord/test/v2/node/channel/deleteChannel.test.ts
+Test DiscordV2, channel => deleteChannel
+✓ nodes/Discord/test/v2/node/channel/deleteChannel.workflow (148 ms)
+2025-04-15T08:44:07.5538591Z
+PASS nodes/Slack/test/v2/node/channel/archive.test.ts
+Test SlackV2, channel => append
+✓ nodes/Slack/test/v2/node/channel/archive.workflow (164 ms)
+2025-04-15T08:44:07.5539029Z
+PASS nodes/Html/test/Html.node.test.ts
+Test Html Node > extractHtmlContent
+✓ nodes/Html/test/extractHtmlContent.workflow (478 ms)
+2025-04-15T08:44:07.5539334Z
+PASS nodes/ReadPdf/test/ReadPDF.test.ts
+Test Read PDF Node
+✓ nodes/ReadPdf/test/ReadPDF-encrypted.workflow (538 ms)
+✓ nodes/ReadPdf/test/ReadPDF.workflow (15 ms)
+2025-04-15T08:44:07.5539764Z
+PASS nodes/CompareDatasets/test/node/CompareDatasets.test.ts
+Test Compare Datasets Node
+✓ nodes/CompareDatasets/test/node/workflow.compareDatasets.forceInputNodeExecution (336 ms)
+✓ nodes/CompareDatasets/test/node/workflow.compareDatasets.fuzzy (69 ms)
+✓ nodes/CompareDatasets/test/node/workflow.compareDatasets.fuzzy.missing_keys (22 ms)
+✓ nodes/CompareDatasets/test/node/workflow.compareDatasets (89 ms)
+✓ nodes/CompareDatasets/test/node/workflow.compareDatasets.skipFields (33 ms)
+✓ nodes/CompareDatasets/test/node/workflow.update_2_2 (46 ms)
+2025-04-15T08:44:07.5541339Z
+PASS nodes/ExecuteCommand/test/ExecuteCommand.node.test.ts
+Execute Execute Command Node
+✓ nodes/ExecuteCommand/test/workflow (1164 ms)
+2025-04-15T08:44:07.5541674Z
+PASS nodes/SplitInBatches/test/SplitInBatches.node.test.ts
+Execute SplitInBatches Node
+✓ nodes/SplitInBatches/test/SplitInBatches.combineData (381 ms)
+✓ nodes/SplitInBatches/test/SplitInBatches.workflow_v1 (69 ms)
+✓ nodes/SplitInBatches/test/SplitInBatches.workflow_v2 (3 ms)
+✓ nodes/SplitInBatches/test/SplitInBatches.workflow_v2_done_variable (73 ms)
+2025-04-15T08:44:07.5542549Z
+PASS nodes/Files/test/ConvertExtract.test.ts
+Test Convert to File Node
+✓ nodes/Files/test/convert_extract.workflow (748 ms)
+2025-04-15T08:44:07.5542850Z
+PASS nodes/Files/ConvertToFile/test/ConvertToFile.node.test.ts
+Test ConvertToFile Node
+✓ nodes/Files/ConvertToFile/test/toText.workflow (743 ms)
+2025-04-15T08:44:07.5543200Z
+PASS nodes/HtmlExtract/test/HtmlExtract.node.test.ts
+Test HTML Extract Node
+✓ nodes/HtmlExtract/test/workflow.dotNotation (401 ms)
+2025-04-15T08:44:07.5543525Z
+PASS nodes/Files/ExtractFromFile/test/ExtractFromFile.node.test.ts
+ExtractFromFile
+✓ nodes/Files/ExtractFromFile/test/workflow.non_utf8_encoding (366 ms)
+2025-04-15T08:44:07.5543928Z
+PASS nodes/RenameKeys/test/RenameKeys.test.ts
+Test Rename Keys Node
+✓ nodes/RenameKeys/test/RenameKeys.workflow (255 ms)
+2025-04-15T08:44:07.5544225Z
+PASS nodes/Transform/SplitOut/test/SplitOut.test.ts
+Test Split Out Node
+✓ nodes/Transform/SplitOut/test/workflow.splitOut (305 ms)
+✓ nodes/Transform/SplitOut/test/workflow.splitOutObject (9 ms)
+2025-04-15T08:44:07.5544711Z
+PASS nodes/Transform/Summarize/test/Summarize.test.ts
+Test Summarize Node
+✓ nodes/Transform/Summarize/test/workflow.summarize (74 ms)
+✓ nodes/Transform/Summarize/test/workflow.summarize_countWithEmpty (12 ms)
+✓ nodes/Transform/Summarize/test/workflow.summarize_datatypes (5 ms)
+✓ nodes/Transform/Summarize/test/workflow.summarize_hint (309 ms)
+2025-04-15T08:44:07.5545640Z
+PASS nodes/Transform/Aggregate/test/Aggregate.test.ts
+Test Aggregate Node
+✓ nodes/Transform/Aggregate/test/workflow.aggregate (395 ms)
+2025-04-15T08:44:07.5545975Z
+The provided field 'data4' is not an array or object
+Couldn't find the field 'dataa' in the input data
+Couldn't find the field 'idd' in the input data
+The field 'idd' does not exist in any items
+PASS nodes/ItemLists/test/node/ItemLists.test.ts
+Test ItemLists Node
+✓ nodes/ItemLists/test/node/workflow.aggregateItems (107 ms)
+✓ nodes/ItemLists/test/node/workflow.concatenate_pairedItems (153 ms)
+✓ nodes/ItemLists/test/node/workflow.limit (5 ms)
+✓ nodes/ItemLists/test/node/workflow.removeDuplicates (7 ms)
+✓ nodes/ItemLists/test/node/workflow.removeDuplicates_3_1 (17 ms)
+✓ nodes/ItemLists/test/node/workflow.sort (8 ms)
+✓ nodes/ItemLists/test/node/workflow.splitOutItems (10 ms)
+✓ nodes/ItemLists/test/node/workflow.splitOutItems.split_object (45 ms)
+✓ nodes/ItemLists/test/node/workflow.summarize (8 ms)
+✓ nodes/ItemLists/test/node/workflow.update_2_1 (26 ms)
+✓ nodes/ItemLists/test/node/workflow.update_2_2 (9 ms)
+✓ nodes/ItemLists/test/node/workflow.update_3 (73 ms)
+2025-04-15T08:44:07.5548387Z
+PASS nodes/Switch/V2/test/switch.node.test.ts
+Execute Switch Node
+✓ nodes/Switch/V2/test/switch.expression.workflow (578 ms)
+✓ nodes/Switch/V2/test/switch.rules.workflow (7 ms)
+2025-04-15T08:44:07.5548822Z
+PASS nodes/Switch/V1/test/switch.node.test.ts
+Execute Switch Node
+✓ nodes/Switch/V1/test/switch.expression.workflow (118 ms)
+✓ nodes/Switch/V1/test/switch.rules.workflow (5 ms)
+2025-04-15T08:44:07.5549254Z
+PASS nodes/Switch/V3/test/switch.node.test.ts
+Execute Switch Node
+✓ nodes/Switch/V3/test/switch.expression.workflow (83 ms)
+✓ nodes/Switch/V3/test/switch.regex.workflow (18 ms)
+✓ nodes/Switch/V3/test/switch.rules.workflow (12 ms)
+2025-04-15T08:44:07.5549825Z
+PASS nodes/Markdown/test/node/Markdown.test.ts
+Test Markdown Node
+✓ nodes/Markdown/test/node/workflow.markdown (441 ms)
+2025-04-15T08:44:07.5550119Z
+PASS nodes/Transform/Limit/test/Limit.test.ts
+Test Limit Node
+✓ nodes/Transform/Limit/test/workflow.limit (220 ms)
+2025-04-15T08:44:07.5550409Z
+PASS nodes/Filter/test/Filter.node.test.ts
+Test Filter Node
+✓ nodes/Filter/test/workflow_v1 (458 ms)
+✓ nodes/Filter/test/workflow_v2 (18 ms)
+2025-04-15T08:44:07.5550862Z
+PASS nodes/Transform/Sort/test/Sort.test.ts
+Test Sort Node
+✓ nodes/Transform/Sort/test/workflow.sort (368 ms)
+2025-04-15T08:44:07.5551173Z
+PASS nodes/Xml/test/node/Xml.test.ts
+Test XML Node
+✓ nodes/Xml/test/node/workflow.xml-valid-data (316 ms)
+✓ nodes/Xml/test/node/workflow.xml (8 ms)
+2025-04-15T08:44:07.5551602Z
+PASS nodes/Merge/test/node/Merge.test.ts
+Test Merge Node
+✓ nodes/Merge/test/node/workflow.append (720 ms)
+✓ nodes/Merge/test/node/workflow.chooseBranch.empty.paired.items (34 ms)
+✓ nodes/Merge/test/node/workflow.chooseBranch (6 ms)
+✓ nodes/Merge/test/node/workflow.combine.mergeByFields (13 ms)
+✓ nodes/Merge/test/node/workflow.combine.mergeByPosition (7 ms)
+✓ nodes/Merge/test/node/workflow.combine.multiplex (20 ms)
+✓ nodes/Merge/test/node/workflow.keep_non_matches (30 ms)
+✓ nodes/Merge/test/node/workflow.mixed.forceInputNodeExecution (39 ms)
+✓ nodes/Merge/test/node/workflow.mixed.not.forceInputNodeExecution (21 ms)
+✓ nodes/Merge/test/node/workflow.update_2_1 (36 ms)
+2025-04-15T08:44:07.5553366Z
+PASS nodes/If/test/v1/If.node.test.ts
+Test IF Node
+✓ nodes/If/test/v1/IF.boolean (82 ms)
+✓ nodes/If/test/v1/IF.date-time (6 ms)
+✓ nodes/If/test/v1/IF.number (14 ms)
+✓ nodes/If/test/v1/IF.string (20 ms)
+2025-04-15T08:44:07.5553928Z
+PASS nodes/Set/test/Set.node.test.ts
+Test Set Node
+✓ nodes/Set/test/Set.v3.workflow (98 ms)
+✓ nodes/Set/test/Set.v3_3.workflow (23 ms)
+✓ nodes/Set/test/Set.workflow (5 ms)
+✓ nodes/Set/test/Set.workflow.null_values (4 ms)
+✓ nodes/Set/test/Set.workflow.number (2 ms)
+2025-04-15T08:44:07.5554617Z
+PASS nodes/Jwt/test/Jwt.node.test.ts
+Test Jwt Node
+✓ nodes/Jwt/test/jwt.workflow (225 ms)
+2025-04-15T08:44:07.5554858Z
+Test Suites: 400 passed, 400 total
+Tests:       1613 passed, 1613 total
+Snapshots:   7 passed, 7 total
+Time:        151.573 s
+Ran all test suites.
+##[endgroup]
+2025-04-15T08:44:07.5555624Z
+Tasks:    3 successful, 3 total
+Cached:    0 cached, 3 total
+Time:    2m50.486s
+2025-04-15T08:44:07.5555826Z

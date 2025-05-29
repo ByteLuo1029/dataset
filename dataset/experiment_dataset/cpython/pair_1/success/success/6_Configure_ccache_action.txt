@@ -1,0 +1,152 @@
+2025-04-15T06:41:59.5893327Z ##[group]Run hendrikmuhs/ccache-action@v1.2
+2025-04-15T06:41:59.5893637Z with:
+2025-04-15T06:41:59.5893811Z   save: false
+2025-04-15T06:41:59.5893993Z   max-size: 200M
+2025-04-15T06:41:59.5894181Z   restore: true
+2025-04-15T06:41:59.5894381Z   verbose: 0
+2025-04-15T06:41:59.5894727Z   variant: ccache
+2025-04-15T06:41:59.5894932Z   append-timestamp: true
+2025-04-15T06:41:59.5895153Z   create-symlink: false
+2025-04-15T06:41:59.5895362Z   job-summary: CCache Statistics
+2025-04-15T06:41:59.5895585Z env:
+2025-04-15T06:41:59.5895760Z   FORCE_COLOR: 1
+2025-04-15T06:41:59.5896069Z   WASMTIME_VERSION: wasmtime-cli 22.0.0 (761f044ef 2024-06-20)
+
+2025-04-15T06:41:59.5896481Z   WASI_SDK_VERSION: 24
+2025-04-15T06:41:59.5896695Z   WASI_SDK_PATH: /opt/wasi-sdk
+2025-04-15T06:41:59.5896946Z   CROSS_BUILD_PYTHON: cross-build/build
+2025-04-15T06:41:59.5897230Z   CROSS_BUILD_WASI: cross-build/wasm32-wasip1
+2025-04-15T06:41:59.5897487Z ##[endgroup]
+2025-04-15T06:41:59.7128666Z ##[group]Install ccache
+2025-04-15T06:41:59.7163035Z [command]/usr/bin/sh -xc $(which sudo) apt-get install -y ccache
+2025-04-15T06:41:59.7201998Z + which sudo
+2025-04-15T06:41:59.7206390Z + /usr/bin/sudo apt-get install -y ccache
+2025-04-15T06:42:01.3150946Z Reading package lists...
+2025-04-15T06:42:01.4632137Z Building dependency tree...
+2025-04-15T06:42:01.4689834Z Reading state information...
+2025-04-15T06:42:01.6076737Z The following additional packages will be installed:
+2025-04-15T06:42:01.6079161Z   libhiredis1.1.0
+2025-04-15T06:42:01.6084973Z Suggested packages:
+2025-04-15T06:42:01.6085385Z   distcc | icecc
+2025-04-15T06:42:01.9373828Z The following NEW packages will be installed:
+2025-04-15T06:42:01.9380907Z   ccache libhiredis1.1.0
+2025-04-15T06:42:01.9616771Z 0 upgraded, 2 newly installed, 0 to remove and 73 not upgraded.
+2025-04-15T06:42:01.9617575Z Need to get 633 kB of archives.
+2025-04-15T06:42:01.9618202Z After this operation, 1756 kB of additional disk space will be used.
+2025-04-15T06:42:01.9618923Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [142 B]
+2025-04-15T06:42:02.0605013Z Get:2 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libhiredis1.1.0 amd64 1.2.0-6ubuntu3 [41.4 kB]
+2025-04-15T06:42:02.1288972Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 ccache amd64 4.9.1-1 [592 kB]
+2025-04-15T06:42:02.4781957Z Fetched 633 kB in 0s (2532 kB/s)
+2025-04-15T06:42:02.5311909Z Selecting previously unselected package libhiredis1.1.0:amd64.
+2025-04-15T06:42:02.5951191Z (Reading database ... 
+2025-04-15T06:42:02.5951760Z (Reading database ... 5%
+2025-04-15T06:42:02.5952767Z (Reading database ... 10%
+2025-04-15T06:42:02.5953275Z (Reading database ... 15%
+2025-04-15T06:42:02.5953770Z (Reading database ... 20%
+2025-04-15T06:42:02.5954110Z (Reading database ... 25%
+2025-04-15T06:42:02.5954432Z (Reading database ... 30%
+2025-04-15T06:42:02.5955135Z (Reading database ... 35%
+2025-04-15T06:42:02.5955461Z (Reading database ... 40%
+2025-04-15T06:42:02.5955768Z (Reading database ... 45%
+2025-04-15T06:42:02.5956085Z (Reading database ... 50%
+2025-04-15T06:42:02.6959907Z (Reading database ... 55%
+2025-04-15T06:42:03.2528728Z (Reading database ... 60%
+2025-04-15T06:42:03.5103762Z (Reading database ... 65%
+2025-04-15T06:42:03.9660402Z (Reading database ... 70%
+2025-04-15T06:42:04.5049046Z (Reading database ... 75%
+2025-04-15T06:42:05.2246690Z (Reading database ... 80%
+2025-04-15T06:42:06.0861784Z (Reading database ... 85%
+2025-04-15T06:42:07.0410203Z (Reading database ... 90%
+2025-04-15T06:42:07.7499894Z (Reading database ... 95%
+2025-04-15T06:42:07.7502181Z (Reading database ... 100%
+2025-04-15T06:42:07.7503123Z (Reading database ... 221801 files and directories currently installed.)
+2025-04-15T06:42:07.7546893Z Preparing to unpack .../libhiredis1.1.0_1.2.0-6ubuntu3_amd64.deb ...
+2025-04-15T06:42:07.7852630Z Unpacking libhiredis1.1.0:amd64 (1.2.0-6ubuntu3) ...
+2025-04-15T06:42:07.8200715Z Selecting previously unselected package ccache.
+2025-04-15T06:42:07.8336955Z Preparing to unpack .../ccache_4.9.1-1_amd64.deb ...
+2025-04-15T06:42:07.8350818Z Unpacking ccache (4.9.1-1) ...
+2025-04-15T06:42:07.9133745Z Setting up libhiredis1.1.0:amd64 (1.2.0-6ubuntu3) ...
+2025-04-15T06:42:07.9164713Z Setting up ccache (4.9.1-1) ...
+2025-04-15T06:42:07.9190903Z Updating symlinks in /usr/lib/ccache ...
+2025-04-15T06:42:07.9504691Z Processing triggers for libc-bin (2.39-0ubuntu8.4) ...
+2025-04-15T06:42:12.1884251Z Processing triggers for man-db (2.12.0-4build2) ...
+2025-04-15T06:43:08.0940985Z 
+2025-04-15T06:43:08.0941676Z Running kernel seems to be up-to-date.
+2025-04-15T06:43:08.0942079Z 
+2025-04-15T06:43:08.0942227Z No services need to be restarted.
+2025-04-15T06:43:08.0942520Z 
+2025-04-15T06:43:08.0942724Z No containers need to be restarted.
+2025-04-15T06:43:08.0943096Z 
+2025-04-15T06:43:08.0943363Z No user sessions are running outdated binaries.
+2025-04-15T06:43:08.0943804Z 
+2025-04-15T06:43:08.0944210Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+2025-04-15T06:43:09.2392103Z 
+2025-04-15T06:43:09.2407280Z ##[endgroup]
+2025-04-15T06:43:09.2407987Z ##[group]Restore cache
+2025-04-15T06:43:09.4803637Z Cache hit for: ccache-
+2025-04-15T06:43:10.7200445Z Received 29360128 of 190632417 (15.4%), 28.0 MBs/sec
+2025-04-15T06:43:11.7208040Z Received 167772160 of 190632417 (88.0%), 80.0 MBs/sec
+2025-04-15T06:43:12.0372538Z Received 190632417 of 190632417 (100.0%), 78.5 MBs/sec
+2025-04-15T06:43:12.0399728Z Cache Size: ~182 MB (190632417 B)
+2025-04-15T06:43:12.0471585Z [command]/usr/bin/tar -xf /home/runner/work/_temp/303ab300-b233-4e9a-8c6f-f828d787c25c/cache.tzst -P -C /home/runner/work/cpython/cpython --use-compress-program unzstd
+2025-04-15T06:43:12.4174319Z Cache restored successfully
+2025-04-15T06:43:12.4568368Z Restored from cache key "ccache-2025-04-15T00:21:16.932Z".
+2025-04-15T06:43:12.4570087Z ##[endgroup]
+2025-04-15T06:43:12.4570801Z ##[group]Configure ccache, linux
+2025-04-15T06:43:12.4586175Z [command]/usr/bin/sh -xc ccache --set-config=cache_dir='/home/runner/work/cpython/cpython/.ccache'
+2025-04-15T06:43:12.4618531Z + ccache --set-config=cache_dir=/home/runner/work/cpython/cpython/.ccache
+2025-04-15T06:43:12.5039276Z [command]/usr/bin/sh -xc ccache --set-config=max_size='200M'
+2025-04-15T06:43:12.5066747Z + ccache --set-config=max_size=200M
+2025-04-15T06:43:12.5100351Z [command]/usr/bin/sh -xc ccache --set-config=compression=true
+2025-04-15T06:43:12.5125557Z + ccache --set-config=compression=true
+2025-04-15T06:43:12.5146529Z Cccache config:
+2025-04-15T06:43:12.5158094Z [command]/usr/bin/sh -xc ccache -p
+2025-04-15T06:43:12.5183745Z + ccache -p
+2025-04-15T06:43:12.5197695Z (default) absolute_paths_in_stderr = false
+2025-04-15T06:43:12.5198208Z (default) base_dir = 
+2025-04-15T06:43:12.5198903Z (/home/runner/.config/ccache/ccache.conf) cache_dir = /home/runner/work/cpython/cpython/.ccache
+2025-04-15T06:43:12.5199763Z (default) compiler = 
+2025-04-15T06:43:12.5200172Z (default) compiler_check = mtime
+2025-04-15T06:43:12.5200603Z (default) compiler_type = auto
+2025-04-15T06:43:12.5201118Z (/home/runner/.config/ccache/ccache.conf) compression = true
+2025-04-15T06:43:12.5201694Z (default) compression_level = 0
+2025-04-15T06:43:12.5202095Z (default) cpp_extension = 
+2025-04-15T06:43:12.5202464Z (default) debug = false
+2025-04-15T06:43:12.5202807Z (default) debug_dir = 
+2025-04-15T06:43:12.5203157Z (default) debug_level = 2
+2025-04-15T06:43:12.5203465Z (default) depend_mode = false
+2025-04-15T06:43:12.5203705Z (default) direct_mode = true
+2025-04-15T06:43:12.5203930Z (default) disable = false
+2025-04-15T06:43:12.5204148Z (default) extra_files_to_hash = 
+2025-04-15T06:43:12.5204387Z (default) file_clone = false
+2025-04-15T06:43:12.5204822Z (default) hard_link = false
+2025-04-15T06:43:12.5205047Z (default) hash_dir = true
+2025-04-15T06:43:12.5205281Z (default) ignore_headers_in_manifest = 
+2025-04-15T06:43:12.5205549Z (default) ignore_options = 
+2025-04-15T06:43:12.5205776Z (default) inode_cache = true
+2025-04-15T06:43:12.5206017Z (default) keep_comments_cpp = false
+2025-04-15T06:43:12.5206262Z (default) log_file = 
+2025-04-15T06:43:12.5206462Z (default) max_files = 0
+2025-04-15T06:43:12.5207171Z (/home/runner/.config/ccache/ccache.conf) max_size = 200.0 MB
+2025-04-15T06:43:12.5207550Z (default) msvc_dep_prefix = Note: including file:
+2025-04-15T06:43:12.5207830Z (default) namespace = 
+2025-04-15T06:43:12.5208036Z (default) path = 
+2025-04-15T06:43:12.5208254Z (default) pch_external_checksum = false
+2025-04-15T06:43:12.5208639Z (default) prefix_command = 
+2025-04-15T06:43:12.5208878Z (default) prefix_command_cpp = 
+2025-04-15T06:43:12.5209108Z (default) read_only = false
+2025-04-15T06:43:12.5209343Z (default) read_only_direct = false
+2025-04-15T06:43:12.5209583Z (default) recache = false
+2025-04-15T06:43:12.5209899Z (default) remote_only = false
+2025-04-15T06:43:12.5210138Z (default) remote_storage = 
+2025-04-15T06:43:12.5210360Z (default) reshare = false
+2025-04-15T06:43:12.5210583Z (default) run_second_cpp = true
+2025-04-15T06:43:12.5210814Z (default) sloppiness = 
+2025-04-15T06:43:12.5211116Z (default) stats = true
+2025-04-15T06:43:12.5211316Z (default) stats_log = 
+2025-04-15T06:43:12.5211569Z (default) temporary_dir = /run/user/1001/ccache-tmp
+2025-04-15T06:43:12.5211849Z (default) umask = 
+2025-04-15T06:43:12.5217932Z [command]/usr/bin/sh -xc ccache -z
+2025-04-15T06:43:12.5242334Z + ccache -z
+2025-04-15T06:43:12.5747745Z Statistics zeroed
+2025-04-15T06:43:12.5753959Z ##[endgroup]

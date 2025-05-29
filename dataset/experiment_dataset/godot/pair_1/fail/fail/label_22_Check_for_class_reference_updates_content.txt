@@ -1,0 +1,59 @@
+##[group]Run echo "Running --doctool to see if this changes the public API without updating the documentation."
+[36;1mecho "Running --doctool to see if this changes the public API without updating the documentation."[0m
+[36;1mecho -e "If a diff is shown, it means that your code/doc changes are incomplete and you should update the class reference with --doctool.\n\n"[0m
+[36;1m./bin/godot.linuxbsd.editor.x86_64.mono --doctool --headless 2>&1 > /dev/null || true[0m
+[36;1mgit diff --color --exit-code && ! git ls-files --others --exclude-standard | sed -e 's/^/New doc file missing in PR: /' | grep 'xml$'[0m
+0
+
+GODOT_CPP_BRANCH: 4.4
+SCONSFLAGS: verbose=yes warnings=extra werror=yes module_text_server_fb_enabled=yes strict_checks=yes "accesskit_sdk_path=/home/runner/work/godot/godot/accesskit-c-0.15.1/"
+DOTNET_NOLOGO: true
+DOTNET_CLI_TELEMETRY_OPTOUT: true
+TSAN_OPTIONS: suppressions=/home/runner/work/godot/godot/misc/error_suppressions/tsan.txt
+UBSAN_OPTIONS: suppressions=/home/runner/work/godot/godot/misc/error_suppressions/ubsan.txt
+CACHE_TIMESTAMP: 1744706237
+3 13 2
+3 13 2
+3 13 2
+Python2 3 13 2
+Python3 3 13 2
+3 13 2
+DOTNET_ROOT: /usr/share/dotnet
+##[endgroup]
+Running --doctool to see if this changes the public API without updating the documentation.
+If a diff is shown, it means that your code/doc changes are incomplete and you should update the class reference with --doctool.
+2025-04-15T08:42:42.6453070Z
+2025-04-15T08:42:42.6453083Z
+ERROR: EditorSettings not instantiated yet.
+at: _EDITOR_DEF (editor/editor_settings.cpp:1501)
+[1mdiff --git a/doc/classes/Object.xml b/doc/classes/Object.xml[m
+[1mindex f2650a1..74d7479 100644[m
+[1m--- a/doc/classes/Object.xml[m
+[1m+++ b/doc/classes/Object.xml[m
+[36m@@ -186,25 +186,6 @@[m
+[b]Note:[/b] If the object's script is not [annotation @GDScript.@tool], this method will not be called in the editor.[m
+</description>[m
+</method>[m
+[31m-		<method name="_get_property_warning" qualifiers="virtual">[m
+[31m-			<return type="String" />[m
+[31m-			<param index="0" name="property" type="StringName" />[m
+[31m-			<description>[m
+[31m-				Override this method to customize warning messages for properties in the inspector.[m
+[31m-				Should return the given [param property]'s warning to be displayed as warnings in the inspector if the script that overrides it is a [code]tool[/code] script.[m
+[31m-				Returning an empty string produces no warnings.[m
+[31m-				[codeblock][m
+[31m-				@export var energy = 0[m
+[31m-[m
+[31m-				func _get_property_warning(property):[m
+[31m-				    if property == "energy" and energy &lt; 0:[m
+[31m-				        return "Energy must be 0 or greater."[m
+[31m-				    else:[m
+[31m-				        return ""[m
+[31m-				[/codeblock][m
+[31m-				[b]Note:[/b] If the object's script is not [annotation @GDScript.@tool], this method will not be called in the editor.[m
+[31m-			</description>[m
+[31m-		</method>[m
+<method name="_init" qualifiers="virtual">[m
+<return type="void" />[m
+<description>[m
+##[error]Process completed with exit code 1.

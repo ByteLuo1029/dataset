@@ -1,0 +1,79 @@
+2025-04-15T06:06:54.4726964Z ##[group]Run actions/checkout@v4
+2025-04-15T06:06:54.4727904Z with:
+2025-04-15T06:06:54.4728277Z   ref: 3.3
+2025-04-15T06:06:54.4728640Z   path: ./dubbo
+2025-04-15T06:06:54.4729047Z   repository: apache/dubbo
+2025-04-15T06:06:54.4729667Z   token: ***
+2025-04-15T06:06:54.4730055Z   ssh-strict: true
+2025-04-15T06:06:54.4730464Z   ssh-user: git
+2025-04-15T06:06:54.4730875Z   persist-credentials: true
+2025-04-15T06:06:54.4731323Z   clean: true
+2025-04-15T06:06:54.4731730Z   sparse-checkout-cone-mode: true
+2025-04-15T06:06:54.4732213Z   fetch-depth: 1
+2025-04-15T06:06:54.4732629Z   fetch-tags: false
+2025-04-15T06:06:54.4733026Z   show-progress: true
+2025-04-15T06:06:54.4733432Z   lfs: false
+2025-04-15T06:06:54.4733808Z   submodules: false
+2025-04-15T06:06:54.4734208Z   set-safe-directory: true
+2025-04-15T06:06:54.4734846Z env:
+2025-04-15T06:06:54.4735210Z   FORK_COUNT: 2
+2025-04-15T06:06:54.4735604Z   FAIL_FAST: 0
+2025-04-15T06:06:54.4735990Z   SHOW_ERROR_DETAIL: 1
+2025-04-15T06:06:54.4736389Z   VERSIONS_LIMIT: 4
+2025-04-15T06:06:54.4737062Z   ALL_REMOTE_VERSION: true
+2025-04-15T06:06:54.4737698Z   CANDIDATE_VERSIONS:  spring.version:5.3.24; spring-boot.version:2.7.6; 
+2025-04-15T06:06:54.4738367Z ##[endgroup]
+2025-04-15T06:06:54.6664623Z Syncing repository: apache/dubbo
+2025-04-15T06:06:54.6666299Z ##[group]Getting Git version info
+2025-04-15T06:06:54.6667228Z Working directory is '/home/runner/work/dubbo/dubbo/dubbo'
+2025-04-15T06:06:54.6668167Z [command]/usr/bin/git version
+2025-04-15T06:06:54.6738474Z git version 2.49.0
+2025-04-15T06:06:54.6766849Z ##[endgroup]
+2025-04-15T06:06:54.6785629Z Temporarily overriding HOME='/home/runner/work/_temp/66090f6f-83d2-4537-ac8f-6dee52a0ee80' before making global git config changes
+2025-04-15T06:06:54.6787982Z Adding repository directory to the temporary git global config as a safe directory
+2025-04-15T06:06:54.6790891Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/dubbo/dubbo/dubbo
+2025-04-15T06:06:54.6824900Z ##[group]Initializing the repository
+2025-04-15T06:06:54.6829825Z [command]/usr/bin/git init /home/runner/work/dubbo/dubbo/dubbo
+2025-04-15T06:06:54.6916205Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-04-15T06:06:54.6917810Z hint: is subject to change. To configure the initial branch name to use in all
+2025-04-15T06:06:54.6918770Z hint: of your new repositories, which will suppress this warning, call:
+2025-04-15T06:06:54.6919798Z hint:
+2025-04-15T06:06:54.6920612Z hint: 	git config --global init.defaultBranch <name>
+2025-04-15T06:06:54.6921604Z hint:
+2025-04-15T06:06:54.6922537Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-04-15T06:06:54.6923988Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-04-15T06:06:54.6924849Z hint:
+2025-04-15T06:06:54.6925231Z hint: 	git branch -m <name>
+2025-04-15T06:06:54.6925954Z Initialized empty Git repository in /home/runner/work/dubbo/dubbo/dubbo/.git/
+2025-04-15T06:06:54.6933334Z [command]/usr/bin/git remote add origin https://github.com/apache/dubbo
+2025-04-15T06:06:54.6965161Z ##[endgroup]
+2025-04-15T06:06:54.6965893Z ##[group]Disabling automatic garbage collection
+2025-04-15T06:06:54.6969950Z [command]/usr/bin/git config --local gc.auto 0
+2025-04-15T06:06:54.6998649Z ##[endgroup]
+2025-04-15T06:06:54.6999712Z ##[group]Setting up auth
+2025-04-15T06:06:54.7004506Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-04-15T06:06:54.7032791Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-04-15T06:06:54.7329529Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-15T06:06:54.7359933Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-04-15T06:06:54.7590192Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-04-15T06:06:54.7638146Z ##[endgroup]
+2025-04-15T06:06:54.7639332Z ##[group]Fetching the repository
+2025-04-15T06:06:54.7646570Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +refs/heads/3.3*:refs/remotes/origin/3.3* +refs/tags/3.3*:refs/tags/3.3*
+2025-04-15T06:06:57.0214896Z From https://github.com/apache/dubbo
+2025-04-15T06:06:57.0217083Z  * [new branch]      3.3                     -> origin/3.3
+2025-04-15T06:06:57.0219188Z  * [new branch]      3.3-config-api-refactor -> origin/3.3-config-api-refactor
+2025-04-15T06:06:57.0220584Z  * [new branch]      3.3-dev-xds             -> origin/3.3-dev-xds
+2025-04-15T06:06:57.0246909Z ##[endgroup]
+2025-04-15T06:06:57.0248112Z ##[group]Determining the checkout info
+2025-04-15T06:06:57.0253803Z [command]/usr/bin/git branch --list --remote origin/3.3
+2025-04-15T06:06:57.0277201Z   origin/3.3
+2025-04-15T06:06:57.0282845Z ##[endgroup]
+2025-04-15T06:06:57.0287859Z [command]/usr/bin/git sparse-checkout disable
+2025-04-15T06:06:57.0331982Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-04-15T06:06:57.0358759Z ##[group]Checking out the ref
+2025-04-15T06:06:57.0361941Z [command]/usr/bin/git checkout --progress --force -B 3.3 refs/remotes/origin/3.3
+2025-04-15T06:06:57.3538422Z Switched to a new branch '3.3'
+2025-04-15T06:06:57.3541532Z branch '3.3' set up to track 'origin/3.3'.
+2025-04-15T06:06:57.3558337Z ##[endgroup]
+2025-04-15T06:06:57.3598668Z [command]/usr/bin/git log -1 --format=%H
+2025-04-15T06:06:57.3621478Z 93cfa825ea37374194458b2a480c64e9e070f5a5

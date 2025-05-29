@@ -1,0 +1,68 @@
+Post job cleanup.
+[harden-runner] post-step
+log:
+Thu, 27 Mar 2025 19:40:51 GMT:read config
+&{Repo:nvm-sh/nvm CorrelationId:6fe86a0f-bc7b-40cd-906b-a430158a1331 RunId:14115317373 WorkingDirectory:/home/runner/work/nvm/nvm APIURL:https://agent.api.stepsecurity.io/v1 OneTimeKey: Endpoints:map[95s5acprodeus1file6.blob.core.windows.net.:[{domainName:95s5acprodeus1file6.blob.core.windows.net. port:443}] api.github.com.:[{domainName:api.github.com. port:443}]] EgressPolicy:block DisableTelemetry:false DisableSudo:false DisableFileMonitoring:false Private:false}
+2025-03-27T19:40:54.1569572Z
+Thu, 27 Mar 2025 19:40:51 GMT:Step Security Job Correlation ID: 6fe86a0f-bc7b-40cd-906b-a430158a1331
+2025-03-27T19:40:54.1570388Z
+Thu, 27 Mar 2025 19:40:51 GMT:started process monitor
+2025-03-27T19:40:54.1570872Z
+Thu, 27 Mar 2025 19:40:51 GMT:Monitor Processes called
+Thu, 27 Mar 2025 19:40:51 GMT:NewAuditClient created
+Thu, 27 Mar 2025 19:40:51 GMT:Status is enabled
+Thu, 27 Mar 2025 19:40:51 GMT:Rules deleted
+Thu, 27 Mar 2025 19:40:51 GMT:File monitor added for /home/runner/work/nvm/nvm
+Thu, 27 Mar 2025 19:40:51 GMT:Agent file monitor added
+Thu, 27 Mar 2025 19:40:51 GMT:Docker's daemon.json file monitor added
+Thu, 27 Mar 2025 19:40:51 GMT:Systemd's resolved.conf file monitor added
+Thu, 27 Mar 2025 19:40:51 GMT:Net monitor added
+Thu, 27 Mar 2025 19:40:51 GMT:Process monitor added
+Thu, 27 Mar 2025 19:40:51 GMT:receive called
+2025-03-27T19:40:54.1575317Z
+Thu, 27 Mar 2025 19:40:51 GMT:domain resolved: agent.api.stepsecurity.io., ip address: 52.43.214.70, TTL: 58
+Thu, 27 Mar 2025 19:40:51 GMT:domain resolved: api.github.com., ip address: 140.82.112.6, TTL: 60
+Thu, 27 Mar 2025 19:40:51 GMT:domain resolved: 95s5acprodeus1file6.blob.core.windows.net., ip address: 20.209.74.193, TTL: 44
+Thu, 27 Mar 2025 19:40:51 GMT:domain resolved: codeload.github.com., ip address: 140.82.112.10, TTL: 60
+Thu, 27 Mar 2025 19:40:51 GMT:domain resolved: actions-results-receiver-production.githubapp.com., ip address: 140.82.112.24, TTL: 30
+2025-03-27T19:40:54.1578931Z
+Thu, 27 Mar 2025 19:40:51 GMT:updated resolved
+2025-03-27T19:40:54.1579249Z
+Thu, 27 Mar 2025 19:40:52 GMT:set docker config
+2025-03-27T19:40:54.1579533Z
+2025-03-27T19:40:54.1579540Z
+Thu, 27 Mar 2025 19:40:52 GMT:Allowed domains:map[95s5acprodeus1file6.blob.core.windows.net.:[{95s5acprodeus1file6.blob.core.windows.net. 443}] api.github.com.:[{api.github.com. 443}]]
+2025-03-27T19:40:54.1580645Z
+Thu, 27 Mar 2025 19:40:52 GMT:done
+Thu, 27 Mar 2025 19:40:52 GMT:domain resolved: results-receiver.actions.githubusercontent.com., ip address: 140.82.114.21, TTL: 30
+Thu, 27 Mar 2025 19:40:52 GMT:endpoint called ip address:port 140.82.112.6:443, domain: api.github.com., pid: 2177, process: node
+2025-03-27T19:40:54.1582369Z
+Thu, 27 Mar 2025 19:40:53 GMT:post_event called
+2025-03-27T19:40:54.1582675Z
+status:
+Initialized
+agent.service log:
+Mar 27 19:40:51 fv-az1276-893 systemd[1]: /etc/systemd/system/agent.service:9: Standard output type syslog is obsolete, automatically updating to journal. Please update your unit file, and consider removing the setting altogether.
+Mar 27 19:40:51 fv-az1276-893 systemd[1]: /etc/systemd/system/agent.service:10: Standard output type syslog is obsolete, automatically updating to journal. Please update your unit file, and consider removing the setting altogether.
+Mar 27 19:40:51 fv-az1276-893 systemd[1]: Started agent.service - Agent.
+Mar 27 19:40:51 fv-az1276-893 sudo[1886]:     root : *** ; USER=root ; COMMAND=/usr/bin/systemctl stop systemd-resolved
+Mar 27 19:40:51 fv-az1276-893 sudo[1886]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=0)
+Mar 27 19:40:51 fv-az1276-893 sudo[1886]: pam_unix(sudo:session): session closed for user root
+Mar 27 19:40:51 fv-az1276-893 sudo[1892]:     root : *** ; USER=root ; COMMAND=/usr/bin/systemctl restart systemd-resolved
+Mar 27 19:40:51 fv-az1276-893 sudo[1892]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=0)
+Mar 27 19:40:51 fv-az1276-893 sudo[1892]: pam_unix(sudo:session): session closed for user root
+Mar 27 19:40:51 fv-az1276-893 sudo[1897]:     root : *** ; USER=root ; COMMAND=/usr/bin/resolvectl flush-caches
+Mar 27 19:40:51 fv-az1276-893 sudo[1897]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=0)
+Mar 27 19:40:51 fv-az1276-893 sudo[1897]: pam_unix(sudo:session): session closed for user root
+Mar 27 19:40:51 fv-az1276-893 sudo[1900]:     root : *** ; USER=root ; COMMAND=/usr/bin/systemctl reload docker
+Mar 27 19:40:51 fv-az1276-893 sudo[1900]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=0)
+Mar 27 19:40:51 fv-az1276-893 sudo[1900]: pam_unix(sudo:session): session closed for user root
+Mar 27 19:40:51 fv-az1276-893 sudo[1908]:     root : *** ; USER=root ; COMMAND=/usr/bin/systemctl daemon-reload
+Mar 27 19:40:51 fv-az1276-893 sudo[1908]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=0)
+Mar 27 19:40:51 fv-az1276-893 systemd[1]: /etc/systemd/system/agent.service:9: Standard output type syslog is obsolete, automatically updating to journal. Please update your unit file, and consider removing the setting altogether.
+Mar 27 19:40:51 fv-az1276-893 systemd[1]: /etc/systemd/system/agent.service:10: Standard output type syslog is obsolete, automatically updating to journal. Please update your unit file, and consider removing the setting altogether.
+Mar 27 19:40:51 fv-az1276-893 sudo[1908]: pam_unix(sudo:session): session closed for user root
+Mar 27 19:40:51 fv-az1276-893 sudo[1976]:     root : *** ; USER=root ; COMMAND=/usr/bin/systemctl restart docker
+Mar 27 19:40:51 fv-az1276-893 sudo[1976]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=0)
+Mar 27 19:40:52 fv-az1276-893 sudo[1976]: pam_unix(sudo:session): session closed for user root
+2025-03-27T19:40:54.1745560Z

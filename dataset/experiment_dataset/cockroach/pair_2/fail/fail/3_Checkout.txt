@@ -1,0 +1,101 @@
+2025-04-15T10:06:21.8452900Z ##[group]Run actions/checkout@v4
+2025-04-15T10:06:21.8453593Z with:
+2025-04-15T10:06:21.8454022Z   repository: cockroachdb/cockroach
+2025-04-15T10:06:21.8455040Z   token: ***
+2025-04-15T10:06:21.8455560Z   ssh-strict: true
+2025-04-15T10:06:21.8456097Z   ssh-user: git
+2025-04-15T10:06:21.8456642Z   persist-credentials: true
+2025-04-15T10:06:21.8457280Z   clean: true
+2025-04-15T10:06:21.8457780Z   sparse-checkout-cone-mode: true
+2025-04-15T10:06:21.8458370Z   fetch-depth: 1
+2025-04-15T10:06:21.8458902Z   fetch-tags: false
+2025-04-15T10:06:21.8459439Z   show-progress: true
+2025-04-15T10:06:21.8460004Z   lfs: false
+2025-04-15T10:06:21.8460506Z   submodules: false
+2025-04-15T10:06:21.8461082Z   set-safe-directory: true
+2025-04-15T10:06:21.8461652Z env:
+2025-04-15T10:06:21.8462142Z   HEAD: 2925d81638ee8ab0e18f280a19322fe46ab9d0d4
+2025-04-15T10:06:21.8462984Z   BUCKET: cockroach-microbench-ci
+2025-04-15T10:06:21.8463725Z   PACKAGE: pkg/sql/tests
+2025-04-15T10:06:21.8464308Z ##[endgroup]
+2025-04-15T10:06:22.1877722Z Syncing repository: cockroachdb/cockroach
+2025-04-15T10:06:22.1879646Z ##[group]Getting Git version info
+2025-04-15T10:06:22.1880479Z Working directory is '/github-actions-runner/_work/cockroach/cockroach'
+2025-04-15T10:06:22.1881318Z [command]/usr/bin/git version
+2025-04-15T10:06:22.2047675Z git version 2.45.2
+2025-04-15T10:06:22.2077143Z ##[endgroup]
+2025-04-15T10:06:22.2116963Z Temporarily overriding HOME='/github-actions-runner/_work/_temp/05d44a81-8ac7-481c-8099-0fed439fedb0' before making global git config changes
+2025-04-15T10:06:22.2129394Z Adding repository directory to the temporary git global config as a safe directory
+2025-04-15T10:06:22.2131566Z [command]/usr/bin/git config --global --add safe.directory /github-actions-runner/_work/cockroach/cockroach
+2025-04-15T10:06:22.2176791Z Deleting the contents of '/github-actions-runner/_work/cockroach/cockroach'
+2025-04-15T10:06:22.2181269Z ##[group]Initializing the repository
+2025-04-15T10:06:22.2186535Z [command]/usr/bin/git init /github-actions-runner/_work/cockroach/cockroach
+2025-04-15T10:06:22.2279200Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-04-15T10:06:22.2280862Z hint: is subject to change. To configure the initial branch name to use in all
+2025-04-15T10:06:22.2282252Z hint: of your new repositories, which will suppress this warning, call:
+2025-04-15T10:06:22.2283291Z hint:
+2025-04-15T10:06:22.2284055Z hint: 	git config --global init.defaultBranch <name>
+2025-04-15T10:06:22.2284766Z hint:
+2025-04-15T10:06:22.2285683Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-04-15T10:06:22.2287240Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-04-15T10:06:22.2288499Z hint:
+2025-04-15T10:06:22.2289417Z hint: 	git branch -m <name>
+2025-04-15T10:06:22.2290632Z Initialized empty Git repository in /github-actions-runner/_work/cockroach/cockroach/.git/
+2025-04-15T10:06:22.2304967Z [command]/usr/bin/git remote add origin https://github.com/cockroachdb/cockroach
+2025-04-15T10:06:22.2344254Z ##[endgroup]
+2025-04-15T10:06:22.2345366Z ##[group]Disabling automatic garbage collection
+2025-04-15T10:06:22.2349062Z [command]/usr/bin/git config --local gc.auto 0
+2025-04-15T10:06:22.2380186Z ##[endgroup]
+2025-04-15T10:06:22.2381245Z ##[group]Setting up auth
+2025-04-15T10:06:22.2389594Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-04-15T10:06:22.2425307Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-04-15T10:06:22.2847387Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-15T10:06:22.2932736Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-04-15T10:06:22.3081958Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-04-15T10:06:22.3115842Z ##[endgroup]
+2025-04-15T10:06:22.3117147Z ##[group]Fetching the repository
+2025-04-15T10:06:22.3129153Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +ae06933291bb0474a1b0fcef29b81720d99c5165:refs/remotes/origin/master
+2025-04-15T10:06:34.1615087Z From https://github.com/cockroachdb/cockroach
+2025-04-15T10:06:34.1616582Z  * [new ref]           ae06933291bb0474a1b0fcef29b81720d99c5165 -> origin/master
+2025-04-15T10:06:34.1636838Z ##[endgroup]
+2025-04-15T10:06:34.1637882Z ##[group]Determining the checkout info
+2025-04-15T10:06:34.1639414Z ##[endgroup]
+2025-04-15T10:06:34.1645991Z [command]/usr/bin/git sparse-checkout disable
+2025-04-15T10:06:34.1692208Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-04-15T10:06:34.1715243Z ##[group]Checking out the ref
+2025-04-15T10:06:34.1720020Z [command]/usr/bin/git checkout --progress --force -B master refs/remotes/origin/master
+2025-04-15T10:06:35.1943787Z Updating files:  72% (13311/18405)
+2025-04-15T10:06:35.2061256Z Updating files:  73% (13436/18405)
+2025-04-15T10:06:35.2144489Z Updating files:  74% (13620/18405)
+2025-04-15T10:06:35.2191264Z Updating files:  75% (13804/18405)
+2025-04-15T10:06:35.2260426Z Updating files:  76% (13988/18405)
+2025-04-15T10:06:35.2349781Z Updating files:  77% (14172/18405)
+2025-04-15T10:06:35.2449166Z Updating files:  78% (14356/18405)
+2025-04-15T10:06:35.2608274Z Updating files:  79% (14540/18405)
+2025-04-15T10:06:35.3916538Z Updating files:  80% (14724/18405)
+2025-04-15T10:06:35.3996728Z Updating files:  81% (14909/18405)
+2025-04-15T10:06:35.4074554Z Updating files:  82% (15093/18405)
+2025-04-15T10:06:35.4174300Z Updating files:  83% (15277/18405)
+2025-04-15T10:06:35.4283060Z Updating files:  84% (15461/18405)
+2025-04-15T10:06:35.4346829Z Updating files:  85% (15645/18405)
+2025-04-15T10:06:35.4412679Z Updating files:  86% (15829/18405)
+2025-04-15T10:06:35.4476038Z Updating files:  87% (16013/18405)
+2025-04-15T10:06:35.4635600Z Updating files:  88% (16197/18405)
+2025-04-15T10:06:35.4693139Z Updating files:  89% (16381/18405)
+2025-04-15T10:06:35.4776341Z Updating files:  90% (16565/18405)
+2025-04-15T10:06:35.4846891Z Updating files:  91% (16749/18405)
+2025-04-15T10:06:35.4940801Z Updating files:  92% (16933/18405)
+2025-04-15T10:06:35.5008766Z Updating files:  93% (17117/18405)
+2025-04-15T10:06:35.5060293Z Updating files:  94% (17301/18405)
+2025-04-15T10:06:35.5148942Z Updating files:  95% (17485/18405)
+2025-04-15T10:06:35.5253381Z Updating files:  96% (17669/18405)
+2025-04-15T10:06:35.5341553Z Updating files:  97% (17853/18405)
+2025-04-15T10:06:35.5576248Z Updating files:  98% (18037/18405)
+2025-04-15T10:06:35.5665635Z Updating files:  99% (18221/18405)
+2025-04-15T10:06:35.5666115Z Updating files: 100% (18405/18405)
+2025-04-15T10:06:35.5666510Z Updating files: 100% (18405/18405), done.
+2025-04-15T10:06:35.5915808Z Reset branch 'master'
+2025-04-15T10:06:35.5917351Z branch 'master' set up to track 'origin/master'.
+2025-04-15T10:06:35.5972658Z ##[endgroup]
+2025-04-15T10:06:35.6010392Z [command]/usr/bin/git log -1 --format=%H
+2025-04-15T10:06:35.6030805Z ae06933291bb0474a1b0fcef29b81720d99c5165

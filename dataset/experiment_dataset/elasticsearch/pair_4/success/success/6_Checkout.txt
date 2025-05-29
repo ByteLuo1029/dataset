@@ -1,0 +1,153 @@
+2025-04-14T23:02:42.7659393Z ##[group]Run actions/checkout@v4
+2025-04-14T23:02:42.7659683Z with:
+2025-04-14T23:02:42.7659899Z   ref: def4c5140551be80852bd3c968f74ffb2f3738f2
+2025-04-14T23:02:42.7660193Z   persist-credentials: false
+2025-04-14T23:02:42.7660442Z   repository: elastic/elasticsearch
+2025-04-14T23:02:42.7660805Z   token: ***
+2025-04-14T23:02:42.7660993Z   ssh-strict: true
+2025-04-14T23:02:42.7661176Z   ssh-user: git
+2025-04-14T23:02:42.7661353Z   clean: true
+2025-04-14T23:02:42.7661553Z   sparse-checkout-cone-mode: true
+2025-04-14T23:02:42.7661795Z   fetch-depth: 1
+2025-04-14T23:02:42.7662005Z   fetch-tags: false
+2025-04-14T23:02:42.7662198Z   show-progress: true
+2025-04-14T23:02:42.7662392Z   lfs: false
+2025-04-14T23:02:42.7662567Z   submodules: false
+2025-04-14T23:02:42.7662761Z   set-safe-directory: true
+2025-04-14T23:02:42.7662969Z env:
+2025-04-14T23:02:42.7663393Z   GITHUB_PR_REF_NAME: ml-support-timeout-put-inference
+2025-04-14T23:02:42.7663685Z ##[endgroup]
+2025-04-14T23:02:42.8687541Z Syncing repository: elastic/elasticsearch
+2025-04-14T23:02:42.8688429Z ##[group]Getting Git version info
+2025-04-14T23:02:42.8688937Z Working directory is '/home/runner/work/elasticsearch/elasticsearch'
+2025-04-14T23:02:42.8689481Z [command]/usr/bin/git version
+2025-04-14T23:02:42.8711034Z git version 2.49.0
+2025-04-14T23:02:42.8737499Z ##[endgroup]
+2025-04-14T23:02:42.8750871Z Temporarily overriding HOME='/home/runner/work/_temp/09e40186-1b9b-4836-b0b1-1f3a40548132' before making global git config changes
+2025-04-14T23:02:42.8751753Z Adding repository directory to the temporary git global config as a safe directory
+2025-04-14T23:02:42.8756566Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/elasticsearch/elasticsearch
+2025-04-14T23:02:42.8797361Z Deleting the contents of '/home/runner/work/elasticsearch/elasticsearch'
+2025-04-14T23:02:42.8801081Z ##[group]Initializing the repository
+2025-04-14T23:02:42.8806045Z [command]/usr/bin/git init /home/runner/work/elasticsearch/elasticsearch
+2025-04-14T23:02:42.8885010Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-04-14T23:02:42.8885818Z hint: is subject to change. To configure the initial branch name to use in all
+2025-04-14T23:02:42.8886641Z hint: of your new repositories, which will suppress this warning, call:
+2025-04-14T23:02:42.8887209Z hint:
+2025-04-14T23:02:42.8887591Z hint: 	git config --global init.defaultBranch <name>
+2025-04-14T23:02:42.8888020Z hint:
+2025-04-14T23:02:42.8888457Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-04-14T23:02:42.8889468Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-04-14T23:02:42.8889824Z hint:
+2025-04-14T23:02:42.8890014Z hint: 	git branch -m <name>
+2025-04-14T23:02:42.8892344Z Initialized empty Git repository in /home/runner/work/elasticsearch/elasticsearch/.git/
+2025-04-14T23:02:42.8904201Z [command]/usr/bin/git remote add origin https://github.com/elastic/elasticsearch
+2025-04-14T23:02:42.8940205Z ##[endgroup]
+2025-04-14T23:02:42.8940768Z ##[group]Disabling automatic garbage collection
+2025-04-14T23:02:42.8944917Z [command]/usr/bin/git config --local gc.auto 0
+2025-04-14T23:02:42.8972700Z ##[endgroup]
+2025-04-14T23:02:42.8973261Z ##[group]Setting up auth
+2025-04-14T23:02:42.8980260Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-04-14T23:02:42.9012696Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-04-14T23:02:42.9348251Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-14T23:02:42.9378284Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-04-14T23:02:42.9620625Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-04-14T23:02:42.9660390Z ##[endgroup]
+2025-04-14T23:02:42.9661004Z ##[group]Fetching the repository
+2025-04-14T23:02:42.9669396Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin def4c5140551be80852bd3c968f74ffb2f3738f2
+2025-04-14T23:02:55.7699196Z From https://github.com/elastic/elasticsearch
+2025-04-14T23:02:55.7699905Z  * branch              def4c5140551be80852bd3c968f74ffb2f3738f2 -> FETCH_HEAD
+2025-04-14T23:02:55.7730399Z ##[endgroup]
+2025-04-14T23:02:55.7731022Z ##[group]Determining the checkout info
+2025-04-14T23:02:55.7733495Z ##[endgroup]
+2025-04-14T23:02:55.7739833Z [command]/usr/bin/git sparse-checkout disable
+2025-04-14T23:02:55.7782957Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-04-14T23:02:55.7810874Z ##[group]Checking out the ref
+2025-04-14T23:02:55.7815366Z [command]/usr/bin/git checkout --progress --force def4c5140551be80852bd3c968f74ffb2f3738f2
+2025-04-14T23:02:56.8406112Z Updating files:  44% (14115/31927)
+2025-04-14T23:02:56.8640039Z Updating files:  45% (14368/31927)
+2025-04-14T23:02:56.8880531Z Updating files:  46% (14687/31927)
+2025-04-14T23:02:56.9104242Z Updating files:  47% (15006/31927)
+2025-04-14T23:02:56.9448597Z Updating files:  48% (15325/31927)
+2025-04-14T23:02:56.9747566Z Updating files:  49% (15645/31927)
+2025-04-14T23:02:56.9973765Z Updating files:  50% (15964/31927)
+2025-04-14T23:02:57.0207302Z Updating files:  51% (16283/31927)
+2025-04-14T23:02:57.0440773Z Updating files:  52% (16603/31927)
+2025-04-14T23:02:57.0672801Z Updating files:  53% (16922/31927)
+2025-04-14T23:02:57.0866514Z Updating files:  54% (17241/31927)
+2025-04-14T23:02:57.1069062Z Updating files:  55% (17560/31927)
+2025-04-14T23:02:57.1228563Z Updating files:  56% (17880/31927)
+2025-04-14T23:02:57.1430872Z Updating files:  57% (18199/31927)
+2025-04-14T23:02:57.1634439Z Updating files:  58% (18518/31927)
+2025-04-14T23:02:57.1808295Z Updating files:  59% (18837/31927)
+2025-04-14T23:02:57.2035612Z Updating files:  60% (19157/31927)
+2025-04-14T23:02:57.2176662Z Updating files:  61% (19476/31927)
+2025-04-14T23:02:57.2418132Z Updating files:  62% (19795/31927)
+2025-04-14T23:02:57.2574471Z Updating files:  63% (20115/31927)
+2025-04-14T23:02:57.2763411Z Updating files:  64% (20434/31927)
+2025-04-14T23:02:57.2975995Z Updating files:  65% (20753/31927)
+2025-04-14T23:02:57.3187078Z Updating files:  66% (21072/31927)
+2025-04-14T23:02:57.3341890Z Updating files:  67% (21392/31927)
+2025-04-14T23:02:57.3524653Z Updating files:  68% (21711/31927)
+2025-04-14T23:02:57.3786048Z Updating files:  69% (22030/31927)
+2025-04-14T23:02:57.3923760Z Updating files:  70% (22349/31927)
+2025-04-14T23:02:57.4100033Z Updating files:  71% (22669/31927)
+2025-04-14T23:02:57.4299405Z Updating files:  72% (22988/31927)
+2025-04-14T23:02:57.4460626Z Updating files:  73% (23307/31927)
+2025-04-14T23:02:57.4662107Z Updating files:  74% (23626/31927)
+2025-04-14T23:02:57.4909308Z Updating files:  75% (23946/31927)
+2025-04-14T23:02:57.5911028Z Updating files:  76% (24265/31927)
+2025-04-14T23:02:57.6067555Z Updating files:  77% (24584/31927)
+2025-04-14T23:02:57.6280123Z Updating files:  78% (24904/31927)
+2025-04-14T23:02:57.6536515Z Updating files:  79% (25223/31927)
+2025-04-14T23:02:57.6822204Z Updating files:  80% (25542/31927)
+2025-04-14T23:02:57.7037982Z Updating files:  81% (25861/31927)
+2025-04-14T23:02:57.7308587Z Updating files:  82% (26181/31927)
+2025-04-14T23:02:57.7536805Z Updating files:  83% (26500/31927)
+2025-04-14T23:02:57.7789825Z Updating files:  84% (26819/31927)
+2025-04-14T23:02:57.7959568Z Updating files:  85% (27138/31927)
+2025-04-14T23:02:57.8217552Z Updating files:  86% (27458/31927)
+2025-04-14T23:02:57.8237592Z Updating files:  86% (27750/31927)
+2025-04-14T23:02:57.8516163Z Updating files:  87% (27777/31927)
+2025-04-14T23:02:57.8755840Z Updating files:  88% (28096/31927)
+2025-04-14T23:02:57.8988037Z Updating files:  89% (28416/31927)
+2025-04-14T23:02:57.9229312Z Updating files:  90% (28735/31927)
+2025-04-14T23:02:57.9491939Z Updating files:  91% (29054/31927)
+2025-04-14T23:02:57.9724308Z Updating files:  92% (29373/31927)
+2025-04-14T23:02:57.9905769Z Updating files:  93% (29693/31927)
+2025-04-14T23:02:58.0165207Z Updating files:  94% (30012/31927)
+2025-04-14T23:02:58.0384209Z Updating files:  95% (30331/31927)
+2025-04-14T23:02:58.0638604Z Updating files:  96% (30650/31927)
+2025-04-14T23:02:58.0871865Z Updating files:  97% (30970/31927)
+2025-04-14T23:02:58.1148441Z Updating files:  98% (31289/31927)
+2025-04-14T23:02:58.1399386Z Updating files:  99% (31608/31927)
+2025-04-14T23:02:58.1399891Z Updating files: 100% (31927/31927)
+2025-04-14T23:02:58.1400228Z Updating files: 100% (31927/31927), done.
+2025-04-14T23:02:58.1889916Z Note: switching to 'def4c5140551be80852bd3c968f74ffb2f3738f2'.
+2025-04-14T23:02:58.1890428Z 
+2025-04-14T23:02:58.1890898Z You are in 'detached HEAD' state. You can look around, make experimental
+2025-04-14T23:02:58.1891565Z changes and commit them, and you can discard any commits you make in this
+2025-04-14T23:02:58.1892338Z state without impacting any branches by switching back to a branch.
+2025-04-14T23:02:58.1892768Z 
+2025-04-14T23:02:58.1893318Z If you want to create a new branch to retain commits you create, you may
+2025-04-14T23:02:58.1894101Z do so (now or later) by using -c with the switch command. Example:
+2025-04-14T23:02:58.1894499Z 
+2025-04-14T23:02:58.1894666Z   git switch -c <new-branch-name>
+2025-04-14T23:02:58.1894984Z 
+2025-04-14T23:02:58.1895151Z Or undo this operation with:
+2025-04-14T23:02:58.1895444Z 
+2025-04-14T23:02:58.1895590Z   git switch -
+2025-04-14T23:02:58.1895803Z 
+2025-04-14T23:02:58.1896159Z Turn off this advice by setting config variable advice.detachedHead to false
+2025-04-14T23:02:58.1896629Z 
+2025-04-14T23:02:58.1896885Z HEAD is now at def4c514 Update docs/changelog/126805.yaml
+2025-04-14T23:02:58.1971977Z ##[endgroup]
+2025-04-14T23:02:58.2016836Z [command]/usr/bin/git log -1 --format=%H
+2025-04-14T23:02:58.2039638Z def4c5140551be80852bd3c968f74ffb2f3738f2
+2025-04-14T23:02:58.2050637Z ##[group]Removing auth
+2025-04-14T23:02:58.2055820Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-04-14T23:02:58.2086187Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-04-14T23:02:58.2361489Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-14T23:02:58.2383981Z http.https://github.com/.extraheader
+2025-04-14T23:02:58.2392894Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2025-04-14T23:02:58.2429162Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-04-14T23:02:58.2695219Z ##[endgroup]

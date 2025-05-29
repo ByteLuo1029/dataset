@@ -1,0 +1,176 @@
+Requested labels: ubuntu-latest
+Job defined at: langgenius/dify/.github/workflows/translate-i18n-base-on-english.yml@refs/heads/main
+Waiting for a runner to pick up this job...
+Job is waiting for a hosted runner to come online.
+Job is about to start running on the hosted runner: GitHub Actions 50 (hosted)
+Current runner version: '2.323.0'
+##[group]Operating System
+Ubuntu
+24.04.2
+LTS
+##[endgroup]
+##[group]Runner Image
+Image: ubuntu-24.04
+Version: 20250406.1.0
+Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250406.1/images/ubuntu/Ubuntu2404-Readme.md
+Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250406.1
+##[endgroup]
+##[group]Runner Image Provisioner
+2.0.422.1
+##[endgroup]
+##[group]GITHUB_TOKEN Permissions
+Actions: read
+Attestations: <:*:>
+Checks: <:*:>
+Contents: <:*:>
+Deployments: <:*:>
+Discussions: <:*:>
+Issues: <:*:>
+Metadata: read
+Models: read
+Packages: <:*:>
+Pages: <:*:>
+PullRequests: <:*:>
+RepositoryProjects: <:*:>
+SecurityEvents: <:*:>
+Statuses: <:*:>
+##[endgroup]
+Secret source: <:*:>
+Prepare workflow directory
+Prepare all required actions
+Getting action download info
+##[group]Download immutable action package <:*:>
+Version: 4.2.2
+Digest: sha256:<:SEQ:>
+Source commit SHA: <:SEQ:>
+##[endgroup]
+##[group]Download immutable action package <:*:>
+Version: 4.4.0
+Digest: sha256:<:SEQ:>
+Source commit SHA: <:SEQ:>
+##[endgroup]
+Download action repository <:*:> (SHA:<:SEQ:>)
+Complete job name: <:*:>
+##[group]Run <:*:>
+with:
+fetch-depth: <:NUM:>
+persist-credentials: <:*:>
+repository: <:*:>
+token: ***
+ssh-strict: true
+ssh-user: git
+clean: true
+sparse-checkout-cone-mode: true
+fetch-tags: false
+show-progress: true
+lfs: false
+submodules: <:*:>
+set-safe-directory: true
+##[endgroup]
+Syncing repository: <:*:>
+##[group]Getting Git version info
+Working directory is <:*:>
+[command]/usr/bin/git version
+git version <:NUM:>.<:NUM:>.<:NUM:>
+##[endgroup]
+Temporarily overriding HOME='/home/runner/work/_temp/c5c30244-25a0-49d8-b719-756b1f881a37' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+[command]/usr/bin/git config --global --add safe.directory /home/runner/work/dify/dify
+Deleting the contents of <:*:>
+##[group]Initializing the repository
+[command]/usr/bin/git init <:*:>
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint:
+hint: git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint: git branch -m <name>
+Initialized empty Git repository in <:*:>
+[command]/usr/bin/git remote add origin <:*:>
+##[endgroup]
+##[group]Disabling automatic garbage collection
+[command]/usr/bin/git config --local gc.auto 0
+##[endgroup]
+##[group]Setting up auth
+[command]/usr/bin/git config --local --name-only --get-regexp <:*:>
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp <:*:> && git config --local --unset-all <:*:> || :"
+[command]/usr/bin/git config --local --name-only --get-regexp <:*:>
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp <:*:> && git config --local --unset-all <:*:> || :"
+[command]/usr/bin/git config <:*:> http.https://github.com/.extraheader AUTHORIZATION: basic ***
+##[endgroup]
+##[group]Fetching the repository
+[command]/usr/bin/git -c protocol.version=<:NUM:> fetch <:*:> <:*:> <:*:> <:*:> <:*:> <:*:>
+From <:*:>
+* [new ref] <:SEQ:>-> <:*:>
+##[endgroup]
+##[group]Determining the checkout info
+##[endgroup]
+[command]/usr/bin/git sparse-checkout disable
+[command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+##[group]Checking out the ref
+[command]/usr/bin/git checkout --progress --force -B <:*:> <:*:>
+Switched to a new branch 'main'
+branch <:*:> set up to track <:*:>
+##[endgroup]
+[command]/usr/bin/git log <:NUM:> <:*:>
+<:SEQ:>
+##[group]Removing auth
+[command]/usr/bin/git config --local --name-only --get-regexp <:*:>
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp <:*:> && git config --local --unset-all <:*:> || :"
+[command]/usr/bin/git config --local --name-only --get-regexp <:*:>
+http.https://github.com/.extraheader
+[command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp <:*:> && git config --local --unset-all <:*:> || :"
+##[endgroup]
+##[group]Run recent_commit_sha=$(git rev-parse HEAD)
+[36;1mrecent_commit_sha=$(git rev-parse HEAD)[0m
+[36;1msecond_recent_commit_sha=$(git rev-parse HEAD~1)[0m
+[36;1mchanged_files=$(git diff --name-only $recent_commit_sha $second_recent_commit_sha -- 'i18n/en-US/*.ts')[0m
+[36;1mecho "Changed files: $changed_files"[0m
+[36;1mif [ -n "$changed_files" ]; then[0m
+[36;1m  echo "FILES_CHANGED=true" >> $GITHUB_ENV[0m
+[<:NUM:>;1melse[0m
+[36;1m  echo "FILES_CHANGED=false" >> $GITHUB_ENV[0m
+[<:NUM:>;1mfi[0m
+shell: /usr/bin/bash -e {<:NUM:>}
+##[endgroup]
+Changed files: web/i18n/en-US/common.ts
+##[group]Run <:*:>
+with:
+node-version: lts/*
+always-auth: false
+check-latest: false
+token: ***
+env:
+FILES_CHANGED: true
+##[endgroup]
+Attempt to resolve LTS alias from manifest...
+Found in cache @ /opt/hostedtoolcache/node/22.14.0/x64
+##[group]Environment details
+node: v22.14.0
+npm: 10.9.2
+yarn: 1.22.22
+##[endgroup]
+##[group]Run pnpm install --frozen-lockfile
+[36;1mpnpm install --frozen-lockfile[0m
+shell: /usr/bin/bash -e {<:NUM:>}
+env:
+FILES_CHANGED: true
+##[endgroup]
+/home/runner/work/_temp/3d952ebb-5393-4199-bd73-4e896f777572.sh: line 1: pnpm: command not found
+##[error]Process completed with exit code 127.
+Post job cleanup.
+[command]/usr/bin/git version
+git version <:NUM:>.<:NUM:>.<:NUM:>
+Temporarily overriding HOME='/home/runner/work/_temp/0c5f8813-2067-46a6-96ac-22c891dc5fdf' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+[command]/usr/bin/git config --global --add safe.directory /home/runner/work/dify/dify
+[command]/usr/bin/git config --local --name-only --get-regexp <:*:>
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp <:*:> && git config --local --unset-all <:*:> || :"
+[command]/usr/bin/git config --local --name-only --get-regexp <:*:>
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp <:*:> && git config --local --unset-all <:*:> || :"
+Cleaning up orphan processes

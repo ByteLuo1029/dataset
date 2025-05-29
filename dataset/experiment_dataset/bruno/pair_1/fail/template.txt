@@ -1,0 +1,492 @@
+'2.323.0'
+##[group]Operating System
+Ubuntu
+24.04.2
+LTS
+##[endgroup]
+##[group]Runner Image
+Image: ubuntu-24.04
+Version: 20250406.1.0
+Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250406.1/images/ubuntu/Ubuntu2404-Readme.md
+Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250406.1
+##[endgroup]
+##[group]Runner Image Provisioner
+2.0.422.1
+##[endgroup]
+##[group]GITHUB_TOKEN Permissions
+Contents: <:*:>
+Metadata: read
+##[endgroup]
+Secret source: <:*:>
+Prepare workflow directory
+Prepare all required actions
+Getting action download info
+##[group]Download immutable action package <:*:>
+Version: 4.2.2
+Digest: sha256:<:SEQ:>
+Source commit SHA: <:SEQ:>
+##[endgroup]
+##[group]Download immutable action package <:*:>
+Version: 4.4.0
+Digest: sha256:<:SEQ:>
+Source commit SHA: <:SEQ:>
+##[endgroup]
+Complete job name: Unit Tests
+##[group]Run <:*:>
+with:
+repository: <:*:>
+token: ***
+ssh-strict: true
+ssh-user: git
+persist-credentials: <:*:>
+clean: true
+sparse-checkout-cone-mode: true
+fetch-depth: <:NUM:>
+fetch-tags: false
+show-progress: true
+lfs: false
+submodules: <:*:>
+set-safe-directory: true
+##[endgroup]
+Syncing repository: <:*:>
+##[group]Getting Git version info
+Working directory is <:*:>
+[command]/usr/bin/git version
+git version <:NUM:>.<:NUM:>.<:NUM:>
+##[endgroup]
+Temporarily overriding HOME='/home/runner/work/_temp/d5fe4079-cd67-4f45-a95d-cf1f498e331f' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+[command]/usr/bin/git config --global --add safe.directory /home/runner/work/bruno/bruno
+Deleting the contents of <:*:>
+##[group]Initializing the repository
+[command]/usr/bin/git init <:*:>
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint:
+hint: git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint: git branch -m <name>
+Initialized empty Git repository in <:*:>
+[command]/usr/bin/git remote add origin <:*:>
+##[endgroup]
+##[group]Disabling automatic garbage collection
+[command]/usr/bin/git config --local gc.auto 0
+##[endgroup]
+##[group]Setting up auth
+[command]/usr/bin/git config --local --name-only --get-regexp <:*:>
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp <:*:> && git config --local --unset-all <:*:> || :"
+[command]/usr/bin/git config --local --name-only --get-regexp <:*:>
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp <:*:> && git config --local --unset-all <:*:> || :"
+[command]/usr/bin/git config <:*:> http.https://github.com/.extraheader AUTHORIZATION: basic ***
+##[endgroup]
+##[group]Fetching the repository
+[command]/usr/bin/git -c protocol.version=<:NUM:> fetch <:*:> <:*:> <:*:> <:*:> <:*:> <:*:>
+From <:*:>
+* [new ref] <:SEQ:>-> <:*:>
+##[endgroup]
+##[group]Determining the checkout info
+##[endgroup]
+[command]/usr/bin/git sparse-checkout disable
+[command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+##[group]Checking out the ref
+[command]/usr/bin/git checkout --progress --force refs/remotes/pull/<:NUM:>/merge
+Note: switching to 'refs/remotes/pull/<:NUM:>/merge'.
+2025-04-15T11:27:13.1133205Z
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+2025-04-15T11:27:13.1141675Z
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+2025-04-15T11:27:13.1146424Z
+git switch -c <new-branch-name>
+2025-04-15T11:27:13.1148028Z
+Or undo this operation with:
+2025-04-15T11:27:13.1149518Z
+git switch -
+2025-04-15T11:27:13.1150630Z
+Turn off this advice by setting config variable advice.detachedHead to false
+2025-04-15T11:27:13.1153291Z
+HEAD is now at <:*:> Merge <:SEQ:> into <:SEQ:>
+##[endgroup]
+[command]/usr/bin/git log <:NUM:> <:*:>
+<:SEQ:>
+##[group]Run <:*:>
+with:
+node-version-file: .nvmrc
+cache: npm
+cache-dependency-path: ./package-lock.json
+always-auth: false
+check-latest: false
+token: ***
+##[endgroup]
+Node version file is not JSON file
+Resolved .nvmrc as 22.11.0
+Attempting to download 22.11.0...
+Acquiring 22.11.0 - x64 from https://github.com/actions/node-versions/releases/download/22.11.0-11593095476/node-22.11.0-linux-x64.tar.gz
+Extracting ...
+[command]/usr/bin/tar xz --strip 1 --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/f01e351e-1b97-4a2a-af0e-86b90d9e6f90 -f /home/runner/work/_temp/6b0de20b-59f8-429a-bc41-634e04789973
+Adding to the cache ...
+##[group]Environment details
+node: v22.11.0
+npm: 10.9.0
+yarn: 1.22.22
+##[endgroup]
+[command]/opt/hostedtoolcache/node/22.11.0/x64/bin/npm config get cache
+/home/runner/.npm
+Cache hit for: node-cache-Linux-x64-npm-bf41a6c783f0c43632a6c56c56e20d13e9ee5eae87656d731a67dc3613b002ec
+Received 150994944 of 268073407 (56.3%), 143.7 MBs/sec
+Received 268073407 of 268073407 (100.0%), 164.1 MBs/sec
+Cache Size: ~256 MB (268073407 B)
+[command]/usr/bin/tar -xf /home/runner/work/_temp/98893803-ee8f-49fe-a0fc-3c85b998b720/cache.tzst -P -C /home/runner/work/bruno/bruno --use-compress-program unzstd
+Cache restored successfully
+Cache restored from key: node-cache-Linux-x64-npm-bf41a6c783f0c43632a6c56c56e20d13e9ee5eae87656d731a67dc3613b002ec
+##[group]Run npm ci --legacy-peer-deps
+[36;1mnpm ci --legacy-peer-deps[0m
+shell: /usr/bin/bash -e {<:NUM:>}
+##[endgroup]
+npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'httpsnippet@3.0.9',
+npm warn EBADENGINE   required: { node: '^14.19.1 || ^16.14.2 || ^18.0.0 || ^20.0.0' },
+npm warn EBADENGINE   current: { node: 'v22.11.0', npm: '10.9.0' }
+npm warn EBADENGINE }
+npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+npm warn deprecated stable@0.1.8: Modern JS already guarantees Array#sort() is a stable sort, so this library is deprecated. See the compatibility table on MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#browser_compatibility
+npm warn deprecated @npmcli/move-file@2.0.1: This functionality has been moved to @npmcli/fs
+npm warn deprecated npmlog@5.0.1: This package is no longer supported.
+npm warn deprecated npmlog@6.0.2: This package is no longer supported.
+npm warn deprecated rollup-plugin-terser@7.0.2: This package has been deprecated and is no longer maintained. Please use @rollup/plugin-terser
+npm warn deprecated har-validator@5.1.5: this library is no longer supported
+npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+npm warn deprecated are-we-there-yet@3.0.1: This package is no longer supported.
+npm warn deprecated are-we-there-yet@2.0.0: This package is no longer supported.
+npm warn deprecated glob@8.1.0: Glob versions prior to v9 are no longer supported
+npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+npm warn deprecated gauge@3.0.2: This package is no longer supported.
+npm warn deprecated boolean@3.2.0: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+npm warn deprecated gauge@4.0.4: This package is no longer supported.
+npm warn deprecated electron-notarize@1.2.2: Please use @electron/notarize moving forward.  There is no API change, just a package name change
+npm warn deprecated @faker-js/faker@9.5.1: Please update to a newer version
+2025-04-15T11:27:47.3815996Z
+> prepare
+> husky install
+2025-04-15T11:27:47.3817268Z
+husky - Git hooks installed
+2025-04-15T11:27:47.4756945Z
+added 1969 packages, and audited 1983 packages in 28s
+2025-04-15T11:27:47.4760749Z
+221 packages are looking for funding
+run `npm fund` for details
+2025-04-15T11:27:47.4886060Z
+4 vulnerabilities (2 moderate, 2 high)
+2025-04-15T11:27:47.4887110Z
+To address issues that do not require attention, run:
+npm audit fix
+2025-04-15T11:27:47.4888221Z
+To address all issues, run:
+npm audit fix --force
+2025-04-15T11:27:47.4889425Z
+Run `npm audit` for details.
+##[group]Run npm run build --workspace=packages/bruno-common
+[36;1mnpm run build --workspace=packages/bruno-common[0m
+[36;1mnpm run build --workspace=packages/bruno-query[0m
+[36;1mnpm run sandbox:bundle-libraries --workspace=packages/bruno-js[0m
+[36;1mnpm run build --workspace=packages/bruno-converters[0m
+[36;1mnpm run build --workspace=packages/bruno-requests[0m
+shell: /usr/bin/bash -e {<:NUM:>}
+##[endgroup]
+2025-04-15T11:27:47.7495559Z
+> @usebruno/common@0.1.0 prebuild
+> npm run clean
+2025-04-15T11:27:47.7496923Z
+2025-04-15T11:27:47.8883988Z
+> @usebruno/common@0.1.0 clean
+> rimraf dist
+2025-04-15T11:27:47.8885202Z
+2025-04-15T11:27:47.9512715Z
+> @usebruno/common@0.1.0 build
+> rollup -c
+2025-04-15T11:27:47.9513968Z
+[36m
+[1msrc/index.ts[22m → [1mdist/cjs/index.js, dist/esm/index.js[22m...[39m
+[1m[33m(!) Plugin typescript: @rollup/plugin-typescript TS2554: Expected 2-3 arguments, but got 1.[39m[22m
+[1msrc/interpolate/index.spec.ts: (362:20)[22m
+[90m
+[7m362[0m     const result = interpolate(inputString);
+[7m   [0m [91m                   ~~~~~~~~~~~[0m
+2025-04-15T11:27:57.0179065Z
+[96msrc/interpolate/index.ts[0m:[93m19[0m:[93m3[0m
+[7m19[0m   obj: Record<string, any>,
+[7m  [0m [96m  ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+An argument for 'obj' was not provided.
+[39m
+[32mcreated [1mdist/cjs/index.js, dist/esm/index.js[22m in [1m8.6s[22m[39m
+2025-04-15T11:27:57.2097903Z
+> @usebruno/query@0.1.0 prebuild
+> npm run clean
+2025-04-15T11:27:57.2099381Z
+2025-04-15T11:27:57.3516188Z
+> @usebruno/query@0.1.0 clean
+> rimraf dist
+2025-04-15T11:27:57.3517598Z
+2025-04-15T11:27:57.4154359Z
+> @usebruno/query@0.1.0 build
+> rollup -c
+2025-04-15T11:27:57.4155353Z
+[36m
+[1msrc/index.ts[22m → [1mdist/cjs/index.js, dist/esm/index.js[22m...[39m
+[32mcreated [1mdist/cjs/index.js, dist/esm/index.js[22m in [1m1.8s[22m[39m
+[36m
+[1mdist/esm/index.d.ts[22m → [1mdist/index.d.ts[22m...[39m
+[32mcreated [1mdist/index.d.ts[22m in [1m23ms[22m[39m
+2025-04-15T11:27:59.6977855Z
+> @usebruno/js@0.12.0 sandbox:bundle-libraries
+> node ./src/sandbox/bundle-libraries.js
+2025-04-15T11:27:59.6979829Z
+Circular dependency: ../../node_modules/chai/lib/chai.js -> ../../node_modules/chai/lib/chai/utils/index.js -> ../../node_modules/chai/lib/chai/utils/addProperty.js -> ../../node_modules/chai/lib/chai.js
+Circular dependency: ../../node_modules/chai/lib/chai.js -> ../../node_modules/chai/lib/chai/utils/index.js -> ../../node_modules/chai/lib/chai/utils/addMethod.js -> ../../node_modules/chai/lib/chai.js
+Circular dependency: ../../node_modules/chai/lib/chai.js -> ../../node_modules/chai/lib/chai/utils/index.js -> ../../node_modules/chai/lib/chai/utils/overwriteProperty.js -> ../../node_modules/chai/lib/chai.js
+Circular dependency: ../../node_modules/chai/lib/chai.js -> ../../node_modules/chai/lib/chai/utils/index.js -> ../../node_modules/chai/lib/chai/utils/overwriteMethod.js -> ../../node_modules/chai/lib/chai.js
+Circular dependency: ../../node_modules/chai/lib/chai.js -> ../../node_modules/chai/lib/chai/utils/index.js -> ../../node_modules/chai/lib/chai/utils/addChainableMethod.js -> ../../node_modules/chai/lib/chai.js
+Circular dependency: ../../node_modules/chai/lib/chai.js -> ../../node_modules/chai/lib/chai/utils/index.js -> ../../node_modules/chai/lib/chai/utils/overwriteChainableMethod.js -> ../../node_modules/chai/lib/chai.js
+2025-04-15T11:28:03.7337229Z
+> @usebruno/converters@0.1.0 prebuild
+> npm run clean
+2025-04-15T11:28:03.7338694Z
+2025-04-15T11:28:03.8740780Z
+> @usebruno/converters@0.1.0 clean
+> rimraf dist
+2025-04-15T11:28:03.8741902Z
+2025-04-15T11:28:03.9386012Z
+> @usebruno/converters@0.1.0 build
+> rollup -c
+2025-04-15T11:28:03.9387276Z
+[36m
+[1msrc/index.js[22m → [1mdist/cjs/index.js, dist/esm/index.js[22m...[39m
+[32mcreated [1mdist/cjs/index.js, dist/esm/index.js[22m in [1m2.7s[22m[39m
+2025-04-15T11:28:06.9754085Z
+> @usebruno/requests@0.1.0 prebuild
+> npm run clean
+2025-04-15T11:28:06.9755329Z
+2025-04-15T11:28:07.1260759Z
+> @usebruno/requests@0.1.0 clean
+> rimraf dist
+2025-04-15T11:28:07.1262089Z
+2025-04-15T11:28:07.1954210Z
+> @usebruno/requests@0.1.0 build
+> rollup -c
+2025-04-15T11:28:07.1956206Z
+[36m
+[1msrc/index.ts[22m → [1mdist/cjs/index.js, dist/esm/index.js[22m...[39m
+[32mcreated [1mdist/cjs/index.js, dist/esm/index.js[22m in [1m1.8s[22m[39m
+##[group]Run npm run test --workspace=packages/bruno-js
+[36;1mnpm run test --workspace=packages/bruno-js[0m
+shell: /usr/bin/bash -e {<:NUM:>}
+##[endgroup]
+2025-04-15T11:28:09.4833037Z
+> @usebruno/js@0.12.0 test
+> node --experimental-vm-modules $(npx which jest) --testPathIgnorePatterns test.js
+2025-04-15T11:28:09.4835185Z
+PASS tests/utils.spec.js
+(node:2515) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:2515) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+PASS tests/runtime.spec.js
+2025-04-15T11:28:14.3611309Z
+Test Suites: 2 passed, 2 total
+Tests:       19 passed, 19 total
+Snapshots:   0 total
+Time:        2.753 s
+Ran all test suites.
+##[group]Run npm run test --workspace=packages/bruno-cli
+[36;1mnpm run test --workspace=packages/bruno-cli[0m
+shell: /usr/bin/bash -e {<:NUM:>}
+##[endgroup]
+2025-04-15T11:28:14.5215850Z
+> @usebruno/cli@1.16.0 test
+> node --experimental-vm-modules $(npx which jest)
+2025-04-15T11:28:14.5218138Z
+PASS tests/reporters/junit.spec.js
+PASS tests/reporters/html.spec.js
+PASS tests/runner/prepare-request.spec.js
+(node:2603) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:2603) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+PASS tests/commands/run.spec.js
+2025-04-15T11:28:19.9945721Z
+Test Suites: 4 passed, 4 total
+Tests:       14 passed, 14 total
+Snapshots:   0 total
+Time:        3.357 s
+Ran all test suites.
+##[group]Run npm run test --workspace=packages/bruno-query
+[36;1mnpm run test --workspace=packages/bruno-query[0m
+shell: /usr/bin/bash -e {<:NUM:>}
+##[endgroup]
+2025-04-15T11:28:20.2047049Z
+> @usebruno/query@0.1.0 test
+> jest
+2025-04-15T11:28:20.2048423Z
+PASS tests/index.spec.ts
+get
+✓ customer.address.city should be "bangalore" (3 ms)
+✓ customer.orders.items.amount should be [10,20,30,40] (1 ms)
+✓ customer.orders.items.amount[0] should be 10 (1 ms)
+✓ ..items.amount should be [10,20,30,40]
+✓ ..amount should be [10,20,30,40] (1 ms)
+✓ ..items.amount[0] should be 10
+✓ ..items[0].amount should be 10 (1 ms)
+✓ ..items[5].amount should be undefined
+✓ ..id should be ["order-1",1,2,"order-2",3,4] (4 ms)
+✓ customer.orders.foo should be undefined
+✓ ..customer.foo should be undefined
+✓ ..address should be [{"city":"bangalore"}]
+✓ ..address[0] should be {"city":"bangalore"}
+✓ ..items[?].amount should be [40] for (i) => i.amount > 30 (1 ms)
+✓ ..items[?].amount should be [40] for { id: 4, amount: 40 }
+✓ ..items[?].amount should be undefined for { id: 5, amount: 40 }
+✓ ..items..amount[?][0] should be 40 for (amt) => amt > 30 (1 ms)
+✓ ..items..amount[0][?] should be undefined for (amt) => amt > 30
+✓ ..items..amount[?] should be [11,21,31,41] for (amt) => amt + 1
+✓ ..items..amount[0][?] should be 11 for (amt) => amt + 1 (1 ms)
+2025-04-15T11:28:23.4453906Z
+Test Suites: 1 passed, 1 total
+Tests:       20 passed, 20 total
+Snapshots:   0 total
+Time:        2.879 s
+Ran all test suites.
+##[group]Run npm run test --workspace=packages/bruno-lang
+[36;1mnpm run test --workspace=packages/bruno-lang[0m
+shell: /usr/bin/bash -e {<:NUM:>}
+##[endgroup]
+2025-04-15T11:28:23.6433066Z
+> @usebruno/lang@0.12.0 test
+> jest
+2025-04-15T11:28:23.6437511Z
+PASS v1/tests/key-val-lines.spec.js
+PASS v2/tests/envToJson.spec.js
+PASS v1/tests/bru-to-json.spec.js
+PASS v1/tests/tests-tag.spec.js
+PASS v2/tests/jsonToEnv.spec.js
+PASS v1/tests/json-to-bru.spec.js
+PASS v1/tests/script-tag.spec.js
+PASS v1/tests/inline-tag.spec.js
+PASS v1/tests/body-tag.spec.js
+PASS v2/tests/dotenvToJson.spec.js
+PASS v2/tests/dictionary.spec.js
+PASS v1/tests/utils.spec.js
+PASS v1/tests/env-json-to-bru.spec.js
+PASS v2/tests/defaults.spec.js
+PASS v1/tests/bru-to-env-json.spec.js
+PASS v2/tests/collection.spec.js
+PASS v2/tests/script.spec.js
+PASS v2/tests/assert.spec.js
+PASS v2/tests/index.spec.js
+2025-04-15T11:28:25.9984290Z
+Test Suites: 19 passed, 19 total
+Tests:       84 passed, 84 total
+Snapshots:   0 total
+Time:        1.991 s
+Ran all test suites.
+##[group]Run npm run test --workspace=packages/bruno-schema
+[36;1mnpm run test --workspace=packages/bruno-schema[0m
+shell: /usr/bin/bash -e {<:NUM:>}
+##[endgroup]
+2025-04-15T11:28:26.1550301Z
+> @usebruno/schema@0.7.0 test
+> jest
+2025-04-15T11:28:26.1551430Z
+PASS src/collections/requestSchema.spec.js
+PASS src/collections/itemSchema.spec.js
+PASS src/collections/index.spec.js
+2025-04-15T11:28:27.4955331Z
+Test Suites: 3 passed, 3 total
+Tests:       13 passed, 13 total
+Snapshots:   0 total
+Time:        0.983 s
+Ran all test suites.
+##[group]Run npm run test --workspace=packages/bruno-app
+[36;1mnpm run test --workspace=packages/bruno-app[0m
+shell: /usr/bin/bash -e {<:NUM:>}
+##[endgroup]
+2025-04-15T11:28:27.6978327Z
+> @usebruno/app@2.0.0 test
+> jest
+2025-04-15T11:28:27.6979255Z
+PASS src/utils/common/regex.spec.js
+PASS src/providers/ReduxStore/slices/notifications.spec.js
+PASS src/utils/common/index.spec.js
+PASS src/utils/curl/curl-to-json.spec.js
+PASS src/utils/url/index.spec.js
+2025-04-15T11:28:30.2018059Z
+Test Suites: 5 passed, 5 total
+Tests:       85 passed, 85 total
+Snapshots:   0 total
+Time:        2.091 s
+Ran all test suites.
+##[group]Run npm run test --workspace=packages/bruno-common
+[36;1mnpm run test --workspace=packages/bruno-common[0m
+shell: /usr/bin/bash -e {<:NUM:>}
+##[endgroup]
+2025-04-15T11:28:30.3749967Z
+> @usebruno/common@0.1.0 test
+> jest
+2025-04-15T11:28:30.3751431Z
+FAIL src/interpolate/index.spec.ts
+● Test suite failed to run
+2025-04-15T11:28:36.1267869Z
+[96msrc/interpolate/index.spec.ts[0m:[93m362[0m:[93m20[0m - [91merror[0m[90m TS2554: [0mExpected 2-3 arguments, but got 1.
+2025-04-15T11:28:36.1269311Z
+[7m362[0m     const result = interpolate(inputString);
+[7m   [0m [91m                   ~~~~~~~~~~~[0m
+2025-04-15T11:28:36.1270162Z
+[96msrc/interpolate/index.ts[0m:[93m19[0m:[93m3[0m
+[7m19[0m   obj: Record<string, any>,
+[7m  [0m [96m  ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+An argument for 'obj' was not provided.
+2025-04-15T11:28:36.1271721Z
+PASS src/utils/index.spec.ts (5.419 s)
+PASS src/utils/faker-functions.spec.ts (5.552 s)
+2025-04-15T11:28:36.5855956Z
+Test Suites: 1 failed, 2 passed, 3 total
+Tests:       9 passed, 9 total
+Snapshots:   0 total
+Time:        5.852 s
+Ran all test suites.
+npm error Lifecycle script `test` failed with error:
+npm error code 1
+npm error path /home/runner/work/bruno/bruno/packages/bruno-common
+npm error workspace @usebruno/common@0.1.0
+npm error location /home/runner/work/bruno/bruno/packages/bruno-common
+npm error command failed
+npm error command sh -c jest
+##[error]Process completed with exit code 1.
+Post job cleanup.
+[command]/usr/bin/git version
+git version <:NUM:>.<:NUM:>.<:NUM:>
+Temporarily overriding HOME='/home/runner/work/_temp/1e861715-1745-4927-bb38-1caff48cb55d' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+[command]/usr/bin/git config --global --add safe.directory /home/runner/work/bruno/bruno
+[command]/usr/bin/git config --local --name-only --get-regexp <:*:>
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp <:*:> && git config --local --unset-all <:*:> || :"
+[command]/usr/bin/git config --local --name-only --get-regexp <:*:>
+http.https://github.com/.extraheader
+[command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp <:*:> && git config --local --unset-all <:*:> || :"
+Cleaning up orphan processes

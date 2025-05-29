@@ -1,0 +1,36 @@
+2025-04-14T20:09:51.0580483Z ##[group]Run elastic/docs-builder/.github/actions/aws-auth@main
+2025-04-14T20:09:51.0580870Z with:
+2025-04-14T20:09:51.0581072Z   aws_account_id: 197730964718
+2025-04-14T20:09:51.0581316Z   aws_region: us-east-1
+2025-04-14T20:09:51.0581580Z   aws_role_name_prefix: elastic-docs-v3-preview-
+2025-04-14T20:09:51.0581879Z env:
+2025-04-14T20:09:51.0582066Z   GITHUB_PR_REF_NAME: 
+2025-04-14T20:09:51.0582339Z   PATH_PREFIX: /elastic/elasticsearch/tree/main
+2025-04-14T20:09:51.0582639Z ##[endgroup]
+2025-04-14T20:09:51.0597552Z ##[group]Run import hashlib
+2025-04-14T20:09:51.0597825Z [36;1mimport hashlib[0m
+2025-04-14T20:09:51.0598034Z [36;1mimport os[0m
+2025-04-14T20:09:51.0598272Z [36;1mprefix = os.environ["ROLE_NAME_PREFIX"][0m
+2025-04-14T20:09:51.0598562Z [36;1mm = hashlib.sha256()[0m
+2025-04-14T20:09:51.0598876Z [36;1mm.update(os.environ["GITHUB_REPOSITORY"].encode('utf-8'))[0m
+2025-04-14T20:09:51.0599235Z [36;1mhash = m.hexdigest()[:64-len(prefix)][0m
+2025-04-14T20:09:51.0599555Z [36;1mwith open(os.environ["GITHUB_OUTPUT"], "a") as f:[0m
+2025-04-14T20:09:51.0600017Z [36;1m  f.write(f"result=arn:aws:iam::{os.environ["AWS_ACCOUNT_ID"]}:role/{prefix}{hash}")[0m
+2025-04-14T20:09:51.0650838Z shell: /usr/bin/python {0}
+2025-04-14T20:09:51.0651084Z env:
+2025-04-14T20:09:51.0651266Z   GITHUB_PR_REF_NAME: 
+2025-04-14T20:09:51.0651531Z   PATH_PREFIX: /elastic/elasticsearch/tree/main
+2025-04-14T20:09:51.0651830Z   AWS_ACCOUNT_ID: 197730964718
+2025-04-14T20:09:51.0652103Z   ROLE_NAME_PREFIX: elastic-docs-v3-preview-
+2025-04-14T20:09:51.0652385Z ##[endgroup]
+2025-04-14T20:09:51.0936468Z ##[group]Run aws-actions/configure-aws-credentials@ececac1a45f3b08a01d2dd070d28d111c5fe6722
+2025-04-14T20:09:51.0936919Z with:
+2025-04-14T20:09:51.0937333Z   role-to-assume: arn:aws:iam::197730964718:role/elastic-docs-v3-preview-15d28e2042b09184f1b1957600e8a99d4bb88e3d
+2025-04-14T20:09:51.0937806Z   aws-region: us-east-1
+2025-04-14T20:09:51.0938036Z   audience: sts.amazonaws.com
+2025-04-14T20:09:51.0938266Z env:
+2025-04-14T20:09:51.0938465Z   GITHUB_PR_REF_NAME: 
+2025-04-14T20:09:51.0938717Z   PATH_PREFIX: /elastic/elasticsearch/tree/main
+2025-04-14T20:09:51.0938991Z ##[endgroup]
+2025-04-14T20:09:51.2923660Z Assuming role with OIDC
+2025-04-14T20:09:51.3534717Z Authenticated as assumedRoleId AROAS4CNPCTXHQYQAKTVA:GitHubActions

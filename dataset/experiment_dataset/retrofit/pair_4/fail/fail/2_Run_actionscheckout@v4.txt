@@ -1,0 +1,85 @@
+2025-03-20T14:44:01.3299123Z ##[group]Run actions/checkout@v4
+2025-03-20T14:44:01.3300525Z with:
+2025-03-20T14:44:01.3301581Z   repository: square/retrofit
+2025-03-20T14:44:01.3302873Z   token: ***
+2025-03-20T14:44:01.3303667Z   ssh-strict: true
+2025-03-20T14:44:01.3304491Z   ssh-user: git
+2025-03-20T14:44:01.3305332Z   persist-credentials: true
+2025-03-20T14:44:01.3306254Z   clean: true
+2025-03-20T14:44:01.3307088Z   sparse-checkout-cone-mode: true
+2025-03-20T14:44:01.3308094Z   fetch-depth: 1
+2025-03-20T14:44:01.3309386Z   fetch-tags: false
+2025-03-20T14:44:01.3310382Z   show-progress: true
+2025-03-20T14:44:01.3311480Z   lfs: false
+2025-03-20T14:44:01.3312299Z   submodules: false
+2025-03-20T14:44:01.3313199Z   set-safe-directory: true
+2025-03-20T14:44:01.3314446Z env:
+2025-03-20T14:44:01.3315943Z   GRADLE_OPTS: -Dorg.gradle.jvmargs=-Xmx4g -Dorg.gradle.daemon=false -Dkotlin.incremental=false
+2025-03-20T14:44:01.3317622Z ##[endgroup]
+2025-03-20T14:44:01.5220423Z Syncing repository: square/retrofit
+2025-03-20T14:44:01.5223646Z ##[group]Getting Git version info
+2025-03-20T14:44:01.5225232Z Working directory is '/home/runner/work/retrofit/retrofit'
+2025-03-20T14:44:01.5228341Z [command]/usr/bin/git version
+2025-03-20T14:44:01.5273939Z git version 2.48.1
+2025-03-20T14:44:01.5303825Z ##[endgroup]
+2025-03-20T14:44:01.5320970Z Temporarily overriding HOME='/home/runner/work/_temp/f06a041a-3089-4f64-9745-d9be03413cee' before making global git config changes
+2025-03-20T14:44:01.5325923Z Adding repository directory to the temporary git global config as a safe directory
+2025-03-20T14:44:01.5329715Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/retrofit/retrofit
+2025-03-20T14:44:01.5367616Z Deleting the contents of '/home/runner/work/retrofit/retrofit'
+2025-03-20T14:44:01.5371814Z ##[group]Initializing the repository
+2025-03-20T14:44:01.5376043Z [command]/usr/bin/git init /home/runner/work/retrofit/retrofit
+2025-03-20T14:44:01.5453632Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-03-20T14:44:01.5455710Z hint: is subject to change. To configure the initial branch name to use in all
+2025-03-20T14:44:01.5457518Z hint: of your new repositories, which will suppress this warning, call:
+2025-03-20T14:44:01.5459539Z hint:
+2025-03-20T14:44:01.5460573Z hint: 	git config --global init.defaultBranch <name>
+2025-03-20T14:44:01.5462027Z hint:
+2025-03-20T14:44:01.5463152Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-03-20T14:44:01.5465414Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-03-20T14:44:01.5466972Z hint:
+2025-03-20T14:44:01.5467764Z hint: 	git branch -m <name>
+2025-03-20T14:44:01.5469348Z Initialized empty Git repository in /home/runner/work/retrofit/retrofit/.git/
+2025-03-20T14:44:01.5473459Z [command]/usr/bin/git remote add origin https://github.com/square/retrofit
+2025-03-20T14:44:01.5511928Z ##[endgroup]
+2025-03-20T14:44:01.5513605Z ##[group]Disabling automatic garbage collection
+2025-03-20T14:44:01.5515881Z [command]/usr/bin/git config --local gc.auto 0
+2025-03-20T14:44:01.5548905Z ##[endgroup]
+2025-03-20T14:44:01.5551612Z ##[group]Setting up auth
+2025-03-20T14:44:01.5557319Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-03-20T14:44:01.5592696Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-03-20T14:44:01.5883497Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-03-20T14:44:01.5927105Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-03-20T14:44:01.6159802Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-03-20T14:44:01.6202760Z ##[endgroup]
+2025-03-20T14:44:01.6205801Z ##[group]Fetching the repository
+2025-03-20T14:44:01.6214854Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +f3061df2fdfc3232b536e7498afafaa6966d9f10:refs/remotes/pull/4324/merge
+2025-03-20T14:44:02.0092276Z From https://github.com/square/retrofit
+2025-03-20T14:44:02.0095291Z  * [new ref]         f3061df2fdfc3232b536e7498afafaa6966d9f10 -> pull/4324/merge
+2025-03-20T14:44:02.0120129Z ##[endgroup]
+2025-03-20T14:44:02.0121997Z ##[group]Determining the checkout info
+2025-03-20T14:44:02.0123748Z ##[endgroup]
+2025-03-20T14:44:02.0128346Z [command]/usr/bin/git sparse-checkout disable
+2025-03-20T14:44:02.0172356Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-03-20T14:44:02.0202852Z ##[group]Checking out the ref
+2025-03-20T14:44:02.0206499Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/4324/merge
+2025-03-20T14:44:02.0670568Z Note: switching to 'refs/remotes/pull/4324/merge'.
+2025-03-20T14:44:02.0672383Z 
+2025-03-20T14:44:02.0673544Z You are in 'detached HEAD' state. You can look around, make experimental
+2025-03-20T14:44:02.0675730Z changes and commit them, and you can discard any commits you make in this
+2025-03-20T14:44:02.0677495Z state without impacting any branches by switching back to a branch.
+2025-03-20T14:44:02.0679087Z 
+2025-03-20T14:44:02.0679774Z If you want to create a new branch to retain commits you create, you may
+2025-03-20T14:44:02.0681582Z do so (now or later) by using -c with the switch command. Example:
+2025-03-20T14:44:02.0682529Z 
+2025-03-20T14:44:02.0682924Z   git switch -c <new-branch-name>
+2025-03-20T14:44:02.0683566Z 
+2025-03-20T14:44:02.0683938Z Or undo this operation with:
+2025-03-20T14:44:02.0684861Z 
+2025-03-20T14:44:02.0685205Z   git switch -
+2025-03-20T14:44:02.0685678Z 
+2025-03-20T14:44:02.0686427Z Turn off this advice by setting config variable advice.detachedHead to false
+2025-03-20T14:44:02.0687507Z 
+2025-03-20T14:44:02.0688714Z HEAD is now at f3061df Merge f2443ca6c27b92dc41e77220c93062ce6117c656 into cf3328d225dd5373bb81ea229fbf2be4db1e5525
+2025-03-20T14:44:02.0692594Z ##[endgroup]
+2025-03-20T14:44:02.0720331Z [command]/usr/bin/git log -1 --format=%H
+2025-03-20T14:44:02.0743158Z f3061df2fdfc3232b536e7498afafaa6966d9f10

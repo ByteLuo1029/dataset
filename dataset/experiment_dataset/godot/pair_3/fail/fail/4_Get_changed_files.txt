@@ -1,0 +1,12 @@
+2025-04-15T06:54:32.6317182Z ##[group]Run if [ "pull_request" == "pull_request" ]; then
+2025-04-15T06:54:32.6317639Z [36;1mif [ "pull_request" == "pull_request" ]; then[0m
+2025-04-15T06:54:32.6318109Z [36;1m  files=$(git diff-tree --no-commit-id --name-only -r HEAD^1..HEAD 2> /dev/null || true)[0m
+2025-04-15T06:54:32.6318624Z [36;1melif [ "pull_request" == "push" -a "" == "false" -a "" == "false" ]; then[0m
+2025-04-15T06:54:32.6319400Z [36;1m  files=$(git diff-tree --no-commit-id --name-only -r 06f455a9f8dacb085bf8e91db5b2d9ffc4f4261b..cd6eec20ff0d9bc45fa1b3cd1524d3ab42c3b88a 2> /dev/null || true)[0m
+2025-04-15T06:54:32.6320049Z [36;1mfi[0m
+2025-04-15T06:54:32.6320347Z [36;1mfiles=$(echo "$files" | xargs -I {} sh -c 'echo "\"./{}\""' | tr '\n' ' ')[0m
+2025-04-15T06:54:32.6320738Z [36;1mecho "CHANGED_FILES=$files" >> $GITHUB_ENV[0m
+2025-04-15T06:54:32.6367358Z shell: /usr/bin/bash -e {0}
+2025-04-15T06:54:32.6367625Z env:
+2025-04-15T06:54:32.6368072Z   GITHUB_TOKEN: ***
+2025-04-15T06:54:32.6368297Z ##[endgroup]

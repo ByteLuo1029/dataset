@@ -1,0 +1,43 @@
+2025-04-14T09:20:26.5247884Z ##[group]Run golangci/golangci-lint-action@v7
+2025-04-14T09:20:26.5248255Z with:
+2025-04-14T09:20:26.5248515Z   working-directory: charmbracelet/bubbletea
+2025-04-14T09:20:26.5249431Z   args: --config="D:\a\bubbletea\bubbletea/charmbracelet/meta/golangci.yml" --timeout=5m
+
+2025-04-14T09:20:26.5250228Z   install-mode: binary
+2025-04-14T09:20:26.5250747Z   github-token: ***
+2025-04-14T09:20:26.5251039Z   verify: true
+2025-04-14T09:20:26.5251324Z   only-new-issues: false
+2025-04-14T09:20:26.5251644Z   skip-cache: false
+2025-04-14T09:20:26.5251976Z   skip-save-cache: false
+2025-04-14T09:20:26.5252319Z   problem-matchers: false
+2025-04-14T09:20:26.5252593Z   cache-invalidation-interval: 7
+2025-04-14T09:20:26.5252805Z ##[endgroup]
+2025-04-14T09:20:26.8873296Z ##[group]prepare environment
+2025-04-14T09:20:26.8896918Z Checking for go.mod: charmbracelet\bubbletea\go.mod
+2025-04-14T09:20:27.4810782Z Cache not found for input keys: golangci-lint.cache-Windows-charmbracelet/bubbletea-2884-a41e129518298f55dbe75a34369bfc28c0379178, golangci-lint.cache-Windows-charmbracelet/bubbletea-2884-
+2025-04-14T09:20:27.4814211Z Finding needed golangci-lint version...
+2025-04-14T09:20:27.5287619Z Requested golangci-lint 'latest', using 'v2.1.1', calculation took 47ms
+2025-04-14T09:20:27.5289499Z Installation mode: binary
+2025-04-14T09:20:27.5290022Z Installing golangci-lint binary v2.1.1...
+2025-04-14T09:20:27.5291501Z Downloading binary https://github.com/golangci/golangci-lint/releases/download/v2.1.1/golangci-lint-2.1.1-windows-amd64.zip ...
+2025-04-14T09:20:28.1681414Z [command]"C:\Program Files\PowerShell\7\pwsh.exe" -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Unrestricted -Command "$ErrorActionPreference = 'Stop' ; try { Add-Type -AssemblyName System.IO.Compression.ZipFile } catch { } ; try { [System.IO.Compression.ZipFile]::ExtractToDirectory('D:\a\_temp\2b17b5be-ddc1-4c4b-929a-0fa436c62f7a', 'D:\a\_temp\d6b8e636-e67f-4e2b-a409-623f0b3ee388', $true) } catch { if (($_.Exception.GetType().FullName -eq 'System.Management.Automation.MethodException') -or ($_.Exception.GetType().FullName -eq 'System.Management.Automation.RuntimeException') ){ Expand-Archive -LiteralPath 'D:\a\_temp\2b17b5be-ddc1-4c4b-929a-0fa436c62f7a' -DestinationPath 'D:\a\_temp\d6b8e636-e67f-4e2b-a409-623f0b3ee388' -Force } else { throw $_ } } ;"
+2025-04-14T09:20:28.6660717Z Installed golangci-lint into D:\a\_temp\d6b8e636-e67f-4e2b-a409-623f0b3ee388\golangci-lint-2.1.1-windows-amd64\golangci-lint in 1137ms
+2025-04-14T09:20:28.6662217Z Prepared env in 1779ms
+2025-04-14T09:20:28.6687604Z ##[endgroup]
+2025-04-14T09:20:28.6688335Z ##[group]run golangci-lint
+2025-04-14T09:20:28.6690250Z Running [D:\a\_temp\d6b8e636-e67f-4e2b-a409-623f0b3ee388\golangci-lint-2.1.1-windows-amd64\golangci-lint config path --config="D:\a\bubbletea\bubbletea/charmbracelet/meta/golangci.yml"] in [D:\a\bubbletea\bubbletea\charmbracelet\bubbletea] ...
+2025-04-14T09:20:29.0544633Z Running [D:\a\_temp\d6b8e636-e67f-4e2b-a409-623f0b3ee388\golangci-lint-2.1.1-windows-amd64\golangci-lint config verify --config="D:\a\bubbletea\bubbletea/charmbracelet/meta/golangci.yml"] in [D:\a\bubbletea\bubbletea\charmbracelet\bubbletea] ...
+2025-04-14T09:20:29.3833888Z Running [D:\a\_temp\d6b8e636-e67f-4e2b-a409-623f0b3ee388\golangci-lint-2.1.1-windows-amd64\golangci-lint run --path-prefix=charmbracelet/bubbletea --config="D:\a\bubbletea\bubbletea/charmbracelet/meta/golangci.yml" --timeout=5m] in [D:\a\bubbletea\bubbletea\charmbracelet\bubbletea] ...
+2025-04-14T09:20:53.9063388Z ##[error]charmbracelet\bubbletea\tty_windows.go:59:12: G302: Expect file permissions to be 0600 or less (gosec)
+2025-04-14T09:20:53.9064653Z 	f, err := os.OpenFile("CONIN$", os.O_RDWR, 0o644)
+2025-04-14T09:20:53.9065652Z 	          ^
+2025-04-14T09:20:53.9067970Z ##[error]charmbracelet\bubbletea\key_windows.go:120:2: QF1002: could use tagged switch on btn (staticcheck)
+2025-04-14T09:20:53.9069219Z 	switch {
+2025-04-14T09:20:53.9069443Z 	^
+2025-04-14T09:20:53.9069655Z 2 issues:
+2025-04-14T09:20:53.9069873Z * gosec: 1
+2025-04-14T09:20:53.9072629Z * staticcheck: 1
+2025-04-14T09:20:53.9072801Z 
+2025-04-14T09:20:53.9073942Z ##[error]issues found
+2025-04-14T09:20:53.9074861Z Ran golangci-lint in 24520ms
+2025-04-14T09:20:53.9075361Z ##[endgroup]

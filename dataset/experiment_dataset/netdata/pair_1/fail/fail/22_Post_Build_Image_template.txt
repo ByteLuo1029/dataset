@@ -1,0 +1,39 @@
+Post job cleanup.
+##[group]Generating build summary
+exporting build record to /home/runner/work/_temp/docker-actions-toolkit-MEtuUP/export
+[command]/usr/bin/mkfifo /home/runner/work/_temp/docker-actions-toolkit-MEtuUP/buildx-in-wgdMUQ.fifo
+[command]/usr/bin/mkfifo /home/runner/work/_temp/docker-actions-toolkit-MEtuUP/buildx-out-4DYkIK.fifo
+[command]docker buildx --builder builder-47c6fb5f-f7cf-4ad7-aee3-f607d65f92a0 dial-stdio
+[command]docker run --rm -i -v /home/runner/.docker/buildx/refs:/buildx-refs -v /home/runner/work/_temp/docker-actions-toolkit-MEtuUP/export:/out docker.io/dockereng/export-build:latest --ref-state-dir=/buildx-refs --node=builder-47c6fb5f-f7cf-4ad7-aee3-f607d65f92a0/builder-47c6fb5f-f7cf-4ad7-aee3-f607d65f92a00 --ref=ug157ck29ii4zxabi308upk69 --uid=1001 --gid=128
+Unable to find image 'dockereng/export-build:latest' locally
+latest: Pulling from dockereng/export-build
+5f398fcfd265: Pulling fs layer
+152e015ae384: Pulling fs layer
+152e015ae384: Verifying Checksum
+152e015ae384: Download complete
+5f398fcfd265: Verifying Checksum
+5f398fcfd265: Download complete
+5f398fcfd265: Pull complete
+152e015ae384: Pull complete
+Digest: sha256:<:SEQ:>
+Status: Downloaded newer image for dockereng/export-build:latest
+Process "docker run" exited with code 0
+Parsing /home/runner/work/_temp/docker-actions-toolkit-MEtuUP/export/summary.json
+Build record written to /home/runner/work/_temp/docker-actions-toolkit-MEtuUP/export/netdata~netdata~UG157C.dockerbuild (63.11 KB)
+Uploading netdata~netdata~UG157C.dockerbuild to blob storage
+ERROR: read unix @->/run/docker.sock: use of closed network connection
+Process "buildx dial-stdio" was killed with signal SIGKILL
+Beginning upload of artifact content to blob storage
+Uploaded bytes 64621
+Finished uploading artifact content to blob storage!
+SHA256 hash of uploaded artifact is dc7f435ea9e0d9cd723a357a440e04daf7895a7bcf34d4a0422bc51c151c6905
+Finalizing artifact upload
+Artifact successfully finalized (2946220094)
+Artifact download URL: https://github.com/netdata/netdata/actions/runs/14464780419/artifacts/2946220094
+Writing summary
+##[endgroup]
+##[group]Removing temp folder /home/runner/work/_temp/docker-actions-toolkit-TYaLSv
+##[endgroup]
+##[group]Post cache
+State not set
+##[endgroup]

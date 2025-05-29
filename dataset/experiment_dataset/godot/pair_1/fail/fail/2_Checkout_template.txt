@@ -1,0 +1,126 @@
+##[group]Run <:*:>
+with:
+submodules: <:*:>
+repository: <:*:>
+token: ***
+ssh-strict: true
+ssh-user: git
+persist-credentials: <:*:>
+clean: true
+sparse-checkout-cone-mode: true
+fetch-depth: <:NUM:>
+fetch-tags: false
+show-progress: true
+lfs: false
+set-safe-directory: true
+env:
+GODOT_CPP_BRANCH: 4.4
+SCONSFLAGS: verbose=yes warnings=extra werror=yes module_text_server_fb_enabled=yes strict_checks=yes "accesskit_sdk_path=/home/runner/work/godot/godot/accesskit-c-0.15.1/"
+DOTNET_NOLOGO: true
+DOTNET_CLI_TELEMETRY_OPTOUT: true
+TSAN_OPTIONS: suppressions=/home/runner/work/godot/godot/misc/error_suppressions/tsan.txt
+UBSAN_OPTIONS: suppressions=/home/runner/work/godot/godot/misc/error_suppressions/ubsan.txt
+##[endgroup]
+Syncing repository: <:*:>
+##[group]Getting Git version info
+Working directory is <:*:>
+[command]/usr/bin/git version
+git version <:NUM:>.<:NUM:>.<:NUM:>
+##[endgroup]
+Temporarily overriding HOME='/home/runner/work/_temp/b8bc5d57-8043-4efd-a9f9-7e485741babd' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+[command]/usr/bin/git config --global --add safe.directory /home/runner/work/godot/godot
+Deleting the contents of <:*:>
+##[group]Initializing the repository
+[command]/usr/bin/git init <:*:>
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint:
+hint: git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint: git branch -m <name>
+Initialized empty Git repository in <:*:>
+[command]/usr/bin/git remote add origin <:*:>
+##[endgroup]
+##[group]Disabling automatic garbage collection
+[command]/usr/bin/git config --local gc.auto 0
+##[endgroup]
+##[group]Setting up auth
+[command]/usr/bin/git config --local --name-only --get-regexp <:*:>
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp <:*:> && git config --local --unset-all <:*:> || :"
+[command]/usr/bin/git config --local --name-only --get-regexp <:*:>
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp <:*:> && git config --local --unset-all <:*:> || :"
+[command]/usr/bin/git config <:*:> http.https://github.com/.extraheader AUTHORIZATION: basic ***
+##[endgroup]
+##[group]Fetching the repository
+[command]/usr/bin/git -c protocol.version=<:NUM:> fetch <:*:> <:*:> <:*:> <:*:> <:*:> <:*:>
+From <:*:>
+* [new ref] <:SEQ:>-> <:*:>
+##[endgroup]
+##[group]Determining the checkout info
+##[endgroup]
+[command]/usr/bin/git sparse-checkout disable
+[command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+##[group]Checking out the ref
+[command]/usr/bin/git checkout --progress --force refs/remotes/pull/<:NUM:>/merge
+Updating files:  83% (10476/12578)
+Updating files:  84% (10566/12578)
+Updating files:  85% (10692/12578)
+Updating files:  86% (10818/12578)
+Updating files:  87% (10943/12578)
+Updating files:  88% (11069/12578)
+Updating files:  89% (11195/12578)
+Updating files:  90% (11321/12578)
+Updating files:  91% (11446/12578)
+Updating files:  92% (11572/12578)
+Updating files:  93% (11698/12578)
+Updating files:  94% (11824/12578)
+Updating files:  95% (11950/12578)
+Updating files:  96% (12075/12578)
+Updating files:  97% (12201/12578)
+Updating files:  98% (12327/12578)
+Updating files:  99% (12453/12578)
+Updating files: 100% (12578/12578)
+Updating files: 100% (12578/12578), done.
+Note: switching to 'refs/remotes/pull/<:NUM:>/merge'.
+2025-04-15T08:35:25.4519719Z
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+2025-04-15T08:35:25.4522655Z
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+2025-04-15T08:35:25.4523642Z
+git switch -c <new-branch-name>
+2025-04-15T08:35:25.4523947Z
+Or undo this operation with:
+2025-04-15T08:35:25.4524216Z
+git switch -
+2025-04-15T08:35:25.4524425Z
+Turn off this advice by setting config variable advice.detachedHead to false
+2025-04-15T08:35:25.4524962Z
+HEAD is now at <:*:> Merge <:SEQ:> into <:SEQ:>
+##[endgroup]
+##[group]Setting up auth for fetching submodules
+[command]/usr/bin/git config <:*:> http.https://github.com/.extraheader AUTHORIZATION: basic ***
+[command]/usr/bin/git config --global --unset-all url.https://github.com/.insteadOf
+[command]/usr/bin/git config --global --add url.https://github.com/.insteadOf git@github.com:
+[command]/usr/bin/git config --global --add url.https://github.com/.insteadOf org-6318500@github.com:
+##[endgroup]
+##[group]Fetching submodules
+[command]/usr/bin/git submodule sync --recursive
+[command]/usr/bin/git -c protocol.version=<:NUM:> submodule update --init --force --depth=<:NUM:> --recursive
+[command]/usr/bin/git submodule foreach --recursive git config --local gc.auto <:NUM:>
+##[endgroup]
+##[group]Persisting credentials for submodules
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp <:*:> && git config --local --unset-all <:*:> || :"
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local 'http.https://github.com/.extraheader' 'AUTHORIZATION: basic ***' && git config --local --show-origin --name-only --get-regexp remote.origin.url"
+[command]/usr/bin/git submodule foreach --recursive git config --local --add 'url.https://github.com/.insteadOf' <:*:>
+[command]/usr/bin/git submodule foreach --recursive git config --local --add 'url.https://github.com/.insteadOf' <:*:>
+##[endgroup]
+[command]/usr/bin/git log <:NUM:> <:*:>
+<:SEQ:>

@@ -1,0 +1,63 @@
+##[group]Run # Get the changed files
+[36;1m# Get the changed files[0m
+[36;1mCHANGED_FILES=$(pants list --changed-since=origin/main)[0m
+[36;1m[0m
+[36;1m# Find which roots contain changed files[0m
+[36;1mCHANGED_ROOTS=""[0m
+[36;1mFILTER_PATTERNS="["[0m
+[36;1mfor file in $CHANGED_FILES; do[0m
+[36;1m  # Start with the full path[0m
+[36;1m  root="$file"[0m
+[36;1m  # Keep going up the directory tree until we find a directory containing a marker file[0m
+[36;1m  # (e.g., 'pyproject.toml' for python projects)[0m
+[36;1m  while [[ ! -f "$root/pyproject.toml" && "$root" != "." && "$root" != "/" && "$root" != "./" ]]; do[0m
+[36;1m    root=$(dirname "$root")[0m
+[36;1m  done[0m
+[36;1m[0m
+[36;1m  if [[ "$root" != "." && "$root" != "/" && "$root" != "./" && ! "$FILTER_PATTERNS" =~ "$root" ]]; then[0m
+[36;1m    FILTER_PATTERNS="${FILTER_PATTERNS}'${root}/llama_index',"[0m
+[36;1m    CHANGED_ROOTS="${CHANGED_ROOTS} ${root}/::"[0m
+[36;1m  fi[0m
+[36;1mdone[0m
+[36;1m[0m
+[36;1m# remove the last comma and close the bracket[0m
+[36;1mFILTER_PATTERNS="${FILTER_PATTERNS%,}]"[0m
+[36;1m[0m
+[36;1mecho "Coverage filter patterns: $FILTER_PATTERNS"[0m
+[36;1mecho "Changed roots: $CHANGED_ROOTS"[0m
+[36;1m[0m
+[36;1mpants --level=error --no-local-cache test \[0m
+[36;1m  --test-use-coverage \[0m
+[36;1m  --coverage-py-filter="${FILTER_PATTERNS}" \[0m
+[36;1m  ${CHANGED_ROOTS}[0m
+0
+
+POETRY_VERSION: 1.8.3
+SYSTEM_VERSION_COMPAT: 1
+3 9 22
+3 9 22
+3 9 22
+Python2 3 9 22
+Python3 3 9 22
+3 9 22
+##[endgroup]
+Coverage filter patterns: ['llama-index-integrations/vector_stores/llama-index-vector-stores-elasticsearch/llama_index']
+Changed roots:  llama-index-integrations/vector_stores/llama-index-vector-stores-elasticsearch/::
+2025-04-14T14:58:25.8896154Z
+✓ llama-index-integrations/vector_stores/llama-index-vector-stores-elasticsearch/tests/test_vector_stores_elasticsearch.py succeeded in 6.32s.
+2025-04-14T14:58:34.5596467Z
+Name                                                                                                                                 Stmts   Miss  Cover
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+llama-index-integrations/vector_stores/llama-index-vector-stores-elasticsearch/llama_index/vector_stores/elasticsearch/__init__.py       3      0   100%
+llama-index-integrations/vector_stores/llama-index-vector-stores-elasticsearch/llama_index/vector_stores/elasticsearch/base.py         157     93    41%
+llama-index-integrations/vector_stores/llama-index-vector-stores-elasticsearch/llama_index/vector_stores/elasticsearch/utils.py         46     24    48%
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+TOTAL                                                                                                                                  206    117    43%
+Coverage failure: total of 43 is less than fail-under=50
+2025-04-14T14:58:34.5608819Z
+2025-04-14T14:58:34.6489400Z
+Wrote html coverage report to `dist/coverage/python`
+2025-04-14T14:58:34.6588149Z
+Wrote xml coverage report to `dist/coverage/python`
+14:58:34.65 [ERROR] Test goal failed due to insufficient coverage. See coverage reports for details.
+##[error]Process completed with exit code 2.

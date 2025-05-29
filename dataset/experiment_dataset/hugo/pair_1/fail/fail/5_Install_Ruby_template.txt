@@ -1,0 +1,73 @@
+##[group]Run <:*:>
+with:
+ruby-version: 2.7
+<:*:> true
+env:
+GOPROXY: https://proxy.golang.org
+GO111MODULE: on
+SASS_VERSION: 1.80.3
+DART_SASS_SHA_LINUX: 7c933edbad0a7d389192c5b79393485c088bd2c4398e32f5754c32af006a9ffd
+DART_SASS_SHA_MACOS: 79e060b0e131c3bb3c16926bafc371dc33feab122bfa8c01aa337a072097967b
+DART_SASS_SHA_WINDOWS: 0bc4708b37cd1bac4740e83ac5e3176e66b774f77fd5dd364da5b5cfc9bfb469
+##[endgroup]
+##[group]Downloading Ruby
+https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-2.7.8-1/rubyinstaller-2.7.8-1-x64.7z
+Took   0.26 seconds
+##[endgroup]
+##[group]Extracting  Ruby
+Took  92.00 seconds
+##[endgroup]
+##[group]Modifying Path
+Entries removed from Path to avoid conflicts with default Ruby:
+C:\hostedtoolcache\windows\Ruby\3.0.7\x64\bin
+Entries added to Path to use selected Ruby:
+C:\hostedtoolcache\windows\Ruby\2.7.8\x64\bin
+C:\msys64\mingw64\bin
+C:\msys64\usr\bin
+##[endgroup]
+##[group]Downloading msys2 build tools
+https://github.com/ruby/setup-msys2-gcc/releases/download/msys2-gcc-pkgs/msys2.7z
+Took   0.46 seconds
+##[endgroup]
+##[group]Extracting  msys2 build tools
+Took  21.24 seconds
+##[endgroup]
+##[group]Downloading mingw64 build tools
+https://github.com/ruby/setup-msys2-gcc/releases/download/msys2-gcc-pkgs/mingw64.7z
+Took   0.65 seconds
+##[endgroup]
+##[group]Extracting  mingw64 build tools
+Took  33.64 seconds
+##[endgroup]
+##[group]Adding ridk env variables
+ACLOCAL_PATH=/mingw64/share/aclocal:/usr/share/aclocal
+LANG=en_US.UTF-8
+MANPATH=/mingw64/share/man
+MINGW_CHOST=x86_64-w64-mingw32
+MINGW_PACKAGE_PREFIX=mingw-w64-x86_64
+MINGW_PREFIX=/mingw64
+MSYSTEM=MINGW64
+MSYSTEM_CARCH=x86_64
+MSYSTEM_CHOST=x86_64-w64-mingw32
+MSYSTEM_PREFIX=/mingw64
+PKG_CONFIG_PATH=/mingw64/lib/pkgconfig:/mingw64/share/pkgconfig
+PROMPT=$P$G
+RI_DEVKIT=c:\msys64
+Took   0.10 seconds
+##[endgroup]
+##[group]Print Ruby version
+[command]C:\hostedtoolcache\windows\Ruby\2.7.8\x64\bin\ruby.exe --version
+ruby 2.7.8p225 (2023-03-30 revision 1f4d455848) [x64-mingw32]
+Took   0.10 seconds
+##[endgroup]
+##[group]Installing Bundler
+Using latest Bundler for ruby-2.7.8 because the default Bundler gem is too old for that Ruby version
+Ruby 2.6-2.7 only works with Bundler 2.4
+[command]C:\Windows\system32\cmd.exe /D /S /C "C:\hostedtoolcache\windows\Ruby\2.7.8\x64\bin\gem.cmd install bundler -v "~> 2.4.0""
+Successfully installed bundler-2.4.22
+1 gem installed
+Took  31.11 seconds
+##[endgroup]
+> bundle install
+Could not determine gemfile path, skipping "bundle install" and caching
+Took   0.00 seconds

@@ -1,0 +1,36 @@
+﻿2025-04-15T11:28:20.0615401Z ##[group]Run npm run test --workspace=packages/bruno-query
+[36;1mnpm run test --workspace=packages/bruno-query[0m
+shell: /usr/bin/bash -e {<:NUM:>}
+##[endgroup]
+2025-04-15T11:28:20.2047015Z
+> @usebruno/query@0.1.0 test
+> jest
+2025-04-15T11:28:20.2048417Z
+PASS tests/index.spec.ts
+get
+✓ customer.address.city should be "bangalore" (3 ms)
+✓ customer.orders.items.amount should be [10,20,30,40] (1 ms)
+✓ customer.orders.items.amount[0] should be 10 (1 ms)
+✓ ..items.amount should be [10,20,30,40]
+✓ ..amount should be [10,20,30,40] (1 ms)
+✓ ..items.amount[0] should be 10
+✓ ..items[0].amount should be 10 (1 ms)
+✓ ..items[5].amount should be undefined
+✓ ..id should be ["order-1",1,2,"order-2",3,4] (4 ms)
+✓ customer.orders.foo should be undefined
+✓ ..customer.foo should be undefined
+✓ ..address should be [{"city":"bangalore"}]
+✓ ..address[0] should be {"city":"bangalore"}
+✓ ..items[?].amount should be [40] for (i) => i.amount > 30 (1 ms)
+✓ ..items[?].amount should be [40] for { id: 4, amount: 40 }
+✓ ..items[?].amount should be undefined for { id: 5, amount: 40 }
+✓ ..items..amount[?][0] should be 40 for (amt) => amt > 30 (1 ms)
+✓ ..items..amount[0][?] should be undefined for (amt) => amt > 30
+✓ ..items..amount[?] should be [11,21,31,41] for (amt) => amt + 1
+✓ ..items..amount[0][?] should be 11 for (amt) => amt + 1 (1 ms)
+2025-04-15T11:28:23.4453897Z
+Test Suites: 1 passed, 1 total
+Tests:       20 passed, 20 total
+Snapshots:   0 total
+Time:        2.879 s
+Ran all test suites.

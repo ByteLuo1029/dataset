@@ -1,0 +1,98 @@
+2025-04-14T20:03:40.6724796Z ##[group]Run actions/checkout@v4
+2025-04-14T20:03:40.6725424Z with:
+2025-04-14T20:03:40.6725624Z   submodules: true
+2025-04-14T20:03:40.6725844Z   repository: coder/code-server
+2025-04-14T20:03:40.6726227Z   token: ***
+2025-04-14T20:03:40.6726423Z   ssh-strict: true
+2025-04-14T20:03:40.6726634Z   ssh-user: git
+2025-04-14T20:03:40.6726853Z   persist-credentials: true
+2025-04-14T20:03:40.6727085Z   clean: true
+2025-04-14T20:03:40.6727526Z   sparse-checkout-cone-mode: true
+2025-04-14T20:03:40.6727762Z   fetch-depth: 1
+2025-04-14T20:03:40.6727950Z   fetch-tags: false
+2025-04-14T20:03:40.6728146Z   show-progress: true
+2025-04-14T20:03:40.6728342Z   lfs: false
+2025-04-14T20:03:40.6728526Z   set-safe-directory: true
+2025-04-14T20:03:40.6728962Z env:
+2025-04-14T20:03:40.6729230Z   CODECOV_TOKEN: ***
+2025-04-14T20:03:40.6729617Z   DISABLE_V8_COMPILE_CACHE: 1
+2025-04-14T20:03:40.6729857Z ##[endgroup]
+2025-04-14T20:03:40.8964447Z Syncing repository: coder/code-server
+2025-04-14T20:03:40.8966363Z ##[group]Getting Git version info
+2025-04-14T20:03:40.8967149Z Working directory is '/home/runner/work/code-server/code-server'
+2025-04-14T20:03:40.8968141Z [command]/usr/bin/git version
+2025-04-14T20:03:40.9043138Z git version 2.49.0
+2025-04-14T20:03:40.9071191Z ##[endgroup]
+2025-04-14T20:03:40.9090461Z Temporarily overriding HOME='/home/runner/work/_temp/20acf5c4-79f1-4026-97a1-72620b3f7791' before making global git config changes
+2025-04-14T20:03:40.9091409Z Adding repository directory to the temporary git global config as a safe directory
+2025-04-14T20:03:40.9095568Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/code-server/code-server
+2025-04-14T20:03:40.9131593Z Deleting the contents of '/home/runner/work/code-server/code-server'
+2025-04-14T20:03:40.9135475Z ##[group]Initializing the repository
+2025-04-14T20:03:40.9139562Z [command]/usr/bin/git init /home/runner/work/code-server/code-server
+2025-04-14T20:03:40.9223165Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-04-14T20:03:40.9224105Z hint: is subject to change. To configure the initial branch name to use in all
+2025-04-14T20:03:40.9224694Z hint: of your new repositories, which will suppress this warning, call:
+2025-04-14T20:03:40.9225099Z hint:
+2025-04-14T20:03:40.9225542Z hint: 	git config --global init.defaultBranch <name>
+2025-04-14T20:03:40.9226034Z hint:
+2025-04-14T20:03:40.9226368Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-04-14T20:03:40.9226887Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-04-14T20:03:40.9227270Z hint:
+2025-04-14T20:03:40.9227487Z hint: 	git branch -m <name>
+2025-04-14T20:03:40.9231912Z Initialized empty Git repository in /home/runner/work/code-server/code-server/.git/
+2025-04-14T20:03:40.9242320Z [command]/usr/bin/git remote add origin https://github.com/coder/code-server
+2025-04-14T20:03:40.9274568Z ##[endgroup]
+2025-04-14T20:03:40.9274992Z ##[group]Disabling automatic garbage collection
+2025-04-14T20:03:40.9278574Z [command]/usr/bin/git config --local gc.auto 0
+2025-04-14T20:03:40.9305492Z ##[endgroup]
+2025-04-14T20:03:40.9305866Z ##[group]Setting up auth
+2025-04-14T20:03:40.9313575Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-04-14T20:03:40.9343703Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-04-14T20:03:40.9674008Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-14T20:03:40.9704306Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-04-14T20:03:40.9923400Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-04-14T20:03:40.9966680Z ##[endgroup]
+2025-04-14T20:03:40.9967796Z ##[group]Fetching the repository
+2025-04-14T20:03:40.9976078Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +3b7634c578124ec707a5d78a2acb74dc6ede003c:refs/remotes/origin/main
+2025-04-14T20:03:41.6264052Z From https://github.com/coder/code-server
+2025-04-14T20:03:41.6264908Z  * [new ref]         3b7634c578124ec707a5d78a2acb74dc6ede003c -> origin/main
+2025-04-14T20:03:41.6293693Z ##[endgroup]
+2025-04-14T20:03:41.6294158Z ##[group]Determining the checkout info
+2025-04-14T20:03:41.6297322Z ##[endgroup]
+2025-04-14T20:03:41.6303851Z [command]/usr/bin/git sparse-checkout disable
+2025-04-14T20:03:41.6343863Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-04-14T20:03:41.6371234Z ##[group]Checking out the ref
+2025-04-14T20:03:41.6376617Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2025-04-14T20:03:42.5100853Z Switched to a new branch 'main'
+2025-04-14T20:03:42.5102754Z branch 'main' set up to track 'origin/main'.
+2025-04-14T20:03:42.5524003Z ##[endgroup]
+2025-04-14T20:03:42.5524730Z ##[group]Setting up auth for fetching submodules
+2025-04-14T20:03:42.5530634Z [command]/usr/bin/git config --global http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-04-14T20:03:42.5566146Z [command]/usr/bin/git config --global --unset-all url.https://github.com/.insteadOf
+2025-04-14T20:03:42.5593540Z [command]/usr/bin/git config --global --add url.https://github.com/.insteadOf git@github.com:
+2025-04-14T20:03:42.5623050Z [command]/usr/bin/git config --global --add url.https://github.com/.insteadOf org-95932066@github.com:
+2025-04-14T20:03:42.5648510Z ##[endgroup]
+2025-04-14T20:03:42.5649128Z ##[group]Fetching submodules
+2025-04-14T20:03:42.5652885Z [command]/usr/bin/git submodule sync
+2025-04-14T20:03:42.5873023Z [command]/usr/bin/git -c protocol.version=2 submodule update --init --force --depth=1
+2025-04-14T20:03:42.6083815Z Submodule 'lib/vscode' (https://github.com/microsoft/vscode) registered for path 'lib/vscode'
+2025-04-14T20:03:42.6109964Z Cloning into '/home/runner/work/code-server/code-server/lib/vscode'...
+2025-04-14T20:03:49.8574264Z From https://github.com/microsoft/vscode
+2025-04-14T20:03:49.8575075Z  * branch            4949701c880d4bdb949e3c0e6b400288da7f474b -> FETCH_HEAD
+2025-04-14T20:03:50.5802023Z Submodule path 'lib/vscode': checked out '4949701c880d4bdb949e3c0e6b400288da7f474b'
+2025-04-14T20:03:50.5818582Z [command]/usr/bin/git submodule foreach git config --local gc.auto 0
+2025-04-14T20:03:50.6031400Z Entering 'lib/vscode'
+2025-04-14T20:03:50.6061894Z ##[endgroup]
+2025-04-14T20:03:50.6062900Z ##[group]Persisting credentials for submodules
+2025-04-14T20:03:50.6069840Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'url\.https\:\/\/github\.com\/\.insteadOf' && git config --local --unset-all 'url.https://github.com/.insteadOf' || :"
+2025-04-14T20:03:50.6277933Z Entering 'lib/vscode'
+2025-04-14T20:03:50.6348444Z [command]/usr/bin/git submodule foreach sh -c "git config --local 'http.https://github.com/.extraheader' 'AUTHORIZATION: basic ***' && git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2025-04-14T20:03:50.6555395Z Entering 'lib/vscode'
+2025-04-14T20:03:50.6592299Z file:/home/runner/work/code-server/code-server/.git/modules/lib/vscode/config	remote.origin.url
+2025-04-14T20:03:50.6615223Z [command]/usr/bin/git submodule foreach git config --local --add 'url.https://github.com/.insteadOf' 'git@github.com:'
+2025-04-14T20:03:50.6821592Z Entering 'lib/vscode'
+2025-04-14T20:03:50.6854599Z [command]/usr/bin/git submodule foreach git config --local --add 'url.https://github.com/.insteadOf' 'org-95932066@github.com:'
+2025-04-14T20:03:50.7060051Z Entering 'lib/vscode'
+2025-04-14T20:03:50.7089932Z ##[endgroup]
+2025-04-14T20:03:50.7128787Z [command]/usr/bin/git log -1 --format=%H
+2025-04-14T20:03:50.7150613Z 3b7634c578124ec707a5d78a2acb74dc6ede003c

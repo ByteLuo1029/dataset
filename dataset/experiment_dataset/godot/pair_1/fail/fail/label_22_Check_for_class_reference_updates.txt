@@ -1,0 +1,59 @@
+2025-04-15T08:42:42.6306602Z ##[group]Run echo "Running --doctool to see if this changes the public API without updating the documentation."
+2025-04-15T08:42:42.6307908Z [36;1mecho "Running --doctool to see if this changes the public API without updating the documentation."[0m
+2025-04-15T08:42:42.6309293Z [36;1mecho -e "If a diff is shown, it means that your code/doc changes are incomplete and you should update the class reference with --doctool.\n\n"[0m
+2025-04-15T08:42:42.6310941Z [36;1m./bin/godot.linuxbsd.editor.x86_64.mono --doctool --headless 2>&1 > /dev/null || true[0m
+2025-04-15T08:42:42.6312400Z [36;1mgit diff --color --exit-code && ! git ls-files --others --exclude-standard | sed -e 's/^/New doc file missing in PR: /' | grep 'xml$'[0m
+2025-04-15T08:42:42.6370641Z shell: /usr/bin/bash -e {0}
+2025-04-15T08:42:42.6370904Z env:
+2025-04-15T08:42:42.6371091Z   GODOT_CPP_BRANCH: 4.4
+2025-04-15T08:42:42.6371725Z   SCONSFLAGS: verbose=yes warnings=extra werror=yes module_text_server_fb_enabled=yes strict_checks=yes "accesskit_sdk_path=/home/runner/work/godot/godot/accesskit-c-0.15.1/"
+2025-04-15T08:42:42.6372877Z   DOTNET_NOLOGO: true
+2025-04-15T08:42:42.6373105Z   DOTNET_CLI_TELEMETRY_OPTOUT: true
+2025-04-15T08:42:42.6373542Z   TSAN_OPTIONS: suppressions=/home/runner/work/godot/godot/misc/error_suppressions/tsan.txt
+2025-04-15T08:42:42.6374149Z   UBSAN_OPTIONS: suppressions=/home/runner/work/godot/godot/misc/error_suppressions/ubsan.txt
+2025-04-15T08:42:42.6374588Z   CACHE_TIMESTAMP: 1744706237
+2025-04-15T08:42:42.6374884Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T08:42:42.6375314Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.2/x64/lib/pkgconfig
+2025-04-15T08:42:42.6375712Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T08:42:42.6376082Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T08:42:42.6376432Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T08:42:42.6376791Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.2/x64/lib
+2025-04-15T08:42:42.6377121Z   DOTNET_ROOT: /usr/share/dotnet
+2025-04-15T08:42:42.6377357Z ##[endgroup]
+2025-04-15T08:42:42.6451370Z Running --doctool to see if this changes the public API without updating the documentation.
+2025-04-15T08:42:42.6452620Z If a diff is shown, it means that your code/doc changes are incomplete and you should update the class reference with --doctool.
+2025-04-15T08:42:42.6453070Z 
+2025-04-15T08:42:42.6453083Z 
+2025-04-15T08:42:44.4167987Z ERROR: EditorSettings not instantiated yet.
+2025-04-15T08:42:44.4168926Z    at: _EDITOR_DEF (editor/editor_settings.cpp:1501)
+2025-04-15T08:42:45.7885571Z [1mdiff --git a/doc/classes/Object.xml b/doc/classes/Object.xml[m
+2025-04-15T08:42:45.7886380Z [1mindex f2650a1..74d7479 100644[m
+2025-04-15T08:42:45.7886926Z [1m--- a/doc/classes/Object.xml[m
+2025-04-15T08:42:45.7887446Z [1m+++ b/doc/classes/Object.xml[m
+2025-04-15T08:42:45.7887988Z [36m@@ -186,25 +186,6 @@[m
+2025-04-15T08:42:45.7888855Z  				[b]Note:[/b] If the object's script is not [annotation @GDScript.@tool], this method will not be called in the editor.[m
+2025-04-15T08:42:45.7889503Z  			</description>[m
+2025-04-15T08:42:45.7889792Z  		</method>[m
+2025-04-15T08:42:45.7890389Z [31m-		<method name="_get_property_warning" qualifiers="virtual">[m
+2025-04-15T08:42:45.7890938Z [31m-			<return type="String" />[m
+2025-04-15T08:42:45.7891599Z [31m-			<param index="0" name="property" type="StringName" />[m
+2025-04-15T08:42:45.7892370Z [31m-			<description>[m
+2025-04-15T08:42:45.7893196Z [31m-				Override this method to customize warning messages for properties in the inspector.[m
+2025-04-15T08:42:45.7894758Z [31m-				Should return the given [param property]'s warning to be displayed as warnings in the inspector if the script that overrides it is a [code]tool[/code] script.[m
+2025-04-15T08:42:45.7895781Z [31m-				Returning an empty string produces no warnings.[m
+2025-04-15T08:42:45.7896239Z [31m-				[codeblock][m
+2025-04-15T08:42:45.7896644Z [31m-				@export var energy = 0[m
+2025-04-15T08:42:45.7897296Z [31m-[m
+2025-04-15T08:42:45.7897755Z [31m-				func _get_property_warning(property):[m
+2025-04-15T08:42:45.7898371Z [31m-				    if property == "energy" and energy &lt; 0:[m
+2025-04-15T08:42:45.7898970Z [31m-				        return "Energy must be 0 or greater."[m
+2025-04-15T08:42:45.7899394Z [31m-				    else:[m
+2025-04-15T08:42:45.7899943Z [31m-				        return ""[m
+2025-04-15T08:42:45.7900529Z [31m-				[/codeblock][m
+2025-04-15T08:42:45.7902263Z [31m-				[b]Note:[/b] If the object's script is not [annotation @GDScript.@tool], this method will not be called in the editor.[m
+2025-04-15T08:42:45.7903307Z [31m-			</description>[m
+2025-04-15T08:42:45.7903824Z [31m-		</method>[m
+2025-04-15T08:42:45.7904410Z  		<method name="_init" qualifiers="virtual">[m
+2025-04-15T08:42:45.7905066Z  			<return type="void" />[m
+2025-04-15T08:42:45.7905610Z  			<description>[m
+2025-04-15T08:42:46.4502102Z ##[error]Process completed with exit code 1.

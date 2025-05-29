@@ -1,0 +1,80 @@
+2025-04-13T17:36:09.5132220Z ##[group]Run actions/github-script@v3
+2025-04-13T17:36:09.5133756Z with:
+2025-04-13T17:36:09.5134875Z   github-token: ***
+2025-04-13T17:36:09.5141263Z   script: const { owner, repo } = context.repo;
+const { number, merged } = context.payload.pull_request;
+if (merged) {
+  const { data: milestones } = await github.issues.listMilestones({
+    owner,
+    repo,
+    state: 'open',
+  });
+
+  const mergedDate = new Date(context.payload.pull_request.merged_at);
+  const currentMilestone = milestones
+  .filter(milestone => milestone.due_on !== null)
+  .find((milestone) => {
+    const dueDate = new Date(milestone.due_on);
+    return mergedDate <= dueDate;
+  });
+
+  if (currentMilestone) {
+    await github.issues.update({
+      owner,
+      repo,
+      issue_number: number,
+      milestone: currentMilestone.number
+    });
+  }
+}
+
+2025-04-13T17:36:09.5147677Z   debug: true
+2025-04-13T17:36:09.5148459Z   user-agent: actions/github-script
+2025-04-13T17:36:09.5149379Z   result-encoding: json
+2025-04-13T17:36:09.5150858Z ##[endgroup]
+2025-04-13T17:36:09.9322091Z RequestError [HttpError]: Resource not accessible by integration
+2025-04-13T17:36:09.9366798Z ##[error]Unhandled error: HttpError: Resource not accessible by integration
+2025-04-13T17:36:09.9376233Z     at /home/runner/work/_actions/actions/github-script/v3/dist/index.js:2591:23
+2025-04-13T17:36:09.9377452Z     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-13T17:36:09.9378887Z     at async eval (eval at callAsyncFunction (/home/runner/work/_actions/actions/github-script/v3/dist/index.js:7514:16), <anonymous>:21:5)
+2025-04-13T17:36:09.9380563Z     at async main (/home/runner/work/_actions/actions/github-script/v3/dist/index.js:7541:20) {
+2025-04-13T17:36:09.9381412Z   status: '403',
+2025-04-13T17:36:09.9381859Z   headers: {
+2025-04-13T17:36:09.9382316Z     'access-control-allow-origin': '*',
+2025-04-13T17:36:09.9384627Z     'access-control-expose-headers': 'ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset',
+2025-04-13T17:36:09.9386899Z     'content-encoding': 'gzip',
+2025-04-13T17:36:09.9387863Z     'content-security-policy': "default-src 'none'",
+2025-04-13T17:36:09.9388643Z     'content-type': 'application/json; charset=utf-8',
+2025-04-13T17:36:09.9389309Z     date: 'Sun, 13 Apr 2025 17:36:09 GMT',
+2025-04-13T17:36:09.9390330Z     'referrer-policy': 'origin-when-cross-origin, strict-origin-when-cross-origin',
+2025-04-13T17:36:09.9391167Z     server: 'github.com',
+2025-04-13T17:36:09.9391889Z     'strict-transport-security': 'max-age=31536000; includeSubdomains; preload',
+2025-04-13T17:36:09.9392710Z     'transfer-encoding': 'chunked',
+2025-04-13T17:36:09.9393347Z     vary: 'Accept-Encoding, Accept, X-Requested-With',
+2025-04-13T17:36:09.9394184Z     'x-accepted-github-permissions': 'issues=write; pull_requests=write',
+2025-04-13T17:36:09.9395012Z     'x-content-type-options': 'nosniff',
+2025-04-13T17:36:09.9395614Z     'x-frame-options': 'deny',
+2025-04-13T17:36:09.9396214Z     'x-github-api-version-selected': '2022-11-28',
+2025-04-13T17:36:09.9396866Z     'x-github-media-type': 'github.v3',
+2025-04-13T17:36:09.9397558Z     'x-github-request-id': '47C1:615FC:2E95CA:5DCD98:67FBF609',
+2025-04-13T17:36:09.9398243Z     'x-ratelimit-limit': '15000',
+2025-04-13T17:36:09.9398804Z     'x-ratelimit-remaining': '14997',
+2025-04-13T17:36:09.9399394Z     'x-ratelimit-reset': '1744568506',
+2025-04-13T17:36:09.9400151Z     'x-ratelimit-resource': 'core',
+2025-04-13T17:36:09.9400718Z     'x-ratelimit-used': '3',
+2025-04-13T17:36:09.9401292Z     'x-xss-protection': '0'
+2025-04-13T17:36:09.9401903Z   },
+2025-04-13T17:36:09.9402305Z   request: {
+2025-04-13T17:36:09.9402733Z     method: 'PATCH',
+2025-04-13T17:36:09.9403410Z     url: 'https://api.github.com/repos/menloresearch/jan/issues/4826',
+2025-04-13T17:36:09.9404113Z     headers: {
+2025-04-13T17:36:09.9404924Z       accept: 'application/vnd.github.-preview+json',
+2025-04-13T17:36:09.9405849Z       'user-agent': 'actions/github-script octokit-core.js/3.2.1 Node.js/20.19.0 (linux; x64)',
+2025-04-13T17:36:09.9406721Z       authorization: 'token [REDACTED]',
+2025-04-13T17:36:09.9407383Z       'content-type': 'application/json; charset=utf-8'
+2025-04-13T17:36:09.9407985Z     },
+2025-04-13T17:36:09.9408394Z     body: '{"milestone":80}',
+2025-04-13T17:36:09.9409059Z     request: { agent: [Agent], hook: [Function: bound bound register] }
+2025-04-13T17:36:09.9409951Z   },
+2025-04-13T17:36:09.9410635Z   documentation_url: 'https://docs.github.com/rest/issues/issues#update-an-issue'
+2025-04-13T17:36:09.9411431Z }

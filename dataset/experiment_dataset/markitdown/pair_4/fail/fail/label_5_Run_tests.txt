@@ -1,0 +1,1220 @@
+2025-03-29T04:50:27.8654564Z ##[group]Run cd packages/markitdown; hatch test
+2025-03-29T04:50:27.8655028Z [36;1mcd packages/markitdown; hatch test[0m
+2025-03-29T04:50:27.8705105Z shell: /usr/bin/bash -e {0}
+2025-03-29T04:50:27.8705407Z env:
+2025-03-29T04:50:27.8705711Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.9/x64
+2025-03-29T04:50:27.8706169Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.9/x64/lib/pkgconfig
+2025-03-29T04:50:27.8706802Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.9/x64
+2025-03-29T04:50:27.8707296Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.9/x64
+2025-03-29T04:50:27.8707702Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.9/x64
+2025-03-29T04:50:27.8708392Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.9/x64/lib:/opt/hostedtoolcache/Python/3.11.11/x64/lib:/opt/hostedtoolcache/Python/3.10.16/x64/lib
+2025-03-29T04:50:27.8709043Z ##[endgroup]
+2025-03-29T04:50:28.0975714Z Creating environment: hatch-test.py3.12
+2025-03-29T04:50:28.1460340Z Installing project in development mode
+2025-03-29T04:50:30.0734301Z Checking dependencies
+2025-03-29T04:50:30.1183298Z Syncing dependencies
+2025-03-29T04:50:34.7525985Z ============================= test session starts ==============================
+2025-03-29T04:50:34.7526513Z platform linux -- Python 3.12.3, pytest-8.3.5, pluggy-1.5.0
+2025-03-29T04:50:34.7527141Z rootdir: /home/runner/work/markitdown/markitdown/packages/markitdown
+2025-03-29T04:50:34.7527550Z configfile: pyproject.toml
+2025-03-29T04:50:34.7527887Z plugins: rerunfailures-14.0, anyio-4.9.0, xdist-3.6.1, mock-3.14.0
+2025-03-29T04:50:34.7528228Z collected 172 items
+2025-03-29T04:50:34.7528373Z 
+2025-03-29T04:50:36.4759694Z tests/test_cli_misc.py ..                                                [  1%]
+2025-03-29T04:51:16.4467670Z tests/test_cli_vectors.py ...F...........F...........F........ssssssssss [ 27%]
+2025-03-29T04:51:19.8081148Z ss.F                                                                     [ 30%]
+2025-03-29T04:51:20.1365280Z tests/test_module_misc.py ......ss.ss                                    [ 36%]
+2025-03-29T04:51:26.5767828Z tests/test_module_vectors.py ..................F..............F......... [ 61%]
+2025-03-29T04:51:40.3167322Z .....F...........sssssssssssssss...F..............F............F.F       [100%]
+2025-03-29T04:51:40.3167834Z 
+2025-03-29T04:51:40.3168013Z =================================== FAILURES ===================================
+2025-03-29T04:51:40.3168563Z _____________________ test_output_to_stdout[test_vector3] ______________________
+2025-03-29T04:51:40.3169019Z 
+2025-03-29T04:51:40.3169344Z shared_tmp_dir = PosixPath('/tmp/pytest-of-runner/pytest-0/pytest_tmp0')
+2025-03-29T04:51:40.3171343Z test_vector = FileTestVector(filename='test.pptx', mimetype='application/vnd.openxmlformats-officedocument.presentationml.presentati...ase of the caption is Human-written.](Picture4.jpg)'], must_not_include=['data:image/jpeg;base64,/9j/4AAQSkZJRgABAQE'])
+2025-03-29T04:51:40.3173047Z 
+2025-03-29T04:51:40.3175080Z     @pytest.mark.parametrize("test_vector", CLI_TEST_VECTORS)
+2025-03-29T04:51:40.3177555Z     def test_output_to_stdout(shared_tmp_dir, test_vector) -> None:
+2025-03-29T04:51:40.3178254Z         """Test that the CLI outputs to stdout correctly."""
+2025-03-29T04:51:40.3178764Z     
+2025-03-29T04:51:40.3179093Z         result = subprocess.run(
+2025-03-29T04:51:40.3179523Z             [
+2025-03-29T04:51:40.3180370Z                 "python",
+2025-03-29T04:51:40.3180812Z                 "-m",
+2025-03-29T04:51:40.3181161Z                 "markitdown",
+2025-03-29T04:51:40.3181644Z                 os.path.join(TEST_FILES_DIR, test_vector.filename),
+2025-03-29T04:51:40.3182162Z             ],
+2025-03-29T04:51:40.3182517Z             capture_output=True,
+2025-03-29T04:51:40.3182944Z             text=True,
+2025-03-29T04:51:40.3183297Z         )
+2025-03-29T04:51:40.3183593Z     
+2025-03-29T04:51:40.3184102Z >       assert result.returncode == 0, f"CLI exited with error: {result.stderr}"
+2025-03-29T04:51:40.3186081Z E       AssertionError: CLI exited with error: /home/runner/.local/share/hatch/env/virtual/markitdown/H_uUSwZ6/hatch-test.py3.12/lib/python3.12/site-packages/pydub/utils.py:170: RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work
+2025-03-29T04:51:40.3188726Z E           warn("Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work", RuntimeWarning)
+2025-03-29T04:51:40.3189539Z E         Traceback (most recent call last):
+2025-03-29T04:51:40.3190129Z E           File "<frozen runpy>", line 198, in _run_module_as_main
+2025-03-29T04:51:40.3190708Z E           File "<frozen runpy>", line 88, in _run_code
+2025-03-29T04:51:40.3191745Z E           File "/home/runner/work/markitdown/markitdown/packages/markitdown/src/markitdown/__main__.py", line 224, in <module>
+2025-03-29T04:51:40.3193013Z E             main()
+2025-03-29T04:51:40.3193897Z E           File "/home/runner/work/markitdown/markitdown/packages/markitdown/src/markitdown/__main__.py", line 197, in main
+2025-03-29T04:51:40.3194888Z E             result = markitdown.convert(
+2025-03-29T04:51:40.3195362Z E                      ^^^^^^^^^^^^^^^^^^^
+2025-03-29T04:51:40.3196352Z E           File "/home/runner/work/markitdown/markitdown/packages/markitdown/src/markitdown/_markitdown.py", line 271, in convert
+2025-03-29T04:51:40.3197724Z E             return self.convert_local(source, stream_info=stream_info, **kwargs)
+2025-03-29T04:51:40.3198385Z E                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-03-29T04:51:40.3199447Z E           File "/home/runner/work/markitdown/markitdown/packages/markitdown/src/markitdown/_markitdown.py", line 325, in convert_local
+2025-03-29T04:51:40.3200686Z E             return self._convert(file_stream=fh, stream_info_guesses=guesses, **kwargs)
+2025-03-29T04:51:40.3201688Z E                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-03-29T04:51:40.3202743Z E           File "/home/runner/work/markitdown/markitdown/packages/markitdown/src/markitdown/_markitdown.py", line 611, in _convert
+2025-03-29T04:51:40.3203954Z E             raise FileConversionException(attempts=failed_attempts)
+2025-03-29T04:51:40.3204905Z E         markitdown._exceptions.FileConversionException: File conversion failed after 1 attempts:
+2025-03-29T04:51:40.3205915Z E          - PptxConverter threw RecursionError with message: maximum recursion depth exceeded
+2025-03-29T04:51:40.3206772Z E         
+2025-03-29T04:51:40.3207110Z E         
+2025-03-29T04:51:40.3207423Z E       assert 1 == 0
+2025-03-29T04:51:40.3209162Z E        +  where 1 = CompletedProcess(args=['python', '-m', 'markitdown', '/home/runner/work/markitdown/markitdown/packages/markitdown/test...on failed after 1 attempts:\n - PptxConverter threw RecursionError with message: maximum recursion depth exceeded\n\n').returncode
+2025-03-29T04:51:40.3210801Z 
+2025-03-29T04:51:40.3211025Z tests/test_cli_vectors.py:65: AssertionError
+2025-03-29T04:51:40.3211660Z ______________________ test_output_to_file[test_vector3] _______________________
+2025-03-29T04:51:40.3212120Z 
+2025-03-29T04:51:40.3212461Z shared_tmp_dir = PosixPath('/tmp/pytest-of-runner/pytest-0/pytest_tmp0')
+2025-03-29T04:51:40.3214329Z test_vector = FileTestVector(filename='test.pptx', mimetype='application/vnd.openxmlformats-officedocument.presentationml.presentati...ase of the caption is Human-written.](Picture4.jpg)'], must_not_include=['data:image/jpeg;base64,/9j/4AAQSkZJRgABAQE'])
+2025-03-29T04:51:40.3215840Z 
+2025-03-29T04:51:40.3216104Z     @pytest.mark.parametrize("test_vector", CLI_TEST_VECTORS)
+2025-03-29T04:51:40.3216964Z     def test_output_to_file(shared_tmp_dir, test_vector) -> None:
+2025-03-29T04:51:40.3217604Z         """Test that the CLI outputs to a file correctly."""
+2025-03-29T04:51:40.3218119Z     
+2025-03-29T04:51:40.3218592Z         output_file = os.path.join(shared_tmp_dir, test_vector.filename + ".output")
+2025-03-29T04:51:40.3219266Z         result = subprocess.run(
+2025-03-29T04:51:40.3219665Z             [
+2025-03-29T04:51:40.3219978Z                 "python",
+2025-03-29T04:51:40.3220620Z                 "-m",
+2025-03-29T04:51:40.3220969Z                 "markitdown",
+2025-03-29T04:51:40.3221336Z                 "-o",
+2025-03-29T04:51:40.3221685Z                 output_file,
+2025-03-29T04:51:40.3222177Z                 os.path.join(TEST_FILES_DIR, test_vector.filename),
+2025-03-29T04:51:40.3222690Z             ],
+2025-03-29T04:51:40.3223022Z             capture_output=True,
+2025-03-29T04:51:40.3223397Z             text=True,
+2025-03-29T04:51:40.3223744Z         )
+2025-03-29T04:51:40.3224095Z     
+2025-03-29T04:51:40.3224566Z >       assert result.returncode == 0, f"CLI exited with error: {result.stderr}"
+2025-03-29T04:51:40.3226317Z E       AssertionError: CLI exited with error: /home/runner/.local/share/hatch/env/virtual/markitdown/H_uUSwZ6/hatch-test.py3.12/lib/python3.12/site-packages/pydub/utils.py:170: RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work
+2025-03-29T04:51:40.3228368Z E           warn("Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work", RuntimeWarning)
+2025-03-29T04:51:40.3229048Z E         Traceback (most recent call last):
+2025-03-29T04:51:40.3229527Z E           File "<frozen runpy>", line 198, in _run_module_as_main
+2025-03-29T04:51:40.3229997Z E           File "<frozen runpy>", line 88, in _run_code
+2025-03-29T04:51:40.3230862Z E           File "/home/runner/work/markitdown/markitdown/packages/markitdown/src/markitdown/__main__.py", line 224, in <module>
+2025-03-29T04:51:40.3231678Z E             main()
+2025-03-29T04:51:40.3232400Z E           File "/home/runner/work/markitdown/markitdown/packages/markitdown/src/markitdown/__main__.py", line 197, in main
+2025-03-29T04:51:40.3233226Z E             result = markitdown.convert(
+2025-03-29T04:51:40.3233615Z E                      ^^^^^^^^^^^^^^^^^^^
+2025-03-29T04:51:40.3234634Z E           File "/home/runner/work/markitdown/markitdown/packages/markitdown/src/markitdown/_markitdown.py", line 271, in convert
+2025-03-29T04:51:40.3235613Z E             return self.convert_local(source, stream_info=stream_info, **kwargs)
+2025-03-29T04:51:40.3236191Z E                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-03-29T04:51:40.3237282Z E           File "/home/runner/work/markitdown/markitdown/packages/markitdown/src/markitdown/_markitdown.py", line 325, in convert_local
+2025-03-29T04:51:40.3238320Z E             return self._convert(file_stream=fh, stream_info_guesses=guesses, **kwargs)
+2025-03-29T04:51:40.3238885Z E                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-03-29T04:51:40.3239733Z E           File "/home/runner/work/markitdown/markitdown/packages/markitdown/src/markitdown/_markitdown.py", line 611, in _convert
+2025-03-29T04:51:40.3240679Z E             raise FileConversionException(attempts=failed_attempts)
+2025-03-29T04:51:40.3241450Z E         markitdown._exceptions.FileConversionException: File conversion failed after 1 attempts:
+2025-03-29T04:51:40.3242347Z E          - PptxConverter threw RecursionError with message: maximum recursion depth exceeded
+2025-03-29T04:51:40.3242942Z E         
+2025-03-29T04:51:40.3243189Z E         
+2025-03-29T04:51:40.3243435Z E       assert 1 == 0
+2025-03-29T04:51:40.3244759Z E        +  where 1 = CompletedProcess(args=['python', '-m', 'markitdown', '-o', '/tmp/pytest-of-runner/pytest-0/pytest_tmp0/test.pptx.outpu...on failed after 1 attempts:\n - PptxConverter threw RecursionError with message: maximum recursion depth exceeded\n\n').returncode
+2025-03-29T04:51:40.3246040Z 
+2025-03-29T04:51:40.3246206Z tests/test_cli_vectors.py:90: AssertionError
+2025-03-29T04:51:40.3246912Z ______________ test_input_from_stdin_without_hints[test_vector3] _______________
+2025-03-29T04:51:40.3247315Z 
+2025-03-29T04:51:40.3247589Z shared_tmp_dir = PosixPath('/tmp/pytest-of-runner/pytest-0/pytest_tmp0')
+2025-03-29T04:51:40.3249238Z test_vector = FileTestVector(filename='test.pptx', mimetype='application/vnd.openxmlformats-officedocument.presentationml.presentati...ase of the caption is Human-written.](Picture4.jpg)'], must_not_include=['data:image/jpeg;base64,/9j/4AAQSkZJRgABAQE'])
+2025-03-29T04:51:40.3250792Z 
+2025-03-29T04:51:40.3251035Z     @pytest.mark.parametrize("test_vector", CLI_TEST_VECTORS)
+2025-03-29T04:51:40.3251672Z     def test_input_from_stdin_without_hints(shared_tmp_dir, test_vector) -> None:
+2025-03-29T04:51:40.3252269Z         """Test that the CLI readds from stdin correctly."""
+2025-03-29T04:51:40.3252672Z     
+2025-03-29T04:51:40.3252927Z         test_input = b""
+2025-03-29T04:51:40.3253414Z         with open(os.path.join(TEST_FILES_DIR, test_vector.filename), "rb") as stream:
+2025-03-29T04:51:40.3253965Z             test_input = stream.read()
+2025-03-29T04:51:40.3254300Z     
+2025-03-29T04:51:40.3254560Z         result = subprocess.run(
+2025-03-29T04:51:40.3254900Z             [
+2025-03-29T04:51:40.3255164Z                 "python",
+2025-03-29T04:51:40.3255464Z                 "-m",
+2025-03-29T04:51:40.3255754Z                 "markitdown",
+2025-03-29T04:51:40.3256174Z                 os.path.join(TEST_FILES_DIR, test_vector.filename),
+2025-03-29T04:51:40.3256584Z             ],
+2025-03-29T04:51:40.3257009Z             input=test_input,
+2025-03-29T04:51:40.3257337Z             capture_output=True,
+2025-03-29T04:51:40.3257668Z             text=False,
+2025-03-29T04:51:40.3257956Z         )
+2025-03-29T04:51:40.3258198Z     
+2025-03-29T04:51:40.3258578Z         stdout = result.stdout.decode(locale.getpreferredencoding())
+2025-03-29T04:51:40.3259090Z >       assert (
+2025-03-29T04:51:40.3259370Z             result.returncode == 0
+2025-03-29T04:51:40.3259807Z         ), f"CLI exited with error: {result.stderr.decode('utf-8')}"
+2025-03-29T04:51:40.3261449Z E       AssertionError: CLI exited with error: /home/runner/.local/share/hatch/env/virtual/markitdown/H_uUSwZ6/hatch-test.py3.12/lib/python3.12/site-packages/pydub/utils.py:170: RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work
+2025-03-29T04:51:40.3263421Z E           warn("Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work", RuntimeWarning)
+2025-03-29T04:51:40.3264087Z E         Traceback (most recent call last):
+2025-03-29T04:51:40.3264566Z E           File "<frozen runpy>", line 198, in _run_module_as_main
+2025-03-29T04:51:40.3265038Z E           File "<frozen runpy>", line 88, in _run_code
+2025-03-29T04:51:40.3265903Z E           File "/home/runner/work/markitdown/markitdown/packages/markitdown/src/markitdown/__main__.py", line 224, in <module>
+2025-03-29T04:51:40.3266879Z E             main()
+2025-03-29T04:51:40.3267601Z E           File "/home/runner/work/markitdown/markitdown/packages/markitdown/src/markitdown/__main__.py", line 197, in main
+2025-03-29T04:51:40.3268428Z E             result = markitdown.convert(
+2025-03-29T04:51:40.3268822Z E                      ^^^^^^^^^^^^^^^^^^^
+2025-03-29T04:51:40.3269634Z E           File "/home/runner/work/markitdown/markitdown/packages/markitdown/src/markitdown/_markitdown.py", line 271, in convert
+2025-03-29T04:51:40.3270621Z E             return self.convert_local(source, stream_info=stream_info, **kwargs)
+2025-03-29T04:51:40.3271166Z E                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-03-29T04:51:40.3272053Z E           File "/home/runner/work/markitdown/markitdown/packages/markitdown/src/markitdown/_markitdown.py", line 325, in convert_local
+2025-03-29T04:51:40.3273086Z E             return self._convert(file_stream=fh, stream_info_guesses=guesses, **kwargs)
+2025-03-29T04:51:40.3273646Z E                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-03-29T04:51:40.3274494Z E           File "/home/runner/work/markitdown/markitdown/packages/markitdown/src/markitdown/_markitdown.py", line 611, in _convert
+2025-03-29T04:51:40.3275415Z E             raise FileConversionException(attempts=failed_attempts)
+2025-03-29T04:51:40.3276161Z E         markitdown._exceptions.FileConversionException: File conversion failed after 1 attempts:
+2025-03-29T04:51:40.3277438Z E          - PptxConverter threw RecursionError with message: maximum recursion depth exceeded
+2025-03-29T04:51:40.3278034Z E         
+2025-03-29T04:51:40.3278280Z E         
+2025-03-29T04:51:40.3278524Z E       assert 1 == 0
+2025-03-29T04:51:40.3279947Z E        +  where 1 = CompletedProcess(args=['python', '-m', 'markitdown', '/home/runner/work/markitdown/markitdown/packages/markitdown/test...on failed after 1 attempts:\n - PptxConverter threw RecursionError with message: maximum recursion depth exceeded\n\n').returncode
+2025-03-29T04:51:40.3281328Z 
+2025-03-29T04:51:40.3281499Z tests/test_cli_vectors.py:125: AssertionError
+2025-03-29T04:51:40.3282044Z _______________ test_output_to_file_with_data_uris[test_vector1] _______________
+2025-03-29T04:51:40.3282457Z 
+2025-03-29T04:51:40.3282746Z shared_tmp_dir = PosixPath('/tmp/pytest-of-runner/pytest-0/pytest_tmp0')
+2025-03-29T04:51:40.3284374Z test_vector = FileTestVector(filename='test.pptx', mimetype='application/vnd.openxmlformats-officedocument.presentationml.presentati.../jpeg;base64,/9j/4AAQSkZJRgABAQE'], must_not_include=['![This phrase of the caption is Human-written.](Picture4.jpg)'])
+2025-03-29T04:51:40.3285787Z 
+2025-03-29T04:51:40.3286059Z     @pytest.mark.parametrize("test_vector", DATA_URI_TEST_VECTORS)
+2025-03-29T04:51:40.3286861Z     def test_output_to_file_with_data_uris(shared_tmp_dir, test_vector) -> None:
+2025-03-29T04:51:40.3287520Z         """Test CLI functionality when keep_data_uris is enabled"""
+2025-03-29T04:51:40.3287997Z     
+2025-03-29T04:51:40.3288405Z         output_file = os.path.join(shared_tmp_dir, test_vector.filename + ".output")
+2025-03-29T04:51:40.3288964Z         result = subprocess.run(
+2025-03-29T04:51:40.3289295Z             [
+2025-03-29T04:51:40.3289557Z                 "python",
+2025-03-29T04:51:40.3290035Z                 "-m",
+2025-03-29T04:51:40.3290313Z                 "markitdown",
+2025-03-29T04:51:40.3290647Z                 "--keep-data-uris",
+2025-03-29T04:51:40.3290974Z                 "-o",
+2025-03-29T04:51:40.3291270Z                 output_file,
+2025-03-29T04:51:40.3291643Z                 os.path.join(TEST_FILES_DIR, test_vector.filename),
+2025-03-29T04:51:40.3292066Z             ],
+2025-03-29T04:51:40.3292353Z             capture_output=True,
+2025-03-29T04:51:40.3292680Z             text=True,
+2025-03-29T04:51:40.3292947Z         )
+2025-03-29T04:51:40.3293179Z     
+2025-03-29T04:51:40.3293581Z >       assert result.returncode == 0, f"CLI exited with error: {result.stderr}"
+2025-03-29T04:51:40.3295220Z E       AssertionError: CLI exited with error: /home/runner/.local/share/hatch/env/virtual/markitdown/H_uUSwZ6/hatch-test.py3.12/lib/python3.12/site-packages/pydub/utils.py:170: RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work
+2025-03-29T04:51:40.3297094Z E           warn("Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work", RuntimeWarning)
+2025-03-29T04:51:40.3297742Z E         Traceback (most recent call last):
+2025-03-29T04:51:40.3298202Z E           File "<frozen runpy>", line 198, in _run_module_as_main
+2025-03-29T04:51:40.3298677Z E           File "<frozen runpy>", line 88, in _run_code
+2025-03-29T04:51:40.3299515Z E           File "/home/runner/work/markitdown/markitdown/packages/markitdown/src/markitdown/__main__.py", line 224, in <module>
+2025-03-29T04:51:40.3300310Z E             main()
+2025-03-29T04:51:40.3301018Z E           File "/home/runner/work/markitdown/markitdown/packages/markitdown/src/markitdown/__main__.py", line 197, in main
+2025-03-29T04:51:40.3301817Z E             result = markitdown.convert(
+2025-03-29T04:51:40.3302189Z E                      ^^^^^^^^^^^^^^^^^^^
+2025-03-29T04:51:40.3302978Z E           File "/home/runner/work/markitdown/markitdown/packages/markitdown/src/markitdown/_markitdown.py", line 271, in convert
+2025-03-29T04:51:40.3304001Z E             return self.convert_local(source, stream_info=stream_info, **kwargs)
+2025-03-29T04:51:40.3304527Z E                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-03-29T04:51:40.3305587Z E           File "/home/runner/work/markitdown/markitdown/packages/markitdown/src/markitdown/_markitdown.py", line 325, in convert_local
+2025-03-29T04:51:40.3306733Z E             return self._convert(file_stream=fh, stream_info_guesses=guesses, **kwargs)
+2025-03-29T04:51:40.3307316Z E                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-03-29T04:51:40.3308179Z E           File "/home/runner/work/markitdown/markitdown/packages/markitdown/src/markitdown/_markitdown.py", line 611, in _convert
+2025-03-29T04:51:40.3309111Z E             raise FileConversionException(attempts=failed_attempts)
+2025-03-29T04:51:40.3309878Z E         markitdown._exceptions.FileConversionException: File conversion failed after 1 attempts:
+2025-03-29T04:51:40.3310770Z E          - PptxConverter threw RecursionError with message: maximum recursion depth exceeded
+2025-03-29T04:51:40.3311346Z E         
+2025-03-29T04:51:40.3311584Z E         
+2025-03-29T04:51:40.3311832Z E       assert 1 == 0
+2025-03-29T04:51:40.3313113Z E        +  where 1 = CompletedProcess(args=['python', '-m', 'markitdown', '--keep-data-uris', '-o', '/tmp/pytest-of-runner/pytest-0/pytest_...on failed after 1 attempts:\n - PptxConverter threw RecursionError with message: maximum recursion depth exceeded\n\n').returncode
+2025-03-29T04:51:40.3314338Z 
+2025-03-29T04:51:40.3314501Z tests/test_cli_vectors.py:179: AssertionError
+2025-03-29T04:51:40.3315028Z _______________________ test_convert_local[test_vector3] _______________________
+2025-03-29T04:51:40.3315395Z 
+2025-03-29T04:51:40.3316582Z test_vector = FileTestVector(filename='test.pptx', mimetype='application/vnd.openxmlformats-officedocument.presentationml.presentati...ase of the caption is Human-written.](Picture4.jpg)'], must_not_include=['data:image/jpeg;base64,/9j/4AAQSkZJRgABAQE'])
+2025-03-29T04:51:40.3318245Z 
+2025-03-29T04:51:40.3318494Z     @pytest.mark.parametrize("test_vector", GENERAL_TEST_VECTORS)
+2025-03-29T04:51:40.3319017Z     def test_convert_local(test_vector):
+2025-03-29T04:51:40.3319422Z         """Test the conversion of a local file."""
+2025-03-29T04:51:40.3319828Z         markitdown = MarkItDown()
+2025-03-29T04:51:40.3320152Z     
+2025-03-29T04:51:40.3320403Z >       result = markitdown.convert(
+2025-03-29T04:51:40.3320899Z             os.path.join(TEST_FILES_DIR, test_vector.filename), url=test_vector.url
+2025-03-29T04:51:40.3321392Z         )
+2025-03-29T04:51:40.3321536Z 
+2025-03-29T04:51:40.3321667Z tests/test_module_vectors.py:65: 
+2025-03-29T04:51:40.3322061Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2025-03-29T04:51:40.3322518Z src/markitdown/_markitdown.py:271: in convert
+2025-03-29T04:51:40.3323040Z     return self.convert_local(source, stream_info=stream_info, **kwargs)
+2025-03-29T04:51:40.3323611Z src/markitdown/_markitdown.py:325: in convert_local
+2025-03-29T04:51:40.3324186Z     return self._convert(file_stream=fh, stream_info_guesses=guesses, **kwargs)
+2025-03-29T04:51:40.3324784Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2025-03-29T04:51:40.3325072Z 
+2025-03-29T04:51:40.3325325Z self = <markitdown._markitdown.MarkItDown object at 0x7f42859f16d0>
+2025-03-29T04:51:40.3326378Z file_stream = <_io.BufferedReader name='/home/runner/work/markitdown/markitdown/packages/markitdown/tests/test_files/test.pptx'>
+2025-03-29T04:51:40.3328532Z stream_info_guesses = [StreamInfo(mimetype='application/vnd.openxmlformats-officedocument.presentationml.presentation', extension='.pptx', c....pptx', local_path='/home/runner/work/markitdown/markitdown/packages/markitdown/tests/test_files/test.pptx', url=None)]
+2025-03-29T04:51:40.3330085Z kwargs = {}, res = None
+2025-03-29T04:51:40.3330660Z failed_attempts = [<markitdown._exceptions.FailedConversionAttempt object at 0x7f42859081d0>]
+2025-03-29T04:51:40.3332469Z sorted_registrations = [ConverterRegistration(converter=<markitdown.converters._epub_converter.EpubConverter object at 0x7f4286bebef0>, prior...tration(converter=<markitdown.converters._audio_converter.AudioConverter object at 0x7f4286beb8f0>, priority=0.0), ...]
+2025-03-29T04:51:40.3334172Z cur_pos = 0
+2025-03-29T04:51:40.3365160Z stream_info = StreamInfo(mimetype=None, extension=None, charset=None, filename=None, local_path=None, url=None)
+2025-03-29T04:51:40.3365834Z 
+2025-03-29T04:51:40.3365970Z     def _convert(
+2025-03-29T04:51:40.3366431Z         self, *, file_stream: BinaryIO, stream_info_guesses: List[StreamInfo], **kwargs
+2025-03-29T04:51:40.3367180Z     ) -> DocumentConverterResult:
+2025-03-29T04:51:40.3367630Z         res: Union[None, DocumentConverterResult] = None
+2025-03-29T04:51:40.3368030Z     
+2025-03-29T04:51:40.3368355Z         # Keep track of which converters throw exceptions
+2025-03-29T04:51:40.3368852Z         failed_attempts: List[FailedConversionAttempt] = []
+2025-03-29T04:51:40.3369273Z     
+2025-03-29T04:51:40.3369644Z         # Create a copy of the page_converters list, sorted by priority.
+2025-03-29T04:51:40.3370357Z         # We do this with each call to _convert because the priority of converters may change between calls.
+2025-03-29T04:51:40.3371245Z         # The sort is guaranteed to be stable, so converters with the same priority will remain in the same order.
+2025-03-29T04:51:40.3372051Z         sorted_registrations = sorted(self._converters, key=lambda x: x.priority)
+2025-03-29T04:51:40.3372548Z     
+2025-03-29T04:51:40.3372927Z         # Remember the initial stream position so that we can return to it
+2025-03-29T04:51:40.3373424Z         cur_pos = file_stream.tell()
+2025-03-29T04:51:40.3373762Z     
+2025-03-29T04:51:40.3374096Z         for stream_info in stream_info_guesses + [StreamInfo()]:
+2025-03-29T04:51:40.3374609Z             for converter_registration in sorted_registrations:
+2025-03-29T04:51:40.3375333Z                 converter = converter_registration.converter
+2025-03-29T04:51:40.3375879Z                 # Sanity check -- make sure the cur_pos is still the same
+2025-03-29T04:51:40.3376349Z                 assert (
+2025-03-29T04:51:40.3376883Z                     cur_pos == file_stream.tell()
+2025-03-29T04:51:40.3377393Z                 ), f"File stream position should NOT change between guess iterations"
+2025-03-29T04:51:40.3377877Z     
+2025-03-29T04:51:40.3378173Z                 _kwargs = {k: v for k, v in kwargs.items()}
+2025-03-29T04:51:40.3378553Z     
+2025-03-29T04:51:40.3378834Z                 # Copy any additional global options
+2025-03-29T04:51:40.3379333Z                 if "llm_client" not in _kwargs and self._llm_client is not None:
+2025-03-29T04:51:40.3379825Z                     _kwargs["llm_client"] = self._llm_client
+2025-03-29T04:51:40.3380196Z     
+2025-03-29T04:51:40.3380537Z                 if "llm_model" not in _kwargs and self._llm_model is not None:
+2025-03-29T04:51:40.3381034Z                     _kwargs["llm_model"] = self._llm_model
+2025-03-29T04:51:40.3381398Z     
+2025-03-29T04:51:40.3381735Z                 if "style_map" not in _kwargs and self._style_map is not None:
+2025-03-29T04:51:40.3382231Z                     _kwargs["style_map"] = self._style_map
+2025-03-29T04:51:40.3382600Z     
+2025-03-29T04:51:40.3382984Z                 if "exiftool_path" not in _kwargs and self._exiftool_path is not None:
+2025-03-29T04:51:40.3383526Z                     _kwargs["exiftool_path"] = self._exiftool_path
+2025-03-29T04:51:40.3383902Z     
+2025-03-29T04:51:40.3384212Z                 # Add the list of converters for nested processing
+2025-03-29T04:51:40.3384684Z                 _kwargs["_parent_converters"] = self._converters
+2025-03-29T04:51:40.3385083Z     
+2025-03-29T04:51:40.3385330Z                 # Add legaxy kwargs
+2025-03-29T04:51:40.3385682Z                 if stream_info is not None:
+2025-03-29T04:51:40.3386085Z                     if stream_info.extension is not None:
+2025-03-29T04:51:40.3386533Z                         _kwargs["file_extension"] = stream_info.extension
+2025-03-29T04:51:40.3387118Z     
+2025-03-29T04:51:40.3387386Z                     if stream_info.url is not None:
+2025-03-29T04:51:40.3388003Z                         _kwargs["url"] = stream_info.url
+2025-03-29T04:51:40.3388367Z     
+2025-03-29T04:51:40.3388768Z                 # Check if the converter will accept the file, and if so, try to convert it
+2025-03-29T04:51:40.3389281Z                 _accepts = False
+2025-03-29T04:51:40.3389601Z                 try:
+2025-03-29T04:51:40.3390021Z                     _accepts = converter.accepts(file_stream, stream_info, **_kwargs)
+2025-03-29T04:51:40.3390541Z                 except NotImplementedError:
+2025-03-29T04:51:40.3390907Z                     pass
+2025-03-29T04:51:40.3391180Z     
+2025-03-29T04:51:40.3391529Z                 # accept() should not have changed the file stream position
+2025-03-29T04:51:40.3391975Z                 assert (
+2025-03-29T04:51:40.3392316Z                     cur_pos == file_stream.tell()
+2025-03-29T04:51:40.3392879Z                 ), f"{type(converter).__name__}.accept() should NOT change the file_stream position"
+2025-03-29T04:51:40.3393409Z     
+2025-03-29T04:51:40.3393675Z                 # Attempt the conversion
+2025-03-29T04:51:40.3394038Z                 if _accepts:
+2025-03-29T04:51:40.3394358Z                     try:
+2025-03-29T04:51:40.3394764Z                         res = converter.convert(file_stream, stream_info, **_kwargs)
+2025-03-29T04:51:40.3395245Z                     except Exception:
+2025-03-29T04:51:40.3395631Z                         failed_attempts.append(
+2025-03-29T04:51:40.3396042Z                             FailedConversionAttempt(
+2025-03-29T04:51:40.3396474Z                                 converter=converter, exc_info=sys.exc_info()
+2025-03-29T04:51:40.3397045Z                             )
+2025-03-29T04:51:40.3397357Z                         )
+2025-03-29T04:51:40.3397637Z                     finally:
+2025-03-29T04:51:40.3398142Z                         file_stream.seek(cur_pos)
+2025-03-29T04:51:40.3398503Z     
+2025-03-29T04:51:40.3398754Z                 if res is not None:
+2025-03-29T04:51:40.3399108Z                     # Normalize the content
+2025-03-29T04:51:40.3399505Z                     res.text_content = "\n".join(
+2025-03-29T04:51:40.3400003Z                         [line.rstrip() for line in re.split(r"\r?\n", res.text_content)]
+2025-03-29T04:51:40.3400483Z                     )
+2025-03-29T04:51:40.3400889Z                     res.text_content = re.sub(r"\n{3,}", "\n\n", res.text_content)
+2025-03-29T04:51:40.3401353Z                     return res
+2025-03-29T04:51:40.3401651Z     
+2025-03-29T04:51:40.3401981Z         # If we got this far without success, report any exceptions
+2025-03-29T04:51:40.3402436Z         if len(failed_attempts) > 0:
+2025-03-29T04:51:40.3402885Z >           raise FileConversionException(attempts=failed_attempts)
+2025-03-29T04:51:40.3403613Z E           markitdown._exceptions.FileConversionException: File conversion failed after 1 attempts:
+2025-03-29T04:51:40.3404531Z E            - PptxConverter threw RecursionError with message: maximum recursion depth exceeded
+2025-03-29T04:51:40.3405004Z 
+2025-03-29T04:51:40.3405222Z src/markitdown/_markitdown.py:611: FileConversionException
+2025-03-29T04:51:40.3405800Z _________________ test_convert_stream_with_hints[test_vector3] _________________
+2025-03-29T04:51:40.3406175Z 
+2025-03-29T04:51:40.3407476Z test_vector = FileTestVector(filename='test.pptx', mimetype='application/vnd.openxmlformats-officedocument.presentationml.presentati...ase of the caption is Human-written.](Picture4.jpg)'], must_not_include=['data:image/jpeg;base64,/9j/4AAQSkZJRgABAQE'])
+2025-03-29T04:51:40.3408767Z 
+2025-03-29T04:51:40.3409000Z     @pytest.mark.parametrize("test_vector", GENERAL_TEST_VECTORS)
+2025-03-29T04:51:40.3409533Z     def test_convert_stream_with_hints(test_vector):
+2025-03-29T04:51:40.3410030Z         """Test the conversion of a stream with full stream info."""
+2025-03-29T04:51:40.3410499Z         markitdown = MarkItDown()
+2025-03-29T04:51:40.3410827Z     
+2025-03-29T04:51:40.3411088Z         stream_info = StreamInfo(
+2025-03-29T04:51:40.3411531Z             extension=os.path.splitext(test_vector.filename)[1],
+2025-03-29T04:51:40.3412185Z             mimetype=test_vector.mimetype,
+2025-03-29T04:51:40.3412586Z             charset=test_vector.charset,
+2025-03-29T04:51:40.3412934Z         )
+2025-03-29T04:51:40.3413173Z     
+2025-03-29T04:51:40.3413622Z         with open(os.path.join(TEST_FILES_DIR, test_vector.filename), "rb") as stream:
+2025-03-29T04:51:40.3414167Z >           result = markitdown.convert(
+2025-03-29T04:51:40.3414623Z                 stream, stream_info=stream_info, url=test_vector.url
+2025-03-29T04:51:40.3415037Z             )
+2025-03-29T04:51:40.3415195Z 
+2025-03-29T04:51:40.3415330Z tests/test_module_vectors.py:86: 
+2025-03-29T04:51:40.3415729Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2025-03-29T04:51:40.3416201Z src/markitdown/_markitdown.py:284: in convert
+2025-03-29T04:51:40.3416885Z     return self.convert_stream(source, stream_info=stream_info, **kwargs)
+2025-03-29T04:51:40.3417443Z src/markitdown/_markitdown.py:372: in convert_stream
+2025-03-29T04:51:40.3418040Z     return self._convert(file_stream=stream, stream_info_guesses=guesses, **kwargs)
+2025-03-29T04:51:40.3418628Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2025-03-29T04:51:40.3418926Z 
+2025-03-29T04:51:40.3419169Z self = <markitdown._markitdown.MarkItDown object at 0x7f427ff89580>
+2025-03-29T04:51:40.3420103Z file_stream = <_io.BufferedReader name='/home/runner/work/markitdown/markitdown/packages/markitdown/tests/test_files/test.pptx'>
+2025-03-29T04:51:40.3421706Z stream_info_guesses = [StreamInfo(mimetype='application/vnd.openxmlformats-officedocument.presentationml.presentation', extension='.pptx', charset=None, filename=None, local_path=None, url=None)]
+2025-03-29T04:51:40.3423213Z kwargs = {}, res = None
+2025-03-29T04:51:40.3423783Z failed_attempts = [<markitdown._exceptions.FailedConversionAttempt object at 0x7f4284072ff0>]
+2025-03-29T04:51:40.3425524Z sorted_registrations = [ConverterRegistration(converter=<markitdown.converters._epub_converter.EpubConverter object at 0x7f42841e0260>, prior...tration(converter=<markitdown.converters._audio_converter.AudioConverter object at 0x7f427ff5be60>, priority=0.0), ...]
+2025-03-29T04:51:40.3427186Z cur_pos = 0
+2025-03-29T04:51:40.3427785Z stream_info = StreamInfo(mimetype=None, extension=None, charset=None, filename=None, local_path=None, url=None)
+2025-03-29T04:51:40.3428364Z 
+2025-03-29T04:51:40.3428478Z     def _convert(
+2025-03-29T04:51:40.3428931Z         self, *, file_stream: BinaryIO, stream_info_guesses: List[StreamInfo], **kwargs
+2025-03-29T04:51:40.3429482Z     ) -> DocumentConverterResult:
+2025-03-29T04:51:40.3429892Z         res: Union[None, DocumentConverterResult] = None
+2025-03-29T04:51:40.3430283Z     
+2025-03-29T04:51:40.3430602Z         # Keep track of which converters throw exceptions
+2025-03-29T04:51:40.3431101Z         failed_attempts: List[FailedConversionAttempt] = []
+2025-03-29T04:51:40.3431518Z     
+2025-03-29T04:51:40.3431872Z         # Create a copy of the page_converters list, sorted by priority.
+2025-03-29T04:51:40.3432592Z         # We do this with each call to _convert because the priority of converters may change between calls.
+2025-03-29T04:51:40.3433481Z         # The sort is guaranteed to be stable, so converters with the same priority will remain in the same order.
+2025-03-29T04:51:40.3434293Z         sorted_registrations = sorted(self._converters, key=lambda x: x.priority)
+2025-03-29T04:51:40.3434808Z     
+2025-03-29T04:51:40.3435181Z         # Remember the initial stream position so that we can return to it
+2025-03-29T04:51:40.3435670Z         cur_pos = file_stream.tell()
+2025-03-29T04:51:40.3436012Z     
+2025-03-29T04:51:40.3436340Z         for stream_info in stream_info_guesses + [StreamInfo()]:
+2025-03-29T04:51:40.3437012Z             for converter_registration in sorted_registrations:
+2025-03-29T04:51:40.3437504Z                 converter = converter_registration.converter
+2025-03-29T04:51:40.3437999Z                 # Sanity check -- make sure the cur_pos is still the same
+2025-03-29T04:51:40.3438644Z                 assert (
+2025-03-29T04:51:40.3438976Z                     cur_pos == file_stream.tell()
+2025-03-29T04:51:40.3439497Z                 ), f"File stream position should NOT change between guess iterations"
+2025-03-29T04:51:40.3439986Z     
+2025-03-29T04:51:40.3440271Z                 _kwargs = {k: v for k, v in kwargs.items()}
+2025-03-29T04:51:40.3440652Z     
+2025-03-29T04:51:40.3440933Z                 # Copy any additional global options
+2025-03-29T04:51:40.3441418Z                 if "llm_client" not in _kwargs and self._llm_client is not None:
+2025-03-29T04:51:40.3441930Z                     _kwargs["llm_client"] = self._llm_client
+2025-03-29T04:51:40.3442308Z     
+2025-03-29T04:51:40.3442651Z                 if "llm_model" not in _kwargs and self._llm_model is not None:
+2025-03-29T04:51:40.3443134Z                     _kwargs["llm_model"] = self._llm_model
+2025-03-29T04:51:40.3443504Z     
+2025-03-29T04:51:40.3443858Z                 if "style_map" not in _kwargs and self._style_map is not None:
+2025-03-29T04:51:40.3444340Z                     _kwargs["style_map"] = self._style_map
+2025-03-29T04:51:40.3444691Z     
+2025-03-29T04:51:40.3445061Z                 if "exiftool_path" not in _kwargs and self._exiftool_path is not None:
+2025-03-29T04:51:40.3445608Z                     _kwargs["exiftool_path"] = self._exiftool_path
+2025-03-29T04:51:40.3446032Z     
+2025-03-29T04:51:40.3446333Z                 # Add the list of converters for nested processing
+2025-03-29T04:51:40.3446954Z                 _kwargs["_parent_converters"] = self._converters
+2025-03-29T04:51:40.3447350Z     
+2025-03-29T04:51:40.3447597Z                 # Add legaxy kwargs
+2025-03-29T04:51:40.3447960Z                 if stream_info is not None:
+2025-03-29T04:51:40.3448537Z                     if stream_info.extension is not None:
+2025-03-29T04:51:40.3448983Z                         _kwargs["file_extension"] = stream_info.extension
+2025-03-29T04:51:40.3449400Z     
+2025-03-29T04:51:40.3449670Z                     if stream_info.url is not None:
+2025-03-29T04:51:40.3450074Z                         _kwargs["url"] = stream_info.url
+2025-03-29T04:51:40.3450431Z     
+2025-03-29T04:51:40.3450820Z                 # Check if the converter will accept the file, and if so, try to convert it
+2025-03-29T04:51:40.3451334Z                 _accepts = False
+2025-03-29T04:51:40.3451653Z                 try:
+2025-03-29T04:51:40.3452066Z                     _accepts = converter.accepts(file_stream, stream_info, **_kwargs)
+2025-03-29T04:51:40.3452574Z                 except NotImplementedError:
+2025-03-29T04:51:40.3452944Z                     pass
+2025-03-29T04:51:40.3453224Z     
+2025-03-29T04:51:40.3453569Z                 # accept() should not have changed the file stream position
+2025-03-29T04:51:40.3454025Z                 assert (
+2025-03-29T04:51:40.3454350Z                     cur_pos == file_stream.tell()
+2025-03-29T04:51:40.3454906Z                 ), f"{type(converter).__name__}.accept() should NOT change the file_stream position"
+2025-03-29T04:51:40.3455429Z     
+2025-03-29T04:51:40.3455690Z                 # Attempt the conversion
+2025-03-29T04:51:40.3456053Z                 if _accepts:
+2025-03-29T04:51:40.3456357Z                     try:
+2025-03-29T04:51:40.3456943Z                         res = converter.convert(file_stream, stream_info, **_kwargs)
+2025-03-29T04:51:40.3457430Z                     except Exception:
+2025-03-29T04:51:40.3457805Z                         failed_attempts.append(
+2025-03-29T04:51:40.3458210Z                             FailedConversionAttempt(
+2025-03-29T04:51:40.3458654Z                                 converter=converter, exc_info=sys.exc_info()
+2025-03-29T04:51:40.3459075Z                             )
+2025-03-29T04:51:40.3459380Z                         )
+2025-03-29T04:51:40.3459671Z                     finally:
+2025-03-29T04:51:40.3459994Z                         file_stream.seek(cur_pos)
+2025-03-29T04:51:40.3460346Z     
+2025-03-29T04:51:40.3460763Z                 if res is not None:
+2025-03-29T04:51:40.3461116Z                     # Normalize the content
+2025-03-29T04:51:40.3461503Z                     res.text_content = "\n".join(
+2025-03-29T04:51:40.3461987Z                         [line.rstrip() for line in re.split(r"\r?\n", res.text_content)]
+2025-03-29T04:51:40.3462446Z                     )
+2025-03-29T04:51:40.3462839Z                     res.text_content = re.sub(r"\n{3,}", "\n\n", res.text_content)
+2025-03-29T04:51:40.3463296Z                     return res
+2025-03-29T04:51:40.3463599Z     
+2025-03-29T04:51:40.3463921Z         # If we got this far without success, report any exceptions
+2025-03-29T04:51:40.3464376Z         if len(failed_attempts) > 0:
+2025-03-29T04:51:40.3464828Z >           raise FileConversionException(attempts=failed_attempts)
+2025-03-29T04:51:40.3465574Z E           markitdown._exceptions.FileConversionException: File conversion failed after 1 attempts:
+2025-03-29T04:51:40.3466446Z E            - PptxConverter threw RecursionError with message: maximum recursion depth exceeded
+2025-03-29T04:51:40.3467142Z 
+2025-03-29T04:51:40.3467370Z src/markitdown/_markitdown.py:611: FileConversionException
+2025-03-29T04:51:40.3467967Z _______________ test_convert_stream_without_hints[test_vector3] ________________
+2025-03-29T04:51:40.3468359Z 
+2025-03-29T04:51:40.3469522Z test_vector = FileTestVector(filename='test.pptx', mimetype='application/vnd.openxmlformats-officedocument.presentationml.presentati...ase of the caption is Human-written.](Picture4.jpg)'], must_not_include=['data:image/jpeg;base64,/9j/4AAQSkZJRgABAQE'])
+2025-03-29T04:51:40.3470814Z 
+2025-03-29T04:51:40.3471054Z     @pytest.mark.parametrize("test_vector", GENERAL_TEST_VECTORS)
+2025-03-29T04:51:40.3471591Z     def test_convert_stream_without_hints(test_vector):
+2025-03-29T04:51:40.3472260Z         """Test the conversion of a stream with no stream info."""
+2025-03-29T04:51:40.3472711Z         markitdown = MarkItDown()
+2025-03-29T04:51:40.3473031Z     
+2025-03-29T04:51:40.3473460Z         with open(os.path.join(TEST_FILES_DIR, test_vector.filename), "rb") as stream:
+2025-03-29T04:51:40.3474074Z >           result = markitdown.convert(stream, url=test_vector.url)
+2025-03-29T04:51:40.3474418Z 
+2025-03-29T04:51:40.3474553Z tests/test_module_vectors.py:101: 
+2025-03-29T04:51:40.3474955Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2025-03-29T04:51:40.3475405Z src/markitdown/_markitdown.py:284: in convert
+2025-03-29T04:51:40.3475929Z     return self.convert_stream(source, stream_info=stream_info, **kwargs)
+2025-03-29T04:51:40.3476491Z src/markitdown/_markitdown.py:372: in convert_stream
+2025-03-29T04:51:40.3477241Z     return self._convert(file_stream=stream, stream_info_guesses=guesses, **kwargs)
+2025-03-29T04:51:40.3477852Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2025-03-29T04:51:40.3478151Z 
+2025-03-29T04:51:40.3478407Z self = <markitdown._markitdown.MarkItDown object at 0x7f42859856d0>
+2025-03-29T04:51:40.3479364Z file_stream = <_io.BufferedReader name='/home/runner/work/markitdown/markitdown/packages/markitdown/tests/test_files/test.pptx'>
+2025-03-29T04:51:40.3480988Z stream_info_guesses = [StreamInfo(mimetype='application/vnd.openxmlformats-officedocument.presentationml.presentation', extension='.pptx', charset=None, filename=None, local_path=None, url=None)]
+2025-03-29T04:51:40.3482166Z kwargs = {}, res = None
+2025-03-29T04:51:40.3482739Z failed_attempts = [<markitdown._exceptions.FailedConversionAttempt object at 0x7f42859deb10>]
+2025-03-29T04:51:40.3484548Z sorted_registrations = [ConverterRegistration(converter=<markitdown.converters._epub_converter.EpubConverter object at 0x7f42859dc8c0>, prior...tration(converter=<markitdown.converters._audio_converter.AudioConverter object at 0x7f42859f0470>, priority=0.0), ...]
+2025-03-29T04:51:40.3486066Z cur_pos = 0
+2025-03-29T04:51:40.3486785Z stream_info = StreamInfo(mimetype=None, extension=None, charset=None, filename=None, local_path=None, url=None)
+2025-03-29T04:51:40.3487571Z 
+2025-03-29T04:51:40.3487688Z     def _convert(
+2025-03-29T04:51:40.3488127Z         self, *, file_stream: BinaryIO, stream_info_guesses: List[StreamInfo], **kwargs
+2025-03-29T04:51:40.3488676Z     ) -> DocumentConverterResult:
+2025-03-29T04:51:40.3489090Z         res: Union[None, DocumentConverterResult] = None
+2025-03-29T04:51:40.3489480Z     
+2025-03-29T04:51:40.3489781Z         # Keep track of which converters throw exceptions
+2025-03-29T04:51:40.3490261Z         failed_attempts: List[FailedConversionAttempt] = []
+2025-03-29T04:51:40.3490666Z     
+2025-03-29T04:51:40.3491025Z         # Create a copy of the page_converters list, sorted by priority.
+2025-03-29T04:51:40.3491737Z         # We do this with each call to _convert because the priority of converters may change between calls.
+2025-03-29T04:51:40.3492625Z         # The sort is guaranteed to be stable, so converters with the same priority will remain in the same order.
+2025-03-29T04:51:40.3493431Z         sorted_registrations = sorted(self._converters, key=lambda x: x.priority)
+2025-03-29T04:51:40.3493947Z     
+2025-03-29T04:51:40.3494308Z         # Remember the initial stream position so that we can return to it
+2025-03-29T04:51:40.3494797Z         cur_pos = file_stream.tell()
+2025-03-29T04:51:40.3495140Z     
+2025-03-29T04:51:40.3495472Z         for stream_info in stream_info_guesses + [StreamInfo()]:
+2025-03-29T04:51:40.3495986Z             for converter_registration in sorted_registrations:
+2025-03-29T04:51:40.3496467Z                 converter = converter_registration.converter
+2025-03-29T04:51:40.3497113Z                 # Sanity check -- make sure the cur_pos is still the same
+2025-03-29T04:51:40.3497550Z                 assert (
+2025-03-29T04:51:40.3497875Z                     cur_pos == file_stream.tell()
+2025-03-29T04:51:40.3498564Z                 ), f"File stream position should NOT change between guess iterations"
+2025-03-29T04:51:40.3499024Z     
+2025-03-29T04:51:40.3499307Z                 _kwargs = {k: v for k, v in kwargs.items()}
+2025-03-29T04:51:40.3499690Z     
+2025-03-29T04:51:40.3499963Z                 # Copy any additional global options
+2025-03-29T04:51:40.3500442Z                 if "llm_client" not in _kwargs and self._llm_client is not None:
+2025-03-29T04:51:40.3500926Z                     _kwargs["llm_client"] = self._llm_client
+2025-03-29T04:51:40.3501294Z     
+2025-03-29T04:51:40.3501621Z                 if "llm_model" not in _kwargs and self._llm_model is not None:
+2025-03-29T04:51:40.3502107Z                     _kwargs["llm_model"] = self._llm_model
+2025-03-29T04:51:40.3502478Z     
+2025-03-29T04:51:40.3502815Z                 if "style_map" not in _kwargs and self._style_map is not None:
+2025-03-29T04:51:40.3503296Z                     _kwargs["style_map"] = self._style_map
+2025-03-29T04:51:40.3503676Z     
+2025-03-29T04:51:40.3504101Z                 if "exiftool_path" not in _kwargs and self._exiftool_path is not None:
+2025-03-29T04:51:40.3504648Z                     _kwargs["exiftool_path"] = self._exiftool_path
+2025-03-29T04:51:40.3505049Z     
+2025-03-29T04:51:40.3505354Z                 # Add the list of converters for nested processing
+2025-03-29T04:51:40.3505848Z                 _kwargs["_parent_converters"] = self._converters
+2025-03-29T04:51:40.3506248Z     
+2025-03-29T04:51:40.3506501Z                 # Add legaxy kwargs
+2025-03-29T04:51:40.3507038Z                 if stream_info is not None:
+2025-03-29T04:51:40.3507437Z                     if stream_info.extension is not None:
+2025-03-29T04:51:40.3507894Z                         _kwargs["file_extension"] = stream_info.extension
+2025-03-29T04:51:40.3508310Z     
+2025-03-29T04:51:40.3508580Z                     if stream_info.url is not None:
+2025-03-29T04:51:40.3508985Z                         _kwargs["url"] = stream_info.url
+2025-03-29T04:51:40.3509345Z     
+2025-03-29T04:51:40.3509748Z                 # Check if the converter will accept the file, and if so, try to convert it
+2025-03-29T04:51:40.3510269Z                 _accepts = False
+2025-03-29T04:51:40.3510767Z                 try:
+2025-03-29T04:51:40.3511181Z                     _accepts = converter.accepts(file_stream, stream_info, **_kwargs)
+2025-03-29T04:51:40.3511705Z                 except NotImplementedError:
+2025-03-29T04:51:40.3512075Z                     pass
+2025-03-29T04:51:40.3512356Z     
+2025-03-29T04:51:40.3512691Z                 # accept() should not have changed the file stream position
+2025-03-29T04:51:40.3513129Z                 assert (
+2025-03-29T04:51:40.3513452Z                     cur_pos == file_stream.tell()
+2025-03-29T04:51:40.3513995Z                 ), f"{type(converter).__name__}.accept() should NOT change the file_stream position"
+2025-03-29T04:51:40.3514518Z     
+2025-03-29T04:51:40.3514780Z                 # Attempt the conversion
+2025-03-29T04:51:40.3515149Z                 if _accepts:
+2025-03-29T04:51:40.3515454Z                     try:
+2025-03-29T04:51:40.3515845Z                         res = converter.convert(file_stream, stream_info, **_kwargs)
+2025-03-29T04:51:40.3516334Z                     except Exception:
+2025-03-29T04:51:40.3516876Z                         failed_attempts.append(
+2025-03-29T04:51:40.3517289Z                             FailedConversionAttempt(
+2025-03-29T04:51:40.3517721Z                                 converter=converter, exc_info=sys.exc_info()
+2025-03-29T04:51:40.3518130Z                             )
+2025-03-29T04:51:40.3518439Z                         )
+2025-03-29T04:51:40.3518736Z                     finally:
+2025-03-29T04:51:40.3519068Z                         file_stream.seek(cur_pos)
+2025-03-29T04:51:40.3519428Z     
+2025-03-29T04:51:40.3519668Z                 if res is not None:
+2025-03-29T04:51:40.3520025Z                     # Normalize the content
+2025-03-29T04:51:40.3520582Z                     res.text_content = "\n".join(
+2025-03-29T04:51:40.3521076Z                         [line.rstrip() for line in re.split(r"\r?\n", res.text_content)]
+2025-03-29T04:51:40.3521553Z                     )
+2025-03-29T04:51:40.3521957Z                     res.text_content = re.sub(r"\n{3,}", "\n\n", res.text_content)
+2025-03-29T04:51:40.3522426Z                     return res
+2025-03-29T04:51:40.3522737Z     
+2025-03-29T04:51:40.3523065Z         # If we got this far without success, report any exceptions
+2025-03-29T04:51:40.3523522Z         if len(failed_attempts) > 0:
+2025-03-29T04:51:40.3523980Z >           raise FileConversionException(attempts=failed_attempts)
+2025-03-29T04:51:40.3524699Z E           markitdown._exceptions.FileConversionException: File conversion failed after 1 attempts:
+2025-03-29T04:51:40.3525564Z E            - PptxConverter threw RecursionError with message: maximum recursion depth exceeded
+2025-03-29T04:51:40.3526045Z 
+2025-03-29T04:51:40.3526263Z src/markitdown/_markitdown.py:611: FileConversionException
+2025-03-29T04:51:40.3527002Z _____________________ test_convert_file_uri[test_vector3] ______________________
+2025-03-29T04:51:40.3527382Z 
+2025-03-29T04:51:40.3528558Z test_vector = FileTestVector(filename='test.pptx', mimetype='application/vnd.openxmlformats-officedocument.presentationml.presentati...ase of the caption is Human-written.](Picture4.jpg)'], must_not_include=['data:image/jpeg;base64,/9j/4AAQSkZJRgABAQE'])
+2025-03-29T04:51:40.3529868Z 
+2025-03-29T04:51:40.3530123Z     @pytest.mark.parametrize("test_vector", GENERAL_TEST_VECTORS)
+2025-03-29T04:51:40.3530623Z     def test_convert_file_uri(test_vector):
+2025-03-29T04:51:40.3531035Z         """Test the conversion of a file:// URI."""
+2025-03-29T04:51:40.3531432Z         markitdown = MarkItDown()
+2025-03-29T04:51:40.3531756Z     
+2025-03-29T04:51:40.3532021Z >       result = markitdown.convert(
+2025-03-29T04:51:40.3532514Z             Path(os.path.join(TEST_FILES_DIR, test_vector.filename)).as_uri(),
+2025-03-29T04:51:40.3533011Z             url=test_vector.url,
+2025-03-29T04:51:40.3533335Z         )
+2025-03-29T04:51:40.3533488Z 
+2025-03-29T04:51:40.3533622Z tests/test_module_vectors.py:134: 
+2025-03-29T04:51:40.3534034Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2025-03-29T04:51:40.3534676Z src/markitdown/_markitdown.py:269: in convert
+2025-03-29T04:51:40.3535193Z     return self.convert_uri(source, stream_info=stream_info, **_kwargs)
+2025-03-29T04:51:40.3535753Z src/markitdown/_markitdown.py:413: in convert_uri
+2025-03-29T04:51:40.3536185Z     return self.convert_local(
+2025-03-29T04:51:40.3536581Z src/markitdown/_markitdown.py:325: in convert_local
+2025-03-29T04:51:40.3537302Z     return self._convert(file_stream=fh, stream_info_guesses=guesses, **kwargs)
+2025-03-29T04:51:40.3537888Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2025-03-29T04:51:40.3538194Z 
+2025-03-29T04:51:40.3538451Z self = <markitdown._markitdown.MarkItDown object at 0x7f4284001970>
+2025-03-29T04:51:40.3539411Z file_stream = <_io.BufferedReader name='/home/runner/work/markitdown/markitdown/packages/markitdown/tests/test_files/test.pptx'>
+2025-03-29T04:51:40.3541384Z stream_info_guesses = [StreamInfo(mimetype='application/vnd.openxmlformats-officedocument.presentationml.presentation', extension='.pptx', c....pptx', local_path='/home/runner/work/markitdown/markitdown/packages/markitdown/tests/test_files/test.pptx', url=None)]
+2025-03-29T04:51:40.3542908Z kwargs = {}, res = None
+2025-03-29T04:51:40.3543476Z failed_attempts = [<markitdown._exceptions.FailedConversionAttempt object at 0x7f427ff46540>]
+2025-03-29T04:51:40.3545222Z sorted_registrations = [ConverterRegistration(converter=<markitdown.converters._epub_converter.EpubConverter object at 0x7f42847e2150>, prior...tration(converter=<markitdown.converters._audio_converter.AudioConverter object at 0x7f42859b6bd0>, priority=0.0), ...]
+2025-03-29T04:51:40.3546876Z cur_pos = 0
+2025-03-29T04:51:40.3547464Z stream_info = StreamInfo(mimetype=None, extension=None, charset=None, filename=None, local_path=None, url=None)
+2025-03-29T04:51:40.3548214Z 
+2025-03-29T04:51:40.3548327Z     def _convert(
+2025-03-29T04:51:40.3548771Z         self, *, file_stream: BinaryIO, stream_info_guesses: List[StreamInfo], **kwargs
+2025-03-29T04:51:40.3549332Z     ) -> DocumentConverterResult:
+2025-03-29T04:51:40.3549752Z         res: Union[None, DocumentConverterResult] = None
+2025-03-29T04:51:40.3550145Z     
+2025-03-29T04:51:40.3550453Z         # Keep track of which converters throw exceptions
+2025-03-29T04:51:40.3550942Z         failed_attempts: List[FailedConversionAttempt] = []
+2025-03-29T04:51:40.3551362Z     
+2025-03-29T04:51:40.3551728Z         # Create a copy of the page_converters list, sorted by priority.
+2025-03-29T04:51:40.3552435Z         # We do this with each call to _convert because the priority of converters may change between calls.
+2025-03-29T04:51:40.3553308Z         # The sort is guaranteed to be stable, so converters with the same priority will remain in the same order.
+2025-03-29T04:51:40.3554130Z         sorted_registrations = sorted(self._converters, key=lambda x: x.priority)
+2025-03-29T04:51:40.3554643Z     
+2025-03-29T04:51:40.3555019Z         # Remember the initial stream position so that we can return to it
+2025-03-29T04:51:40.3555525Z         cur_pos = file_stream.tell()
+2025-03-29T04:51:40.3555859Z     
+2025-03-29T04:51:40.3556189Z         for stream_info in stream_info_guesses + [StreamInfo()]:
+2025-03-29T04:51:40.3556853Z             for converter_registration in sorted_registrations:
+2025-03-29T04:51:40.3557343Z                 converter = converter_registration.converter
+2025-03-29T04:51:40.3557850Z                 # Sanity check -- make sure the cur_pos is still the same
+2025-03-29T04:51:40.3558289Z                 assert (
+2025-03-29T04:51:40.3558618Z                     cur_pos == file_stream.tell()
+2025-03-29T04:51:40.3559136Z                 ), f"File stream position should NOT change between guess iterations"
+2025-03-29T04:51:40.3559630Z     
+2025-03-29T04:51:40.3559920Z                 _kwargs = {k: v for k, v in kwargs.items()}
+2025-03-29T04:51:40.3560288Z     
+2025-03-29T04:51:40.3560562Z                 # Copy any additional global options
+2025-03-29T04:51:40.3561231Z                 if "llm_client" not in _kwargs and self._llm_client is not None:
+2025-03-29T04:51:40.3561737Z                     _kwargs["llm_client"] = self._llm_client
+2025-03-29T04:51:40.3562113Z     
+2025-03-29T04:51:40.3562451Z                 if "llm_model" not in _kwargs and self._llm_model is not None:
+2025-03-29T04:51:40.3562932Z                     _kwargs["llm_model"] = self._llm_model
+2025-03-29T04:51:40.3563301Z     
+2025-03-29T04:51:40.3563653Z                 if "style_map" not in _kwargs and self._style_map is not None:
+2025-03-29T04:51:40.3564143Z                     _kwargs["style_map"] = self._style_map
+2025-03-29T04:51:40.3564512Z     
+2025-03-29T04:51:40.3564886Z                 if "exiftool_path" not in _kwargs and self._exiftool_path is not None:
+2025-03-29T04:51:40.3565453Z                     _kwargs["exiftool_path"] = self._exiftool_path
+2025-03-29T04:51:40.3565852Z     
+2025-03-29T04:51:40.3566160Z                 # Add the list of converters for nested processing
+2025-03-29T04:51:40.3566783Z                 _kwargs["_parent_converters"] = self._converters
+2025-03-29T04:51:40.3567182Z     
+2025-03-29T04:51:40.3567440Z                 # Add legaxy kwargs
+2025-03-29T04:51:40.3567803Z                 if stream_info is not None:
+2025-03-29T04:51:40.3568212Z                     if stream_info.extension is not None:
+2025-03-29T04:51:40.3568670Z                         _kwargs["file_extension"] = stream_info.extension
+2025-03-29T04:51:40.3569078Z     
+2025-03-29T04:51:40.3569354Z                     if stream_info.url is not None:
+2025-03-29T04:51:40.3569760Z                         _kwargs["url"] = stream_info.url
+2025-03-29T04:51:40.3570125Z     
+2025-03-29T04:51:40.3570522Z                 # Check if the converter will accept the file, and if so, try to convert it
+2025-03-29T04:51:40.3571255Z                 _accepts = False
+2025-03-29T04:51:40.3571562Z                 try:
+2025-03-29T04:51:40.3571967Z                     _accepts = converter.accepts(file_stream, stream_info, **_kwargs)
+2025-03-29T04:51:40.3572488Z                 except NotImplementedError:
+2025-03-29T04:51:40.3572855Z                     pass
+2025-03-29T04:51:40.3573142Z     
+2025-03-29T04:51:40.3573477Z                 # accept() should not have changed the file stream position
+2025-03-29T04:51:40.3573925Z                 assert (
+2025-03-29T04:51:40.3574251Z                     cur_pos == file_stream.tell()
+2025-03-29T04:51:40.3574813Z                 ), f"{type(converter).__name__}.accept() should NOT change the file_stream position"
+2025-03-29T04:51:40.3575340Z     
+2025-03-29T04:51:40.3575598Z                 # Attempt the conversion
+2025-03-29T04:51:40.3575964Z                 if _accepts:
+2025-03-29T04:51:40.3576274Z                     try:
+2025-03-29T04:51:40.3576832Z                         res = converter.convert(file_stream, stream_info, **_kwargs)
+2025-03-29T04:51:40.3577321Z                     except Exception:
+2025-03-29T04:51:40.3577693Z                         failed_attempts.append(
+2025-03-29T04:51:40.3578105Z                             FailedConversionAttempt(
+2025-03-29T04:51:40.3578538Z                                 converter=converter, exc_info=sys.exc_info()
+2025-03-29T04:51:40.3578954Z                             )
+2025-03-29T04:51:40.3579255Z                         )
+2025-03-29T04:51:40.3579537Z                     finally:
+2025-03-29T04:51:40.3579864Z                         file_stream.seek(cur_pos)
+2025-03-29T04:51:40.3580220Z     
+2025-03-29T04:51:40.3580465Z                 if res is not None:
+2025-03-29T04:51:40.3580819Z                     # Normalize the content
+2025-03-29T04:51:40.3581196Z                     res.text_content = "\n".join(
+2025-03-29T04:51:40.3581696Z                         [line.rstrip() for line in re.split(r"\r?\n", res.text_content)]
+2025-03-29T04:51:40.3582173Z                     )
+2025-03-29T04:51:40.3582576Z                     res.text_content = re.sub(r"\n{3,}", "\n\n", res.text_content)
+2025-03-29T04:51:40.3583046Z                     return res
+2025-03-29T04:51:40.3583528Z     
+2025-03-29T04:51:40.3583839Z         # If we got this far without success, report any exceptions
+2025-03-29T04:51:40.3584280Z         if len(failed_attempts) > 0:
+2025-03-29T04:51:40.3584720Z >           raise FileConversionException(attempts=failed_attempts)
+2025-03-29T04:51:40.3585446Z E           markitdown._exceptions.FileConversionException: File conversion failed after 1 attempts:
+2025-03-29T04:51:40.3586309Z E            - PptxConverter threw RecursionError with message: maximum recursion depth exceeded
+2025-03-29T04:51:40.3587233Z 
+2025-03-29T04:51:40.3587536Z src/markitdown/_markitdown.py:611: FileConversionException
+2025-03-29T04:51:40.3588106Z _____________________ test_convert_data_uri[test_vector3] ______________________
+2025-03-29T04:51:40.3588471Z 
+2025-03-29T04:51:40.3589532Z test_vector = FileTestVector(filename='test.pptx', mimetype='application/vnd.openxmlformats-officedocument.presentationml.presentati...ase of the caption is Human-written.](Picture4.jpg)'], must_not_include=['data:image/jpeg;base64,/9j/4AAQSkZJRgABAQE'])
+2025-03-29T04:51:40.3590695Z 
+2025-03-29T04:51:40.3590909Z     @pytest.mark.parametrize("test_vector", GENERAL_TEST_VECTORS)
+2025-03-29T04:51:40.3591370Z     def test_convert_data_uri(test_vector):
+2025-03-29T04:51:40.3591729Z         """Test the conversion of a data URI."""
+2025-03-29T04:51:40.3592076Z         markitdown = MarkItDown()
+2025-03-29T04:51:40.3592354Z     
+2025-03-29T04:51:40.3592565Z         data = ""
+2025-03-29T04:51:40.3592958Z         with open(os.path.join(TEST_FILES_DIR, test_vector.filename), "rb") as stream:
+2025-03-29T04:51:40.3593495Z             data = base64.b64encode(stream.read()).decode("utf-8")
+2025-03-29T04:51:40.3593898Z         mimetype = test_vector.mimetype
+2025-03-29T04:51:40.3594521Z         data_uri = f"data:{mimetype};base64,{data}"
+2025-03-29T04:51:40.3594854Z     
+2025-03-29T04:51:40.3595081Z >       result = markitdown.convert(
+2025-03-29T04:51:40.3595384Z             data_uri,
+2025-03-29T04:51:40.3595648Z             url=test_vector.url,
+2025-03-29T04:51:40.3595924Z         )
+2025-03-29T04:51:40.3596052Z 
+2025-03-29T04:51:40.3596448Z tests/test_module_vectors.py:155: 
+2025-03-29T04:51:40.3596954Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2025-03-29T04:51:40.3597355Z src/markitdown/_markitdown.py:269: in convert
+2025-03-29T04:51:40.3597809Z     return self.convert_uri(source, stream_info=stream_info, **_kwargs)
+2025-03-29T04:51:40.3598284Z src/markitdown/_markitdown.py:431: in convert_uri
+2025-03-29T04:51:40.3598640Z     return self.convert_stream(
+2025-03-29T04:51:40.3598989Z src/markitdown/_markitdown.py:372: in convert_stream
+2025-03-29T04:51:40.3599509Z     return self._convert(file_stream=stream, stream_info_guesses=guesses, **kwargs)
+2025-03-29T04:51:40.3600028Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2025-03-29T04:51:40.3600285Z 
+2025-03-29T04:51:40.3600509Z self = <markitdown._markitdown.MarkItDown object at 0x7f4289181cd0>
+2025-03-29T04:51:40.3600994Z file_stream = <_io.BytesIO object at 0x7f428922d850>
+2025-03-29T04:51:40.3602065Z stream_info_guesses = [StreamInfo(mimetype='application/vnd.openxmlformats-officedocument.presentationml.presentation', extension='.pptx', charset=None, filename=None, local_path=None, url=None)]
+2025-03-29T04:51:40.3603092Z kwargs = {}, res = None
+2025-03-29T04:51:40.3603672Z failed_attempts = [<markitdown._exceptions.FailedConversionAttempt object at 0x7f4289232690>]
+2025-03-29T04:51:40.3605249Z sorted_registrations = [ConverterRegistration(converter=<markitdown.converters._epub_converter.EpubConverter object at 0x7f4289232cf0>, prior...tration(converter=<markitdown.converters._audio_converter.AudioConverter object at 0x7f4289233500>, priority=0.0), ...]
+2025-03-29T04:51:40.3606571Z cur_pos = 0
+2025-03-29T04:51:40.3607192Z stream_info = StreamInfo(mimetype=None, extension=None, charset=None, filename=None, local_path=None, url=None)
+2025-03-29T04:51:40.3607697Z 
+2025-03-29T04:51:40.3607931Z     def _convert(
+2025-03-29T04:51:40.3608317Z         self, *, file_stream: BinaryIO, stream_info_guesses: List[StreamInfo], **kwargs
+2025-03-29T04:51:40.3608803Z     ) -> DocumentConverterResult:
+2025-03-29T04:51:40.3609164Z         res: Union[None, DocumentConverterResult] = None
+2025-03-29T04:51:40.3609511Z     
+2025-03-29T04:51:40.3609778Z         # Keep track of which converters throw exceptions
+2025-03-29T04:51:40.3610107Z         failed_attempts: List[FailedConversionAttempt] = []
+2025-03-29T04:51:40.3610384Z     
+2025-03-29T04:51:40.3610631Z         # Create a copy of the page_converters list, sorted by priority.
+2025-03-29T04:51:40.3611114Z         # We do this with each call to _convert because the priority of converters may change between calls.
+2025-03-29T04:51:40.3611703Z         # The sort is guaranteed to be stable, so converters with the same priority will remain in the same order.
+2025-03-29T04:51:40.3612246Z         sorted_registrations = sorted(self._converters, key=lambda x: x.priority)
+2025-03-29T04:51:40.3612589Z     
+2025-03-29T04:51:40.3612837Z         # Remember the initial stream position so that we can return to it
+2025-03-29T04:51:40.3613165Z         cur_pos = file_stream.tell()
+2025-03-29T04:51:40.3613387Z     
+2025-03-29T04:51:40.3613610Z         for stream_info in stream_info_guesses + [StreamInfo()]:
+2025-03-29T04:51:40.3613952Z             for converter_registration in sorted_registrations:
+2025-03-29T04:51:40.3614279Z                 converter = converter_registration.converter
+2025-03-29T04:51:40.3614612Z                 # Sanity check -- make sure the cur_pos is still the same
+2025-03-29T04:51:40.3614910Z                 assert (
+2025-03-29T04:51:40.3615126Z                     cur_pos == file_stream.tell()
+2025-03-29T04:51:40.3615469Z                 ), f"File stream position should NOT change between guess iterations"
+2025-03-29T04:51:40.3615906Z     
+2025-03-29T04:51:40.3616098Z                 _kwargs = {k: v for k, v in kwargs.items()}
+2025-03-29T04:51:40.3616350Z     
+2025-03-29T04:51:40.3616536Z                 # Copy any additional global options
+2025-03-29T04:51:40.3616969Z                 if "llm_client" not in _kwargs and self._llm_client is not None:
+2025-03-29T04:51:40.3617298Z                     _kwargs["llm_client"] = self._llm_client
+2025-03-29T04:51:40.3617557Z     
+2025-03-29T04:51:40.3617792Z                 if "llm_model" not in _kwargs and self._llm_model is not None:
+2025-03-29T04:51:40.3618123Z                     _kwargs["llm_model"] = self._llm_model
+2025-03-29T04:51:40.3618364Z     
+2025-03-29T04:51:40.3618584Z                 if "style_map" not in _kwargs and self._style_map is not None:
+2025-03-29T04:51:40.3618908Z                     _kwargs["style_map"] = self._style_map
+2025-03-29T04:51:40.3619153Z     
+2025-03-29T04:51:40.3619410Z                 if "exiftool_path" not in _kwargs and self._exiftool_path is not None:
+2025-03-29T04:51:40.3619779Z                     _kwargs["exiftool_path"] = self._exiftool_path
+2025-03-29T04:51:40.3620044Z     
+2025-03-29T04:51:40.3620245Z                 # Add the list of converters for nested processing
+2025-03-29T04:51:40.3620563Z                 _kwargs["_parent_converters"] = self._converters
+2025-03-29T04:51:40.3620829Z     
+2025-03-29T04:51:40.3620998Z                 # Add legaxy kwargs
+2025-03-29T04:51:40.3621239Z                 if stream_info is not None:
+2025-03-29T04:51:40.3621508Z                     if stream_info.extension is not None:
+2025-03-29T04:51:40.3621827Z                         _kwargs["file_extension"] = stream_info.extension
+2025-03-29T04:51:40.3622132Z     
+2025-03-29T04:51:40.3622315Z                     if stream_info.url is not None:
+2025-03-29T04:51:40.3622586Z                         _kwargs["url"] = stream_info.url
+2025-03-29T04:51:40.3622818Z     
+2025-03-29T04:51:40.3623095Z                 # Check if the converter will accept the file, and if so, try to convert it
+2025-03-29T04:51:40.3623441Z                 _accepts = False
+2025-03-29T04:51:40.3623658Z                 try:
+2025-03-29T04:51:40.3624067Z                     _accepts = converter.accepts(file_stream, stream_info, **_kwargs)
+2025-03-29T04:51:40.3624411Z                 except NotImplementedError:
+2025-03-29T04:51:40.3624664Z                     pass
+2025-03-29T04:51:40.3624856Z     
+2025-03-29T04:51:40.3625082Z                 # accept() should not have changed the file stream position
+2025-03-29T04:51:40.3625384Z                 assert (
+2025-03-29T04:51:40.3625600Z                     cur_pos == file_stream.tell()
+2025-03-29T04:51:40.3625970Z                 ), f"{type(converter).__name__}.accept() should NOT change the file_stream position"
+2025-03-29T04:51:40.3626316Z     
+2025-03-29T04:51:40.3626489Z                 # Attempt the conversion
+2025-03-29T04:51:40.3626843Z                 if _accepts:
+2025-03-29T04:51:40.3627054Z                     try:
+2025-03-29T04:51:40.3627316Z                         res = converter.convert(file_stream, stream_info, **_kwargs)
+2025-03-29T04:51:40.3627642Z                     except Exception:
+2025-03-29T04:51:40.3627911Z                         failed_attempts.append(
+2025-03-29T04:51:40.3628190Z                             FailedConversionAttempt(
+2025-03-29T04:51:40.3628489Z                                 converter=converter, exc_info=sys.exc_info()
+2025-03-29T04:51:40.3628765Z                             )
+2025-03-29T04:51:40.3628979Z                         )
+2025-03-29T04:51:40.3629177Z                     finally:
+2025-03-29T04:51:40.3629406Z                         file_stream.seek(cur_pos)
+2025-03-29T04:51:40.3629646Z     
+2025-03-29T04:51:40.3629810Z                 if res is not None:
+2025-03-29T04:51:40.3630050Z                     # Normalize the content
+2025-03-29T04:51:40.3630309Z                     res.text_content = "\n".join(
+2025-03-29T04:51:40.3630764Z                         [line.rstrip() for line in re.split(r"\r?\n", res.text_content)]
+2025-03-29T04:51:40.3631078Z                     )
+2025-03-29T04:51:40.3631340Z                     res.text_content = re.sub(r"\n{3,}", "\n\n", res.text_content)
+2025-03-29T04:51:40.3631657Z                     return res
+2025-03-29T04:51:40.3631860Z     
+2025-03-29T04:51:40.3632077Z         # If we got this far without success, report any exceptions
+2025-03-29T04:51:40.3632379Z         if len(failed_attempts) > 0:
+2025-03-29T04:51:40.3632675Z >           raise FileConversionException(attempts=failed_attempts)
+2025-03-29T04:51:40.3633155Z E           markitdown._exceptions.FileConversionException: File conversion failed after 1 attempts:
+2025-03-29T04:51:40.3633733Z E            - PptxConverter threw RecursionError with message: maximum recursion depth exceeded
+2025-03-29T04:51:40.3634053Z 
+2025-03-29T04:51:40.3634205Z src/markitdown/_markitdown.py:611: FileConversionException
+2025-03-29T04:51:40.3634610Z __________________ test_convert_keep_data_uris[test_vector1] ___________________
+2025-03-29T04:51:40.3634857Z 
+2025-03-29T04:51:40.3635647Z test_vector = FileTestVector(filename='test.pptx', mimetype='application/vnd.openxmlformats-officedocument.presentationml.presentati.../jpeg;base64,/9j/4AAQSkZJRgABAQE'], must_not_include=['![This phrase of the caption is Human-written.](Picture4.jpg)'])
+2025-03-29T04:51:40.3636501Z 
+2025-03-29T04:51:40.3636791Z     @pytest.mark.parametrize("test_vector", DATA_URI_TEST_VECTORS)
+2025-03-29T04:51:40.3637141Z     def test_convert_keep_data_uris(test_vector):
+2025-03-29T04:51:40.3637459Z         """Test API functionality when keep_data_uris is enabled"""
+2025-03-29T04:51:40.3637767Z         markitdown = MarkItDown()
+2025-03-29T04:51:40.3637989Z     
+2025-03-29T04:51:40.3638159Z         # Test local file conversion
+2025-03-29T04:51:40.3638407Z >       result = markitdown.convert(
+2025-03-29T04:51:40.3638687Z             os.path.join(TEST_FILES_DIR, test_vector.filename),
+2025-03-29T04:51:40.3638989Z             keep_data_uris=True,
+2025-03-29T04:51:40.3639214Z             url=test_vector.url,
+2025-03-29T04:51:40.3639424Z         )
+2025-03-29T04:51:40.3639517Z 
+2025-03-29T04:51:40.3639613Z tests/test_module_vectors.py:171: 
+2025-03-29T04:51:40.3640008Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2025-03-29T04:51:40.3640314Z src/markitdown/_markitdown.py:271: in convert
+2025-03-29T04:51:40.3640667Z     return self.convert_local(source, stream_info=stream_info, **kwargs)
+2025-03-29T04:51:40.3641038Z src/markitdown/_markitdown.py:325: in convert_local
+2025-03-29T04:51:40.3641418Z     return self._convert(file_stream=fh, stream_info_guesses=guesses, **kwargs)
+2025-03-29T04:51:40.3641789Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2025-03-29T04:51:40.3641981Z 
+2025-03-29T04:51:40.3642142Z self = <markitdown._markitdown.MarkItDown object at 0x7f42840704d0>
+2025-03-29T04:51:40.3642762Z file_stream = <_io.BufferedReader name='/home/runner/work/markitdown/markitdown/packages/markitdown/tests/test_files/test.pptx'>
+2025-03-29T04:51:40.3644051Z stream_info_guesses = [StreamInfo(mimetype='application/vnd.openxmlformats-officedocument.presentationml.presentation', extension='.pptx', c....pptx', local_path='/home/runner/work/markitdown/markitdown/packages/markitdown/tests/test_files/test.pptx', url=None)]
+2025-03-29T04:51:40.3645068Z kwargs = {'keep_data_uris': True}, res = None
+2025-03-29T04:51:40.3645501Z failed_attempts = [<markitdown._exceptions.FailedConversionAttempt object at 0x7f427ff44bf0>]
+2025-03-29T04:51:40.3646744Z sorted_registrations = [ConverterRegistration(converter=<markitdown.converters._epub_converter.EpubConverter object at 0x7f427ff47c50>, prior...tration(converter=<markitdown.converters._audio_converter.AudioConverter object at 0x7f427ff47620>, priority=0.0), ...]
+2025-03-29T04:51:40.3647698Z cur_pos = 0
+2025-03-29T04:51:40.3648102Z stream_info = StreamInfo(mimetype=None, extension=None, charset=None, filename=None, local_path=None, url=None)
+2025-03-29T04:51:40.3648626Z 
+2025-03-29T04:51:40.3648698Z     def _convert(
+2025-03-29T04:51:40.3649003Z         self, *, file_stream: BinaryIO, stream_info_guesses: List[StreamInfo], **kwargs
+2025-03-29T04:51:40.3649381Z     ) -> DocumentConverterResult:
+2025-03-29T04:51:40.3649664Z         res: Union[None, DocumentConverterResult] = None
+2025-03-29T04:51:40.3649929Z     
+2025-03-29T04:51:40.3650129Z         # Keep track of which converters throw exceptions
+2025-03-29T04:51:40.3650455Z         failed_attempts: List[FailedConversionAttempt] = []
+2025-03-29T04:51:40.3650730Z     
+2025-03-29T04:51:40.3650970Z         # Create a copy of the page_converters list, sorted by priority.
+2025-03-29T04:51:40.3651445Z         # We do this with each call to _convert because the priority of converters may change between calls.
+2025-03-29T04:51:40.3652022Z         # The sort is guaranteed to be stable, so converters with the same priority will remain in the same order.
+2025-03-29T04:51:40.3652550Z         sorted_registrations = sorted(self._converters, key=lambda x: x.priority)
+2025-03-29T04:51:40.3652885Z     
+2025-03-29T04:51:40.3653125Z         # Remember the initial stream position so that we can return to it
+2025-03-29T04:51:40.3653452Z         cur_pos = file_stream.tell()
+2025-03-29T04:51:40.3653674Z     
+2025-03-29T04:51:40.3653886Z         for stream_info in stream_info_guesses + [StreamInfo()]:
+2025-03-29T04:51:40.3654230Z             for converter_registration in sorted_registrations:
+2025-03-29T04:51:40.3654557Z                 converter = converter_registration.converter
+2025-03-29T04:51:40.3654890Z                 # Sanity check -- make sure the cur_pos is still the same
+2025-03-29T04:51:40.3655190Z                 assert (
+2025-03-29T04:51:40.3655417Z                     cur_pos == file_stream.tell()
+2025-03-29T04:51:40.3655753Z                 ), f"File stream position should NOT change between guess iterations"
+2025-03-29T04:51:40.3656076Z     
+2025-03-29T04:51:40.3656273Z                 _kwargs = {k: v for k, v in kwargs.items()}
+2025-03-29T04:51:40.3656522Z     
+2025-03-29T04:51:40.3656803Z                 # Copy any additional global options
+2025-03-29T04:51:40.3657125Z                 if "llm_client" not in _kwargs and self._llm_client is not None:
+2025-03-29T04:51:40.3657577Z                     _kwargs["llm_client"] = self._llm_client
+2025-03-29T04:51:40.3657827Z     
+2025-03-29T04:51:40.3658050Z                 if "llm_model" not in _kwargs and self._llm_model is not None:
+2025-03-29T04:51:40.3658368Z                     _kwargs["llm_model"] = self._llm_model
+2025-03-29T04:51:40.3658604Z     
+2025-03-29T04:51:40.3658825Z                 if "style_map" not in _kwargs and self._style_map is not None:
+2025-03-29T04:51:40.3659142Z                     _kwargs["style_map"] = self._style_map
+2025-03-29T04:51:40.3659386Z     
+2025-03-29T04:51:40.3659631Z                 if "exiftool_path" not in _kwargs and self._exiftool_path is not None:
+2025-03-29T04:51:40.3660000Z                     _kwargs["exiftool_path"] = self._exiftool_path
+2025-03-29T04:51:40.3660253Z     
+2025-03-29T04:51:40.3660457Z                 # Add the list of converters for nested processing
+2025-03-29T04:51:40.3660770Z                 _kwargs["_parent_converters"] = self._converters
+2025-03-29T04:51:40.3661042Z     
+2025-03-29T04:51:40.3661205Z                 # Add legaxy kwargs
+2025-03-29T04:51:40.3661441Z                 if stream_info is not None:
+2025-03-29T04:51:40.3661710Z                     if stream_info.extension is not None:
+2025-03-29T04:51:40.3662018Z                         _kwargs["file_extension"] = stream_info.extension
+2025-03-29T04:51:40.3662293Z     
+2025-03-29T04:51:40.3662475Z                     if stream_info.url is not None:
+2025-03-29T04:51:40.3662738Z                         _kwargs["url"] = stream_info.url
+2025-03-29T04:51:40.3662985Z     
+2025-03-29T04:51:40.3663253Z                 # Check if the converter will accept the file, and if so, try to convert it
+2025-03-29T04:51:40.3663776Z                 _accepts = False
+2025-03-29T04:51:40.3663990Z                 try:
+2025-03-29T04:51:40.3664266Z                     _accepts = converter.accepts(file_stream, stream_info, **_kwargs)
+2025-03-29T04:51:40.3664618Z                 except NotImplementedError:
+2025-03-29T04:51:40.3664868Z                     pass
+2025-03-29T04:51:40.3665055Z     
+2025-03-29T04:51:40.3665279Z                 # accept() should not have changed the file stream position
+2025-03-29T04:51:40.3665569Z                 assert (
+2025-03-29T04:51:40.3665783Z                     cur_pos == file_stream.tell()
+2025-03-29T04:51:40.3666156Z                 ), f"{type(converter).__name__}.accept() should NOT change the file_stream position"
+2025-03-29T04:51:40.3666507Z     
+2025-03-29T04:51:40.3666774Z                 # Attempt the conversion
+2025-03-29T04:51:40.3667018Z                 if _accepts:
+2025-03-29T04:51:40.3667218Z                     try:
+2025-03-29T04:51:40.3667495Z                         res = converter.convert(file_stream, stream_info, **_kwargs)
+2025-03-29T04:51:40.3667841Z                     except Exception:
+2025-03-29T04:51:40.3668110Z                         failed_attempts.append(
+2025-03-29T04:51:40.3668398Z                             FailedConversionAttempt(
+2025-03-29T04:51:40.3668701Z                                 converter=converter, exc_info=sys.exc_info()
+2025-03-29T04:51:40.3668986Z                             )
+2025-03-29T04:51:40.3669198Z                         )
+2025-03-29T04:51:40.3669397Z                     finally:
+2025-03-29T04:51:40.3669620Z                         file_stream.seek(cur_pos)
+2025-03-29T04:51:40.3669854Z     
+2025-03-29T04:51:40.3670024Z                 if res is not None:
+2025-03-29T04:51:40.3670264Z                     # Normalize the content
+2025-03-29T04:51:40.3670512Z                     res.text_content = "\n".join(
+2025-03-29T04:51:40.3670838Z                         [line.rstrip() for line in re.split(r"\r?\n", res.text_content)]
+2025-03-29T04:51:40.3671154Z                     )
+2025-03-29T04:51:40.3671415Z                     res.text_content = re.sub(r"\n{3,}", "\n\n", res.text_content)
+2025-03-29T04:51:40.3671723Z                     return res
+2025-03-29T04:51:40.3671926Z     
+2025-03-29T04:51:40.3672262Z         # If we got this far without success, report any exceptions
+2025-03-29T04:51:40.3672555Z         if len(failed_attempts) > 0:
+2025-03-29T04:51:40.3672851Z >           raise FileConversionException(attempts=failed_attempts)
+2025-03-29T04:51:40.3673331Z E           markitdown._exceptions.FileConversionException: File conversion failed after 1 attempts:
+2025-03-29T04:51:40.3673905Z E            - PptxConverter threw RecursionError with message: maximum recursion depth exceeded
+2025-03-29T04:51:40.3674221Z 
+2025-03-29T04:51:40.3674378Z src/markitdown/_markitdown.py:611: FileConversionException
+2025-03-29T04:51:40.3674777Z _______________ test_convert_stream_keep_data_uris[test_vector1] _______________
+2025-03-29T04:51:40.3675031Z 
+2025-03-29T04:51:40.3675823Z test_vector = FileTestVector(filename='test.pptx', mimetype='application/vnd.openxmlformats-officedocument.presentationml.presentati.../jpeg;base64,/9j/4AAQSkZJRgABAQE'], must_not_include=['![This phrase of the caption is Human-written.](Picture4.jpg)'])
+2025-03-29T04:51:40.3676800Z 
+2025-03-29T04:51:40.3676972Z     @pytest.mark.parametrize("test_vector", DATA_URI_TEST_VECTORS)
+2025-03-29T04:51:40.3677331Z     def test_convert_stream_keep_data_uris(test_vector):
+2025-03-29T04:51:40.3677664Z         """Test the conversion of a stream with no stream info."""
+2025-03-29T04:51:40.3677968Z         markitdown = MarkItDown()
+2025-03-29T04:51:40.3678186Z     
+2025-03-29T04:51:40.3678369Z         stream_info = StreamInfo(
+2025-03-29T04:51:40.3678643Z             extension=os.path.splitext(test_vector.filename)[1],
+2025-03-29T04:51:40.3678957Z             mimetype=test_vector.mimetype,
+2025-03-29T04:51:40.3679220Z             charset=test_vector.charset,
+2025-03-29T04:51:40.3679453Z         )
+2025-03-29T04:51:40.3679737Z     
+2025-03-29T04:51:40.3680004Z         with open(os.path.join(TEST_FILES_DIR, test_vector.filename), "rb") as stream:
+2025-03-29T04:51:40.3680366Z >           result = markitdown.convert(
+2025-03-29T04:51:40.3680721Z                 stream, stream_info=stream_info, keep_data_uris=True, url=test_vector.url
+2025-03-29T04:51:40.3681062Z             )
+2025-03-29T04:51:40.3681165Z 
+2025-03-29T04:51:40.3681263Z tests/test_module_vectors.py:195: 
+2025-03-29T04:51:40.3681528Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2025-03-29T04:51:40.3681822Z src/markitdown/_markitdown.py:284: in convert
+2025-03-29T04:51:40.3682307Z     return self.convert_stream(source, stream_info=stream_info, **kwargs)
+2025-03-29T04:51:40.3682800Z src/markitdown/_markitdown.py:372: in convert_stream
+2025-03-29T04:51:40.3683338Z     return self._convert(file_stream=stream, stream_info_guesses=guesses, **kwargs)
+2025-03-29T04:51:40.3684002Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2025-03-29T04:51:40.3684286Z 
+2025-03-29T04:51:40.3684484Z self = <markitdown._markitdown.MarkItDown object at 0x7f427f888b90>
+2025-03-29T04:51:40.3685234Z file_stream = <_io.BufferedReader name='/home/runner/work/markitdown/markitdown/packages/markitdown/tests/test_files/test.pptx'>
+2025-03-29T04:51:40.3686435Z stream_info_guesses = [StreamInfo(mimetype='application/vnd.openxmlformats-officedocument.presentationml.presentation', extension='.pptx', charset=None, filename=None, local_path=None, url=None)]
+2025-03-29T04:51:40.3687612Z kwargs = {'keep_data_uris': True}, res = None
+2025-03-29T04:51:40.3688203Z failed_attempts = [<markitdown._exceptions.FailedConversionAttempt object at 0x7f42892b06e0>]
+2025-03-29T04:51:40.3689424Z sorted_registrations = [ConverterRegistration(converter=<markitdown.converters._epub_converter.EpubConverter object at 0x7f428927c830>, prior...tration(converter=<markitdown.converters._audio_converter.AudioConverter object at 0x7f428927d8b0>, priority=0.0), ...]
+2025-03-29T04:51:40.3690478Z cur_pos = 0
+2025-03-29T04:51:40.3691029Z stream_info = StreamInfo(mimetype=None, extension=None, charset=None, filename=None, local_path=None, url=None)
+2025-03-29T04:51:40.3691470Z 
+2025-03-29T04:51:40.3691717Z     def _convert(
+2025-03-29T04:51:40.3692246Z         self, *, file_stream: BinaryIO, stream_info_guesses: List[StreamInfo], **kwargs
+2025-03-29T04:51:40.3692797Z     ) -> DocumentConverterResult:
+2025-03-29T04:51:40.3693177Z         res: Union[None, DocumentConverterResult] = None
+2025-03-29T04:51:40.3693485Z     
+2025-03-29T04:51:40.3693871Z         # Keep track of which converters throw exceptions
+2025-03-29T04:51:40.3694303Z         failed_attempts: List[FailedConversionAttempt] = []
+2025-03-29T04:51:40.3694723Z     
+2025-03-29T04:51:40.3695080Z         # Create a copy of the page_converters list, sorted by priority.
+2025-03-29T04:51:40.3695614Z         # We do this with each call to _convert because the priority of converters may change between calls.
+2025-03-29T04:51:40.3708563Z         # The sort is guaranteed to be stable, so converters with the same priority will remain in the same order.
+2025-03-29T04:51:40.3709380Z         sorted_registrations = sorted(self._converters, key=lambda x: x.priority)
+2025-03-29T04:51:40.3709770Z     
+2025-03-29T04:51:40.3710045Z         # Remember the initial stream position so that we can return to it
+2025-03-29T04:51:40.3710393Z         cur_pos = file_stream.tell()
+2025-03-29T04:51:40.3710622Z     
+2025-03-29T04:51:40.3710856Z         for stream_info in stream_info_guesses + [StreamInfo()]:
+2025-03-29T04:51:40.3711215Z             for converter_registration in sorted_registrations:
+2025-03-29T04:51:40.3711553Z                 converter = converter_registration.converter
+2025-03-29T04:51:40.3711904Z                 # Sanity check -- make sure the cur_pos is still the same
+2025-03-29T04:51:40.3712220Z                 assert (
+2025-03-29T04:51:40.3712446Z                     cur_pos == file_stream.tell()
+2025-03-29T04:51:40.3712991Z                 ), f"File stream position should NOT change between guess iterations"
+2025-03-29T04:51:40.3713319Z     
+2025-03-29T04:51:40.3713523Z                 _kwargs = {k: v for k, v in kwargs.items()}
+2025-03-29T04:51:40.3713785Z     
+2025-03-29T04:51:40.3713972Z                 # Copy any additional global options
+2025-03-29T04:51:40.3714307Z                 if "llm_client" not in _kwargs and self._llm_client is not None:
+2025-03-29T04:51:40.3714645Z                     _kwargs["llm_client"] = self._llm_client
+2025-03-29T04:51:40.3714894Z     
+2025-03-29T04:51:40.3715121Z                 if "llm_model" not in _kwargs and self._llm_model is not None:
+2025-03-29T04:51:40.3715481Z                     _kwargs["llm_model"] = self._llm_model
+2025-03-29T04:51:40.3715726Z     
+2025-03-29T04:51:40.3715955Z                 if "style_map" not in _kwargs and self._style_map is not None:
+2025-03-29T04:51:40.3716278Z                     _kwargs["style_map"] = self._style_map
+2025-03-29T04:51:40.3716522Z     
+2025-03-29T04:51:40.3716912Z                 if "exiftool_path" not in _kwargs and self._exiftool_path is not None:
+2025-03-29T04:51:40.3717274Z                     _kwargs["exiftool_path"] = self._exiftool_path
+2025-03-29T04:51:40.3717541Z     
+2025-03-29T04:51:40.3717748Z                 # Add the list of converters for nested processing
+2025-03-29T04:51:40.3718067Z                 _kwargs["_parent_converters"] = self._converters
+2025-03-29T04:51:40.3718335Z     
+2025-03-29T04:51:40.3718496Z                 # Add legaxy kwargs
+2025-03-29T04:51:40.3718742Z                 if stream_info is not None:
+2025-03-29T04:51:40.3719014Z                     if stream_info.extension is not None:
+2025-03-29T04:51:40.3719323Z                         _kwargs["file_extension"] = stream_info.extension
+2025-03-29T04:51:40.3719598Z     
+2025-03-29T04:51:40.3719777Z                     if stream_info.url is not None:
+2025-03-29T04:51:40.3720057Z                         _kwargs["url"] = stream_info.url
+2025-03-29T04:51:40.3720305Z     
+2025-03-29T04:51:40.3720569Z                 # Check if the converter will accept the file, and if so, try to convert it
+2025-03-29T04:51:40.3720919Z                 _accepts = False
+2025-03-29T04:51:40.3721137Z                 try:
+2025-03-29T04:51:40.3721552Z                     _accepts = converter.accepts(file_stream, stream_info, **_kwargs)
+2025-03-29T04:51:40.3721894Z                 except NotImplementedError:
+2025-03-29T04:51:40.3722181Z                     pass
+2025-03-29T04:51:40.3722374Z     
+2025-03-29T04:51:40.3722604Z                 # accept() should not have changed the file stream position
+2025-03-29T04:51:40.3722900Z                 assert (
+2025-03-29T04:51:40.3723111Z                     cur_pos == file_stream.tell()
+2025-03-29T04:51:40.3723482Z                 ), f"{type(converter).__name__}.accept() should NOT change the file_stream position"
+2025-03-29T04:51:40.3723829Z     
+2025-03-29T04:51:40.3724001Z                 # Attempt the conversion
+2025-03-29T04:51:40.3724244Z                 if _accepts:
+2025-03-29T04:51:40.3724679Z                     try:
+2025-03-29T04:51:40.3724986Z                         res = converter.convert(file_stream, stream_info, **_kwargs)
+2025-03-29T04:51:40.3725315Z                     except Exception:
+2025-03-29T04:51:40.3725577Z                         failed_attempts.append(
+2025-03-29T04:51:40.3725853Z                             FailedConversionAttempt(
+2025-03-29T04:51:40.3726152Z                                 converter=converter, exc_info=sys.exc_info()
+2025-03-29T04:51:40.3726426Z                             )
+2025-03-29T04:51:40.3726790Z                         )
+2025-03-29T04:51:40.3727051Z                     finally:
+2025-03-29T04:51:40.3727279Z                         file_stream.seek(cur_pos)
+2025-03-29T04:51:40.3727515Z     
+2025-03-29T04:51:40.3727677Z                 if res is not None:
+2025-03-29T04:51:40.3727916Z                     # Normalize the content
+2025-03-29T04:51:40.3728175Z                     res.text_content = "\n".join(
+2025-03-29T04:51:40.3728649Z                         [line.rstrip() for line in re.split(r"\r?\n", res.text_content)]
+2025-03-29T04:51:40.3728963Z                     )
+2025-03-29T04:51:40.3729217Z                     res.text_content = re.sub(r"\n{3,}", "\n\n", res.text_content)
+2025-03-29T04:51:40.3729532Z                     return res
+2025-03-29T04:51:40.3729734Z     
+2025-03-29T04:51:40.3729952Z         # If we got this far without success, report any exceptions
+2025-03-29T04:51:40.3730249Z         if len(failed_attempts) > 0:
+2025-03-29T04:51:40.3730545Z >           raise FileConversionException(attempts=failed_attempts)
+2025-03-29T04:51:40.3731027Z E           markitdown._exceptions.FileConversionException: File conversion failed after 1 attempts:
+2025-03-29T04:51:40.3731607Z E            - PptxConverter threw RecursionError with message: maximum recursion depth exceeded
+2025-03-29T04:51:40.3731932Z 
+2025-03-29T04:51:40.3732088Z src/markitdown/_markitdown.py:611: FileConversionException
+2025-03-29T04:51:40.3732641Z =============================== warnings summary ===============================
+2025-03-29T04:51:40.3733236Z ../../../../../.local/share/hatch/env/virtual/markitdown/H_uUSwZ6/hatch-test.py3.12/lib/python3.12/site-packages/pydub/utils.py:170
+2025-03-29T04:51:40.3734374Z   /home/runner/.local/share/hatch/env/virtual/markitdown/H_uUSwZ6/hatch-test.py3.12/lib/python3.12/site-packages/pydub/utils.py:170: RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work
+2025-03-29T04:51:40.3735527Z     warn("Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work", RuntimeWarning)
+2025-03-29T04:51:40.3735929Z 
+2025-03-29T04:51:40.3736142Z -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+2025-03-29T04:51:40.3736583Z =========================== short test summary info ============================
+2025-03-29T04:51:40.3737853Z FAILED tests/test_cli_vectors.py::test_output_to_stdout[test_vector3] - AssertionError: CLI exited with error: /home/runner/.local/share/hatch/env/virtual/markitdown/H_uUSwZ6/hatch-test.py3.12/lib/python3.12/site-packages/pydub/utils.py:170: RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work
+2025-03-29T04:51:40.3738270Z     warn("Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work", RuntimeWarning)
+2025-03-29T04:51:40.3738371Z   Traceback (most recent call last):
+2025-03-29T04:51:40.3743915Z     File "<frozen runpy>", line 198, in _run_module_as_main
+2025-03-29T04:51:40.3744132Z     File "<frozen runpy>", line 88, in _run_code
+2025-03-29T04:51:40.3744557Z     File "/home/runner/work/markitdown/markitdown/packages/markitdown/src/markitdown/__main__.py", line 224, in <module>
+2025-03-29T04:51:40.3744646Z       main()
+2025-03-29T04:51:40.3745040Z     File "/home/runner/work/markitdown/markitdown/packages/markitdown/src/markitdown/__main__.py", line 197, in main
+2025-03-29T04:51:40.3745148Z       result = markitdown.convert(
+2025-03-29T04:51:40.3745224Z                ^^^^^^^^^^^^^^^^^^^
+2025-03-29T04:51:40.3745644Z     File "/home/runner/work/markitdown/markitdown/packages/markitdown/src/markitdown/_markitdown.py", line 271, in convert
+2025-03-29T04:51:40.3745828Z       return self.convert_local(source, stream_info=stream_info, **kwargs)
+2025-03-29T04:51:40.3745931Z              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-03-29T04:51:40.3746350Z     File "/home/runner/work/markitdown/markitdown/packages/markitdown/src/markitdown/_markitdown.py", line 325, in convert_local
+2025-03-29T04:51:40.3746560Z       return self._convert(file_stream=fh, stream_info_guesses=guesses, **kwargs)
+2025-03-29T04:51:40.3746813Z              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-03-29T04:51:40.3747220Z     File "/home/runner/work/markitdown/markitdown/packages/markitdown/src/markitdown/_markitdown.py", line 611, in _convert
+2025-03-29T04:51:40.3747402Z       raise FileConversionException(attempts=failed_attempts)
+2025-03-29T04:51:40.3747844Z   markitdown._exceptions.FileConversionException: File conversion failed after 1 attempts:
+2025-03-29T04:51:40.3748071Z    - PptxConverter threw RecursionError with message: maximum recursion depth exceeded
+2025-03-29T04:51:40.3748146Z   
+2025-03-29T04:51:40.3748227Z   
+2025-03-29T04:51:40.3748303Z assert 1 == 0
+2025-03-29T04:51:40.3749103Z  +  where 1 = CompletedProcess(args=['python', '-m', 'markitdown', '/home/runner/work/markitdown/markitdown/packages/markitdown/test...on failed after 1 attempts:\n - PptxConverter threw RecursionError with message: maximum recursion depth exceeded\n\n').returncode
+2025-03-29T04:51:40.3750117Z FAILED tests/test_cli_vectors.py::test_output_to_file[test_vector3] - AssertionError: CLI exited with error: /home/runner/.local/share/hatch/env/virtual/markitdown/H_uUSwZ6/hatch-test.py3.12/lib/python3.12/site-packages/pydub/utils.py:170: RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work
+2025-03-29T04:51:40.3750368Z     warn("Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work", RuntimeWarning)
+2025-03-29T04:51:40.3750466Z   Traceback (most recent call last):
+2025-03-29T04:51:40.3750635Z     File "<frozen runpy>", line 198, in _run_module_as_main
+2025-03-29T04:51:40.3750789Z     File "<frozen runpy>", line 88, in _run_code
+2025-03-29T04:51:40.3751186Z     File "/home/runner/work/markitdown/markitdown/packages/markitdown/src/markitdown/__main__.py", line 224, in <module>
+2025-03-29T04:51:40.3751258Z       main()
+2025-03-29T04:51:40.3751620Z     File "/home/runner/work/markitdown/markitdown/packages/markitdown/src/markitdown/__main__.py", line 197, in main
+2025-03-29T04:51:40.3751711Z       result = markitdown.convert(
+2025-03-29T04:51:40.3751796Z                ^^^^^^^^^^^^^^^^^^^
+2025-03-29T04:51:40.3752182Z     File "/home/runner/work/markitdown/markitdown/packages/markitdown/src/markitdown/_markitdown.py", line 271, in convert
+2025-03-29T04:51:40.3752362Z       return self.convert_local(source, stream_info=stream_info, **kwargs)
+2025-03-29T04:51:40.3752456Z              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-03-29T04:51:40.3752869Z     File "/home/runner/work/markitdown/markitdown/packages/markitdown/src/markitdown/_markitdown.py", line 325, in convert_local
+2025-03-29T04:51:40.3753189Z       return self._convert(file_stream=fh, stream_info_guesses=guesses, **kwargs)
+2025-03-29T04:51:40.3753287Z              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-03-29T04:51:40.3753690Z     File "/home/runner/work/markitdown/markitdown/packages/markitdown/src/markitdown/_markitdown.py", line 611, in _convert
+2025-03-29T04:51:40.3753872Z       raise FileConversionException(attempts=failed_attempts)
+2025-03-29T04:51:40.3754128Z   markitdown._exceptions.FileConversionException: File conversion failed after 1 attempts:
+2025-03-29T04:51:40.3754351Z    - PptxConverter threw RecursionError with message: maximum recursion depth exceeded
+2025-03-29T04:51:40.3754429Z   
+2025-03-29T04:51:40.3754498Z   
+2025-03-29T04:51:40.3754574Z assert 1 == 0
+2025-03-29T04:51:40.3755300Z  +  where 1 = CompletedProcess(args=['python', '-m', 'markitdown', '-o', '/tmp/pytest-of-runner/pytest-0/pytest_tmp0/test.pptx.outpu...on failed after 1 attempts:\n - PptxConverter threw RecursionError with message: maximum recursion depth exceeded\n\n').returncode
+2025-03-29T04:51:40.3756350Z FAILED tests/test_cli_vectors.py::test_input_from_stdin_without_hints[test_vector3] - AssertionError: CLI exited with error: /home/runner/.local/share/hatch/env/virtual/markitdown/H_uUSwZ6/hatch-test.py3.12/lib/python3.12/site-packages/pydub/utils.py:170: RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work
+2025-03-29T04:51:40.3756586Z     warn("Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work", RuntimeWarning)
+2025-03-29T04:51:40.3756799Z   Traceback (most recent call last):
+2025-03-29T04:51:40.3756964Z     File "<frozen runpy>", line 198, in _run_module_as_main
+2025-03-29T04:51:40.3757233Z     File "<frozen runpy>", line 88, in _run_code
+2025-03-29T04:51:40.3757629Z     File "/home/runner/work/markitdown/markitdown/packages/markitdown/src/markitdown/__main__.py", line 224, in <module>
+2025-03-29T04:51:40.3757713Z       main()
+2025-03-29T04:51:40.3758078Z     File "/home/runner/work/markitdown/markitdown/packages/markitdown/src/markitdown/__main__.py", line 197, in main
+2025-03-29T04:51:40.3758176Z       result = markitdown.convert(
+2025-03-29T04:51:40.3758251Z                ^^^^^^^^^^^^^^^^^^^
+2025-03-29T04:51:40.3758655Z     File "/home/runner/work/markitdown/markitdown/packages/markitdown/src/markitdown/_markitdown.py", line 271, in convert
+2025-03-29T04:51:40.3758830Z       return self.convert_local(source, stream_info=stream_info, **kwargs)
+2025-03-29T04:51:40.3758916Z              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-03-29T04:51:40.3759341Z     File "/home/runner/work/markitdown/markitdown/packages/markitdown/src/markitdown/_markitdown.py", line 325, in convert_local
+2025-03-29T04:51:40.3759538Z       return self._convert(file_stream=fh, stream_info_guesses=guesses, **kwargs)
+2025-03-29T04:51:40.3759637Z              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-03-29T04:51:40.3760029Z     File "/home/runner/work/markitdown/markitdown/packages/markitdown/src/markitdown/_markitdown.py", line 611, in _convert
+2025-03-29T04:51:40.3760211Z       raise FileConversionException(attempts=failed_attempts)
+2025-03-29T04:51:40.3760466Z   markitdown._exceptions.FileConversionException: File conversion failed after 1 attempts:
+2025-03-29T04:51:40.3760694Z    - PptxConverter threw RecursionError with message: maximum recursion depth exceeded
+2025-03-29T04:51:40.3760762Z   
+2025-03-29T04:51:40.3760833Z   
+2025-03-29T04:51:40.3760908Z assert 1 == 0
+2025-03-29T04:51:40.3761693Z  +  where 1 = CompletedProcess(args=['python', '-m', 'markitdown', '/home/runner/work/markitdown/markitdown/packages/markitdown/test...on failed after 1 attempts:\n - PptxConverter threw RecursionError with message: maximum recursion depth exceeded\n\n').returncode
+2025-03-29T04:51:40.3762734Z FAILED tests/test_cli_vectors.py::test_output_to_file_with_data_uris[test_vector1] - AssertionError: CLI exited with error: /home/runner/.local/share/hatch/env/virtual/markitdown/H_uUSwZ6/hatch-test.py3.12/lib/python3.12/site-packages/pydub/utils.py:170: RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work
+2025-03-29T04:51:40.3763097Z     warn("Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work", RuntimeWarning)
+2025-03-29T04:51:40.3763188Z   Traceback (most recent call last):
+2025-03-29T04:51:40.3763348Z     File "<frozen runpy>", line 198, in _run_module_as_main
+2025-03-29T04:51:40.3763488Z     File "<frozen runpy>", line 88, in _run_code
+2025-03-29T04:51:40.3763880Z     File "/home/runner/work/markitdown/markitdown/packages/markitdown/src/markitdown/__main__.py", line 224, in <module>
+2025-03-29T04:51:40.3763953Z       main()
+2025-03-29T04:51:40.3764322Z     File "/home/runner/work/markitdown/markitdown/packages/markitdown/src/markitdown/__main__.py", line 197, in main
+2025-03-29T04:51:40.3764412Z       result = markitdown.convert(
+2025-03-29T04:51:40.3764499Z                ^^^^^^^^^^^^^^^^^^^
+2025-03-29T04:51:40.3764897Z     File "/home/runner/work/markitdown/markitdown/packages/markitdown/src/markitdown/_markitdown.py", line 271, in convert
+2025-03-29T04:51:40.3765068Z       return self.convert_local(source, stream_info=stream_info, **kwargs)
+2025-03-29T04:51:40.3765160Z              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-03-29T04:51:40.3765576Z     File "/home/runner/work/markitdown/markitdown/packages/markitdown/src/markitdown/_markitdown.py", line 325, in convert_local
+2025-03-29T04:51:40.3765765Z       return self._convert(file_stream=fh, stream_info_guesses=guesses, **kwargs)
+2025-03-29T04:51:40.3765859Z              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-03-29T04:51:40.3766338Z     File "/home/runner/work/markitdown/markitdown/packages/markitdown/src/markitdown/_markitdown.py", line 611, in _convert
+2025-03-29T04:51:40.3766513Z       raise FileConversionException(attempts=failed_attempts)
+2025-03-29T04:51:40.3767040Z   markitdown._exceptions.FileConversionException: File conversion failed after 1 attempts:
+2025-03-29T04:51:40.3767281Z    - PptxConverter threw RecursionError with message: maximum recursion depth exceeded
+2025-03-29T04:51:40.3767357Z   
+2025-03-29T04:51:40.3767421Z   
+2025-03-29T04:51:40.3767494Z assert 1 == 0
+2025-03-29T04:51:40.3768232Z  +  where 1 = CompletedProcess(args=['python', '-m', 'markitdown', '--keep-data-uris', '-o', '/tmp/pytest-of-runner/pytest-0/pytest_...on failed after 1 attempts:\n - PptxConverter threw RecursionError with message: maximum recursion depth exceeded\n\n').returncode
+2025-03-29T04:51:40.3768713Z FAILED tests/test_module_vectors.py::test_convert_local[test_vector3] - markitdown._exceptions.FileConversionException: File conversion failed after 1 attempts:
+2025-03-29T04:51:40.3768947Z  - PptxConverter threw RecursionError with message: maximum recursion depth exceeded
+2025-03-29T04:51:40.3769435Z FAILED tests/test_module_vectors.py::test_convert_stream_with_hints[test_vector3] - markitdown._exceptions.FileConversionException: File conversion failed after 1 attempts:
+2025-03-29T04:51:40.3769662Z  - PptxConverter threw RecursionError with message: maximum recursion depth exceeded
+2025-03-29T04:51:40.3770160Z FAILED tests/test_module_vectors.py::test_convert_stream_without_hints[test_vector3] - markitdown._exceptions.FileConversionException: File conversion failed after 1 attempts:
+2025-03-29T04:51:40.3770380Z  - PptxConverter threw RecursionError with message: maximum recursion depth exceeded
+2025-03-29T04:51:40.3770850Z FAILED tests/test_module_vectors.py::test_convert_file_uri[test_vector3] - markitdown._exceptions.FileConversionException: File conversion failed after 1 attempts:
+2025-03-29T04:51:40.3771068Z  - PptxConverter threw RecursionError with message: maximum recursion depth exceeded
+2025-03-29T04:51:40.3771529Z FAILED tests/test_module_vectors.py::test_convert_data_uri[test_vector3] - markitdown._exceptions.FileConversionException: File conversion failed after 1 attempts:
+2025-03-29T04:51:40.3771884Z  - PptxConverter threw RecursionError with message: maximum recursion depth exceeded
+2025-03-29T04:51:40.3772384Z FAILED tests/test_module_vectors.py::test_convert_keep_data_uris[test_vector1] - markitdown._exceptions.FileConversionException: File conversion failed after 1 attempts:
+2025-03-29T04:51:40.3772596Z  - PptxConverter threw RecursionError with message: maximum recursion depth exceeded
+2025-03-29T04:51:40.3773106Z FAILED tests/test_module_vectors.py::test_convert_stream_keep_data_uris[test_vector1] - markitdown._exceptions.FileConversionException: File conversion failed after 1 attempts:
+2025-03-29T04:51:40.3773312Z  - PptxConverter threw RecursionError with message: maximum recursion depth exceeded
+2025-03-29T04:51:40.3773488Z ======= 11 failed, 130 passed, 31 skipped, 1 warning in 69.25s (0:01:09) =======
+2025-03-29T04:51:40.6398638Z ##[error]Process completed with exit code 1.

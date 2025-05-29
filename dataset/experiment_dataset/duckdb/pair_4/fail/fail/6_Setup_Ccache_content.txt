@@ -1,0 +1,148 @@
+hendrikmuhs/ccache-action@main
+
+key: linux-python3-10
+save:
+restore:
+max-size: 500M
+verbose: 0
+variant: ccache
+append-timestamp:
+create-symlink:
+job-summary: CCache Statistics
+
+GH_TOKEN:
+OVERRIDE_GIT_DESCRIBE:
+CIBW_TEST_SKIP: {cp37,cp38}-*
+CIBW_BUILD: cp310-manylinux_2_28_x86_64
+CIBW_TEST_COMMAND: python -m pytest {project}/tests --verbose && USE_ACTUAL_SPARK=true JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java)))) SPARK_HOME={project}/spark_installation/spark python -m pytest {project}/tests/fast/spark --verbose
+PYTEST_TIMEOUT: 600
+CIBW_ENVIRONMENT: OVERRIDE_GIT_DESCRIBE=
+CIBW_BEFORE_ALL: cd {project} && ./scripts/install_spark_in_cibuildwheels_linux_container.sh
+3 10 16
+3 10 16
+3 10 16
+Python2 3 10 16
+Python3 3 10 16
+3 10 16
+##[endgroup]
+##[group]Install ccache
+[command]/usr/bin/sh -xc $(which sudo) apt-get install -y ccache
++ which sudo
++ /usr/bin/sudo apt-get install -y ccache
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+libhiredis0.14
+Suggested packages:
+distcc | icecc
+The following NEW packages will be installed:
+ccache libhiredis0.14
+0 upgraded, 2 newly installed, 0 to remove and 25 not upgraded.
+Need to get 528 kB of archives.
+After this operation, 1469 kB of additional disk space will be used.
+Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [142 B]
+Get:2 http://azure.archive.ubuntu.com/ubuntu jammy/universe amd64 libhiredis0.14 amd64 0.14.1-2 [32.8 kB]
+Get:3 http://azure.archive.ubuntu.com/ubuntu jammy/universe amd64 ccache amd64 4.5.1-1 [495 kB]
+Fetched 528 kB in 8s (65.5 kB/s)
+Selecting previously unselected package libhiredis0.14:amd64.
+(Reading database ...
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 270956 files and directories currently installed.)
+Preparing to unpack .../libhiredis0.14_0.14.1-2_amd64.deb ...
+Unpacking libhiredis0.14:amd64 (0.14.1-2) ...
+Selecting previously unselected package ccache.
+Preparing to unpack .../ccache_4.5.1-1_amd64.deb ...
+Unpacking ccache (4.5.1-1) ...
+Setting up libhiredis0.14:amd64 (0.14.1-2) ...
+Setting up ccache (4.5.1-1) ...
+Updating symlinks in /usr/lib/ccache ...
+Processing triggers for libc-bin (2.35-0ubuntu3.9) ...
+Processing triggers for man-db (2.10.2-1) ...
+NEEDRESTART-VER: 3.5
+NEEDRESTART-KCUR: 6.8.0-1021-azure
+NEEDRESTART-KEXP: 6.8.0-1021-azure
+NEEDRESTART-KSTA: 1
+2025-04-14T13:26:08.4699792Z
+##[endgroup]
+##[group]Restore cache
+##[warning]Cache not found for keys: ccache-linux-python3-10-
+No cache found.
+##[endgroup]
+##[group]Configure ccache, linux
+[command]/usr/bin/sh -xc ccache --set-config=cache_dir='/home/runner/work/duckdb/duckdb/.ccache'
++ ccache --set-config=cache_dir=/home/runner/work/duckdb/duckdb/.ccache
+[command]/usr/bin/sh -xc ccache --set-config=max_size='500M'
++ ccache --set-config=max_size=500M
+[command]/usr/bin/sh -xc ccache --set-config=compression=true
++ ccache --set-config=compression=true
+[command]/usr/bin/sh -xc ccache --set-config=read_only=true
++ ccache --set-config=read_only=true
+Cccache config:
+[command]/usr/bin/sh -xc ccache -p
++ ccache -p
+(default) absolute_paths_in_stderr = false
+(default) base_dir =
+(/home/runner/.config/ccache/ccache.conf) cache_dir = /home/runner/work/duckdb/duckdb/.ccache
+(default) compiler =
+(default) compiler_check = mtime
+(default) compiler_type = auto
+(/home/runner/.config/ccache/ccache.conf) compression = true
+(default) compression_level = 0
+(default) cpp_extension =
+(default) debug = false
+(default) debug_dir =
+(default) depend_mode = false
+(default) direct_mode = true
+(default) disable = false
+(default) extra_files_to_hash =
+(default) file_clone = false
+(default) hard_link = false
+(default) hash_dir = true
+(default) ignore_headers_in_manifest =
+(default) ignore_options =
+(default) inode_cache = false
+(default) keep_comments_cpp = false
+(default) limit_multiple = 0.8
+(default) log_file =
+(default) max_files = 0
+(/home/runner/.config/ccache/ccache.conf) max_size = 500.0M
+(default) namespace =
+(default) path =
+(default) pch_external_checksum = false
+(default) prefix_command =
+(default) prefix_command_cpp =
+(/home/runner/.config/ccache/ccache.conf) read_only = true
+(default) read_only_direct = false
+(default) recache = false
+(default) reshare = false
+(default) run_second_cpp = true
+(default) secondary_storage =
+(default) sloppiness =
+(default) stats = true
+(default) stats_log =
+(default) temporary_dir = /run/user/1001/ccache-tmp
+(default) umask =
+[command]/usr/bin/sh -xc ccache -z
++ ccache -z
+Statistics zeroed
+##[endgroup]

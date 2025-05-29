@@ -1,0 +1,20 @@
+##[group]Run pnpm changeset version
+[36;1mpnpm changeset version[0m
+[36;1m[0m
+[36;1mif git status --porcelain .changeset | grep -q "D $CHANGESET_FILE"; then[0m
+[36;1m    git reset --hard[0m
+[<:NUM:>;1m exit <:NUM:>[0m
+[<:NUM:>;1mfi[0m
+[36;1m[0m
+[36;1m# Throw if changeset not in deleted changesets[0m
+[36;1mecho "Changeset file $CHANGESET_FILE will not get deleted in the changesets PR. Check its affected packages."[0m
+[36;1mexit 1[0m
+shell: /usr/bin/bash -e {<:NUM:>}
+env:
+NPM_CONFIG_USERCONFIG: /home/runner/work/_temp/.npmrc
+NODE_AUTH_TOKEN: XXXXX-XXXXX-XXXXX-XXXXX
+PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+CHANGESET_FILE: .changeset/bitter-horses-repair.md
+##[endgroup]
+🦋  All files have been updated. Review them and commit at your leisure
+HEAD is now at <:*:> Merge <:SEQ:> into <:SEQ:>

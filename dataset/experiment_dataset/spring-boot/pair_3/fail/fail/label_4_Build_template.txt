@@ -1,0 +1,1048 @@
+Prepare all required actions
+Getting action download info
+##[group]Run <:*:>
+with:
+commercial-repository-password: ***
+commercial-repository-username: ***
+develocity-access-key: ***
+<:*:> false
+<:*:> false
+<:*:> false
+java-version: 17
+<:*:> false
+##[endgroup]
+Prepare all required actions
+Getting action download info
+Download action repository <:*:> (SHA:<:SEQ:>)
+##[group]Download immutable action package <:*:>
+Version: 4.7.1
+Digest: sha256:<:SEQ:>
+Source commit SHA: <:SEQ:>
+##[endgroup]
+Download action repository <:*:> (SHA:<:SEQ:>)
+##[group]Run <:*:>
+with:
+<:*:> false
+develocity-access-key: ***
+<:*:> false
+<:*:> false
+java-version: 17
+##[endgroup]
+##[group]Run <:*:>
+with:
+distribution: liberica
+java-version: 17
+java-package: jdk
+check-latest: false
+server-id: github
+server-username: GITHUB_ACTOR
+server-password: GITHUB_TOKEN
+<:*:> true
+job-status: success
+token: ***
+##[endgroup]
+##[group]Installed distributions
+Trying to resolve the latest version from remote
+Resolved latest version as 17.0.14+10
+Trying to download...
+Downloading Java 17.0.14+10 (Liberica) from https://github.com/bell-sw/Liberica/releases/download/17.0.14+10/bellsoft-jdk17.0.14+10-windows-amd64.zip ...
+Extracting Java archive...
+[command]"C:\Program Files\PowerShell\7\pwsh.exe" -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Unrestricted -Command "$ErrorActionPreference = 'Stop' ; try { Add-Type -AssemblyName System.IO.Compression.ZipFile } catch { } ; try { [System.IO.Compression.ZipFile]::ExtractToDirectory('D:\a\_temp\8375559e-df63-4b3a-8ffc-7a1f3abaec47.zip', 'D:\a\_temp\1648b73b-9716-42c8-8a84-0a0edf9f19b1', $true) } catch { if (($_.Exception.GetType().FullName -eq 'System.Management.Automation.MethodException') -or ($_.Exception.GetType().FullName -eq 'System.Management.Automation.RuntimeException') ){ Expand-Archive -LiteralPath 'D:\a\_temp\8375559e-df63-4b3a-8ffc-7a1f3abaec47.zip' -DestinationPath 'D:\a\_temp\1648b73b-9716-42c8-8a84-0a0edf9f19b1' -Force } else { throw $_ } } ;"
+Java 17.0.14+10 was downloaded
+Setting Java 17.0.14+10 as the default
+Creating toolchains.xml for JDK version 17 from liberica
+Writing to C:\Users\runneradmin\.m2\toolchains.xml
+2025-04-14T22:50:18.1991227Z
+Java configuration:
+Distribution: liberica
+Version: 17.0.14+10
+Path: C:\hostedtoolcache\windows\Java_Liberica_jdk\17.0.14-10\x64
+2025-04-14T22:50:18.2003553Z
+##[endgroup]
+Creating settings.xml with server-id: github
+Writing to C:\Users\runneradmin\.m2\settings.xml
+##[group]Run <:*:>
+with:
+<:*:> false
+develocity-access-key: ***
+<:*:> false
+<:*:> false
+<:*:> false
+cache-cleanup: on-success
+gradle-home-cache-includes: caches
+notifications
+add-job-summary: always
+add-job-summary-as-pr-comment: never
+dependency-graph: disabled
+dependency-graph-report-dir: dependency-graph-reports
+<:*:> true
+<:*:> false
+<:*:> true
+<:*:> false
+<:*:> false
+workflow-job-context: {
+{
+"windows-latest",
+"Windows"
+  },
+{
+17,
+false
+  }
+}
+github-token: ***
+env:
+JAVA_HOME: C:\hostedtoolcache\windows\Java_Liberica_jdk\17.0.14-10\x64
+JAVA_HOME_17_X64: C:\hostedtoolcache\windows\Java_Liberica_jdk\17.0.14-10\x64
+##[endgroup]
+Setting GRADLE_USER_HOME to D:\a\.gradle to leverage (potentially) faster drive.
+Merged default JDK locations into C:\Users\runneradmin\.m2\toolchains.xml
+Preparing cache for cleanup.
+##[group]Restore Gradle state from cache
+Cache hit for: gradle-home-v1|Windows-X64|ci[a53a018ab0dbe4f762ecb87a04bf2353]-34a43c1f87031289845f1e5ff81bd600e00c1a25
+Received 12582912 of 527803178 (2.4%), 11.8 MBs/sec
+Received 125829120 of 527803178 (23.8%), 59.0 MBs/sec
+Received 188743680 of 527803178 (35.8%), 59.3 MBs/sec
+Received 268435456 of 527803178 (50.9%), 63.5 MBs/sec
+Received 402653184 of 527803178 (76.3%), 72.2 MBs/sec
+Received 527803178 of 527803178 (100.0%), 78.4 MBs/sec
+Cache Size: ~503 MB (527803178 B)
+[command]"C:\Program Files\Git\usr\bin\tar.exe" -xf D:/a/_temp/05372c93-29c4-4917-808f-a9305713b249/cache.tzst -P -C D:/a/spring-boot/spring-boot --force-local --use-compress-program "zstd -d"
+Cache restored successfully
+Restored cache entry with key gradle-home-v1|Windows-X64|ci[a53a018ab0dbe4f762ecb87a04bf2353]-34a43c1f87031289845f1e5ff81bd600e00c1a25 to D:\a\.gradle\caches,D:\a\.gradle\notifications,D:\a\.gradle\.setup-gradle in 11130ms
+Cache hit for: gradle-wrapper-zips-v1-f82d94dd741812d9afc7aad8d4ab116c
+Cache hit for: gradle-wrapper-zips-v1-290df3079c8f8c14b9ed0453428333f8
+Cache hit for: gradle-generated-gradle-jars-v1-3942538a3561f85d8699788d33ae5026
+Cache hit for: gradle-dependencies-v1-4e22c838565be8eec9f693cad2fb1d98
+Cache hit for: gradle-wrapper-zips-v1-2404ef08b03d28a6a12a9811a47b570f
+Cache hit for: gradle-generated-gradle-jars-v1-697f81ec8d80712ce7da03f513960371
+Cache hit for: gradle-groovy-dsl-v1-de40ef35074faed71082fa461e65f3b7
+Cache hit for: gradle-instrumented-jars-v1-8c03867808ee4af5d02a739b13315827
+Cache hit for: gradle-transforms-v1-a407f666999b9a6d99e6df83fa741bfc
+Received 26218 of 26218 (100.0%), 0.2 MBs/sec
+Cache Size: ~0 MB (26218 B)
+[command]"C:\Program Files\Git\usr\bin\tar.exe" -xf D:/a/_temp/0e547ea7-b7e1-4f40-a958-7b5aee9bc80e/cache.tzst -P -C D:/a/spring-boot/spring-boot --force-local --use-compress-program "zstd -d"
+Cache restored successfully
+Restored cache entry with key gradle-generated-gradle-jars-v1-3942538a3561f85d8699788d33ae5026 to D:\a\.gradle\caches\8.13\generated-gradle-jars\gradle-test-kit-8.13.jar in 1176ms
+Received 776066 of 776066 (100.0%), 1.6 MBs/sec
+Cache Size: ~1 MB (776066 B)
+[command]"C:\Program Files\Git\usr\bin\tar.exe" -xf D:/a/_temp/3baf914d-d137-4e32-82f0-3f3ec97bb68d/cache.tzst -P -C D:/a/spring-boot/spring-boot --force-local --use-compress-program "zstd -d"
+Received 40868776 of 40868776 (100.0%), 45.9 MBs/sec
+Cache Size: ~39 MB (40868776 B)
+[command]"C:\Program Files\Git\usr\bin\tar.exe" -xf D:/a/_temp/a03d5dca-3cc5-47b5-b7ac-620fcb1d1e0b/cache.tzst -P -C D:/a/spring-boot/spring-boot --force-local --use-compress-program "zstd -d"
+Received 1331843 of 1331843 (100.0%), 1.9 MBs/sec
+Cache Size: ~1 MB (1331843 B)
+[command]"C:\Program Files\Git\usr\bin\tar.exe" -xf D:/a/_temp/2a4d6a5c-1753-41d5-a047-099ba61f82b9/cache.tzst -P -C D:/a/spring-boot/spring-boot --force-local --use-compress-program "zstd -d"
+Received 16777216 of 130035915 (12.9%), 13.2 MBs/sec
+Received 12582912 of 121812828 (10.3%), 10.1 MBs/sec
+Received 16777216 of 136206603 (12.3%), 14.2 MBs/sec
+Received 0 of 1008885760 (0.0%), 0.0 MBs/sec
+Received 0 of 105475978 (0.0%), 0.0 MBs/sec
+Cache restored successfully
+Restored cache entry with key gradle-generated-gradle-jars-v1-697f81ec8d80712ce7da03f513960371 to D:\a\.gradle\caches\8.13\generated-gradle-jars\gradle-api-8.13.jar in 2517ms
+Received 75497472 of 130035915 (58.1%), 29.3 MBs/sec
+Received 62914560 of 121812828 (51.6%), 24.8 MBs/sec
+Received 83886080 of 136206603 (61.6%), 33.8 MBs/sec
+Received 41943040 of 1008885760 (4.2%), 17.1 MBs/sec
+Received 33554432 of 105475978 (31.8%), 14.0 MBs/sec
+Cache restored successfully
+Restored cache entry with key gradle-instrumented-jars-v1-8c03867808ee4af5d02a739b13315827 to D:\a\.gradle\caches\jars-*\*/ in 3678ms
+Received 117453003 of 130035915 (90.3%), 30.8 MBs/sec
+Received 104857600 of 121812828 (86.1%), 27.7 MBs/sec
+Received 134217728 of 136206603 (98.5%), 36.1 MBs/sec
+Received 62914560 of 1008885760 (6.2%), 17.0 MBs/sec
+Received 54525952 of 105475978 (51.7%), 15.0 MBs/sec
+Received 136206603 of 136206603 (100.0%), 35.5 MBs/sec
+Cache Size: ~130 MB (136206603 B)
+[command]"C:\Program Files\Git\usr\bin\tar.exe" -xf D:/a/_temp/25911fbb-62db-4a2a-b4d1-d0ba5b8048c7/cache.tzst -P -C D:/a/spring-boot/spring-boot --force-local --use-compress-program "zstd -d"
+Received 130035915 of 130035915 (100.0%), 30.7 MBs/sec
+Cache Size: ~124 MB (130035915 B)
+Cache restored successfully
+Restored cache entry with key gradle-groovy-dsl-v1-de40ef35074faed71082fa461e65f3b7 to D:\a\.gradle\caches\*\groovy-dsl\*/ in 5043ms
+[command]"C:\Program Files\Git\usr\bin\tar.exe" -xf D:/a/_temp/bb665b2b-7f88-4ceb-b0a0-08cdbc6a8cfe/cache.tzst -P -C D:/a/spring-boot/spring-boot --force-local --use-compress-program "zstd -d"
+Cache restored successfully
+Restored cache entry with key gradle-wrapper-zips-v1-2404ef08b03d28a6a12a9811a47b570f to D:\a\.gradle\wrapper\dists\gradle-8.13-bin\5xuhj0ry160q40clulazy9h7d in 5102ms
+Received 121812828 of 121812828 (100.0%), 24.8 MBs/sec
+Cache Size: ~116 MB (121812828 B)
+Received 113246208 of 1008885760 (11.2%), 23.5 MBs/sec
+Received 101281674 of 105475978 (96.0%), 21.2 MBs/sec
+Cache restored successfully
+[command]"C:\Program Files\Git\usr\bin\tar.exe" -xf D:/a/_temp/65600a74-829c-4a69-93fc-dcc82deb077d/cache.tzst -P -C D:/a/spring-boot/spring-boot --force-local --use-compress-program "zstd -d"
+Restored cache entry with key gradle-wrapper-zips-v1-f82d94dd741812d9afc7aad8d4ab116c to D:\a\.gradle\wrapper\dists\gradle-8.4-bin\1w5dpkrfk8irigvoxmyhowfim in 5643ms
+Cache restored successfully
+Restored cache entry with key gradle-wrapper-zips-v1-290df3079c8f8c14b9ed0453428333f8 to D:\a\.gradle\wrapper\dists\gradle-7.6.4-bin\eq47ircvekz8t0m2yd28ebfsh in 6203ms
+Received 105475978 of 105475978 (100.0%), 17.5 MBs/sec
+Cache Size: ~101 MB (105475978 B)
+Received 150994944 of 1008885760 (15.0%), 24.8 MBs/sec
+[command]"C:\Program Files\Git\usr\bin\tar.exe" -xf D:/a/_temp/55b175cc-94f9-41a3-955e-b65d29835804/cache.tzst -P -C D:/a/spring-boot/spring-boot --force-local --use-compress-program "zstd -d"
+Received 247463936 of 1008885760 (24.5%), 34.6 MBs/sec
+Received 268435456 of 1008885760 (26.6%), 32.5 MBs/sec
+Cache restored successfully
+Restored cache entry with key gradle-transforms-v1-a407f666999b9a6d99e6df83fa741bfc to D:\a\.gradle\caches\transforms-4\*/,D:\a\.gradle\caches\*\transforms\*/ in 9065ms
+Received 322961408 of 1008885760 (32.0%), 34.7 MBs/sec
+Received 394264576 of 1008885760 (39.1%), 38.1 MBs/sec
+Received 402653184 of 1008885760 (39.9%), 35.3 MBs/sec
+Received 473956352 of 1008885760 (47.0%), 38.1 MBs/sec
+Received 532676608 of 1008885760 (52.8%), 39.4 MBs/sec
+Received 566231040 of 1008885760 (56.1%), 38.9 MBs/sec
+Received 650117120 of 1008885760 (64.4%), 41.6 MBs/sec
+Received 687865856 of 1008885760 (68.2%), 41.3 MBs/sec
+Received 784334848 of 1008885760 (77.7%), 44.2 MBs/sec
+Received 843055104 of 1008885760 (83.6%), 44.9 MBs/sec
+Received 935329792 of 1008885760 (92.7%), 47.2 MBs/sec
+Received 994050048 of 1008885760 (98.5%), 47.6 MBs/sec
+Received 1008885760 of 1008885760 (100.0%), 47.7 MBs/sec
+Cache Size: ~962 MB (1008885760 B)
+[command]"C:\Program Files\Git\usr\bin\tar.exe" -xf D:/a/_temp/0408f500-e3ef-481f-961a-c971d0a71ed8/cache.tzst -P -C D:/a/spring-boot/spring-boot --force-local --use-compress-program "zstd -d"
+Cache restored successfully
+Restored cache entry with key gradle-dependencies-v1-4e22c838565be8eec9f693cad2fb1d98 to D:\a\.gradle\caches\modules-*\files-*\*\*\*\* in 23540ms
+##[endgroup]
+##[group]All Gradle Wrapper jars are valid
+✓ Found known Gradle Wrapper JAR files:
+81a82aaea5abcc8ff68b3dfcb58b3c3c429378efd98e7433460610fecd7ae45f gradle\wrapper\gradle-wrapper.jar
+##[endgroup]
+Requesting short-lived Develocity access token for ge.spring.io
+##[group]Run <:*:>
+with:
+develocity-access-key: ***
+develocity-token-expiry: 4
+<:*:> false
+<:*:> false
+<:*:> false
+<:*:> false
+cache-cleanup: on-success
+gradle-home-cache-includes: caches
+notifications
+add-job-summary: always
+add-job-summary-as-pr-comment: never
+dependency-graph: disabled
+dependency-graph-report-dir: dependency-graph-reports
+<:*:> true
+<:*:> false
+<:*:> true
+<:*:> false
+<:*:> false
+workflow-job-context: {
+{
+"windows-latest",
+"Windows"
+  },
+{
+17,
+false
+  }
+}
+github-token: ***
+env:
+JAVA_HOME: C:\hostedtoolcache\windows\Java_Liberica_jdk\17.0.14-10\x64
+JAVA_HOME_17_X64: C:\hostedtoolcache\windows\Java_Liberica_jdk\17.0.14-10\x64
+GRADLE_ACTION_ID: gradle/actions/setup-gradle
+GRADLE_USER_HOME: D:\a\.gradle
+GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+DEVELOCITY_INJECTION_INIT_SCRIPT_NAME: gradle-actions.inject-develocity.init.gradle
+DEVELOCITY_AUTO_INJECTION_CUSTOM_VALUE: gradle-actions
+DEVELOCITY_ACCESS_KEY: ***
+GRADLE_ENTERPRISE_ACCESS_KEY: ***
+GITHUB_DEPENDENCY_GRAPH_ENABLED: false
+##[endgroup]
+Gradle setup only performed on first gradle/actions step in workflow.
+##[group]Run mkdir -p $HOME/.gradle
+[36;1mmkdir -p $HOME/.gradle[0m
+[36;1mecho 'systemProp.user.name=spring-builds+github' >> $HOME/.gradle/gradle.properties[0m
+[36;1mecho 'systemProp.org.gradle.internal.launcher.welcomeMessageEnabled=false' >> $HOME/.gradle/gradle.properties[0m
+[36;1mecho 'org.gradle.daemon=false' >> $HOME/.gradle/gradle.properties[0m
+shell: C:\Program Files\Git\bin\bash.EXE --noprofile --norc -e -o pipefail {0}
+env:
+JAVA_HOME: C:\hostedtoolcache\windows\Java_Liberica_jdk\17.0.14-10\x64
+JAVA_HOME_17_X64: C:\hostedtoolcache\windows\Java_Liberica_jdk\17.0.14-10\x64
+GRADLE_ACTION_ID: gradle/actions/setup-gradle
+GRADLE_USER_HOME: D:\a\.gradle
+GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+DEVELOCITY_INJECTION_INIT_SCRIPT_NAME: gradle-actions.inject-develocity.init.gradle
+DEVELOCITY_AUTO_INJECTION_CUSTOM_VALUE: gradle-actions
+DEVELOCITY_ACCESS_KEY: ***
+GRADLE_ENTERPRISE_ACCESS_KEY: ***
+GITHUB_DEPENDENCY_GRAPH_ENABLED: false
+##[endgroup]
+##[group]Run ./gradlew build
+[36;1m./gradlew build[0m
+shell: C:\Program Files\Git\bin\bash.EXE --noprofile --norc -e -o pipefail {0}
+env:
+JAVA_HOME: C:\hostedtoolcache\windows\Java_Liberica_jdk\17.0.14-10\x64
+JAVA_HOME_17_X64: C:\hostedtoolcache\windows\Java_Liberica_jdk\17.0.14-10\x64
+GRADLE_ACTION_ID: gradle/actions/setup-gradle
+GRADLE_USER_HOME: D:\a\.gradle
+GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+DEVELOCITY_INJECTION_INIT_SCRIPT_NAME: gradle-actions.inject-develocity.init.gradle
+DEVELOCITY_AUTO_INJECTION_CUSTOM_VALUE: gradle-actions
+DEVELOCITY_ACCESS_KEY: ***
+GRADLE_ENTERPRISE_ACCESS_KEY: ***
+GITHUB_DEPENDENCY_GRAPH_ENABLED: false
+COMMERCIAL_RELEASE_REPO_URL:
+COMMERCIAL_REPO_PASSWORD: ***
+COMMERCIAL_REPO_USERNAME: ***
+COMMERCIAL_SNAPSHOT_REPO_URL:
+##[endgroup]
+Starting a Gradle Daemon (subsequent builds will be faster)
+> Task :buildSrc:checkFormatMain FROM-CACHE
+> Task :buildSrc:checkFormatTest FROM-CACHE
+> Task :buildSrc:checkFormat UP-TO-DATE
+> Task :buildSrc:compileJava
+> Task :buildSrc:compileGroovy NO-SOURCE
+> Task :buildSrc:pluginDescriptors
+> Task :buildSrc:processResources
+> Task :buildSrc:classes
+> Task :buildSrc:compileTestJava FROM-CACHE
+> Task :buildSrc:compileTestGroovy NO-SOURCE
+> Task :buildSrc:processTestResources
+> Task :buildSrc:testClasses
+> Task :buildSrc:pluginUnderTestMetadata
+> Task :buildSrc:checkstyleTest
+> Task :buildSrc:checkstyleMain
+> Task :buildSrc:test
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+2025-04-14T22:52:26.5299366Z
+2025-04-14T22:53:00.8291842Z
+> Task :buildSrc:validatePlugins
+> Task :buildSrc:check
+> Task :buildSrc:jar
+> Task :assemble UP-TO-DATE
+> Task :check UP-TO-DATE
+> Task :build UP-TO-DATE
+> Task :spring-boot-project:spring-boot:checkKotlinGradlePluginConfigurationErrors
+> Task :spring-boot-project:spring-boot-actuator:processResources
+> Task :spring-boot-project:spring-boot-actuator:extractLegalResources
+> Task :spring-boot-project:spring-boot:syncJavaTemplates
+> Task :spring-boot-project:spring-boot-actuator:sourcesJar
+> Task :spring-boot-project:spring-boot-tools:spring-boot-configuration-processor:compileJava FROM-CACHE
+> Task :spring-boot-project:spring-boot-tools:spring-boot-configuration-processor:processResources
+> Task :spring-boot-project:spring-boot-tools:spring-boot-configuration-processor:classes
+> Task :spring-boot-project:spring-boot-tools:spring-boot-configuration-processor:extractLegalResources
+> Task :spring-boot-project:spring-boot-tools:spring-boot-configuration-processor:jar
+> Task :spring-boot-project:spring-boot-autoconfigure:processResources
+> Task :spring-boot-project:spring-boot-tools:spring-boot-autoconfigure-processor:compileJava FROM-CACHE
+> Task :spring-boot-project:spring-boot-tools:spring-boot-autoconfigure-processor:processResources
+> Task :spring-boot-project:spring-boot-tools:spring-boot-autoconfigure-processor:classes
+> Task :spring-boot-project:spring-boot-tools:spring-boot-autoconfigure-processor:extractLegalResources
+> Task :spring-boot-project:spring-boot-tools:spring-boot-autoconfigure-processor:jar
+> Task :spring-boot-project:spring-boot-test:checkKotlinGradlePluginConfigurationErrors
+> Task :spring-boot-project:spring-boot-autoconfigure:extractLegalResources
+> Task :spring-boot-project:spring-boot-test:processResources
+> Task :spring-boot-project:spring-boot-test:extractLegalResources
+> Task :spring-boot-project:spring-boot-tools:spring-boot-test-support-docker:processResources NO-SOURCE
+> Task :spring-boot-project:spring-boot-tools:spring-boot-test-support-docker:extractLegalResources
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:antoraSourceZip
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:processResources
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:extractLegalResources
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:sourcesJar
+> Task :spring-boot-project:spring-boot-actuator:generatePomFileForMavenPublication
+> Task :spring-boot-project:spring-boot-actuator:checkAdditionalSpringConfigurationMetadata
+> Task :spring-boot-project:spring-boot-actuator:processTestResources
+> Task :spring-boot-project:spring-boot-actuator:checkFormatDockerTest
+> Task :spring-boot-project:spring-boot-tools:spring-boot-test-support:compileJava FROM-CACHE
+> Task :spring-boot-project:spring-boot-tools:spring-boot-test-support:processResources NO-SOURCE
+> Task :spring-boot-project:spring-boot-tools:spring-boot-test-support:classes UP-TO-DATE
+> Task :spring-boot-project:spring-boot-tools:spring-boot-test-support:extractLegalResources
+> Task :spring-boot-project:spring-boot-tools:spring-boot-test-support:jar
+> Task :spring-boot-project:spring-boot-actuator:checkFormatMain
+> Task :spring-boot-project:spring-boot-actuator:checkFormatTest
+> Task :spring-boot-project:spring-boot-actuator:checkFormat
+> Task :spring-boot-project:spring-boot-actuator:processDockerTestResources NO-SOURCE
+> Task :spring-boot-project:spring-boot-actuator:checkstyleNohttp FROM-CACHE
+> Task :spring-boot-project:spring-boot-actuator:reclaimDockerSpace SKIPPED
+> Task :spring-boot-project:spring-boot-dependencies:createResolvedBom
+> Task :spring-boot-project:spring-boot-autoconfigure:sourcesJar
+> Task :spring-boot-project:spring-boot-autoconfigure:generatePomFileForMavenPublication
+> Task :spring-boot-project:spring-boot-autoconfigure:checkAdditionalSpringConfigurationMetadata
+> Task :spring-boot-project:spring-boot-tools:spring-boot-test-support-docker:compileJava FROM-CACHE
+> Task :spring-boot-project:spring-boot-tools:spring-boot-test-support-docker:classes UP-TO-DATE
+> Task :spring-boot-project:spring-boot-tools:spring-boot-test-support-docker:jar
+> Task :spring-boot-project:spring-boot-dependencies:generateMetadataFileForMavenPublication SKIPPED
+> Task :spring-boot-project:spring-boot:compileKotlin
+> Task :spring-boot-project:spring-boot-dependencies:generatePomFileForMavenPublication
+> Task :spring-boot-project:spring-boot-autoconfigure:processTestResources
+> Task :spring-boot-project:spring-boot-dependencies:publishMavenPublicationToProjectRepository
+> Task :spring-boot-project:spring-boot-dependencies:assemble
+> Task :spring-boot-project:spring-boot-autoconfigure:checkFormatDockerTest
+> Task :spring-boot-project:spring-boot-dependencies:bomrCheck
+> Task :spring-boot-project:spring-boot:processResources
+> Task :spring-boot-project:spring-boot:extractLegalResources
+> Task :spring-boot-project:spring-boot:sourcesJar
+> Task :spring-boot-project:spring-boot:generatePomFileForMavenPublication
+> Task :spring-boot-project:spring-boot:checkAdditionalSpringConfigurationMetadata
+> Task :spring-boot-project:spring-boot:processTestResources
+> Task :spring-boot-project:spring-boot:checkCompileClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-autoconfigure:checkFormatMain
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:generatePomFileForMavenPublication
+> Task :spring-boot-project:spring-boot:checkFormatMain
+> Task :spring-boot-project:spring-boot-autoconfigure:checkFormatTest
+> Task :spring-boot-project:spring-boot-autoconfigure:checkFormat
+> Task :spring-boot-project:spring-boot-autoconfigure:processDockerTestResources
+> Task :spring-boot-project:spring-boot-autoconfigure:checkstyleNohttp FROM-CACHE
+> Task :spring-boot-project:spring-boot-autoconfigure:reclaimDockerSpace SKIPPED
+> Task :spring-boot-project:spring-boot-dependencies:checkstyleNohttp FROM-CACHE
+> Task :spring-boot-project:spring-boot-dependencies:check
+> Task :spring-boot-project:spring-boot-dependencies:build
+> Task :spring-boot-project:spring-boot-devtools:processResources
+> Task :spring-boot-project:spring-boot-devtools:extractLegalResources
+> Task :spring-boot-project:spring-boot-devtools:sourcesJar
+> Task :spring-boot-project:spring-boot:checkFormatTest
+> Task :spring-boot-project:spring-boot:checkFormatTestFixtures
+> Task :spring-boot-project:spring-boot:checkFormat
+> Task :spring-boot-project:spring-boot-devtools:generatePomFileForMavenPublication
+> Task :spring-boot-project:spring-boot:checkRuntimeClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot:processTestFixturesResources NO-SOURCE
+> Task :spring-boot-project:spring-boot-devtools:checkAdditionalSpringConfigurationMetadata
+> Task :spring-boot-project:spring-boot-devtools:processTestResources
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:checkFormatMain FROM-CACHE
+> Task :spring-boot-project:spring-boot:checkstyleNohttp FROM-CACHE
+> Task :spring-boot-project:spring-boot:extractTomcatConfigProperties
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-logging:compileJava NO-SOURCE
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter:processResources NO-SOURCE
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter:extractLegalResources
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-json:processResources NO-SOURCE
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-json:extractLegalResources
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-logging:processResources NO-SOURCE
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-logging:classes UP-TO-DATE
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-logging:extractLegalResources
+> Task :spring-boot-project:spring-boot-devtools:checkFormatIntTest
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-logging:jar
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-tomcat:compileJava NO-SOURCE
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-tomcat:processResources NO-SOURCE
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-tomcat:classes UP-TO-DATE
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-tomcat:extractLegalResources
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-tomcat:jar
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:checkFormatTest FROM-CACHE
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:checkstyleNohttp FROM-CACHE
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-web:processResources NO-SOURCE
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-web:extractLegalResources
+> Task :spring-boot-project:spring-boot-docker-compose:processResources
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:processTestResources
+> Task :spring-boot-project:spring-boot-docker-compose:extractLegalResources
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:copyAntoraPackageJson
+> Task :spring-boot-project:spring-boot-devtools:checkFormatMain
+> Task :spring-boot-project:spring-boot-docker-compose:sourcesJar
+> Task :spring-boot-project:spring-boot-docker-compose:generatePomFileForMavenPublication
+> Task :spring-boot-project:spring-boot-docker-compose:checkAdditionalSpringConfigurationMetadata NO-SOURCE
+> Task :spring-boot-project:spring-boot-docker-compose:processTestResources
+> Task :spring-boot-project:spring-boot-devtools:checkFormatTest
+> Task :spring-boot-project:spring-boot-devtools:checkFormat
+> Task :spring-boot-project:spring-boot-devtools:processIntTestResources NO-SOURCE
+> Task :spring-boot-project:spring-boot-devtools:checkstyleNohttp FROM-CACHE
+> Task :spring-boot-project:spring-boot-docs:checkKotlinGradlePluginConfigurationErrors
+> Task :spring-boot-project:spring-boot-testcontainers:processResources
+> Task :spring-boot-project:spring-boot-docker-compose:checkFormatDockerTest
+> Task :spring-boot-project:spring-boot-tools:spring-boot-loader-tools:compileJava FROM-CACHE
+> Task :spring-boot-project:spring-boot-tools:spring-boot-cli:processResources
+> Task :spring-boot-project:spring-boot-tools:spring-boot-cli:extractLegalResources
+> Task :spring-boot-project:spring-boot-docs:processResources
+> Task :spring-boot-project:spring-boot-docs:extractLegalResources
+> Task :spring-boot-project:spring-boot-tools:spring-boot-buildpack-platform:compileJava FROM-CACHE
+> Task :spring-boot-project:spring-boot-docker-compose:checkFormatMain
+> Task :spring-boot-project:spring-boot-docker-compose:checkFormatTest
+> Task :spring-boot-project:spring-boot-docker-compose:checkFormat
+> Task :spring-boot-project:spring-boot-tools:spring-boot-gradle-plugin:compileJava FROM-CACHE
+> Task :spring-boot-project:spring-boot-tools:spring-boot-gradle-plugin:pluginDescriptors
+> Task :spring-boot-project:spring-boot-tools:spring-boot-gradle-plugin:processResources
+> Task :spring-boot-project:spring-boot-tools:spring-boot-gradle-plugin:classes
+> Task :spring-boot-project:spring-boot-tools:spring-boot-gradle-plugin:javadoc FROM-CACHE
+> Task :spring-boot-project:spring-boot-docker-compose:processDockerTestResources
+> Task :spring-boot-project:spring-boot-docker-compose:checkstyleNohttp FROM-CACHE
+> Task :spring-boot-project:spring-boot-docker-compose:reclaimDockerSpace SKIPPED
+> Task :spring-boot-project:spring-boot-tools:spring-boot-maven-plugin:syncHelpMojoInputs
+> Task :spring-boot-project:spring-boot-tools:spring-boot-gradle-plugin:zipGradlePluginAntoraCatalogContent
+> Task :spring-boot-project:spring-boot-docs:copyGradlePluginAntoraCatalogContent
+> Task :spring-boot-project:spring-boot-docs:generatePomFileForMavenPublication
+> Task :spring-boot-project:spring-boot-test-autoconfigure:processResources
+> Task :spring-boot-project:spring-boot-tools:spring-boot-buildpack-platform:processResources NO-SOURCE
+> Task :spring-boot-project:spring-boot-tools:spring-boot-buildpack-platform:classes UP-TO-DATE
+> Task :spring-boot-project:spring-boot-tools:spring-boot-buildpack-platform:javadoc FROM-CACHE
+> Task :spring-boot-project:spring-boot-tools:spring-boot-loader:compileJava FROM-CACHE
+> Task :spring-boot-project:spring-boot-tools:spring-boot-loader:processResources
+> Task :spring-boot-project:spring-boot-tools:spring-boot-loader:classes
+> Task :spring-boot-project:spring-boot-tools:spring-boot-loader:javadoc FROM-CACHE
+> Task :spring-boot-project:spring-boot-tools:spring-boot-loader-tools:processResources
+> Task :spring-boot-project:spring-boot-tools:spring-boot-loader-classic:compileJava FROM-CACHE
+> Task :spring-boot-project:spring-boot-tools:spring-boot-loader-classic:processResources NO-SOURCE
+> Task :spring-boot-project:spring-boot-tools:spring-boot-loader-classic:classes UP-TO-DATE
+> Task :spring-boot-project:spring-boot-tools:spring-boot-loader-classic:extractLegalResources
+> Task :spring-boot-project:spring-boot-tools:spring-boot-loader-classic:jar
+> Task :spring-boot-project:spring-boot-tools:spring-boot-loader-tools:extractLegalResources
+> Task :spring-boot-project:spring-boot-tools:spring-boot-loader-tools:reproducibleLoaderClassicJar
+> Task :spring-boot-project:spring-boot-tools:spring-boot-loader:extractLegalResources
+> Task :spring-boot-project:spring-boot-tools:spring-boot-loader:jar
+> Task :spring-boot-project:spring-boot-tools:spring-boot-loader-tools:reproducibleLoaderJar
+> Task :spring-boot-project:spring-boot-tools:spring-boot-jarmode-tools:compileJava FROM-CACHE
+> Task :spring-boot-project:spring-boot-tools:spring-boot-jarmode-tools:processResources
+> Task :spring-boot-project:spring-boot-tools:spring-boot-jarmode-tools:classes
+> Task :spring-boot-project:spring-boot-tools:spring-boot-jarmode-tools:extractLegalResources
+> Task :spring-boot-project:spring-boot-tools:spring-boot-jarmode-tools:jar
+> Task :spring-boot-project:spring-boot-tools:spring-boot-loader-tools:toolsJar
+> Task :spring-boot-project:spring-boot-tools:spring-boot-loader-tools:classes
+> Task :spring-boot-project:spring-boot-tools:spring-boot-loader-tools:javadoc FROM-CACHE
+> Task :spring-boot-project:spring-boot-docs:documentDependencyVersionCoordinates
+> Task :spring-boot-project:spring-boot-docs:documentDependencyVersionProperties
+> Task :spring-boot-project:spring-boot-docs:documentDevtoolsPropertyDefaults
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-jdbc:processResources NO-SOURCE
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-jdbc:extractLegalResources
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-validation:processResources NO-SOURCE
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-validation:extractLegalResources
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-jetty:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-log4j2:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-logging:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-reactor-netty:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-reactor-netty:compileJava NO-SOURCE
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-reactor-netty:processResources NO-SOURCE
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-reactor-netty:classes UP-TO-DATE
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-reactor-netty:extractLegalResources
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-reactor-netty:jar
+> Task :spring-boot-project:spring-boot-test-autoconfigure:extractLegalResources
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-tomcat:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-undertow:starterMetadata
+> Task :spring-boot-project:spring-boot-docs:generateAntoraYml
+> Task :spring-boot-project:spring-boot-docs:sourcesJar SKIPPED
+> Task :spring-boot-project:spring-boot-docs:copyAntoraPackageJson
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:nodeSetup
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:npmSetup SKIPPED
+> Task :spring-boot-project:spring-boot:compileJava FROM-CACHE
+> Task :spring-boot-project:spring-boot:classes
+> Task :spring-boot-project:spring-boot:jar
+> Task :spring-boot-project:spring-boot:javadoc FROM-CACHE
+> Task :spring-boot-project:spring-boot-tools:spring-boot-maven-plugin:generateHelpMojo
+> Task :spring-boot-project:spring-boot-docs:nodeSetup
+> Task :spring-boot-project:spring-boot:javadocJar
+> Task :spring-boot-project:spring-boot:generateMetadataFileForMavenPublication
+> Task :spring-boot-project:spring-boot:publishMavenPublicationToProjectRepository
+> Task :spring-boot-project:spring-boot:assemble
+> Task :spring-boot-project:spring-boot:checkAotFactories
+> Task :spring-boot-project:spring-boot:checkArchitectureMain
+> Task :spring-boot-project:spring-boot:compileTestFixturesKotlin NO-SOURCE
+> Task :spring-boot-project:spring-boot:compileTestFixturesJava FROM-CACHE
+> Task :spring-boot-project:spring-boot-actuator:compileJava FROM-CACHE
+> Task :spring-boot-project:spring-boot-actuator:classes
+> Task :spring-boot-project:spring-boot-actuator:jar
+> Task :spring-boot-project:spring-boot-autoconfigure:compileJava FROM-CACHE
+2025-04-14T22:54:48.3346754Z
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:antoraNpmInstall
+patch-package 8.0.0
+Applying patches...
+@vscode/gulp-vinyl-zip@2.5.0 ?
+2025-04-14T22:54:54.2289215Z
+> Task :spring-boot-project:spring-boot-actuator:javadoc
+> Task :spring-boot-project:spring-boot-actuator:javadocJar
+> Task :spring-boot-project:spring-boot-actuator:generateMetadataFileForMavenPublication
+> Task :spring-boot-project:spring-boot-actuator:publishMavenPublicationToProjectRepository
+> Task :spring-boot-project:spring-boot-actuator:assemble
+> Task :spring-boot-project:spring-boot-actuator:checkAotFactories
+> Task :spring-boot-project:spring-boot-actuator:checkArchitectureMain
+> Task :spring-boot-project:spring-boot-actuator:checkCompileClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-autoconfigure:classes
+> Task :spring-boot-project:spring-boot-autoconfigure:jar
+> Task :spring-boot-project:spring-boot-actuator:checkRuntimeClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-actuator:checkSpringConfigurationMetadata
+> Task :spring-boot-project:spring-boot-actuator:checkSpringFactories
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:compileJava FROM-CACHE
+> Task :spring-boot-project:spring-boot:checkSpringConfigurationMetadata
+> Task :spring-boot-project:spring-boot:checkSpringFactories
+> Task :spring-boot-project:spring-boot:checkTestCompileClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-test:compileKotlin
+> Task :spring-boot-project:spring-boot:checkTestFixturesCompileClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot:checkTestFixturesRuntimeClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot:testFixturesClasses UP-TO-DATE
+> Task :spring-boot-project:spring-boot:testFixturesJar
+> Task :spring-boot-project:spring-boot:checkTestRuntimeClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-test:compileJava FROM-CACHE
+> Task :spring-boot-project:spring-boot:checkstyleMain FROM-CACHE
+> Task :spring-boot-project:spring-boot:checkstyleTestFixtures FROM-CACHE
+> Task :spring-boot-project:spring-boot-test:classes
+> Task :spring-boot-project:spring-boot:compileTestKotlin
+> Task :spring-boot-project:spring-boot-test:jar
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:classes
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:autoConfigurationMetadata
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:jar
+> Task :spring-boot-project:spring-boot-actuator:compileTestJava FROM-CACHE
+> Task :spring-boot-project:spring-boot-actuator:checkArchitectureTest
+> Task :spring-boot-project:spring-boot-actuator:checkDockerTestCompileClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-actuator:checkDockerTestRuntimeClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-actuator:checkTestCompileClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-actuator:checkTestRuntimeClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-actuator:testClasses
+> Task :spring-boot-project:spring-boot-actuator:compileDockerTestJava FROM-CACHE
+> Task :spring-boot-project:spring-boot-actuator:dockerTestClasses UP-TO-DATE
+> Task :spring-boot-project:spring-boot:compileTestJava FROM-CACHE
+> Task :spring-boot-project:spring-boot-actuator:checkstyleDockerTest
+> Task :spring-boot-project:spring-boot-actuator:checkstyleMain
+> Task :spring-boot-project:spring-boot-autoconfigure:autoConfigurationMetadata
+> Task :spring-boot-project:spring-boot:checkArchitectureTest
+> Task :spring-boot-project:spring-boot:testClasses
+> Task :spring-boot-project:spring-boot-autoconfigure:javadoc FROM-CACHE
+> Task :spring-boot-project:spring-boot:checkstyleTest FROM-CACHE
+> Task :spring-boot-project:spring-boot-autoconfigure:javadocJar
+> Task :spring-boot-project:spring-boot-autoconfigure:generateMetadataFileForMavenPublication
+> Task :spring-boot-project:spring-boot-autoconfigure:publishMavenPublicationToProjectRepository
+> Task :spring-boot-project:spring-boot-autoconfigure:assemble
+> Task :spring-boot-project:spring-boot-autoconfigure:checkAotFactories
+> Task :spring-boot-project:spring-boot-actuator:checkstyleTest
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:javadoc
+> Task :spring-boot-project:spring-boot-autoconfigure:checkArchitectureMain
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:javadocJar
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+> Task :spring-boot-project:spring-boot-autoconfigure:compileTestJava FROM-CACHE
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:generateMetadataFileForMavenPublication
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:publishMavenPublicationToProjectRepository
+> Task :spring-boot-project:spring-boot-autoconfigure:checkArchitectureTest
+> Task :spring-boot-project:spring-boot:test
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:compileTestJava FROM-CACHE
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:testClasses
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:checkstyleMain
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:generateAntoraPlaybook
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:generateAntoraYml
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:zipActuatorRestApiAntoraLocalAggregateContent
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:checkAdditionalSpringConfigurationMetadata
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:checkAotFactories
+> Task :spring-boot-project:spring-boot-actuator:test
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:checkArchitectureMain
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:checkArchitectureTest
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:checkCompileClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:checkFormat UP-TO-DATE
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:checkRuntimeClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:checkSpringConfigurationMetadata
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:checkSpringFactories
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:checkTestCompileClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:checkTestRuntimeClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-autoconfigure:checkCompileClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-autoconfigure:checkDockerTestCompileClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-autoconfigure:checkDockerTestRuntimeClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-autoconfigure:checkRuntimeClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-autoconfigure:checkSpringConfigurationMetadata
+> Task :spring-boot-project:spring-boot-autoconfigure:checkSpringFactories
+> Task :spring-boot-project:spring-boot-autoconfigure:checkTestCompileClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-autoconfigure:checkTestRuntimeClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-autoconfigure:testClasses
+> Task :spring-boot-project:spring-boot-autoconfigure:compileDockerTestJava FROM-CACHE
+> Task :spring-boot-project:spring-boot-autoconfigure:dockerTestClasses
+> Task :spring-boot-project:spring-boot-autoconfigure:checkstyleDockerTest FROM-CACHE
+> Task :spring-boot-project:spring-boot-autoconfigure:checkstyleMain FROM-CACHE
+> Task :spring-boot-project:spring-boot-autoconfigure:checkstyleTest FROM-CACHE
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:checkstyleTest
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+> Task :spring-boot-project:spring-boot-autoconfigure:test
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:documentationTest
+*** java.lang.instrument ASSERTION FAILED ***: "!errorOutstanding" with message transform method call failed at s\src\java.instrument\share\native\libinstrument\JPLISAgent.c line: 876
+2025-04-14T22:57:13.4219159Z
+*** java.lang.instrument ASSERTION FAILED ***: "!errorOutstanding" with message transform method call failed at s\src\java.instrument\share\native\libinstrument\JPLISAgent.c line: 876
+*** java.lang.instrument ASSERTION FAILED ***: "!errorOutstanding" with message transform method call failed at s\src\java.instrument\share\native\libinstrument\JPLISAgent.c line: 876
+*** java.lang.instrument ASSERTION FAILED ***: "!errorOutstanding" with message transform method call failed at s\src\java.instrument\share\native\libinstrument\JPLISAgent.c line: 876
+2025-04-14T22:58:55.496Z  INFO 2916 --- [ionShutdownHook] [                                                 ] o.s.j.d.e.EmbeddedDatabaseFactory        : Shutting down embedded database: url='jdbc:h2:mem:b8e87454-2054-4e71-8f91-52670e6f99fc;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false'
+2025-04-14T22:58:55.509Z  INFO 2916 --- [ionShutdownHook] [                                                 ] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-04-14T22:58:59.005Z  INFO 2916 --- [ionShutdownHook] [                                                 ] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-04-14T22:58:59.007Z  INFO 2916 --- [ionShutdownHook] [                                                 ] o.s.i.endpoint.EventDrivenConsumer       : Removing {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+2025-04-14T22:58:59.007Z  INFO 2916 --- [ionShutdownHook] [                                                 ] o.s.i.channel.PublishSubscribeChannel    : Channel 'application.errorChannel' has 0 subscriber(s).
+2025-04-14T22:58:59.008Z  INFO 2916 --- [ionShutdownHook] [                                                 ] o.s.i.endpoint.EventDrivenConsumer       : stopped bean '_org.springframework.integration.errorLogger'
+2025-04-14T22:58:59.010Z  INFO 2916 --- [ionShutdownHook] [                                                 ] o.s.j.d.e.EmbeddedDatabaseFactory        : Shutting down embedded database: url='jdbc:h2:mem:e708b88a-04e7-42fa-8a61-12056d00c58c;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false'
+2025-04-14T22:59:02.9918687Z
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:zipActuatorRestApiAntoraAggregateContent
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:assemble
+(node:28308) [DEP0180] DeprecationWarning: fs.Stats constructor is deprecated.
+2025-04-14T22:59:10.5576917Z
+(Use `node --trace-deprecation ...` to show where the warning was created)
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:antora
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+2025-04-14T22:59:51.8098883Z
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:test
+> Task :spring-boot-project:spring-boot-actuator:dockerTest
+> Task :spring-boot-project:spring-boot-actuator:check
+> Task :spring-boot-project:spring-boot-actuator:build
+> Task :spring-boot-project:spring-boot-devtools:compileJava FROM-CACHE
+> Task :spring-boot-project:spring-boot-devtools:classes
+> Task :spring-boot-project:spring-boot-devtools:autoConfigurationMetadata
+> Task :spring-boot-project:spring-boot-devtools:jar
+> Task :spring-boot-project:spring-boot-devtools:javadoc FROM-CACHE
+> Task :spring-boot-project:spring-boot-devtools:javadocJar
+> Task :spring-boot-project:spring-boot-devtools:generateMetadataFileForMavenPublication
+> Task :spring-boot-project:spring-boot-devtools:publishMavenPublicationToProjectRepository
+> Task :spring-boot-project:spring-boot-devtools:assemble
+> Task :spring-boot-project:spring-boot-devtools:checkAotFactories
+> Task :spring-boot-project:spring-boot-devtools:checkArchitectureMain
+> Task :spring-boot-project:spring-boot-devtools:compileTestJava FROM-CACHE
+> Task :spring-boot-project:spring-boot-devtools:checkArchitectureTest
+> Task :spring-boot-project:spring-boot-devtools:checkCompileClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-devtools:checkIntTestCompileClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-devtools:checkIntTestRuntimeClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-devtools:checkRuntimeClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-devtools:checkSpringConfigurationMetadata
+> Task :spring-boot-project:spring-boot-devtools:checkSpringFactories
+> Task :spring-boot-project:spring-boot-devtools:checkTestCompileClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-devtools:checkTestRuntimeClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-devtools:compileIntTestJava FROM-CACHE
+> Task :spring-boot-project:spring-boot-devtools:intTestClasses UP-TO-DATE
+> Task :spring-boot-project:spring-boot-devtools:checkstyleIntTest FROM-CACHE
+> Task :spring-boot-project:spring-boot-devtools:checkstyleMain FROM-CACHE
+> Task :spring-boot-project:spring-boot-devtools:testClasses
+> Task :spring-boot-project:spring-boot-devtools:checkstyleTest FROM-CACHE
+> Task :spring-boot-project:spring-boot-devtools:test FROM-CACHE
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter:compileJava NO-SOURCE
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter:classes UP-TO-DATE
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter:jar
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-json:compileJava NO-SOURCE
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-json:classes UP-TO-DATE
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-json:jar
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-web:compileJava NO-SOURCE
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-web:classes UP-TO-DATE
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-web:jar
+> Task :spring-boot-project:spring-boot-devtools:syncIntTestDependencies
+> Task :spring-boot-project:spring-boot-devtools:intTest
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+2025-04-14T23:03:04.9015385Z
+2025-04-14T23:03:26.9197254Z
+> Task :spring-boot-project:spring-boot:test
+2025-04-14T23:03:27.1682745Z
+ElasticCommonSchemaStructuredLogFormatterTests > shouldFormatException() FAILED
+java.lang.AssertionError at ElasticCommonSchemaStructuredLogFormatterTests.java:98
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+2025-04-14T23:03:33.2587684Z
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+2025-04-14T23:05:25.1249371Z
+> Task :spring-boot-project:spring-boot:test
+2025-04-14T23:05:25.1366179Z
+JettyServletWebServerFactoryTests > restartAfterStop() FAILED
+org.apache.hc.client5.http.HttpHostConnectException at Net.java:-2
+2025-04-14T23:05:28.7358638Z
+2025-04-14T23:05:28.718Z  INFO 13328 --- [ionShutdownHook] [                                                 ] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-14T23:05:28.753Z  INFO 13328 --- [tomcat-shutdown] [                                                 ] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-04-14T23:05:30.9486773Z
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:check
+> Task :spring-boot-project:spring-boot-actuator-autoconfigure:build
+> Task :spring-boot-project:spring-boot-docker-compose:compileJava FROM-CACHE
+> Task :spring-boot-project:spring-boot-docker-compose:classes
+> Task :spring-boot-project:spring-boot-docker-compose:jar
+> Task :spring-boot-project:spring-boot-docker-compose:javadoc FROM-CACHE
+> Task :spring-boot-project:spring-boot-docker-compose:javadocJar
+> Task :spring-boot-project:spring-boot-docker-compose:generateMetadataFileForMavenPublication
+> Task :spring-boot-project:spring-boot-docker-compose:publishMavenPublicationToProjectRepository
+> Task :spring-boot-project:spring-boot-docker-compose:assemble
+> Task :spring-boot-project:spring-boot-docker-compose:checkAotFactories
+> Task :spring-boot-project:spring-boot-docker-compose:checkArchitectureMain
+> Task :spring-boot-project:spring-boot-docker-compose:compileTestJava FROM-CACHE
+> Task :spring-boot-project:spring-boot-docker-compose:checkArchitectureTest
+> Task :spring-boot-project:spring-boot-docker-compose:checkCompileClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-docker-compose:checkDockerTestCompileClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-docker-compose:checkDockerTestRuntimeClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-docker-compose:checkRuntimeClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-docker-compose:checkSpringConfigurationMetadata
+> Task :spring-boot-project:spring-boot-docker-compose:checkSpringFactories
+> Task :spring-boot-project:spring-boot-docker-compose:checkTestCompileClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-docker-compose:checkTestRuntimeClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-docker-compose:testClasses
+> Task :spring-boot-project:spring-boot-docker-compose:compileDockerTestJava FROM-CACHE
+> Task :spring-boot-project:spring-boot-docker-compose:dockerTestClasses
+> Task :spring-boot-project:spring-boot-docker-compose:checkstyleDockerTest FROM-CACHE
+> Task :spring-boot-project:spring-boot-docker-compose:checkstyleMain FROM-CACHE
+> Task :spring-boot-project:spring-boot-docker-compose:checkstyleTest FROM-CACHE
+> Task :spring-boot-project:spring-boot-docker-compose:test FROM-CACHE
+> Task :spring-boot-project:spring-boot-docker-compose:dockerTest FROM-CACHE
+> Task :spring-boot-project:spring-boot-docker-compose:check
+> Task :spring-boot-project:spring-boot-docker-compose:build
+> Task :spring-boot-project:spring-boot-test-autoconfigure:compileJava FROM-CACHE
+> Task :spring-boot-project:spring-boot-testcontainers:compileJava FROM-CACHE
+> Task :spring-boot-project:spring-boot-tools:spring-boot-cli:compileJava FROM-CACHE
+> Task :spring-boot-project:spring-boot-tools:spring-boot-cli:classes
+> Task :spring-boot-project:spring-boot-tools:spring-boot-cli:jar
+> Task :spring-boot-project:spring-boot-docs:compileKotlin
+> Task :spring-boot-project:spring-boot-docs:compileJava FROM-CACHE
+> Task :spring-boot-project:spring-boot-docs:classes
+> Task :spring-boot-project:spring-boot-docs:jar SKIPPED
+> Task :spring-boot-project:spring-boot-docs:javadoc SKIPPED
+> Task :spring-boot-project:spring-boot-docs:javadocJar SKIPPED
+> Task :spring-boot-project:spring-boot-docs:copyActuatorRestApiAntoraAggregateContent
+> Task :spring-boot-project:spring-boot-tools:spring-boot-maven-plugin:formatHelpMojoSource
+> Task :spring-boot-project:spring-boot-tools:spring-boot-maven-plugin:compileJava FROM-CACHE
+> Task :spring-boot-project:spring-boot-tools:spring-boot-maven-plugin:processResources
+> Task :spring-boot-project:spring-boot-tools:spring-boot-maven-plugin:xsdResources
+> Task :spring-boot-project:spring-boot-tools:spring-boot-maven-plugin:classes
+> Task :spring-boot-project:spring-boot-tools:spring-boot-maven-plugin:syncPluginDescriptorInputs
+2025-04-14T23:07:20.7110337Z
+> Task :spring-boot-project:spring-boot:test
+2025-04-14T23:07:20.7131533Z
+UndertowReactiveWebServerFactoryTests > whenHttp2IsEnabledAndSslIsDisabledThenH2cCanBeUsed() FAILED
+java.util.concurrent.ExecutionException at CompletableFuture.java:396
+Caused by: java.io.IOException at HttpReceiverOverHTTP2.java:242
+2025-04-14T23:07:24.8395722Z
+> Task :spring-boot-project:spring-boot-tools:spring-boot-maven-plugin:generatePluginDescriptor
+> Task :spring-boot-project:spring-boot-tools:spring-boot-maven-plugin:documentPluginGoals
+> Task :spring-boot-project:spring-boot-tools:spring-boot-maven-plugin:zipMavenPluginAntoraAggregateContent
+> Task :spring-boot-project:spring-boot-docs:copyMavenPluginAntoraAggregateContent
+> Task :spring-boot-project:spring-boot-tools:spring-boot-maven-plugin:javadoc FROM-CACHE
+> Task :spring-boot-project:spring-boot-tools:spring-boot-maven-plugin:zipMavenPluginAntoraCatalogContent
+> Task :spring-boot-project:spring-boot-docs:copyMavenPluginAntoraCatalogContent
+> Task :spring-boot-project:spring-boot-test:javadoc FROM-CACHE
+> Task :spring-boot-project:spring-boot-test-autoconfigure:classes
+> Task :spring-boot-project:spring-boot-test-autoconfigure:javadoc
+> Task :spring-boot-project:spring-boot-testcontainers:classes
+> Task :spring-boot-project:spring-boot-testcontainers:javadoc FROM-CACHE
+> Task :spring-boot-project:spring-boot-docs:aggregatedJavadoc
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+2025-04-14T23:08:29.2611066Z
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+2025-04-14T23:09:44.4076898Z
+> Task :spring-boot-project:spring-boot-test:dokkatooGenerateModuleHtml
+> Task :spring-boot-project:spring-boot-testcontainers:autoConfigurationMetadata
+> Task :spring-boot-project:spring-boot-docs:documentAutoConfigurationClasses
+> Task :spring-boot-project:spring-boot-docs:documentConfigurationProperties
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-activemq:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-actuator:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-amqp:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-aop:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-artemis:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-jdbc:compileJava NO-SOURCE
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-jdbc:classes UP-TO-DATE
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-jdbc:jar
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-batch:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-cache:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-data-cassandra:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-data-cassandra-reactive:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-data-couchbase:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-data-couchbase-reactive:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-data-elasticsearch:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-data-jdbc:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-data-jpa:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-data-ldap:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-data-mongodb:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-data-mongodb-reactive:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-data-neo4j:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-data-r2dbc:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-data-redis:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-data-redis-reactive:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-data-rest:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-freemarker:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-graphql:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-groovy-templates:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-hateoas:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-integration:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-jdbc:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-validation:compileJava NO-SOURCE
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-validation:classes UP-TO-DATE
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-validation:jar
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-jersey:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-jooq:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-json:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-mail:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-mustache:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-oauth2-authorization-server:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-oauth2-client:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-oauth2-resource-server:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-pulsar:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-pulsar-reactive:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-quartz:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-rsocket:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-security:starterMetadata
+> Task :spring-boot-project:spring-boot-test-autoconfigure:jar
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-test:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-thymeleaf:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-validation:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-web:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-web-services:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-webflux:starterMetadata
+> Task :spring-boot-project:spring-boot-starters:spring-boot-starter-websocket:starterMetadata
+> Task :spring-boot-project:spring-boot-docs:documentStarters
+> Task :spring-boot-project:spring-boot-test-autoconfigure:testSliceMetadata
+> Task :spring-boot-project:spring-boot-docs:documentTestSlices
+> Task :spring-boot-project:spring-boot-docs:runLoggingFormatExample
+> Task :spring-boot-project:spring-boot-docs:runRemoteSpringApplicationExample
+> Task :spring-boot-project:spring-boot-docs:runSpringApplicationExample
+> Task :spring-boot-project:spring-boot-docs:zipRootAntoraAggregateContent
+> Task :spring-boot-project:spring-boot-docs:npmSetup SKIPPED
+2025-04-14T23:10:18.1479266Z
+> Task :spring-boot-project:spring-boot-docs:antoraNpmInstall
+patch-package 8.0.0
+Applying patches...
+@vscode/gulp-vinyl-zip@2.5.0 ?
+2025-04-14T23:10:22.0513769Z
+> Task :spring-boot-project:spring-boot-docs:generateAntoraPlaybook
+> Task :spring-boot-project:spring-boot-docs:syncActuatorRestApiAntoraSource
+> Task :spring-boot-project:spring-boot-tools:spring-boot-gradle-plugin:antoraSourceZip
+> Task :spring-boot-project:spring-boot-docs:syncGradlePluginAntoraSource
+> Task :spring-boot-project:spring-boot-tools:spring-boot-maven-plugin:antoraSourceZip
+> Task :spring-boot-project:spring-boot-docs:syncMavenPluginAntoraSource
+> Task :spring-boot-project:spring-boot-docs:checkAotFactories NO-SOURCE
+> Task :spring-boot-project:spring-boot-docs:checkArchitectureMain
+> Task :spring-boot-project:spring-boot-docs:compileTestKotlin NO-SOURCE
+> Task :spring-boot-project:spring-boot-docs:compileTestJava FROM-CACHE
+> Task :spring-boot-project:spring-boot-docs:processTestResources
+> Task :spring-boot-project:spring-boot-docs:checkArchitectureTest
+> Task :spring-boot-project:spring-boot-docs:checkCompileClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-docs:checkFormatMain
+> Task :spring-boot-project:spring-boot-docs:checkFormatTest
+> Task :spring-boot-project:spring-boot-docs:checkFormat
+> Task :spring-boot-project:spring-boot-testcontainers:extractLegalResources
+> Task :spring-boot-project:spring-boot-testcontainers:jar
+> Task :spring-boot-project:spring-boot-tools:spring-boot-loader-tools:jar
+> Task :spring-boot-project:spring-boot-docs:checkRuntimeClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-docs:checkSpringFactories NO-SOURCE
+> Task :spring-boot-project:spring-boot-docs:checkTestCompileClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-docs:checkTestRuntimeClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-docs:checkstyleMain
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+> Task :spring-boot-project:spring-boot-docs:checkstyleNohttp
+> Task :spring-boot-project:spring-boot-docs:testClasses
+> Task :spring-boot-project:spring-boot-docs:checkstyleTest
+2025-04-14T23:10:41.9353682Z
+> Task :spring-boot-project:spring-boot:test
+2025-04-14T23:10:41.9368691Z
+ElasticCommonSchemaStructuredLogFormatterTests > shouldFormatException() FAILED
+java.lang.AssertionError at ElasticCommonSchemaStructuredLogFormatterTests.java:98
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+2025-04-14T23:10:54.4188382Z
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+2025-04-14T23:11:05.074Z  INFO 7288 --- [ionShutdownHook] [                                                 ] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-04-14T23:11:05.241Z  INFO 7288 --- [ionShutdownHook] [                                                 ] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-04-14T23:11:05.242Z  INFO 7288 --- [ionShutdownHook] [                                                 ] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2025-04-14T23:11:05.388Z  INFO 7288 --- [ionShutdownHook] [                                                 ] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2025-04-14T23:11:05.389Z  INFO 7288 --- [ionShutdownHook] [                                                 ] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2025-04-14T23:11:05.540Z  INFO 7288 --- [ionShutdownHook] [                                                 ] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2025-04-14T23:11:05.541Z  INFO 7288 --- [ionShutdownHook] [                                                 ] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2025-04-14T23:11:05.603Z  INFO 7288 --- [ionShutdownHook] [                                                 ] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2025-04-14T23:11:05.604Z  INFO 7288 --- [ionShutdownHook] [                                                 ] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+2025-04-14T23:11:05.642Z  INFO 7288 --- [ionShutdownHook] [                                                 ] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
+2025-04-14T23:11:05.643Z  INFO 7288 --- [ionShutdownHook] [                                                 ] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown initiated...
+2025-04-14T23:11:05.751Z  INFO 7288 --- [ionShutdownHook] [                                                 ] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown completed.
+2025-04-14T23:11:05.753Z  INFO 7288 --- [ionShutdownHook] [                                                 ] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-14T23:11:06.143Z  INFO 7288 --- [tomcat-shutdown] [                                                 ] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-04-14T23:11:06.2473417Z
+> Task :spring-boot-project:spring-boot:test
+2025-04-14T23:11:06.2490588Z
+ElasticCommonSchemaStructuredLogFormatterTests > shouldFormatException() FAILED
+java.lang.AssertionError at ElasticCommonSchemaStructuredLogFormatterTests.java:98
+2025-04-14T23:11:08.0480165Z
+> Task :spring-boot-project:spring-boot-docs:test
+> Task :spring-boot-project:spring-boot-parent:createResolvedBom
+> Task :spring-boot-project:spring-boot-parent:generateMetadataFileForMavenPublication
+> Task :spring-boot-project:spring-boot-parent:generatePomFileForMavenPublication
+> Task :spring-boot-project:spring-boot-parent:publishMavenPublicationToProjectRepository
+> Task :spring-boot-project:spring-boot-parent:assemble
+> Task :spring-boot-project:spring-boot-parent:bomrCheck
+> Task :spring-boot-project:spring-boot-parent:checkstyleNohttp FROM-CACHE
+> Task :spring-boot-project:spring-boot-parent:check
+> Task :spring-boot-project:spring-boot-parent:build
+> Task :spring-boot-project:spring-boot-test:javadocJar
+> Task :spring-boot-project:spring-boot-test:sourcesJar
+> Task :spring-boot-project:spring-boot-test:generateMetadataFileForMavenPublication
+> Task :spring-boot-project:spring-boot-test:generatePomFileForMavenPublication
+> Task :spring-boot-project:spring-boot-test:publishMavenPublicationToProjectRepository
+> Task :spring-boot-project:spring-boot-test:assemble
+> Task :spring-boot-project:spring-boot-test:checkAotFactories
+> Task :spring-boot-project:spring-boot-test:checkArchitectureMain
+> Task :spring-boot-project:spring-boot-devtools:check
+> Task :spring-boot-project:spring-boot-devtools:build
+> Task :spring-boot-project:spring-boot-test-autoconfigure:javadocJar
+> Task :spring-boot-project:spring-boot-test-autoconfigure:sourcesJar
+> Task :spring-boot-project:spring-boot-test-autoconfigure:generateMetadataFileForMavenPublication
+> Task :spring-boot-project:spring-boot-test:processTestResources
+> Task :spring-boot-project:spring-boot-test:checkCompileClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-test:checkFormatMain
+> Task :spring-boot-project:spring-boot-test:checkFormatTest
+> Task :spring-boot-project:spring-boot-test:checkFormat
+> Task :spring-boot-project:spring-boot-test:checkRuntimeClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-test:checkSpringFactories
+> Task :spring-boot-project:spring-boot-test:checkTestCompileClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-test:checkTestRuntimeClasspathForProhibitedDependencies
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+> Task :spring-boot-project:spring-boot-test:compileTestKotlin
+> Task :spring-boot-project:spring-boot-test:compileTestJava FROM-CACHE
+> Task :spring-boot-project:spring-boot-test:checkstyleMain
+> Task :spring-boot-project:spring-boot-test:checkArchitectureTest
+> Task :spring-boot-project:spring-boot-test:checkstyleNohttp FROM-CACHE
+> Task :spring-boot-project:spring-boot-test:testClasses
+> Task :spring-boot-project:spring-boot-test-autoconfigure:generatePomFileForMavenPublication
+> Task :spring-boot-project:spring-boot-test-autoconfigure:publishMavenPublicationToProjectRepository
+> Task :spring-boot-project:spring-boot-test-autoconfigure:assemble
+> Task :spring-boot-project:spring-boot-test-autoconfigure:checkAotFactories
+> Task :spring-boot-project:spring-boot-test-autoconfigure:checkArchitectureMain
+2025-04-14T23:11:24.6385414Z
+> Task :spring-boot-project:spring-boot:test
+2025-04-14T23:11:24.6389022Z
+ElasticCommonSchemaStructuredLogFormatterTests > shouldFormatException() FAILED
+java.lang.AssertionError at ElasticCommonSchemaStructuredLogFormatterTests.java:98
+2025-04-14T23:11:24.8183289Z
+5237 tests completed, 6 failed, 25 skipped
+2025-04-14T23:11:25.0601815Z
+> Task :spring-boot-project:spring-boot-test-autoconfigure:compileTestJava FROM-CACHE
+> Task :spring-boot-project:spring-boot-test-autoconfigure:processTestResources
+> Task :spring-boot-project:spring-boot-test-autoconfigure:checkArchitectureTest
+> Task :spring-boot-project:spring-boot-test-autoconfigure:checkCompileClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-test-autoconfigure:checkDockerTestCompileClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-test-autoconfigure:checkDockerTestRuntimeClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-test-autoconfigure:checkFormatDockerTest
+> Task :spring-boot-project:spring-boot-test-autoconfigure:checkFormatMain
+> Task :spring-boot-project:spring-boot-test-autoconfigure:checkFormatTest
+> Task :spring-boot-project:spring-boot-test-autoconfigure:checkFormat
+> Task :spring-boot-project:spring-boot-test-autoconfigure:checkRuntimeClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-test-autoconfigure:checkSpringFactories
+> Task :spring-boot-project:spring-boot-test-autoconfigure:checkTestCompileClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-test-autoconfigure:checkTestRuntimeClasspathForProhibitedDependencies
+> Task :spring-boot-project:spring-boot-test-autoconfigure:testClasses
+> Task :spring-boot-project:spring-boot-test:checkstyleTest
+> Task :spring-boot-project:spring-boot-test-autoconfigure:compileDockerTestJava FROM-CACHE
+> Task :spring-boot-project:spring-boot-test-autoconfigure:processDockerTestResources
+> Task :spring-boot-project:spring-boot-test-autoconfigure:dockerTestClasses
+> Task :spring-boot-project:spring-boot-test-autoconfigure:checkstyleDockerTest
+> Task :spring-boot-project:spring-boot:test FAILED
+> Task :spring-boot-project:spring-boot-test-autoconfigure:checkstyleMain
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+> Task :spring-boot-project:spring-boot-test:test
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+2025-04-14T23:12:04.2399093Z
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+2025-04-14T23:12:52.105Z  INFO 2232 --- [ionShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-14T23:12:52.136Z  INFO 2232 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-04-14T23:12:52.139Z  INFO 2232 --- [ionShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-14T23:12:52.164Z  INFO 2232 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-04-14T23:13:00.4404340Z
+gradle/actions: Writing build results to D:\a\_temp\.gradle-actions\build-results\build-1744671061291.json
+Found test failures in 1 test task:
+2025-04-14T23:13:00.4407213Z
+2025-04-14T23:13:00.4407392Z
+[Incubating] Problems report is available at: file:///D:/a/spring-boot/spring-boot/build/reports/problems/problems-report.html
+:spring-boot-project:spring-boot:test
+2025-04-14T23:13:00.4409973Z
+org.springframework.boot.logging.log4j2.ElasticCommonSchemaStructuredLogFormatterTests > shouldFormatException()
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+org.springframework.boot.logging.log4j2.ElasticCommonSchemaStructuredLogFormatterTests > shouldFormatException()
+2025-04-14T23:13:00.4414841Z
+org.springframework.boot.logging.log4j2.ElasticCommonSchemaStructuredLogFormatterTests > shouldFormatException()
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+org.springframework.boot.logging.log4j2.ElasticCommonSchemaStructuredLogFormatterTests > shouldFormatException()
+2025-04-14T23:13:00.4420984Z
+org.springframework.boot.web.embedded.jetty.JettyServletWebServerFactoryTests > restartAfterStop()
+For more on this, please refer to https://docs.gradle.org/8.13/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+org.springframework.boot.web.embedded.undertow.UndertowReactiveWebServerFactoryTests > whenHttp2IsEnabledAndSslIsDisabledThenH2cCanBeUsed()
+481 actionable tasks: 404 executed, 77 from cache
+2025-04-14T23:13:00.4433865Z
+FAILURE: Build failed with an exception.
+2025-04-14T23:13:00.4435061Z
+* What went wrong:
+Execution failed for task ':spring-boot-project:spring-boot:test'.
+> There were failing tests. See the report at: file:///D:/a/spring-boot/spring-boot/spring-boot-project/spring-boot/build/reports/tests/test/index.html
+2025-04-14T23:13:00.4535789Z
+BUILD FAILED in 22m 3s
+2025-04-14T23:13:00.8400832Z
+Publishing build scan...
+gradle/actions: Writing build results to D:\a\_temp\.gradle-actions\build-scans\build-1744671061291.json
+https://ge.spring.io/s/nzpmoltfre63a
+2025-04-14T23:13:02.4397769Z
+##[error]Process completed with exit code 1.

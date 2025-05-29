@@ -1,0 +1,267 @@
+##[group]Run <:*:>
+with:
+fetch-depth: <:NUM:>
+repository: <:*:>
+token: ***
+ssh-strict: true
+ssh-user: git
+persist-credentials: <:*:>
+clean: true
+sparse-checkout-cone-mode: true
+fetch-tags: false
+show-progress: true
+lfs: false
+submodules: <:*:>
+set-safe-directory: true
+env:
+PANDAS_CI: 1
+PYTEST_TARGET: pandas
+PATTERN: not slow and not db and not network and not single_cpu
+PYTEST_WORKERS: auto
+##[endgroup]
+Syncing repository: <:*:>
+##[group]Getting Git version info
+Working directory is <:*:>
+[command]/usr/local/bin/git version
+git version <:NUM:>.<:NUM:>.<:NUM:>
+##[endgroup]
+Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/0bbabb50-9371-4ccf-ae15-eddb92a5fdcd/.gitconfig'
+Temporarily overriding HOME='/Users/runner/work/_temp/0bbabb50-9371-4ccf-ae15-eddb92a5fdcd' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+[command]/usr/local/bin/git config --global --add safe.directory /Users/runner/work/pandas/pandas
+Deleting the contents of <:*:>
+##[group]Initializing the repository
+[command]/usr/local/bin/git init /Users/runner/work/pandas/pandas
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint:
+hint: git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint: git branch -m <name>
+Initialized empty Git repository in <:*:>
+[command]/usr/local/bin/git remote add origin https://github.com/pandas-dev/pandas
+##[endgroup]
+##[group]Disabling automatic garbage collection
+[command]/usr/local/bin/git config --local gc.auto 0
+##[endgroup]
+##[group]Setting up auth
+[command]/usr/local/bin/git config --local --name-only --get-regexp core\.sshCommand
+[command]/usr/local/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+[command]/usr/local/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+[command]/usr/local/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+[command]/usr/local/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+##[endgroup]
+##[group]Fetching the repository
+[command]/usr/local/bin/git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/* +2e42ae5e53b983e14919b11de1d4c936e1e36e0f:refs/remotes/pull/61236/merge
+From <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new tag]               debian/0.8.0_b2+git68-g7240b87-1 -> debian/0.8.0_b2+git68-g7240b87-1
+* [new tag]               debian/0.8.0_b2-1 -> debian/0.8.0_b2-1
+* [new tag]               debian/0.8.0_rc2+git26-g76c6351-1 -> debian/0.8.0_rc2+git26-g76c6351-1
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new tag]               v0.13.0_ahl1      -> v0.13.0_ahl1
+* [new tag]               v0.13.0_ahl2      -> v0.13.0_ahl2
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new ref] <:SEQ:>-> <:*:>
+##[endgroup]
+##[group]Determining the checkout info
+##[endgroup]
+[command]/usr/local/bin/git sparse-checkout disable
+[command]/usr/local/bin/git config --local --unset-all extensions.worktreeConfig
+##[group]Checking out the ref
+[command]/usr/local/bin/git checkout --progress --force refs/remotes/pull/61236/merge
+HEAD is now at <:*:> Merge <:SEQ:> into <:SEQ:>
+##[endgroup]
+[command]/usr/local/bin/git log -1 --format=%H
+<:SEQ:>

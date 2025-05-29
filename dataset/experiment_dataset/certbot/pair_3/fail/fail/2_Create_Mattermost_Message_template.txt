@@ -1,0 +1,92 @@
+##[debug]Evaluating: github.event.number
+##[debug]Evaluating Index:
+##[debug]..Evaluating Index:
+##[debug]....Evaluating github:
+##[debug]....=> Object
+##[debug]....Evaluating String:
+##[debug]....=> 'event'
+##[debug]..=> Object
+##[debug]..Evaluating String:
+##[debug]..=> 'number'
+##[debug]=> 10212
+##[debug]Result: 10212
+##[debug]Evaluating: format('https://github.com/{0}/pull/{1}', github.repository, github.event.number)
+##[debug]Evaluating format:
+##[debug]..Evaluating String:
+##[debug]..=> 'https://github.com/{0}/pull/{1}'
+##[debug]..Evaluating Index:
+##[debug]....Evaluating github:
+##[debug]....=> Object
+##[debug]....Evaluating String:
+##[debug]....=> 'repository'
+##[debug]..=> 'certbot/certbot'
+##[debug]..Evaluating Index:
+##[debug]....Evaluating Index:
+##[debug]......Evaluating github:
+##[debug]......=> Object
+##[debug]......Evaluating String:
+##[debug]......=> 'event'
+##[debug]....=> Object
+##[debug]....Evaluating String:
+##[debug]....=> 'number'
+##[debug]..=> 10212
+##[debug]=> 'https://github.com/certbot/certbot/pull/10212'
+##[debug]Result: 'https://github.com/certbot/certbot/pull/10212'
+##[debug]Evaluating: github.repository
+##[debug]Evaluating Index:
+##[debug]..Evaluating github:
+##[debug]..=> Object
+##[debug]..Evaluating String:
+##[debug]..=> 'repository'
+##[debug]=> 'certbot/certbot'
+##[debug]Result: 'certbot/certbot'
+##[debug]Evaluating: github.actor
+##[debug]Evaluating Index:
+##[debug]..Evaluating github:
+##[debug]..=> Object
+##[debug]..Evaluating String:
+##[debug]..=> 'actor'
+##[debug]=> 'wgreenberg'
+##[debug]Result: 'wgreenberg'
+##[debug]Evaluating: github.event.pull_request.title
+##[debug]Evaluating Index:
+##[debug]..Evaluating Index:
+##[debug]....Evaluating Index:
+##[debug]......Evaluating github:
+##[debug]......=> Object
+##[debug]......Evaluating String:
+##[debug]......=> 'event'
+##[debug]....=> Object
+##[debug]....Evaluating String:
+##[debug]....=> 'pull_request'
+##[debug]..=> Object
+##[debug]..Evaluating String:
+##[debug]..=> 'title'
+##[debug]=> 'Release 2.11.1'
+##[debug]Result: 'Release 2.11.1'
+##[debug]Evaluating condition for step: 'Create Mattermost Message'
+##[debug]Evaluating: success()
+##[debug]Evaluating success:
+<:*:> true
+<:*:> true
+##[debug]Starting: Create Mattermost Message
+##[debug]Loading inputs
+##[debug]Loading env
+##[group]Run jq --null-input \
+[36;1mjq --null-input \[0m
+[36;1m        --arg number "$NUMBER" \[0m
+[36;1m        --arg pr_url "$PR_URL" \[0m
+[36;1m        --arg repo "$REPO" \[0m
+[36;1m        --arg user "$USER" \[0m
+[36;1m        --arg title "$TITLE" \[0m
+[36;1m'{ "text": "[\($repo)] | [\($title) #\($number)](\($pr_url)) was merged into master by \($user)" }' > mattermost.json[0m
+shell: /usr/bin/bash -e {<:NUM:>}
+env:
+NUMBER: 10212
+PR_URL: https://github.com/certbot/certbot/pull/10212
+REPO: certbot/certbot
+USER: wgreenberg
+TITLE: Release 2.11.1
+##[endgroup]
+##[debug]/usr/bin/bash -e /home/runner/work/_temp/a9aa41e1-db54-4d24-9875-432b37beb5ff.sh
+##[debug]Finishing: Create Mattermost Message

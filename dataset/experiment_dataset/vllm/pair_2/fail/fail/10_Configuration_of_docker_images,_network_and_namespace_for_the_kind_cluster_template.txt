@@ -1,0 +1,45 @@
+﻿2025-04-15T09:30:31.7473438Z ##[group]Run docker pull amazon/aws-cli:2.6.4
+[36;1mdocker pull amazon/aws-cli:2.6.4[0m
+[36;1mkind load docker-image  amazon/aws-cli:2.6.4 --name chart-testing[0m
+[36;1mkind load docker-image vllm-cpu-env:latest --name chart-testing[0m
+[36;1mdocker network connect vllm-net "$(docker ps -aqf "name=chart-testing-control-plane")"[0m
+[36;1mkubectl create ns ns-vllm[0m
+shell: /usr/bin/bash -e {<:NUM:>}
+env:
+pythonLocation: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+PKG CONFIG PATH: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64/lib/pkgconfig
+Python ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+<:*:> ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+<:*:> ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+LD LIBRARY PATH: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64/lib
+CT_CONFIG_DIR: /opt/hostedtoolcache/ct/3.10.1/amd64/etc
+VIRTUAL_ENV: /opt/hostedtoolcache/ct/3.10.1/amd64/venv
+##[endgroup]
+2.6.4: Pulling from amazon/aws-cli
+8de5b65bd171: Pulling fs layer
+52c1276ba2f7: Pulling fs layer
+2cc68806787a: Pulling fs layer
+7760795c8e61: Pulling fs layer
+6b444cec0504: Pulling fs layer
+7760795c8e61: Waiting
+6b444cec0504: Waiting
+52c1276ba2f7: Verifying Checksum
+52c1276ba2f7: Download complete
+7760795c8e61: Verifying Checksum
+7760795c8e61: Download complete
+6b444cec0504: Download complete
+2cc68806787a: Verifying Checksum
+2cc68806787a: Download complete
+8de5b65bd171: Verifying Checksum
+8de5b65bd171: Download complete
+8de5b65bd171: Pull complete
+52c1276ba2f7: Pull complete
+2cc68806787a: Pull complete
+7760795c8e61: Pull complete
+6b444cec0504: Pull complete
+Digest: sha256:<:SEQ:>
+Status: Downloaded newer image for amazon/aws-cli:2.6.4
+docker.io/amazon/aws-cli:2.6.4
+Image: "amazon/aws-cli:2.6.4" with ID "sha256:a098b2d4870a4bb5a83519b6a05804580a92c75620c467b928f472ce08f236b0" not yet present on node "chart-testing-control-plane", loading...
+Image: "vllm-cpu-env:latest" with ID "sha256:d96d25ebd7e9d38a2b52e56c54d582895ca52032ce542926ba2bf6d67deabd66" not yet present on node "chart-testing-control-plane", loading...
+namespace/ns-vllm created

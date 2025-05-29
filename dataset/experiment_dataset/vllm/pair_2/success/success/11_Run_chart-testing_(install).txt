@@ -1,0 +1,556 @@
+﻿2025-04-15T09:17:51.6773761Z ##[group]Run export AWS_ACCESS_KEY_ID=minioadmin
+2025-04-15T09:17:51.6774126Z [36;1mexport AWS_ACCESS_KEY_ID=minioadmin[0m
+2025-04-15T09:17:51.6774405Z [36;1mexport AWS_SECRET_ACCESS_KEY=minioadmin[0m
+2025-04-15T09:17:51.6774870Z [36;1msleep 30 && kubectl -n ns-vllm logs -f "$(kubectl -n ns-vllm get pods | awk '/deployment/ {print $1;exit}')" &[0m
+2025-04-15T09:17:51.6777844Z [36;1mhelm install --wait --wait-for-jobs --timeout 5m0s --debug --create-namespace --namespace=ns-vllm test-vllm examples/online_serving/chart-helm -f examples/online_serving/chart-helm/values.yaml --set secrets.s3endpoint=http://minio:9000 --set secrets.s3bucketname=testbucket --set secrets.s3accesskeyid=$AWS_ACCESS_KEY_ID --set secrets.s3accesskey=$AWS_SECRET_ACCESS_KEY --set resources.requests.cpu=1 --set resources.requests.memory=4Gi --set resources.limits.cpu=2 --set resources.limits.memory=5Gi --set image.env[0].name=VLLM_CPU_KVCACHE_SPACE --set image.env[1].name=VLLM_LOGGING_LEVEL --set-string image.env[0].value="1" --set-string image.env[1].value="DEBUG" --set-string extraInit.s3modelpath="opt-125m/" --set-string 'resources.limits.nvidia\.com/gpu=0' --set-string 'resources.requests.nvidia\.com/gpu=0' --set-string image.repository="vllm-cpu-env"[0m
+2025-04-15T09:17:51.6839637Z shell: /usr/bin/bash -e {0}
+2025-04-15T09:17:51.6839864Z env:
+2025-04-15T09:17:51.6840100Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T09:17:51.6840495Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.2/x64/lib/pkgconfig
+2025-04-15T09:17:51.6840869Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T09:17:51.6841222Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T09:17:51.6841568Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T09:17:51.6842241Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.2/x64/lib
+2025-04-15T09:17:51.6842618Z   CT_CONFIG_DIR: /opt/hostedtoolcache/ct/3.10.1/amd64/etc
+2025-04-15T09:17:51.6842925Z   VIRTUAL_ENV: /opt/hostedtoolcache/ct/3.10.1/amd64/venv
+2025-04-15T09:17:51.6843194Z ##[endgroup]
+2025-04-15T09:17:51.8537329Z install.go:218: [debug] Original chart version: ""
+2025-04-15T09:17:51.8538219Z install.go:235: [debug] CHART PATH: /home/runner/work/vllm/vllm/examples/online_serving/chart-helm
+2025-04-15T09:17:51.8539024Z 
+2025-04-15T09:17:52.0993666Z client.go:142: [debug] creating 1 resource(s)
+2025-04-15T09:17:52.1077920Z client.go:142: [debug] creating 6 resource(s)
+2025-04-15T09:17:52.1329476Z wait.go:48: [debug] beginning wait for 6 resources with timeout of 5m0s
+2025-04-15T09:17:52.1435048Z ready.go:284: [debug] PersistentVolumeClaim is not bound: ns-vllm/test-vllm-storage-claim
+2025-04-15T09:17:54.1371632Z ready.go:284: [debug] PersistentVolumeClaim is not bound: ns-vllm/test-vllm-storage-claim
+2025-04-15T09:17:56.1362735Z ready.go:284: [debug] PersistentVolumeClaim is not bound: ns-vllm/test-vllm-storage-claim
+2025-04-15T09:17:58.1642273Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:18:00.1465899Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:18:02.1467339Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:18:04.1425305Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:18:06.1403139Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:18:08.1403082Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:18:10.1414169Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:18:12.1414217Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:18:14.1419716Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:18:16.1434401Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:18:18.1427175Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:18:20.1418694Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:18:21.8160633Z Defaulted container "vllm" out of: vllm, wait-download-model (init)
+2025-04-15T09:18:21.8201575Z DEBUG 04-15 09:18:20 [__init__.py:28] No plugins for group vllm.platform_plugins found.
+2025-04-15T09:18:21.8208153Z DEBUG 04-15 09:18:20 [__init__.py:34] Checking if TPU platform is available.
+2025-04-15T09:18:21.8208942Z DEBUG 04-15 09:18:20 [__init__.py:44] TPU platform is not available because: No module named 'libtpu'
+2025-04-15T09:18:21.8209691Z DEBUG 04-15 09:18:20 [__init__.py:52] Checking if CUDA platform is available.
+2025-04-15T09:18:21.8210507Z DEBUG 04-15 09:18:20 [__init__.py:76] Exception happens when checking CUDA platform: NVML Shared Library Not Found
+2025-04-15T09:18:21.8211458Z DEBUG 04-15 09:18:20 [__init__.py:93] CUDA platform is not available because: NVML Shared Library Not Found
+2025-04-15T09:18:21.8212470Z DEBUG 04-15 09:18:20 [__init__.py:100] Checking if ROCm platform is available.
+2025-04-15T09:18:21.8213251Z DEBUG 04-15 09:18:20 [__init__.py:114] ROCm platform is not available because: No module named 'amdsmi'
+2025-04-15T09:18:21.8214015Z DEBUG 04-15 09:18:20 [__init__.py:122] Checking if HPU platform is available.
+2025-04-15T09:18:21.8214806Z DEBUG 04-15 09:18:20 [__init__.py:129] HPU platform is not available because habana_frameworks is not found.
+2025-04-15T09:18:21.8215577Z DEBUG 04-15 09:18:20 [__init__.py:140] Checking if XPU platform is available.
+2025-04-15T09:18:22.1424861Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:18:23.5707327Z DEBUG 04-15 09:18:23 [__init__.py:150] XPU platform is not available because: No module named 'oneccl_bindings_for_pytorch'
+2025-04-15T09:18:23.5708277Z DEBUG 04-15 09:18:23 [__init__.py:158] Checking if CPU platform is available.
+2025-04-15T09:18:23.5721632Z DEBUG 04-15 09:18:23 [__init__.py:162] Confirmed CPU platform is available because vLLM is built with CPU.
+2025-04-15T09:18:23.5725540Z DEBUG 04-15 09:18:23 [__init__.py:180] Checking if Neuron platform is available.
+2025-04-15T09:18:23.5726570Z DEBUG 04-15 09:18:23 [__init__.py:187] Neuron platform is not available because: No module named 'transformers_neuronx'
+2025-04-15T09:18:23.5727856Z DEBUG 04-15 09:18:23 [__init__.py:158] Checking if CPU platform is available.
+2025-04-15T09:18:23.5743795Z DEBUG 04-15 09:18:23 [__init__.py:162] Confirmed CPU platform is available because vLLM is built with CPU.
+2025-04-15T09:18:23.5744712Z INFO 04-15 09:18:23 [__init__.py:239] Automatically detected platform cpu.
+2025-04-15T09:18:24.1431101Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:18:26.1436346Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:18:26.2870248Z DEBUG 04-15 09:18:26 [utils.py:135] Setting VLLM_WORKER_MULTIPROC_METHOD to 'spawn'
+2025-04-15T09:18:26.2957093Z DEBUG 04-15 09:18:26 [__init__.py:28] No plugins for group vllm.general_plugins found.
+2025-04-15T09:18:26.5217513Z INFO 04-15 09:18:26 [api_server.py:1034] vLLM API server version 0.8.5.dev41+g2e47fef1e
+2025-04-15T09:18:26.5236984Z INFO 04-15 09:18:26 [api_server.py:1035] args: Namespace(subparser='serve', model_tag='/data/', config='', host='0.0.0.0', port=8000, uvicorn_log_level='info', disable_uvicorn_access_log=False, allow_credentials=False, allowed_origins=['*'], allowed_methods=['*'], allowed_headers=['*'], api_key=None, lora_modules=None, prompt_adapters=None, chat_template=None, chat_template_content_format='auto', response_role='assistant', ssl_keyfile=None, ssl_certfile=None, ssl_ca_certs=None, enable_ssl_refresh=False, ssl_cert_reqs=0, root_path=None, middleware=[], return_tokens_as_token_ids=False, disable_frontend_multiprocessing=False, enable_request_id_headers=False, enable_auto_tool_choice=False, tool_call_parser=None, tool_parser_plugin='', model='/data/', task='auto', tokenizer=None, hf_config_path=None, skip_tokenizer_init=False, revision=None, code_revision=None, tokenizer_revision=None, tokenizer_mode='auto', trust_remote_code=False, allowed_local_media_path=None, load_format='auto', download_dir=None, model_loader_extra_config=None, use_tqdm_on_load=True, config_format=<ConfigFormat.AUTO: 'auto'>, dtype='bfloat16', kv_cache_dtype='auto', max_model_len=None, guided_decoding_backend='auto', logits_processor_pattern=None, model_impl='auto', distributed_executor_backend=None, pipeline_parallel_size=1, tensor_parallel_size=1, data_parallel_size=1, enable_expert_parallel=False, max_parallel_loading_workers=None, ray_workers_use_nsight=False, disable_custom_all_reduce=False, block_size=None, enable_prefix_caching=None, prefix_caching_hash_algo='builtin', disable_sliding_window=False, use_v2_block_manager=True, seed=None, swap_space=4, cpu_offload_gb=0, gpu_memory_utilization=0.9, num_gpu_blocks_override=None, max_logprobs=20, disable_log_stats=False, quantization=None, rope_scaling=None, rope_theta=None, hf_token=None, hf_overrides=None, enforce_eager=False, max_seq_len_to_capture=8192, tokenizer_pool_size=0, tokenizer_pool_type='ray', tokenizer_pool_extra_config=None, limit_mm_per_prompt=None, mm_processor_kwargs=None, disable_mm_preprocessor_cache=False, enable_lora=False, enable_lora_bias=False, max_loras=1, max_lora_rank=16, lora_extra_vocab_size=256, lora_dtype='auto', long_lora_scaling_factors=None, max_cpu_loras=None, fully_sharded_loras=False, enable_prompt_adapter=False, max_prompt_adapters=1, max_prompt_adapter_token=0, device='auto', num_scheduler_steps=1, speculative_config=None, ignore_patterns=[], preemption_mode=None, served_model_name=['opt-125m'], qlora_adapter_name_or_path=None, show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, disable_async_output_proc=False, max_num_batched_tokens=None, max_num_seqs=None, max_num_partial_prefills=1, max_long_partial_prefills=1, long_prefill_token_threshold=0, num_lookahead_slots=0, scheduler_delay_factor=0.0, enable_chunked_prefill=None, multi_step_stream_outputs=True, scheduling_policy='fcfs', disable_chunked_mm_input=False, scheduler_cls='vllm.core.scheduler.Scheduler', override_neuron_config=None, override_pooler_config=None, compilation_config=None, kv_transfer_config=None, worker_cls='auto', worker_extension_cls='', generation_config='auto', override_generation_config=None, enable_sleep_mode=False, calculate_kv_scales=False, additional_config=None, enable_reasoning=False, reasoning_parser=None, disable_cascade_attn=False, disable_log_requests=False, max_log_len=None, disable_fastapi_docs=False, enable_prompt_tokens_details=False, enable_server_load_tracking=False, dispatch_function=<function ServeSubcommand.cmd at 0x7f04cf41c720>)
+2025-04-15T09:18:26.5252571Z WARNING 04-15 09:18:26 [_logger.py:72] Casting torch.float16 to torch.bfloat16.
+2025-04-15T09:18:28.1428879Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:18:30.1426635Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:18:32.1416159Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:18:33.2258001Z INFO 04-15 09:18:33 [config.py:697] This model supports multiple tasks: {'generate', 'reward', 'classify', 'score', 'embed'}. Defaulting to 'generate'.
+2025-04-15T09:18:33.2259823Z WARNING 04-15 09:18:33 [_logger.py:72] device type=cpu is not supported by the V1 Engine. Falling back to V0. 
+2025-04-15T09:18:33.2270672Z INFO 04-15 09:18:33 [config.py:1758] Disabled the custom all-reduce kernel because it is not supported on current platform.
+2025-04-15T09:18:33.2274252Z WARNING 04-15 09:18:33 [_logger.py:72] uni is not supported on CPU, fallback to mp distributed executor backend.
+2025-04-15T09:18:33.2277228Z DEBUG 04-15 09:18:33 [api_server.py:223] Multiprocessing frontend to use ipc:///tmp/ca6cc57c-5ae4-418b-83fc-621850f6f6bf for IPC Path.
+2025-04-15T09:18:33.2356514Z INFO 04-15 09:18:33 [api_server.py:246] Started engine process with PID 33
+2025-04-15T09:18:34.1431265Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:18:36.1437326Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:18:36.2491364Z DEBUG 04-15 09:18:36 [__init__.py:28] No plugins for group vllm.platform_plugins found.
+2025-04-15T09:18:36.2492457Z DEBUG 04-15 09:18:36 [__init__.py:34] Checking if TPU platform is available.
+2025-04-15T09:18:36.2496458Z DEBUG 04-15 09:18:36 [__init__.py:44] TPU platform is not available because: No module named 'libtpu'
+2025-04-15T09:18:36.2497264Z DEBUG 04-15 09:18:36 [__init__.py:52] Checking if CUDA platform is available.
+2025-04-15T09:18:36.2549178Z DEBUG 04-15 09:18:36 [__init__.py:76] Exception happens when checking CUDA platform: NVML Shared Library Not Found
+2025-04-15T09:18:36.2550468Z DEBUG 04-15 09:18:36 [__init__.py:93] CUDA platform is not available because: NVML Shared Library Not Found
+2025-04-15T09:18:36.2551512Z DEBUG 04-15 09:18:36 [__init__.py:100] Checking if ROCm platform is available.
+2025-04-15T09:18:36.2560494Z DEBUG 04-15 09:18:36 [__init__.py:114] ROCm platform is not available because: No module named 'amdsmi'
+2025-04-15T09:18:36.2561351Z DEBUG 04-15 09:18:36 [__init__.py:122] Checking if HPU platform is available.
+2025-04-15T09:18:36.2562480Z DEBUG 04-15 09:18:36 [__init__.py:129] HPU platform is not available because habana_frameworks is not found.
+2025-04-15T09:18:36.2563351Z DEBUG 04-15 09:18:36 [__init__.py:140] Checking if XPU platform is available.
+2025-04-15T09:18:37.6294347Z DEBUG 04-15 09:18:37 [__init__.py:150] XPU platform is not available because: No module named 'oneccl_bindings_for_pytorch'
+2025-04-15T09:18:37.6295415Z DEBUG 04-15 09:18:37 [__init__.py:158] Checking if CPU platform is available.
+2025-04-15T09:18:37.6313377Z DEBUG 04-15 09:18:37 [__init__.py:162] Confirmed CPU platform is available because vLLM is built with CPU.
+2025-04-15T09:18:37.6317188Z DEBUG 04-15 09:18:37 [__init__.py:180] Checking if Neuron platform is available.
+2025-04-15T09:18:37.6319501Z DEBUG 04-15 09:18:37 [__init__.py:187] Neuron platform is not available because: No module named 'transformers_neuronx'
+2025-04-15T09:18:37.6320463Z DEBUG 04-15 09:18:37 [__init__.py:158] Checking if CPU platform is available.
+2025-04-15T09:18:37.6333693Z DEBUG 04-15 09:18:37 [__init__.py:162] Confirmed CPU platform is available because vLLM is built with CPU.
+2025-04-15T09:18:37.6334594Z INFO 04-15 09:18:37 [__init__.py:239] Automatically detected platform cpu.
+2025-04-15T09:18:38.1424919Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:18:38.8954058Z DEBUG 04-15 09:18:38 [__init__.py:28] No plugins for group vllm.general_plugins found.
+2025-04-15T09:18:38.9012661Z INFO 04-15 09:18:38 [llm_engine.py:243] Initializing a V0 LLM engine (v0.8.5.dev41+g2e47fef1e) with config: model='/data/', speculative_config=None, tokenizer='/data/', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=2048, download_dir=None, load_format=LoadFormat.AUTO, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=True, quantization=None, enforce_eager=True, kv_cache_dtype=auto,  device_config=cpu, decoding_config=DecodingConfig(guided_decoding_backend='auto', reasoning_backend=None), observability_config=ObservabilityConfig(show_hidden_metrics=False, otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=None, served_model_name=opt-125m, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=None, chunked_prefill_enabled=False, use_async_output_proc=False, disable_mm_preprocessor_cache=False, mm_processor_kwargs=None, pooler_config=None, compilation_config={"splitting_ops":[],"compile_sizes":[],"cudagraph_capture_sizes":[256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"max_capture_size":256}, use_cached_outputs=True, 
+2025-04-15T09:18:39.0523288Z INFO 04-15 09:18:39 [cpu.py:45] Using Torch SDPA backend.
+2025-04-15T09:18:39.0940819Z DEBUG 04-15 09:18:39 [config.py:3963] enabled custom ops: Counter()
+2025-04-15T09:18:39.0942260Z DEBUG 04-15 09:18:39 [config.py:3965] disabled custom ops: Counter()
+2025-04-15T09:18:39.0943512Z DEBUG 04-15 09:18:39 [parallel_state.py:822] world_size=1 rank=0 local_rank=-1 distributed_init_method=tcp://10.244.0.7:34581 backend=gloo
+2025-04-15T09:18:39.1196038Z INFO 04-15 09:18:39 [parallel_state.py:959] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, TP rank 0
+2025-04-15T09:18:39.1196856Z DEBUG 04-15 09:18:39 [config.py:3963] enabled custom ops: Counter()
+2025-04-15T09:18:39.1200948Z DEBUG 04-15 09:18:39 [config.py:3965] disabled custom ops: Counter()
+2025-04-15T09:18:39.1220757Z DEBUG 04-15 09:18:39 [decorators.py:109] Inferred dynamic dimensions for forward method of <class 'vllm.model_executor.models.opt.OPTModel'>: ['input_ids', 'positions', 'intermediate_tensors', 'inputs_embeds']
+2025-04-15T09:18:39.1700072Z DEBUG 04-15 09:18:39 [config.py:3963] enabled custom ops: Counter()
+2025-04-15T09:18:39.1700776Z DEBUG 04-15 09:18:39 [config.py:3965] disabled custom ops: Counter()
+2025-04-15T09:18:39.1746958Z 
+2025-04-15T09:18:39.1747428Z Loading pt checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s]
+2025-04-15T09:18:39.4022641Z 
+2025-04-15T09:18:39.4023614Z Loading pt checkpoint shards: 100% Completed | 1/1 [00:00<00:00,  4.41it/s]
+2025-04-15T09:18:39.4031427Z 
+2025-04-15T09:18:39.4032726Z Loading pt checkpoint shards: 100% Completed | 1/1 [00:00<00:00,  4.40it/s]
+2025-04-15T09:18:39.4033237Z 
+2025-04-15T09:18:39.4033872Z INFO 04-15 09:18:39 [loader.py:458] Loading weights took 0.23 seconds
+2025-04-15T09:18:39.4046330Z INFO 04-15 09:18:39 [executor_base.py:112] # cpu blocks: 227, # CPU blocks: 0
+2025-04-15T09:18:39.4047925Z INFO 04-15 09:18:39 [executor_base.py:117] Maximum concurrency for 2048 tokens per request: 14.19x
+2025-04-15T09:18:39.5124085Z INFO 04-15 09:18:39 [llm_engine.py:449] init engine (profile, create kv cache, warmup model) took 0.11 seconds
+2025-04-15T09:18:39.5863677Z DEBUG 04-15 09:18:39 [engine.py:155] Starting Startup Loop.
+2025-04-15T09:18:39.5904529Z DEBUG 04-15 09:18:39 [engine.py:157] Starting Engine Loop.
+2025-04-15T09:18:39.6169714Z DEBUG 04-15 09:18:39 [api_server.py:319] vLLM to use /tmp/tmpmmo2_c1l as PROMETHEUS_MULTIPROC_DIR
+2025-04-15T09:18:39.6186149Z INFO 04-15 09:18:39 [api_server.py:1081] Starting vLLM API server on http://0.0.0.0:8000
+2025-04-15T09:18:39.6193910Z INFO 04-15 09:18:39 [launcher.py:26] Available routes are:
+2025-04-15T09:18:39.6195116Z INFO 04-15 09:18:39 [launcher.py:34] Route: /openapi.json, Methods: GET, HEAD
+2025-04-15T09:18:39.6197336Z INFO 04-15 09:18:39 [launcher.py:34] Route: /docs, Methods: GET, HEAD
+2025-04-15T09:18:39.6198088Z INFO 04-15 09:18:39 [launcher.py:34] Route: /docs/oauth2-redirect, Methods: GET, HEAD
+2025-04-15T09:18:39.6198879Z INFO 04-15 09:18:39 [launcher.py:34] Route: /redoc, Methods: GET, HEAD
+2025-04-15T09:18:39.6218953Z INFO 04-15 09:18:39 [launcher.py:34] Route: /health, Methods: GET
+2025-04-15T09:18:39.6228319Z INFO 04-15 09:18:39 [launcher.py:34] Route: /load, Methods: GET
+2025-04-15T09:18:39.6229405Z INFO 04-15 09:18:39 [launcher.py:34] Route: /ping, Methods: GET, POST
+2025-04-15T09:18:39.6242767Z INFO 04-15 09:18:39 [launcher.py:34] Route: /tokenize, Methods: POST
+2025-04-15T09:18:39.6243886Z INFO 04-15 09:18:39 [launcher.py:34] Route: /detokenize, Methods: POST
+2025-04-15T09:18:39.6246039Z INFO 04-15 09:18:39 [launcher.py:34] Route: /v1/models, Methods: GET
+2025-04-15T09:18:39.6247697Z INFO 04-15 09:18:39 [launcher.py:34] Route: /version, Methods: GET
+2025-04-15T09:18:39.6251114Z INFO 04-15 09:18:39 [launcher.py:34] Route: /v1/chat/completions, Methods: POST
+2025-04-15T09:18:39.6252123Z INFO 04-15 09:18:39 [launcher.py:34] Route: /v1/completions, Methods: POST
+2025-04-15T09:18:39.6252835Z INFO 04-15 09:18:39 [launcher.py:34] Route: /v1/embeddings, Methods: POST
+2025-04-15T09:18:39.6253520Z INFO 04-15 09:18:39 [launcher.py:34] Route: /pooling, Methods: POST
+2025-04-15T09:18:39.6254158Z INFO 04-15 09:18:39 [launcher.py:34] Route: /score, Methods: POST
+2025-04-15T09:18:39.6254786Z INFO 04-15 09:18:39 [launcher.py:34] Route: /v1/score, Methods: POST
+2025-04-15T09:18:39.6255511Z INFO 04-15 09:18:39 [launcher.py:34] Route: /v1/audio/transcriptions, Methods: POST
+2025-04-15T09:18:39.6256204Z INFO 04-15 09:18:39 [launcher.py:34] Route: /rerank, Methods: POST
+2025-04-15T09:18:39.6256833Z INFO 04-15 09:18:39 [launcher.py:34] Route: /v1/rerank, Methods: POST
+2025-04-15T09:18:39.6257477Z INFO 04-15 09:18:39 [launcher.py:34] Route: /v2/rerank, Methods: POST
+2025-04-15T09:18:39.6258149Z INFO 04-15 09:18:39 [launcher.py:34] Route: /invocations, Methods: POST
+2025-04-15T09:18:39.6258790Z INFO 04-15 09:18:39 [launcher.py:34] Route: /metrics, Methods: GET
+2025-04-15T09:18:39.7085582Z INFO:     Started server process [1]
+2025-04-15T09:18:39.7112272Z INFO:     Waiting for application startup.
+2025-04-15T09:18:40.0296159Z INFO:     Application startup complete.
+2025-04-15T09:18:40.1427679Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:18:42.1406845Z ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+2025-04-15T09:18:43.3972857Z DEBUG 04-15 09:18:43 [client.py:193] Waiting for output from MQLLMEngine.
+2025-04-15T09:18:43.5028711Z INFO:     10.244.0.1:47884 - "GET /health HTTP/1.1" 200 OK
+2025-04-15T09:18:44.1505757Z NAME: test-vllm
+2025-04-15T09:18:44.1506232Z LAST DEPLOYED: Tue Apr 15 09:17:51 2025
+2025-04-15T09:18:44.1506654Z NAMESPACE: ns-vllm
+2025-04-15T09:18:44.1506964Z STATUS: deployed
+2025-04-15T09:18:44.1507241Z REVISION: 1
+2025-04-15T09:18:44.1507501Z TEST SUITE: None
+2025-04-15T09:18:44.1507803Z USER-SUPPLIED VALUES:
+2025-04-15T09:18:44.1509178Z autoscaling:
+2025-04-15T09:18:44.1509479Z   enabled: false
+2025-04-15T09:18:44.1509780Z   maxReplicas: 100
+2025-04-15T09:18:44.1510072Z   minReplicas: 1
+2025-04-15T09:18:44.1510396Z   targetCPUUtilizationPercentage: 80
+2025-04-15T09:18:44.1510801Z configs: {}
+2025-04-15T09:18:44.1511064Z containerPort: 8000
+2025-04-15T09:18:44.1511379Z customObjects: []
+2025-04-15T09:18:44.1511673Z deploymentStrategy: {}
+2025-04-15T09:18:44.1512198Z externalConfigs: []
+2025-04-15T09:18:44.1512503Z extraContainers: []
+2025-04-15T09:18:44.1512781Z extraInit:
+2025-04-15T09:18:44.1513105Z   awsEc2MetadataDisabled: true
+2025-04-15T09:18:44.1513453Z   pvcStorage: 1Gi
+2025-04-15T09:18:44.1513759Z   s3modelpath: opt-125m/
+2025-04-15T09:18:44.1514073Z extraPorts: []
+2025-04-15T09:18:44.1514345Z gpuModels:
+2025-04-15T09:18:44.1514601Z - TYPE_GPU_USED
+2025-04-15T09:18:44.1514850Z image:
+2025-04-15T09:18:44.1515002Z   command:
+2025-04-15T09:18:44.1515193Z   - vllm
+2025-04-15T09:18:44.1515452Z   - serve
+2025-04-15T09:18:44.1515693Z   - /data/
+2025-04-15T09:18:44.1515978Z   - --served-model-name
+2025-04-15T09:18:44.1516260Z   - opt-125m
+2025-04-15T09:18:44.1516521Z   - --dtype
+2025-04-15T09:18:44.1516908Z   - bfloat16
+2025-04-15T09:18:44.1517179Z   - --host
+2025-04-15T09:18:44.1517438Z   - 0.0.0.0
+2025-04-15T09:18:44.1517697Z   - --port
+2025-04-15T09:18:44.1518479Z   - "8000"
+2025-04-15T09:18:44.1518729Z   env:
+2025-04-15T09:18:44.1519007Z   - name: VLLM_CPU_KVCACHE_SPACE
+2025-04-15T09:18:44.1519355Z     value: "1"
+2025-04-15T09:18:44.1519651Z   - name: VLLM_LOGGING_LEVEL
+2025-04-15T09:18:44.1519978Z     value: DEBUG
+2025-04-15T09:18:44.1520284Z   repository: vllm-cpu-env
+2025-04-15T09:18:44.1520605Z   tag: latest
+2025-04-15T09:18:44.1520865Z labels:
+2025-04-15T09:18:44.1521116Z   environment: test
+2025-04-15T09:18:44.1521406Z   release: test
+2025-04-15T09:18:44.1521682Z livenessProbe:
+2025-04-15T09:18:44.1522113Z   failureThreshold: 3
+2025-04-15T09:18:44.1522411Z   httpGet:
+2025-04-15T09:18:44.1522670Z     path: /health
+2025-04-15T09:18:44.1522958Z     port: 8000
+2025-04-15T09:18:44.1523250Z   initialDelaySeconds: 15
+2025-04-15T09:18:44.1523586Z   periodSeconds: 10
+2025-04-15T09:18:44.1523932Z maxUnavailablePodDisruptionBudget: ""
+2025-04-15T09:18:44.1524340Z readinessProbe:
+2025-04-15T09:18:44.1524635Z   failureThreshold: 3
+2025-04-15T09:18:44.1524946Z   httpGet:
+2025-04-15T09:18:44.1525202Z     path: /health
+2025-04-15T09:18:44.1525472Z     port: 8000
+2025-04-15T09:18:44.1525759Z   initialDelaySeconds: 5
+2025-04-15T09:18:44.1525960Z   periodSeconds: 5
+2025-04-15T09:18:44.1526128Z replicaCount: 1
+2025-04-15T09:18:44.1526290Z resources:
+2025-04-15T09:18:44.1526439Z   limits:
+2025-04-15T09:18:44.1526580Z     cpu: 2
+2025-04-15T09:18:44.1526728Z     memory: 5Gi
+2025-04-15T09:18:44.1526892Z     nvidia.com/gpu: "0"
+2025-04-15T09:18:44.1527076Z   requests:
+2025-04-15T09:18:44.1527222Z     cpu: 1
+2025-04-15T09:18:44.1527372Z     memory: 4Gi
+2025-04-15T09:18:44.1527534Z     nvidia.com/gpu: "0"
+2025-04-15T09:18:44.1527711Z secrets:
+2025-04-15T09:18:44.1527871Z   s3accesskey: minioadmin
+2025-04-15T09:18:44.1528072Z   s3accesskeyid: minioadmin
+2025-04-15T09:18:44.1528271Z   s3bucketname: testbucket
+2025-04-15T09:18:44.1528503Z   s3endpoint: http://minio:9000
+2025-04-15T09:18:44.1528719Z serviceName: null
+2025-04-15T09:18:44.1528888Z servicePort: 80
+2025-04-15T09:18:44.1528992Z 
+2025-04-15T09:18:44.1529067Z COMPUTED VALUES:
+2025-04-15T09:18:44.1529282Z autoscaling:
+2025-04-15T09:18:44.1529442Z   enabled: false
+2025-04-15T09:18:44.1529604Z   maxReplicas: 100
+2025-04-15T09:18:44.1529775Z   minReplicas: 1
+2025-04-15T09:18:44.1529964Z   targetCPUUtilizationPercentage: 80
+2025-04-15T09:18:44.1530192Z configs: {}
+2025-04-15T09:18:44.1530352Z containerPort: 8000
+2025-04-15T09:18:44.1530522Z customObjects: []
+2025-04-15T09:18:44.1530701Z deploymentStrategy: {}
+2025-04-15T09:18:44.1530883Z externalConfigs: []
+2025-04-15T09:18:44.1531057Z extraContainers: []
+2025-04-15T09:18:44.1531216Z extraInit:
+2025-04-15T09:18:44.1531393Z   awsEc2MetadataDisabled: true
+2025-04-15T09:18:44.1531770Z   pvcStorage: 1Gi
+2025-04-15T09:18:44.1532174Z   s3modelpath: opt-125m/
+2025-04-15T09:18:44.1532371Z extraPorts: []
+2025-04-15T09:18:44.1532535Z gpuModels:
+2025-04-15T09:18:44.1532685Z - TYPE_GPU_USED
+2025-04-15T09:18:44.1532846Z image:
+2025-04-15T09:18:44.1532993Z   command:
+2025-04-15T09:18:44.1533137Z   - vllm
+2025-04-15T09:18:44.1533295Z   - serve
+2025-04-15T09:18:44.1533438Z   - /data/
+2025-04-15T09:18:44.1533601Z   - --served-model-name
+2025-04-15T09:18:44.1533781Z   - opt-125m
+2025-04-15T09:18:44.1533942Z   - --dtype
+2025-04-15T09:18:44.1534088Z   - bfloat16
+2025-04-15T09:18:44.1534245Z   - --host
+2025-04-15T09:18:44.1534387Z   - 0.0.0.0
+2025-04-15T09:18:44.1534539Z   - --port
+2025-04-15T09:18:44.1534682Z   - "8000"
+2025-04-15T09:18:44.1534828Z   env:
+2025-04-15T09:18:44.1534986Z   - name: VLLM_CPU_KVCACHE_SPACE
+2025-04-15T09:18:44.1535193Z     value: "1"
+2025-04-15T09:18:44.1535363Z   - name: VLLM_LOGGING_LEVEL
+2025-04-15T09:18:44.1535555Z     value: DEBUG
+2025-04-15T09:18:44.1535734Z   repository: vllm-cpu-env
+2025-04-15T09:18:44.1536006Z   tag: latest
+2025-04-15T09:18:44.1536266Z labels:
+2025-04-15T09:18:44.1536516Z   environment: test
+2025-04-15T09:18:44.1536831Z   release: test
+2025-04-15T09:18:44.1537044Z livenessProbe:
+2025-04-15T09:18:44.1537221Z   failureThreshold: 3
+2025-04-15T09:18:44.1537555Z   httpGet:
+2025-04-15T09:18:44.1537706Z     path: /health
+2025-04-15T09:18:44.1537870Z     port: 8000
+2025-04-15T09:18:44.1538042Z   initialDelaySeconds: 15
+2025-04-15T09:18:44.1538239Z   periodSeconds: 10
+2025-04-15T09:18:44.1538439Z maxUnavailablePodDisruptionBudget: ""
+2025-04-15T09:18:44.1538680Z readinessProbe:
+2025-04-15T09:18:44.1538846Z   failureThreshold: 3
+2025-04-15T09:18:44.1539021Z   httpGet:
+2025-04-15T09:18:44.1539168Z     path: /health
+2025-04-15T09:18:44.1539329Z     port: 8000
+2025-04-15T09:18:44.1539492Z   initialDelaySeconds: 5
+2025-04-15T09:18:44.1539684Z   periodSeconds: 5
+2025-04-15T09:18:44.1539848Z replicaCount: 1
+2025-04-15T09:18:44.1540009Z resources:
+2025-04-15T09:18:44.1540161Z   limits:
+2025-04-15T09:18:44.1540306Z     cpu: 2
+2025-04-15T09:18:44.1540453Z     memory: 5Gi
+2025-04-15T09:18:44.1540614Z     nvidia.com/gpu: "0"
+2025-04-15T09:18:44.1540788Z   requests:
+2025-04-15T09:18:44.1540933Z     cpu: 1
+2025-04-15T09:18:44.1541079Z     memory: 4Gi
+2025-04-15T09:18:44.1541237Z     nvidia.com/gpu: "0"
+2025-04-15T09:18:44.1541418Z secrets:
+2025-04-15T09:18:44.1541573Z   s3accesskey: minioadmin
+2025-04-15T09:18:44.1541773Z   s3accesskeyid: minioadmin
+2025-04-15T09:18:44.1542164Z   s3bucketname: testbucket
+2025-04-15T09:18:44.1542383Z   s3endpoint: http://minio:9000
+2025-04-15T09:18:44.1542593Z servicePort: 80
+2025-04-15T09:18:44.1542693Z 
+2025-04-15T09:18:44.1542753Z HOOKS:
+2025-04-15T09:18:44.1542896Z MANIFEST:
+2025-04-15T09:18:44.1543035Z ---
+2025-04-15T09:18:44.1543255Z # Source: chart-vllm/templates/poddisruptionbudget.yaml
+2025-04-15T09:18:44.1543548Z apiVersion: policy/v1
+2025-04-15T09:18:44.1543744Z kind: PodDisruptionBudget
+2025-04-15T09:18:44.1543932Z metadata:
+2025-04-15T09:18:44.1544100Z   name: "test-vllm-pdb"
+2025-04-15T09:18:44.1544285Z   namespace: ns-vllm
+2025-04-15T09:18:44.1544455Z spec:
+2025-04-15T09:18:44.1544610Z   maxUnavailable: 1
+2025-04-15T09:18:44.1544780Z ---
+2025-04-15T09:18:44.1545077Z # Source: chart-vllm/templates/secrets.yaml
+2025-04-15T09:18:44.1545449Z apiVersion: v1
+2025-04-15T09:18:44.1545904Z kind: Secret
+2025-04-15T09:18:44.1546169Z metadata:
+2025-04-15T09:18:44.1546422Z   name: "test-vllm-secrets"
+2025-04-15T09:18:44.1546734Z   namespace: ns-vllm
+2025-04-15T09:18:44.1547023Z type: Opaque
+2025-04-15T09:18:44.1547262Z data:
+2025-04-15T09:18:44.1547535Z   s3accesskey: "bWluaW9hZG1pbg=="
+2025-04-15T09:18:44.1547905Z   s3accesskeyid: "bWluaW9hZG1pbg=="
+2025-04-15T09:18:44.1548293Z   s3bucketname: "dGVzdGJ1Y2tldA=="
+2025-04-15T09:18:44.1548673Z   s3endpoint: "aHR0cDovL21pbmlvOjkwMDA="
+2025-04-15T09:18:44.1548901Z ---
+2025-04-15T09:18:44.1549072Z # Source: chart-vllm/templates/pvc.yaml
+2025-04-15T09:18:44.1549298Z apiVersion: v1
+2025-04-15T09:18:44.1549794Z kind: PersistentVolumeClaim
+2025-04-15T09:18:44.1550098Z metadata:
+2025-04-15T09:18:44.1550358Z   name: "test-vllm-storage-claim"
+2025-04-15T09:18:44.1550693Z   namespace: ns-vllm
+2025-04-15T09:18:44.1550978Z spec:
+2025-04-15T09:18:44.1551258Z   accessModes:
+2025-04-15T09:18:44.1551533Z     - ReadWriteOnce
+2025-04-15T09:18:44.1551988Z   resources:
+2025-04-15T09:18:44.1552251Z     requests:
+2025-04-15T09:18:44.1552517Z       storage: 1Gi
+2025-04-15T09:18:44.1552794Z ---
+2025-04-15T09:18:44.1553104Z # Source: chart-vllm/templates/service.yaml
+2025-04-15T09:18:44.1553511Z apiVersion: v1
+2025-04-15T09:18:44.1553788Z kind: Service
+2025-04-15T09:18:44.1554041Z metadata:
+2025-04-15T09:18:44.1554310Z   name: "test-vllm-service"
+2025-04-15T09:18:44.1554635Z   namespace: ns-vllm
+2025-04-15T09:18:44.1554882Z spec:
+2025-04-15T09:18:44.1555170Z   type: ClusterIP
+2025-04-15T09:18:44.1555334Z   ports:
+2025-04-15T09:18:44.1555496Z     - name: "service-port"
+2025-04-15T09:18:44.1555682Z       port: 80
+2025-04-15T09:18:44.1555872Z       targetPort: "container-port"
+2025-04-15T09:18:44.1556085Z       protocol: TCP
+2025-04-15T09:18:44.1556253Z   selector:
+2025-04-15T09:18:44.1556411Z     environment: test
+2025-04-15T09:18:44.1556589Z     release: test
+2025-04-15T09:18:44.1556741Z ---
+2025-04-15T09:18:44.1556928Z # Source: chart-vllm/templates/deployment.yaml
+2025-04-15T09:18:44.1557347Z apiVersion: apps/v1
+2025-04-15T09:18:44.1557521Z kind: Deployment
+2025-04-15T09:18:44.1557683Z metadata:
+2025-04-15T09:18:44.1557856Z   name: "test-vllm-deployment-vllm"
+2025-04-15T09:18:44.1558127Z   namespace: ns-vllm
+2025-04-15T09:18:44.1558394Z   labels:
+2025-04-15T09:18:44.1558555Z     environment: test
+2025-04-15T09:18:44.1558795Z     release: test
+2025-04-15T09:18:44.1559001Z spec:
+2025-04-15T09:18:44.1559146Z   replicas: 1
+2025-04-15T09:18:44.1559306Z   strategy:
+2025-04-15T09:18:44.1559456Z     rollingUpdate:
+2025-04-15T09:18:44.1559628Z       maxSurge: 100%
+2025-04-15T09:18:44.1559805Z       maxUnavailable: 0
+2025-04-15T09:18:44.1560074Z   selector:                                                                                                                                  
+2025-04-15T09:18:44.1560363Z     matchLabels:
+2025-04-15T09:18:44.1560532Z       environment: "test"
+2025-04-15T09:18:44.1560723Z       release: "test"
+2025-04-15T09:18:44.1560933Z   progressDeadlineSeconds: 1200
+2025-04-15T09:18:44.1561133Z   template:
+2025-04-15T09:18:44.1561284Z     metadata:
+2025-04-15T09:18:44.1561429Z       labels:
+2025-04-15T09:18:44.1561591Z         environment: "test"
+2025-04-15T09:18:44.1561778Z         release: "test"
+2025-04-15T09:18:44.1562192Z     spec:
+2025-04-15T09:18:44.1562427Z       containers:
+2025-04-15T09:18:44.1562689Z         - name: "vllm"
+2025-04-15T09:18:44.1562976Z           image: "vllm-cpu-env:latest"
+2025-04-15T09:18:44.1563203Z           command :
+2025-04-15T09:18:44.1563369Z           - vllm
+2025-04-15T09:18:44.1563524Z           - serve
+2025-04-15T09:18:44.1563686Z           - /data/
+2025-04-15T09:18:44.1563868Z           - --served-model-name
+2025-04-15T09:18:44.1564076Z           - opt-125m
+2025-04-15T09:18:44.1564241Z           - --dtype
+2025-04-15T09:18:44.1564408Z           - bfloat16
+2025-04-15T09:18:44.1564570Z           - --host
+2025-04-15T09:18:44.1564732Z           - 0.0.0.0
+2025-04-15T09:18:44.1564888Z           - --port
+2025-04-15T09:18:44.1565057Z           - "8000"
+2025-04-15T09:18:44.1565230Z           securityContext:
+2025-04-15T09:18:44.1565432Z             runAsNonRoot: false            
+2025-04-15T09:18:44.1565683Z           imagePullPolicy: IfNotPresent
+2025-04-15T09:18:44.1565901Z           env :
+2025-04-15T09:18:44.1566081Z           - name: VLLM_CPU_KVCACHE_SPACE
+2025-04-15T09:18:44.1566302Z             value: "1"
+2025-04-15T09:18:44.1566489Z           - name: VLLM_LOGGING_LEVEL
+2025-04-15T09:18:44.1566701Z             value: DEBUG
+2025-04-15T09:18:44.1566881Z           envFrom:
+2025-04-15T09:18:44.1567045Z             - secretRef:
+2025-04-15T09:18:44.1567244Z                 name: "test-vllm-secrets"
+2025-04-15T09:18:44.1567624Z                       
+2025-04-15T09:18:44.1567786Z           ports:
+2025-04-15T09:18:44.1567965Z             - name: "container-port"
+2025-04-15T09:18:44.1568187Z               containerPort: 8000
+2025-04-15T09:18:44.1568392Z                       
+2025-04-15T09:18:44.1568563Z           readinessProbe:
+2025-04-15T09:18:44.1568765Z             failureThreshold: 3
+2025-04-15T09:18:44.1568961Z             httpGet:
+2025-04-15T09:18:44.1569138Z               path: /health
+2025-04-15T09:18:44.1569328Z               port: 8000
+2025-04-15T09:18:44.1569527Z             initialDelaySeconds: 5
+2025-04-15T09:18:44.1569752Z             periodSeconds: 5
+2025-04-15T09:18:44.1569947Z           livenessProbe:
+2025-04-15T09:18:44.1570136Z             failureThreshold: 3
+2025-04-15T09:18:44.1570329Z             httpGet:
+2025-04-15T09:18:44.1570499Z               path: /health
+2025-04-15T09:18:44.1570681Z               port: 8000
+2025-04-15T09:18:44.1570878Z             initialDelaySeconds: 15
+2025-04-15T09:18:44.1571102Z             periodSeconds: 10
+2025-04-15T09:18:44.1571299Z           resources:
+2025-04-15T09:18:44.1571460Z             requests:
+2025-04-15T09:18:44.1571694Z               memory: "4Gi"
+2025-04-15T09:18:44.1572140Z               cpu: "1"
+2025-04-15T09:18:44.1572309Z             limits:
+2025-04-15T09:18:44.1572633Z               memory: "5Gi"
+2025-04-15T09:18:44.1572814Z               cpu: "2"
+2025-04-15T09:18:44.1572986Z           volumeMounts:
+2025-04-15T09:18:44.1573174Z           - name: test-vllm-storage
+2025-04-15T09:18:44.1573397Z             mountPath: /data
+2025-04-15T09:18:44.1573592Z       initContainers:
+2025-04-15T09:18:44.1573785Z       - name: wait-download-model
+2025-04-15T09:18:44.1574008Z         image: "amazon/aws-cli:2.6.4"
+2025-04-15T09:18:44.1574227Z         command: 
+2025-04-15T09:18:44.1574395Z           - /bin/bash
+2025-04-15T09:18:44.1574554Z         args:
+2025-04-15T09:18:44.1574712Z           - -eucx
+2025-04-15T09:18:44.1575159Z           - while aws --endpoint-url $S3_ENDPOINT_URL s3 sync --dryrun s3://$S3_BUCKET_NAME/$S3_PATH /data | grep -q download; do sleep 10; done
+2025-04-15T09:18:44.1575642Z         env:
+2025-04-15T09:18:44.1575806Z           - name: S3_ENDPOINT_URL
+2025-04-15T09:18:44.1576014Z             valueFrom:
+2025-04-15T09:18:44.1576184Z               secretKeyRef:
+2025-04-15T09:18:44.1576393Z                 name: test-vllm-secrets
+2025-04-15T09:18:44.1576656Z                 key: s3endpoint
+2025-04-15T09:18:44.1576860Z           - name: S3_BUCKET_NAME
+2025-04-15T09:18:44.1577062Z             valueFrom:
+2025-04-15T09:18:44.1577231Z               secretKeyRef:
+2025-04-15T09:18:44.1577430Z                 name: test-vllm-secrets
+2025-04-15T09:18:44.1577647Z                 key: s3bucketname
+2025-04-15T09:18:44.1577860Z           - name: AWS_ACCESS_KEY_ID
+2025-04-15T09:18:44.1578064Z             valueFrom:
+2025-04-15T09:18:44.1578236Z               secretKeyRef:
+2025-04-15T09:18:44.1578427Z                 name: test-vllm-secrets
+2025-04-15T09:18:44.1578657Z                 key: s3accesskeyid
+2025-04-15T09:18:44.1578876Z           - name: AWS_SECRET_ACCESS_KEY
+2025-04-15T09:18:44.1579084Z             valueFrom:
+2025-04-15T09:18:44.1579257Z               secretKeyRef:
+2025-04-15T09:18:44.1579446Z                 name: test-vllm-secrets
+2025-04-15T09:18:44.1579671Z                 key: s3accesskey
+2025-04-15T09:18:44.1579868Z           - name: S3_PATH
+2025-04-15T09:18:44.1580064Z             value: "opt-125m/"
+2025-04-15T09:18:44.1580278Z           - name: AWS_EC2_METADATA_DISABLED
+2025-04-15T09:18:44.1580513Z             value: "true"
+2025-04-15T09:18:44.1580691Z         resources:
+2025-04-15T09:18:44.1580848Z           requests:
+2025-04-15T09:18:44.1581015Z             cpu: 200m
+2025-04-15T09:18:44.1581181Z             memory: 1Gi
+2025-04-15T09:18:44.1581353Z           limits:
+2025-04-15T09:18:44.1581514Z             cpu: 500m
+2025-04-15T09:18:44.1581682Z             memory: 2Gi
+2025-04-15T09:18:44.1582022Z         volumeMounts:
+2025-04-15T09:18:44.1582391Z         - name: test-vllm-storage
+2025-04-15T09:18:44.1582616Z           mountPath: /data
+2025-04-15T09:18:44.1582807Z       volumes:
+2025-04-15T09:18:44.1582976Z         - name: test-vllm-storage
+2025-04-15T09:18:44.1583204Z           persistentVolumeClaim:
+2025-04-15T09:18:44.1583446Z             claimName: test-vllm-storage-claim
+2025-04-15T09:18:44.1583684Z ---
+2025-04-15T09:18:44.1583854Z # Source: chart-vllm/templates/job.yaml
+2025-04-15T09:18:44.1584081Z apiVersion: batch/v1
+2025-04-15T09:18:44.1584254Z kind: Job
+2025-04-15T09:18:44.1584399Z metadata:
+2025-04-15T09:18:44.1584664Z   name: "test-vllm-init-vllm"
+2025-04-15T09:18:44.1584869Z   namespace: ns-vllm
+2025-04-15T09:18:44.1585037Z spec:
+2025-04-15T09:18:44.1585200Z   ttlSecondsAfterFinished: 100
+2025-04-15T09:18:44.1585407Z   template:
+2025-04-15T09:18:44.1585557Z    metadata:
+2025-04-15T09:18:44.1585711Z      name: init-vllm
+2025-04-15T09:18:44.1585876Z    spec:
+2025-04-15T09:18:44.1586021Z     containers:
+2025-04-15T09:18:44.1586204Z     - name: job-download-model
+2025-04-15T09:18:44.1586414Z       image: "amazon/aws-cli:2.6.4"
+2025-04-15T09:18:44.1586629Z       command: 
+2025-04-15T09:18:44.1586784Z         - /bin/bash
+2025-04-15T09:18:44.1586944Z       args:
+2025-04-15T09:18:44.1587089Z         - -eucx
+2025-04-15T09:18:44.1587512Z         - aws --endpoint-url $S3_ENDPOINT_URL s3 sync s3://$S3_BUCKET_NAME/$S3_PATH /data
+2025-04-15T09:18:44.1587995Z       env:
+2025-04-15T09:18:44.1588153Z         - name: S3_ENDPOINT_URL
+2025-04-15T09:18:44.1588355Z           valueFrom:
+2025-04-15T09:18:44.1588527Z             secretKeyRef:
+2025-04-15T09:18:44.1588755Z               name: test-vllm-secrets
+2025-04-15T09:18:44.1589070Z               key: s3endpoint
+2025-04-15T09:18:44.1589273Z         - name: S3_BUCKET_NAME
+2025-04-15T09:18:44.1589556Z           valueFrom:
+2025-04-15T09:18:44.1589746Z             secretKeyRef:
+2025-04-15T09:18:44.1589938Z               name: test-vllm-secrets
+2025-04-15T09:18:44.1590161Z               key: s3bucketname
+2025-04-15T09:18:44.1590374Z         - name: AWS_ACCESS_KEY_ID
+2025-04-15T09:18:44.1590578Z           valueFrom:
+2025-04-15T09:18:44.1590750Z             secretKeyRef:
+2025-04-15T09:18:44.1590937Z               name: test-vllm-secrets
+2025-04-15T09:18:44.1591156Z               key: s3accesskeyid
+2025-04-15T09:18:44.1591365Z         - name: AWS_SECRET_ACCESS_KEY
+2025-04-15T09:18:44.1591579Z           valueFrom:
+2025-04-15T09:18:44.1591744Z             secretKeyRef:
+2025-04-15T09:18:44.1592099Z               name: test-vllm-secrets
+2025-04-15T09:18:44.1592329Z               key: s3accesskey
+2025-04-15T09:18:44.1592527Z         - name: S3_PATH
+2025-04-15T09:18:44.1592716Z           value: "opt-125m/"
+2025-04-15T09:18:44.1592922Z         - name: AWS_EC2_METADATA_DISABLED
+2025-04-15T09:18:44.1593157Z           value: "true"
+2025-04-15T09:18:44.1593331Z       volumeMounts:
+2025-04-15T09:18:44.1593511Z         - name: test-vllm-storage
+2025-04-15T09:18:44.1593719Z           mountPath: /data
+2025-04-15T09:18:44.1593911Z       resources:
+2025-04-15T09:18:44.1594067Z         requests:
+2025-04-15T09:18:44.1594233Z           cpu: 200m
+2025-04-15T09:18:44.1594392Z           memory: 1Gi
+2025-04-15T09:18:44.1594563Z         limits:
+2025-04-15T09:18:44.1594720Z           cpu: 500m
+2025-04-15T09:18:44.1594877Z           memory: 2Gi
+2025-04-15T09:18:44.1595068Z     restartPolicy: OnFailure
+2025-04-15T09:18:44.1595257Z     volumes:
+2025-04-15T09:18:44.1595429Z     - name: test-vllm-storage
+2025-04-15T09:18:44.1595640Z       persistentVolumeClaim:
+2025-04-15T09:18:44.1595866Z         claimName: "test-vllm-storage-claim"
+2025-04-15T09:18:44.1596036Z 
+2025-04-15T09:18:48.4648612Z INFO:     10.244.0.1:47898 - "GET /health HTTP/1.1" 200 OK
+2025-04-15T09:18:48.5025803Z INFO:     10.244.0.1:47902 - "GET /health HTTP/1.1" 200 OK

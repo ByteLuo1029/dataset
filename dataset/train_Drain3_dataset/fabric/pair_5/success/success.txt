@@ -1,0 +1,825 @@
+2025-03-08T17:52:29.6992530Z Requested labels: ubuntu-latest
+2025-03-08T17:52:29.6992785Z Job defined at: danielmiessler/fabric/.github/workflows/ci.yml@refs/pull/1349/merge
+2025-03-08T17:52:29.6992863Z Waiting for a runner to pick up this job...
+2025-03-08T17:52:30.2407402Z Job is waiting for a hosted runner to come online.
+2025-03-08T17:52:33.3455987Z Job is about to start running on the hosted runner: GitHub Actions 17 (hosted)
+2025-03-08T17:52:35.8247481Z Current runner version: '2.322.0'
+2025-03-08T17:52:35.8270157Z ##[group]Operating System
+2025-03-08T17:52:35.8271110Z Ubuntu
+2025-03-08T17:52:35.8271707Z 24.04.2
+2025-03-08T17:52:35.8272241Z LTS
+2025-03-08T17:52:35.8272723Z ##[endgroup]
+2025-03-08T17:52:35.8273258Z ##[group]Runner Image
+2025-03-08T17:52:35.8273884Z Image: ubuntu-24.04
+2025-03-08T17:52:35.8274419Z Version: 20250302.1.0
+2025-03-08T17:52:35.8275559Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250302.1/images/ubuntu/Ubuntu2404-Readme.md
+2025-03-08T17:52:35.8276955Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250302.1
+2025-03-08T17:52:35.8277838Z ##[endgroup]
+2025-03-08T17:52:35.8278404Z ##[group]Runner Image Provisioner
+2025-03-08T17:52:35.8278996Z 2.0.422.1
+2025-03-08T17:52:35.8279471Z ##[endgroup]
+2025-03-08T17:52:35.8280628Z ##[group]GITHUB_TOKEN Permissions
+2025-03-08T17:52:35.8282921Z Contents: read
+2025-03-08T17:52:35.8283579Z Metadata: read
+2025-03-08T17:52:35.8284297Z ##[endgroup]
+2025-03-08T17:52:35.8287440Z Secret source: None
+2025-03-08T17:52:35.8288450Z Prepare workflow directory
+2025-03-08T17:52:35.8596647Z Prepare all required actions
+2025-03-08T17:52:35.8633246Z Getting action download info
+2025-03-08T17:52:36.0980733Z Download action repository 'actions/checkout@v4' (SHA:11bd71901bbe5b1630ceea73d27597364c9af683)
+2025-03-08T17:52:36.1790111Z Download action repository 'DeterminateSystems/nix-installer-action@main' (SHA:a48face58194521af687ce7df4c802b1b558e743)
+2025-03-08T17:52:36.6765944Z Download action repository 'actions/setup-go@v4' (SHA:93397bea11091df50f3d7e59dc26a7711a8bcfbe)
+2025-03-08T17:52:37.2668632Z Complete job name: Run tests
+2025-03-08T17:52:37.3406272Z ##[group]Run actions/checkout@v4
+2025-03-08T17:52:37.3407221Z with:
+2025-03-08T17:52:37.3407695Z   repository: danielmiessler/fabric
+2025-03-08T17:52:37.3408441Z   token: ***
+2025-03-08T17:52:37.3408885Z   ssh-strict: true
+2025-03-08T17:52:37.3409331Z   ssh-user: git
+2025-03-08T17:52:37.3409782Z   persist-credentials: true
+2025-03-08T17:52:37.3410302Z   clean: true
+2025-03-08T17:52:37.3410933Z   sparse-checkout-cone-mode: true
+2025-03-08T17:52:37.3411480Z   fetch-depth: 1
+2025-03-08T17:52:37.3411924Z   fetch-tags: false
+2025-03-08T17:52:37.3412360Z   show-progress: true
+2025-03-08T17:52:37.3412819Z   lfs: false
+2025-03-08T17:52:37.3413258Z   submodules: false
+2025-03-08T17:52:37.3413702Z   set-safe-directory: true
+2025-03-08T17:52:37.3414484Z ##[endgroup]
+2025-03-08T17:52:37.5100099Z Syncing repository: danielmiessler/fabric
+2025-03-08T17:52:37.5102201Z ##[group]Getting Git version info
+2025-03-08T17:52:37.5103046Z Working directory is '/home/runner/work/fabric/fabric'
+2025-03-08T17:52:37.5105037Z [command]/usr/bin/git version
+2025-03-08T17:52:37.5147932Z git version 2.48.1
+2025-03-08T17:52:37.5187066Z ##[endgroup]
+2025-03-08T17:52:37.5201718Z Temporarily overriding HOME='/home/runner/work/_temp/56588b1e-26f3-41db-ba63-614a0caf359f' before making global git config changes
+2025-03-08T17:52:37.5204466Z Adding repository directory to the temporary git global config as a safe directory
+2025-03-08T17:52:37.5208671Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/fabric/fabric
+2025-03-08T17:52:37.5245241Z Deleting the contents of '/home/runner/work/fabric/fabric'
+2025-03-08T17:52:37.5248935Z ##[group]Initializing the repository
+2025-03-08T17:52:37.5253248Z [command]/usr/bin/git init /home/runner/work/fabric/fabric
+2025-03-08T17:52:37.5306327Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-03-08T17:52:37.5307965Z hint: is subject to change. To configure the initial branch name to use in all
+2025-03-08T17:52:37.5309797Z hint: of your new repositories, which will suppress this warning, call:
+2025-03-08T17:52:37.5311270Z hint:
+2025-03-08T17:52:37.5312152Z hint: 	git config --global init.defaultBranch <name>
+2025-03-08T17:52:37.5313171Z hint:
+2025-03-08T17:52:37.5313779Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-03-08T17:52:37.5314989Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-03-08T17:52:37.5315727Z hint:
+2025-03-08T17:52:37.5316233Z hint: 	git branch -m <name>
+2025-03-08T17:52:37.5317436Z Initialized empty Git repository in /home/runner/work/fabric/fabric/.git/
+2025-03-08T17:52:37.5322579Z [command]/usr/bin/git remote add origin https://github.com/danielmiessler/fabric
+2025-03-08T17:52:37.5353786Z ##[endgroup]
+2025-03-08T17:52:37.5355114Z ##[group]Disabling automatic garbage collection
+2025-03-08T17:52:37.5357429Z [command]/usr/bin/git config --local gc.auto 0
+2025-03-08T17:52:37.5386874Z ##[endgroup]
+2025-03-08T17:52:37.5393566Z ##[group]Setting up auth
+2025-03-08T17:52:37.5394422Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-03-08T17:52:37.5422750Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-03-08T17:52:37.5693841Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-03-08T17:52:37.5722969Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-03-08T17:52:37.5953307Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-03-08T17:52:37.6000934Z ##[endgroup]
+2025-03-08T17:52:37.6001850Z ##[group]Fetching the repository
+2025-03-08T17:52:37.6009753Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +67c76083f80beefe9e67eca06a630ee7af093e4b:refs/remotes/pull/1349/merge
+2025-03-08T17:52:39.1714700Z From https://github.com/danielmiessler/fabric
+2025-03-08T17:52:39.1717222Z  * [new ref]         67c76083f80beefe9e67eca06a630ee7af093e4b -> pull/1349/merge
+2025-03-08T17:52:39.1739432Z ##[endgroup]
+2025-03-08T17:52:39.1740667Z ##[group]Determining the checkout info
+2025-03-08T17:52:39.1742066Z ##[endgroup]
+2025-03-08T17:52:39.1748040Z [command]/usr/bin/git sparse-checkout disable
+2025-03-08T17:52:39.1787322Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-03-08T17:52:39.1816086Z ##[group]Checking out the ref
+2025-03-08T17:52:39.1820148Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/1349/merge
+2025-03-08T17:52:39.6457484Z Note: switching to 'refs/remotes/pull/1349/merge'.
+2025-03-08T17:52:39.6458195Z 
+2025-03-08T17:52:39.6458808Z You are in 'detached HEAD' state. You can look around, make experimental
+2025-03-08T17:52:39.6459958Z changes and commit them, and you can discard any commits you make in this
+2025-03-08T17:52:39.6461416Z state without impacting any branches by switching back to a branch.
+2025-03-08T17:52:39.6462085Z 
+2025-03-08T17:52:39.6462545Z If you want to create a new branch to retain commits you create, you may
+2025-03-08T17:52:39.6463551Z do so (now or later) by using -c with the switch command. Example:
+2025-03-08T17:52:39.6464158Z 
+2025-03-08T17:52:39.6464391Z   git switch -c <new-branch-name>
+2025-03-08T17:52:39.6464732Z 
+2025-03-08T17:52:39.6467881Z Or undo this operation with:
+2025-03-08T17:52:39.6471514Z 
+2025-03-08T17:52:39.6471729Z   git switch -
+2025-03-08T17:52:39.6472019Z 
+2025-03-08T17:52:39.6472419Z Turn off this advice by setting config variable advice.detachedHead to false
+2025-03-08T17:52:39.6472951Z 
+2025-03-08T17:52:39.6473547Z HEAD is now at 67c7608 Merge e28ba224b5a41fbd5b5874226440cdc55fdc7dcc into 0701b7d263586c6de377bf8ff8ac95a97ef07d52
+2025-03-08T17:52:39.6484117Z ##[endgroup]
+2025-03-08T17:52:39.6527672Z [command]/usr/bin/git log -1 --format=%H
+2025-03-08T17:52:39.6553699Z 67c76083f80beefe9e67eca06a630ee7af093e4b
+2025-03-08T17:52:39.6818558Z ##[group]Run DeterminateSystems/nix-installer-action@main
+2025-03-08T17:52:39.6818910Z with:
+2025-03-08T17:52:39.6819103Z   determinate: false
+2025-03-08T17:52:39.6819495Z   flakehub: false
+2025-03-08T17:52:39.6819694Z   force-docker-shim: false
+2025-03-08T17:52:39.6820054Z   github-token: ***
+2025-03-08T17:52:39.6820293Z   github-server-url: https://github.com
+2025-03-08T17:52:39.6820744Z   job-status: success
+2025-03-08T17:52:39.6820942Z   kvm: true
+2025-03-08T17:52:39.6821128Z   modify-profile: true
+2025-03-08T17:52:39.6821338Z   reinstall: false
+2025-03-08T17:52:39.6821524Z   start-daemon: true
+2025-03-08T17:52:39.6821748Z   diagnostic-endpoint: -
+2025-03-08T17:52:39.6821974Z   trust-runner-user: true
+2025-03-08T17:52:39.6822200Z   _internal-strict-mode: false
+2025-03-08T17:52:39.6822426Z ##[endgroup]
+2025-03-08T17:52:40.4153073Z ##[group]Configuring KVM
+2025-03-08T17:52:40.4632602Z ##[endgroup]
+2025-03-08T17:52:40.4633384Z [32m Accelerated KVM is enabled [33m⚡️
+2025-03-08T17:52:40.4634579Z ##[group]Installing Nix
+2025-03-08T17:52:40.4637067Z ##[group]Downloading nix-installer for x86_64-linux
+2025-03-08T17:52:40.4638464Z Fetching from https://us-east-2.swim.install.determinate.systems/nix-installer/stable/x86_64-linux
+2025-03-08T17:52:42.3723781Z Received 0 of 36785232 (0.0%), 0.0 MBs/sec
+2025-03-08T17:52:42.7715237Z Cache Size: ~35 MB (36785232 B)
+2025-03-08T17:52:42.7740923Z [command]/usr/bin/tar -xf /home/runner/work/_temp/24c95528-79f1-45c1-8e66-a38109b3ca77/cache.tzst -P -C /home/runner/work/_temp/nix-installer-587c32c3-f1e6-4075-ae75-63a872e33552 --use-compress-program unzstd
+2025-03-08T17:52:42.8687610Z Cache restored successfully
+2025-03-08T17:52:42.8768618Z ##[endgroup]
+2025-03-08T17:52:42.8783181Z [command]/home/runner/work/_temp/nix-installer-587c32c3-f1e6-4075-ae75-63a872e33552/nix-installer install linux
+2025-03-08T17:52:42.8845738Z  INFO nix-installer v3.0.0
+2025-03-08T17:52:43.2259719Z [2m[33m`nix-installer` needs to run as `root`, attempting to escalate now via `sudo`...[39m[0m
+2025-03-08T17:52:43.2371693Z  INFO nix-installer v3.0.0
+2025-03-08T17:52:43.3725932Z Received 36785232 of 36785232 (100.0%), 17.5 MBs/sec
+2025-03-08T17:52:43.5998656Z  INFO Step: Create directory `/nix`
+2025-03-08T17:52:43.5999675Z  INFO Step: Provision Nix
+2025-03-08T17:52:45.5694127Z  INFO Step: Create build users (UID 30001-30032) and group (GID 30000)
+2025-03-08T17:52:46.2556709Z  INFO Step: Configure Nix
+2025-03-08T17:52:46.4960084Z  INFO Step: Create directory `/etc/tmpfiles.d`
+2025-03-08T17:52:46.4960871Z  INFO Step: Configure upstream Nix daemon service
+2025-03-08T17:52:47.0193146Z  INFO Step: Remove directory `/nix/temp-install-dir`
+2025-03-08T17:52:47.2036348Z [1m[32mNix was installed successfully![39m[0m
+2025-03-08T17:52:47.2037274Z To get started using Nix, open a new shell or run `[1m. /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh[0m`
+2025-03-08T17:52:47.2037833Z 
+2025-03-08T17:52:47.2685811Z ##[endgroup]
+2025-03-08T17:52:47.5372439Z ##[group]Run actions/setup-go@v4
+2025-03-08T17:52:47.5372704Z with:
+2025-03-08T17:52:47.5372890Z   go-version-file: ./go.mod
+2025-03-08T17:52:47.5373108Z   check-latest: false
+2025-03-08T17:52:47.5373423Z   token: ***
+2025-03-08T17:52:47.5373618Z   cache: true
+2025-03-08T17:52:47.5373795Z env:
+2025-03-08T17:52:47.5373969Z   DETERMINATE_NIX_KVM: 1
+2025-03-08T17:52:47.5374180Z ##[endgroup]
+2025-03-08T17:52:47.6537004Z Setup go version spec 1.23.4
+2025-03-08T17:52:47.6550383Z Attempting to download 1.23.4...
+2025-03-08T17:52:48.1893032Z matching 1.23.4...
+2025-03-08T17:52:48.1933392Z Acquiring 1.23.4 from https://github.com/actions/go-versions/releases/download/1.23.4-12152391001/go-1.23.4-linux-x64.tar.gz
+2025-03-08T17:52:49.1159800Z Extracting Go...
+2025-03-08T17:52:49.1271703Z [command]/usr/bin/tar xz --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/e65ed5e4-85b1-4426-81f8-dd4afb54bd3a -f /home/runner/work/_temp/86677a43-d407-49fc-88e2-70f3d47dd286
+2025-03-08T17:52:50.7715551Z Successfully extracted go to /home/runner/work/_temp/e65ed5e4-85b1-4426-81f8-dd4afb54bd3a
+2025-03-08T17:52:50.7716338Z Adding to the cache ...
+2025-03-08T17:52:55.2657035Z Successfully cached go to /opt/hostedtoolcache/go/1.23.4/x64
+2025-03-08T17:52:55.2659097Z Added go to the path
+2025-03-08T17:52:55.2661122Z Successfully set up Go version 1.23.4
+2025-03-08T17:52:55.2867511Z [command]/opt/hostedtoolcache/go/1.23.4/x64/bin/go env GOMODCACHE
+2025-03-08T17:52:55.2896503Z [command]/opt/hostedtoolcache/go/1.23.4/x64/bin/go env GOCACHE
+2025-03-08T17:52:55.2928125Z /home/runner/go/pkg/mod
+2025-03-08T17:52:55.2943168Z /home/runner/.cache/go-build
+2025-03-08T17:52:56.9188267Z Received 4194304 of 255324500 (1.6%), 4.0 MBs/sec
+2025-03-08T17:52:57.9199775Z Received 130023424 of 255324500 (50.9%), 62.0 MBs/sec
+2025-03-08T17:52:58.8783907Z Received 255324500 of 255324500 (100.0%), 82.3 MBs/sec
+2025-03-08T17:52:58.8785978Z Cache Size: ~243 MB (255324500 B)
+2025-03-08T17:52:58.8892621Z [command]/usr/bin/tar -xf /home/runner/work/_temp/461e187d-767b-4f97-8d93-435749aa017d/cache.tzst -P -C /home/runner/work/fabric/fabric --use-compress-program unzstd
+2025-03-08T17:53:01.0598977Z Cache restored successfully
+2025-03-08T17:53:01.1568187Z Cache restored from key: setup-go-Linux-ubuntu24-go-1.23.4-fac585862d01f26df46b1a74f1b7296c08f174b2f2ad748bf4c9446a7f8e2b62
+2025-03-08T17:53:01.1589575Z go version go1.23.4 linux/amd64
+2025-03-08T17:53:01.1589763Z 
+2025-03-08T17:53:01.1590036Z ##[group]go env
+2025-03-08T17:53:01.1706691Z GO111MODULE=''
+2025-03-08T17:53:01.1707081Z GOARCH='amd64'
+2025-03-08T17:53:01.1707424Z GOBIN=''
+2025-03-08T17:53:01.1707770Z GOCACHE='/home/runner/.cache/go-build'
+2025-03-08T17:53:01.1708239Z GOENV='/home/runner/.config/go/env'
+2025-03-08T17:53:01.1708787Z GOEXE=''
+2025-03-08T17:53:01.1709089Z GOEXPERIMENT=''
+2025-03-08T17:53:01.1709402Z GOFLAGS=''
+2025-03-08T17:53:01.1709706Z GOHOSTARCH='amd64'
+2025-03-08T17:53:01.1710029Z GOHOSTOS='linux'
+2025-03-08T17:53:01.1710234Z GOINSECURE=''
+2025-03-08T17:53:01.1710644Z GOMODCACHE='/home/runner/go/pkg/mod'
+2025-03-08T17:53:01.1710926Z GONOPROXY=''
+2025-03-08T17:53:01.1711123Z GONOSUMDB=''
+2025-03-08T17:53:01.1711307Z GOOS='linux'
+2025-03-08T17:53:01.1711505Z GOPATH='/home/runner/go'
+2025-03-08T17:53:01.1711737Z GOPRIVATE=''
+2025-03-08T17:53:01.1711979Z GOPROXY='https://proxy.golang.org,direct'
+2025-03-08T17:53:01.1712320Z GOROOT='/opt/hostedtoolcache/go/1.23.4/x64'
+2025-03-08T17:53:01.1712612Z GOSUMDB='sum.golang.org'
+2025-03-08T17:53:01.1712835Z GOTMPDIR=''
+2025-03-08T17:53:01.1713035Z GOTOOLCHAIN='auto'
+2025-03-08T17:53:01.1713354Z GOTOOLDIR='/opt/hostedtoolcache/go/1.23.4/x64/pkg/tool/linux_amd64'
+2025-03-08T17:53:01.1713705Z GOVCS=''
+2025-03-08T17:53:01.1713892Z GOVERSION='go1.23.4'
+2025-03-08T17:53:01.1714109Z GODEBUG=''
+2025-03-08T17:53:01.1714299Z GOTELEMETRY='local'
+2025-03-08T17:53:01.1714559Z GOTELEMETRYDIR='/home/runner/.config/go/telemetry'
+2025-03-08T17:53:01.1714853Z GCCGO='gccgo'
+2025-03-08T17:53:01.1715043Z GOAMD64='v1'
+2025-03-08T17:53:01.1715512Z AR='ar'
+2025-03-08T17:53:01.1715704Z CC='gcc'
+2025-03-08T17:53:01.1715880Z CXX='g++'
+2025-03-08T17:53:01.1716058Z CGO_ENABLED='1'
+2025-03-08T17:53:01.1716307Z GOMOD='/home/runner/work/fabric/fabric/go.mod'
+2025-03-08T17:53:01.1716589Z GOWORK=''
+2025-03-08T17:53:01.1716780Z CGO_CFLAGS='-O2 -g'
+2025-03-08T17:53:01.1717059Z CGO_CPPFLAGS=''
+2025-03-08T17:53:01.1717331Z CGO_CXXFLAGS='-O2 -g'
+2025-03-08T17:53:01.1717550Z CGO_FFLAGS='-O2 -g'
+2025-03-08T17:53:01.1717753Z CGO_LDFLAGS='-O2 -g'
+2025-03-08T17:53:01.1717973Z PKG_CONFIG='pkg-config'
+2025-03-08T17:53:01.1718642Z GOGCCFLAGS='-fPIC -m64 -pthread -Wl,--no-gc-sections -fmessage-length=0 -ffile-prefix-map=/tmp/go-build334337570=/tmp/go-build -gno-record-gcc-switches'
+2025-03-08T17:53:01.1719199Z 
+2025-03-08T17:53:01.1719471Z ##[endgroup]
+2025-03-08T17:53:01.1862336Z ##[group]Run go test -v ./...
+2025-03-08T17:53:01.1862692Z [36;1mgo test -v ./...[0m
+2025-03-08T17:53:01.1914408Z shell: /usr/bin/bash -e {0}
+2025-03-08T17:53:01.1914663Z env:
+2025-03-08T17:53:01.1914848Z   DETERMINATE_NIX_KVM: 1
+2025-03-08T17:53:01.1915070Z ##[endgroup]
+2025-03-08T17:53:02.3502819Z ?   	github.com/danielmiessler/fabric	[no test files]
+2025-03-08T17:53:03.2321329Z === RUN   TestCli
+2025-03-08T17:53:03.2324453Z     cli_test.go:13: Skipping test for now, collision with flag -t
+2025-03-08T17:53:03.2325060Z --- SKIP: TestCli (0.00s)
+2025-03-08T17:53:03.2325444Z === RUN   TestInit
+2025-03-08T17:53:03.2325802Z --- PASS: TestInit (0.00s)
+2025-03-08T17:53:03.2326194Z === RUN   TestReadStdin
+2025-03-08T17:53:03.2326583Z --- PASS: TestReadStdin (0.00s)
+2025-03-08T17:53:03.2327021Z === RUN   TestBuildChatOptions
+2025-03-08T17:53:03.2327472Z --- PASS: TestBuildChatOptions (0.00s)
+2025-03-08T17:53:03.2327987Z === RUN   TestBuildChatOptionsDefaultSeed
+2025-03-08T17:53:03.2328607Z --- PASS: TestBuildChatOptionsDefaultSeed (0.00s)
+2025-03-08T17:53:03.2329149Z === RUN   TestInitWithYAMLConfig
+2025-03-08T17:53:03.2330896Z === RUN   TestInitWithYAMLConfig/Load_YAML_config
+2025-03-08T17:53:03.2331473Z === RUN   TestInitWithYAMLConfig/CLI_overrides_YAML
+2025-03-08T17:53:03.2332049Z === RUN   TestInitWithYAMLConfig/Invalid_YAML_config
+2025-03-08T17:53:03.2332606Z --- PASS: TestInitWithYAMLConfig (0.00s)
+2025-03-08T17:53:03.2333305Z     --- PASS: TestInitWithYAMLConfig/Load_YAML_config (0.00s)
+2025-03-08T17:53:03.2334094Z     --- PASS: TestInitWithYAMLConfig/CLI_overrides_YAML (0.00s)
+2025-03-08T17:53:03.2334883Z     --- PASS: TestInitWithYAMLConfig/Invalid_YAML_config (0.00s)
+2025-03-08T17:53:03.2335461Z === RUN   TestCopyToClipboard
+2025-03-08T17:53:03.2336183Z     output_test.go:9: skipping test, because of docker env. in ci.
+2025-03-08T17:53:03.2336783Z --- SKIP: TestCopyToClipboard (0.00s)
+2025-03-08T17:53:03.2337251Z === RUN   TestCreateOutputFile
+2025-03-08T17:53:03.2337530Z 
+2025-03-08T17:53:03.2337552Z 
+2025-03-08T17:53:03.2337731Z ... written to test_output.txt
+2025-03-08T17:53:03.2338191Z --- PASS: TestCreateOutputFile (0.00s)
+2025-03-08T17:53:03.2338638Z PASS
+2025-03-08T17:53:03.2339096Z ok  	github.com/danielmiessler/fabric/cli	0.011s
+2025-03-08T17:53:03.2339632Z === RUN   TestNormalizeMessages
+2025-03-08T17:53:03.2340114Z --- PASS: TestNormalizeMessages (0.00s)
+2025-03-08T17:53:03.2340743Z PASS
+2025-03-08T17:53:03.2341180Z ok  	github.com/danielmiessler/fabric/common	(cached)
+2025-03-08T17:53:04.0638903Z === RUN   TestSaveEnvFile
+2025-03-08T17:53:04.0639466Z --- PASS: TestSaveEnvFile (0.00s)
+2025-03-08T17:53:04.0639884Z PASS
+2025-03-08T17:53:04.0640283Z ok  	github.com/danielmiessler/fabric/core	0.009s
+2025-03-08T17:53:04.0641068Z === RUN   TestConfigurable_AddSetting
+2025-03-08T17:53:04.0641566Z --- PASS: TestConfigurable_AddSetting (0.00s)
+2025-03-08T17:53:04.0642108Z === RUN   TestConfigurable_Configure
+2025-03-08T17:53:04.0642629Z --- PASS: TestConfigurable_Configure (0.00s)
+2025-03-08T17:53:04.0643114Z === RUN   TestConfigurable_Setup
+2025-03-08T17:53:04.0643374Z 
+2025-03-08T17:53:04.0643535Z [TestConfigurable]
+2025-03-08T17:53:04.0643934Z --- PASS: TestConfigurable_Setup (0.00s)
+2025-03-08T17:53:04.0644399Z === RUN   TestSetting_IsValid
+2025-03-08T17:53:04.0644817Z --- PASS: TestSetting_IsValid (0.00s)
+2025-03-08T17:53:04.0645287Z === RUN   TestSetting_Configure
+2025-03-08T17:53:04.0645722Z --- PASS: TestSetting_Configure (0.00s)
+2025-03-08T17:53:04.0646222Z === RUN   TestSetting_FillEnvFileContent
+2025-03-08T17:53:04.0646727Z --- PASS: TestSetting_FillEnvFileContent (0.00s)
+2025-03-08T17:53:04.0647222Z === RUN   TestSetting_Print
+2025-03-08T17:53:04.0647629Z --- PASS: TestSetting_Print (0.00s)
+2025-03-08T17:53:04.0648064Z === RUN   TestSetupQuestion_Ask
+2025-03-08T17:53:04.0648324Z 
+2025-03-08T17:53:04.0648612Z [TestConfigurable] Enter test setting: (leave empty to skip):
+2025-03-08T17:53:04.0649209Z --- PASS: TestSetupQuestion_Ask (0.00s)
+2025-03-08T17:53:04.0649979Z === RUN   TestSettings_IsConfigured
+2025-03-08T17:53:04.0650716Z --- PASS: TestSettings_IsConfigured (0.00s)
+2025-03-08T17:53:04.0651223Z === RUN   TestSettings_Configure
+2025-03-08T17:53:04.0651679Z --- PASS: TestSettings_Configure (0.00s)
+2025-03-08T17:53:04.0652176Z === RUN   TestSettings_FillEnvFileContent
+2025-03-08T17:53:04.0652704Z --- PASS: TestSettings_FillEnvFileContent (0.00s)
+2025-03-08T17:53:04.0653167Z PASS
+2025-03-08T17:53:04.0653565Z ok  	github.com/danielmiessler/fabric/plugins	(cached)
+2025-03-08T17:53:04.0654335Z === RUN   TestNewVendorsModels
+2025-03-08T17:53:04.0654782Z --- PASS: TestNewVendorsModels (0.00s)
+2025-03-08T17:53:04.0655260Z === RUN   TestFindVendorsByModelFirst
+2025-03-08T17:53:04.0655766Z --- PASS: TestFindVendorsByModelFirst (0.00s)
+2025-03-08T17:53:04.0656279Z === RUN   TestFindVendorsByModel
+2025-03-08T17:53:04.0656745Z --- PASS: TestFindVendorsByModel (0.00s)
+2025-03-08T17:53:04.0657182Z PASS
+2025-03-08T17:53:04.0657620Z ok  	github.com/danielmiessler/fabric/plugins/ai	(cached)
+2025-03-08T17:53:04.0658218Z === RUN   TestNewClient_DefaultInitialization
+2025-03-08T17:53:04.0658790Z --- PASS: TestNewClient_DefaultInitialization (0.00s)
+2025-03-08T17:53:04.0660304Z === RUN   TestClientListModels
+2025-03-08T17:53:04.0660992Z --- PASS: TestClientListModels (0.00s)
+2025-03-08T17:53:04.0661558Z === RUN   TestClient_ListModels_ReturnsCorrectModels
+2025-03-08T17:53:04.0661981Z --- PASS: TestClient_ListModels_ReturnsCorrectModels (0.00s)
+2025-03-08T17:53:04.0662296Z PASS
+2025-03-08T17:53:04.0662586Z ok  	github.com/danielmiessler/fabric/plugins/ai/anthropic	(cached)
+2025-03-08T17:53:04.2789636Z ?   	github.com/danielmiessler/fabric/plugins/ai/exolab	[no test files]
+2025-03-08T17:53:04.2845495Z === RUN   TestNewClientInitialization
+2025-03-08T17:53:04.2852653Z --- PASS: TestNewClientInitialization (0.00s)
+2025-03-08T17:53:04.2853509Z === RUN   TestClientConfigure
+2025-03-08T17:53:04.2853965Z --- PASS: TestClientConfigure (0.00s)
+2025-03-08T17:53:04.2854978Z === RUN   TestListModels
+2025-03-08T17:53:04.2855670Z --- PASS: TestListModels (0.00s)
+2025-03-08T17:53:04.2856082Z PASS
+2025-03-08T17:53:04.2856821Z ok  	github.com/danielmiessler/fabric/plugins/ai/azure	0.004s
+2025-03-08T17:53:04.2857758Z === RUN   TestNewClient_EmbeddedClientNotNil
+2025-03-08T17:53:04.2858585Z --- PASS: TestNewClient_EmbeddedClientNotNil (0.00s)
+2025-03-08T17:53:04.2859323Z PASS
+2025-03-08T17:53:04.2860059Z ok  	github.com/danielmiessler/fabric/plugins/ai/deepseek	(cached)
+2025-03-08T17:53:04.2861439Z === RUN   TestListModels_ReturnsExpectedModel
+2025-03-08T17:53:04.2862279Z --- PASS: TestListModels_ReturnsExpectedModel (0.00s)
+2025-03-08T17:53:04.2863052Z === RUN   TestSetup_ReturnsNil
+2025-03-08T17:53:04.2863497Z --- PASS: TestSetup_ReturnsNil (0.00s)
+2025-03-08T17:53:04.2864248Z === RUN   TestSendStream_SendsMessages
+2025-03-08T17:53:04.2865003Z --- PASS: TestSendStream_SendsMessages (0.00s)
+2025-03-08T17:53:04.2865694Z PASS
+2025-03-08T17:53:04.2866413Z ok  	github.com/danielmiessler/fabric/plugins/ai/dryrun	(cached)
+2025-03-08T17:53:04.3127114Z ?   	github.com/danielmiessler/fabric/plugins/ai/gemini_openai	[no test files]
+2025-03-08T17:53:04.3128297Z ?   	github.com/danielmiessler/fabric/plugins/ai/litellm	[no test files]
+2025-03-08T17:53:04.3128903Z ?   	github.com/danielmiessler/fabric/plugins/ai/lmstudio	[no test files]
+2025-03-08T17:53:04.3129520Z ?   	github.com/danielmiessler/fabric/plugins/ai/mistral	[no test files]
+2025-03-08T17:53:04.3130004Z === RUN   TestBuildModelNameSimple
+2025-03-08T17:53:04.3130349Z --- PASS: TestBuildModelNameSimple (0.00s)
+2025-03-08T17:53:04.3130857Z === RUN   TestExtractText
+2025-03-08T17:53:04.3131110Z --- PASS: TestExtractText (0.00s)
+2025-03-08T17:53:04.3131395Z PASS
+2025-03-08T17:53:04.3131852Z ok  	github.com/danielmiessler/fabric/plugins/ai/gemini	(cached)
+2025-03-08T17:53:04.3132463Z === RUN   TestNewClientEmbeddedClientNotNil
+2025-03-08T17:53:04.3132997Z --- PASS: TestNewClientEmbeddedClientNotNil (0.00s)
+2025-03-08T17:53:04.3133287Z PASS
+2025-03-08T17:53:04.3133914Z ok  	github.com/danielmiessler/fabric/plugins/ai/groq	(cached)
+2025-03-08T17:53:04.3134683Z ?   	github.com/danielmiessler/fabric/plugins/ai/ollama	[no test files]
+2025-03-08T17:53:04.3338217Z ?   	github.com/danielmiessler/fabric/plugins/ai/siliconcloud	[no test files]
+2025-03-08T17:53:04.3340749Z === RUN   TestBuildChatCompletionRequestPinSeed
+2025-03-08T17:53:04.3341592Z --- PASS: TestBuildChatCompletionRequestPinSeed (0.00s)
+2025-03-08T17:53:04.3342453Z === RUN   TestBuildChatCompletionRequestNilSeed
+2025-03-08T17:53:04.3343610Z --- PASS: TestBuildChatCompletionRequestNilSeed (0.00s)
+2025-03-08T17:53:04.3344356Z PASS
+2025-03-08T17:53:04.3345009Z ok  	github.com/danielmiessler/fabric/plugins/ai/openai	(cached)
+2025-03-08T17:53:04.3345723Z testing: warning: no tests to run
+2025-03-08T17:53:04.3346102Z PASS
+2025-03-08T17:53:04.3346947Z ok  	github.com/danielmiessler/fabric/plugins/ai/openrouter	(cached) [no tests to run]
+2025-03-08T17:53:04.3347924Z ?   	github.com/danielmiessler/fabric/plugins/db	[no test files]
+2025-03-08T17:53:04.3724114Z === RUN   TestContexts_GetContext
+2025-03-08T17:53:04.3727679Z --- PASS: TestContexts_GetContext (0.00s)
+2025-03-08T17:53:04.3729314Z === RUN   TestDb_Configure
+2025-03-08T17:53:04.3730666Z --- PASS: TestDb_Configure (0.00s)
+2025-03-08T17:53:04.3731045Z === RUN   TestDb_LoadEnvFile
+2025-03-08T17:53:04.3731418Z --- PASS: TestDb_LoadEnvFile (0.00s)
+2025-03-08T17:53:04.3731868Z === RUN   TestDb_SaveEnv
+2025-03-08T17:53:04.3732263Z --- PASS: TestDb_SaveEnv (0.00s)
+2025-03-08T17:53:04.3732705Z === RUN   TestApplyVariables
+2025-03-08T17:53:04.3733258Z === RUN   TestApplyVariables/pattern_with_explicit_input_placement
+2025-03-08T17:53:04.3734083Z === RUN   TestApplyVariables/pattern_without_input_variable_gets_input_appended
+2025-03-08T17:53:04.3734772Z --- PASS: TestApplyVariables (0.00s)
+2025-03-08T17:53:04.3735571Z     --- PASS: TestApplyVariables/pattern_with_explicit_input_placement (0.00s)
+2025-03-08T17:53:04.3736709Z     --- PASS: TestApplyVariables/pattern_without_input_variable_gets_input_appended (0.00s)
+2025-03-08T17:53:04.3737566Z === RUN   TestGetApplyVariables
+2025-03-08T17:53:04.3738191Z === RUN   TestGetApplyVariables/basic_pattern_with_variables_and_input
+2025-03-08T17:53:04.3738923Z === RUN   TestGetApplyVariables/pattern_with_missing_variable
+2025-03-08T17:53:04.3739560Z === RUN   TestGetApplyVariables/non-existent_pattern
+2025-03-08T17:53:04.3740112Z --- PASS: TestGetApplyVariables (0.00s)
+2025-03-08T17:53:04.3741644Z     --- PASS: TestGetApplyVariables/basic_pattern_with_variables_and_input (0.00s)
+2025-03-08T17:53:04.3743141Z     --- PASS: TestGetApplyVariables/pattern_with_missing_variable (0.00s)
+2025-03-08T17:53:04.3744579Z     --- PASS: TestGetApplyVariables/non-existent_pattern (0.00s)
+2025-03-08T17:53:04.3745398Z === RUN   TestSessions_GetOrCreateSession
+2025-03-08T17:53:04.3745894Z Creating new session: testSession
+2025-03-08T17:53:04.3746574Z --- PASS: TestSessions_GetOrCreateSession (0.00s)
+2025-03-08T17:53:04.3747267Z === RUN   TestSessions_SaveSession
+2025-03-08T17:53:04.3747915Z --- PASS: TestSessions_SaveSession (0.00s)
+2025-03-08T17:53:04.3748383Z === RUN   TestStorage_SaveAndLoad
+2025-03-08T17:53:04.3749001Z --- PASS: TestStorage_SaveAndLoad (0.00s)
+2025-03-08T17:53:04.3749678Z === RUN   TestStorage_Exists
+2025-03-08T17:53:04.3750262Z --- PASS: TestStorage_Exists (0.00s)
+2025-03-08T17:53:04.3751586Z === RUN   TestStorage_Delete
+2025-03-08T17:53:04.3752213Z --- PASS: TestStorage_Delete (0.00s)
+2025-03-08T17:53:04.3752645Z PASS
+2025-03-08T17:53:04.3753276Z ok  	github.com/danielmiessler/fabric/plugins/db/fsdb	(cached)
+2025-03-08T17:53:04.5386254Z ?   	github.com/danielmiessler/fabric/plugins/tools	[no test files]
+2025-03-08T17:53:04.5388340Z ?   	github.com/danielmiessler/fabric/plugins/tools/jina	[no test files]
+2025-03-08T17:53:04.5389170Z ?   	github.com/danielmiessler/fabric/plugins/tools/lang	[no test files]
+2025-03-08T17:53:04.5492834Z ?   	github.com/danielmiessler/fabric/plugins/tools/to_pdf	[no test files]
+2025-03-08T17:53:04.5494045Z ?   	github.com/danielmiessler/fabric/plugins/tools/youtube	[no test files]
+2025-03-08T17:53:04.5494822Z ?   	github.com/danielmiessler/fabric/restapi	[no test files]
+2025-03-08T17:53:04.5893363Z === RUN   TestDateTimePlugin
+2025-03-08T17:53:04.5893908Z === RUN   TestDateTimePlugin/now_returns_RFC3339
+2025-03-08T17:53:04.5894449Z === RUN   TestDateTimePlugin/time_returns_HH:MM:SS
+2025-03-08T17:53:04.5895047Z === RUN   TestDateTimePlugin/unix_returns_timestamp
+2025-03-08T17:53:04.5896085Z === RUN   TestDateTimePlugin/today_returns_YYYY-MM-DD
+2025-03-08T17:53:04.5896633Z === RUN   TestDateTimePlugin/full_returns_long_date
+2025-03-08T17:53:04.5897263Z === RUN   TestDateTimePlugin/relative_positive_hours
+2025-03-08T17:53:04.5897684Z === RUN   TestDateTimePlugin/relative_negative_days
+2025-03-08T17:53:04.5898055Z === RUN   TestDateTimePlugin/invalid_operation
+2025-03-08T17:53:04.5898425Z === RUN   TestDateTimePlugin/empty_relative_value
+2025-03-08T17:53:04.5898812Z === RUN   TestDateTimePlugin/invalid_relative_format
+2025-03-08T17:53:04.5899203Z --- PASS: TestDateTimePlugin (0.00s)
+2025-03-08T17:53:04.5899695Z     --- PASS: TestDateTimePlugin/now_returns_RFC3339 (0.00s)
+2025-03-08T17:53:04.5900215Z     --- PASS: TestDateTimePlugin/time_returns_HH:MM:SS (0.00s)
+2025-03-08T17:53:04.5900995Z     --- PASS: TestDateTimePlugin/unix_returns_timestamp (0.00s)
+2025-03-08T17:53:04.5901534Z     --- PASS: TestDateTimePlugin/today_returns_YYYY-MM-DD (0.00s)
+2025-03-08T17:53:04.5902092Z     --- PASS: TestDateTimePlugin/full_returns_long_date (0.00s)
+2025-03-08T17:53:04.5902637Z     --- PASS: TestDateTimePlugin/relative_positive_hours (0.00s)
+2025-03-08T17:53:04.5903162Z     --- PASS: TestDateTimePlugin/relative_negative_days (0.00s)
+2025-03-08T17:53:04.5903656Z     --- PASS: TestDateTimePlugin/invalid_operation (0.00s)
+2025-03-08T17:53:04.5904159Z     --- PASS: TestDateTimePlugin/empty_relative_value (0.00s)
+2025-03-08T17:53:04.5904847Z     --- PASS: TestDateTimePlugin/invalid_relative_format (0.00s)
+2025-03-08T17:53:04.5905250Z === RUN   TestExtensionExecutor
+2025-03-08T17:53:04.5905577Z === RUN   TestExtensionExecutor/StdoutExecution
+2025-03-08T17:53:04.5906253Z Executing command: /usr/bin/sh -c /tmp/fabric-ext-executor-3421726543/test-script.sh stdout World
+2025-03-08T17:53:04.5906849Z === RUN   TestExtensionExecutor/FileExecution
+2025-03-08T17:53:04.5907222Z === RUN   TestExtensionExecutor/ExecutionErrors
+2025-03-08T17:53:04.5907781Z Executing command: /usr/bin/sh -c /tmp/fabric-ext-executor-3421726543/test-script.sh invalid test
+2025-03-08T17:53:04.5908333Z --- PASS: TestExtensionExecutor (0.01s)
+2025-03-08T17:53:04.5908787Z     --- PASS: TestExtensionExecutor/StdoutExecution (0.00s)
+2025-03-08T17:53:04.5909273Z     --- PASS: TestExtensionExecutor/FileExecution (0.00s)
+2025-03-08T17:53:04.5909756Z     --- PASS: TestExtensionExecutor/ExecutionErrors (0.00s)
+2025-03-08T17:53:04.5910146Z === RUN   TestFixedFileExtensionExecutor
+2025-03-08T17:53:04.5910728Z === RUN   TestFixedFileExtensionExecutor/BasicFixedFile
+2025-03-08T17:53:04.5911096Z === RUN   TestFixedFileExtensionExecutor/NoWorkDir
+2025-03-08T17:53:04.5911451Z === RUN   TestFixedFileExtensionExecutor/CleanupBehavior
+2025-03-08T17:53:04.5911799Z === RUN   TestFixedFileExtensionExecutor/ErrorCases
+2025-03-08T17:53:04.5912148Z === RUN   TestFixedFileExtensionExecutor/MissingOutputFile
+2025-03-08T17:53:04.5912497Z --- PASS: TestFixedFileExtensionExecutor (0.01s)
+2025-03-08T17:53:04.5913044Z     --- PASS: TestFixedFileExtensionExecutor/BasicFixedFile (0.00s)
+2025-03-08T17:53:04.5913520Z     --- PASS: TestFixedFileExtensionExecutor/NoWorkDir (0.00s)
+2025-03-08T17:53:04.5913989Z     --- PASS: TestFixedFileExtensionExecutor/CleanupBehavior (0.01s)
+2025-03-08T17:53:04.5914449Z     --- PASS: TestFixedFileExtensionExecutor/ErrorCases (0.00s)
+2025-03-08T17:53:04.5914924Z     --- PASS: TestFixedFileExtensionExecutor/MissingOutputFile (0.00s)
+2025-03-08T17:53:04.5915284Z === RUN   TestExtensionManager
+2025-03-08T17:53:04.5915556Z === RUN   TestExtensionManager/RegisterExtension
+2025-03-08T17:53:04.5916035Z Successfully registered extension:
+2025-03-08T17:53:04.5916293Z Name: test-extension
+2025-03-08T17:53:04.5916605Z   Executable: /tmp/fabric-ext-test-1954988920/test-script.sh
+2025-03-08T17:53:04.5916931Z   Type: executable
+2025-03-08T17:53:04.5917133Z   Timeout: 30s
+2025-03-08T17:53:04.5917350Z   Description: Test extension
+2025-03-08T17:53:04.5917580Z   Version: 1.0.0
+2025-03-08T17:53:04.5917786Z   Operations:
+2025-03-08T17:53:04.5917975Z     echo:
+2025-03-08T17:53:04.5918370Z       Command Template: {{executable}} echo {{1}}
+2025-03-08T17:53:04.5918675Z === RUN   TestExtensionManager/ListExtensions
+2025-03-08T17:53:04.5918949Z Extension: test-extension
+2025-03-08T17:53:04.5919172Z   Status: ENABLED
+2025-03-08T17:53:04.5919467Z   Executable: /tmp/fabric-ext-test-1954988920/test-script.sh
+2025-03-08T17:53:04.5919781Z   Type: executable
+2025-03-08T17:53:04.5919988Z   Timeout: 30s
+2025-03-08T17:53:04.5920199Z   Description: Test extension
+2025-03-08T17:53:04.5920708Z   Version: 1.0.0
+2025-03-08T17:53:04.5920917Z   Operations:
+2025-03-08T17:53:04.5921098Z     echo:
+2025-03-08T17:53:04.5921363Z       Command Template: {{executable}} echo {{1}}
+2025-03-08T17:53:04.5921550Z 
+2025-03-08T17:53:04.5921679Z === RUN   TestExtensionManager/ProcessExtension
+2025-03-08T17:53:04.5922134Z Executing command: /usr/bin/sh -c /tmp/fabric-ext-test-1954988920/test-script.sh echo World
+2025-03-08T17:53:04.5922584Z === RUN   TestExtensionManager/RemoveExtension
+2025-03-08T17:53:04.5922884Z --- PASS: TestExtensionManager (0.00s)
+2025-03-08T17:53:04.5923263Z     --- PASS: TestExtensionManager/RegisterExtension (0.00s)
+2025-03-08T17:53:04.5923670Z     --- PASS: TestExtensionManager/ListExtensions (0.00s)
+2025-03-08T17:53:04.5924076Z     --- PASS: TestExtensionManager/ProcessExtension (0.00s)
+2025-03-08T17:53:04.5924477Z     --- PASS: TestExtensionManager/RemoveExtension (0.00s)
+2025-03-08T17:53:04.5924787Z === RUN   TestExtensionManagerErrors
+2025-03-08T17:53:04.5925127Z === RUN   TestExtensionManagerErrors/RegisterNonexistentConfig
+2025-03-08T17:53:04.5925543Z === RUN   TestExtensionManagerErrors/ProcessNonexistentExtension
+2025-03-08T17:53:04.5925958Z === RUN   TestExtensionManagerErrors/RemoveNonexistentExtension
+2025-03-08T17:53:04.5926312Z --- PASS: TestExtensionManagerErrors (0.00s)
+2025-03-08T17:53:04.5926767Z     --- PASS: TestExtensionManagerErrors/RegisterNonexistentConfig (0.00s)
+2025-03-08T17:53:04.5927312Z     --- PASS: TestExtensionManagerErrors/ProcessNonexistentExtension (0.00s)
+2025-03-08T17:53:04.5927861Z     --- PASS: TestExtensionManagerErrors/RemoveNonexistentExtension (0.00s)
+2025-03-08T17:53:04.5928258Z === RUN   TestExtensionManagerWithInvalidConfig
+2025-03-08T17:53:04.5928630Z === RUN   TestExtensionManagerWithInvalidConfig/MissingExecutable
+2025-03-08T17:53:04.5929044Z === RUN   TestExtensionManagerWithInvalidConfig/InvalidTimeout
+2025-03-08T17:53:04.5929430Z === RUN   TestExtensionManagerWithInvalidConfig/EmptyName
+2025-03-08T17:53:04.5929808Z --- PASS: TestExtensionManagerWithInvalidConfig (0.00s)
+2025-03-08T17:53:04.5930307Z     --- PASS: TestExtensionManagerWithInvalidConfig/MissingExecutable (0.00s)
+2025-03-08T17:53:04.5931129Z     --- PASS: TestExtensionManagerWithInvalidConfig/InvalidTimeout (0.00s)
+2025-03-08T17:53:04.5931661Z     --- PASS: TestExtensionManagerWithInvalidConfig/EmptyName (0.00s)
+2025-03-08T17:53:04.5932017Z === RUN   TestRegistryPersistence
+2025-03-08T17:53:04.5932302Z === RUN   TestRegistryPersistence/SaveAndReload
+2025-03-08T17:53:04.5932623Z === RUN   TestRegistryPersistence/HashVerification
+2025-03-08T17:53:04.5932950Z --- PASS: TestRegistryPersistence (0.00s)
+2025-03-08T17:53:04.5933329Z     --- PASS: TestRegistryPersistence/SaveAndReload (0.00s)
+2025-03-08T17:53:04.5933755Z     --- PASS: TestRegistryPersistence/HashVerification (0.00s)
+2025-03-08T17:53:04.5934070Z === RUN   TestFetchPlugin
+2025-03-08T17:53:04.5934309Z === RUN   TestFetchPlugin/invalid_URL
+2025-03-08T17:53:04.5934576Z === RUN   TestFetchPlugin/malformed_URL
+2025-03-08T17:53:04.5934846Z --- PASS: TestFetchPlugin (0.00s)
+2025-03-08T17:53:04.5935318Z     --- PASS: TestFetchPlugin/invalid_URL (0.00s)
+2025-03-08T17:53:04.5935681Z     --- PASS: TestFetchPlugin/malformed_URL (0.00s)
+2025-03-08T17:53:04.5935961Z === RUN   TestFilePlugin
+2025-03-08T17:53:04.5936199Z === RUN   TestFilePlugin/read_file
+2025-03-08T17:53:04.5936454Z === RUN   TestFilePlugin/tail_file
+2025-03-08T17:53:04.5936700Z === RUN   TestFilePlugin/exists_true
+2025-03-08T17:53:04.5936961Z === RUN   TestFilePlugin/exists_false
+2025-03-08T17:53:04.5937326Z === RUN   TestFilePlugin/size
+2025-03-08T17:53:04.5937567Z === RUN   TestFilePlugin/modified
+2025-03-08T17:53:04.5937829Z === RUN   TestFilePlugin/read_non-existent
+2025-03-08T17:53:04.5938111Z === RUN   TestFilePlugin/invalid_operation
+2025-03-08T17:53:04.5938436Z === RUN   TestFilePlugin/path_traversal_attempt
+2025-03-08T17:53:04.5938734Z === RUN   TestFilePlugin/file_too_large
+2025-03-08T17:53:04.5939011Z === RUN   TestFilePlugin/invalid_tail_format
+2025-03-08T17:53:04.5939290Z === RUN   TestFilePlugin/invalid_tail_count
+2025-03-08T17:53:04.5939567Z --- PASS: TestFilePlugin (0.00s)
+2025-03-08T17:53:04.5939881Z     --- PASS: TestFilePlugin/read_file (0.00s)
+2025-03-08T17:53:04.5940207Z     --- PASS: TestFilePlugin/tail_file (0.00s)
+2025-03-08T17:53:04.5940761Z     --- PASS: TestFilePlugin/exists_true (0.00s)
+2025-03-08T17:53:04.5941106Z     --- PASS: TestFilePlugin/exists_false (0.00s)
+2025-03-08T17:53:04.5941426Z     --- PASS: TestFilePlugin/size (0.00s)
+2025-03-08T17:53:04.5941746Z     --- PASS: TestFilePlugin/modified (0.00s)
+2025-03-08T17:53:04.5942098Z     --- PASS: TestFilePlugin/read_non-existent (0.00s)
+2025-03-08T17:53:04.5942470Z     --- PASS: TestFilePlugin/invalid_operation (0.00s)
+2025-03-08T17:53:04.5942854Z     --- PASS: TestFilePlugin/path_traversal_attempt (0.00s)
+2025-03-08T17:53:04.5943226Z     --- PASS: TestFilePlugin/file_too_large (0.00s)
+2025-03-08T17:53:04.5943587Z     --- PASS: TestFilePlugin/invalid_tail_format (0.00s)
+2025-03-08T17:53:04.5943956Z     --- PASS: TestFilePlugin/invalid_tail_count (0.00s)
+2025-03-08T17:53:04.5944241Z === RUN   TestComputeHash
+2025-03-08T17:53:04.5944475Z === RUN   TestComputeHash/valid_file
+2025-03-08T17:53:04.5944743Z === RUN   TestComputeHash/nonexistent_file
+2025-03-08T17:53:04.5945010Z --- PASS: TestComputeHash (0.00s)
+2025-03-08T17:53:04.5945326Z     --- PASS: TestComputeHash/valid_file (0.00s)
+2025-03-08T17:53:04.5945700Z     --- PASS: TestComputeHash/nonexistent_file (0.00s)
+2025-03-08T17:53:04.5945996Z === RUN   TestComputeStringHash
+2025-03-08T17:53:04.5946278Z === RUN   TestComputeStringHash/empty_string
+2025-03-08T17:53:04.5946580Z === RUN   TestComputeStringHash/simple_string
+2025-03-08T17:53:04.5946909Z === RUN   TestComputeStringHash/longer_string_with_spaces
+2025-03-08T17:53:04.5947230Z --- PASS: TestComputeStringHash (0.00s)
+2025-03-08T17:53:04.5947590Z     --- PASS: TestComputeStringHash/empty_string (0.00s)
+2025-03-08T17:53:04.5947974Z     --- PASS: TestComputeStringHash/simple_string (0.00s)
+2025-03-08T17:53:04.5948414Z     --- PASS: TestComputeStringHash/longer_string_with_spaces (0.00s)
+2025-03-08T17:53:04.5948762Z === RUN   TestHashConsistency
+2025-03-08T17:53:04.5949017Z --- PASS: TestHashConsistency (0.00s)
+2025-03-08T17:53:04.5949270Z === RUN   TestSysPlugin
+2025-03-08T17:53:04.5949523Z === RUN   TestSysPlugin/hostname_returns_valid_name
+2025-03-08T17:53:04.5949841Z === RUN   TestSysPlugin/user_returns_current_user
+2025-03-08T17:53:04.5950135Z === RUN   TestSysPlugin/os_returns_valid_OS
+2025-03-08T17:53:04.5950635Z === RUN   TestSysPlugin/arch_returns_valid_architecture
+2025-03-08T17:53:04.5950998Z === RUN   TestSysPlugin/env_returns_environment_variable
+2025-03-08T17:53:04.5951326Z === RUN   TestSysPlugin/pwd_returns_valid_directory
+2025-03-08T17:53:04.5951671Z === RUN   TestSysPlugin/home_returns_valid_home_directory
+2025-03-08T17:53:04.5951986Z === RUN   TestSysPlugin/unknown_operation
+2025-03-08T17:53:04.5952271Z === RUN   TestSysPlugin/env_without_variable
+2025-03-08T17:53:04.5952578Z === RUN   TestSysPlugin/env_with_non-existent_variable
+2025-03-08T17:53:04.5953016Z --- PASS: TestSysPlugin (0.00s)
+2025-03-08T17:53:04.5953382Z     --- PASS: TestSysPlugin/hostname_returns_valid_name (0.00s)
+2025-03-08T17:53:04.5953807Z     --- PASS: TestSysPlugin/user_returns_current_user (0.00s)
+2025-03-08T17:53:04.5954196Z     --- PASS: TestSysPlugin/os_returns_valid_OS (0.00s)
+2025-03-08T17:53:04.5954612Z     --- PASS: TestSysPlugin/arch_returns_valid_architecture (0.00s)
+2025-03-08T17:53:04.5955073Z     --- PASS: TestSysPlugin/env_returns_environment_variable (0.00s)
+2025-03-08T17:53:04.5955712Z     --- PASS: TestSysPlugin/pwd_returns_valid_directory (0.00s)
+2025-03-08T17:53:04.5956160Z     --- PASS: TestSysPlugin/home_returns_valid_home_directory (0.00s)
+2025-03-08T17:53:04.5956730Z     --- PASS: TestSysPlugin/unknown_operation (0.00s)
+2025-03-08T17:53:04.5957111Z     --- PASS: TestSysPlugin/env_without_variable (0.00s)
+2025-03-08T17:53:04.5957527Z     --- PASS: TestSysPlugin/env_with_non-existent_variable (0.00s)
+2025-03-08T17:53:04.5957852Z === RUN   TestApplyTemplate
+2025-03-08T17:53:04.5958108Z === RUN   TestApplyTemplate/simple_variable
+2025-03-08T17:53:04.5958406Z === RUN   TestApplyTemplate/multiple_variables
+2025-03-08T17:53:04.5958713Z === RUN   TestApplyTemplate/special_input_variable
+2025-03-08T17:53:04.5959017Z === RUN   TestApplyTemplate/nested_variables
+2025-03-08T17:53:04.5959308Z === RUN   TestApplyTemplate/simple_text_plugin
+2025-03-08T17:53:04.5959630Z === RUN   TestApplyTemplate/text_plugin_with_variable
+2025-03-08T17:53:04.5959969Z === RUN   TestApplyTemplate/plugin_with_dynamic_operation
+2025-03-08T17:53:04.5960289Z === RUN   TestApplyTemplate/multiple_plugins
+2025-03-08T17:53:04.5960765Z === RUN   TestApplyTemplate/nested_plugins
+2025-03-08T17:53:04.5961114Z === RUN   TestApplyTemplate/missing_variable
+2025-03-08T17:53:04.5961398Z === RUN   TestApplyTemplate/unknown_plugin
+2025-03-08T17:53:04.5961701Z === RUN   TestApplyTemplate/unknown_plugin_operation
+2025-03-08T17:53:04.5962016Z === RUN   TestApplyTemplate/nested_plugin_error
+2025-03-08T17:53:04.5962314Z === RUN   TestApplyTemplate/empty_template
+2025-03-08T17:53:04.5962613Z === RUN   TestApplyTemplate/no_substitutions_needed
+2025-03-08T17:53:04.5962911Z --- PASS: TestApplyTemplate (0.00s)
+2025-03-08T17:53:04.5963254Z     --- PASS: TestApplyTemplate/simple_variable (0.00s)
+2025-03-08T17:53:04.5963644Z     --- PASS: TestApplyTemplate/multiple_variables (0.00s)
+2025-03-08T17:53:04.5964054Z     --- PASS: TestApplyTemplate/special_input_variable (0.00s)
+2025-03-08T17:53:04.5964460Z     --- PASS: TestApplyTemplate/nested_variables (0.00s)
+2025-03-08T17:53:04.5964844Z     --- PASS: TestApplyTemplate/simple_text_plugin (0.00s)
+2025-03-08T17:53:04.5965269Z     --- PASS: TestApplyTemplate/text_plugin_with_variable (0.00s)
+2025-03-08T17:53:04.5965733Z     --- PASS: TestApplyTemplate/plugin_with_dynamic_operation (0.00s)
+2025-03-08T17:53:04.5966158Z     --- PASS: TestApplyTemplate/multiple_plugins (0.00s)
+2025-03-08T17:53:04.5966535Z     --- PASS: TestApplyTemplate/nested_plugins (0.00s)
+2025-03-08T17:53:04.5966913Z     --- PASS: TestApplyTemplate/missing_variable (0.00s)
+2025-03-08T17:53:04.5967288Z     --- PASS: TestApplyTemplate/unknown_plugin (0.00s)
+2025-03-08T17:53:04.5967697Z     --- PASS: TestApplyTemplate/unknown_plugin_operation (0.00s)
+2025-03-08T17:53:04.5968119Z     --- PASS: TestApplyTemplate/nested_plugin_error (0.00s)
+2025-03-08T17:53:04.5968502Z     --- PASS: TestApplyTemplate/empty_template (0.00s)
+2025-03-08T17:53:04.5968912Z     --- PASS: TestApplyTemplate/no_substitutions_needed (0.00s)
+2025-03-08T17:53:04.5969232Z === RUN   TestTextPlugin
+2025-03-08T17:53:04.5969465Z === RUN   TestTextPlugin/upper_basic
+2025-03-08T17:53:04.5969735Z === RUN   TestTextPlugin/upper_mixed_case
+2025-03-08T17:53:04.5970007Z === RUN   TestTextPlugin/lower_basic
+2025-03-08T17:53:04.5970271Z === RUN   TestTextPlugin/lower_mixed_case
+2025-03-08T17:53:04.5970753Z === RUN   TestTextPlugin/title_basic
+2025-03-08T17:53:04.5971037Z === RUN   TestTextPlugin/title_with_apostrophe
+2025-03-08T17:53:04.5971651Z === RUN   TestTextPlugin/trim_spaces
+2025-03-08T17:53:04.5971935Z === RUN   TestTextPlugin/trim_newlines
+2025-03-08T17:53:04.5972199Z === RUN   TestTextPlugin/empty_value
+2025-03-08T17:53:04.5972461Z === RUN   TestTextPlugin/unknown_operation
+2025-03-08T17:53:04.5972732Z --- PASS: TestTextPlugin (0.00s)
+2025-03-08T17:53:04.5973045Z     --- PASS: TestTextPlugin/upper_basic (0.00s)
+2025-03-08T17:53:04.5973405Z     --- PASS: TestTextPlugin/upper_mixed_case (0.00s)
+2025-03-08T17:53:04.5973872Z     --- PASS: TestTextPlugin/lower_basic (0.00s)
+2025-03-08T17:53:04.5974220Z     --- PASS: TestTextPlugin/lower_mixed_case (0.00s)
+2025-03-08T17:53:04.5974562Z     --- PASS: TestTextPlugin/title_basic (0.00s)
+2025-03-08T17:53:04.5974931Z     --- PASS: TestTextPlugin/title_with_apostrophe (0.00s)
+2025-03-08T17:53:04.5975292Z     --- PASS: TestTextPlugin/trim_spaces (0.00s)
+2025-03-08T17:53:04.5975633Z     --- PASS: TestTextPlugin/trim_newlines (0.00s)
+2025-03-08T17:53:04.5975976Z     --- PASS: TestTextPlugin/empty_value (0.00s)
+2025-03-08T17:53:04.5976340Z     --- PASS: TestTextPlugin/unknown_operation (0.00s)
+2025-03-08T17:53:04.5976610Z PASS
+2025-03-08T17:53:04.5976884Z ok  	github.com/danielmiessler/fabric/plugins/template	0.037s
+2025-03-08T17:53:04.5977224Z === RUN   TestHtmlReadability
+2025-03-08T17:53:04.5977481Z === RUN   TestHtmlReadability/Empty_HTML
+2025-03-08T17:53:04.5977769Z === RUN   TestHtmlReadability/HTML_with_text
+2025-03-08T17:53:04.5978073Z === RUN   TestHtmlReadability/HTML_with_nested_tags
+2025-03-08T17:53:04.5978390Z === RUN   TestHtmlReadability/HTML_missing_tags
+2025-03-08T17:53:04.5978681Z --- PASS: TestHtmlReadability (0.00s)
+2025-03-08T17:53:04.5979020Z     --- PASS: TestHtmlReadability/Empty_HTML (0.00s)
+2025-03-08T17:53:04.5979399Z     --- PASS: TestHtmlReadability/HTML_with_text (0.00s)
+2025-03-08T17:53:04.5979809Z     --- PASS: TestHtmlReadability/HTML_with_nested_tags (0.00s)
+2025-03-08T17:53:04.5980217Z     --- PASS: TestHtmlReadability/HTML_missing_tags (0.00s)
+2025-03-08T17:53:04.5980702Z PASS
+2025-03-08T17:53:04.5981007Z ok  	github.com/danielmiessler/fabric/plugins/tools/converter	(cached)
+2025-03-08T17:53:04.6567291Z ##[group]Run nix flake check
+2025-03-08T17:53:04.6567591Z [36;1mnix flake check[0m
+2025-03-08T17:53:04.6615001Z shell: /usr/bin/bash -e {0}
+2025-03-08T17:53:04.6615245Z env:
+2025-03-08T17:53:04.6615430Z   DETERMINATE_NIX_KVM: 1
+2025-03-08T17:53:04.6615646Z ##[endgroup]
+2025-03-08T17:53:05.4178189Z evaluating flake...
+2025-03-08T17:53:05.4182306Z checking flake output 'formatter'...
+2025-03-08T17:53:05.5521548Z copying path '/nix/store/v0g0bxsd5gw6k0jz2855f8h7l1218925-source' from 'https://cache.nixos.org'...
+2025-03-08T17:53:21.1105427Z unpacking 'github:nix-systems/default/da67096a3b9bf56a91d16901293e51ba5b49a27e?narHash=sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768%3D' into the Git cache...
+2025-03-08T17:53:21.5226244Z checking derivation formatter.x86_64-linux...
+2025-03-08T17:53:21.6320364Z unpacking 'github:numtide/treefmt-nix/13c913f5deb3a5c08bb810efd89dc8cb24dd968b?narHash=sha256-p2r8xhQZ3TYIEKBoiEhllKWQqWNJNoT9v64Vmg4q8Zw%3D' into the Git cache...
+2025-03-08T17:53:25.1981178Z derivation evaluated to /nix/store/5cmn667g6zsa4l3hvklc423yzi9hihfh-treefmt.drv
+2025-03-08T17:53:25.1982629Z checking flake output 'checks'...
+2025-03-08T17:53:25.1983568Z checking derivation checks.x86_64-linux.formatting...
+2025-03-08T17:53:25.2000864Z derivation evaluated to /nix/store/sxhm0qkgqk7k0xjjpr2yr57nyvvgkmvj-treefmt-check.drv
+2025-03-08T17:53:25.2001667Z checking flake output 'devShells'...
+2025-03-08T17:53:25.2002907Z checking derivation devShells.x86_64-linux.default...
+2025-03-08T17:53:25.4033964Z unpacking 'github:nix-community/gomod2nix/514283ec89c39ad0079ff2f3b1437404e4cba608?narHash=sha256-tPsqU00FhgdFr0JiQUiBMgPVbl1jbPCY5gbFiJycL3I%3D' into the Git cache...
+2025-03-08T17:53:25.8765250Z unpacking 'github:numtide/flake-utils/ff7b65b44d01cf9ba6a71320833626af21126384?narHash=sha256-zsNZZGTGnMOf9YpHKJqMSsa0dXbfmxeoJ7xHlrt%2BxmY%3D' into the Git cache...
+2025-03-08T17:53:26.2799097Z derivation evaluated to /nix/store/jdmgz1x8smaqmplip260cjp2y7kxy6ws-nix-shell.drv
+2025-03-08T17:53:26.2799630Z checking flake output 'packages'...
+2025-03-08T17:53:26.2799985Z checking derivation packages.x86_64-linux.gomod2nix...
+2025-03-08T17:53:26.2800604Z derivation evaluated to /nix/store/i4lg9fpq4in0w1ml4g82d92wi22jshz8-gomod2nix-dev.drv
+2025-03-08T17:53:26.2801079Z checking derivation packages.x86_64-linux.default...
+2025-03-08T17:53:26.9996493Z derivation evaluated to /nix/store/26q3y3f022v0lz2r28zj8iykdlia8q4a-fabric-ai-1.4.153.drv
+2025-03-08T17:53:26.9997437Z checking derivation packages.x86_64-linux.fabric...
+2025-03-08T17:53:26.9998133Z derivation evaluated to /nix/store/26q3y3f022v0lz2r28zj8iykdlia8q4a-fabric-ai-1.4.153.drv
+2025-03-08T17:53:26.9998836Z running 1 flake checks...
+2025-03-08T17:53:27.5805073Z copying path '/nix/store/kn855hkv6yda9wi7g48lxwgplijqijb9-git-2.47.0-doc' from 'https://cache.nixos.org'...
+2025-03-08T17:53:27.5817897Z copying path '/nix/store/gxv330afrspz91xzicqc291mvkgwfh5j-perl5.40.0-Digest-HMAC-1.04' from 'https://cache.nixos.org'...
+2025-03-08T17:53:27.5821784Z copying path '/nix/store/1bp6wq4j24zjc9wlcnp2r2ffh4pwxfpc-perl5.40.0-FCGI-ProcManager-0.28' from 'https://cache.nixos.org'...
+2025-03-08T17:53:27.5823645Z copying path '/nix/store/d43yysnlknxiq8q0fl338dxgxnyhx7ia-perl5.40.0-HTML-TagCloud-0.38' from 'https://cache.nixos.org'...
+2025-03-08T17:53:27.5873124Z copying path '/nix/store/dh93rwf25khgdm3sqrsdzlzi1w09az9h-perl5.40.0-URI-5.21' from 'https://cache.nixos.org'...
+2025-03-08T17:53:27.5883757Z copying path '/nix/store/17v0ywnr3akp85pvdi56gwl99ljv95kx-gcc-14-20241116-libgcc' from 'https://cache.nixos.org'...
+2025-03-08T17:53:27.5887282Z copying path '/nix/store/mb0q4c1b7ag16vgjhy4zc32sy8c9ljfv-perl5.40.0-libnet-3.15' from 'https://cache.nixos.org'...
+2025-03-08T17:53:27.5897233Z copying path '/nix/store/1m67ipsk39xvhyqrxnzv2m2p48pil8kl-gnu-config-2024-01-01' from 'https://cache.nixos.org'...
+2025-03-08T17:53:27.5898793Z copying path '/nix/store/q2bw5vb464sam6bdsbb6lc0jaabf424l-perl5.40.0-IO-HTML-1.004' from 'https://cache.nixos.org'...
+2025-03-08T17:53:27.5900850Z copying path '/nix/store/mynqz5pq27vc61wprpvr9qf3p41hnd1w-perl5.40.0-Test-Needs-0.002010' from 'https://cache.nixos.org'...
+2025-03-08T17:53:27.5905834Z copying path '/nix/store/ky5k49f2byfjg49ci75ci89szy29hk4k-mailcap-2.1.54' from 'https://cache.nixos.org'...
+2025-03-08T17:53:27.5907300Z copying path '/nix/store/2adzrcjbs8rrij7inakslzpv5fcq276i-perl5.40.0-Encode-Locale-1.05' from 'https://cache.nixos.org'...
+2025-03-08T17:53:27.5908965Z copying path '/nix/store/2b6gl02f7cmz2gzpw80jnygma6mmv965-perl5.40.0-Test-RequiresInternet-0.05' from 'https://cache.nixos.org'...
+2025-03-08T17:53:27.5911183Z copying path '/nix/store/390dg8pwcx489m9dpjdwqn6vzvrwfij0-perl5.40.0-LWP-MediaTypes-6.04' from 'https://cache.nixos.org'...
+2025-03-08T17:53:27.5917039Z copying path '/nix/store/80nv8li5cbzrzkd4zgw79xnh7yq84wnf-perl5.40.0-Mozilla-CA-20230821' from 'https://cache.nixos.org'...
+2025-03-08T17:53:27.5923638Z copying path '/nix/store/288yl27wjpamsijf2wwxvc21dhm4r7fv-perl5.40.0-HTML-Tagset-3.20' from 'https://cache.nixos.org'...
+2025-03-08T17:53:27.6084953Z copying path '/nix/store/pmvskik4cp4vh4gy0affdavpwm79k2mf-iana-etc-20240318' from 'https://cache.nixos.org'...
+2025-03-08T17:53:27.6122988Z copying path '/nix/store/xcqcgqazykf6s7fsn08k0blnh0wisdcl-libunistring-1.3' from 'https://cache.nixos.org'...
+2025-03-08T17:53:27.6125890Z copying path '/nix/store/4whjf69dbgvlnxiy5jimdq89z200xv2j-perl5.40.0-Try-Tiny-0.31' from 'https://cache.nixos.org'...
+2025-03-08T17:53:27.6129362Z copying path '/nix/store/rzr5p0k0qmypknx41rnkwdzkmrp90ywa-perl5.40.0-TimeDate-2.33' from 'https://cache.nixos.org'...
+2025-03-08T17:53:27.6144896Z copying path '/nix/store/gfkyf4hw4riqwgf5scfk8r8g69crbn4x-tzdata-2024b' from 'https://cache.nixos.org'...
+2025-03-08T17:53:27.6155466Z copying path '/nix/store/acfkqzj5qrqs88a4a6ixnybbjxja663d-xgcc-14-20241116-libgcc' from 'https://cache.nixos.org'...
+2025-03-08T17:53:27.6173186Z copying path '/nix/store/d29r1bdmlvwmj52apgcdxfl1mm9c5782-update-autotools-gnu-config-scripts-hook' from 'https://cache.nixos.org'...
+2025-03-08T17:53:27.6193756Z copying path '/nix/store/0lj0851s55mkwmylmkcw4m71m7ggl772-publicsuffix-list-0-unstable-2024-12-06' from 'https://cache.nixos.org'...
+2025-03-08T17:53:27.6196808Z copying path '/nix/store/8bsvp7nbfr5kiw7clq0rwgzd6jfpzznz-perl5.40.0-Authen-SASL-2.1700' from 'https://cache.nixos.org'...
+2025-03-08T17:53:27.6232554Z copying path '/nix/store/la59y3p1cdiz0n0xh54n4dqriggdysyj-perl5.40.0-WWW-RobotRules-6.02' from 'https://cache.nixos.org'...
+2025-03-08T17:53:27.6234717Z copying path '/nix/store/chqcxl717ah0k021pfvfa7vrcl3gmnsb-perl5.40.0-Test-Fatal-0.017' from 'https://cache.nixos.org'...
+2025-03-08T17:53:27.6237481Z copying path '/nix/store/1731fryiiiafq9y9py8mhf05wldfm0wv-perl5.40.0-Net-HTTP-6.23' from 'https://cache.nixos.org'...
+2025-03-08T17:53:27.6292902Z copying path '/nix/store/a4qk8l5j6j2npm75wdwr0vb16ghccf2g-perl5.40.0-HTTP-Date-6.06' from 'https://cache.nixos.org'...
+2025-03-08T17:53:27.6425101Z copying path '/nix/store/70alxzrz9bmb4n0jicr3vidckpgbjcby-perl5.40.0-File-Listing-6.16' from 'https://cache.nixos.org'...
+2025-03-08T17:53:27.6431233Z copying path '/nix/store/s017walqrqjyr8r0qy1xxz0v0vsm9kin-perl5.40.0-HTTP-CookieJar-0.014' from 'https://cache.nixos.org'...
+2025-03-08T17:53:27.6669313Z copying path '/nix/store/34z2792zyd4ayl5186vx0s98ckdaccz9-libidn2-2.3.7' from 'https://cache.nixos.org'...
+2025-03-08T17:53:27.6834283Z copying path '/nix/store/65h17wjrrlsj2rj540igylrx7fqcd6vq-glibc-2.40-36' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.1280707Z copying path '/nix/store/a9jgnlhkjkxav6qrc3rzg2q84pkl2wvr-attr-2.5.2' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.1286733Z copying path '/nix/store/5mh7kaj2fyv8mk4sfq1brwxgc02884wi-bash-5.2p37' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.1289361Z copying path '/nix/store/a3c47r5z1q2c4rz0kvq8hlilkhx2s718-gawk-5.3.1' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.1290980Z copying path '/nix/store/8zvalh0pmrmzypynv2gh8mw1vkkys19i-brotli-1.1.0-lib' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.1295449Z copying path '/nix/store/ivl2v8rgg7qh1jkj5pwpqycax3rc2hnl-bzip2-1.0.8' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.1296960Z copying path '/nix/store/bpq1s72cw9qb2fs8mnmlw6hn2c7iy0ss-gcc-14-20241116-lib' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.1298390Z copying path '/nix/store/74h4z8k82pmp24xryflv4lxkz8jlpqqd-ed-1.20.2' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.1299788Z copying path '/nix/store/2h8rk9xwa6xqy2pqk2lr2s57qbrx5p30-gdbm-1.24-lib' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.1301302Z copying path '/nix/store/5ayb629gzbkc3amm6zd5jp1aciprb2zs-expat-2.6.4' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.1302637Z copying path '/nix/store/mnnv5iqsa1hcc9v1snyxai3yqzmav9kf-gotools-0.25.0' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.1303932Z copying path '/nix/store/i1mjz7h6bx4yv5x32wf726b1mgl4yygd-json-c-0.18' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.1305309Z copying path '/nix/store/fkfhss4k4zqi3rqzwgisqa8gm8xjb0b2-libpsl-0.21.5' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.1306625Z copying path '/nix/store/r04wysx6yl7ys1rdv1b1lih6in1810r0-libffi-3.4.6' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.1307924Z copying path '/nix/store/abm77lnrkrkb58z6xp1qwjcr1xgkcfwm-gnused-4.9' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.1309307Z copying path '/nix/store/2wh1gqyzf5xsvxpdz2k0bxiz583wwq29-keyutils-1.6.3-lib' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.1315290Z copying path '/nix/store/fp6cjl1zcmm6mawsnrb5yak1wkz2ma8l-gnumake-4.4.1' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.1462056Z copying path '/nix/store/6cr0spsvymmrp1hj5n0kbaxw55w1lqyp-libxcrypt-4.4.36' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.1479249Z copying path '/nix/store/mglixp03lsp0w986svwdvm7vcy17rdax-bzip2-1.0.8-bin' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.1502989Z copying path '/nix/store/srz64fswvjbph7i00ffvr3wbyjw87a06-libyaml-0.2.5' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.1521718Z copying path '/nix/store/1aybnfshx1vxh7vi04bhfh1n69k15335-mpdecimal-4.0.0' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.1646299Z copying path '/nix/store/wm1qn5jqrxpcjkc640gq8a90ns5gw3cn-ncurses-6.4.20221231' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.1649734Z copying path '/nix/store/cf7gkacyxmm66lwl5nj6j6yykbrg4q5c-acl-2.3.2' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.1659987Z copying path '/nix/store/82lh8f5wi6ya5jkcwr036md8630j652d-nghttp2-1.64.0-lib' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.1710737Z copying path '/nix/store/h1ydpxkw9qhjdxjpic1pdc2nirggyy6f-openssl-3.3.2' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.1750400Z copying path '/nix/store/5yja5dpk2qw1v5mbfbl2d7klcdfrh90w-patch-2.7.6' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.1777565Z copying path '/nix/store/3j1p598fivxs69wx3a657ysv3rw8k06l-pcre2-10.44' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.1968932Z copying path '/nix/store/fxbqrwsfc6q63alynldajiw95lxsnajs-perl5.40.0-Clone-0.46' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.2047313Z copying path '/nix/store/nvvj6sk0k6px48436drlblf4gafgbvzr-gzip-1.13' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.2050348Z copying path '/nix/store/jfv85qbj4vb1dafcg6kncg4vrbq2bbxv-go-1.23.4' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.2051924Z copying path '/nix/store/pjdkig8favrhn300cdyn6lzn52xch3an-perl5.40.0-FCGI-0.82' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.2055123Z copying path '/nix/store/9cwwj1c9csmc85l2cqzs3h9hbf1vwl6c-gnutar-1.35' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.2057126Z copying path '/nix/store/h60rh960bjnzmhgm2ab3bw86r2mma0g3-perl5.40.0-TermReadKey-2.38' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.2126365Z copying path '/nix/store/c2njy6bv84kw1i4bjf5k5gn7gz8hn57n-xz-5.6.3' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.2143668Z copying path '/nix/store/8n58sbly7gdjscz5wkr6kia72dcf1qs5-treefmt-2.1.1' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.2245035Z copying path '/nix/store/cqlaa2xf6lslnizyj9xqa8j0ii1yqw0x-zlib-1.3.1' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.2547367Z copying path '/nix/store/whf0g8g2yymkj5511bp4jl4v17s1kd23-perl5.40.0-HTTP-Message-6.45' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.2643534Z copying path '/nix/store/c4rj90r2m89rxs64hmm857mipwjhig5d-file-5.46' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.2645076Z copying path '/nix/store/dj96qp9vps02l3n8xgc2vallqa9rhafb-sqlite-3.47.0' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.2936249Z copying path '/nix/store/h18s640fnhhj2qdh5vivcfbxvz377srg-xz-5.6.3-bin' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.3039160Z copying path '/nix/store/aap6cq56amx4mzbyxp2wpgsf1kqjcr1f-gnugrep-3.11' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.3328866Z copying path '/nix/store/8bybx6196xzn1c60kda1snpgf4x1zcfy-perl5.40.0-HTTP-Cookies-6.10' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.3332629Z copying path '/nix/store/d6m831pl6cmsihdi8j5pywhsz75sbpwm-perl5.40.0-HTTP-Daemon-6.16' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.3337249Z copying path '/nix/store/8hdac0chc55s1ssv9xiksq96qr4r9g0r-perl5.40.0-HTML-Parser-3.81' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.3365241Z copying path '/nix/store/wjjpmk5a9mbpdz45bgamymmry86b4zx1-perl5.40.0-HTTP-Negotiate-6.01' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.4218059Z copying path '/nix/store/w1mlpianxzqcwk98mvcwrffm8dv2ymgb-perl5.40.0-CGI-4.59' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.4698370Z copying path '/nix/store/wg7lvwiv4nc41p4a075dikgshwbqkk2h-perl5.40.0-CGI-Fast-2.16' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.4985122Z copying path '/nix/store/9a46kza0vbb4vdsdmpzbdc7f31y7hs0i-gettext-0.22.5' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.5011526Z copying path '/nix/store/a2byxfv4lc8f2g5xfzw8cz5q8k05wi29-gmp-with-cxx-6.3.0' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.5013279Z copying path '/nix/store/c748z5q1ac6yc92xf69lm7mjaj52m4xx-deadnix-1.2.1' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.5014844Z copying path '/nix/store/ghb61mqc90qf1nx6kyahhhagicyxvcyg-gmp-with-cxx-6.3.0' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.5022033Z copying path '/nix/store/srfxqk119fijwnprgsqvn68ys9kiw0bn-patchelf-0.15.0' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.5023421Z copying path '/nix/store/zc1f5d889k3xb33vdxw56mhah1q8a8lb-statix-0.5.8' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.5072173Z copying path '/nix/store/s0zynhz13rhg0gg8cy0ga4c0lnv3yqdn-zstd-1.5.6' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.5167515Z copying path '/nix/store/zqkizm9zn19bf9n58xcfxl4ks7yfs8my-krb5-1.21.3-lib' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.5169341Z copying path '/nix/store/zw1nv1w3fkmdklmsw9zp5l4hhfqlvf42-perl5.40.0-Net-SSLeay-1.92' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.5189101Z copying path '/nix/store/fp0l21s4j49wcp9l4w59nlb4biy0dr8f-libssh2-1.11.1' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.5573538Z copying path '/nix/store/4s9rah4cwaxflicsk5cndnknqlk9n4p3-coreutils-9.5' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.6013324Z copying path '/nix/store/jwlvx6cl4s7dnh8i2vw7p8g35p6k0ln7-perl5.40.0-IO-Socket-SSL-2.083' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.6513338Z copying path '/nix/store/zk4ixqhn7hl77g1qlnpy40ccjzjrwpn2-perl5.40.0-Net-SMTP-SSL-1.04' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.7108478Z copying path '/nix/store/00g69vw7c9lycy63h45ximy0wmzqx5y6-diffutils-3.10' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.7116750Z copying path '/nix/store/8yfak7dis3yqqls4mclzp5jb1ic2jzab-curl-8.11.0' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.7136039Z copying path '/nix/store/1i003ijlh9i0mzp6alqby5hg3090pjdx-perl-5.40.0' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.7137970Z copying path '/nix/store/jqrz1vq5nz4lnv9pqzydj0ir58wbjfy1-findutils-4.10.0' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.8263846Z copying path '/nix/store/wkysiv0sxqs6wn44nb46bbyig4plzsy4-elfutils-0.192' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.8513489Z copying path '/nix/store/9jzrcxf9wi9yp679il6j6zh6cq81p4s9-readline-8.2p13' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.8795340Z copying path '/nix/store/4ig84cyqi6qy4n0sanrbzsw1ixa497jx-stdenv-linux' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.9024694Z copying path '/nix/store/c9m6yd8fg1flz2j5r4bif1ib5j20a0cy-python3-3.12.8' from 'https://cache.nixos.org'...
+2025-03-08T17:53:28.9551301Z copying path '/nix/store/lch913ar0a3w3f6d63crf5vfvpckddk1-nixfmt-unstable-2024-12-04' from 'https://cache.nixos.org'...
+2025-03-08T17:53:29.8941858Z copying path '/nix/store/zjwgaram0g5v8k3nkrrxkj8zjvrrkqld-perl5.40.0-libwww-perl-6.72' from 'https://cache.nixos.org'...
+2025-03-08T17:53:30.9368050Z copying path '/nix/store/iwq58rpn6idjnxbnyjh351776qzvsd0r-git-2.47.0' from 'https://cache.nixos.org'...
+2025-03-08T17:53:30.9369506Z copying path '/nix/store/a7p8w035ri614k9y82y7c9cs9fkvb6ac-python3.12-colorama-0.4.6' from 'https://cache.nixos.org'...
+2025-03-08T17:53:30.9371142Z copying path '/nix/store/ka3h6h9gj6wf24yckrch9844pd4bklfc-python3.12-cbor2-5.6.4' from 'https://cache.nixos.org'...
+2025-03-08T17:53:30.9372558Z copying path '/nix/store/f3a35ljg6yaxf4cxb5fqc562r3v978x7-python3.12-mdurl-0.1.2' from 'https://cache.nixos.org'...
+2025-03-08T17:53:30.9376319Z copying path '/nix/store/ncvqa6aazrsh3lyjwrd0q5wjvng8si8w-python3.12-pygments-2.18.0' from 'https://cache.nixos.org'...
+2025-03-08T17:53:30.9377832Z copying path '/nix/store/r5kb9400ihayy81jgj6rw6cwxlq6k24a-python3.12-pyyaml-6.0.2' from 'https://cache.nixos.org'...
+2025-03-08T17:53:30.9382544Z copying path '/nix/store/svijjywn5mk2ljh4c9lx2my1w2jmr8hy-python3.12-ruamel-base-1.0.0' from 'https://cache.nixos.org'...
+2025-03-08T17:53:30.9396457Z copying path '/nix/store/iqjg6b78n41i9r2z7i70q0nk6m1d8h6k-python3.12-ruamel-yaml-clib-0.2.7' from 'https://cache.nixos.org'...
+2025-03-08T17:53:30.9398541Z copying path '/nix/store/ls6dyvvnxji760drr228z8v5n6mivzdh-python3.12-u-msgpack-python-2.8.0' from 'https://cache.nixos.org'...
+2025-03-08T17:53:30.9402200Z copying path '/nix/store/03kwj7hvj4f32ss5g99zm2wq18h8r0wf-python3.12-six-1.17.0' from 'https://cache.nixos.org'...
+2025-03-08T17:53:30.9404300Z copying path '/nix/store/v9vdk698r9jk17z6ipph79cj9wjqb573-python3.12-tomlkit-0.13.2' from 'https://cache.nixos.org'...
+2025-03-08T17:53:30.9531857Z copying path '/nix/store/vnkay8zkgfh38biyhgj1rp2886qlw9bz-python3.12-markdown-it-py-3.0.0' from 'https://cache.nixos.org'...
+2025-03-08T17:53:30.9684779Z copying path '/nix/store/mv5jpzs99allm6ni5zfjbhmyvjw8mdcj-python3.12-python-dateutil-2.9.0.post0' from 'https://cache.nixos.org'...
+2025-03-08T17:53:31.0457288Z copying path '/nix/store/ipci9bcpb3kaxq88f5wwcyf3spvqk265-python3.12-ruamel-yaml-0.18.6' from 'https://cache.nixos.org'...
+2025-03-08T17:53:31.3065936Z copying path '/nix/store/8cipdqyzsiyqx1d73lzs89anz2sb9pzs-python3.12-rich-13.9.4' from 'https://cache.nixos.org'...
+2025-03-08T17:53:31.3820179Z copying path '/nix/store/zqsb4b4rdf5yl7i76vwjhg49hbgp3nli-python3.12-rich-argparse-1.6.0' from 'https://cache.nixos.org'...
+2025-03-08T17:53:31.4708133Z copying path '/nix/store/lmzwm13gz7am129ihxg2zjmm51vinaaf-python3.12-remarshal-0.20.0' from 'https://cache.nixos.org'...
+2025-03-08T17:53:31.5879094Z building '/nix/store/zpykvf42zcd44mif9y3sfv2l7zkvjnlz-statix.toml.drv'...
+2025-03-08T17:53:31.8874532Z building '/nix/store/h2wyc6zpxd83yipm3y33gf2ygqiar5w6-statix-config.drv'...
+2025-03-08T17:53:31.9771061Z building '/nix/store/f0pci68fildnfn38bjwfm4fx0dcy1wbq-statix-fix.drv'...
+2025-03-08T17:53:32.9246597Z building '/nix/store/ybkhyn9wxyx9sbga5j8cf67g1xd0d6fk-treefmt.toml.drv'...
+2025-03-08T17:53:33.1595864Z building '/nix/store/5cmn667g6zsa4l3hvklc423yzi9hihfh-treefmt.drv'...
+2025-03-08T17:53:33.2317024Z building '/nix/store/sxhm0qkgqk7k0xjjpr2yr57nyvvgkmvj-treefmt-check.drv'...
+2025-03-08T17:53:35.2741760Z warning: The check omitted these incompatible systems: aarch64-darwin, aarch64-linux, x86_64-darwin
+2025-03-08T17:53:35.2742384Z Use '--all-systems' to check all.
+2025-03-08T17:53:35.3095342Z Post job cleanup.
+2025-03-08T17:53:35.4305644Z [command]/opt/hostedtoolcache/go/1.23.4/x64/bin/go env GOMODCACHE
+2025-03-08T17:53:35.4346736Z [command]/opt/hostedtoolcache/go/1.23.4/x64/bin/go env GOCACHE
+2025-03-08T17:53:35.4371686Z /home/runner/go/pkg/mod
+2025-03-08T17:53:35.4401627Z /home/runner/.cache/go-build
+2025-03-08T17:53:35.4407144Z Cache hit occurred on the primary key setup-go-Linux-ubuntu24-go-1.23.4-fac585862d01f26df46b1a74f1b7296c08f174b2f2ad748bf4c9446a7f8e2b62, not saving cache.
+2025-03-08T17:53:35.4525832Z Post job cleanup.
+2025-03-08T17:53:36.6501885Z Post job cleanup.
+2025-03-08T17:53:36.7442992Z [command]/usr/bin/git version
+2025-03-08T17:53:36.7479901Z git version 2.48.1
+2025-03-08T17:53:36.7529548Z Temporarily overriding HOME='/home/runner/work/_temp/d455bcc1-f328-41df-afae-88d5a88e8ba1' before making global git config changes
+2025-03-08T17:53:36.7531009Z Adding repository directory to the temporary git global config as a safe directory
+2025-03-08T17:53:36.7534940Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/fabric/fabric
+2025-03-08T17:53:36.7569440Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-03-08T17:53:36.7601485Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-03-08T17:53:36.7832809Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-03-08T17:53:36.7853487Z http.https://github.com/.extraheader
+2025-03-08T17:53:36.7865604Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2025-03-08T17:53:36.7896002Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-03-08T17:53:36.8231451Z Cleaning up orphan processes

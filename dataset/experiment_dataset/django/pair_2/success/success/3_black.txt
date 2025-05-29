@@ -1,0 +1,46 @@
+2025-04-15T04:56:47.7283451Z ##[group]Run psf/black@stable
+2025-04-15T04:56:47.7283759Z with:
+2025-04-15T04:56:47.7284178Z   options: --check --diff
+2025-04-15T04:56:47.7284409Z   src: .
+2025-04-15T04:56:47.7284581Z   jupyter: false
+2025-04-15T04:56:47.7284784Z   use_pyproject: false
+2025-04-15T04:56:47.7284994Z   summary: true
+2025-04-15T04:56:47.7285197Z ##[endgroup]
+2025-04-15T04:56:47.7406736Z ##[group]Run # Even when black fails, do not close the shell
+2025-04-15T04:56:47.7407279Z [36;1m# Even when black fails, do not close the shell[0m
+2025-04-15T04:56:47.7407593Z [36;1mset +e[0m
+2025-04-15T04:56:47.7407789Z [36;1m[0m
+2025-04-15T04:56:47.7408003Z [36;1mif [ "$RUNNER_OS" == "Windows" ]; then[0m
+2025-04-15T04:56:47.7408312Z [36;1m  runner="python"[0m
+2025-04-15T04:56:47.7408539Z [36;1melse[0m
+2025-04-15T04:56:47.7408748Z [36;1m  runner="python3"[0m
+2025-04-15T04:56:47.7408978Z [36;1mfi[0m
+2025-04-15T04:56:47.7409162Z [36;1m[0m
+2025-04-15T04:56:47.7409410Z [36;1mout=$(${runner} $GITHUB_ACTION_PATH/action/main.py)[0m
+2025-04-15T04:56:47.7409769Z [36;1mexit_code=$?[0m
+2025-04-15T04:56:47.7409982Z [36;1m[0m
+2025-04-15T04:56:47.7410212Z [36;1m# Display the raw output in the step[0m
+2025-04-15T04:56:47.7410494Z [36;1mecho "${out}"[0m
+2025-04-15T04:56:47.7410697Z [36;1m[0m
+2025-04-15T04:56:47.7410888Z [36;1mif [ "true" == "true" ]; then[0m
+2025-04-15T04:56:47.7411199Z [36;1m  # Display the Markdown output in the job summary[0m
+2025-04-15T04:56:47.7411538Z [36;1m  echo "\`\`\`python" >> $GITHUB_STEP_SUMMARY[0m
+2025-04-15T04:56:47.7412000Z [36;1m  echo "${out}" >> $GITHUB_STEP_SUMMARY[0m
+2025-04-15T04:56:47.7412304Z [36;1m  echo "\`\`\`" >> $GITHUB_STEP_SUMMARY[0m
+2025-04-15T04:56:47.7412561Z [36;1mfi[0m
+2025-04-15T04:56:47.7412742Z [36;1m[0m
+2025-04-15T04:56:47.7412966Z [36;1m# Exit with the exit-code returned by Black[0m
+2025-04-15T04:56:47.7413255Z [36;1mexit ${exit_code}[0m
+2025-04-15T04:56:47.7463361Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-04-15T04:56:47.7463731Z env:
+2025-04-15T04:56:47.7463963Z   INPUT_OPTIONS: --check --diff
+2025-04-15T04:56:47.7464222Z   INPUT_SRC: .
+2025-04-15T04:56:47.7464426Z   INPUT_JUPYTER: false
+2025-04-15T04:56:47.7464663Z   INPUT_BLACK_ARGS: 
+2025-04-15T04:56:47.7464884Z   INPUT_VERSION: 
+2025-04-15T04:56:47.7465103Z   INPUT_USE_PYPROJECT: false
+2025-04-15T04:56:47.7465350Z   pythonioencoding: utf-8
+2025-04-15T04:56:47.7465582Z ##[endgroup]
+2025-04-15T04:57:29.8487112Z Installing black[colorama]==25.1.0...
+2025-04-15T04:57:29.8487887Z All done! ✨ 🍰 ✨
+2025-04-15T04:57:29.8488299Z 2830 files would be left unchanged.

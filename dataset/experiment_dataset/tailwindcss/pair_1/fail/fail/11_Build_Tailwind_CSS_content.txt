@@ -1,0 +1,454 @@
+##[group]Run pnpm run build
+[36;1mpnpm run build[0m
+shell: /bin/bash -e {0}
+
+APP_NAME: tailwindcss-oxide
+NODE_VERSION: 20
+OXIDE_LOCATION: ./crates/node
+PNPM_HOME: /Users/runner/setup-pnpm/node_modules/.bin
+NPM_CONFIG_USERCONFIG: /Users/runner/work/_temp/.npmrc
+NODE_AUTH_TOKEN: XXXXX-XXXXX-XXXXX-XXXXX
+FEATURES_ENV: stable
+##[endgroup]
+2025-04-14T17:23:43.5428560Z
+> @tailwindcss/root@1.0.0 build /Users/runner/work/tailwindcss/tailwindcss
+> turbo build --filter=!./playgrounds/*
+2025-04-14T17:23:43.5430160Z
+2025-04-14T17:23:43.7664910Z
+Attention:
+Turborepo now collects completely anonymous telemetry regarding usage.
+This information is used to shape the Turborepo roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://turbo.build/repo/docs/telemetry
+2025-04-14T17:23:43.7668050Z
+• Packages in scope: @tailwindcss/browser, @tailwindcss/cli, @tailwindcss/node, @tailwindcss/oxide, @tailwindcss/oxide-android-arm-eabi, @tailwindcss/oxide-android-arm64, @tailwindcss/oxide-darwin-arm64, @tailwindcss/oxide-darwin-x64, @tailwindcss/oxide-freebsd-x64, @tailwindcss/oxide-linux-arm-gnueabihf, @tailwindcss/oxide-linux-arm64-gnu, @tailwindcss/oxide-linux-arm64-musl, @tailwindcss/oxide-linux-x64-gnu, @tailwindcss/oxide-linux-x64-musl, @tailwindcss/oxide-wasm32-wasi, @tailwindcss/oxide-win32-arm64-msvc, @tailwindcss/oxide-win32-x64-msvc, @tailwindcss/postcss, @tailwindcss/standalone, @tailwindcss/upgrade, @tailwindcss/vite, internal-example-plugin, internal-integrations, tailwindcss
+• Running build in 24 packages
+• Remote caching disabled
+##[group]@tailwindcss/oxide:build
+cache miss, executing 95accf41be125c1c
+2025-04-14T17:24:17.5970950Z
+> @tailwindcss/oxide@4.1.4 build /Users/runner/work/tailwindcss/tailwindcss/crates/node
+> pnpm run build:platform && pnpm run build:wasm
+2025-04-14T17:24:17.5972300Z
+2025-04-14T17:24:17.5972300Z
+> @tailwindcss/oxide@4.1.4 build:platform /Users/runner/work/tailwindcss/tailwindcss/crates/node
+> napi build --platform --release --no-const-enum
+2025-04-14T17:24:17.5973680Z
+Compiling tailwind-oxide v0.0.0 (/Users/runner/work/tailwindcss/tailwindcss/crates/node)
+Compiling ignore v0.4.23 (/Users/runner/work/tailwindcss/tailwindcss/crates/ignore)
+Compiling classification-macros v0.1.0 (/Users/runner/work/tailwindcss/tailwindcss/crates/classification-macros)
+Compiling tailwindcss-oxide v0.1.0 (/Users/runner/work/tailwindcss/tailwindcss/crates/oxide)
+warning: unexpected `cfg` condition value: `used_linker`
+--> crates/node/src/lib.rs:96:1
+|
+96 | #[napi]
+^^^^^^^
+|
+= note: no expected values for `feature`
+= note: using a cfg inside a attribute macro will use the cfgs from the destination crate and not the ones from the defining crate
+= help: try referring to `napi::bindgen_prelude::ctor` crate for guidance on how handle this unexpected cfg
+= help: the attribute macro `napi::bindgen_prelude::ctor` may come from an old version of the `ctor` crate, try updating your dependency with `cargo update -p ctor`
+= note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+= note: `#[warn(unexpected_cfgs)]` on by default
+= note: this warning originates in the attribute macro `napi::bindgen_prelude::ctor` (in Nightly builds, run with -Z macro-backtrace for more info)
+2025-04-14T17:24:17.5990780Z
+warning: unexpected `cfg` condition value: `used_linker`
+--> crates/node/src/lib.rs:111:1
+|
+111 | #[napi]
+^^^^^^^
+|
+= note: no expected values for `feature`
+= note: using a cfg inside a attribute macro will use the cfgs from the destination crate and not the ones from the defining crate
+= help: try referring to `napi::bindgen_prelude::ctor` crate for guidance on how handle this unexpected cfg
+= help: the attribute macro `napi::bindgen_prelude::ctor` may come from an old version of the `ctor` crate, try updating your dependency with `cargo update -p ctor`
+= note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+= note: this warning originates in the attribute macro `napi::bindgen_prelude::ctor` (in Nightly builds, run with -Z macro-backtrace for more info)
+2025-04-14T17:24:17.6000550Z
+warning: `tailwind-oxide` (lib) generated 2 warnings
+Finished `release` profile [optimized] target(s) in 19.81s
+2025-04-14T17:24:17.6001760Z
+> @tailwindcss/oxide@4.1.4 postbuild:platform /Users/runner/work/tailwindcss/tailwindcss/crates/node
+> node ./scripts/move-artifacts.mjs
+2025-04-14T17:24:17.6003070Z
+Moved tailwindcss-oxide.darwin-arm64.node to npm/darwin-arm64
+Moved tailwindcss-oxide.debug.wasm to npm/wasm32-wasi
+Moved tailwindcss-oxide.wasi-browser.js to npm/wasm32-wasi
+Moved tailwindcss-oxide.wasi.cjs to npm/wasm32-wasi
+Moved tailwindcss-oxide.wasm to npm/wasm32-wasi
+Moved wasi-worker-browser.mjs to npm/wasm32-wasi
+Moved wasi-worker.mjs to npm/wasm32-wasi
+2025-04-14T17:24:17.6006610Z
+> @tailwindcss/oxide@4.1.4 build:wasm /Users/runner/work/tailwindcss/tailwindcss/crates/node
+> napi build --release --target wasm32-wasip1-threads --no-const-enum
+2025-04-14T17:24:17.6008250Z
+Compiling ignore v0.4.23 (/Users/runner/work/tailwindcss/tailwindcss/crates/ignore)
+Compiling tailwind-oxide v0.0.0 (/Users/runner/work/tailwindcss/tailwindcss/crates/node)
+warning: unused variable: `depth`
+--> crates/ignore/src/walk.rs:387:9
+|
+387 |         depth: usize,
+|         ^^^^^ help: if this is intentional, prefix it with an underscore: `_depth`
+|
+= note: `#[warn(unused_variables)]` on by default
+2025-04-14T17:24:17.6012120Z
+warning: unused variable: `ent`
+--> crates/ignore/src/walk.rs:388:9
+|
+388 |         ent: &fs::DirEntry,
+|         ^^^ help: if this is intentional, prefix it with an underscore: `_ent`
+2025-04-14T17:24:17.6027610Z
+warning: unused variable: `ty`
+--> crates/ignore/src/walk.rs:389:9
+|
+389 |         ty: fs::FileType,
+|         ^^ help: if this is intentional, prefix it with an underscore: `_ty`
+2025-04-14T17:24:17.6029800Z
+warning: unused variable: `depth`
+--> crates/ignore/src/walk.rs:426:18
+|
+426 |     fn from_path(depth: usize, pb: PathBuf, link: bool) -> Result<DirEntryRaw, Error> {
+|                  ^^^^^ help: if this is intentional, prefix it with an underscore: `_depth`
+2025-04-14T17:24:17.6032060Z
+warning: unused variable: `pb`
+--> crates/ignore/src/walk.rs:426:32
+|
+426 |     fn from_path(depth: usize, pb: PathBuf, link: bool) -> Result<DirEntryRaw, Error> {
+|                                ^^ help: if this is intentional, prefix it with an underscore: `_pb`
+2025-04-14T17:24:17.6037060Z
+warning: unused variable: `link`
+--> crates/ignore/src/walk.rs:426:45
+|
+426 |     fn from_path(depth: usize, pb: PathBuf, link: bool) -> Result<DirEntryRaw, Error> {
+|                                             ^^^^ help: if this is intentional, prefix it with an underscore: `_link`
+2025-04-14T17:24:17.6039460Z
+Compiling tailwindcss-oxide v0.1.0 (/Users/runner/work/tailwindcss/tailwindcss/crates/oxide)
+warning: `ignore` (lib) generated 6 warnings
+Finished `release` profile [optimized] target(s) in 11.75s
+2025-04-14T17:24:17.6041240Z
+> @tailwindcss/oxide@4.1.4 postbuild:wasm /Users/runner/work/tailwindcss/tailwindcss/crates/node
+> node ./scripts/move-artifacts.mjs
+2025-04-14T17:24:17.6042520Z
+Moved tailwindcss-oxide.darwin-arm64.node to npm/darwin-arm64
+Moved tailwindcss-oxide.debug.wasm to npm/wasm32-wasi
+Moved tailwindcss-oxide.wasi-browser.js to npm/wasm32-wasi
+Moved tailwindcss-oxide.wasi.cjs to npm/wasm32-wasi
+Moved tailwindcss-oxide.wasm to npm/wasm32-wasi
+Moved wasi-worker-browser.mjs to npm/wasm32-wasi
+Moved wasi-worker.mjs to npm/wasm32-wasi
+##[endgroup]
+##[group]tailwindcss:build
+cache miss, executing 04eb3bad67ad7c00
+2025-04-14T17:24:24.2788510Z
+> tailwindcss@4.1.4 build /Users/runner/work/tailwindcss/tailwindcss/packages/tailwindcss
+> tsup-node --env.NODE_ENV production
+2025-04-14T17:24:24.2790350Z
+[34mCLI[39m Building entry: {"lib":"src/index.ts","plugin":"src/plugin.ts","colors":"src/compat/colors.ts","default-theme":"src/compat/default-theme.ts","flatten-color-palette":"src/compat/flatten-color-palette.ts"}
+[34mCLI[39m Using tsconfig: tsconfig.json
+[34mCLI[39m Building entry: {"plugin":"src/plugin.cts","lib":"src/index.cts","colors":"src/compat/colors.cts","default-theme":"src/compat/default-theme.cts","flatten-color-palette":"src/compat/flatten-color-palette.cts"}
+[34mCLI[39m Using tsconfig: tsconfig.json
+[34mCLI[39m tsup v8.4.0
+[34mCLI[39m Using tsup config: /Users/runner/work/tailwindcss/tailwindcss/packages/tailwindcss/tsup.config.ts
+[34mCLI[39m tsup v8.4.0
+[34mCLI[39m Using tsup config: /Users/runner/work/tailwindcss/tailwindcss/packages/tailwindcss/tsup.config.ts
+[34mCLI[39m Target: es2022
+[34mESM[39m Build start
+[34mCLI[39m Target: es2022
+[34mCJS[39m Build start
+[32mESM[39m [1mdist/lib.mjs                   [22m[32m218.00 B[39m
+[32mESM[39m [1mdist/plugin.mjs                [22m[32m192.00 B[39m
+[32mESM[39m [1mdist/colors.mjs                [22m[32m58.00 B[39m
+[32mESM[39m [1mdist/default-theme.mjs         [22m[32m92.00 B[39m
+[32mESM[39m [1mdist/flatten-color-palette.mjs [22m[32m424.00 B[39m
+[32mESM[39m [1mdist/chunk-QMW34FGX.mjs        [22m[32m186.63 KB[39m
+[32mESM[39m [1mdist/chunk-P5FH2LZE.mjs        [22m[32m22.77 KB[39m
+[32mESM[39m [1mdist/chunk-HTB5LLOP.mjs        [22m[32m7.79 KB[39m
+[32mESM[39m ⚡️ Build success in 109ms
+[32mCJS[39m [1mdist/plugin.js                [22m[32m201.00 B[39m
+[32mCJS[39m [1mdist/lib.js                   [22m[32m217.32 KB[39m
+[32mCJS[39m [1mdist/colors.js                [22m[32m7.80 KB[39m
+[32mCJS[39m [1mdist/default-theme.js         [22m[32m25.01 KB[39m
+[32mCJS[39m [1mdist/flatten-color-palette.js [22m[32m29.34 KB[39m
+[32mCJS[39m ⚡️ Build success in 107ms
+[34mDTS[39m Build start
+[34mDTS[39m Build start
+[32mDTS[39m ⚡️ Build success in 4818ms
+[32mDTS[39m [1mdist/lib.d.mts                     [22m[32m8.09 KB[39m
+[32mDTS[39m [1mdist/plugin.d.mts                  [22m[32m642.00 B[39m
+[32mDTS[39m [1mdist/default-theme.d.mts           [22m[32m27.49 KB[39m
+[32mDTS[39m [1mdist/colors.d.mts                  [22m[32m6.01 KB[39m
+[32mDTS[39m [1mdist/flatten-color-palette.d.mts   [22m[32m186.00 B[39m
+[32mDTS[39m [1mdist/types-B254mqw1.d.mts          [22m[32m3.29 KB[39m
+[32mDTS[39m [1mdist/resolve-config-QUZ9b-Gn.d.mts [22m[32m3.54 KB[39m
+[32mDTS[39m ⚡️ Build success in 6008ms
+[32mDTS[39m [1mdist/plugin.d.ts                  [22m[32m3.47 KB[39m
+[32mDTS[39m [1mdist/lib.d.ts                     [22m[32m92.00 B[39m
+[32mDTS[39m [1mdist/colors.d.ts                  [22m[32m89.00 B[39m
+[32mDTS[39m [1mdist/default-theme.d.ts           [22m[32m27.49 KB[39m
+[32mDTS[39m [1mdist/flatten-color-palette.d.ts   [22m[32m186.00 B[39m
+[32mDTS[39m [1mdist/resolve-config-BIFUA2FY.d.ts [22m[32m491.00 B[39m
+[32mDTS[39m [1mdist/colors-b_6i0Oi7.d.ts         [22m[32m6.00 KB[39m
+##[endgroup]
+##[group]@tailwindcss/browser:build
+cache miss, executing 0610a84519484aa3
+2025-04-14T17:24:24.8340660Z
+> @tailwindcss/browser@4.1.4 build /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-browser
+> tsup-node
+2025-04-14T17:24:24.8642750Z
+[34mCLI[39m Building entry: src/index.ts
+[34mCLI[39m Using tsconfig: tsconfig.json
+[34mCLI[39m tsup v8.4.0
+[34mCLI[39m Using tsup config: /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-browser/tsup.config.ts
+[34mCLI[39m Target: es2022
+[34mCLI[39m Cleaning output folder
+[34mIIFE[39m Build start
+[32mIIFE[39m [1mdist/index.global.js [22m[32m244.68 KB[39m
+[32mIIFE[39m ⚡️ Build success in 52ms
+##[endgroup]
+##[group]@tailwindcss/node:build
+cache miss, executing 5b3558ae30276604
+2025-04-14T17:24:31.6849090Z
+> @tailwindcss/node@4.1.4 build /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-node
+> tsup-node
+2025-04-14T17:24:31.6850560Z
+[34mCLI[39m Building entry: src/index.cts
+[34mCLI[39m Using tsconfig: tsconfig.json
+[34mCLI[39m tsup v8.4.0
+[34mCLI[39m Using tsup config: /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-node/tsup.config.ts
+[34mCLI[39m Building entry: src/esm-cache.loader.mts
+[34mCLI[39m Using tsconfig: tsconfig.json
+[34mCLI[39m tsup v8.4.0
+[34mCLI[39m Using tsup config: /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-node/tsup.config.ts
+[34mCLI[39m Building entry: src/require-cache.cts
+[34mCLI[39m Using tsconfig: tsconfig.json
+[34mCLI[39m tsup v8.4.0
+[34mCLI[39m Using tsup config: /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-node/tsup.config.ts
+[34mCLI[39m Building entry: src/index.ts
+[34mCLI[39m Using tsconfig: tsconfig.json
+[34mCLI[39m tsup v8.4.0
+[34mCLI[39m Using tsup config: /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-node/tsup.config.ts
+[34mCLI[39m Target: es2022
+[34mCJS[39m Build start
+[34mCLI[39m Target: es2022
+[34mESM[39m Build start
+[34mCLI[39m Target: es2022
+[34mCJS[39m Build start
+[34mCLI[39m Target: es2022
+[34mESM[39m Build start
+[32mESM[39m [1mdist/esm-cache.loader.mjs [22m[32m307.00 B[39m
+[32mESM[39m ⚡️ Build success in 20ms
+[32mCJS[39m [1mdist/require-cache.js [22m[32m579.00 B[39m
+[32mCJS[39m ⚡️ Build success in 23ms
+[warn] [33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1m"import.meta" is not available with the "cjs" output format and will be empty[0m [empty-import-meta]
+2025-04-14T17:24:31.6869380Z
+src/compile.ts:195:24:
+[37m      195 │     jiti ??= createJiti([32mimport.meta[37m.url, { moduleCache: false, fs...
+╵                         [32m~~~~~~~~~~~[0m
+2025-04-14T17:24:31.6871140Z
+You need to set the output format to "esm" for "import.meta" to work correctly.
+2025-04-14T17:24:31.6872150Z
+2025-04-14T17:24:31.6872160Z
+[32mCJS[39m [1mdist/index.js [22m[32m44.24 KB[39m
+[32mCJS[39m ⚡️ Build success in 98ms
+[32mESM[39m [1mdist/index.mjs [22m[32m43.43 KB[39m
+[32mESM[39m ⚡️ Build success in 101ms
+[34mDTS[39m Build start
+[34mDTS[39m Build start
+[34mDTS[39m Build start
+[34mDTS[39m Build start
+[32mDTS[39m ⚡️ Build success in 2073ms
+[32mDTS[39m [1mdist/esm-cache.loader.d.mts [22m[32m99.00 B[39m
+[32mDTS[39m ⚡️ Build success in 2552ms
+[32mDTS[39m [1mdist/require-cache.d.ts [22m[32m90.00 B[39m
+[32mDTS[39m ⚡️ Build success in 5391ms
+[32mDTS[39m [1mdist/index.d.ts [22m[32m3.69 KB[39m
+[32mDTS[39m ⚡️ Build success in 6621ms
+[32mDTS[39m [1mdist/index.d.mts [22m[32m3.69 KB[39m
+##[endgroup]
+##[group]@tailwindcss/cli:build
+cache miss, executing ce83869f050d5e35
+2025-04-14T17:24:32.6397070Z
+> @tailwindcss/cli@4.1.4 build /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-cli
+> tsup-node
+2025-04-14T17:24:32.6702620Z
+[34mCLI[39m Building entry: src/index.ts
+[34mCLI[39m Using tsconfig: tsconfig.json
+[34mCLI[39m tsup v8.4.0
+[34mCLI[39m Using tsup config: /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-cli/tsup.config.ts
+[34mCLI[39m Target: es2022
+[34mCLI[39m Cleaning output folder
+[34mESM[39m Build start
+[32mESM[39m [1mdist/index.mjs [22m[32m10.24 KB[39m
+[32mESM[39m ⚡️ Build success in 116ms
+##[endgroup]
+##[group]@tailwindcss/upgrade:build
+cache miss, executing e53f2ff194dbc59a
+2025-04-14T17:24:32.7938360Z
+> @tailwindcss/upgrade@4.1.4 build /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-upgrade
+> tsup-node
+2025-04-14T17:24:32.8171570Z
+[34mCLI[39m Building entry: src/index.ts
+[34mCLI[39m Using tsconfig: tsconfig.json
+[34mCLI[39m tsup v8.4.0
+[34mCLI[39m Using tsup config: /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-upgrade/tsup.config.ts
+[34mCLI[39m Target: es2022
+[34mCLI[39m Cleaning output folder
+[34mESM[39m Build start
+[32mESM[39m [1mdist/index.mjs [22m[32m146.62 KB[39m
+[32mESM[39m ⚡️ Build success in 139ms
+##[endgroup]
+##[group]@tailwindcss/standalone:build
+cache miss, executing 0884b90a2ff9d940
+2025-04-14T17:24:40.3943440Z
+> @tailwindcss/standalone@4.1.4 build /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-standalone
+> bun ./scripts/build.ts
+2025-04-14T17:24:40.4245780Z
+[882ms]  bundle  231 modules
+[964ms]  bundle  230 modules
+[1059ms]  bundle  231 modules
+[1085ms]  bundle  230 modules
+[1202ms]  bundle  231 modules
+[1394ms]  bundle  231 modules
+[1416ms]  bundle  231 modules
+Downloading [5744793] Downloading [4847760]
+Downloading [9402521]
+Downloading [15153305]
+Downloading [12683408]
+Downloading [22743193]
+Downloading [20555920]
+Downloading [22120592]
+Downloading [25360537]
+Downloading [25262224]
+Downloading [30070937]
+Downloading [30570640] Downloading [54673]
+Downloading [30587033] Downloading [4865]
+2025-04-14T17:24:40.6334220Z
+Downloading [1652890]
+Downloading [9238682] Downloading [3266713]
+Downloading [621892]
+Downloading [31148176]
+Downloading [6158489]
+Downloading [4282514] Downloading [249042]
+Downloading [13944986]
+Downloading [31660176]
+Downloading [8886418]
+Downloading [11520153]
+Downloading [773330]
+Downloading [12335250]
+Downloading [12982425]
+Downloading [35322000]
+Downloading [19789978]
+2025-04-14T17:24:40.7947780Z
+Downloading [17516690]
+Downloading [6109327]
+Downloading [37935248]
+Downloading [19531929]
+2025-04-14T17:24:40.8450660Z
+Downloading [21788818]
+Downloading [7678095]
+Downloading [10229903]
+Downloading [10754191]
+Downloading [25495698]
+Downloading [25295001]
+Downloading [12310671]
+Downloading [25807001]
+Downloading [27064466]
+Downloading [28108946]
+Downloading [27383961]
+Downloading [17328271]
+Downloading [32823442]
+Downloading [33667225]
+Downloading [34773138]
+Downloading [22034575]
+Downloading [37611500]
+2025-04-14T17:24:41.0192230Z
+Downloading [36739218]
+Downloading [37255314]
+Downloading [25172111]
+Downloading [26736783]
+Downloading [30402703]
+2025-04-14T17:24:41.0801480Z
+Downloading [37779602]
+[3.309s] compile  /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-standalone/dist/tailwindcss-macos-arm64
+Decompressing...
+Decompressing...
+[4.689s] compile  /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-standalone/dist/tailwindcss-linux-arm64-musl bun-linux-aarch64-musl-v1.2.8
+[4.628s] compile  /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-standalone/dist/tailwindcss-macos-x64 bun-darwin-x64-baseline-v1.2.8
+Decompressing...
+Decompressing...
+Decompressing...
+[4.595s] compile  /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-standalone/dist/tailwindcss-linux-x64-musl bun-linux-x64-musl-baseline-v1.2.8
+Decompressing...
+[4.685s] compile  /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-standalone/dist/tailwindcss-linux-arm64 bun-linux-aarch64-v1.2.8
+[4.923s] compile  /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-standalone/dist/tailwindcss-linux-x64 bun-linux-x64-baseline-v1.2.8
+[5.243s] compile  /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-standalone/dist/tailwindcss-windows-x64.exe bun-windows-x64-baseline-v1.2.8
+┌───┬─────────────────────────────┬──────────────────────────────────────────────────────────────────┬─────────┐
+│   │ triple                      │ sum                                                              │ elapsed │
+├───┼─────────────────────────────┼──────────────────────────────────────────────────────────────────┼─────────┤
+│ 0 │ bun-linux-arm64             │ 1c543218da4b921f4e454cf24f5d4718deb1f4088336e23feef83dae08186038 │ 6424ms  │
+│ 1 │ bun-linux-arm64-musl        │ baa58d5a1f982dc38df784d290a06ada7875faafc363d4a465feafaba4cea6ac │ 5879ms  │
+│ 2 │ bun-linux-x64-baseline      │ 1868ca5e4a0875c93c7d98e3bf856ad9c8264d2966a9e20115297ade69179f3a │ 6554ms  │
+│ 3 │ bun-linux-x64-musl-baseline │ 9ab5f6bafec2ce80c6b1fc7533f9b48940e4dffe97e839c8dd6b326e7ae24fb7 │ 6338ms  │
+│ 4 │ bun-darwin-arm64            │ 71b68f9e550837bc67682033848975d568e934c1af6e97fed434e1c689334880 │ 4664ms  │
+│ 5 │ bun-darwin-x64-baseline     │ 65b91fa251d7537146ab39ee3d0be69b7b445388eabb331bebbb76454b211feb │ 6004ms  │
+│ 6 │ bun-windows-x64-baseline    │ f758f623be19b2d2b45bfa93d229433047d925303526b07f31e1467965018254 │ 6832ms  │
+└───┴─────────────────────────────┴──────────────────────────────────────────────────────────────────┴─────────┘
+##[endgroup]
+##[group]@tailwindcss/vite:build
+cache miss, executing a511f8be1482642f
+2025-04-14T17:24:42.4833310Z
+> @tailwindcss/vite@4.1.4 build /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-vite
+> tsup-node
+2025-04-14T17:24:42.4954260Z
+[34mCLI[39m Building entry: src/index.ts
+[34mCLI[39m Using tsconfig: tsconfig.json
+[34mCLI[39m tsup v8.4.0
+[34mCLI[39m Using tsup config: /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-vite/tsup.config.ts
+[34mCLI[39m Target: es2022
+[34mCLI[39m Cleaning output folder
+[34mESM[39m Build start
+[32mESM[39m [1mdist/index.mjs [22m[32m5.06 KB[39m
+[32mESM[39m ⚡️ Build success in 63ms
+[34mDTS[39m Build start
+[32mDTS[39m ⚡️ Build success in 9635ms
+[32mDTS[39m [1mdist/index.d.mts [22m[32m110.00 B[39m
+##[endgroup]
+##[group]@tailwindcss/postcss:build
+cache miss, executing 7a2b6263dbf61afb
+2025-04-14T17:24:42.6315930Z
+> @tailwindcss/postcss@4.1.4 build /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-postcss
+> tsup-node
+2025-04-14T17:24:42.6317970Z
+[34mCLI[39m Building entry: src/index.ts
+[34mCLI[39m Using tsconfig: tsconfig.json
+[34mCLI[39m tsup v8.4.0
+[34mCLI[39m Using tsup config: /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-postcss/tsup.config.ts
+[34mCLI[39m Building entry: src/index.cts
+[34mCLI[39m Using tsconfig: tsconfig.json
+[34mCLI[39m tsup v8.4.0
+[34mCLI[39m Using tsup config: /Users/runner/work/tailwindcss/tailwindcss/packages/@tailwindcss-postcss/tsup.config.ts
+[34mCLI[39m Target: es2022
+[34mESM[39m Build start
+[34mCLI[39m Target: es2022
+[34mCJS[39m Build start
+[32mESM[39m [1mdist/index.mjs [22m[32m36.81 KB[39m
+[32mESM[39m ⚡️ Build success in 155ms
+[32mCJS[39m [1mdist/index.js [22m[32m37.47 KB[39m
+[32mCJS[39m ⚡️ Build success in 139ms
+[34mDTS[39m Build start
+[34mDTS[39m Build start
+[32mDTS[39m ⚡️ Build success in 9829ms
+[32mDTS[39m [1mdist/index.d.ts [22m[32m221.00 B[39m
+[32mDTS[39m ⚡️ Build success in 9870ms
+[32mDTS[39m [1mdist/index.d.mts [22m[32m254.00 B[39m
+##[endgroup]
+2025-04-14T17:24:42.6385740Z
+Tasks:    9 successful, 9 total
+Cached:    0 cached, 9 total
+Time:    58.628s
+2025-04-14T17:24:42.6397310Z
+2025-04-14T17:24:44.6959740Z
+> @tailwindcss/root@1.0.0 postbuild /Users/runner/work/tailwindcss/tailwindcss
+> node ./scripts/pack-packages.mjs
+2025-04-14T17:24:44.6966400Z
+Done.

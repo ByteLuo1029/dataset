@@ -1,0 +1,16 @@
+##[group]Run <:*:>
+with:
+version: 1.7
+<:*:> false
+##[endgroup]
+##[group]Run if (Get-Command "jq.exe" -ErrorAction SilentlyContinue)
+[36;1mif (Get-Command "jq.exe" -ErrorAction SilentlyContinue)[0m
+[36;1m{[0m
+[36;1m    Add-Content $Env:GITHUB_OUTPUT "found=true"[0m
+[36;1m}[0m
+[<:NUM:>;1melse[0m
+[36;1m{[0m
+[36;1m    Add-Content $Env:GITHUB_OUTPUT "found=false"[0m
+[36;1m}[0m
+shell: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.EXE -command ". '{0}'"
+##[endgroup]

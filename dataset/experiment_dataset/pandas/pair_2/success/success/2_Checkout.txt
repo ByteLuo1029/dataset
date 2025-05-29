@@ -1,0 +1,267 @@
+2025-04-14T19:17:58.7570210Z ##[group]Run actions/checkout@v4
+2025-04-14T19:17:58.7571420Z with:
+2025-04-14T19:17:58.7572030Z   fetch-depth: 0
+2025-04-14T19:17:58.7572680Z   repository: pandas-dev/pandas
+2025-04-14T19:17:58.7573590Z   token: ***
+2025-04-14T19:17:58.7574180Z   ssh-strict: true
+2025-04-14T19:17:58.7574790Z   ssh-user: git
+2025-04-14T19:17:58.7575400Z   persist-credentials: true
+2025-04-14T19:17:58.7576100Z   clean: true
+2025-04-14T19:17:58.7576720Z   sparse-checkout-cone-mode: true
+2025-04-14T19:17:58.7577460Z   fetch-tags: false
+2025-04-14T19:17:58.7578050Z   show-progress: true
+2025-04-14T19:17:58.7578680Z   lfs: false
+2025-04-14T19:17:58.7579260Z   submodules: false
+2025-04-14T19:17:58.7579900Z   set-safe-directory: true
+2025-04-14T19:17:58.7580910Z env:
+2025-04-14T19:17:58.7582090Z   PANDAS_CI: 1
+2025-04-14T19:17:58.7582770Z   PYTEST_TARGET: pandas
+2025-04-14T19:17:58.7583610Z   PATTERN: not slow and not db and not network and not single_cpu
+2025-04-14T19:17:58.7584560Z   PYTEST_WORKERS: auto
+2025-04-14T19:17:58.7585250Z ##[endgroup]
+2025-04-14T19:17:59.2111140Z Syncing repository: pandas-dev/pandas
+2025-04-14T19:17:59.2113780Z ##[group]Getting Git version info
+2025-04-14T19:17:59.2114760Z Working directory is '/Users/runner/work/pandas/pandas'
+2025-04-14T19:17:59.2116740Z [command]/usr/local/bin/git version
+2025-04-14T19:17:59.2424560Z git version 2.49.0
+2025-04-14T19:17:59.2472850Z ##[endgroup]
+2025-04-14T19:17:59.2485840Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/58e14478-a23f-40af-bfed-42b54d57ba18/.gitconfig'
+2025-04-14T19:17:59.2501600Z Temporarily overriding HOME='/Users/runner/work/_temp/58e14478-a23f-40af-bfed-42b54d57ba18' before making global git config changes
+2025-04-14T19:17:59.2503610Z Adding repository directory to the temporary git global config as a safe directory
+2025-04-14T19:17:59.2507550Z [command]/usr/local/bin/git config --global --add safe.directory /Users/runner/work/pandas/pandas
+2025-04-14T19:17:59.2637410Z Deleting the contents of '/Users/runner/work/pandas/pandas'
+2025-04-14T19:17:59.2643160Z ##[group]Initializing the repository
+2025-04-14T19:17:59.2649560Z [command]/usr/local/bin/git init /Users/runner/work/pandas/pandas
+2025-04-14T19:17:59.2907700Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-04-14T19:17:59.2910520Z hint: is subject to change. To configure the initial branch name to use in all
+2025-04-14T19:17:59.2911920Z hint: of your new repositories, which will suppress this warning, call:
+2025-04-14T19:17:59.2912990Z hint:
+2025-04-14T19:17:59.2913750Z hint: 	git config --global init.defaultBranch <name>
+2025-04-14T19:17:59.2914650Z hint:
+2025-04-14T19:17:59.2915460Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-04-14T19:17:59.2916780Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-04-14T19:17:59.2917810Z hint:
+2025-04-14T19:17:59.2918390Z hint: 	git branch -m <name>
+2025-04-14T19:17:59.2919360Z Initialized empty Git repository in /Users/runner/work/pandas/pandas/.git/
+2025-04-14T19:17:59.2923100Z [command]/usr/local/bin/git remote add origin https://github.com/pandas-dev/pandas
+2025-04-14T19:17:59.3017270Z ##[endgroup]
+2025-04-14T19:17:59.3018380Z ##[group]Disabling automatic garbage collection
+2025-04-14T19:17:59.3021490Z [command]/usr/local/bin/git config --local gc.auto 0
+2025-04-14T19:17:59.3093590Z ##[endgroup]
+2025-04-14T19:17:59.3094590Z ##[group]Setting up auth
+2025-04-14T19:17:59.3103290Z [command]/usr/local/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-04-14T19:17:59.3172630Z [command]/usr/local/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-04-14T19:17:59.4272460Z [command]/usr/local/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-14T19:17:59.4352240Z [command]/usr/local/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-04-14T19:17:59.5223120Z [command]/usr/local/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-04-14T19:17:59.5310150Z ##[endgroup]
+2025-04-14T19:17:59.5311260Z ##[group]Fetching the repository
+2025-04-14T19:17:59.5322080Z [command]/usr/local/bin/git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/* +2384814c7cb86fbcd74298a1d95f596c839f7080:refs/remotes/pull/61274/merge
+2025-04-14T19:18:26.6717460Z From https://github.com/pandas-dev/pandas
+2025-04-14T19:18:26.6718510Z  * [new branch]            0.19.x            -> origin/0.19.x
+2025-04-14T19:18:26.6722200Z  * [new branch]            0.20.x            -> origin/0.20.x
+2025-04-14T19:18:26.6724850Z  * [new branch]            0.21.x            -> origin/0.21.x
+2025-04-14T19:18:26.6728100Z  * [new branch]            0.22.x            -> origin/0.22.x
+2025-04-14T19:18:26.6736080Z  * [new branch]            0.23.x            -> origin/0.23.x
+2025-04-14T19:18:26.6742400Z  * [new branch]            0.24.x            -> origin/0.24.x
+2025-04-14T19:18:26.6745230Z  * [new branch]            0.25.x            -> origin/0.25.x
+2025-04-14T19:18:26.6748610Z  * [new branch]            1.0.x             -> origin/1.0.x
+2025-04-14T19:18:26.6753470Z  * [new branch]            1.1.x             -> origin/1.1.x
+2025-04-14T19:18:26.6757280Z  * [new branch]            1.2.x             -> origin/1.2.x
+2025-04-14T19:18:26.6760800Z  * [new branch]            1.3.x             -> origin/1.3.x
+2025-04-14T19:18:26.6761580Z  * [new branch]            1.4.x             -> origin/1.4.x
+2025-04-14T19:18:26.6762290Z  * [new branch]            1.5.x             -> origin/1.5.x
+2025-04-14T19:18:26.6763120Z  * [new branch]            2.0.x             -> origin/2.0.x
+2025-04-14T19:18:26.6763920Z  * [new branch]            2.1.x             -> origin/2.1.x
+2025-04-14T19:18:26.6764790Z  * [new branch]            2.2.x             -> origin/2.2.x
+2025-04-14T19:18:26.6765530Z  * [new branch]            2.3.x             -> origin/2.3.x
+2025-04-14T19:18:26.6766800Z  * [new branch]            main              -> origin/main
+2025-04-14T19:18:26.6771670Z  * [new tag]               0.3.0             -> 0.3.0
+2025-04-14T19:18:26.6774550Z  * [new tag]               debian/0.4.0-1    -> debian/0.4.0-1
+2025-04-14T19:18:26.6779050Z  * [new tag]               debian/0.4.1-1    -> debian/0.4.1-1
+2025-04-14T19:18:26.6782260Z  * [new tag]               debian/0.4.3-1    -> debian/0.4.3-1
+2025-04-14T19:18:26.6785700Z  * [new tag]               debian/0.5.0+git7-gcf32be2-1 -> debian/0.5.0+git7-gcf32be2-1
+2025-04-14T19:18:26.6788670Z  * [new tag]               debian/0.6.1-1    -> debian/0.6.1-1
+2025-04-14T19:18:26.6791260Z  * [new tag]               debian/0.7.0-1    -> debian/0.7.0-1
+2025-04-14T19:18:26.6794560Z  * [new tag]               debian/0.7.1+git1-ga2e86c2-1 -> debian/0.7.1+git1-ga2e86c2-1
+2025-04-14T19:18:26.6798380Z  * [new tag]               debian/0.7.3-1    -> debian/0.7.3-1
+2025-04-14T19:18:26.6801630Z  * [new tag]               debian/0.8.0-1    -> debian/0.8.0-1
+2025-04-14T19:18:26.6804760Z  * [new tag]               debian/0.8.0-2    -> debian/0.8.0-2
+2025-04-14T19:18:26.6807870Z  * [new tag]               debian/0.8.0_b2+git68-g7240b87-1 -> debian/0.8.0_b2+git68-g7240b87-1
+2025-04-14T19:18:26.6811410Z  * [new tag]               debian/0.8.0_b2-1 -> debian/0.8.0_b2-1
+2025-04-14T19:18:26.6815780Z  * [new tag]               debian/0.8.0_rc2+git26-g76c6351-1 -> debian/0.8.0_rc2+git26-g76c6351-1
+2025-04-14T19:18:26.6819020Z  * [new tag]               debian/0.8.1-1    -> debian/0.8.1-1
+2025-04-14T19:18:26.6822010Z  * [new tag]               v0.10.0           -> v0.10.0
+2025-04-14T19:18:26.6824920Z  * [new tag]               v0.10.0b1         -> v0.10.0b1
+2025-04-14T19:18:26.6827630Z  * [new tag]               v0.10.1           -> v0.10.1
+2025-04-14T19:18:26.6830450Z  * [new tag]               v0.11.0           -> v0.11.0
+2025-04-14T19:18:26.6834610Z  * [new tag]               v0.11.0rc1        -> v0.11.0rc1
+2025-04-14T19:18:26.6836750Z  * [new tag]               v0.12.0           -> v0.12.0
+2025-04-14T19:18:26.6841900Z  * [new tag]               v0.12.0rc1        -> v0.12.0rc1
+2025-04-14T19:18:26.6843640Z  * [new tag]               v0.13.0           -> v0.13.0
+2025-04-14T19:18:26.6845520Z  * [new tag]               v0.13.0_ahl1      -> v0.13.0_ahl1
+2025-04-14T19:18:26.6848850Z  * [new tag]               v0.13.0_ahl2      -> v0.13.0_ahl2
+2025-04-14T19:18:26.6852710Z  * [new tag]               v0.13.0rc1        -> v0.13.0rc1
+2025-04-14T19:18:26.6855010Z  * [new tag]               v0.13.1           -> v0.13.1
+2025-04-14T19:18:26.6859160Z  * [new tag]               v0.14.0           -> v0.14.0
+2025-04-14T19:18:26.6861600Z  * [new tag]               v0.14.0rc1        -> v0.14.0rc1
+2025-04-14T19:18:26.6865240Z  * [new tag]               v0.14.1           -> v0.14.1
+2025-04-14T19:18:26.6867550Z  * [new tag]               v0.15.0           -> v0.15.0
+2025-04-14T19:18:26.6871160Z  * [new tag]               v0.15.0rc1        -> v0.15.0rc1
+2025-04-14T19:18:26.6874180Z  * [new tag]               v0.15.1           -> v0.15.1
+2025-04-14T19:18:26.6876860Z  * [new tag]               v0.15.2           -> v0.15.2
+2025-04-14T19:18:26.6879620Z  * [new tag]               v0.15.2pre        -> v0.15.2pre
+2025-04-14T19:18:26.6884040Z  * [new tag]               v0.15pre          -> v0.15pre
+2025-04-14T19:18:26.6885310Z  * [new tag]               v0.16.0           -> v0.16.0
+2025-04-14T19:18:26.6888320Z  * [new tag]               v0.16.0rc1        -> v0.16.0rc1
+2025-04-14T19:18:26.6892710Z  * [new tag]               v0.16.1           -> v0.16.1
+2025-04-14T19:18:26.6896930Z  * [new tag]               v0.16.2           -> v0.16.2
+2025-04-14T19:18:26.6900510Z  * [new tag]               v0.16.3           -> v0.16.3
+2025-04-14T19:18:26.6903730Z  * [new tag]               v0.17.0           -> v0.17.0
+2025-04-14T19:18:26.6907800Z  * [new tag]               v0.17.0rc1        -> v0.17.0rc1
+2025-04-14T19:18:26.6910240Z  * [new tag]               v0.17.0rc2        -> v0.17.0rc2
+2025-04-14T19:18:26.6914290Z  * [new tag]               v0.17.1           -> v0.17.1
+2025-04-14T19:18:26.6918420Z  * [new tag]               v0.18.0           -> v0.18.0
+2025-04-14T19:18:26.6921670Z  * [new tag]               v0.18.0rc1        -> v0.18.0rc1
+2025-04-14T19:18:26.6925210Z  * [new tag]               v0.18.0rc2        -> v0.18.0rc2
+2025-04-14T19:18:26.6928440Z  * [new tag]               v0.18.1           -> v0.18.1
+2025-04-14T19:18:26.6932240Z  * [new tag]               v0.19.0           -> v0.19.0
+2025-04-14T19:18:26.6934960Z  * [new tag]               v0.19.0rc1        -> v0.19.0rc1
+2025-04-14T19:18:26.6938980Z  * [new tag]               v0.19.1           -> v0.19.1
+2025-04-14T19:18:26.6943270Z  * [new tag]               v0.19.2           -> v0.19.2
+2025-04-14T19:18:26.6945560Z  * [new tag]               v0.20.0           -> v0.20.0
+2025-04-14T19:18:26.6949750Z  * [new tag]               v0.20.0rc1        -> v0.20.0rc1
+2025-04-14T19:18:26.6952180Z  * [new tag]               v0.20.0rc2        -> v0.20.0rc2
+2025-04-14T19:18:26.6956900Z  * [new tag]               v0.20.1           -> v0.20.1
+2025-04-14T19:18:26.6959380Z  * [new tag]               v0.20.2           -> v0.20.2
+2025-04-14T19:18:26.6964430Z  * [new tag]               v0.20.3           -> v0.20.3
+2025-04-14T19:18:26.6966910Z  * [new tag]               v0.21.0           -> v0.21.0
+2025-04-14T19:18:26.6970390Z  * [new tag]               v0.21.0.dev       -> v0.21.0.dev
+2025-04-14T19:18:26.6972950Z  * [new tag]               v0.21.0rc1        -> v0.21.0rc1
+2025-04-14T19:18:26.6975360Z  * [new tag]               v0.21.1           -> v0.21.1
+2025-04-14T19:18:26.6978230Z  * [new tag]               v0.22.0           -> v0.22.0
+2025-04-14T19:18:26.6983990Z  * [new tag]               v0.22.0.dev0      -> v0.22.0.dev0
+2025-04-14T19:18:26.7059350Z  * [new tag]               v0.23.0           -> v0.23.0
+2025-04-14T19:18:26.7062540Z  * [new tag]               v0.23.0.dev0      -> v0.23.0.dev0
+2025-04-14T19:18:26.7063960Z  * [new tag]               v0.23.0rc1        -> v0.23.0rc1
+2025-04-14T19:18:26.7065840Z  * [new tag]               v0.23.0rc2        -> v0.23.0rc2
+2025-04-14T19:18:26.7067340Z  * [new tag]               v0.23.1           -> v0.23.1
+2025-04-14T19:18:26.7068000Z  * [new tag]               v0.23.2           -> v0.23.2
+2025-04-14T19:18:26.7074230Z  * [new tag]               v0.23.3           -> v0.23.3
+2025-04-14T19:18:26.7084690Z  * [new tag]               v0.23.4           -> v0.23.4
+2025-04-14T19:18:26.7087560Z  * [new tag]               v0.24.0           -> v0.24.0
+2025-04-14T19:18:26.7088570Z  * [new tag]               v0.24.0.dev0      -> v0.24.0.dev0
+2025-04-14T19:18:26.7090460Z  * [new tag]               v0.24.0rc1        -> v0.24.0rc1
+2025-04-14T19:18:26.7091270Z  * [new tag]               v0.24.1           -> v0.24.1
+2025-04-14T19:18:26.7092660Z  * [new tag]               v0.24.2           -> v0.24.2
+2025-04-14T19:18:26.7094030Z  * [new tag]               v0.25.0           -> v0.25.0
+2025-04-14T19:18:26.7096410Z  * [new tag]               v0.25.0.dev0      -> v0.25.0.dev0
+2025-04-14T19:18:26.7097370Z  * [new tag]               v0.25.0rc0        -> v0.25.0rc0
+2025-04-14T19:18:26.7098670Z  * [new tag]               v0.25.1           -> v0.25.1
+2025-04-14T19:18:26.7099780Z  * [new tag]               v0.25.2           -> v0.25.2
+2025-04-14T19:18:26.7100440Z  * [new tag]               v0.25.3           -> v0.25.3
+2025-04-14T19:18:26.7101030Z  * [new tag]               v0.26.0.dev0      -> v0.26.0.dev0
+2025-04-14T19:18:26.7101860Z  * [new tag]               v0.4.0            -> v0.4.0
+2025-04-14T19:18:26.7102500Z  * [new tag]               v0.4.1            -> v0.4.1
+2025-04-14T19:18:26.7103130Z  * [new tag]               v0.4.2            -> v0.4.2
+2025-04-14T19:18:26.7104270Z  * [new tag]               v0.4.3            -> v0.4.3
+2025-04-14T19:18:26.7106500Z  * [new tag]               v0.5.0            -> v0.5.0
+2025-04-14T19:18:26.7107220Z  * [new tag]               v0.6.0            -> v0.6.0
+2025-04-14T19:18:26.7109060Z  * [new tag]               v0.6.1            -> v0.6.1
+2025-04-14T19:18:26.7110430Z  * [new tag]               v0.7.0            -> v0.7.0
+2025-04-14T19:18:26.7114560Z  * [new tag]               v0.7.0rc1         -> v0.7.0rc1
+2025-04-14T19:18:26.7115990Z  * [new tag]               v0.7.1            -> v0.7.1
+2025-04-14T19:18:26.7116860Z  * [new tag]               v0.7.2            -> v0.7.2
+2025-04-14T19:18:26.7117960Z  * [new tag]               v0.7.3            -> v0.7.3
+2025-04-14T19:18:26.7118610Z  * [new tag]               v0.8.0            -> v0.8.0
+2025-04-14T19:18:26.7119180Z  * [new tag]               v0.8.0b1          -> v0.8.0b1
+2025-04-14T19:18:26.7119750Z  * [new tag]               v0.8.0b2          -> v0.8.0b2
+2025-04-14T19:18:26.7120320Z  * [new tag]               v0.8.0rc1         -> v0.8.0rc1
+2025-04-14T19:18:26.7120890Z  * [new tag]               v0.8.0rc2         -> v0.8.0rc2
+2025-04-14T19:18:26.7121770Z  * [new tag]               v0.8.1            -> v0.8.1
+2025-04-14T19:18:26.7122910Z  * [new tag]               v0.9.0            -> v0.9.0
+2025-04-14T19:18:26.7125830Z  * [new tag]               v0.9.0rc1         -> v0.9.0rc1
+2025-04-14T19:18:26.7130150Z  * [new tag]               v0.9.0rc2         -> v0.9.0rc2
+2025-04-14T19:18:26.7133710Z  * [new tag]               v0.9.1            -> v0.9.1
+2025-04-14T19:18:26.7136870Z  * [new tag]               v0.9.1rc1         -> v0.9.1rc1
+2025-04-14T19:18:26.7141380Z  * [new tag]               v1.0.0            -> v1.0.0
+2025-04-14T19:18:26.7143450Z  * [new tag]               v1.0.0rc0         -> v1.0.0rc0
+2025-04-14T19:18:26.7147550Z  * [new tag]               v1.0.1            -> v1.0.1
+2025-04-14T19:18:26.7151060Z  * [new tag]               v1.0.2            -> v1.0.2
+2025-04-14T19:18:26.7154540Z  * [new tag]               v1.0.3            -> v1.0.3
+2025-04-14T19:18:26.7158920Z  * [new tag]               v1.0.4            -> v1.0.4
+2025-04-14T19:18:26.7161710Z  * [new tag]               v1.0.5            -> v1.0.5
+2025-04-14T19:18:26.7165800Z  * [new tag]               v1.1.0            -> v1.1.0
+2025-04-14T19:18:26.7169270Z  * [new tag]               v1.1.0.dev0       -> v1.1.0.dev0
+2025-04-14T19:18:26.7171920Z  * [new tag]               v1.1.0rc0         -> v1.1.0rc0
+2025-04-14T19:18:26.7177270Z  * [new tag]               v1.1.1            -> v1.1.1
+2025-04-14T19:18:26.7179710Z  * [new tag]               v1.1.2            -> v1.1.2
+2025-04-14T19:18:26.7183310Z  * [new tag]               v1.1.3            -> v1.1.3
+2025-04-14T19:18:26.7185680Z  * [new tag]               v1.1.4            -> v1.1.4
+2025-04-14T19:18:26.7189300Z  * [new tag]               v1.1.5            -> v1.1.5
+2025-04-14T19:18:26.7193380Z  * [new tag]               v1.2.0            -> v1.2.0
+2025-04-14T19:18:26.7196160Z  * [new tag]               v1.2.0.dev0       -> v1.2.0.dev0
+2025-04-14T19:18:26.7198310Z  * [new tag]               v1.2.0rc0         -> v1.2.0rc0
+2025-04-14T19:18:26.7201620Z  * [new tag]               v1.2.1            -> v1.2.1
+2025-04-14T19:18:26.7203960Z  * [new tag]               v1.2.2            -> v1.2.2
+2025-04-14T19:18:26.7207510Z  * [new tag]               v1.2.3            -> v1.2.3
+2025-04-14T19:18:26.7211490Z  * [new tag]               v1.2.4            -> v1.2.4
+2025-04-14T19:18:26.7213020Z  * [new tag]               v1.2.5            -> v1.2.5
+2025-04-14T19:18:26.7216400Z  * [new tag]               v1.3.0            -> v1.3.0
+2025-04-14T19:18:26.7218650Z  * [new tag]               v1.3.0.dev0       -> v1.3.0.dev0
+2025-04-14T19:18:26.7221930Z  * [new tag]               v1.3.0rc0         -> v1.3.0rc0
+2025-04-14T19:18:26.7224720Z  * [new tag]               v1.3.0rc1         -> v1.3.0rc1
+2025-04-14T19:18:26.7228440Z  * [new tag]               v1.3.1            -> v1.3.1
+2025-04-14T19:18:26.7232440Z  * [new tag]               v1.3.2            -> v1.3.2
+2025-04-14T19:18:26.7235380Z  * [new tag]               v1.3.3            -> v1.3.3
+2025-04-14T19:18:26.7239950Z  * [new tag]               v1.3.4            -> v1.3.4
+2025-04-14T19:18:26.7243800Z  * [new tag]               v1.3.5            -> v1.3.5
+2025-04-14T19:18:26.7248050Z  * [new tag]               v1.4.0            -> v1.4.0
+2025-04-14T19:18:26.7250820Z  * [new tag]               v1.4.0.dev0       -> v1.4.0.dev0
+2025-04-14T19:18:26.7255320Z  * [new tag]               v1.4.0rc0         -> v1.4.0rc0
+2025-04-14T19:18:26.7258770Z  * [new tag]               v1.4.1            -> v1.4.1
+2025-04-14T19:18:26.7262020Z  * [new tag]               v1.4.2            -> v1.4.2
+2025-04-14T19:18:26.7265640Z  * [new tag]               v1.4.3            -> v1.4.3
+2025-04-14T19:18:26.7270140Z  * [new tag]               v1.4.4            -> v1.4.4
+2025-04-14T19:18:26.7272460Z  * [new tag]               v1.5.0            -> v1.5.0
+2025-04-14T19:18:26.7276090Z  * [new tag]               v1.5.0.dev0       -> v1.5.0.dev0
+2025-04-14T19:18:26.7279630Z  * [new tag]               v1.5.0rc0         -> v1.5.0rc0
+2025-04-14T19:18:26.7282530Z  * [new tag]               v1.5.1            -> v1.5.1
+2025-04-14T19:18:26.7285660Z  * [new tag]               v1.5.2            -> v1.5.2
+2025-04-14T19:18:26.7290760Z  * [new tag]               v1.5.3            -> v1.5.3
+2025-04-14T19:18:26.7293900Z  * [new tag]               v1.6.0.dev0       -> v1.6.0.dev0
+2025-04-14T19:18:26.7296190Z  * [new tag]               v2.0.0            -> v2.0.0
+2025-04-14T19:18:26.7299710Z  * [new tag]               v2.0.0.dev0       -> v2.0.0.dev0
+2025-04-14T19:18:26.7302260Z  * [new tag]               v2.0.0rc0         -> v2.0.0rc0
+2025-04-14T19:18:26.7306490Z  * [new tag]               v2.0.0rc1         -> v2.0.0rc1
+2025-04-14T19:18:26.7309810Z  * [new tag]               v2.0.1            -> v2.0.1
+2025-04-14T19:18:26.7312960Z  * [new tag]               v2.0.2            -> v2.0.2
+2025-04-14T19:18:26.7316670Z  * [new tag]               v2.0.3            -> v2.0.3
+2025-04-14T19:18:26.7318570Z  * [new tag]               v2.1.0            -> v2.1.0
+2025-04-14T19:18:26.7322790Z  * [new tag]               v2.1.0.dev0       -> v2.1.0.dev0
+2025-04-14T19:18:26.7325520Z  * [new tag]               v2.1.0rc0         -> v2.1.0rc0
+2025-04-14T19:18:26.7329110Z  * [new tag]               v2.1.1            -> v2.1.1
+2025-04-14T19:18:26.7331630Z  * [new tag]               v2.1.2            -> v2.1.2
+2025-04-14T19:18:26.7335100Z  * [new tag]               v2.1.3            -> v2.1.3
+2025-04-14T19:18:26.7337550Z  * [new tag]               v2.1.4            -> v2.1.4
+2025-04-14T19:18:26.7342980Z  * [new tag]               v2.2.0            -> v2.2.0
+2025-04-14T19:18:26.7344140Z  * [new tag]               v2.2.0.dev0       -> v2.2.0.dev0
+2025-04-14T19:18:26.7347020Z  * [new tag]               v2.2.0dev0        -> v2.2.0dev0
+2025-04-14T19:18:26.7350830Z  * [new tag]               v2.2.0rc0         -> v2.2.0rc0
+2025-04-14T19:18:26.7353080Z  * [new tag]               v2.2.1            -> v2.2.1
+2025-04-14T19:18:26.7356650Z  * [new tag]               v2.2.2            -> v2.2.2
+2025-04-14T19:18:26.7359990Z  * [new tag]               v2.2.3            -> v2.2.3
+2025-04-14T19:18:26.7362510Z  * [new tag]               v2.3.0.dev0       -> v2.3.0.dev0
+2025-04-14T19:18:26.7366220Z  * [new tag]               v3.0.0.dev0       -> v3.0.0.dev0
+2025-04-14T19:18:26.7372580Z  * [new ref]               2384814c7cb86fbcd74298a1d95f596c839f7080 -> pull/61274/merge
+2025-04-14T19:18:26.7507550Z ##[endgroup]
+2025-04-14T19:18:26.7508300Z ##[group]Determining the checkout info
+2025-04-14T19:18:26.7509040Z ##[endgroup]
+2025-04-14T19:18:26.7516410Z [command]/usr/local/bin/git sparse-checkout disable
+2025-04-14T19:18:26.7605920Z [command]/usr/local/bin/git config --local --unset-all extensions.worktreeConfig
+2025-04-14T19:18:26.7674140Z ##[group]Checking out the ref
+2025-04-14T19:18:26.7680110Z [command]/usr/local/bin/git checkout --progress --force refs/remotes/pull/61274/merge
+2025-04-14T19:18:27.5910260Z HEAD is now at 2384814c7c Merge 93eb7528342e0512f007f855099babea8de3a25b into 24d31b7d0d1bb769425dbb09ec65faa521a971fb
+2025-04-14T19:18:27.5940680Z ##[endgroup]
+2025-04-14T19:18:27.6061980Z [command]/usr/local/bin/git log -1 --format=%H
+2025-04-14T19:18:27.6157760Z 2384814c7cb86fbcd74298a1d95f596c839f7080

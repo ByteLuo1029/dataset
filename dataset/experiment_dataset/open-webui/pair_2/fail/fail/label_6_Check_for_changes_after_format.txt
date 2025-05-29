@@ -1,0 +1,27 @@
+2025-04-15T04:32:05.4783052Z ##[group]Run git diff --exit-code
+2025-04-15T04:32:05.4783356Z [36;1mgit diff --exit-code[0m
+2025-04-15T04:32:05.4830465Z shell: /usr/bin/bash -e {0}
+2025-04-15T04:32:05.4830701Z env:
+2025-04-15T04:32:05.4830955Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.11/x64
+2025-04-15T04:32:05.4831361Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.11/x64/lib/pkgconfig
+2025-04-15T04:32:05.4831768Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.11/x64
+2025-04-15T04:32:05.4832162Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.11/x64
+2025-04-15T04:32:05.4832526Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.11/x64
+2025-04-15T04:32:05.4832884Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.11/x64/lib
+2025-04-15T04:32:05.4833178Z ##[endgroup]
+2025-04-15T04:32:05.8115581Z diff --git a/backend/open_webui/retrieval/vector/dbs/qdrant.py b/backend/open_webui/retrieval/vector/dbs/qdrant.py
+2025-04-15T04:32:05.8116614Z index 895098e..13d0b53 100644
+2025-04-15T04:32:05.8117077Z --- a/backend/open_webui/retrieval/vector/dbs/qdrant.py
+2025-04-15T04:32:05.8117731Z +++ b/backend/open_webui/retrieval/vector/dbs/qdrant.py
+2025-04-15T04:32:05.8118237Z @@ -51,7 +51,9 @@ class QdrantClient:
+2025-04-15T04:32:05.8118646Z          self.client.create_collection(
+2025-04-15T04:32:05.8119104Z              collection_name=collection_name_with_prefix,
+2025-04-15T04:32:05.8119810Z              vectors_config=models.VectorParams(
+2025-04-15T04:32:05.8120496Z -                size=dimension, distance=models.Distance.COSINE, on_disk=self.QDRANT_ON_DISK
+2025-04-15T04:32:05.8121126Z +                size=dimension,
+2025-04-15T04:32:05.8121540Z +                distance=models.Distance.COSINE,
+2025-04-15T04:32:05.8122147Z +                on_disk=self.QDRANT_ON_DISK,
+2025-04-15T04:32:05.8122579Z              ),
+2025-04-15T04:32:05.8122865Z          )
+2025-04-15T04:32:05.8123125Z  
+2025-04-15T04:32:05.8132598Z ##[error]Process completed with exit code 1.

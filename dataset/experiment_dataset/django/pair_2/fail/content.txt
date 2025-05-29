@@ -1,0 +1,225 @@
+Requested labels: ubuntu-latest
+Job defined at: django/django/.github/workflows/linters.yml@refs/pull/19063/merge
+Waiting for a runner to pick up this job...
+Job is waiting for a hosted runner to come online.
+Job is about to start running on the hosted runner: GitHub Actions 8 (hosted)
+Current runner version: '2.323.0'
+##[group]Operating System
+Ubuntu
+24.04.2
+LTS
+##[endgroup]
+##[group]Runner Image
+Image: ubuntu-24.04
+Version: 20250406.1.0
+Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250406.1/images/ubuntu/Ubuntu2404-Readme.md
+Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250406.1
+##[endgroup]
+##[group]Runner Image Provisioner
+2.0.422.1
+##[endgroup]
+##[group]GITHUB_TOKEN Permissions
+read
+
+##[endgroup]
+None
+
+
+
+'actions/checkout@v4'
+Version: 4.2.2
+ccb2698953eaebd21c7bf6268a94f9c26518a7e38e27e0b83c1fe1ad049819b1
+11bd71901bbe5b1630ceea73d27597364c9af683
+##[endgroup]
+'psf/black@stable' 8a737e727ac5ab2f1d4cf5876720ed276dc8dc4b
+black
+actions/checkout@v4
+
+django/django
+
+
+
+true
+
+
+1
+
+
+
+false
+
+##[endgroup]
+django/django
+
+'/home/runner/work/django/django'
+
+2 49 0
+##[endgroup]
+Temporarily overriding HOME='/home/runner/work/_temp/fc977f5e-df7c-4a1e-9bff-769c834a29fb' before making global git config changes
+
+[command]/usr/bin/git config --global --add safe.directory /home/runner/work/django/django
+'/home/runner/work/django/django'
+
+/home/runner/work/django/django
+
+
+
+
+
+
+
+
+
+
+/home/runner/work/django/django/.git/
+https://github.com/django/django
+##[endgroup]
+
+[command]/usr/bin/git config --local gc.auto 0
+##[endgroup]
+
+core\.sshCommand
+'core\.sshCommand' 'core.sshCommand'
+http\.https\:\/\/github\.com\/\.extraheader
+'http\.https\:\/\/github\.com\/\.extraheader' 'http.https://github.com/.extraheader'
+--local
+##[endgroup]
+
+2 --no-tags --prune --no-recurse-submodules --depth=1 origin +bbf3da1cb2ab2c153b11b5a2a86dc7ccba74bd55:refs/remotes/pull/19063/merge
+https://github.com/django/django
+bbf3da1cb2ab2c153b11b5a2a86dc7ccba74bd55  pull/19063/merge
+##[endgroup]
+
+##[endgroup]
+
+[command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+
+19063
+19063
+2025-04-15T07:59:05.6212452Z
+
+
+
+2025-04-15T07:59:05.6218195Z
+
+
+2025-04-15T07:59:05.6220512Z
+
+2025-04-15T07:59:05.6221188Z
+
+2025-04-15T07:59:05.6221860Z
+
+2025-04-15T07:59:05.6222443Z
+
+2025-04-15T07:59:05.6223616Z
+bbf3da1 a2532c7904e11c77acaf81f88b4056f9f320b79f ab1b9cc1b38e8735979c817f42e8f54a5795c4f7
+##[endgroup]
+-1 --format=%H
+bbf3da1cb2ab2c153b11b5a2a86dc7ccba74bd55
+psf/black@stable
+
+options: --check --diff
+src: .
+jupyter:
+use_pyproject: false
+summary:
+##[endgroup]
+##[group]Run # Even when black fails, do not close the shell
+[36;1m# Even when black fails, do not close the shell[0m
+[36;1mset +e[0m
+[36;1m[0m
+[36;1mif [ "$RUNNER_OS" == "Windows" ]; then[0m
+[36;1m  runner="python"[0m
+36
+[36;1m  runner="python3"[0m
+36
+[36;1m[0m
+[36;1mout=$(${runner} $GITHUB_ACTION_PATH/action/main.py)[0m
+[36;1mexit_code=$?[0m
+[36;1m[0m
+[36;1m# Display the raw output in the step[0m
+36 "${out}"[0m
+[36;1m[0m
+[36;1mif [ "true" == "true" ]; then[0m
+[36;1m  # Display the Markdown output in the job summary[0m
+[36;1m  echo "\`\`\`python" >> $GITHUB_STEP_SUMMARY[0m
+[36;1m  echo "${out}" >> $GITHUB_STEP_SUMMARY[0m
+[36;1m  echo "\`\`\`" >> $GITHUB_STEP_SUMMARY[0m
+36
+[36;1m[0m
+[36;1m# Exit with the exit-code returned by Black[0m
+[36;1mexit ${exit_code}[0m
+0
+
+INPUT_OPTIONS: --check --diff
+INPUT_SRC: .
+INPUT_JUPYTER: false
+INPUT_BLACK_ARGS:
+INPUT_VERSION:
+INPUT_USE_PYPROJECT: false
+pythonioencoding: utf-8
+##[endgroup]
+Installing black[colorama]==25.1.0...
+--- /home/runner/work/django/django/tests/auth_tests/test_forms.py	2025-04-15 07:59:05.493516+00:00
++++ /home/runner/work/django/django/tests/auth_tests/test_forms.py	2025-04-15 07:59:28.788445+00:00
+@@ -1453,11 +1453,11 @@
+hashed_html = "<p><strong>No password set.</p>"
+self.assertHTMLEqual(render_password_as_hash(None), hashed_html)
+self.assertHTMLEqual(
+widget.render("name", None, {}),
+f'<div>{hashed_html}<p><a role="button" class="button" href="../password/">'
+-            'Set password</a></p></div>',
++            "Set password</a></p></div>",
+)
+2025-04-15T07:59:48.0985029Z
+@override_settings(
+PASSWORD_HASHERS=["django.contrib.auth.hashers.PBKDF2PasswordHasher"]
+)
+@@ -1470,11 +1470,11 @@
+)
+self.assertHTMLEqual(render_password_as_hash(value), hashed_html)
+self.assertHTMLEqual(
+widget.render("name", value, {}),
+f'<div>{hashed_html}<p><a role="button" class="button" href="../password/">'
+-            'Reset password</a></p></div>',
++            "Reset password</a></p></div>",
+)
+2025-04-15T07:59:48.0989710Z
+def test_readonly_field_has_changed(self):
+field = ReadOnlyPasswordHashField()
+self.assertIs(field.disabled, True)
+would reformat /home/runner/work/django/django/tests/auth_tests/test_forms.py
+--- /home/runner/work/django/django/tests/auth_tests/test_views.py	2025-04-15 07:59:05.494516+00:00
++++ /home/runner/work/django/django/tests/auth_tests/test_views.py	2025-04-15 07:59:29.649205+00:00
+@@ -1715,11 +1715,12 @@
+hash_string[:6],
+),
+html=True,
+)
+self.assertNotContains(
+-            response, '<a role="button" class="button" href="../password/">Reset password</a>'
++            response,
++            '<a role="button" class="button" href="../password/">Reset password</a>',
+)
+# Value in POST data is ignored.
+data = self.get_user_data(u)
+data["password"] = "shouldnotchange"
+change_url = reverse("auth_test_admin:auth_user_change", args=(u.pk,))
+would reformat /home/runner/work/django/django/tests/auth_tests/test_views.py
+2025-04-15T07:59:48.0996750Z
+Oh no! 💥 💔 💥
+2 files would be reformatted, 2830 files would be left unchanged.
+##[error]Process completed with exit code 1.
+
+
+2 49 0
+Temporarily overriding HOME='/home/runner/work/_temp/ee9adab5-ee57-430c-a276-4646f0a57577' before making global git config changes
+
+[command]/usr/bin/git config --global --add safe.directory /home/runner/work/django/django
+core\.sshCommand
+'core\.sshCommand' 'core.sshCommand'
+http\.https\:\/\/github\.com\/\.extraheader
+
+
+'http\.https\:\/\/github\.com\/\.extraheader' 'http.https://github.com/.extraheader'
+

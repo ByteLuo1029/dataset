@@ -1,0 +1,92 @@
+Post job cleanup.
+In post-action step
+##[group]Stopping Gradle daemons
+##[endgroup]
+##[group]Provision Gradle >= 8.11
+Gradle version 8.13 is available at /usr/bin/gradle and >= 8.11. Not installing.
+##[endgroup]
+##[group]Executing Gradle to clean up caches
+Cleaning up caches last used before 1744297349169
+[command]/usr/bin/gradle -g /home/runner/.gradle -I init.gradle --info --no-daemon --no-scan --build-cache -DGITHUB_DEPENDENCY_GRAPH_ENABLED=false -DGRADLE_ACTIONS_SKIP_BUILD_RESULT_CAPTURE=true noop
+Initialized native services in: /home/runner/.gradle/native
+Initialized jansi services in: /home/runner/.gradle/native
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.13/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Starting process 'Gradle build daemon'. Working directory: /home/runner/.gradle/daemon/8.13 Command: /opt/hostedtoolcache/Java_Zulu_jdk/23.0.2-7/x64/bin/java --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.prefs/java.util.prefs=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.prefs/java.util.prefs=ALL-UNNAMED --add-opens=java.base/java.nio.charset=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.xml/javax.xml.namespace=ALL-UNNAMED -Xmx4g -Dfile.encoding=UTF-8 -Duser.country -Duser.language=en -Duser.variant -cp /usr/share/gradle-8.13/lib/gradle-daemon-main-8.13.jar -javaagent:/usr/share/gradle-8.13/lib/agents/gradle-instrumentation-agent-8.13.jar org.gradle.launcher.daemon.bootstrap.GradleDaemon 8.13
+Successfully started process 'Gradle build daemon'
+An attempt to start the daemon took 4.089 secs.
+The client will now receive all logging from the daemon (pid: 2278). The daemon log file: /home/runner/.gradle/daemon/8.13/daemon-2278.out.log
+Daemon will be stopped at the end of the build
+Using 4 worker leases.
+Received JVM installation metadata from '/opt/hostedtoolcache/Java_Zulu_jdk/23.0.2-7/x64': {JAVA_HOME=/opt/hostedtoolcache/Java_Zulu_jdk/23.0.2-7/x64, JAVA_VERSION=23.0.2, JAVA_VENDOR=Azul Systems, Inc., RUNTIME_NAME=OpenJDK Runtime Environment, RUNTIME_VERSION=23.0.2+7, VM_NAME=OpenJDK 64-Bit Server VM, VM_VERSION=23.0.2+7, VM_VENDOR=Azul Systems, Inc., OS_ARCH=amd64}
+Watching the file system is configured to be enabled if available
+Now considering [/home/runner/work/_temp/dummy-cleanup-project] as hierarchies to watch
+File system watching is active
+Caching disabled for Groovy DSL script compilation (cp_init) because:
+Build cache is disabled
+Not worth caching.
+Compiling initialization script '/home/runner/work/_temp/dummy-cleanup-project/init.gradle' using SubsetScriptTransformer.
+Caching disabled for Groovy DSL script compilation (init) because:
+Build cache is disabled
+Not worth caching.
+Compiling initialization script '/home/runner/work/_temp/dummy-cleanup-project/init.gradle' using BuildScriptTransformer.
+gradle/actions: Not capturing build results
+Starting Build
+Settings evaluated using settings file '/home/runner/work/_temp/dummy-cleanup-project/settings.gradle'.
+Using local directory build cache for the root build (location = /home/runner/.gradle/caches/build-cache-1, remove unused entries = older than 2025-04-10 15:02:29 UTC).
+Projects loaded. Root project using build file '/home/runner/work/_temp/dummy-cleanup-project/build.gradle'.
+Included projects: [root project 'dummy-cleanup-project']
+2025-04-10T15:03:30.9341084Z
+> Configure project :
+Evaluating root project 'dummy-cleanup-project' using build file '/home/runner/work/_temp/dummy-cleanup-project/build.gradle'.
+All projects evaluated.
+Task name matched 'noop'
+Selected primary task 'noop' from project :
+Tasks to be executed: [task ':noop']
+Tasks that were excluded: []
+Resolve mutations for :noop (Thread[#51,Execution worker,5,main]) started.
+:noop (Thread[#51,Execution worker,5,main]) started.
+2025-04-10T15:03:31.1340397Z
+> Task :noop UP-TO-DATE
+Skipping task ':noop' as it has no actions.
+2025-04-10T15:03:31.1343094Z
+BUILD SUCCESSFUL in 10s
+Build cache (/home/runner/.gradle/caches/build-cache-1) removing files not accessed on or after Thu Apr 10 15:02:29 UTC 2025.
+Build cache (/home/runner/.gradle/caches/build-cache-1) cleanup deleted 0 files/directories.
+Build cache (/home/runner/.gradle/caches/build-cache-1) cleaned up in 0.002 secs.
+Artifact transforms cache (/home/runner/.gradle/caches/8.13/transforms) removing files not accessed on or after Thu Apr 10 15:02:29 UTC 2025.
+Artifact transforms cache (/home/runner/.gradle/caches/8.13/transforms) cleanup deleted 1417 files/directories.
+Artifact transforms cache (/home/runner/.gradle/caches/8.13/transforms) cleaned up in 0.99 secs.
+dependencies-accessors (/home/runner/.gradle/caches/8.13/dependencies-accessors) removing files not accessed on or after Thu Apr 10 15:02:29 UTC 2025.
+dependencies-accessors (/home/runner/.gradle/caches/8.13/dependencies-accessors) cleanup deleted 2 files/directories.
+dependencies-accessors (/home/runner/.gradle/caches/8.13/dependencies-accessors) cleaned up in 0.007 secs.
+jars (/home/runner/.gradle/caches/jars-9) cleanup deleted 0 files/directories.
+jars (/home/runner/.gradle/caches/jars-9) removing files not accessed on or after Thu Apr 10 15:02:29 UTC 2025.
+jars (/home/runner/.gradle/caches/jars-9) cleanup deleted 63 files/directories.
+jars (/home/runner/.gradle/caches/jars-9) cleaned up in 0.039 secs.
+groovy-dsl (/home/runner/.gradle/caches/8.13/groovy-dsl) removing files not accessed on or after Thu Apr 10 15:02:29 UTC 2025.
+groovy-dsl (/home/runner/.gradle/caches/8.13/groovy-dsl) cleanup deleted 64 files/directories.
+groovy-dsl (/home/runner/.gradle/caches/8.13/groovy-dsl) cleaned up in 0.069 secs.
+artifact cache (/home/runner/.gradle/caches/modules-2) cleanup deleted 0 files/directories.
+artifact cache (/home/runner/.gradle/caches/modules-2) [subdir: /home/runner/.gradle/caches/modules-2/resources-2.1] cleanup deleted 0 files/directories.
+artifact cache (/home/runner/.gradle/caches/modules-2) [subdir: /home/runner/.gradle/caches/modules-2/resources-2.1] removing files not accessed on or after Thu Apr 10 15:02:29 UTC 2025.
+artifact cache (/home/runner/.gradle/caches/modules-2) [subdir: /home/runner/.gradle/caches/modules-2/resources-2.1] cleanup deleted 0 files/directories.
+artifact cache (/home/runner/.gradle/caches/modules-2) [subdir: /home/runner/.gradle/caches/modules-2/files-2.1] cleanup deleted 0 files/directories.
+artifact cache (/home/runner/.gradle/caches/modules-2) [subdir: /home/runner/.gradle/caches/modules-2/files-2.1] removing files not accessed on or after Thu Apr 10 15:02:29 UTC 2025.
+artifact cache (/home/runner/.gradle/caches/modules-2) [subdir: /home/runner/.gradle/caches/modules-2/files-2.1] cleanup deleted 1014 files/directories.
+artifact cache (/home/runner/.gradle/caches/modules-2) [subdir: /home/runner/.gradle/caches/modules-2/metadata-2.107] cleanup deleted 0 files/directories.
+artifact cache (/home/runner/.gradle/caches/modules-2) cleanup deleted 0 files/directories.
+artifact cache (/home/runner/.gradle/caches/modules-2) cleaned up in 0.186 secs.
+##[endgroup]
+##[group]Caching Gradle state
+[command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/retrofit/retrofit --files-from manifest.txt --use-compress-program zstdmt
+[command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/retrofit/retrofit --files-from manifest.txt --use-compress-program zstdmt
+Sent <:NUM:> of <:NUM:> (<:NUM:>.<:NUM:>%), <:NUM:>.<:NUM:> MBs/sec
+Sent <:NUM:> of <:NUM:> (<:NUM:>.<:NUM:>%), <:NUM:>.<:NUM:> MBs/sec
+Saved cache entry with key gradle-instrumented-jars-v1-1bcfcee1d67ce8523a408fd908dcf377 from /home/runner/.gradle/caches/jars-*/*/ in 631ms
+Saved cache entry with key gradle-groovy-dsl-v1-6af9ac26bfc67b8aaa2bdb879d24fcf4 from /home/runner/.gradle/caches/*/groovy-dsl/*/ in 651ms
+[command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/retrofit/retrofit --files-from manifest.txt --use-compress-program zstdmt
+Sent <:NUM:> of <:NUM:> (<:NUM:>.<:NUM:>%), <:NUM:>.<:NUM:> MBs/sec
+Saved cache entry with key gradle-home-v1|Linux-X64|android[e50878ef9bc883f74a618623248943a6]-b4377fd2771e36dd606caf84caa1384da5b6c781 from /home/runner/.gradle/caches,/home/runner/.gradle/notifications,/home/runner/.gradle/.setup-gradle in 821ms
+##[endgroup]
+Generating Job Summary
+Completed post-action step

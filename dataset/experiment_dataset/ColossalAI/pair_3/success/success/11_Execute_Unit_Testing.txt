@@ -1,0 +1,68 @@
+2025-04-09T09:00:07.4606154Z ##[group]Run CURL_CA_BUNDLE="" PYTHONPATH=$PWD FAST_TEST=1 pytest \
+2025-04-09T09:00:07.4607754Z [36;1mCURL_CA_BUNDLE="" PYTHONPATH=$PWD FAST_TEST=1 pytest \[0m
+2025-04-09T09:00:07.4608898Z [36;1m-m "not largedist" \[0m
+2025-04-09T09:00:07.4609787Z [36;1m--durations=0 \[0m
+2025-04-09T09:00:07.4610665Z [36;1m--ignore tests/test_analyzer \[0m
+2025-04-09T09:00:07.4611702Z [36;1m--ignore tests/test_auto_parallel \[0m
+2025-04-09T09:00:07.4612701Z [36;1m--ignore tests/test_fx \[0m
+2025-04-09T09:00:07.4613618Z [36;1m--ignore tests/test_autochunk \[0m
+2025-04-09T09:00:07.4614585Z [36;1m--ignore tests/test_gptq \[0m
+2025-04-09T09:00:07.4615529Z [36;1m--ignore tests/test_infer_ops \[0m
+2025-04-09T09:00:07.4616914Z [36;1m--ignore tests/test_legacy \[0m
+2025-04-09T09:00:07.4617892Z [36;1m--ignore tests/test_smoothquant \[0m
+2025-04-09T09:00:07.4618842Z [36;1mtests/test_fp8/[0m
+2025-04-09T09:00:07.4620061Z shell: bash --noprofile --norc -e -o pipefail {0}
+2025-04-09T09:00:07.4621058Z env:
+2025-04-09T09:00:07.4622402Z   LD_LIBRARY_PATH: /github/home/.tensornvme/lib:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+2025-04-09T09:00:07.4623840Z   LLAMA_PATH: /data/scratch/llama-tiny
+2025-04-09T09:00:07.4624836Z   MOE_TENSOR_PATH: /data/scratch/moe_tensors
+2025-04-09T09:00:07.4625868Z   HF_ENDPOINT: https://hf-mirror.com
+2025-04-09T09:00:07.4626787Z ##[endgroup]
+2025-04-09T09:00:28.7079149Z ============================= test session starts ==============================
+2025-04-09T09:00:28.7080714Z platform linux -- Python 3.10.14, pytest-7.4.4, pluggy-1.5.0
+2025-04-09T09:00:28.7081981Z rootdir: /__w/ColossalAI/ColossalAI
+2025-04-09T09:00:28.7082954Z configfile: pytest.ini
+2025-04-09T09:00:28.7084013Z plugins: anyio-4.9.0, hypothesis-6.130.12, testmon-2.0.7b1
+2025-04-09T09:00:28.7085197Z collected 13 items
+2025-04-09T09:00:28.7085649Z 
+2025-04-09T09:00:43.6021487Z tests/test_fp8/test_all_to_all_single.py .                               [  7%]
+2025-04-09T09:01:28.8107830Z tests/test_fp8/test_fp8_all_to_all.py .                                  [ 15%]
+2025-04-09T09:01:43.0913968Z tests/test_fp8/test_fp8_all_to_all_single.py .                           [ 23%]
+2025-04-09T09:02:07.7324443Z tests/test_fp8/test_fp8_allgather.py .                                   [ 30%]
+2025-04-09T09:02:21.5759480Z tests/test_fp8/test_fp8_allreduce.py .                                   [ 38%]
+2025-04-09T09:02:22.0525925Z tests/test_fp8/test_fp8_cast.py .                                        [ 46%]
+2025-04-09T09:02:58.6212608Z tests/test_fp8/test_fp8_fsdp_comm_hook.py .                              [ 53%]
+2025-04-09T09:02:58.8696297Z tests/test_fp8/test_fp8_hook.py .                                        [ 61%]
+2025-04-09T09:02:59.4310202Z tests/test_fp8/test_fp8_linear.py ....                                   [ 92%]
+2025-04-09T09:03:15.3487799Z tests/test_fp8/test_fp8_reduce_scatter.py .                              [100%]
+2025-04-09T09:03:15.3491133Z 
+2025-04-09T09:03:15.3492780Z ============================== slowest durations ===============================
+2025-04-09T09:03:15.3494692Z 45.05s call     tests/test_fp8/test_fp8_all_to_all.py::test_all_to_all
+2025-04-09T09:03:15.3496102Z 36.45s call     tests/test_fp8/test_fp8_fsdp_comm_hook.py::test_fsdp
+2025-04-09T09:03:15.3497496Z 24.52s call     tests/test_fp8/test_fp8_allgather.py::test_all_gather
+2025-04-09T09:03:15.3498974Z 14.99s call     tests/test_fp8/test_fp8_reduce_scatter.py::test_reduce_scatter
+2025-04-09T09:03:15.3500517Z 14.81s call     tests/test_fp8/test_all_to_all_single.py::test_all_to_all_single
+2025-04-09T09:03:15.3502116Z 14.17s call     tests/test_fp8/test_fp8_all_to_all_single.py::test_all_to_all_single
+2025-04-09T09:03:15.3506695Z 13.73s call     tests/test_fp8/test_fp8_allreduce.py::test_all_reduce
+2025-04-09T09:03:15.3508153Z 0.36s call     tests/test_fp8/test_fp8_cast.py::test_fp8_cast
+2025-04-09T09:03:15.3509728Z 0.15s setup    tests/test_fp8/test_fp8_hook.py::test_fp8_hook
+2025-04-09T09:03:15.3511091Z 0.15s setup    tests/test_fp8/test_fp8_all_to_all.py::test_all_to_all
+2025-04-09T09:03:15.3513391Z 0.12s setup    tests/test_fp8/test_fp8_allgather.py::test_all_gather
+2025-04-09T09:03:15.3514880Z 0.12s setup    tests/test_fp8/test_fp8_linear.py::test_fp8_linear[True-True]
+2025-04-09T09:03:15.3516326Z 0.12s setup    tests/test_fp8/test_fp8_fsdp_comm_hook.py::test_fsdp
+2025-04-09T09:03:15.3517661Z 0.12s setup    tests/test_fp8/test_fp8_cast.py::test_fp8_cast
+2025-04-09T09:03:15.3519089Z 0.11s setup    tests/test_fp8/test_fp8_linear.py::test_fp8_linear[False-False]
+2025-04-09T09:03:15.3520649Z 0.11s setup    tests/test_fp8/test_fp8_reduce_scatter.py::test_reduce_scatter
+2025-04-09T09:03:15.3522231Z 0.11s setup    tests/test_fp8/test_fp8_all_to_all_single.py::test_all_to_all_single
+2025-04-09T09:03:15.3524194Z 0.11s setup    tests/test_fp8/test_fp8_allreduce.py::test_all_reduce
+2025-04-09T09:03:15.3525627Z 0.11s setup    tests/test_fp8/test_fp8_linear.py::test_fp8_linear[True-False]
+2025-04-09T09:03:15.3527151Z 0.10s setup    tests/test_fp8/test_fp8_linear.py::test_fp8_linear[False-True]
+2025-04-09T09:03:15.3528585Z 0.10s call     tests/test_fp8/test_fp8_hook.py::test_fp8_hook
+2025-04-09T09:03:15.3529980Z 0.09s call     tests/test_fp8/test_fp8_linear.py::test_fp8_linear[True-True]
+2025-04-09T09:03:15.3531511Z 0.08s setup    tests/test_fp8/test_all_to_all_single.py::test_all_to_all_single
+2025-04-09T09:03:15.3533051Z 0.01s call     tests/test_fp8/test_fp8_linear.py::test_fp8_linear[True-False]
+2025-04-09T09:03:15.3534524Z 0.01s call     tests/test_fp8/test_fp8_linear.py::test_fp8_linear[False-True]
+2025-04-09T09:03:15.3536030Z 0.01s call     tests/test_fp8/test_fp8_linear.py::test_fp8_linear[False-False]
+2025-04-09T09:03:15.3536920Z 
+2025-04-09T09:03:15.3537528Z (13 durations < 0.005s hidden.  Use -vv to show these durations.)
+2025-04-09T09:03:15.3538841Z ======================== 13 passed in 185.53s (0:03:05) ========================

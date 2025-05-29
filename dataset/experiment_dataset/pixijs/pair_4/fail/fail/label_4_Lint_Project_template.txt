@@ -1,0 +1,31 @@
+Prepare all required actions
+##[group]Run <:*:>
+env:
+NPM_CONFIG_USERCONFIG: /home/runner/work/_temp/.npmrc
+NODE_AUTH_TOKEN: XXXXX-XXXXX-XXXXX-XXXXX
+##[endgroup]
+##[group]Run npm run ci:lint
+[36;1mnpm run ci:lint[0m
+shell: /usr/bin/bash --noprofile --norc -e -o pipefail {<:NUM:>}
+env:
+NPM_CONFIG_USERCONFIG: /home/runner/work/_temp/.npmrc
+NODE_AUTH_TOKEN: XXXXX-XXXXX-XXXXX-XXXXX
+##[endgroup]
+2025-03-21T22:37:00.4946371Z
+> pixi.js@8.9.0 ci:lint
+> run-s lint test:types test:index prune
+2025-03-21T22:37:00.4949629Z
+2025-03-21T22:37:00.8344677Z
+> pixi.js@8.9.0 lint
+> eslint ./ --cache --max-warnings 0
+2025-03-21T22:37:00.8346857Z
+2025-03-21T22:37:34.7477778Z
+> pixi.js@8.9.0 test:types
+> tsc --noEmit
+2025-03-21T22:37:34.7481298Z
+##[error]src/scene/text-html/HTMLTextSystem.ts(71,42): error TS2345: Argument of type 'HTMLTextOptions' is not assignable to parameter of type '{ text: string; style: HTMLTextStyle; resolution: number; }'.
+Types of property 'text' are incompatible.
+Type 'TextString' is not assignable to type 'string'.
+Type 'number' is not assignable to type 'string'.
+ERROR: "test:types" exited with 2.
+##[error]Process completed with exit code 1.

@@ -1,0 +1,72 @@
+2025-04-15T00:41:57.9010568Z ##[group]Run make tidy-check TIDY_BINARY=/tmp/clang-tidy-cache
+2025-04-15T00:41:57.9011005Z [36;1mmake tidy-check TIDY_BINARY=/tmp/clang-tidy-cache[0m
+2025-04-15T00:41:57.9058186Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-04-15T00:41:57.9058512Z env:
+2025-04-15T00:41:57.9058929Z   GH_TOKEN: ***
+2025-04-15T00:41:57.9059114Z   CC: gcc
+2025-04-15T00:41:57.9059272Z   CXX: g++
+2025-04-15T00:41:57.9059430Z   GEN: ninja
+2025-04-15T00:41:57.9059599Z   TIDY_THREADS: 4
+2025-04-15T00:41:57.9059770Z   TIDY_CHECKS: 
+2025-04-15T00:41:57.9059947Z ##[endgroup]
+2025-04-15T00:41:57.9154680Z mkdir -p ./build/tidy && \
+2025-04-15T00:41:57.9155127Z cd build/tidy && \
+2025-04-15T00:41:57.9155765Z cmake -DCLANG_TIDY=1 -DDISABLE_UNITY=1 -DBUILD_EXTENSIONS=parquet -DBUILD_PYTHON_PKG=TRUE -DBUILD_SHELL=0 ../.. && \
+2025-04-15T00:41:57.9156534Z python3 ../../scripts/run-clang-tidy.py -quiet -j 4 -clang-tidy-binary /tmp/clang-tidy-cache 
+2025-04-15T00:41:58.0699019Z -- The C compiler identification is GNU 13.3.0
+2025-04-15T00:41:58.1787331Z -- The CXX compiler identification is GNU 13.3.0
+2025-04-15T00:41:58.1924637Z -- Detecting C compiler ABI info
+2025-04-15T00:41:58.2535916Z -- Detecting C compiler ABI info - done
+2025-04-15T00:41:58.2713022Z -- Check for working C compiler: /usr/bin/gcc - skipped
+2025-04-15T00:41:58.2719308Z -- Detecting C compile features
+2025-04-15T00:41:58.2725007Z -- Detecting C compile features - done
+2025-04-15T00:41:58.2843456Z -- Detecting CXX compiler ABI info
+2025-04-15T00:41:58.3482590Z -- Detecting CXX compiler ABI info - done
+2025-04-15T00:41:58.3667894Z -- Check for working CXX compiler: /usr/bin/g++ - skipped
+2025-04-15T00:41:58.3672035Z -- Detecting CXX compile features
+2025-04-15T00:41:58.3678970Z -- Detecting CXX compile features - done
+2025-04-15T00:41:58.3761523Z -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+2025-04-15T00:41:58.4493959Z -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+2025-04-15T00:41:58.4506427Z -- Found Threads: TRUE
+2025-04-15T00:41:58.4575654Z -- Found Git: /usr/bin/git (found version "2.49.0")
+2025-04-15T00:41:58.7006403Z -- git hash cae7a680bc, version v1.3.0-dev2456, extension folder cae7a680bc
+2025-04-15T00:41:58.7009581Z -- Setting build type to 'Release'.
+2025-04-15T00:41:58.7013916Z -- Load extension 'parquet' from '/home/runner/work/duckdb/duckdb/extensions' @ cae7a680bc
+2025-04-15T00:41:58.7017380Z -- Load extension 'core_functions' from '/home/runner/work/duckdb/duckdb/extensions' @ cae7a680bc
+2025-04-15T00:41:58.7756612Z CMake Warning at tools/pythonpkg/CMakeLists.txt:5 (find_package):
+2025-04-15T00:41:58.7757517Z   By not providing "FindPythonLibs.cmake" in CMAKE_MODULE_PATH this project
+2025-04-15T00:41:58.7758096Z   has asked CMake to find a package configuration file provided by
+2025-04-15T00:41:58.7758524Z   "PythonLibs", but CMake did not find one.
+2025-04-15T00:41:58.7758757Z 
+2025-04-15T00:41:58.7758984Z   Could not find a package configuration file provided by "PythonLibs" with
+2025-04-15T00:41:58.7759442Z   any of the following names:
+2025-04-15T00:41:58.7759688Z 
+2025-04-15T00:41:58.7759803Z     PythonLibsConfig.cmake
+2025-04-15T00:41:58.7760353Z     pythonlibs-config.cmake
+2025-04-15T00:41:58.7760514Z 
+2025-04-15T00:41:58.7760724Z   Add the installation prefix of "PythonLibs" to CMAKE_PREFIX_PATH or set
+2025-04-15T00:41:58.7761213Z   "PythonLibs_DIR" to a directory containing one of the above files.  If
+2025-04-15T00:41:58.7761710Z   "PythonLibs" provides a separate development package or SDK, be sure it has
+2025-04-15T00:41:58.7762098Z   been installed.
+2025-04-15T00:41:58.7762221Z 
+2025-04-15T00:41:58.7762225Z 
+2025-04-15T00:41:58.7900697Z -- Extensions linked into DuckDB: [parquet, core_functions]
+2025-04-15T00:41:58.8050281Z -- Configuring done (0.9s)
+2025-04-15T00:41:59.4891663Z -- Generating done (0.7s)
+2025-04-15T00:41:59.4896167Z -- Build files have been written to: /home/runner/work/duckdb/duckdb/build/tidy
+2025-04-15T02:03:58.2222649Z 31810 warnings generated.
+2025-04-15T02:03:58.2223804Z /tmp/clang-tidy-cache -p=/home/runner/work/duckdb/duckdb/build/tidy --quiet /home/runner/work/duckdb/duckdb/extension/parquet/parquet_reader.cpp
+2025-04-15T02:03:58.2227212Z /home/runner/work/duckdb/duckdb/extension/parquet/parquet_reader.cpp:1229:43: error: narrowing conversion from 'idx_t' (aka 'unsigned long') to signed type 'row_t' (aka 'long') is implementation-defined [bugprone-narrowing-conversions,-warnings-as-errors]
+2025-04-15T02:03:58.2257150Z 63620 warnings generated.
+2025-04-15T02:03:58.2268700Z  1229 |                         filter_count = deletion_filter->Filter(state.offset_in_group + state.group_offset, scan_count, state.sel);
+2025-04-15T02:03:58.2315399Z       |                                                                ^
+2025-04-15T02:03:58.2315947Z Failed to get commands: exit status 1
+2025-04-15T02:06:35.1231179Z 31810 warnings generated.
+2025-04-15T02:06:35.1232330Z /tmp/clang-tidy-cache -p=/home/runner/work/duckdb/duckdb/build/tidy --quiet /home/runner/work/duckdb/duckdb/extension/parquet/parquet_reader.cpp
+2025-04-15T02:06:35.1233687Z 63620 warnings generated.
+2025-04-15T02:06:35.1253750Z /home/runner/work/duckdb/duckdb/extension/parquet/parquet_reader.cpp:1229:43: error: narrowing conversion from 'idx_t' (aka 'unsigned long') to signed type 'row_t' (aka 'long') is implementation-defined [bugprone-narrowing-conversions,-warnings-as-errors]
+2025-04-15T02:06:35.1258143Z  1229 |                         filter_count = deletion_filter->Filter(state.offset_in_group + state.group_offset, scan_count, state.sel);
+2025-04-15T02:06:35.1260283Z       |                                                                ^
+2025-04-15T02:06:35.1260761Z Failed to get commands: exit status 1
+2025-04-15T02:15:26.4484204Z make: *** [Makefile:426: tidy-check] Error 1
+2025-04-15T02:15:26.4494642Z ##[error]Process completed with exit code 2.

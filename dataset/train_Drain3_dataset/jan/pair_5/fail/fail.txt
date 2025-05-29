@@ -1,0 +1,116 @@
+2025-04-13T17:36:04.3608682Z Requested labels: ubuntu-latest
+2025-04-13T17:36:04.3609206Z Job defined at: menloresearch/jan/.github/workflows/auto-assign-milestone.yml@refs/heads/dev
+2025-04-13T17:36:04.3609336Z Waiting for a runner to pick up this job...
+2025-04-13T17:36:04.6320703Z Job is waiting for a hosted runner to come online.
+2025-04-13T17:36:07.3780630Z Job is about to start running on the hosted runner: GitHub Actions 298 (hosted)
+2025-04-13T17:36:08.9597845Z Current runner version: '2.323.0'
+2025-04-13T17:36:08.9632242Z ##[group]Operating System
+2025-04-13T17:36:08.9633170Z Ubuntu
+2025-04-13T17:36:08.9633659Z 24.04.2
+2025-04-13T17:36:08.9634232Z LTS
+2025-04-13T17:36:08.9634720Z ##[endgroup]
+2025-04-13T17:36:08.9635227Z ##[group]Runner Image
+2025-04-13T17:36:08.9635880Z Image: ubuntu-24.04
+2025-04-13T17:36:08.9636413Z Version: 20250406.1.0
+2025-04-13T17:36:08.9637382Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250406.1/images/ubuntu/Ubuntu2404-Readme.md
+2025-04-13T17:36:08.9638841Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250406.1
+2025-04-13T17:36:08.9639951Z ##[endgroup]
+2025-04-13T17:36:08.9640577Z ##[group]Runner Image Provisioner
+2025-04-13T17:36:08.9641215Z 2.0.422.1
+2025-04-13T17:36:08.9641702Z ##[endgroup]
+2025-04-13T17:36:08.9642866Z ##[group]GITHUB_TOKEN Permissions
+2025-04-13T17:36:08.9644957Z Issues: read
+2025-04-13T17:36:08.9645594Z Metadata: read
+2025-04-13T17:36:08.9646413Z PullRequests: read
+2025-04-13T17:36:08.9647117Z ##[endgroup]
+2025-04-13T17:36:08.9650705Z Secret source: None
+2025-04-13T17:36:08.9651474Z Prepare workflow directory
+2025-04-13T17:36:08.9965435Z Prepare all required actions
+2025-04-13T17:36:09.0002279Z Getting action download info
+2025-04-13T17:36:09.1754185Z ##[group]Download immutable action package 'actions/github-script@v3'
+2025-04-13T17:36:09.1755083Z Version: 3.2.0
+2025-04-13T17:36:09.1755890Z Digest: sha256:f246dac657d5f386a0245d3dd84af024aa07a75050074ebd2526b43df8d6f793
+2025-04-13T17:36:09.1756886Z Source commit SHA: ffc2c79a5b2490bd33e0a41c1de74b877714d736
+2025-04-13T17:36:09.1757501Z ##[endgroup]
+2025-04-13T17:36:09.4412178Z Complete job name: assign_milestone
+2025-04-13T17:36:09.5132253Z ##[group]Run actions/github-script@v3
+2025-04-13T17:36:09.5133793Z with:
+2025-04-13T17:36:09.5134892Z   github-token: ***
+2025-04-13T17:36:09.5141359Z   script: const { owner, repo } = context.repo;
+const { number, merged } = context.payload.pull_request;
+if (merged) {
+  const { data: milestones } = await github.issues.listMilestones({
+    owner,
+    repo,
+    state: 'open',
+  });
+
+  const mergedDate = new Date(context.payload.pull_request.merged_at);
+  const currentMilestone = milestones
+  .filter(milestone => milestone.due_on !== null)
+  .find((milestone) => {
+    const dueDate = new Date(milestone.due_on);
+    return mergedDate <= dueDate;
+  });
+
+  if (currentMilestone) {
+    await github.issues.update({
+      owner,
+      repo,
+      issue_number: number,
+      milestone: currentMilestone.number
+    });
+  }
+}
+
+2025-04-13T17:36:09.5147703Z   debug: true
+2025-04-13T17:36:09.5148473Z   user-agent: actions/github-script
+2025-04-13T17:36:09.5149407Z   result-encoding: json
+2025-04-13T17:36:09.5150936Z ##[endgroup]
+2025-04-13T17:36:09.9322151Z RequestError [HttpError]: Resource not accessible by integration
+2025-04-13T17:36:09.9366841Z ##[error]Unhandled error: HttpError: Resource not accessible by integration
+2025-04-13T17:36:09.9376262Z     at /home/runner/work/_actions/actions/github-script/v3/dist/index.js:2591:23
+2025-04-13T17:36:09.9377458Z     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-13T17:36:09.9378893Z     at async eval (eval at callAsyncFunction (/home/runner/work/_actions/actions/github-script/v3/dist/index.js:7514:16), <anonymous>:21:5)
+2025-04-13T17:36:09.9380569Z     at async main (/home/runner/work/_actions/actions/github-script/v3/dist/index.js:7541:20) {
+2025-04-13T17:36:09.9381420Z   status: '403',
+2025-04-13T17:36:09.9381862Z   headers: {
+2025-04-13T17:36:09.9382320Z     'access-control-allow-origin': '*',
+2025-04-13T17:36:09.9384668Z     'access-control-expose-headers': 'ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset',
+2025-04-13T17:36:09.9386908Z     'content-encoding': 'gzip',
+2025-04-13T17:36:09.9387870Z     'content-security-policy': "default-src 'none'",
+2025-04-13T17:36:09.9388657Z     'content-type': 'application/json; charset=utf-8',
+2025-04-13T17:36:09.9389316Z     date: 'Sun, 13 Apr 2025 17:36:09 GMT',
+2025-04-13T17:36:09.9390343Z     'referrer-policy': 'origin-when-cross-origin, strict-origin-when-cross-origin',
+2025-04-13T17:36:09.9391172Z     server: 'github.com',
+2025-04-13T17:36:09.9391893Z     'strict-transport-security': 'max-age=31536000; includeSubdomains; preload',
+2025-04-13T17:36:09.9392714Z     'transfer-encoding': 'chunked',
+2025-04-13T17:36:09.9393350Z     vary: 'Accept-Encoding, Accept, X-Requested-With',
+2025-04-13T17:36:09.9394196Z     'x-accepted-github-permissions': 'issues=write; pull_requests=write',
+2025-04-13T17:36:09.9395016Z     'x-content-type-options': 'nosniff',
+2025-04-13T17:36:09.9395618Z     'x-frame-options': 'deny',
+2025-04-13T17:36:09.9396219Z     'x-github-api-version-selected': '2022-11-28',
+2025-04-13T17:36:09.9396870Z     'x-github-media-type': 'github.v3',
+2025-04-13T17:36:09.9397562Z     'x-github-request-id': '47C1:615FC:2E95CA:5DCD98:67FBF609',
+2025-04-13T17:36:09.9398247Z     'x-ratelimit-limit': '15000',
+2025-04-13T17:36:09.9398808Z     'x-ratelimit-remaining': '14997',
+2025-04-13T17:36:09.9399397Z     'x-ratelimit-reset': '1744568506',
+2025-04-13T17:36:09.9400155Z     'x-ratelimit-resource': 'core',
+2025-04-13T17:36:09.9400731Z     'x-ratelimit-used': '3',
+2025-04-13T17:36:09.9401296Z     'x-xss-protection': '0'
+2025-04-13T17:36:09.9401909Z   },
+2025-04-13T17:36:09.9402309Z   request: {
+2025-04-13T17:36:09.9402736Z     method: 'PATCH',
+2025-04-13T17:36:09.9403415Z     url: 'https://api.github.com/repos/menloresearch/jan/issues/4826',
+2025-04-13T17:36:09.9404348Z     headers: {
+2025-04-13T17:36:09.9404929Z       accept: 'application/vnd.github.-preview+json',
+2025-04-13T17:36:09.9405853Z       'user-agent': 'actions/github-script octokit-core.js/3.2.1 Node.js/20.19.0 (linux; x64)',
+2025-04-13T17:36:09.9406725Z       authorization: 'token [REDACTED]',
+2025-04-13T17:36:09.9407387Z       'content-type': 'application/json; charset=utf-8'
+2025-04-13T17:36:09.9407989Z     },
+2025-04-13T17:36:09.9408398Z     body: '{"milestone":80}',
+2025-04-13T17:36:09.9409062Z     request: { agent: [Agent], hook: [Function: bound bound register] }
+2025-04-13T17:36:09.9409957Z   },
+2025-04-13T17:36:09.9410639Z   documentation_url: 'https://docs.github.com/rest/issues/issues#update-an-issue'
+2025-04-13T17:36:09.9411435Z }
+2025-04-13T17:36:09.9539615Z Cleaning up orphan processes

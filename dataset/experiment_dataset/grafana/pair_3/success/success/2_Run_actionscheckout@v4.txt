@@ -1,0 +1,72 @@
+2025-04-15T08:27:21.1229146Z ##[group]Run actions/checkout@v4
+2025-04-15T08:27:21.1230186Z with:
+2025-04-15T08:27:21.1230825Z   repository: grafana/grafana
+2025-04-15T08:27:21.1231750Z   token: ***
+2025-04-15T08:27:21.1232634Z   ssh-strict: true
+2025-04-15T08:27:21.1233249Z   ssh-user: git
+2025-04-15T08:27:21.1233971Z   persist-credentials: true
+2025-04-15T08:27:21.1234641Z   clean: true
+2025-04-15T08:27:21.1235403Z   sparse-checkout-cone-mode: true
+2025-04-15T08:27:21.1236189Z   fetch-depth: 1
+2025-04-15T08:27:21.1236798Z   fetch-tags: false
+2025-04-15T08:27:21.1237231Z   show-progress: true
+2025-04-15T08:27:21.1237655Z   lfs: false
+2025-04-15T08:27:21.1238037Z   submodules: false
+2025-04-15T08:27:21.1238867Z   set-safe-directory: true
+2025-04-15T08:27:21.1239726Z ##[endgroup]
+2025-04-15T08:27:21.3356205Z Syncing repository: grafana/grafana
+2025-04-15T08:27:21.3358075Z ##[group]Getting Git version info
+2025-04-15T08:27:21.3358780Z Working directory is '/home/runner/work/grafana/grafana'
+2025-04-15T08:27:21.3359713Z [command]/usr/bin/git version
+2025-04-15T08:27:21.3432907Z git version 2.49.0
+2025-04-15T08:27:21.3460601Z ##[endgroup]
+2025-04-15T08:27:21.3474427Z Temporarily overriding HOME='/home/runner/work/_temp/210e2949-7d72-4767-9ca9-ea3afbf8337c' before making global git config changes
+2025-04-15T08:27:21.3476789Z Adding repository directory to the temporary git global config as a safe directory
+2025-04-15T08:27:21.3486718Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/grafana/grafana
+2025-04-15T08:27:21.3519435Z Deleting the contents of '/home/runner/work/grafana/grafana'
+2025-04-15T08:27:21.3523539Z ##[group]Initializing the repository
+2025-04-15T08:27:21.3527967Z [command]/usr/bin/git init /home/runner/work/grafana/grafana
+2025-04-15T08:27:21.3598051Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-04-15T08:27:21.3599657Z hint: is subject to change. To configure the initial branch name to use in all
+2025-04-15T08:27:21.3601121Z hint: of your new repositories, which will suppress this warning, call:
+2025-04-15T08:27:21.3602020Z hint:
+2025-04-15T08:27:21.3602839Z hint: 	git config --global init.defaultBranch <name>
+2025-04-15T08:27:21.3603806Z hint:
+2025-04-15T08:27:21.3604697Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-04-15T08:27:21.3606142Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-04-15T08:27:21.3606891Z hint:
+2025-04-15T08:27:21.3607325Z hint: 	git branch -m <name>
+2025-04-15T08:27:21.3608335Z Initialized empty Git repository in /home/runner/work/grafana/grafana/.git/
+2025-04-15T08:27:21.3614262Z [command]/usr/bin/git remote add origin https://github.com/grafana/grafana
+2025-04-15T08:27:21.3647101Z ##[endgroup]
+2025-04-15T08:27:21.3647916Z ##[group]Disabling automatic garbage collection
+2025-04-15T08:27:21.3651006Z [command]/usr/bin/git config --local gc.auto 0
+2025-04-15T08:27:21.3678992Z ##[endgroup]
+2025-04-15T08:27:21.3679863Z ##[group]Setting up auth
+2025-04-15T08:27:21.3685978Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-04-15T08:27:21.3714706Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-04-15T08:27:21.4004669Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-15T08:27:21.4036046Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-04-15T08:27:21.4261069Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-04-15T08:27:21.4299350Z ##[endgroup]
+2025-04-15T08:27:21.4300561Z ##[group]Fetching the repository
+2025-04-15T08:27:21.4308347Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +8e63782e5b58f4a0323ef73b747778e88e639abf:refs/remotes/origin/main
+2025-04-15T08:27:26.3798025Z From https://github.com/grafana/grafana
+2025-04-15T08:27:26.3800107Z  * [new ref]           8e63782e5b58f4a0323ef73b747778e88e639abf -> origin/main
+2025-04-15T08:27:26.4071239Z ##[endgroup]
+2025-04-15T08:27:26.4073045Z ##[group]Determining the checkout info
+2025-04-15T08:27:26.4075125Z ##[endgroup]
+2025-04-15T08:27:26.4077629Z [command]/usr/bin/git sparse-checkout disable
+2025-04-15T08:27:26.4116615Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-04-15T08:27:26.4145550Z ##[group]Checking out the ref
+2025-04-15T08:27:26.4149750Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2025-04-15T08:27:27.4359120Z Updating files:  97% (16777/17143)
+2025-04-15T08:27:27.4638652Z Updating files:  98% (16801/17143)
+2025-04-15T08:27:27.5077927Z Updating files:  99% (16972/17143)
+2025-04-15T08:27:27.5078566Z Updating files: 100% (17143/17143)
+2025-04-15T08:27:27.5078969Z Updating files: 100% (17143/17143), done.
+2025-04-15T08:27:27.5279281Z Switched to a new branch 'main'
+2025-04-15T08:27:27.5281896Z branch 'main' set up to track 'origin/main'.
+2025-04-15T08:27:27.5314084Z ##[endgroup]
+2025-04-15T08:27:27.5353066Z [command]/usr/bin/git log -1 --format=%H
+2025-04-15T08:27:27.5375533Z 8e63782e5b58f4a0323ef73b747778e88e639abf

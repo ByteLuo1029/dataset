@@ -1,0 +1,13 @@
+##[group]Run make lint
+[36;1mmake lint[0m
+shell: /usr/bin/bash -e {<:NUM:>}
+env:
+LANG: C.UTF-8
+##[endgroup]
+fatal: ref HEAD is not a symbolic ref
+[ -z "$(gofmt -s -d src)" ] || (gofmt -s -d src; exit 1)
+bundle exec rubocop -a --require rubocop-minitest --require rubocop-performance
+Inspecting 10 files
+..........
+2025-03-10T13:25:23.8237648Z
+10 files inspected, no offenses detected

@@ -1,0 +1,31 @@
+##[group]Run $PIP -qq show nose || { \
+[36;1m$PIP -qq show nose || { \[0m
+[36;1m  curl -L -O "https://files.pythonhosted.org/packages/15/d8/dd071918c040f50fa1cf80da16423af51ff8ce4a0f2399b7bf8de45ac3d9/nose-1.3.7-py3-none-any.whl"; \[0m
+[36;1m  $PIP install nose-1.3.7-py3-none-any.whl; }[0m
+shell: /usr/bin/bash --noprofile --norc -e -o pipefail {<:NUM:>}
+env:
+all-cpython-versions: 2.6, 2.7, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 3.10, 3.11, 3.12
+main-cpython-versions: 2.7, 3.2, 3.5, 3.9, 3.11
+pypy-versions: pypy-2.7, pypy-3.6, pypy-3.7
+cpython-versions: main
+test-set: core
+next: 3.13
+PIP: python -m pip
+PIP_DISABLE_PIP_VERSION_CHECK: true
+PIP_NO_PYTHON_VERSION_WARNING: true
+pythonLocation: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+PKG CONFIG PATH: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64/lib/pkgconfig
+Python ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+<:*:> ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+<:*:> ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+LD LIBRARY PATH: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64/lib
+PYTHONHOME: /opt/hostedtoolcache/Python/3.2.6/x64
+##[endgroup]
+% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+Dload  Upload   Total   Spent    Left  Speed
+2025-02-06T20:45:47.4120981Z
+0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100  151k  100  151k    0     0  4317k      0 --:--:-- --:--:-- --:--:-- 4317k
+Processing ./nose-1.3.7-py3-none-any.whl
+Installing collected packages: nose
+Successfully installed nose-1.3.7

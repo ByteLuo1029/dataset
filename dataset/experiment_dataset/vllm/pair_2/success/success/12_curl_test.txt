@@ -1,0 +1,54 @@
+﻿2025-04-15T09:18:49.1587077Z ##[group]Run kubectl -n ns-vllm port-forward service/test-vllm-service 8001:80 &
+2025-04-15T09:18:49.1587617Z [36;1mkubectl -n ns-vllm port-forward service/test-vllm-service 8001:80 &[0m
+2025-04-15T09:18:49.1588150Z [36;1msleep 10[0m
+2025-04-15T09:18:49.1588447Z [36;1mCODE="$(curl -v -f --location http://localhost:8001/v1/completions \[0m
+2025-04-15T09:18:49.1588846Z [36;1m        --header "Content-Type: application/json" \[0m
+2025-04-15T09:18:49.1589130Z [36;1m        --data '{[0m
+2025-04-15T09:18:49.1589347Z [36;1m                "model": "opt-125m",[0m
+2025-04-15T09:18:49.1589612Z [36;1m                "prompt": "San Francisco is a",[0m
+2025-04-15T09:18:49.1589868Z [36;1m                "max_tokens": 7,[0m
+2025-04-15T09:18:49.1590111Z [36;1m                "temperature": 0[0m
+2025-04-15T09:18:49.1590335Z [36;1m        }'):$CODE"[0m
+2025-04-15T09:18:49.1590538Z [36;1mecho "$CODE"[0m
+2025-04-15T09:18:49.1639290Z shell: /usr/bin/bash -e {0}
+2025-04-15T09:18:49.1639517Z env:
+2025-04-15T09:18:49.1639776Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T09:18:49.1640173Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.2/x64/lib/pkgconfig
+2025-04-15T09:18:49.1640554Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T09:18:49.1640905Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T09:18:49.1641252Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.2/x64
+2025-04-15T09:18:49.1641587Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.2/x64/lib
+2025-04-15T09:18:49.1642020Z   CT_CONFIG_DIR: /opt/hostedtoolcache/ct/3.10.1/amd64/etc
+2025-04-15T09:18:49.1642334Z   VIRTUAL_ENV: /opt/hostedtoolcache/ct/3.10.1/amd64/venv
+2025-04-15T09:18:49.1642605Z ##[endgroup]
+2025-04-15T09:18:49.2490184Z Forwarding from 127.0.0.1:8001 -> 8000
+2025-04-15T09:18:49.2490603Z Forwarding from [::1]:8001 -> 8000
+2025-04-15T09:18:59.1787805Z * Host localhost:8001 was resolved.
+2025-04-15T09:18:59.1788412Z * IPv6: ::1
+2025-04-15T09:18:59.1788679Z * IPv4: 127.0.0.1
+2025-04-15T09:18:59.1789184Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2025-04-15T09:18:59.1789804Z                                  Dload  Upload   Total   Spent    Left  Speed
+2025-04-15T09:18:59.1790148Z 
+2025-04-15T09:18:59.1790387Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying [::1]:8001...
+2025-04-15T09:18:59.1790910Z * Connected to localhost (::1) port 8001
+2025-04-15T09:18:59.1791349Z > POST /v1/completions HTTP/1.1
+2025-04-15T09:18:59.1791706Z > Host: localhost:8001
+2025-04-15T09:18:59.1792175Z > User-Agent: curl/8.5.0
+2025-04-15T09:18:59.1792486Z > Accept: */*
+2025-04-15T09:18:59.1792788Z > Content-Type: application/json
+2025-04-15T09:18:59.1793150Z > Content-Length: 162
+2025-04-15T09:18:59.1793435Z > 
+2025-04-15T09:18:59.1794501Z } [162 bytes data]
+2025-04-15T09:18:59.1795086Z Handling connection for 8001
+2025-04-15T09:18:59.3803763Z 
+2025-04-15T09:18:59.4158923Z 100   162    0     0  100   162      0    803 --:--:-- --:--:-- --:--:--   801< HTTP/1.1 200 OK
+2025-04-15T09:18:59.4159548Z < date: Tue, 15 Apr 2025 09:18:59 GMT
+2025-04-15T09:18:59.4159912Z < server: uvicorn
+2025-04-15T09:18:59.4160191Z < content-length: 351
+2025-04-15T09:18:59.4160500Z < content-type: application/json
+2025-04-15T09:18:59.4160835Z < 
+2025-04-15T09:18:59.4161035Z { [351 bytes data]
+2025-04-15T09:18:59.4161187Z 
+2025-04-15T09:18:59.4161403Z 100   513  100   351  100   162   1479    683 --:--:-- --:--:-- --:--:--  2155
+2025-04-15T09:18:59.4162120Z * Connection #0 to host localhost left intact
+2025-04-15T09:18:59.4175382Z {"id":"cmpl-dfb3e84e58024812a3bb0285f788722c","object":"text_completion","created":1744708739,"model":"opt-125m","choices":[{"index":0,"text":" great place to live.  I","logprobs":null,"finish_reason":"length","stop_reason":null,"prompt_logprobs":null}],"usage":{"prompt_tokens":5,"total_tokens":12,"completion_tokens":7,"prompt_tokens_details":null}}:

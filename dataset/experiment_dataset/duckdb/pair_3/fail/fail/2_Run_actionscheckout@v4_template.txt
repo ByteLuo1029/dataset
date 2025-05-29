@@ -1,0 +1,172 @@
+##[group]Run <:*:>
+with:
+fetch-depth: <:NUM:>
+repository: <:*:>
+token: ***
+ssh-strict: true
+ssh-user: git
+persist-credentials: <:*:>
+clean: true
+sparse-checkout-cone-mode: true
+fetch-tags: false
+show-progress: true
+lfs: false
+submodules: <:*:>
+set-safe-directory: true
+env:
+GH TOKEN: ***
+CC: gcc
+CXX: g++
+GEN: ninja
+TIDY_THREADS: 4
+TIDY_CHECKS:
+##[endgroup]
+Syncing repository: <:*:>
+##[group]Getting Git version info
+Working directory is <:*:>
+[command]/usr/bin/git version
+git version <:NUM:>.<:NUM:>.<:NUM:>
+##[endgroup]
+Temporarily overriding HOME='/home/runner/work/_temp/e483f6d8-c0e4-4dd5-a5e1-79fb78b794c5' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+[command]/usr/bin/git config --global --add safe.directory /home/runner/work/duckdb/duckdb
+Deleting the contents of <:*:>
+##[group]Initializing the repository
+[command]/usr/bin/git init <:*:>
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint:
+hint: git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint: git branch -m <name>
+Initialized empty Git repository in <:*:>
+[command]/usr/bin/git remote add origin <:*:>
+##[endgroup]
+##[group]Disabling automatic garbage collection
+[command]/usr/bin/git config --local gc.auto 0
+##[endgroup]
+##[group]Setting up auth
+[command]/usr/bin/git config --local --name-only --get-regexp <:*:>
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp <:*:> && git config --local --unset-all <:*:> || :"
+[command]/usr/bin/git config --local --name-only --get-regexp <:*:>
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp <:*:> && git config --local --unset-all <:*:> || :"
+[command]/usr/bin/git config <:*:> http.https://github.com/.extraheader AUTHORIZATION: basic ***
+##[endgroup]
+##[group]Fetching the repository
+[command]/usr/bin/git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/*
+From <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+[command]/usr/bin/git branch --list --remote origin/main
+origin/main
+[command]/usr/bin/git rev-parse refs/remotes/origin/main
+<:SEQ:>
+##[endgroup]
+##[group]Determining the checkout info
+##[endgroup]
+[command]/usr/bin/git sparse-checkout disable
+[command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+##[group]Checking out the ref
+[command]/usr/bin/git checkout --progress --force -B <:*:> <:*:>
+Updating files:  59% (8160/13781)
+Updating files:  60% (8269/13781)
+Updating files:  61% (8407/13781)
+Updating files:  62% (8545/13781)
+Updating files:  63% (8683/13781)
+Updating files:  64% (8820/13781)
+Updating files:  65% (8958/13781)
+Updating files:  66% (9096/13781)
+Updating files:  67% (9234/13781)
+Updating files:  68% (9372/13781)
+Updating files:  69% (9509/13781)
+Updating files:  70% (9647/13781)
+Updating files:  71% (9785/13781)
+Updating files:  72% (9923/13781)
+Updating files:  73% (10061/13781)
+Updating files:  74% (10198/13781)
+Updating files:  75% (10336/13781)
+Updating files:  76% (10474/13781)
+Updating files:  77% (10612/13781)
+Updating files:  78% (10750/13781)
+Updating files:  79% (10887/13781)
+Updating files:  80% (11025/13781)
+Updating files:  81% (11163/13781)
+Updating files:  82% (11301/13781)
+Updating files:  83% (11439/13781)
+Updating files:  84% (11577/13781)
+Updating files:  85% (11714/13781)
+Updating files:  86% (11852/13781)
+Updating files:  87% (11990/13781)
+Updating files:  88% (12128/13781)
+Updating files:  89% (12266/13781)
+Updating files:  90% (12403/13781)
+Updating files:  91% (12541/13781)
+Updating files:  92% (12679/13781)
+Updating files:  93% (12817/13781)
+Updating files:  94% (12955/13781)
+Updating files:  95% (13092/13781)
+Updating files:  96% (13230/13781)
+Updating files:  97% (13368/13781)
+Updating files:  98% (13506/13781)
+Updating files:  99% (13644/13781)
+Updating files: 100% (13781/13781)
+Updating files: 100% (13781/13781), done.
+Switched to a new branch 'main'
+branch <:*:> set up to track <:*:>
+##[endgroup]
+[command]/usr/bin/git log <:NUM:> <:*:>
+<:SEQ:>

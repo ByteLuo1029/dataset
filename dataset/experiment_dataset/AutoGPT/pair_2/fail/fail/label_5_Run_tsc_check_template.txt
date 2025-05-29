@@ -1,0 +1,22 @@
+##[group]Run yarn type-check
+[36;1myarn type-check[0m
+shell: /usr/bin/bash --noprofile --norc -e -o pipefail {<:NUM:>}
+##[endgroup]
+yarn run v1.22.22
+$ tsc --noEmit
+##[error]src/components/Flow.tsx(666,11): error TS2322: Type '(nodeChanges: NodeChange<CustomNode>[]) => void' is not assignable to type 'OnNodesChange<Node>'.
+Types of parameters 'nodeChanges' and 'changes' are incompatible.
+Type 'NodeChange<Node>[]' is not assignable to type 'NodeChange<CustomNode>[]'.
+Type 'NodeChange<Node>' is not assignable to type 'NodeChange<CustomNode>'.
+Type 'NodeAddChange<Node>' is not assignable to type 'NodeChange<CustomNode>'.
+Type 'NodeAddChange<Node>' is not assignable to type 'NodeAddChange<CustomNode>'.
+Type 'Node' is not assignable to type 'CustomNode'.
+Type 'Node' is not assignable to type 'NodeBase<CustomNodeData, "custom">'.
+Types of property 'data' are incompatible.
+Type 'Record<string, unknown>' is missing the following properties from type 'CustomNodeData': blockType, blockCosts, title, description, and 8 more.
+##[error]src/components/ui/form.stories.tsx(143,9): error TS2353: Object literal may only specify known properties, and 'values' does not exist in type 'Subjects<FieldValues>'.
+##[error]src/components/ui/form.stories.tsx(292,9): error TS2353: Object literal may only specify known properties, and 'values' does not exist in type 'Subjects<FieldValues>'.
+##[error]src/components/ui/form.stories.tsx(487,9): error TS2353: Object literal may only specify known properties, and 'values' does not exist in type 'Subjects<FieldValues>'.
+error Command failed with exit code 2.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+##[error]Process completed with exit code 2.

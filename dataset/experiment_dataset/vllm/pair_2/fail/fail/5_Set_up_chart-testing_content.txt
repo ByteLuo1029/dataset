@@ -1,0 +1,337 @@
+﻿2025-04-15T09:26:58.8939701Z ##[group]Run helm/chart-testing-action@0d28d3144d3a25ea2cc349d6e59901c4ff469b3b
+
+version: v3.10.1
+yamllint_version: 1.33.0
+yamale_version: 4.0.4
+
+3 13 2
+3 13 2
+3 13 2
+Python2 3 13 2
+Python3 3 13 2
+3 13 2
+##[endgroup]
+sigstore/cosign-installer@dc72c7d5c4d10cd6bcb8cf6e3fd625a9e5e537da
+
+cosign-release: v2.4.1
+install-dir: $HOME/.cosign
+use-sudo:
+
+3 13 2
+3 13 2
+3 13 2
+Python2 3 13 2
+Python3 3 13 2
+3 13 2
+##[endgroup]
+#!/bin/bash
+[36;1m#!/bin/bash[0m
+[36;1m# cosign install script[0m
+[36;1mshopt -s expand_aliases[0m
+[36;1mif [ -z "$NO_COLOR" ]; then[0m
+[36;1m  alias log_info="echo -e \"\033[1;32mINFO\033[0m:\""[0m
+[36;1m  alias log_error="echo -e \"\033[1;31mERROR\033[0m:\""[0m
+36
+[36;1m  alias log_info="echo \"INFO:\""[0m
+[36;1m  alias log_error="echo \"ERROR:\""[0m
+36
+[36;1mset -e[0m
+[36;1m[0m
+[36;1mmkdir -p $HOME/.cosign[0m
+[36;1m[0m
+[36;1mif [[ v2.4.1 == "main" ]]; then[0m
+[36;1m  log_info "installing cosign via 'go install' from its main version"[0m
+[36;1m  GOBIN=$(go env GOPATH)/bin[0m
+[36;1m  go install github.com/sigstore/cosign/cmd/cosign@main[0m
+[36;1m  ln -s $GOBIN/cosign $HOME/.cosign/cosign[0m
+36 0
+36
+[36;1m[0m
+[36;1mshaprog() {[0m
+[36;1m  case Linux in[0m
+[36;1m    Linux|linux)[0m
+[36;1m      sha256sum $1 | cut -d' ' -f1[0m
+[36;1m      ;;[0m
+[36;1m    macOS|macos)[0m
+[36;1m      shasum -a256 $1 | cut -d' ' -f1[0m
+[36;1m      ;;[0m
+[36;1m    Windows|windows)[0m
+[36;1m      powershell -command "(Get-FileHash $1 -Algorithm SHA256 | Select-Object -ExpandProperty Hash).ToLower()"[0m
+[36;1m      ;;[0m
+[36;1m    *)[0m
+[36;1m      log_error "unsupported OS Linux"[0m
+36 1
+[36;1m      ;;[0m
+[36;1m  esac[0m
+[36;1m}[0m
+[36;1m[0m
+[36;1mbootstrap_version='v2.4.1'[0m
+[36;1mbootstrap_linux_amd64_sha='8b24b946dd5809c6bd93de08033bcf6bc0ed7d336b7785787c080f574b89249b'[0m
+[36;1mbootstrap_linux_arm_sha='541fd175fae792a154fa2fa025146e3d4691e2dd97717fa9ace35677a88489e7'[0m
+[36;1mbootstrap_linux_arm64_sha='3b2e2e3854d0356c45fe6607047526ccd04742d20bd44afb5be91fa2a6e7cb4a'[0m
+[36;1mbootstrap_darwin_amd64_sha='666032ca283da92b6f7953965688fd51200fdc891a86c19e05c98b898ea0af4e'[0m
+[36;1mbootstrap_darwin_arm64_sha='13343856b69f70388c4fe0b986a31dde5958e444b41be22d785d3dc5e1a9cc62'[0m
+[36;1mbootstrap_windows_amd64_sha='8d57f8a42a981d27290c4227271fa9f0f62ca6630eb4a21d316bd6b01405b87c'[0m
+[36;1mcosign_executable_name=cosign[0m
+[36;1m[0m
+[36;1mtrap "popd >/dev/null" EXIT[0m
+[36;1m[0m
+[36;1mpushd $HOME/.cosign > /dev/null[0m
+[36;1m[0m
+[36;1mcase Linux in[0m
+[36;1m  Linux|linux)[0m
+[36;1m    case X64 in[0m
+[36;1m      X64|amd64)[0m
+[36;1m        bootstrap_filename='cosign-linux-amd64'[0m
+[36;1m        bootstrap_sha=${bootstrap_linux_amd64_sha}[0m
+[36;1m        desired_cosign_filename='cosign-linux-amd64'[0m
+[36;1m        # v0.6.0 had different filename structures from all other releases[0m
+[36;1m        if [[ v2.4.1 == 'v0.6.0' ]]; then[0m
+[36;1m          desired_cosign_filename='cosign_linux_amd64_0.6.0_linux_amd64'[0m
+[36;1m          desired_cosign_v060_signature='cosign_linux_amd64_0.6.0_linux_amd64.sig'[0m
+[36;1m        fi[0m
+[36;1m        ;;[0m
+[36;1m[0m
+[36;1m      ARM|arm)[0m
+[36;1m        bootstrap_filename='cosign-linux-arm'[0m
+[36;1m        bootstrap_sha=${bootstrap_linux_arm_sha}[0m
+[36;1m        desired_cosign_filename='cosign-linux-arm'[0m
+[36;1m        if [[ v2.4.1 == 'v0.6.0' ]]; then[0m
+[36;1m          log_error "linux-arm build not available at v0.6.0"[0m
+36 1
+[36;1m        fi[0m
+[36;1m        ;;[0m
+[36;1m[0m
+[36;1m      ARM64|arm64)[0m
+[36;1m        bootstrap_filename='cosign-linux-arm64'[0m
+[36;1m        bootstrap_sha=${bootstrap_linux_arm64_sha}[0m
+[36;1m        desired_cosign_filename='cosign-linux-arm64'[0m
+[36;1m        if [[ v2.4.1 == 'v0.6.0' ]]; then[0m
+[36;1m          log_error "linux-arm64 build not available at v0.6.0"[0m
+36 1
+[36;1m        fi[0m
+[36;1m        ;;[0m
+[36;1m[0m
+[36;1m      *)[0m
+[36;1m        log_error "unsupported architecture X64"[0m
+36 1
+[36;1m        ;;[0m
+[36;1m    esac[0m
+[36;1m    ;;[0m
+[36;1m[0m
+[36;1m  macOS|macos)[0m
+[36;1m    case X64 in[0m
+[36;1m      X64|amd64)[0m
+[36;1m        bootstrap_filename='cosign-darwin-amd64'[0m
+[36;1m        bootstrap_sha=${bootstrap_darwin_amd64_sha}[0m
+[36;1m        desired_cosign_filename='cosign-darwin-amd64'[0m
+[36;1m        # v0.6.0 had different filename structures from all other releases[0m
+[36;1m        if [[ v2.4.1 == 'v0.6.0' ]]; then[0m
+[36;1m          desired_cosign_filename='cosign_darwin_amd64_0.6.0_darwin_amd64'[0m
+[36;1m          desired_cosign_v060_signature='cosign_darwin_amd64_0.6.0_darwin_amd64.sig'[0m
+[36;1m        fi[0m
+[36;1m        ;;[0m
+[36;1m[0m
+[36;1m      ARM64|arm64)[0m
+[36;1m        bootstrap_filename='cosign-darwin-arm64'[0m
+[36;1m        bootstrap_sha=${bootstrap_darwin_arm64_sha}[0m
+[36;1m        desired_cosign_filename='cosign-darwin-arm64'[0m
+[36;1m        # v0.6.0 had different filename structures from all other releases[0m
+[36;1m        if [[ v2.4.1 == 'v0.6.0' ]]; then[0m
+[36;1m          desired_cosign_filename='cosign_darwin_arm64_0.6.0_darwin_arm64'[0m
+[36;1m          desired_cosign_v060_signature='cosign_darwin_arm64_0.6.0_darwin_arm64.sig'[0m
+[36;1m        fi[0m
+[36;1m        ;;[0m
+[36;1m[0m
+[36;1m      *)[0m
+[36;1m        log_error "unsupported architecture X64"[0m
+36 1
+[36;1m        ;;[0m
+[36;1m    esac[0m
+[36;1m    ;;[0m
+[36;1m[0m
+[36;1m  Windows|windows)[0m
+[36;1m    case X64 in[0m
+[36;1m      X64|amd64)[0m
+[36;1m        bootstrap_filename='cosign-windows-amd64.exe'[0m
+[36;1m        bootstrap_sha=${bootstrap_windows_amd64_sha}[0m
+[36;1m        desired_cosign_filename='cosign-windows-amd64.exe'[0m
+[36;1m        cosign_executable_name=cosign.exe[0m
+[36;1m        # v0.6.0 had different filename structures from all other releases[0m
+[36;1m        if [[ v2.4.1 == 'v0.6.0' ]]; then[0m
+[36;1m          desired_cosign_filename='cosign_windows_amd64_0.6.0_windows_amd64.exe'[0m
+[36;1m          desired_cosign_v060_signature='cosign_windows_amd64_0.6.0_windows_amd64.exe.sig'[0m
+[36;1m        fi[0m
+[36;1m        ;;[0m
+[36;1m      *)[0m
+[36;1m        log_error "unsupported architecture X64"[0m
+36 1
+[36;1m        ;;[0m
+[36;1m    esac[0m
+[36;1m    ;;[0m
+[36;1m  *)[0m
+[36;1m    log_error "unsupported os Linux"[0m
+36 1
+[36;1m    ;;[0m
+[36;1mesac[0m
+[36;1m[0m
+[36;1mSUDO=[0m
+[36;1mif [[ "false" == "true" ]] && command -v sudo >/dev/null; then[0m
+[36;1m  SUDO=sudo[0m
+36
+[36;1m[0m
+[36;1mexpected_bootstrap_version_digest=${bootstrap_sha}[0m
+[36;1mlog_info "Downloading bootstrap version '${bootstrap_version}' of cosign to verify version to be installed...\n      https://github.com/sigstore/cosign/releases/download/${bootstrap_version}/${bootstrap_filename}"[0m
+[36;1m$SUDO curl -fsL https://github.com/sigstore/cosign/releases/download/${bootstrap_version}/${bootstrap_filename} -o ${cosign_executable_name}[0m
+[36;1mshaBootstrap=$(shaprog ${cosign_executable_name});[0m
+[36;1mif [[ $shaBootstrap != ${expected_bootstrap_version_digest} ]]; then[0m
+[36;1m  log_error "Unable to validate cosign version: 'v2.4.1'"[0m
+36 1
+36
+[36;1m$SUDO chmod +x ${cosign_executable_name}[0m
+[36;1m[0m
+[36;1m# If the bootstrap and specified `cosign` releases are the same, we're done.[0m
+[36;1mif [[ v2.4.1 == ${bootstrap_version} ]]; then[0m
+[36;1m  log_info "bootstrap version successfully verified and matches requested version so nothing else to do"[0m
+36 0
+36
+[36;1m[0m
+[36;1msemver='^v([0-9]+\.){0,2}(\*|[0-9]+)(-?r?c?)(\.[0-9]+)$'[0m
+[36;1mif [[ v2.4.1 =~ $semver ]]; then[0m
+[36;1m  log_info "Custom cosign version 'v2.4.1' requested"[0m
+36
+[36;1m  log_error "Unable to validate requested cosign version: 'v2.4.1'"[0m
+36 1
+36
+[36;1m[0m
+[36;1m# Download custom cosign[0m
+[36;1mlog_info "Downloading platform-specific version 'v2.4.1' of cosign...\n      https://github.com/sigstore/cosign/releases/download/v2.4.1/${desired_cosign_filename}"[0m
+[36;1m$SUDO curl -fsL https://github.com/sigstore/cosign/releases/download/v2.4.1/${desired_cosign_filename} -o cosign_v2.4.1[0m
+[36;1mshaCustom=$(shaprog cosign_v2.4.1);[0m
+[36;1m[0m
+[36;1m# same hash means it is the same release[0m
+[36;1mif [[ $shaCustom != $shaBootstrap ]]; then[0m
+[36;1m  if [[ v2.4.1 == 'v0.6.0' && Linux == 'Linux' ]]; then[0m
+[36;1m    # v0.6.0's linux release has a dependency on `libpcsclite1`[0m
+[36;1m    log_info "Installing libpcsclite1 package if necessary..."[0m
+[36;1m    set +e[0m
+[36;1m    sudo dpkg -s libpcsclite1[0m
+[36;1m    if [ $? -eq 0 ]; then[0m
+[36;1m        log_info "libpcsclite1 package is already installed"[0m
+[36;1m    else[0m
+[36;1m         log_info "libpcsclite1 package is not installed, installing it now."[0m
+[36;1m         sudo apt-get update -q -q[0m
+[36;1m         sudo apt-get install -yq libpcsclite1[0m
+[36;1m    fi[0m
+[36;1m    set -e[0m
+[36;1m  fi[0m
+[36;1m[0m
+[36;1m  if [[ v2.4.1 == 'v0.6.0' ]]; then[0m
+[36;1m    log_info "Downloading detached signature for platform-specific 'v2.4.1' of cosign...\n      https://github.com/sigstore/cosign/releases/download/v2.4.1/${desired_cosign_v060_signature}"[0m
+[36;1m    $SUDO curl -fsL https://github.com/sigstore/cosign/releases/download/v2.4.1/${desired_cosign_v060_signature} -o ${desired_cosign_filename}.sig[0m
+[36;1m  else[0m
+[36;1m    log_info "Downloading detached signature for platform-specific 'v2.4.1' of cosign...\n      https://github.com/sigstore/cosign/releases/download/v2.4.1/${desired_cosign_filename}.sig"[0m
+[36;1m    $SUDO curl -fsLO https://github.com/sigstore/cosign/releases/download/v2.4.1/${desired_cosign_filename}.sig[0m
+[36;1m  fi[0m
+[36;1m[0m
+[36;1m  if [[ v2.4.1 < 'v0.6.0' ]]; then[0m
+[36;1m    log_info "Downloading cosign public key 'v2.4.1' of cosign...\n    https://raw.githubusercontent.com/sigstore/cosign/v2.4.1/.github/workflows/cosign.pub"[0m
+[36;1m    RELEASE_COSIGN_PUB_KEY=https://raw.githubusercontent.com/sigstore/cosign/v2.4.1/.github/workflows/cosign.pub[0m
+[36;1m    RELEASE_COSIGN_PUB_KEY_SHA='4aa4bd19530a4929d758a9896255aef2c82f1a3a9f4b000034c6df4307c14f9e'[0m
+[36;1m  else[0m
+[36;1m    log_info "Downloading cosign public key 'v2.4.1' of cosign...\n    https://raw.githubusercontent.com/sigstore/cosign/v2.4.1/release/release-cosign.pub"[0m
+[36;1m    RELEASE_COSIGN_PUB_KEY=https://raw.githubusercontent.com/sigstore/cosign/v2.4.1/release/release-cosign.pub[0m
+[36;1m    RELEASE_COSIGN_PUB_KEY_SHA='f4cea466e5e887a45da5031757fa1d32655d83420639dc1758749b744179f126'[0m
+[36;1m  fi[0m
+[36;1m[0m
+[36;1m  log_info "Verifying public key matches expected value"[0m
+[36;1m  $SUDO curl -fsL $RELEASE_COSIGN_PUB_KEY -o public.key[0m
+[36;1m  sha_fetched_key=$(shaprog public.key)[0m
+[36;1m  if [[ $sha_fetched_key != $RELEASE_COSIGN_PUB_KEY_SHA ]]; then[0m
+[36;1m    log_error "Fetched public key does not match expected digest, exiting"[0m
+36 1
+[36;1m  fi[0m
+[36;1m[0m
+[36;1m  log_info "Using bootstrap cosign to verify signature of desired cosign version"[0m
+[36;1m  ./cosign verify-blob --insecure-ignore-tlog --key public.key --signature ${desired_cosign_filename}.sig cosign_v2.4.1[0m
+[36;1m[0m
+[36;1m  $SUDO rm cosign[0m
+[36;1m  $SUDO mv cosign_v2.4.1 ${cosign_executable_name}[0m
+[36;1m  $SUDO chmod +x ${cosign_executable_name}[0m
+[36;1m  log_info "Installation complete!"[0m
+36
+0
+
+3 13 2
+3 13 2
+3 13 2
+Python2 3 13 2
+Python3 3 13 2
+3 13 2
+##[endgroup]
+[1;32mINFO[0m: Downloading bootstrap version 'v2.4.1' of cosign to verify version to be installed...
+https://github.com/sigstore/cosign/releases/download/v2.4.1/cosign-linux-amd64
+[1;32mINFO[0m: bootstrap version successfully verified and matches requested version so nothing else to do
+##[group]Run echo "$HOME/.cosign" >> $GITHUB_PATH
+[36;1mecho "$HOME/.cosign" >> $GITHUB_PATH[0m
+0
+
+3 13 2
+3 13 2
+3 13 2
+Python2 3 13 2
+Python3 3 13 2
+3 13 2
+##[endgroup]
+##[group]Run cd $GITHUB_ACTION_PATH \
+[36;1mcd $GITHUB_ACTION_PATH \[0m
+[36;1m&& ./ct.sh \[0m
+[36;1m    --version v3.10.1 \[0m
+[36;1m    --yamllint-version 1.33.0 \[0m
+[36;1m    --yamale-version 4.0.4[0m
+0
+
+3 13 2
+3 13 2
+3 13 2
+Python2 3 13 2
+Python3 3 13 2
+3 13 2
+##[endgroup]
+Installing chart-testing v3.10.1...
+Verified OK
+Creating virtual Python environment...
+Activating virtual environment...
+Installing yamllint...
+yamllint==1.33.0
+yamllint-1.33.0-py3-none-any.whl.metadata (4.2
+pathspec>=0.5.3 yamllint==1.33.0)
+pathspec-0.12.1-py3-none-any.whl.metadata (21
+pyyaml yamllint==1.33.0)
+6 0 2 2 17 64 64.whl.metadata (2.1
+yamllint-1.33.0-py3-none-any.whl (65
+pathspec-0.12.1-py3-none-any.whl (31
+6 0 2 2 17 64 64.whl (759
+759 5 759 5 kB 72 2 0 00 00
+Installing collected packages: pyyaml, pathspec, yamllint
+Successfully installed pathspec-0.12.1 pyyaml-6.0.2 yamllint-1.33.0
+2025-04-15T09:27:05.3547245Z
+[notice] A new release of pip is available: 24.3.1 -> 25.0.1
+[notice] To update, run: pip install --upgrade pip
+Installing Yamale...
+yamale==4.0.4
+yamale-4.0.4-py3-none-any.whl.metadata (20
+Requirement already satisfied: pyyaml in /opt/hostedtoolcache/ct/3.10.1/amd64/venv/lib/python3.13/site-packages (from yamale==4.0.4) (6.0.2)
+yamale-4.0.4-py3-none-any.whl (55
+Installing collected packages: yamale
+Successfully installed yamale-4.0.4
+2025-04-15T09:27:05.9335709Z
+[notice] A new release of pip is available: 24.3.1 -> 25.0.1
+[notice] To update, run: pip install --upgrade pip
+Adding ct directory to PATH...
+Setting CT_CONFIG_DIR...
+Configuring environment variables for virtual environment for subsequent workflow steps...
+Version:	 v3.10.1
+Git commit:	 c35d32b568ba7901e00d3386a231ae2b6e1c2efc
+Date:		 2023-11-03T12:16:46Z
+License:	 Apache 2.0

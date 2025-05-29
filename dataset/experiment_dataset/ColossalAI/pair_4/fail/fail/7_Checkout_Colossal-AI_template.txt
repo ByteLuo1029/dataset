@@ -1,0 +1,84 @@
+##[group]Run <:*:>
+with:
+repository: <:*:>
+token: ***
+ssh-strict: true
+persist-credentials: <:*:>
+clean: true
+fetch-depth: <:NUM:>
+lfs: false
+submodules: <:*:>
+set-safe-directory: true
+##[endgroup]
+##[command]/usr/bin/docker exec  f5e9724142d2602874b72fe2c9e714ee4cf78e54fd0110da3a216c97ae205480 sh -c "cat /etc/*release | grep ^ID"
+Syncing repository: <:*:>
+##[group]Getting Git version info
+Working directory is '/__w/ColossalAI/ColossalAI'
+[command]/usr/bin/git version
+git version <:NUM:>.<:NUM:>.<:NUM:>
+##[endgroup]
+Temporarily overriding HOME='/__w/_temp/fc2f98dc-f753-4690-9811-06b021eca682' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+[command]/usr/bin/git config --global --add safe.directory /__w/ColossalAI/ColossalAI
+[command]/usr/bin/git config --local --get remote.origin.url
+https://github.com/hpcaitech/ColossalAI
+##[group]Removing previously created refs, to avoid conflicts
+[command]/usr/bin/git rev-parse --symbolic-full-name --verify --quiet HEAD
+HEAD
+[command]/usr/bin/git rev-parse --symbolic-full-name --branches
+##[endgroup]
+##[group]Cleaning the repository
+[command]/usr/bin/git clean -ffdx
+Removing TensorNVMe/
+[command]/usr/bin/git reset --hard HEAD
+HEAD is now at 0950b07a [pre-commit.ci] auto fixes from pre-commit.com hooks
+##[endgroup]
+##[group]Disabling automatic garbage collection
+[command]/usr/bin/git config --local gc.auto 0
+##[endgroup]
+##[group]Setting up auth
+[command]/usr/bin/git config --local --name-only --get-regexp <:*:>
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp <:*:> && git config --local --unset-all <:*:> || :"
+[command]/usr/bin/git config --local --name-only --get-regexp <:*:>
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp <:*:> && git config --local --unset-all <:*:> || :"
+[command]/usr/bin/git config <:*:> http.https://github.com/.extraheader AUTHORIZATION: basic ***
+##[endgroup]
+##[group]Fetching the repository
+[command]/usr/bin/git -c protocol.version=<:NUM:> fetch --no-tags --prune --progress --no-recurse-submodules --depth=<:NUM:> origin +<:SEQ:>:refs/remotes/pull/<:NUM:>/merge
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:NUM:>% (<:NUM:>/<:NUM:>), done.
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:NUM:>% (<:NUM:>/<:NUM:>), done.
+remote: Total <:NUM:> (delta <:NUM:>), reused <:NUM:> (delta <:NUM:>), pack-reused <:NUM:> (from <:NUM:>)
+From <:*:>
++ 40c00c29...6f94bf4c 6f94bf4ca860b2a64be2bb167fbcd4cdaf3efe45 -> pull/6254/merge  (forced update)
+##[endgroup]
+##[group]Determining the checkout info
+##[endgroup]
+##[group]Checking out the ref
+[command]/usr/bin/git checkout --progress --force refs/remotes/pull/<:NUM:>/merge
+Warning: you are leaving 41 commits behind, not connected to
+any of your branches:
+2025-04-11T02:45:37.9142131Z
+0950b07a [pre-commit.ci] auto fixes from pre-commit.com hooks
+910433f0 fix
+21707a77 fix
+c37107ce Merge branch 'upgrade-transformers' of github.com:flybird11111/ColossalAI into upgrade-transformers
+... and 37 more.
+2025-04-11T02:45:37.9143718Z
+If you want to keep them by creating a new branch, this may be a good time
+to do so with:
+2025-04-11T02:45:37.9144297Z
+git branch <new-branch-name> 0950b07a
+2025-04-11T02:45:37.9144570Z
+HEAD is now at <:*:> Merge <:SEQ:> into <:SEQ:>
+##[endgroup]
+[command]/usr/bin/git log <:NUM:> <:*:>
+'<:SEQ:>'

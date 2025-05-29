@@ -1,0 +1,36 @@
+2025-04-14T23:02:58.2870836Z ##[group]Run actions/github-script@v7
+2025-04-14T23:02:58.2871135Z with:
+2025-04-14T23:02:58.2871328Z   result-encoding: string
+2025-04-14T23:02:58.2873483Z   script: const { owner, repo } = context.repo;
+const prNumber = process.env.PR_NUMBER;
+const environment = 'docs-preview';
+const task = prNumber ? `docs-preview-${prNumber}` : undefined;
+const deployment = await github.rest.repos.createDeployment({
+    owner,
+    repo,
+    environment,
+    task,
+    ref: process.env.REF,
+    auto_merge: false,
+    transient_environment: true,
+    required_contexts: [],
+})
+await github.rest.repos.createDeploymentStatus({
+    deployment_id: deployment.data.id,
+    owner,
+    repo,
+    state: "in_progress",
+    log_url: `https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+})
+return deployment.data.id
+
+2025-04-14T23:02:58.2875603Z   github-token: ***
+2025-04-14T23:02:58.2875807Z   debug: false
+2025-04-14T23:02:58.2876010Z   user-agent: actions/github-script
+2025-04-14T23:02:58.2876283Z   retries: 0
+2025-04-14T23:02:58.2876488Z   retry-exempt-status-codes: 400,401,403,404,422
+2025-04-14T23:02:58.2876751Z env:
+2025-04-14T23:02:58.2876974Z   GITHUB_PR_REF_NAME: ml-support-timeout-put-inference
+2025-04-14T23:02:58.2877259Z   PR_NUMBER: 126805
+2025-04-14T23:02:58.2877474Z   REF: def4c5140551be80852bd3c968f74ffb2f3738f2
+2025-04-14T23:02:58.2877723Z ##[endgroup]

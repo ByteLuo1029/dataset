@@ -1,0 +1,25 @@
+##[group]Run if [[ "" == *-* ]]; then
+[36;1mif [[ "" == *-* ]]; then[0m
+[36;1m    echo "override_git_describe : provide either vX.Y.Z or empty string"[0m
+36 1
+[36;1melif [[ -z "" ]]; then[0m
+[36;1m    echo "No override_git_describe provided"[0m
+36
+[36;1m    echo "UPLOAD_ASSETS_TO_STAGING_TARGET=$(git log -1 --format=%h)" >> "$GITHUB_ENV"[0m
+[36;1m    echo "override_git_describe : add tag"[0m
+[36;1m    git tag [0m
+36
+0
+
+GH_TOKEN:
+OVERRIDE_GIT_DESCRIBE:
+CIBW_TEST_SKIP: {cp37,cp38}-*
+CIBW_BUILD: cp310-*
+CIBW_TEST_COMMAND: python -m pytest {project}/tests --verbose && USE_ACTUAL_SPARK=true JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java)))) SPARK_HOME={project}/spark_installation/spark python -m pytest {project}/tests/fast/spark --verbose
+PYTEST_TIMEOUT: 600
+CIBW_ENVIRONMENT: OVERRIDE_GIT_DESCRIBE=
+CIBW_BEFORE_ALL: cd {project} && ./scripts/install_spark_in_cibuildwheels_linux_container.sh
+CIBW_MANYLINUX_X86_64_IMAGE: manylinux_2_28
+CIBW_MANYLINUX_PYPY_X86_64_IMAGE: manylinux_2_28
+##[endgroup]
+No override_git_describe provided

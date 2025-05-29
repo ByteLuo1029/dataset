@@ -1,0 +1,100 @@
+﻿2025-04-15T09:27:06.7975101Z ##[group]Run docker network create vllm-net
+[36;1mdocker network create vllm-net[0m
+[36;1mdocker run -d -p 9000:9000 --name minio --net vllm-net \[0m
+[36;1m           -e "MINIO_ACCESS_KEY=minioadmin" \[0m
+[36;1m           -e "MINIO_SECRET_KEY=minioadmin" \[0m
+[36;1m           -v /tmp/data:/data \[0m
+[36;1m           -v /tmp/config:/root/.minio \[0m
+[36;1m           minio/minio server /data[0m
+[36;1mexport AWS_ACCESS_KEY_ID=minioadmin[0m
+[36;1mexport AWS_SECRET_ACCESS_KEY=minioadmin[0m
+[36;1mexport AWS_EC2_METADATA_DISABLED=true[0m
+[36;1mmkdir opt-125m[0m
+[36;1mcd opt-125m && curl -O -Ls "https://huggingface.co/facebook/opt-125m/resolve/main/{pytorch_model.bin,config.json,generation_config.json,merges.txt,special_tokens_map.json,tokenizer_config.json,vocab.json}" && cd ..[0m
+[36;1maws --endpoint-url http://127.0.0.1:9000/ s3 mb s3://testbucket[0m
+[36;1maws --endpoint-url http://127.0.0.1:9000/ s3 cp opt-125m/ s3://testbucket/opt-125m --recursive[0m
+0
+
+3 13 2
+3 13 2
+3 13 2
+Python2 3 13 2
+Python3 3 13 2
+3 13 2
+CT_CONFIG_DIR: /opt/hostedtoolcache/ct/3.10.1/amd64/etc
+VIRTUAL_ENV: /opt/hostedtoolcache/ct/3.10.1/amd64/venv
+##[endgroup]
+a93390f9cb54e64905faa3d401e8badfc2390f1987d3a0ea1bfce018c2e26c2d
+Unable to find image 'minio/minio:latest' locally
+latest: Pulling from minio/minio
+d949f716ce77: Pulling fs layer
+8c577d69454d: Pulling fs layer
+546fbfcace65: Pulling fs layer
+a68b380b887b: Pulling fs layer
+476692aa7e4f: Pulling fs layer
+c0fb136fda0a: Pulling fs layer
+fdc61cbe6d7e: Pulling fs layer
+fb024c1bcc90: Pulling fs layer
+9d8ba80ec174: Pulling fs layer
+7d182d4b9a27: Pulling fs layer
+a68b380b887b: Waiting
+476692aa7e4f: Waiting
+c0fb136fda0a: Waiting
+fdc61cbe6d7e: Waiting
+fb024c1bcc90: Waiting
+9d8ba80ec174: Waiting
+7d182d4b9a27: Waiting
+8c577d69454d: Verifying Checksum
+8c577d69454d: Download complete
+546fbfcace65: Verifying Checksum
+546fbfcace65: Download complete
+a68b380b887b: Verifying Checksum
+a68b380b887b: Download complete
+d949f716ce77: Verifying Checksum
+d949f716ce77: Download complete
+fdc61cbe6d7e: Verifying Checksum
+fdc61cbe6d7e: Download complete
+fb024c1bcc90: Verifying Checksum
+fb024c1bcc90: Download complete
+c0fb136fda0a: Verifying Checksum
+c0fb136fda0a: Download complete
+9d8ba80ec174: Verifying Checksum
+9d8ba80ec174: Download complete
+7d182d4b9a27: Verifying Checksum
+7d182d4b9a27: Download complete
+476692aa7e4f: Verifying Checksum
+476692aa7e4f: Download complete
+d949f716ce77: Pull complete
+8c577d69454d: Pull complete
+546fbfcace65: Pull complete
+a68b380b887b: Pull complete
+476692aa7e4f: Pull complete
+c0fb136fda0a: Pull complete
+fdc61cbe6d7e: Pull complete
+fb024c1bcc90: Pull complete
+9d8ba80ec174: Pull complete
+7d182d4b9a27: Pull complete
+8834ae47a2de3509b83e0e70da9369c24bbbc22de42f2a2eddc530eee88acd1b
+Status: Downloaded newer image for minio/minio:latest
+9a7e5003336f8d43b81b67d1116e30889ed773897d1e4d617ad4d0f92043189c
+make_bucket: testbucket
+Completed 68 Bytes/476 Bytes (2.0 KiB/s) with 7 file(s) remaining
+upload: opt-125m/generation_config.json to s3://testbucket/opt-125m/generation_config.json
+Completed 68 Bytes/476 Bytes (2.0 KiB/s) with 6 file(s) remaining
+Completed 136 Bytes/476 Bytes (3.7 KiB/s) with 6 file(s) remaining
+upload: opt-125m/special_tokens_map.json to s3://testbucket/opt-125m/special_tokens_map.json
+Completed 136 Bytes/476 Bytes (3.7 KiB/s) with 5 file(s) remaining
+Completed 204 Bytes/476 Bytes (5.4 KiB/s) with 5 file(s) remaining
+Completed 272 Bytes/476 Bytes (7.1 KiB/s) with 5 file(s) remaining
+Completed 340 Bytes/476 Bytes (8.7 KiB/s) with 5 file(s) remaining
+upload: opt-125m/config.json to s3://testbucket/opt-125m/config.json
+Completed 340 Bytes/476 Bytes (8.7 KiB/s) with 4 file(s) remaining
+upload: opt-125m/pytorch_model.bin to s3://testbucket/opt-125m/pytorch_model.bin
+Completed 340 Bytes/476 Bytes (8.7 KiB/s) with 3 file(s) remaining
+upload: opt-125m/vocab.json to s3://testbucket/opt-125m/vocab.json
+Completed 340 Bytes/476 Bytes (8.7 KiB/s) with 2 file(s) remaining
+Completed 408 Bytes/476 Bytes (9.8 KiB/s) with 2 file(s) remaining
+upload: opt-125m/merges.txt to s3://testbucket/opt-125m/merges.txt
+Completed 408 Bytes/476 Bytes (9.8 KiB/s) with 1 file(s) remaining
+Completed 476 Bytes/476 Bytes (11.2 KiB/s) with 1 file(s) remaining
+upload: opt-125m/tokenizer_config.json to s3://testbucket/opt-125m/tokenizer_config.json

@@ -1,0 +1,108 @@
+2025-04-14T23:11:50.0050220Z Prepare all required actions
+2025-04-14T23:11:50.0051580Z Getting action download info
+2025-04-14T23:11:50.1553164Z ##[group]Download immutable action package 'actions/github-script@v7.0.1'
+2025-04-14T23:11:50.1554738Z Version: 7.0.1
+2025-04-14T23:11:50.1556052Z Digest: sha256:bce02966afe3a75123f766b765abe432fac5464b74976015dc06b811ac9054c7
+2025-04-14T23:11:50.1557707Z Source commit SHA: 60a0d83039c74a4aee543508d2ffcb1c3799cdea
+2025-04-14T23:11:50.1559051Z ##[endgroup]
+2025-04-14T23:11:50.4543977Z ##[group]Run ./.github/actions/infrastructure/path-filters
+2025-04-14T23:11:50.4545177Z with:
+2025-04-14T23:11:50.4546255Z   GITHUB_TOKEN: ***
+2025-04-14T23:11:50.4547064Z env:
+2025-04-14T23:11:50.4547846Z   DOTNET_CLI_TELEMETRY_OPTOUT: 1
+2025-04-14T23:11:50.4548836Z   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
+2025-04-14T23:11:50.4549983Z   FORCE_FEATURE: False
+2025-04-14T23:11:50.4550849Z   FORCE_PACKAGE: False
+2025-04-14T23:11:50.4551719Z   NUGET_KEY: none
+2025-04-14T23:11:50.4552586Z   POWERSHELL_TELEMETRY_OPTOUT: 1
+2025-04-14T23:11:50.4553620Z   __SuppressAnsiEscapeSequences: 1
+2025-04-14T23:11:50.4554638Z   nugetMultiFeedWarnLevel: none
+2025-04-14T23:11:50.4555575Z   system_debug: false
+2025-04-14T23:11:50.4556402Z ##[endgroup]
+2025-04-14T23:11:50.4705129Z ##[group]Run actions/github-script@v7.0.1
+2025-04-14T23:11:50.4706147Z with:
+2025-04-14T23:11:50.4707202Z   github-token: ***
+2025-04-14T23:11:50.4721653Z   script: // Fetch the list of files changed in the PR
+let files = [];
+let page = 1;
+let fetchedFiles;
+do {
+  fetchedFiles = await github.rest.pulls.listFiles({
+    owner: context.repo.owner,
+    repo: context.repo.repo,
+    pull_number: context.issue.number,
+    per_page: 100,
+    page: page++
+  });
+  files = files.concat(fetchedFiles.data);
+} while (fetchedFiles.data.length > 0);
+
+const actionsChanged = files.some(file => file.filename.startsWith('.github/actions'));
+const workflowsChanged = files.some(file => file.filename.startsWith('.github/workflows'));
+const githubChanged = actionsChanged || workflowsChanged;
+
+const toolsCiPsm1Changed = files.some(file => file.filename.startsWith('tools/ci.psm1'));
+const toolsBuildCommonChanged = files.some(file => file.filename.startsWith('tools/buildCommon/'));
+const toolsChanged = toolsCiPsm1Changed || toolsBuildCommonChanged;
+
+const propsChanged = files.some(file => file.filename.endsWith('.props'));
+
+const testsChanged = files.some(file => file.filename.startsWith('test/powershell/') || file.filename.startsWith('test/tools/') || file.filename.startsWith('test/xUnit/'));
+
+const mainSourceChanged = files.some(file => file.filename.startsWith('src/'));
+
+const buildModuleChanged = files.some(file => file.filename.startsWith('build.psm1'));
+
+const source = mainSourceChanged || toolsChanged || githubChanged || propsChanged || testsChanged;
+
+core.setOutput('toolsChanged', toolsChanged);
+core.setOutput('githubChanged', githubChanged);
+core.setOutput('propsChanged', propsChanged);
+core.setOutput('testsChanged', testsChanged);
+core.setOutput('mainSourceChanged', mainSourceChanged);
+core.setOutput('buildModuleChanged', buildModuleChanged);
+core.setOutput('source', source);
+
+2025-04-14T23:11:50.4736864Z   debug: false
+2025-04-14T23:11:50.4737672Z   user-agent: actions/github-script
+2025-04-14T23:11:50.4738612Z   result-encoding: json
+2025-04-14T23:11:50.4739647Z   retries: 0
+2025-04-14T23:11:50.4740574Z   retry-exempt-status-codes: 400,401,403,404,422
+2025-04-14T23:11:50.4741575Z env:
+2025-04-14T23:11:50.4742305Z   DOTNET_CLI_TELEMETRY_OPTOUT: 1
+2025-04-14T23:11:50.4743254Z   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
+2025-04-14T23:11:50.4744196Z   FORCE_FEATURE: False
+2025-04-14T23:11:50.4745029Z   FORCE_PACKAGE: False
+2025-04-14T23:11:50.4745846Z   NUGET_KEY: none
+2025-04-14T23:11:50.4746672Z   POWERSHELL_TELEMETRY_OPTOUT: 1
+2025-04-14T23:11:50.4747657Z   __SuppressAnsiEscapeSequences: 1
+2025-04-14T23:11:50.4748657Z   nugetMultiFeedWarnLevel: none
+2025-04-14T23:11:50.4749681Z   system_debug: false
+2025-04-14T23:11:50.4750488Z ##[endgroup]
+2025-04-14T23:11:51.1006436Z ##[group]Run Write-Verbose -Verbose "source: true"
+2025-04-14T23:11:51.1007239Z [36;1mWrite-Verbose -Verbose "source: true"[0m
+2025-04-14T23:11:51.1007612Z [36;1mWrite-Verbose -Verbose "github: false"[0m
+2025-04-14T23:11:51.1007987Z [36;1mWrite-Verbose -Verbose "tools: false"[0m
+2025-04-14T23:11:51.1008350Z [36;1mWrite-Verbose -Verbose "props: false"[0m
+2025-04-14T23:11:51.1008696Z [36;1mWrite-Verbose -Verbose "tests: true"[0m
+2025-04-14T23:11:51.1009341Z [36;1mWrite-Verbose -Verbose "mainSource: true"[0m
+2025-04-14T23:11:51.1009745Z [36;1mWrite-Verbose -Verbose "buildModule: false"[0m
+2025-04-14T23:11:51.1064277Z shell: /usr/bin/pwsh -command ". '{0}'"
+2025-04-14T23:11:51.1064628Z env:
+2025-04-14T23:11:51.1064863Z   DOTNET_CLI_TELEMETRY_OPTOUT: 1
+2025-04-14T23:11:51.1065166Z   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
+2025-04-14T23:11:51.1065464Z   FORCE_FEATURE: False
+2025-04-14T23:11:51.1065715Z   FORCE_PACKAGE: False
+2025-04-14T23:11:51.1065958Z   NUGET_KEY: none
+2025-04-14T23:11:51.1066233Z   POWERSHELL_TELEMETRY_OPTOUT: 1
+2025-04-14T23:11:51.1066549Z   __SuppressAnsiEscapeSequences: 1
+2025-04-14T23:11:51.1066855Z   nugetMultiFeedWarnLevel: none
+2025-04-14T23:11:51.1067132Z   system_debug: false
+2025-04-14T23:11:51.1067371Z ##[endgroup]
+2025-04-14T23:11:52.0271327Z [33;1mVERBOSE: source: true[0m
+2025-04-14T23:11:52.0272406Z [33;1mVERBOSE: github: false[0m
+2025-04-14T23:11:52.0273775Z [33;1mVERBOSE: tools: false[0m
+2025-04-14T23:11:52.0275988Z [33;1mVERBOSE: props: false[0m
+2025-04-14T23:11:52.0276908Z [33;1mVERBOSE: tests: true[0m
+2025-04-14T23:11:52.0277778Z [33;1mVERBOSE: mainSource: true[0m
+2025-04-14T23:11:52.0278744Z [33;1mVERBOSE: buildModule: false[0m

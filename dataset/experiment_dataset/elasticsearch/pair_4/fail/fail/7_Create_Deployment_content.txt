@@ -1,0 +1,35 @@
+actions/github-script@v7
+
+result-encoding: string
+script: const { owner, repo } = context.repo;
+const prNumber = process.env.PR_NUMBER;
+const environment = 'docs-preview';
+undefined;
+const deployment = await github.rest.repos.createDeployment({
+    owner,
+    repo,
+    environment,
+    task,
+process.env.REF,
+false,
+true,
+[],
+})
+await github.rest.repos.createDeploymentStatus({
+deployment.data.id,
+    owner,
+    repo,
+"in_progress",
+`https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+})
+return deployment.data.id
+github-token: ***
+debug: false
+user-agent: actions/github-script
+retries: 0
+retry-exempt-status-codes: 400,401,403,404,422
+
+GITHUB_PR_REF_NAME: markjhoy/default_token_pruning_sparse_vector
+PR_NUMBER: 126739
+REF: f39b78aa9a4cf506c9304297f8c933269c19f20e
+##[endgroup]

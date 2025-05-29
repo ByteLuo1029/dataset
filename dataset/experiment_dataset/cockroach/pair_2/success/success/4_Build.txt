@@ -1,0 +1,393 @@
+2025-04-15T09:36:46.2059633Z Prepare all required actions
+2025-04-15T09:36:46.2060194Z Getting action download info
+2025-04-15T09:36:46.4295860Z ##[group]Run ./.github/actions/microbenchmark-build
+2025-04-15T09:36:46.4296343Z with:
+2025-04-15T09:36:46.4296571Z   ref: head
+2025-04-15T09:36:46.4296835Z   pkg: pkg/sql/tests
+2025-04-15T09:36:46.4297117Z env:
+2025-04-15T09:36:46.4297414Z   HEAD: e4db55a7f8e885e84fc9f8980c70828afa983123
+2025-04-15T09:36:46.4297872Z   BUCKET: cockroach-microbench-ci
+2025-04-15T09:36:46.4298285Z   PACKAGE: pkg/sql/tests
+2025-04-15T09:36:46.4298593Z ##[endgroup]
+2025-04-15T09:36:46.4491516Z ##[group]Run cp build/github/microbenchmarks/build.sh ${RUNNER_TEMP}/
+2025-04-15T09:36:46.4492312Z [36;1mcp build/github/microbenchmarks/build.sh ${RUNNER_TEMP}/[0m
+2025-04-15T09:36:46.4507848Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-04-15T09:36:46.4508381Z env:
+2025-04-15T09:36:46.4508700Z   HEAD: e4db55a7f8e885e84fc9f8980c70828afa983123
+2025-04-15T09:36:46.4509156Z   BUCKET: cockroach-microbench-ci
+2025-04-15T09:36:46.4509821Z   PACKAGE: pkg/sql/tests
+2025-04-15T09:36:46.4510126Z ##[endgroup]
+2025-04-15T09:36:46.4587292Z ##[group]Run ./build/github/get-engflow-keys.sh
+2025-04-15T09:36:46.4587828Z [36;1m./build/github/get-engflow-keys.sh[0m
+2025-04-15T09:36:46.4602633Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-04-15T09:36:46.4603128Z env:
+2025-04-15T09:36:46.4603424Z   HEAD: e4db55a7f8e885e84fc9f8980c70828afa983123
+2025-04-15T09:36:46.4603892Z   BUCKET: cockroach-microbench-ci
+2025-04-15T09:36:46.4604273Z   PACKAGE: pkg/sql/tests
+2025-04-15T09:36:46.4604588Z ##[endgroup]
+2025-04-15T09:36:46.4652841Z + gcloud secrets versions access 2 --secret=engflow-mesolite-key
+2025-04-15T09:36:47.6652972Z + gcloud secrets versions access 2 --secret=engflow-mesolite-crt
+2025-04-15T09:36:48.3466750Z ##[group]Run echo "FETCH_DEPTH=$(( 1 + 1 ))" >> "${GITHUB_ENV}"
+2025-04-15T09:36:48.3467419Z [36;1mecho "FETCH_DEPTH=$(( 1 + 1 ))" >> "${GITHUB_ENV}"[0m
+2025-04-15T09:36:48.3482985Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-04-15T09:36:48.3483556Z env:
+2025-04-15T09:36:48.3483880Z   HEAD: e4db55a7f8e885e84fc9f8980c70828afa983123
+2025-04-15T09:36:48.3484357Z   BUCKET: cockroach-microbench-ci
+2025-04-15T09:36:48.3484742Z   PACKAGE: pkg/sql/tests
+2025-04-15T09:36:48.3485063Z ##[endgroup]
+2025-04-15T09:36:48.3586282Z ##[group]Run actions/checkout@v4
+2025-04-15T09:36:48.3586659Z with:
+2025-04-15T09:36:48.3586967Z   ref: e4db55a7f8e885e84fc9f8980c70828afa983123
+2025-04-15T09:36:48.3587383Z   fetch-depth: 2
+2025-04-15T09:36:48.3587693Z   repository: cockroachdb/cockroach
+2025-04-15T09:36:48.3588225Z   token: ***
+2025-04-15T09:36:48.3588497Z   ssh-strict: true
+2025-04-15T09:36:48.3588800Z   ssh-user: git
+2025-04-15T09:36:48.3589100Z   persist-credentials: true
+2025-04-15T09:36:48.3589617Z   clean: true
+2025-04-15T09:36:48.3589932Z   sparse-checkout-cone-mode: true
+2025-04-15T09:36:48.3590310Z   fetch-tags: false
+2025-04-15T09:36:48.3590612Z   show-progress: true
+2025-04-15T09:36:48.3590929Z   lfs: false
+2025-04-15T09:36:48.3591184Z   submodules: false
+2025-04-15T09:36:48.3591492Z   set-safe-directory: true
+2025-04-15T09:36:48.3591980Z env:
+2025-04-15T09:36:48.3592284Z   HEAD: e4db55a7f8e885e84fc9f8980c70828afa983123
+2025-04-15T09:36:48.3592750Z   BUCKET: cockroach-microbench-ci
+2025-04-15T09:36:48.3593120Z   PACKAGE: pkg/sql/tests
+2025-04-15T09:36:48.3593444Z   FETCH_DEPTH: 2
+2025-04-15T09:36:48.3593715Z ##[endgroup]
+2025-04-15T09:36:48.4608571Z Syncing repository: cockroachdb/cockroach
+2025-04-15T09:36:48.4613602Z ##[group]Getting Git version info
+2025-04-15T09:36:48.4614925Z Working directory is '/github-actions-runner/_work/cockroach/cockroach'
+2025-04-15T09:36:48.4644670Z [command]/usr/bin/git version
+2025-04-15T09:36:48.4682612Z git version 2.45.2
+2025-04-15T09:36:48.4708855Z ##[endgroup]
+2025-04-15T09:36:48.4724535Z Temporarily overriding HOME='/github-actions-runner/_work/_temp/9c8fb4c5-6ca5-4d50-9617-b85509683241' before making global git config changes
+2025-04-15T09:36:48.4726778Z Adding repository directory to the temporary git global config as a safe directory
+2025-04-15T09:36:48.4731951Z [command]/usr/bin/git config --global --add safe.directory /github-actions-runner/_work/cockroach/cockroach
+2025-04-15T09:36:48.4767795Z [command]/usr/bin/git config --local --get remote.origin.url
+2025-04-15T09:36:48.4785259Z https://github.com/cockroachdb/cockroach
+2025-04-15T09:36:48.4798607Z ##[group]Removing previously created refs, to avoid conflicts
+2025-04-15T09:36:48.4803071Z [command]/usr/bin/git rev-parse --symbolic-full-name --verify --quiet HEAD
+2025-04-15T09:36:48.4821182Z refs/heads/master
+2025-04-15T09:36:48.4829674Z [command]/usr/bin/git checkout --detach
+2025-04-15T09:36:48.6147140Z HEAD is now at ae069332 Merge #144360
+2025-04-15T09:36:48.6194357Z [command]/usr/bin/git branch --delete --force master
+2025-04-15T09:36:48.6218559Z Deleted branch master (was ae069332).
+2025-04-15T09:36:48.6223437Z ##[endgroup]
+2025-04-15T09:36:48.6227483Z [command]/usr/bin/git submodule status
+2025-04-15T09:36:48.6437951Z -ba508d06d424485d4497f31e38f716c733f7896f c-deps/geos
+2025-04-15T09:36:48.6439112Z -54eaed1d8b56b1aa528be3bdd1877e59c56fa90c c-deps/jemalloc
+2025-04-15T09:36:48.6440343Z -8f56f544dd179056e9b8d02552e6c5e392eb2966 c-deps/krb5
+2025-04-15T09:36:48.6441525Z -c8ff95857beb3027b5aa3d15726795570f38eccb c-deps/proj
+2025-04-15T09:36:48.6451113Z ##[group]Cleaning the repository
+2025-04-15T09:36:48.6482206Z [command]/usr/bin/git clean -ffdx
+2025-04-15T09:36:48.6889613Z [command]/usr/bin/git reset --hard HEAD
+2025-04-15T09:36:48.7411612Z HEAD is now at ae069332 Merge #144360
+2025-04-15T09:36:48.7425348Z ##[endgroup]
+2025-04-15T09:36:48.7428994Z ##[group]Disabling automatic garbage collection
+2025-04-15T09:36:48.7435172Z [command]/usr/bin/git config --local gc.auto 0
+2025-04-15T09:36:48.7464833Z ##[endgroup]
+2025-04-15T09:36:48.7466294Z ##[group]Setting up auth
+2025-04-15T09:36:48.7471055Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-04-15T09:36:48.7500548Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-04-15T09:36:48.7718818Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-15T09:36:48.7740444Z http.https://github.com/.extraheader
+2025-04-15T09:36:48.7750635Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2025-04-15T09:36:48.7779860Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-04-15T09:36:48.8001405Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-04-15T09:36:48.8033412Z ##[endgroup]
+2025-04-15T09:36:48.8034621Z ##[group]Fetching the repository
+2025-04-15T09:36:48.8043052Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=2 origin e4db55a7f8e885e84fc9f8980c70828afa983123
+2025-04-15T09:36:49.2801045Z From https://github.com/cockroachdb/cockroach
+2025-04-15T09:36:49.2802283Z  * branch              e4db55a7f8e885e84fc9f8980c70828afa983123 -> FETCH_HEAD
+2025-04-15T09:36:49.2823900Z ##[endgroup]
+2025-04-15T09:36:49.2824922Z ##[group]Determining the checkout info
+2025-04-15T09:36:49.2826715Z ##[endgroup]
+2025-04-15T09:36:49.2934960Z [command]/usr/bin/git sparse-checkout disable
+2025-04-15T09:36:49.3121557Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-04-15T09:36:49.3148062Z ##[group]Checking out the ref
+2025-04-15T09:36:49.3153905Z [command]/usr/bin/git checkout --progress --force e4db55a7f8e885e84fc9f8980c70828afa983123
+2025-04-15T09:36:49.3494769Z Previous HEAD position was ae069332 Merge #144360
+2025-04-15T09:36:49.3521588Z HEAD is now at e4db55a7 drt: add support for CREATE INDEX USING HASH in add-index operation
+2025-04-15T09:36:49.3530718Z ##[endgroup]
+2025-04-15T09:36:49.3567492Z [command]/usr/bin/git log -1 --format=%H
+2025-04-15T09:36:49.3588716Z e4db55a7f8e885e84fc9f8980c70828afa983123
+2025-04-15T09:36:49.3755217Z ##[group]Run ${RUNNER_TEMP}/build.sh
+2025-04-15T09:36:49.3755654Z [36;1m${RUNNER_TEMP}/build.sh[0m
+2025-04-15T09:36:49.3770471Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-04-15T09:36:49.3770964Z env:
+2025-04-15T09:36:49.3771278Z   HEAD: e4db55a7f8e885e84fc9f8980c70828afa983123
+2025-04-15T09:36:49.3771742Z   BUCKET: cockroach-microbench-ci
+2025-04-15T09:36:49.3772129Z   PACKAGE: pkg/sql/tests
+2025-04-15T09:36:49.3772435Z   FETCH_DEPTH: 2
+2025-04-15T09:36:49.3772727Z   TEST_PKG: pkg/sql/tests
+2025-04-15T09:36:49.3773038Z ##[endgroup]
+2025-04-15T09:36:49.3821024Z ++ basename pkg/sql/tests
+2025-04-15T09:36:49.3828083Z + pkg_last=tests
+2025-04-15T09:36:49.3832544Z ++ echo pkg/sql/tests
+2025-04-15T09:36:49.3833311Z ++ tr / _
+2025-04-15T09:36:49.3843263Z + pkg_bin=pkg_sql_tests
+2025-04-15T09:36:49.3845677Z ++ git rev-parse HEAD
+2025-04-15T09:36:49.3857041Z + build_sha=e4db55a7f8e885e84fc9f8980c70828afa983123
+2025-04-15T09:36:49.3858070Z + storage_bucket=cockroach-microbench-ci
+2025-04-15T09:36:49.3859098Z + output_url=gs://cockroach-microbench-ci/builds/e4db55a7f8e885e84fc9f8980c70828afa983123/bin
+2025-04-15T09:36:49.3860665Z + gcloud config set storage/parallel_composite_upload_enabled False
+2025-04-15T09:36:49.8006953Z Updated property [storage/parallel_composite_upload_enabled].
+2025-04-15T09:36:49.8987794Z + gcloud storage ls gs://cockroach-microbench-ci/builds/e4db55a7f8e885e84fc9f8980c70828afa983123/bin
+2025-04-15T09:36:50.9993500Z ++ ./build/github/engflow-args.sh
+2025-04-15T09:36:51.0001669Z + bazel build //pkg/sql/tests:tests_test --jobs 50 --crdb_test_off --linkopt=-pie --bes_keywords integration-test-artifact-build --config=crosslinux --remote_download_minimal --config engflowpublic --tls_client_certificate=/home/agent/engflow.crt --tls_client_key=/home/agent/engflow.key --experimental_build_event_upload_retry_minimum_delay 3s --experimental_build_event_upload_max_retries 8 --bes_keywords job=head
+2025-04-15T09:36:51.0291571Z 2025/04/15 09:36:51 Downloading https://github.com/cockroachdb/bazel/releases/download/7.6.0/bazel-7.6.0-linux-x86_64...
+2025-04-15T09:36:51.6281683Z Extracting Bazel installation...
+2025-04-15T09:36:53.3785048Z Starting local Bazel server and connecting to it...
+2025-04-15T09:36:55.6015645Z WARNING: option '--remote_download_outputs' was expanded to from both option '--remote_download_minimal' (source command line options) and option '--remote_download_toplevel' (source expanded from --config=engflowpublic)
+2025-04-15T09:36:55.6022093Z INFO: Invocation ID: 8b76adf9-5cc5-4a11-84d8-2c06cf956b90
+2025-04-15T09:36:55.6025224Z INFO: Streaming build results to: https://mesolite.cluster.engflow.com/invocation/8b76adf9-5cc5-4a11-84d8-2c06cf956b90
+2025-04-15T09:36:55.7074168Z Computing main repo mapping: 
+2025-04-15T09:36:56.7104280Z Computing main repo mapping: 
+2025-04-15T09:36:57.7109631Z Computing main repo mapping: 
+2025-04-15T09:36:58.7121409Z Computing main repo mapping: 
+2025-04-15T09:36:59.7121637Z Computing main repo mapping: 
+2025-04-15T09:37:00.9858162Z Computing main repo mapping: 
+2025-04-15T09:37:02.7134053Z Computing main repo mapping: 
+2025-04-15T09:37:03.7134958Z Computing main repo mapping: 
+2025-04-15T09:37:04.7145916Z Computing main repo mapping: 
+2025-04-15T09:37:05.5616821Z WARNING: option '--remote_download_outputs' was expanded to from both option '--remote_download_minimal' (source command line options) and option '--remote_download_toplevel' (source expanded from --config=engflowpublic)
+2025-04-15T09:37:05.6817234Z Loading: 
+2025-04-15T09:37:05.7036449Z Loading: 1 packages loaded
+2025-04-15T09:37:05.9407105Z Analyzing: target //pkg/sql/tests:tests_test (2 packages loaded, 0 targets configured)
+2025-04-15T09:37:05.9652727Z Analyzing: target //pkg/sql/tests:tests_test (2 packages loaded, 0 targets configured)
+2025-04-15T09:37:05.9654531Z 
+2025-04-15T09:37:07.0164887Z Analyzing: target //pkg/sql/tests:tests_test (72 packages loaded, 491 targets configured)
+2025-04-15T09:37:07.0166786Z 
+2025-04-15T09:37:08.1259117Z Analyzing: target //pkg/sql/tests:tests_test (73 packages loaded, 939 targets configured)
+2025-04-15T09:37:08.1261498Z 
+2025-04-15T09:37:09.1719248Z Analyzing: target //pkg/sql/tests:tests_test (73 packages loaded, 939 targets configured)
+2025-04-15T09:37:09.1721103Z 
+2025-04-15T09:37:10.7163472Z Analyzing: target //pkg/sql/tests:tests_test (73 packages loaded, 939 targets configured)
+2025-04-15T09:37:10.7164918Z 
+2025-04-15T09:37:12.3773731Z Analyzing: target //pkg/sql/tests:tests_test (73 packages loaded, 939 targets configured)
+2025-04-15T09:37:12.3774637Z 
+2025-04-15T09:37:13.7171249Z Analyzing: target //pkg/sql/tests:tests_test (77 packages loaded, 4262 targets configured)
+2025-04-15T09:37:13.7171909Z 
+2025-04-15T09:37:15.1913598Z Analyzing: target //pkg/sql/tests:tests_test (78 packages loaded, 4262 targets configured)
+2025-04-15T09:37:15.1915002Z 
+2025-04-15T09:37:16.1943258Z Analyzing: target //pkg/sql/tests:tests_test (270 packages loaded, 8694 targets configured)
+2025-04-15T09:37:16.1944806Z 
+2025-04-15T09:37:17.1965482Z Analyzing: target //pkg/sql/tests:tests_test (536 packages loaded, 9747 targets configured)
+2025-04-15T09:37:17.1967362Z 
+2025-04-15T09:37:18.1996188Z Analyzing: target //pkg/sql/tests:tests_test (733 packages loaded, 10962 targets configured)
+2025-04-15T09:37:18.1997180Z 
+2025-04-15T09:37:19.2008764Z Analyzing: target //pkg/sql/tests:tests_test (788 packages loaded, 11649 targets configured)
+2025-04-15T09:37:19.2010658Z 
+2025-04-15T09:37:20.2042051Z Analyzing: target //pkg/sql/tests:tests_test (895 packages loaded, 12072 targets configured)
+2025-04-15T09:37:20.2043729Z 
+2025-04-15T09:37:21.2044376Z Analyzing: target //pkg/sql/tests:tests_test (906 packages loaded, 12589 targets configured)
+2025-04-15T09:37:21.2046272Z 
+2025-04-15T09:37:22.2068944Z Analyzing: target //pkg/sql/tests:tests_test (906 packages loaded, 12589 targets configured)
+2025-04-15T09:37:22.2070590Z 
+2025-04-15T09:37:23.2100201Z Analyzing: target //pkg/sql/tests:tests_test (907 packages loaded, 12886 targets configured)
+2025-04-15T09:37:23.2101584Z 
+2025-04-15T09:37:24.2140474Z Analyzing: target //pkg/sql/tests:tests_test (907 packages loaded, 12897 targets configured)
+2025-04-15T09:37:24.2141903Z 
+2025-04-15T09:37:25.2135603Z Analyzing: target //pkg/sql/tests:tests_test (907 packages loaded, 13228 targets configured)
+2025-04-15T09:37:25.2136809Z 
+2025-04-15T09:37:26.2194116Z Analyzing: target //pkg/sql/tests:tests_test (909 packages loaded, 13689 targets configured)
+2025-04-15T09:37:26.2195244Z 
+2025-04-15T09:37:27.2221305Z Analyzing: target //pkg/sql/tests:tests_test (913 packages loaded, 14154 targets configured)
+2025-04-15T09:37:27.2222803Z 
+2025-04-15T09:37:28.7596521Z Analyzing: target //pkg/sql/tests:tests_test (936 packages loaded, 15641 targets configured)
+2025-04-15T09:37:28.7597948Z 
+2025-04-15T09:37:42.3767427Z Analyzing: target //pkg/sql/tests:tests_test (937 packages loaded, 15642 targets configured)
+2025-04-15T09:37:42.3808449Z 
+2025-04-15T09:37:43.3930928Z Analyzing: target //pkg/sql/tests:tests_test (956 packages loaded, 15866 targets configured)
+2025-04-15T09:37:43.3932986Z 
+2025-04-15T09:37:44.4046473Z Analyzing: target //pkg/sql/tests:tests_test (977 packages loaded, 16108 targets configured)
+2025-04-15T09:37:44.4047622Z 
+2025-04-15T09:37:45.4100512Z Analyzing: target //pkg/sql/tests:tests_test (1013 packages loaded, 16368 targets configured)
+2025-04-15T09:37:45.4101501Z 
+2025-04-15T09:37:46.4512482Z Analyzing: target //pkg/sql/tests:tests_test (1036 packages loaded, 16531 targets configured)
+2025-04-15T09:37:46.4513647Z 
+2025-04-15T09:37:47.4715035Z Analyzing: target //pkg/sql/tests:tests_test (1075 packages loaded, 17544 targets configured)
+2025-04-15T09:37:47.4716794Z 
+2025-04-15T09:37:48.4779914Z Analyzing: target //pkg/sql/tests:tests_test (1101 packages loaded, 17935 targets configured)
+2025-04-15T09:37:48.4781515Z 
+2025-04-15T09:37:49.4878657Z Analyzing: target //pkg/sql/tests:tests_test (1115 packages loaded, 18071 targets configured)
+2025-04-15T09:37:49.4880219Z 
+2025-04-15T09:37:50.5023250Z Analyzing: target //pkg/sql/tests:tests_test (1168 packages loaded, 18351 targets configured)
+2025-04-15T09:37:50.5025117Z 
+2025-04-15T09:37:51.5156159Z Analyzing: target //pkg/sql/tests:tests_test (1201 packages loaded, 18534 targets configured)
+2025-04-15T09:37:51.5157769Z 
+2025-04-15T09:37:52.5198642Z Analyzing: target //pkg/sql/tests:tests_test (1225 packages loaded, 18694 targets configured)
+2025-04-15T09:37:52.5200143Z 
+2025-04-15T09:37:53.5301819Z Analyzing: target //pkg/sql/tests:tests_test (1249 packages loaded, 18930 targets configured)
+2025-04-15T09:37:53.5303726Z 
+2025-04-15T09:37:54.5360348Z Analyzing: target //pkg/sql/tests:tests_test (1268 packages loaded, 19449 targets configured)
+2025-04-15T09:37:54.5361861Z 
+2025-04-15T09:37:55.5381047Z Analyzing: target //pkg/sql/tests:tests_test (1357 packages loaded, 19839 targets configured)
+2025-04-15T09:37:55.5383338Z 
+2025-04-15T09:37:56.5386464Z Analyzing: target //pkg/sql/tests:tests_test (1433 packages loaded, 20198 targets configured)
+2025-04-15T09:37:56.5388015Z 
+2025-04-15T09:37:57.5405250Z Analyzing: target //pkg/sql/tests:tests_test (1537 packages loaded, 20638 targets configured)
+2025-04-15T09:37:57.5406218Z 
+2025-04-15T09:37:58.5493293Z Analyzing: target //pkg/sql/tests:tests_test (1623 packages loaded, 21221 targets configured)
+2025-04-15T09:37:58.5494971Z 
+2025-04-15T09:37:59.5566463Z Analyzing: target //pkg/sql/tests:tests_test (1741 packages loaded, 21727 targets configured)
+2025-04-15T09:37:59.5568200Z 
+2025-04-15T09:38:00.5720893Z Analyzing: target //pkg/sql/tests:tests_test (1856 packages loaded, 22258 targets configured)
+2025-04-15T09:38:00.5722335Z 
+2025-04-15T09:38:01.5758399Z Analyzing: target //pkg/sql/tests:tests_test (1944 packages loaded, 22547 targets configured)
+2025-04-15T09:38:01.5760272Z 
+2025-04-15T09:38:02.5850336Z Analyzing: target //pkg/sql/tests:tests_test (2044 packages loaded, 23316 targets configured)
+2025-04-15T09:38:02.5851903Z 
+2025-04-15T09:38:03.6151566Z Analyzing: target //pkg/sql/tests:tests_test (2177 packages loaded, 23962 targets configured)
+2025-04-15T09:38:03.6152801Z 
+2025-04-15T09:38:04.6396415Z Analyzing: target //pkg/sql/tests:tests_test (2184 packages loaded, 25523 targets configured)
+2025-04-15T09:38:04.6397587Z 
+2025-04-15T09:38:05.9192850Z Analyzing: target //pkg/sql/tests:tests_test (2195 packages loaded, 26603 targets configured)
+2025-04-15T09:38:05.9194555Z 
+2025-04-15T09:38:06.4926847Z INFO: Analyzed target //pkg/sql/tests:tests_test (2201 packages loaded, 26762 targets configured).
+2025-04-15T09:38:06.9499278Z [81 / 3,307] Creating runfiles tree bazel-out/k8-opt-exec-ST-ae6fc2c76cce/bin/pkg/sql/plpgsql/parser/plpgsql-gen.runfiles [for tool]; 0s local ... (4 actions, 2 running)
+2025-04-15T09:38:07.9295154Z [212 / 4,828] [Prepa] Symlinking virtual .proto sources for //pkg/util/protoutil:protoutil_proto [for tool] ... (4 actions, 1 running)
+2025-04-15T09:38:08.9742525Z [264 / 4,831] checking cached actions
+2025-04-15T09:38:09.9913655Z [300 / 4,831] [Prepa] Compiling src/google/protobuf/repeated_field.cc [for tool] ... (48 actions, 0 running)
+2025-04-15T09:38:10.9891369Z [379 / 4,831] Compiling src/google/protobuf/any.cc [for tool]; 0s remote, remote-cache ... (47 actions, 0 running)
+2025-04-15T09:38:11.9959868Z [724 / 4,831] [Sched] Executing genrule //pkg/sql/parser:sql-goyacc; Downloading external/org_golang_x_tools/cmd/goyacc/goyacc_/goyacc, 1024.0 KiB / 2.2 MiB ... (49 actions, 0 running)
+2025-04-15T09:38:12.9903170Z [1,148 / 4,831] Executing genrule //pkg/sql/parser:sql-goyacc; 0s remote-cache, linux-sandbox ... (50 actions, 2 running)
+2025-04-15T09:38:14.0047036Z [1,664 / 4,831] Executing genrule //pkg/sql/parser:sql-goyacc; 1s remote-cache, linux-sandbox ... (50 actions, 2 running)
+2025-04-15T09:38:14.9927002Z [2,149 / 4,831] Executing genrule //pkg/sql/parser:sql-goyacc; 2s remote-cache, linux-sandbox ... (50 actions, 2 running)
+2025-04-15T09:38:16.0093765Z [2,580 / 4,831] Executing genrule //pkg/sql/parser:sql-goyacc; 3s remote-cache, linux-sandbox ... (50 actions, 2 running)
+2025-04-15T09:38:17.0077472Z [3,061 / 4,831] Executing genrule //pkg/sql/parser:sql-goyacc; 4s remote-cache, linux-sandbox ... (50 actions, 2 running)
+2025-04-15T09:38:18.0101058Z [3,142 / 4,831] Executing genrule //pkg/sql/parser:sql-goyacc; 5s remote-cache, linux-sandbox ... (50 actions, 4 running)
+2025-04-15T09:38:19.0255685Z [3,192 / 4,831] Executing genrule //pkg/sql/parser:sql-goyacc; 6s remote-cache, linux-sandbox ... (50 actions, 4 running)
+2025-04-15T09:38:20.2432493Z [3,198 / 4,831] Executing genrule //pkg/sql/parser:sql-goyacc; 8s remote-cache, linux-sandbox ... (50 actions, 3 running)
+2025-04-15T09:38:21.2965550Z [3,215 / 4,831] Executing genrule //pkg/sql/parser:sql-goyacc; 9s remote-cache, linux-sandbox ... (50 actions, 4 running)
+2025-04-15T09:38:22.3349789Z [3,232 / 4,831] Executing genrule //pkg/sql/parser:sql-goyacc; 10s remote-cache, linux-sandbox ... (50 actions, 4 running)
+2025-04-15T09:38:23.3592503Z [3,250 / 4,831] Executing genrule //pkg/sql/parser:sql-goyacc; 11s remote-cache, linux-sandbox ... (50 actions, 4 running)
+2025-04-15T09:38:24.3560642Z [3,266 / 4,831] Executing genrule //pkg/sql/parser:sql-goyacc; 12s remote-cache, linux-sandbox ... (50 actions, 4 running)
+2025-04-15T09:38:25.3630000Z [3,308 / 4,831] Executing genrule //pkg/sql/parser:sql-goyacc; 13s remote-cache, linux-sandbox ... (50 actions, 4 running)
+2025-04-15T09:38:26.4166636Z [3,342 / 4,831] Executing genrule //pkg/sql/parser:sql-goyacc; 14s remote-cache, linux-sandbox ... (23 actions, 4 running)
+2025-04-15T09:38:27.9947313Z [3,364 / 4,831] Executing genrule //pkg/sql/parser:sql-goyacc [for tool]; 15s remote-cache, linux-sandbox
+2025-04-15T09:38:28.9952087Z [3,639 / 4,831] Running nogo on //pkg/workload/kv:kv; 0s remote, remote-cache ... (40 actions, 0 running)
+2025-04-15T09:38:29.9975046Z [4,223 / 4,831] Validating nogo output for //pkg/sql/sqlstats:sqlstats; 0s remote, remote-cache ... (47 actions, 0 running)
+2025-04-15T09:38:30.9979141Z [4,675 / 4,831] GoCompilePkg pkg/ccl/gssapiccl/gssapiccl.a; 0s remote, remote-cache ... (7 actions, 0 running)
+2025-04-15T09:38:32.6781363Z [4,830 / 4,831] [Sched] GoLink pkg/sql/tests/tests_test_/tests_test
+2025-04-15T09:38:33.9963034Z [4,830 / 4,831] GoLink pkg/sql/tests/tests_test_/tests_test; 1s remote, remote-cache
+2025-04-15T09:38:42.0217448Z [4,830 / 4,831] GoLink pkg/sql/tests/tests_test_/tests_test; 9s remote, remote-cache
+2025-04-15T09:39:12.0247151Z [4,830 / 4,831] GoLink pkg/sql/tests/tests_test_/tests_test; 39s remote, remote-cache
+2025-04-15T09:40:12.0303267Z [4,830 / 4,831] GoLink pkg/sql/tests/tests_test_/tests_test; 99s remote, remote-cache
+2025-04-15T09:41:12.0359467Z [4,830 / 4,831] GoLink pkg/sql/tests/tests_test_/tests_test; 159s remote, remote-cache
+2025-04-15T09:42:12.0418334Z [4,830 / 4,831] GoLink pkg/sql/tests/tests_test_/tests_test; 219s remote, remote-cache
+2025-04-15T09:43:12.0482744Z [4,830 / 4,831] GoLink pkg/sql/tests/tests_test_/tests_test; 279s remote, remote-cache
+2025-04-15T09:44:12.0546596Z [4,830 / 4,831] GoLink pkg/sql/tests/tests_test_/tests_test; 339s remote, remote-cache
+2025-04-15T09:44:14.0333792Z [4,830 / 4,831] GoLink pkg/sql/tests/tests_test_/tests_test; Downloading pkg/sql/tests/tests_test_/tests_test, 129.0 MiB / 200.7 MiB; 341s remote, remote-cache
+2025-04-15T09:44:15.1470033Z INFO: Found 1 target...
+2025-04-15T09:44:15.1743960Z Target //pkg/sql/tests:tests_test up-to-date:
+2025-04-15T09:44:15.1745224Z   _bazel/bin/pkg/sql/tests/tests_test_/tests_test
+2025-04-15T09:44:15.2876083Z INFO: Elapsed time: 443.536s, Critical Path: 363.55s
+2025-04-15T09:44:15.2878176Z INFO: 4831 processes: 4487 remote cache hit, 256 internal, 87 linux-sandbox, 1 remote.
+2025-04-15T09:44:15.2886463Z INFO: Build completed successfully, 4831 total actions
+2025-04-15T09:44:15.2887600Z INFO: 
+2025-04-15T09:44:16.7267098Z INFO: Streaming build results to: https://mesolite.cluster.engflow.com/invocation/8b76adf9-5cc5-4a11-84d8-2c06cf956b90
+2025-04-15T09:44:16.7350382Z ++ bazel info bazel-bin --config=crosslinux
+2025-04-15T09:44:17.7004552Z + bazel_bin=/home/agent/.cache/bazel/_bazel_agent/5ff96bfab82c7a794450c7f1830ec61e/execroot/com_github_cockroachdb_cockroach/bazel-out/k8-fastbuild/bin
+2025-04-15T09:44:17.7074318Z + gcloud storage cp -n /home/agent/.cache/bazel/_bazel_agent/5ff96bfab82c7a794450c7f1830ec61e/execroot/com_github_cockroachdb_cockroach/bazel-out/k8-fastbuild/bin/pkg/sql/tests/tests_test_/tests_test gs://cockroach-microbench-ci/builds/e4db55a7f8e885e84fc9f8980c70828afa983123/bin/pkg_sql_tests
+2025-04-15T09:44:18.6168112Z Copying file:///home/agent/.cache/bazel/_bazel_agent/5ff96bfab82c7a794450c7f1830ec61e/execroot/com_github_cockroachdb_cockroach/bazel-out/k8-fastbuild/bin/pkg/sql/tests/tests_test_/tests_test to gs://cockroach-microbench-ci/builds/e4db55a7f8e885e84fc9f8980c70828afa983123/bin/pkg_sql_tests
+2025-04-15T09:44:18.6252040Z   
+2025-04-15T09:44:20.8153423Z ..........
+2025-04-15T09:44:20.8270243Z 
+2025-04-15T09:44:20.8270800Z Average throughput: 108.2MiB/s
+2025-04-15T09:44:21.0330835Z ##[group]Run actions/checkout@v4
+2025-04-15T09:44:21.0331248Z with:
+2025-04-15T09:44:21.0331535Z   repository: cockroachdb/cockroach
+2025-04-15T09:44:21.0332076Z   token: ***
+2025-04-15T09:44:21.0332349Z   ssh-strict: true
+2025-04-15T09:44:21.0332642Z   ssh-user: git
+2025-04-15T09:44:21.0332931Z   persist-credentials: true
+2025-04-15T09:44:21.0333271Z   clean: true
+2025-04-15T09:44:21.0333574Z   sparse-checkout-cone-mode: true
+2025-04-15T09:44:21.0333946Z   fetch-depth: 1
+2025-04-15T09:44:21.0334230Z   fetch-tags: false
+2025-04-15T09:44:21.0334515Z   show-progress: true
+2025-04-15T09:44:21.0334812Z   lfs: false
+2025-04-15T09:44:21.0335080Z   submodules: false
+2025-04-15T09:44:21.0335387Z   set-safe-directory: true
+2025-04-15T09:44:21.0335709Z env:
+2025-04-15T09:44:21.0336001Z   HEAD: e4db55a7f8e885e84fc9f8980c70828afa983123
+2025-04-15T09:44:21.0336465Z   BUCKET: cockroach-microbench-ci
+2025-04-15T09:44:21.0336886Z   PACKAGE: pkg/sql/tests
+2025-04-15T09:44:21.0337221Z   FETCH_DEPTH: 2
+2025-04-15T09:44:21.0337503Z ##[endgroup]
+2025-04-15T09:44:21.1430909Z Syncing repository: cockroachdb/cockroach
+2025-04-15T09:44:21.1435283Z ##[group]Getting Git version info
+2025-04-15T09:44:21.1436545Z Working directory is '/github-actions-runner/_work/cockroach/cockroach'
+2025-04-15T09:44:21.1464175Z [command]/usr/bin/git version
+2025-04-15T09:44:21.1502336Z git version 2.45.2
+2025-04-15T09:44:21.1532726Z ##[endgroup]
+2025-04-15T09:44:21.1547825Z Temporarily overriding HOME='/github-actions-runner/_work/_temp/db2a1758-dbff-4502-b8b0-6b53a7bda0f3' before making global git config changes
+2025-04-15T09:44:21.1550951Z Adding repository directory to the temporary git global config as a safe directory
+2025-04-15T09:44:21.1555478Z [command]/usr/bin/git config --global --add safe.directory /github-actions-runner/_work/cockroach/cockroach
+2025-04-15T09:44:21.1596640Z [command]/usr/bin/git config --local --get remote.origin.url
+2025-04-15T09:44:21.1617648Z https://github.com/cockroachdb/cockroach
+2025-04-15T09:44:21.1632418Z ##[group]Removing previously created refs, to avoid conflicts
+2025-04-15T09:44:21.1638030Z [command]/usr/bin/git rev-parse --symbolic-full-name --verify --quiet HEAD
+2025-04-15T09:44:21.1658220Z HEAD
+2025-04-15T09:44:21.1727051Z ##[endgroup]
+2025-04-15T09:44:21.1730097Z [command]/usr/bin/git submodule status
+2025-04-15T09:44:21.1950925Z -ba508d06d424485d4497f31e38f716c733f7896f c-deps/geos
+2025-04-15T09:44:21.1952043Z -54eaed1d8b56b1aa528be3bdd1877e59c56fa90c c-deps/jemalloc
+2025-04-15T09:44:21.1953152Z -8f56f544dd179056e9b8d02552e6c5e392eb2966 c-deps/krb5
+2025-04-15T09:44:21.1954232Z -c8ff95857beb3027b5aa3d15726795570f38eccb c-deps/proj
+2025-04-15T09:44:21.1962605Z ##[group]Cleaning the repository
+2025-04-15T09:44:21.1967618Z [command]/usr/bin/git clean -ffdx
+2025-04-15T09:44:21.2304767Z Removing _bazel/
+2025-04-15T09:44:21.2328333Z [command]/usr/bin/git reset --hard HEAD
+2025-04-15T09:44:21.2873070Z HEAD is now at e4db55a7 drt: add support for CREATE INDEX USING HASH in add-index operation
+2025-04-15T09:44:21.2884028Z ##[endgroup]
+2025-04-15T09:44:21.2887318Z ##[group]Disabling automatic garbage collection
+2025-04-15T09:44:21.2893964Z [command]/usr/bin/git config --local gc.auto 0
+2025-04-15T09:44:21.2923228Z ##[endgroup]
+2025-04-15T09:44:21.2924260Z ##[group]Setting up auth
+2025-04-15T09:44:21.2931763Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-04-15T09:44:21.2964488Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-04-15T09:44:21.3198235Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-15T09:44:21.3220581Z http.https://github.com/.extraheader
+2025-04-15T09:44:21.3230168Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2025-04-15T09:44:21.3262661Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-04-15T09:44:21.3499624Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-04-15T09:44:21.3533877Z ##[endgroup]
+2025-04-15T09:44:21.3534816Z ##[group]Fetching the repository
+2025-04-15T09:44:21.3543552Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +ae06933291bb0474a1b0fcef29b81720d99c5165:refs/remotes/origin/master
+2025-04-15T09:44:21.8434661Z ##[endgroup]
+2025-04-15T09:44:21.8435535Z ##[group]Determining the checkout info
+2025-04-15T09:44:21.8437048Z ##[endgroup]
+2025-04-15T09:44:21.8442335Z [command]/usr/bin/git sparse-checkout disable
+2025-04-15T09:44:21.8631088Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-04-15T09:44:21.8659539Z ##[group]Checking out the ref
+2025-04-15T09:44:21.8664239Z [command]/usr/bin/git checkout --progress --force -B master refs/remotes/origin/master
+2025-04-15T09:44:21.9013686Z Warning: you are leaving 1 commit behind, not connected to
+2025-04-15T09:44:21.9014444Z any of your branches:
+2025-04-15T09:44:21.9014647Z 
+2025-04-15T09:44:21.9015255Z   e4db55a7 drt: add support for CREATE INDEX USING HASH in add-index operation
+2025-04-15T09:44:21.9015805Z 
+2025-04-15T09:44:21.9016108Z If you want to keep it by creating a new branch, this may be a good time
+2025-04-15T09:44:21.9016775Z to do so with:
+2025-04-15T09:44:21.9016954Z 
+2025-04-15T09:44:21.9017153Z  git branch <new-branch-name> e4db55a7
+2025-04-15T09:44:21.9017451Z 
+2025-04-15T09:44:21.9051460Z Switched to a new branch 'master'
+2025-04-15T09:44:21.9052420Z branch 'master' set up to track 'origin/master'.
+2025-04-15T09:44:21.9058833Z ##[endgroup]
+2025-04-15T09:44:21.9097360Z [command]/usr/bin/git log -1 --format=%H
+2025-04-15T09:44:21.9119865Z ae06933291bb0474a1b0fcef29b81720d99c5165
+2025-04-15T09:44:21.9235330Z ##[group]Run ./build/github/cleanup-engflow-keys.sh
+2025-04-15T09:44:21.9235902Z [36;1m./build/github/cleanup-engflow-keys.sh[0m
+2025-04-15T09:44:21.9251506Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-04-15T09:44:21.9252177Z env:
+2025-04-15T09:44:21.9252528Z   HEAD: e4db55a7f8e885e84fc9f8980c70828afa983123
+2025-04-15T09:44:21.9253102Z   BUCKET: cockroach-microbench-ci
+2025-04-15T09:44:21.9253544Z   PACKAGE: pkg/sql/tests
+2025-04-15T09:44:21.9253927Z   FETCH_DEPTH: 2
+2025-04-15T09:44:21.9254202Z ##[endgroup]
+2025-04-15T09:44:21.9305466Z + rm -f /home/agent/engflow.key /home/agent/engflow.crt

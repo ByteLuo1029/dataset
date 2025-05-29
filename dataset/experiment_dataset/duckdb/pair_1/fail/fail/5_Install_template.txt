@@ -1,0 +1,53 @@
+##[group]Run pip install 'cibuildwheel>=2.16.2' build
+[36;1mpip install 'cibuildwheel>=2.16.2' build[0m
+shell: /usr/bin/bash --noprofile --norc -e -o pipefail {<:NUM:>}
+env:
+GH_TOKEN:
+OVERRIDE_GIT_DESCRIBE:
+CIBW_TEST_SKIP: {cp37,cp38}-*
+CIBW_BUILD: cp310-*
+CIBW_TEST_COMMAND: python -m pytest {project}/tests --verbose && USE_ACTUAL_SPARK=true JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java)))) SPARK_HOME={project}/spark_installation/spark python -m pytest {project}/tests/fast/spark --verbose
+PYTEST_TIMEOUT: 600
+CIBW_ENVIRONMENT: OVERRIDE_GIT_DESCRIBE=
+CIBW_BEFORE_ALL: cd {project} && ./scripts/install_spark_in_cibuildwheels_linux_container.sh
+CIBW_MANYLINUX_X86_64_IMAGE: manylinux_2_28
+CIBW_MANYLINUX_PYPY_X86_64_IMAGE: manylinux_2_28
+pythonLocation: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+PKG CONFIG PATH: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64/lib/pkgconfig
+Python ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+<:*:> ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+<:*:> ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+LD LIBRARY PATH: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64/lib
+##[endgroup]
+Collecting <:*:>
+Downloading <:*:> <:*:> kB)
+Collecting <:*:>
+Downloading <:*:> <:*:> kB)
+Collecting <:*:> (from <:*:>
+Downloading <:*:> <:*:> kB)
+Collecting <:*:> (from <:*:>
+Downloading <:*:> <:*:> kB)
+Collecting <:*:> (from <:*:>
+Downloading <:*:> <:*:> kB)
+Collecting <:*:> (from <:*:>
+Downloading <:*:> <:*:> <:*:> kB)
+Collecting <:*:> (from <:*:>
+Downloading <:*:> <:*:> kB)
+Collecting <:*:> (from <:*:>
+Downloading <:*:> <:*:> kB)
+Collecting <:*:> (from <:*:>
+Downloading <:*:> <:*:> kB)
+Collecting pyproject_hooks (from build)
+Downloading <:*:> <:*:> <:*:> kB)
+Downloading <:*:> <:*:> kB)
+Downloading <:*:> <:*:> kB)
+Downloading <:*:> <:*:> kB)
+Downloading <:*:> <:*:> <:*:> kB)
+Downloading <:*:> <:*:> kB)
+Downloading <:*:> <:*:> kB)
+Downloading <:*:> <:*:> kB)
+Downloading <:*:> <:*:> kB)
+Downloading <:*:> <:*:> kB)
+Downloading <:*:> <:*:> <:*:> kB)
+Installing collected packages: pyproject_hooks, platformdirs, packaging, filelock, certifi, bracex, bashlex, dependency-groups, build, cibuildwheel
+Successfully installed bashlex-0.18 bracex-2.5.post1 build-1.2.2.post1 certifi-2025.1.31 cibuildwheel-2.23.2 dependency-groups-1.3.0 filelock-3.18.0 packaging-24.2 platformdirs-4.3.7 pyproject_hooks-1.2.0

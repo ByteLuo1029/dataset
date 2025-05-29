@@ -1,0 +1,36 @@
+##[group]Run <:*:>
+with:
+aws_account_id: 197730964718
+aws_region: us-east-1
+aws_role_name_prefix: elastic-docs-v3-preview-
+env:
+GITHUB_PR_REF_NAME: markjhoy/default_token_pruning_sparse_vector
+PATH_PREFIX: /elastic/elasticsearch/pull/126739
+##[endgroup]
+##[group]Run import hashlib
+[36;1mimport hashlib[0m
+[36;1mimport os[0m
+[36;1mprefix = os.environ["ROLE_NAME_PREFIX"][0m
+[36;1mm = hashlib.sha256()[0m
+[36;1mm.update(os.environ["GITHUB_REPOSITORY"].encode('utf-8'))[0m
+[36;1mhash = m.hexdigest()[:64-len(prefix)][0m
+[36;1mwith open(os.environ["GITHUB_OUTPUT"], "a") as f:[0m
+[36;1m  f.write(f"result=arn:aws:iam::{os.environ["AWS_ACCOUNT_ID"]}:role/{prefix}{hash}")[0m
+shell: /usr/bin/python {0}
+env:
+GITHUB_PR_REF_NAME: markjhoy/default_token_pruning_sparse_vector
+PATH_PREFIX: /elastic/elasticsearch/pull/126739
+AWS_ACCOUNT_ID: 197730964718
+ROLE_NAME_PREFIX: elastic-docs-v3-preview-
+##[endgroup]
+##[group]Run <:*:>
+with:
+role-to-assume: arn:aws:iam::197730964718:role/elastic-docs-v3-preview-15d28e2042b09184f1b1957600e8a99d4bb88e3d
+aws-region: us-east-1
+audience: sts.amazonaws.com
+env:
+GITHUB_PR_REF_NAME: markjhoy/default_token_pruning_sparse_vector
+PATH_PREFIX: /elastic/elasticsearch/pull/126739
+##[endgroup]
+Assuming role with OIDC
+Authenticated as assumedRoleId AROAS4CNPCTXHQYQAKTVA:GitHubActions

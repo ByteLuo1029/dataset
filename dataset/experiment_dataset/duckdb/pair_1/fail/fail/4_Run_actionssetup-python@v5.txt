@@ -1,0 +1,23 @@
+2025-04-15T08:29:37.9221391Z ##[group]Run actions/setup-python@v5
+2025-04-15T08:29:37.9221680Z with:
+2025-04-15T08:29:37.9221863Z   python-version: 3.11
+2025-04-15T08:29:37.9222119Z   check-latest: false
+2025-04-15T08:29:37.9222449Z   token: ***
+2025-04-15T08:29:37.9222640Z   update-environment: true
+2025-04-15T08:29:37.9222862Z   allow-prereleases: false
+2025-04-15T08:29:37.9223080Z   freethreaded: false
+2025-04-15T08:29:37.9223267Z env:
+2025-04-15T08:29:37.9223415Z   GH_TOKEN: 
+2025-04-15T08:29:37.9223591Z   OVERRIDE_GIT_DESCRIBE: 
+2025-04-15T08:29:37.9223802Z   CIBW_TEST_SKIP: {cp37,cp38}-*
+2025-04-15T08:29:37.9224016Z   CIBW_BUILD: cp310-*
+2025-04-15T08:29:37.9224804Z   CIBW_TEST_COMMAND: python -m pytest {project}/tests --verbose && USE_ACTUAL_SPARK=true JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java)))) SPARK_HOME={project}/spark_installation/spark python -m pytest {project}/tests/fast/spark --verbose
+2025-04-15T08:29:37.9225643Z   PYTEST_TIMEOUT: 600
+2025-04-15T08:29:37.9225854Z   CIBW_ENVIRONMENT: OVERRIDE_GIT_DESCRIBE=
+2025-04-15T08:29:37.9226280Z   CIBW_BEFORE_ALL: cd {project} && ./scripts/install_spark_in_cibuildwheels_linux_container.sh
+2025-04-15T08:29:37.9226702Z   CIBW_MANYLINUX_X86_64_IMAGE: manylinux_2_28
+2025-04-15T08:29:37.9227017Z   CIBW_MANYLINUX_PYPY_X86_64_IMAGE: manylinux_2_28
+2025-04-15T08:29:37.9227270Z ##[endgroup]
+2025-04-15T08:29:38.0871797Z ##[group]Installed versions
+2025-04-15T08:29:38.0934676Z Successfully set up CPython (3.11.11)
+2025-04-15T08:29:38.0936114Z ##[endgroup]

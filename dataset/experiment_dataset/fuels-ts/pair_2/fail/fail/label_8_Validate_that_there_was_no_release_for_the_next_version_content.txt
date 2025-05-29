@@ -1,0 +1,30 @@
+##[group]Run OLD_VERSION=$(sed -nE 's/^\s*"version": "(.*?)",$/\1/p' packages/fuels/package.json)
+[36;1mOLD_VERSION=$(sed -nE 's/^\s*"version": "(.*?)",$/\1/p' packages/fuels/package.json)[0m
+[36;1mpnpm changeset version[0m
+[36;1mNEW_VERSION=$(sed -nE 's/^\s*"version": "(.*?)",$/\1/p' packages/fuels/package.json)[0m
+[36;1mgit reset --hard[0m
+[36;1m[0m
+[36;1mif [ "$OLD_VERSION" = "$NEW_VERSION" ]; then[0m
+[36;1m  # the versions didn't change so we won't be releasing it anyways[0m
+36 0
+36
+[36;1m[0m
+[36;1mSTATUS_CODE=$(curl -s -w '%{http_code}\n' "https://www.npmjs.com/package/fuels/v/$NEW_VERSION" | tail -n1)[0m
+[36;1mif [[ $STATUS_CODE  != 404 ]]; then[0m
+[36;1m  echo "Release for version $NEW_VERSION already exists or curl received an unexpected result (result is $STATUS_CODE). Exiting."[0m
+36 1
+36
+36 0
+36
+0
+
+NPM_CONFIG_USERCONFIG: /home/runner/work/_temp/.npmrc
+NODE_AUTH_TOKEN: XXXXX-XXXXX-XXXXX-XXXXX
+PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+CHANGESET_FILE: .changeset/bitter-horses-repair.md
+
+##[endgroup]
+🦋  All files have been updated. Review them and commit at your leisure
+8b1efbbbd c2bc22bc469851f443b708204523b004b5b814c1 7878743037bd4ed4a657fefa1c17e69b2bd84c70
+Release for version 0.100.3 already exists or curl received an unexpected result (result is 200). Exiting.
+##[error]Process completed with exit code 1.

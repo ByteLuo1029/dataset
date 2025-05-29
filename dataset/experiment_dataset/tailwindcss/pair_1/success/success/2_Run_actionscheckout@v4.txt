@@ -1,0 +1,71 @@
+2025-04-14T16:59:20.3070000Z ##[group]Run actions/checkout@v4
+2025-04-14T16:59:20.3070810Z with:
+2025-04-14T16:59:20.3071320Z   fetch-depth: 20
+2025-04-14T16:59:20.3071900Z   repository: tailwindlabs/tailwindcss
+2025-04-14T16:59:20.3072680Z   token: ***
+2025-04-14T16:59:20.3073180Z   ssh-strict: true
+2025-04-14T16:59:20.3073700Z   ssh-user: git
+2025-04-14T16:59:20.3074230Z   persist-credentials: true
+2025-04-14T16:59:20.3074820Z   clean: true
+2025-04-14T16:59:20.3075370Z   sparse-checkout-cone-mode: true
+2025-04-14T16:59:20.3075990Z   fetch-tags: false
+2025-04-14T16:59:20.3076520Z   show-progress: true
+2025-04-14T16:59:20.3077060Z   lfs: false
+2025-04-14T16:59:20.3077980Z   submodules: false
+2025-04-14T16:59:20.3078540Z   set-safe-directory: true
+2025-04-14T16:59:20.3079190Z env:
+2025-04-14T16:59:20.3079690Z   APP_NAME: tailwindcss-oxide
+2025-04-14T16:59:20.3080280Z   NODE_VERSION: 20
+2025-04-14T16:59:20.3080800Z   OXIDE_LOCATION: ./crates/node
+2025-04-14T16:59:20.3081390Z ##[endgroup]
+2025-04-14T16:59:20.5372960Z Syncing repository: tailwindlabs/tailwindcss
+2025-04-14T16:59:20.5374970Z ##[group]Getting Git version info
+2025-04-14T16:59:20.5376980Z Working directory is '/Users/runner/work/tailwindcss/tailwindcss'
+2025-04-14T16:59:20.5378340Z [command]/opt/homebrew/bin/git version
+2025-04-14T16:59:20.5892690Z git version 2.49.0
+2025-04-14T16:59:20.5917990Z ##[endgroup]
+2025-04-14T16:59:20.5923600Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/ca0a37b6-054b-4c37-8695-9856fcbbf7ac/.gitconfig'
+2025-04-14T16:59:20.5930070Z Temporarily overriding HOME='/Users/runner/work/_temp/ca0a37b6-054b-4c37-8695-9856fcbbf7ac' before making global git config changes
+2025-04-14T16:59:20.5931790Z Adding repository directory to the temporary git global config as a safe directory
+2025-04-14T16:59:20.5934070Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/tailwindcss/tailwindcss
+2025-04-14T16:59:20.6154510Z Deleting the contents of '/Users/runner/work/tailwindcss/tailwindcss'
+2025-04-14T16:59:20.6157550Z ##[group]Initializing the repository
+2025-04-14T16:59:20.6162090Z [command]/opt/homebrew/bin/git init /Users/runner/work/tailwindcss/tailwindcss
+2025-04-14T16:59:20.6316880Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-04-14T16:59:20.6318390Z hint: is subject to change. To configure the initial branch name to use in all
+2025-04-14T16:59:20.6319960Z hint: of your new repositories, which will suppress this warning, call:
+2025-04-14T16:59:20.6320850Z hint:
+2025-04-14T16:59:20.6321500Z hint: 	git config --global init.defaultBranch <name>
+2025-04-14T16:59:20.6322230Z hint:
+2025-04-14T16:59:20.6322970Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-04-14T16:59:20.6324080Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-04-14T16:59:20.6324970Z hint:
+2025-04-14T16:59:20.6325480Z hint: 	git branch -m <name>
+2025-04-14T16:59:20.6326400Z Initialized empty Git repository in /Users/runner/work/tailwindcss/tailwindcss/.git/
+2025-04-14T16:59:20.6328620Z [command]/opt/homebrew/bin/git remote add origin https://github.com/tailwindlabs/tailwindcss
+2025-04-14T16:59:20.6372070Z ##[endgroup]
+2025-04-14T16:59:20.6373030Z ##[group]Disabling automatic garbage collection
+2025-04-14T16:59:20.6374800Z [command]/opt/homebrew/bin/git config --local gc.auto 0
+2025-04-14T16:59:20.6415930Z ##[endgroup]
+2025-04-14T16:59:20.6416920Z ##[group]Setting up auth
+2025-04-14T16:59:20.6420370Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-04-14T16:59:20.6457730Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-04-14T16:59:20.7059690Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-14T16:59:20.7096370Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-04-14T16:59:20.7553150Z [command]/opt/homebrew/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-04-14T16:59:20.7619410Z ##[endgroup]
+2025-04-14T16:59:20.7620490Z ##[group]Fetching the repository
+2025-04-14T16:59:20.7625490Z [command]/opt/homebrew/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=20 origin +aa836d344281c02b7aabe896be1632dcebb48b8e:refs/tags/v4.1.4
+2025-04-14T16:59:21.9191470Z From https://github.com/tailwindlabs/tailwindcss
+2025-04-14T16:59:21.9192560Z  * [new ref]         aa836d344281c02b7aabe896be1632dcebb48b8e -> v4.1.4
+2025-04-14T16:59:21.9244340Z ##[endgroup]
+2025-04-14T16:59:21.9244640Z ##[group]Determining the checkout info
+2025-04-14T16:59:21.9245080Z ##[endgroup]
+2025-04-14T16:59:21.9248840Z [command]/opt/homebrew/bin/git sparse-checkout disable
+2025-04-14T16:59:21.9297670Z [command]/opt/homebrew/bin/git config --local --unset-all extensions.worktreeConfig
+2025-04-14T16:59:21.9332460Z ##[group]Checking out the ref
+2025-04-14T16:59:21.9334820Z [command]/opt/homebrew/bin/git checkout --progress --force refs/tags/v4.1.4
+2025-04-14T16:59:21.9816500Z HEAD is now at aa836d3 Prepare v4.1.4 release (#17669)
+2025-04-14T16:59:21.9823320Z ##[endgroup]
+2025-04-14T16:59:21.9872810Z [command]/opt/homebrew/bin/git log -1 --format=%H
+2025-04-14T16:59:21.9905920Z aa836d344281c02b7aabe896be1632dcebb48b8e

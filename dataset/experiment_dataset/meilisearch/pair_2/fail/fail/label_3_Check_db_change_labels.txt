@@ -1,0 +1,21 @@
+2025-04-15T00:10:28.4394696Z ##[group]Run URL=/repos/meilisearch/meilisearch/pulls/5487/labels
+2025-04-15T00:10:28.4396427Z [36;1mURL=/repos/meilisearch/meilisearch/pulls/5487/labels[0m
+2025-04-15T00:10:28.4397691Z [36;1mecho 5487[0m
+2025-04-15T00:10:28.4398507Z [36;1mecho $URL[0m
+2025-04-15T00:10:28.4400746Z [36;1mLABELS=$(gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/meilisearch/meilisearch/issues/5487/labels -q .[].name)[0m
+2025-04-15T00:10:28.4403461Z [36;1mif [[ ! "$LABELS" =~ "db change" && ! "$LABELS" =~ "no db change" ]]; then[0m
+2025-04-15T00:10:28.4405652Z [36;1m  echo "::error::Pull request must contain either the 'db change' or 'no db change' label."[0m
+2025-04-15T00:10:28.4407255Z [36;1m  exit 1[0m
+2025-04-15T00:10:28.4408032Z [36;1melse[0m
+2025-04-15T00:10:28.4409042Z [36;1m  echo "The label is set"[0m
+2025-04-15T00:10:28.4409997Z [36;1mfi[0m
+2025-04-15T00:10:28.4464324Z shell: /usr/bin/bash -e {0}
+2025-04-15T00:10:28.4465260Z env:
+2025-04-15T00:10:28.4466074Z   GH_TOKEN: 
+2025-04-15T00:10:28.4466836Z ##[endgroup]
+2025-04-15T00:10:28.4560978Z 5487
+2025-04-15T00:10:28.4562188Z /repos/meilisearch/meilisearch/pulls/5487/labels
+2025-04-15T00:10:28.6225995Z gh: To use GitHub CLI in a GitHub Actions workflow, set the GH_TOKEN environment variable. Example:
+2025-04-15T00:10:28.6228088Z   env:
+2025-04-15T00:10:28.6229042Z     GH_TOKEN: ${{ github.token }}
+2025-04-15T00:10:28.6256263Z ##[error]Process completed with exit code 4.

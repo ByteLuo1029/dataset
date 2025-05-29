@@ -1,0 +1,36 @@
+2025-04-14T23:03:09.2077988Z ##[group]Run elastic/docs-builder/.github/actions/aws-auth@main
+2025-04-14T23:03:09.2078342Z with:
+2025-04-14T23:03:09.2078526Z   aws_account_id: 197730964718
+2025-04-14T23:03:09.2078750Z   aws_region: us-east-1
+2025-04-14T23:03:09.2078988Z   aws_role_name_prefix: elastic-docs-v3-preview-
+2025-04-14T23:03:09.2079255Z env:
+2025-04-14T23:03:09.2079484Z   GITHUB_PR_REF_NAME: ml-support-timeout-put-inference
+2025-04-14T23:03:09.2079828Z   PATH_PREFIX: /elastic/elasticsearch/pull/126805
+2025-04-14T23:03:09.2080102Z ##[endgroup]
+2025-04-14T23:03:09.2094821Z ##[group]Run import hashlib
+2025-04-14T23:03:09.2095073Z [36;1mimport hashlib[0m
+2025-04-14T23:03:09.2095267Z [36;1mimport os[0m
+2025-04-14T23:03:09.2095494Z [36;1mprefix = os.environ["ROLE_NAME_PREFIX"][0m
+2025-04-14T23:03:09.2095775Z [36;1mm = hashlib.sha256()[0m
+2025-04-14T23:03:09.2096303Z [36;1mm.update(os.environ["GITHUB_REPOSITORY"].encode('utf-8'))[0m
+2025-04-14T23:03:09.2096662Z [36;1mhash = m.hexdigest()[:64-len(prefix)][0m
+2025-04-14T23:03:09.2097014Z [36;1mwith open(os.environ["GITHUB_OUTPUT"], "a") as f:[0m
+2025-04-14T23:03:09.2097419Z [36;1m  f.write(f"result=arn:aws:iam::{os.environ["AWS_ACCOUNT_ID"]}:role/{prefix}{hash}")[0m
+2025-04-14T23:03:09.2148774Z shell: /usr/bin/python {0}
+2025-04-14T23:03:09.2149010Z env:
+2025-04-14T23:03:09.2149253Z   GITHUB_PR_REF_NAME: ml-support-timeout-put-inference
+2025-04-14T23:03:09.2149604Z   PATH_PREFIX: /elastic/elasticsearch/pull/126805
+2025-04-14T23:03:09.2149893Z   AWS_ACCOUNT_ID: 197730964718
+2025-04-14T23:03:09.2150150Z   ROLE_NAME_PREFIX: elastic-docs-v3-preview-
+2025-04-14T23:03:09.2150407Z ##[endgroup]
+2025-04-14T23:03:09.2433801Z ##[group]Run aws-actions/configure-aws-credentials@ececac1a45f3b08a01d2dd070d28d111c5fe6722
+2025-04-14T23:03:09.2434242Z with:
+2025-04-14T23:03:09.2434644Z   role-to-assume: arn:aws:iam::197730964718:role/elastic-docs-v3-preview-15d28e2042b09184f1b1957600e8a99d4bb88e3d
+2025-04-14T23:03:09.2435119Z   aws-region: us-east-1
+2025-04-14T23:03:09.2435341Z   audience: sts.amazonaws.com
+2025-04-14T23:03:09.2435575Z env:
+2025-04-14T23:03:09.2435803Z   GITHUB_PR_REF_NAME: ml-support-timeout-put-inference
+2025-04-14T23:03:09.2436140Z   PATH_PREFIX: /elastic/elasticsearch/pull/126805
+2025-04-14T23:03:09.2436405Z ##[endgroup]
+2025-04-14T23:03:09.5778829Z Assuming role with OIDC
+2025-04-14T23:03:09.8084891Z Authenticated as assumedRoleId AROAS4CNPCTXHQYQAKTVA:GitHubActions

@@ -1,0 +1,754 @@
+2025-04-14T09:14:02.3496352Z ##[group]Run github/dependabot-action@main
+2025-04-14T09:14:02.3497311Z env:
+2025-04-14T09:14:02.3497778Z   DEPENDABOT_DISABLE_CLEANUP: 1
+2025-04-14T09:14:02.3498374Z   DEPENDABOT_ENABLE_CONNECTIVITY_CHECK: 0
+2025-04-14T09:14:02.3499247Z   GITHUB_TOKEN: ***
+2025-04-14T09:14:02.3500136Z   GITHUB_DEPENDABOT_JOB_TOKEN: ***
+2025-04-14T09:14:02.3501097Z   GITHUB_DEPENDABOT_CRED_TOKEN: ***
+2025-04-14T09:14:02.3501666Z ##[endgroup]
+2025-04-14T09:14:02.6665077Z 🤖 ~ starting update ~
+2025-04-14T09:14:02.6682521Z Fetching job details
+2025-04-14T09:14:03.1939029Z ##[group]Pulling updater images
+2025-04-14T09:14:03.1996675Z Pulling image ghcr.io/dependabot/dependabot-updater-gomod:1fb436f8699c45a3ba0ef3ef662c746891e996f9 (attempt 1)...
+2025-04-14T09:14:03.4235979Z Successfully sent metric (dependabot.action.ghcr_image_pull) to remote API endpoint
+2025-04-14T09:14:25.2217074Z Pulled image ghcr.io/dependabot/dependabot-updater-gomod:1fb436f8699c45a3ba0ef3ef662c746891e996f9
+2025-04-14T09:14:25.2230320Z Pulling image ghcr.io/github/dependabot-update-job-proxy/dependabot-update-job-proxy:v2.0.20250404141843@sha256:488b412514454c4761bb7f61c7f632ba7c393d3d000c280682914dd6257bd37b (attempt 1)...
+2025-04-14T09:14:25.4448953Z Successfully sent metric (dependabot.action.ghcr_image_pull) to remote API endpoint
+2025-04-14T09:14:26.6099237Z Pulled image ghcr.io/github/dependabot-update-job-proxy/dependabot-update-job-proxy:v2.0.20250404141843@sha256:488b412514454c4761bb7f61c7f632ba7c393d3d000c280682914dd6257bd37b
+2025-04-14T09:14:26.6101782Z ##[endgroup]
+2025-04-14T09:14:26.6102237Z Starting update process
+2025-04-14T09:14:26.8911617Z Created proxy container: 34867fc90dbec17582af70be859efb10bcf752405c15deb0ee283fbabc51c516
+2025-04-14T09:14:27.2059406Z Created container: 90dfc27af1fd226422b92ddb1b03d4c419c144e6f7b2f2082221e1a077734bc6
+2025-04-14T09:14:27.2752978Z   proxy | 2025/04/14 09:14:27 proxy starting, commit: 0460fa31a2e2abea6b590de770e705dea33dabf6
+2025-04-14T09:14:27.2754230Z   proxy | 2025/04/14 09:14:27 Listening (:1080)
+2025-04-14T09:14:27.3842376Z updater | Updating certificates in /etc/ssl/certs...
+2025-04-14T09:14:28.1081050Z updater | rehash: warning: skipping ca-certificates.crt,it does not contain exactly one certificate or CRL
+2025-04-14T09:14:28.1225402Z updater | 1 added, 0 removed; done.
+2025-04-14T09:14:28.1227387Z Running hooks in /etc/ca-certificates/update.d...
+2025-04-14T09:14:28.1236064Z updater | done.
+2025-04-14T09:14:29.8540816Z updater | 2025/04/14 09:14:29 INFO <job_997896517> Starting job processing
+2025-04-14T09:14:29.8559403Z 2025/04/14 09:14:29 INFO <job_997896517> Job definition: {"job":{"allowed-updates":[{"dependency-type":"direct","update-type":"all"}],"commit-message-options":{"prefix":"chore","prefix-development":null,"include-scope":true},"credentials-metadata":[{"type":"git_source","host":"github.com"}],"debug":null,"dependencies":null,"dependency-groups":[],"dependency-group-to-refresh":null,"existing-pull-requests":[[{"dependency-name":"github.com/muesli/termenv","dependency-version":"0.10.0"}],[{"dependency-name":"github.com/mattn/go-isatty","dependency-version":"0.0.16"}],[{"dependency-name":"github.com/muesli/termenv","dependency-version":"0.15.0"}],[{"dependency-name":"github.com/charmbracelet/lipgloss","dependency-version":"0.7.0"}],[{"dependency-name":"github.com/charmbracelet/lipgloss","dependency-version":"0.7.1"}],[{"dependency-name":"github.com/muesli/termenv","dependency-version":"0.15.1"}],[{"dependency-name":"github.com/mattn/go-isatty","dependency-version":"0.0.18"}],[{"dependency-name":"github.com/mattn/go-isatty","dependency-version":"0.0.19"}],[{"dependency-name":"github.com/charmbracelet/bubbles","dependency-version":"0.16.0"}],[{"dependency-name":"github.com/charmbracelet/lipgloss","dependency-version":"0.8.0"}],[{"dependency-name":"github.com/charmbracelet/lipgloss","dependency-version":"0.9.0"}],[{"dependency-name":"github.com/mattn/go-isatty","dependency-version":"0.0.20"}],[{"dependency-name":"github.com/charmbracelet/bubbles","dependency-version":"0.17.1"}],[{"dependency-name":"github.com/charmbracelet/bubbles","dependency-version":"0.18.0"}],[{"dependency-name":"github.com/charmbracelet/lipgloss","dependency-version":"0.13.0","directory":"/examples"}],[{"dependency-name":"github.com/charmbracelet/lipgloss","dependency-version":"1.1.0","directory":"/examples"}]],"existing-group-pull-requests":[],"experiments":{"record-ecosystem-versions":true,"record-update-job-unknown-error":true,"proxy-cached":true,"move-job-token":true,"dependency-change-validation":true,"nuget-install-dotnet-sdks":true,"nuget-native-analysis":true,"nuget-use-direct-discovery":true,"enable-file-parser-python-local":true,"npm-fallback-version-above-v6":true,"lead-security-dependency":true,"enable-record-ecosystem-meta":true,"enable-shared-helpers-command-timeout":true,"enable-dependabot-setting-up-cronjob":true,"enable-engine-version-detection":true,"avoid-duplicate-updates-package-json":true,"allow-refresh-for-existing-pr-dependencies":true,"exclude-local-composer-packages":true,"enable-cooldown-for-python":true,"enable-cooldown-for-uv":true,"enable-cooldown-for-npm-and-yarn":true,"enable-cooldown-for-bun":true,"enable-cooldown-for-bundler":true,"enable-cooldown-for-cargo":true,"goprivate":""},"ignore-conditions":[],"lockfile-only":false,"max-updater-run-time":2700,"package-manager":"go_modules","proxy-log-response-body-on-auth-failure":true,"requirements-update-strategy":null,"reject-external-code":false,"security-advisories":[],"security-updates-only":false,"source":{"provider":"github","repo":"charmbracelet/bubbletea","branch":null,"directory":"/examples","api-endpoint":"https://api.github.com/","hostname":"github.com"},"updating-a-pull-request":false,"update-subdependencies":false,"vendor-dependencies":false,"enable-beta-ecosystems":false,"repo-private":false}}
+2025-04-14T09:14:29.8621060Z updater | 2025/04/14 09:14:29 INFO <job_997896517> Started process PID: 1071 with command: {} git config --global credential.helper '!/home/dependabot/common/lib/dependabot/../../bin/git-credential-store-immutable --file /home/dependabot/dependabot-updater/git.store' {}
+2025-04-14T09:14:29.8661632Z updater | 2025/04/14 09:14:29 INFO <job_997896517> Process PID: 1071 completed with status: pid 1071 exit 0
+2025-04-14T09:14:29.8662725Z updater | 2025/04/14 09:14:29 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:29.8674527Z updater | 2025/04/14 09:14:29 INFO <job_997896517> Started process PID: 1079 with command: {} git config --global --replace-all url.https://github.com/.insteadOf ssh://git@github.com/ {}
+2025-04-14T09:14:29.8710425Z updater | 2025/04/14 09:14:29 INFO <job_997896517> Process PID: 1079 completed with status: pid 1079 exit 0
+2025-04-14T09:14:29.8711349Z 2025/04/14 09:14:29 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:29.8717201Z updater | 2025/04/14 09:14:29 INFO <job_997896517> Started process PID: 1086 with command: {} git config --global --add url.https://github.com/.insteadOf ssh://git@github.com: {}
+2025-04-14T09:14:29.8756008Z updater | 2025/04/14 09:14:29 INFO <job_997896517> Process PID: 1086 completed with status: pid 1086 exit 0
+2025-04-14T09:14:29.8757135Z 2025/04/14 09:14:29 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:29.8762656Z updater | 2025/04/14 09:14:29 INFO <job_997896517> Started process PID: 1093 with command: {} git config --global --add url.https://github.com/.insteadOf git@github.com: {}
+2025-04-14T09:14:29.8794696Z updater | 2025/04/14 09:14:29 INFO <job_997896517> Process PID: 1093 completed with status: pid 1093 exit 0
+2025-04-14T09:14:29.8795578Z 2025/04/14 09:14:29 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:29.8799859Z updater | 2025/04/14 09:14:29 INFO <job_997896517> Started process PID: 1100 with command: {} git config --global --add url.https://github.com/.insteadOf git@github.com/ {}
+2025-04-14T09:14:29.8839545Z updater | 2025/04/14 09:14:29 INFO <job_997896517> Process PID: 1100 completed with status: pid 1100 exit 0
+2025-04-14T09:14:29.8840518Z 2025/04/14 09:14:29 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:29.8844681Z updater | 2025/04/14 09:14:29 INFO <job_997896517> Started process PID: 1107 with command: {} git config --global --add url.https://github.com/.insteadOf git://github.com/ {}
+2025-04-14T09:14:29.8880968Z updater | 2025/04/14 09:14:29 INFO <job_997896517> Process PID: 1107 completed with status: pid 1107 exit 0
+2025-04-14T09:14:29.8882307Z updater | 2025/04/14 09:14:29 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:29.8891267Z updater | 2025/04/14 09:14:29 INFO <job_997896517> Started process PID: 1114 with command: {} git clone --no-tags --depth 1 --recurse-submodules --shallow-submodules https://github.com/charmbracelet/bubbletea /home/dependabot/dependabot-updater/repo {}
+2025-04-14T09:14:30.2794564Z   proxy | 2025/04/14 09:14:30 [002] GET https://github.com:443/charmbracelet/bubbletea/info/refs?service=git-upload-pack
+2025-04-14T09:14:30.2795823Z 2025/04/14 09:14:30 [002] * authenticating git server request (host: github.com)
+2025-04-14T09:14:30.5288720Z   proxy | 2025/04/14 09:14:30 [002] 200 https://github.com:443/charmbracelet/bubbletea/info/refs?service=git-upload-pack
+2025-04-14T09:14:30.5626470Z   proxy | 2025/04/14 09:14:30 [004] POST https://github.com:443/charmbracelet/bubbletea/git-upload-pack
+2025-04-14T09:14:30.5627630Z 2025/04/14 09:14:30 [004] * authenticating git server request (host: github.com)
+2025-04-14T09:14:30.6598148Z   proxy | 2025/04/14 09:14:30 [004] 200 https://github.com:443/charmbracelet/bubbletea/git-upload-pack
+2025-04-14T09:14:30.6956500Z   proxy | 2025/04/14 09:14:30 [006] POST https://github.com:443/charmbracelet/bubbletea/git-upload-pack
+2025-04-14T09:14:30.6957641Z 2025/04/14 09:14:30 [006] * authenticating git server request (host: github.com)
+2025-04-14T09:14:30.8328520Z   proxy | 2025/04/14 09:14:30 [006] 200 https://github.com:443/charmbracelet/bubbletea/git-upload-pack
+2025-04-14T09:14:31.3100085Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Process PID: 1114 completed with status: pid 1114 exit 0
+2025-04-14T09:14:31.3101078Z 2025/04/14 09:14:31 INFO <job_997896517> Total execution time: 1.42 seconds
+2025-04-14T09:14:31.3110734Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Started process PID: 1159 with command: {} git -C /home/dependabot/dependabot-updater/repo ls-files --stage {}
+2025-04-14T09:14:31.3147705Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Process PID: 1159 completed with status: pid 1159 exit 0
+2025-04-14T09:14:31.3148444Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:31.3194783Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Started process PID: 1174 with command: {} git config --global credential.helper '!/home/dependabot/common/lib/dependabot/../../bin/git-credential-store-immutable --file /home/dependabot/dependabot-updater/git.store' {}
+2025-04-14T09:14:31.3235631Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Process PID: 1174 completed with status: pid 1174 exit 0
+2025-04-14T09:14:31.3236551Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:31.3241494Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Started process PID: 1182 with command: {} git config --global --replace-all url.https://github.com/.insteadOf ssh://git@github.com/ {}
+2025-04-14T09:14:31.3277794Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Process PID: 1182 completed with status: pid 1182 exit 0
+2025-04-14T09:14:31.3278690Z 2025/04/14 09:14:31 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:31.3282531Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Started process PID: 1189 with command: {} git config --global --add url.https://github.com/.insteadOf ssh://git@github.com: {}
+2025-04-14T09:14:31.3323080Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Process PID: 1189 completed with status: pid 1189 exit 0
+2025-04-14T09:14:31.3323947Z 2025/04/14 09:14:31 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:31.3327277Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Started process PID: 1196 with command: {} git config --global --add url.https://github.com/.insteadOf git@github.com: {}
+2025-04-14T09:14:31.3369699Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Process PID: 1196 completed with status: pid 1196 exit 0
+2025-04-14T09:14:31.3370574Z 2025/04/14 09:14:31 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:31.3379575Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Started process PID: 1203 with command: {} git config --global --add url.https://github.com/.insteadOf git@github.com/ {}
+2025-04-14T09:14:31.3415845Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Process PID: 1203 completed with status: pid 1203 exit 0
+2025-04-14T09:14:31.3416587Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:31.3421290Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Started process PID: 1210 with command: {} git config --global --add url.https://github.com/.insteadOf git://github.com/ {}
+2025-04-14T09:14:31.3469131Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Process PID: 1210 completed with status: pid 1210 exit 0
+2025-04-14T09:14:31.3470103Z 2025/04/14 09:14:31 INFO <job_997896517> Total execution time: 0.01 seconds
+2025-04-14T09:14:31.3479893Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Started process PID: 1217 with command: {} git rev-parse HEAD {}
+2025-04-14T09:14:31.3518704Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Process PID: 1217 completed with status: pid 1217 exit 0
+2025-04-14T09:14:31.3520914Z 2025/04/14 09:14:31 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:31.3561427Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Started process PID: 1232 with command: {} git config --global credential.helper '!/home/dependabot/common/lib/dependabot/../../bin/git-credential-store-immutable --file /home/dependabot/dependabot-updater/git.store' {}
+2025-04-14T09:14:31.3608295Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Process PID: 1232 completed with status: pid 1232 exit 0
+2025-04-14T09:14:31.3609076Z 2025/04/14 09:14:31 INFO <job_997896517> Total execution time: 0.01 seconds
+2025-04-14T09:14:31.3613483Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Started process PID: 1240 with command: {} git config --global --replace-all url.https://github.com/.insteadOf ssh://git@github.com/ {}
+2025-04-14T09:14:31.3649285Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Process PID: 1240 completed with status: pid 1240 exit 0
+2025-04-14T09:14:31.3651150Z 2025/04/14 09:14:31 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:31.3659631Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Started process PID: 1247 with command: {} git config --global --add url.https://github.com/.insteadOf ssh://git@github.com: {}
+2025-04-14T09:14:31.3690195Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Process PID: 1247 completed with status: pid 1247 exit 0
+2025-04-14T09:14:31.3691578Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:31.3705491Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Started process PID: 1254 with command: {} git config --global --add url.https://github.com/.insteadOf git@github.com: {}
+2025-04-14T09:14:31.3746171Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Process PID: 1254 completed with status: pid 1254 exit 0
+2025-04-14T09:14:31.3747635Z 2025/04/14 09:14:31 INFO <job_997896517> Total execution time: 0.01 seconds
+2025-04-14T09:14:31.3751166Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Started process PID: 1261 with command: {} git config --global --add url.https://github.com/.insteadOf git@github.com/ {}
+2025-04-14T09:14:31.3800069Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Process PID: 1261 completed with status: pid 1261 exit 0
+2025-04-14T09:14:31.3803321Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Total execution time: 0.01 seconds
+2025-04-14T09:14:31.3806191Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Started process PID: 1268 with command: {} git config --global --add url.https://github.com/.insteadOf git://github.com/ {}
+2025-04-14T09:14:31.3851240Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Process PID: 1268 completed with status: pid 1268 exit 0
+2025-04-14T09:14:31.3852196Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:31.3856078Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Started process PID: 1275 with command: {} git rev-parse HEAD {}
+2025-04-14T09:14:31.3903105Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Process PID: 1275 completed with status: pid 1275 exit 0
+2025-04-14T09:14:31.3907083Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Total execution time: 0.01 seconds
+2025-04-14T09:14:31.3915305Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Started process PID: 1282 with command: {} git reset HEAD --hard {}
+2025-04-14T09:14:31.4179783Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Process PID: 1282 completed with status: pid 1282 exit 0
+2025-04-14T09:14:31.4180727Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Total execution time: 0.03 seconds
+2025-04-14T09:14:31.4184506Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Started process PID: 1289 with command: {} git clean -fx {}
+2025-04-14T09:14:31.4231415Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Process PID: 1289 completed with status: pid 1289 exit 0
+2025-04-14T09:14:31.4232518Z 2025/04/14 09:14:31 INFO <job_997896517> Total execution time: 0.01 seconds
+2025-04-14T09:14:31.6131472Z   proxy | 2025/04/14 09:14:31 [008] POST /update_jobs/997896517/record_ecosystem_versions
+2025-04-14T09:14:31.8149131Z   proxy | 2025/04/14 09:14:31 [008] 204 /update_jobs/997896517/record_ecosystem_versions
+2025-04-14T09:14:31.8156436Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Base commit SHA: 1a0062becb4a36a76d7b63e55c44888c53d65835
+2025-04-14T09:14:31.8165907Z updater | 2025/04/14 09:14:31 INFO <job_997896517> Finished job processing
+2025-04-14T09:14:33.5520175Z updater | 2025/04/14 09:14:33 INFO <job_997896517> Starting job processing
+2025-04-14T09:14:33.5559234Z updater | 2025/04/14 09:14:33 INFO <job_997896517> Started process PID: 1302 with command: {} go version {}
+2025-04-14T09:14:33.5676917Z updater | 2025/04/14 09:14:33 INFO <job_997896517> Process PID: 1302 completed with status: pid 1302 exit 0
+2025-04-14T09:14:33.5677933Z updater | 2025/04/14 09:14:33 INFO <job_997896517> Total execution time: 0.01 seconds
+2025-04-14T09:14:33.6066879Z   proxy | 2025/04/14 09:14:33 [011] POST /update_jobs/997896517/update_dependency_list
+2025-04-14T09:14:33.7170412Z   proxy | 2025/04/14 09:14:33 [011] 204 /update_jobs/997896517/update_dependency_list
+2025-04-14T09:14:33.7632103Z   proxy | 2025/04/14 09:14:33 [013] POST /update_jobs/997896517/increment_metric
+2025-04-14T09:14:33.8491482Z   proxy | 2025/04/14 09:14:33 [013] 204 /update_jobs/997896517/increment_metric
+2025-04-14T09:14:33.8522627Z updater | 2025/04/14 09:14:33 INFO <job_997896517> Starting update job for charmbracelet/bubbletea
+2025-04-14T09:14:33.8523483Z 2025/04/14 09:14:33 INFO <job_997896517> Checking all dependencies for version updates...
+2025-04-14T09:14:33.8559027Z updater | 2025/04/14 09:14:33 INFO <job_997896517> Checking if github.com/fogleman/ease 0.0.0-20170301025033-8da417bf1776 needs updating
+2025-04-14T09:14:33.8614825Z updater | 2025/04/14 09:14:33 INFO <job_997896517> Started process PID: 1339 with command: {} git config --global credential.helper '!/home/dependabot/common/lib/dependabot/../../bin/git-credential-store-immutable --file /home/dependabot/dependabot-updater/tmp/20250414-1298-1lkqpr/dependabot_20250414-1298-2405qj/git.store' {}
+2025-04-14T09:14:33.8655106Z updater | 2025/04/14 09:14:33 INFO <job_997896517> Process PID: 1339 completed with status: pid 1339 exit 0
+2025-04-14T09:14:33.8656623Z 2025/04/14 09:14:33 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:33.8663103Z updater | 2025/04/14 09:14:33 INFO <job_997896517> Started process PID: 1347 with command: {} git config --global --replace-all url.https://github.com/.insteadOf ssh://git@github.com/ {}
+2025-04-14T09:14:33.8697196Z updater | 2025/04/14 09:14:33 INFO <job_997896517> Process PID: 1347 completed with status: pid 1347 exit 0
+2025-04-14T09:14:33.8698090Z 2025/04/14 09:14:33 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:33.8703533Z updater | 2025/04/14 09:14:33 INFO <job_997896517> Started process PID: 1354 with command: {} git config --global --add url.https://github.com/.insteadOf ssh://git@github.com: {}
+2025-04-14T09:14:33.8737878Z updater | 2025/04/14 09:14:33 INFO <job_997896517> Process PID: 1354 completed with status: pid 1354 exit 0
+2025-04-14T09:14:33.8738720Z 2025/04/14 09:14:33 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:33.8743755Z updater | 2025/04/14 09:14:33 INFO <job_997896517> Started process PID: 1361 with command: {} git config --global --add url.https://github.com/.insteadOf git@github.com: {}
+2025-04-14T09:14:33.8854693Z updater | 2025/04/14 09:14:33 INFO <job_997896517> Process PID: 1361 completed with status: pid 1361 exit 0
+2025-04-14T09:14:33.8855597Z 2025/04/14 09:14:33 INFO <job_997896517> Total execution time: 0.01 seconds
+2025-04-14T09:14:33.8860026Z updater | 2025/04/14 09:14:33 INFO <job_997896517> Started process PID: 1368 with command: {} git config --global --add url.https://github.com/.insteadOf git@github.com/ {}
+2025-04-14T09:14:33.8897669Z updater | 2025/04/14 09:14:33 INFO <job_997896517> Process PID: 1368 completed with status: pid 1368 exit 0
+2025-04-14T09:14:33.8898565Z 2025/04/14 09:14:33 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:33.8902583Z updater | 2025/04/14 09:14:33 INFO <job_997896517> Started process PID: 1375 with command: {} git config --global --add url.https://github.com/.insteadOf git://github.com/ {}
+2025-04-14T09:14:33.8942574Z updater | 2025/04/14 09:14:33 INFO <job_997896517> Process PID: 1375 completed with status: pid 1375 exit 0
+2025-04-14T09:14:33.8944268Z updater | 2025/04/14 09:14:33 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:33.8952054Z updater | 2025/04/14 09:14:33 INFO <job_997896517> Started process PID: 1382 with command: {} go mod edit -json {}
+2025-04-14T09:14:33.8987071Z updater | 2025/04/14 09:14:33 INFO <job_997896517> Process PID: 1382 completed with status: pid 1382 exit 0
+2025-04-14T09:14:33.8987913Z 2025/04/14 09:14:33 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:33.8997064Z updater | 2025/04/14 09:14:33 INFO <job_997896517> Started process PID: 1389 with command: {"GOPRIVATE"=>""} go list -m -versions -json github.com/fogleman/ease {}
+2025-04-14T09:14:34.1706239Z   proxy | 2025/04/14 09:14:34 [017] GET https://proxy.golang.org:443/github.com/fogleman/ease/@v/list
+2025-04-14T09:14:34.4412710Z   proxy | 2025/04/14 09:14:34 [017] 200 https://proxy.golang.org:443/github.com/fogleman/ease/@v/list
+2025-04-14T09:14:34.4439610Z updater | 2025/04/14 09:14:34 INFO <job_997896517> Process PID: 1389 completed with status: pid 1389 exit 0
+2025-04-14T09:14:34.4440521Z 2025/04/14 09:14:34 INFO <job_997896517> Total execution time: 0.54 seconds
+2025-04-14T09:14:34.4453624Z updater | 2025/04/14 09:14:34 INFO <job_997896517> Latest version is 0.0.0-20170301025033-8da417bf1776
+2025-04-14T09:14:34.4459923Z updater | 2025/04/14 09:14:34 INFO <job_997896517> No update needed for github.com/fogleman/ease 0.0.0-20170301025033-8da417bf1776
+2025-04-14T09:14:34.4912024Z   proxy | 2025/04/14 09:14:34 [019] POST /update_jobs/997896517/record_ecosystem_meta
+2025-04-14T09:14:34.5845142Z   proxy | 2025/04/14 09:14:34 [019] 204 /update_jobs/997896517/record_ecosystem_meta
+2025-04-14T09:14:34.5855564Z updater | 2025/04/14 09:14:34 INFO <job_997896517> Checking if github.com/charmbracelet/glamour 0.9.1 needs updating
+2025-04-14T09:14:34.5905134Z updater | 2025/04/14 09:14:34 INFO <job_997896517> Started process PID: 1404 with command: {} git config --global credential.helper '!/home/dependabot/common/lib/dependabot/../../bin/git-credential-store-immutable --file /home/dependabot/dependabot-updater/tmp/20250414-1298-1lkqpr/dependabot_20250414-1298-9dcfw7/git.store' {}
+2025-04-14T09:14:34.5947442Z updater | 2025/04/14 09:14:34 INFO <job_997896517> Process PID: 1404 completed with status: pid 1404 exit 0
+2025-04-14T09:14:34.5948349Z 2025/04/14 09:14:34 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:34.5955943Z updater | 2025/04/14 09:14:34 INFO <job_997896517> Started process PID: 1412 with command: {} git config --global --replace-all url.https://github.com/.insteadOf ssh://git@github.com/ {}
+2025-04-14T09:14:34.5992779Z updater | 2025/04/14 09:14:34 INFO <job_997896517> Process PID: 1412 completed with status: pid 1412 exit 0
+2025-04-14T09:14:34.5993625Z 2025/04/14 09:14:34 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:34.6002540Z updater | 2025/04/14 09:14:34 INFO <job_997896517> Started process PID: 1419 with command: {} git config --global --add url.https://github.com/.insteadOf ssh://git@github.com: {}
+2025-04-14T09:14:34.6039750Z updater | 2025/04/14 09:14:34 INFO <job_997896517> Process PID: 1419 completed with status: pid 1419 exit 0
+2025-04-14T09:14:34.6040358Z 2025/04/14 09:14:34 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:34.6047428Z updater | 2025/04/14 09:14:34 INFO <job_997896517> Started process PID: 1426 with command: {} git config --global --add url.https://github.com/.insteadOf git@github.com: {}
+2025-04-14T09:14:34.6081131Z updater | 2025/04/14 09:14:34 INFO <job_997896517> Process PID: 1426 completed with status: pid 1426 exit 0
+2025-04-14T09:14:34.6082040Z 2025/04/14 09:14:34 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:34.6086262Z updater | 2025/04/14 09:14:34 INFO <job_997896517> Started process PID: 1433 with command: {} git config --global --add url.https://github.com/.insteadOf git@github.com/ {}
+2025-04-14T09:14:34.6123824Z updater | 2025/04/14 09:14:34 INFO <job_997896517> Process PID: 1433 completed with status: pid 1433 exit 0
+2025-04-14T09:14:34.6125893Z 2025/04/14 09:14:34 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:34.6128965Z updater | 2025/04/14 09:14:34 INFO <job_997896517> Started process PID: 1440 with command: {} git config --global --add url.https://github.com/.insteadOf git://github.com/ {}
+2025-04-14T09:14:34.6162617Z updater | 2025/04/14 09:14:34 INFO <job_997896517> Process PID: 1440 completed with status: pid 1440 exit 0
+2025-04-14T09:14:34.6163190Z 2025/04/14 09:14:34 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:34.6171198Z updater | 2025/04/14 09:14:34 INFO <job_997896517> Started process PID: 1447 with command: {} go mod edit -json {}
+2025-04-14T09:14:34.6209606Z updater | 2025/04/14 09:14:34 INFO <job_997896517> Process PID: 1447 completed with status: pid 1447 exit 0
+2025-04-14T09:14:34.6210339Z 2025/04/14 09:14:34 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:34.6217769Z updater | 2025/04/14 09:14:34 INFO <job_997896517> Started process PID: 1453 with command: {"GOPRIVATE"=>""} go list -m -versions -json github.com/charmbracelet/glamour {}
+2025-04-14T09:14:34.6468212Z   proxy | 2025/04/14 09:14:34 [021] GET https://proxy.golang.org:443/github.com/charmbracelet/glamour/@v/list
+2025-04-14T09:14:34.7014975Z   proxy | 2025/04/14 09:14:34 [021] 200 https://proxy.golang.org:443/github.com/charmbracelet/glamour/@v/list
+2025-04-14T09:14:34.7062098Z   proxy | 2025/04/14 09:14:34 [024] GET https://proxy.golang.org:443/github.com/charmbracelet/glamour/@v/v0.9.1.info
+2025-04-14T09:14:34.7160880Z   proxy | 2025/04/14 09:14:34 [024] 200 https://proxy.golang.org:443/github.com/charmbracelet/glamour/@v/v0.9.1.info
+2025-04-14T09:14:34.7206615Z   proxy | 2025/04/14 09:14:34 [026] GET https://proxy.golang.org:443/github.com/charmbracelet/glamour/@v/v0.9.1.mod
+2025-04-14T09:14:34.7308133Z   proxy | 2025/04/14 09:14:34 [026] 200 https://proxy.golang.org:443/github.com/charmbracelet/glamour/@v/v0.9.1.mod
+2025-04-14T09:14:34.7365811Z   proxy | 2025/04/14 09:14:34 [028] GET https://proxy.golang.org:443/sumdb/sum.golang.org/supported
+2025-04-14T09:14:34.7467386Z   proxy | 2025/04/14 09:14:34 [028] 404 https://proxy.golang.org:443/sumdb/sum.golang.org/supported
+2025-04-14T09:14:34.7480075Z   proxy | 2025/04/14 09:14:34 [028] WARN: Cannot write TLS response body from mitm'd client: write tcp 172.19.0.2:1080->172.19.0.3:55206: write: connection reset by peer
+2025-04-14T09:14:34.7504482Z   proxy | 2025/04/14 09:14:34 [030] GET https://proxy.golang.org:443/sumdb/sum.golang.org/supported
+2025-04-14T09:14:34.7511521Z 2025/04/14 09:14:34 [030] 404 https://proxy.golang.org:443/sumdb/sum.golang.org/supported
+2025-04-14T09:14:35.0387808Z   proxy | 2025/04/14 09:14:35 [032] GET https://sum.golang.org:443/lookup/github.com/charmbracelet/glamour@v0.9.1
+2025-04-14T09:14:35.0805500Z   proxy | 2025/04/14 09:14:35 [032] 200 https://sum.golang.org:443/lookup/github.com/charmbracelet/glamour@v0.9.1
+2025-04-14T09:14:35.0860762Z   proxy | 2025/04/14 09:14:35 [036] GET https://sum.golang.org:443/tile/8/1/554.p/233
+2025-04-14T09:14:35.0864632Z   proxy | 2025/04/14 09:14:35 [037] GET https://sum.golang.org:443/tile/8/0/x141/968
+2025-04-14T09:14:35.0869935Z   proxy | 2025/04/14 09:14:35 [038] GET https://sum.golang.org:443/tile/8/0/x142/057.p/121
+2025-04-14T09:14:35.0959741Z   proxy | 2025/04/14 09:14:35 [036] 200 https://sum.golang.org:443/tile/8/1/554.p/233
+2025-04-14T09:14:35.1072520Z   proxy | 2025/04/14 09:14:35 [037] 200 https://sum.golang.org:443/tile/8/0/x141/968
+2025-04-14T09:14:35.1192535Z   proxy | 2025/04/14 09:14:35 [038] 200 https://sum.golang.org:443/tile/8/0/x142/057.p/121
+2025-04-14T09:14:35.1292468Z   proxy | 2025/04/14 09:14:35 [041] GET https://sum.golang.org:443/tile/8/0/x138/171
+2025-04-14T09:14:35.1297371Z   proxy | 2025/04/14 09:14:35 [042] GET https://sum.golang.org:443/tile/8/1/539
+2025-04-14T09:14:35.1400282Z   proxy | 2025/04/14 09:14:35 [042] 200 https://sum.golang.org:443/tile/8/1/539
+2025-04-14T09:14:35.1401127Z   proxy | 2025/04/14 09:14:35 [041] 200 https://sum.golang.org:443/tile/8/0/x138/171
+2025-04-14T09:14:35.1442133Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Process PID: 1453 completed with status: pid 1453 exit 0
+2025-04-14T09:14:35.1443066Z 2025/04/14 09:14:35 INFO <job_997896517> Total execution time: 0.52 seconds
+2025-04-14T09:14:35.1450841Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Latest version is 0.9.1
+2025-04-14T09:14:35.1451840Z updater | 2025/04/14 09:14:35 INFO <job_997896517> No update needed for github.com/charmbracelet/glamour 0.9.1
+2025-04-14T09:14:35.1902225Z   proxy | 2025/04/14 09:14:35 [044] POST /update_jobs/997896517/record_ecosystem_meta
+2025-04-14T09:14:35.1903416Z 2025/04/14 09:14:35 [044] 204 /update_jobs/997896517/record_ecosystem_meta
+2025-04-14T09:14:35.1911203Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Checking if github.com/lucasb-eyer/go-colorful 1.2.0 needs updating
+2025-04-14T09:14:35.1959812Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Started process PID: 1468 with command: {} git config --global credential.helper '!/home/dependabot/common/lib/dependabot/../../bin/git-credential-store-immutable --file /home/dependabot/dependabot-updater/tmp/20250414-1298-1lkqpr/dependabot_20250414-1298-956dlt/git.store' {}
+2025-04-14T09:14:35.2003105Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Process PID: 1468 completed with status: pid 1468 exit 0
+2025-04-14T09:14:35.2003957Z 2025/04/14 09:14:35 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:35.2009176Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Started process PID: 1476 with command: {} git config --global --replace-all url.https://github.com/.insteadOf ssh://git@github.com/ {}
+2025-04-14T09:14:35.2044566Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Process PID: 1476 completed with status: pid 1476 exit 0
+2025-04-14T09:14:35.2045475Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:35.2049240Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Started process PID: 1483 with command: {} git config --global --add url.https://github.com/.insteadOf ssh://git@github.com: {}
+2025-04-14T09:14:35.2090053Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Process PID: 1483 completed with status: pid 1483 exit 0
+2025-04-14T09:14:35.2090917Z 2025/04/14 09:14:35 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:35.2096165Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Started process PID: 1490 with command: {} git config --global --add url.https://github.com/.insteadOf git@github.com: {}
+2025-04-14T09:14:35.2134270Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Process PID: 1490 completed with status: pid 1490 exit 0
+2025-04-14T09:14:35.2135138Z 2025/04/14 09:14:35 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:35.2139464Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Started process PID: 1497 with command: {} git config --global --add url.https://github.com/.insteadOf git@github.com/ {}
+2025-04-14T09:14:35.2180825Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Process PID: 1497 completed with status: pid 1497 exit 0
+2025-04-14T09:14:35.2181688Z 2025/04/14 09:14:35 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:35.2186587Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Started process PID: 1504 with command: {} git config --global --add url.https://github.com/.insteadOf git://github.com/ {}
+2025-04-14T09:14:35.2225718Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Process PID: 1504 completed with status: pid 1504 exit 0
+2025-04-14T09:14:35.2226619Z 2025/04/14 09:14:35 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:35.2234135Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Started process PID: 1511 with command: {} go mod edit -json {}
+2025-04-14T09:14:35.2267428Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Process PID: 1511 completed with status: pid 1511 exit 0
+2025-04-14T09:14:35.2268087Z 2025/04/14 09:14:35 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:35.2276080Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Started process PID: 1517 with command: {"GOPRIVATE"=>""} go list -m -versions -json github.com/lucasb-eyer/go-colorful {}
+2025-04-14T09:14:35.2482050Z   proxy | 2025/04/14 09:14:35 [047] GET https://proxy.golang.org:443/github.com/lucasb-eyer/go-colorful/@v/list
+2025-04-14T09:14:35.2582373Z   proxy | 2025/04/14 09:14:35 [047] 200 https://proxy.golang.org:443/github.com/lucasb-eyer/go-colorful/@v/list
+2025-04-14T09:14:35.2624332Z   proxy | 2025/04/14 09:14:35 [049] GET https://proxy.golang.org:443/github.com/lucasb-eyer/go-colorful/@v/v1.2.0.info
+2025-04-14T09:14:35.2721850Z   proxy | 2025/04/14 09:14:35 [049] 200 https://proxy.golang.org:443/github.com/lucasb-eyer/go-colorful/@v/v1.2.0.info
+2025-04-14T09:14:35.2766557Z   proxy | 2025/04/14 09:14:35 [051] GET https://proxy.golang.org:443/github.com/lucasb-eyer/go-colorful/@v/v1.2.0.mod
+2025-04-14T09:14:35.2866600Z   proxy | 2025/04/14 09:14:35 [051] 200 https://proxy.golang.org:443/github.com/lucasb-eyer/go-colorful/@v/v1.2.0.mod
+2025-04-14T09:14:35.2921129Z   proxy | 2025/04/14 09:14:35 [053] GET https://proxy.golang.org:443/sumdb/sum.golang.org/supported
+2025-04-14T09:14:35.2922259Z 2025/04/14 09:14:35 [053] 404 https://proxy.golang.org:443/sumdb/sum.golang.org/supported
+2025-04-14T09:14:35.2960904Z   proxy | 2025/04/14 09:14:35 [055] GET https://proxy.golang.org:443/sumdb/sum.golang.org/supported
+2025-04-14T09:14:35.2962300Z 2025/04/14 09:14:35 [055] 404 https://proxy.golang.org:443/sumdb/sum.golang.org/supported
+2025-04-14T09:14:35.2994004Z   proxy | 2025/04/14 09:14:35 [057] GET https://sum.golang.org:443/lookup/github.com/lucasb-eyer/go-colorful@v1.2.0
+2025-04-14T09:14:35.3095313Z   proxy | 2025/04/14 09:14:35 [057] 200 https://sum.golang.org:443/lookup/github.com/lucasb-eyer/go-colorful@v1.2.0
+2025-04-14T09:14:35.3143846Z   proxy | 2025/04/14 09:14:35 [059] GET https://sum.golang.org:443/tile/8/0/x142/048
+2025-04-14T09:14:35.3243086Z   proxy | 2025/04/14 09:14:35 [059] 200 https://sum.golang.org:443/tile/8/0/x142/048
+2025-04-14T09:14:35.3298738Z   proxy | 2025/04/14 09:14:35 [063] GET https://sum.golang.org:443/tile/8/0/x010/262
+2025-04-14T09:14:35.3320332Z   proxy | 2025/04/14 09:14:35 [064] GET https://sum.golang.org:443/tile/8/2/000
+2025-04-14T09:14:35.3327122Z   proxy | 2025/04/14 09:14:35 [065] GET https://sum.golang.org:443/tile/8/1/040
+2025-04-14T09:14:35.3403572Z   proxy | 2025/04/14 09:14:35 [063] 200 https://sum.golang.org:443/tile/8/0/x010/262
+2025-04-14T09:14:35.3426166Z   proxy | 2025/04/14 09:14:35 [064] 200 https://sum.golang.org:443/tile/8/2/000
+2025-04-14T09:14:35.3519689Z   proxy | 2025/04/14 09:14:35 [065] 200 https://sum.golang.org:443/tile/8/1/040
+2025-04-14T09:14:35.3568312Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Process PID: 1517 completed with status: pid 1517 exit 0
+2025-04-14T09:14:35.3569152Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Total execution time: 0.13 seconds
+2025-04-14T09:14:35.3576544Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Latest version is 1.2.0
+2025-04-14T09:14:35.3584752Z updater | 2025/04/14 09:14:35 INFO <job_997896517> No update needed for github.com/lucasb-eyer/go-colorful 1.2.0
+2025-04-14T09:14:35.4033463Z   proxy | 2025/04/14 09:14:35 [067] POST /update_jobs/997896517/record_ecosystem_meta
+2025-04-14T09:14:35.4034499Z   proxy | 2025/04/14 09:14:35 [067] 204 /update_jobs/997896517/record_ecosystem_meta
+2025-04-14T09:14:35.4042711Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Checking if github.com/charmbracelet/harmonica 0.2.0 needs updating
+2025-04-14T09:14:35.4091436Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Started process PID: 1532 with command: {} git config --global credential.helper '!/home/dependabot/common/lib/dependabot/../../bin/git-credential-store-immutable --file /home/dependabot/dependabot-updater/tmp/20250414-1298-1lkqpr/dependabot_20250414-1298-8vgvis/git.store' {}
+2025-04-14T09:14:35.4136889Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Process PID: 1532 completed with status: pid 1532 exit 0
+2025-04-14T09:14:35.4137727Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Total execution time: 0.01 seconds
+2025-04-14T09:14:35.4142952Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Started process PID: 1540 with command: {} git config --global --replace-all url.https://github.com/.insteadOf ssh://git@github.com/ {}
+2025-04-14T09:14:35.4184722Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Process PID: 1540 completed with status: pid 1540 exit 0
+2025-04-14T09:14:35.4185614Z 2025/04/14 09:14:35 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:35.4193936Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Started process PID: 1547 with command: {} git config --global --add url.https://github.com/.insteadOf ssh://git@github.com: {}
+2025-04-14T09:14:35.4224021Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Process PID: 1547 completed with status: pid 1547 exit 0
+2025-04-14T09:14:35.4225405Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:35.4234003Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Started process PID: 1554 with command: {} git config --global --add url.https://github.com/.insteadOf git@github.com: {}
+2025-04-14T09:14:35.4270925Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Process PID: 1554 completed with status: pid 1554 exit 0
+2025-04-14T09:14:35.4271823Z 2025/04/14 09:14:35 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:35.4276221Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Started process PID: 1561 with command: {} git config --global --add url.https://github.com/.insteadOf git@github.com/ {}
+2025-04-14T09:14:35.4312499Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Process PID: 1561 completed with status: pid 1561 exit 0
+2025-04-14T09:14:35.4313148Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:35.4318650Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Started process PID: 1568 with command: {} git config --global --add url.https://github.com/.insteadOf git://github.com/ {}
+2025-04-14T09:14:35.4356502Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Process PID: 1568 completed with status: pid 1568 exit 0
+2025-04-14T09:14:35.4357597Z 2025/04/14 09:14:35 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:35.4364897Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Started process PID: 1575 with command: {} go mod edit -json {}
+2025-04-14T09:14:35.4402593Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Process PID: 1575 completed with status: pid 1575 exit 0
+2025-04-14T09:14:35.4403542Z 2025/04/14 09:14:35 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:35.4411714Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Started process PID: 1581 with command: {"GOPRIVATE"=>""} go list -m -versions -json github.com/charmbracelet/harmonica {}
+2025-04-14T09:14:35.4603881Z   proxy | 2025/04/14 09:14:35 [070] GET https://proxy.golang.org:443/github.com/charmbracelet/harmonica/@v/list
+2025-04-14T09:14:35.5182278Z   proxy | 2025/04/14 09:14:35 [070] 200 https://proxy.golang.org:443/github.com/charmbracelet/harmonica/@v/list
+2025-04-14T09:14:35.5224828Z   proxy | 2025/04/14 09:14:35 [072] GET https://proxy.golang.org:443/github.com/charmbracelet/harmonica/@v/v0.2.0.info
+2025-04-14T09:14:35.5327497Z   proxy | 2025/04/14 09:14:35 [072] 200 https://proxy.golang.org:443/github.com/charmbracelet/harmonica/@v/v0.2.0.info
+2025-04-14T09:14:35.5368247Z   proxy | 2025/04/14 09:14:35 [074] GET https://proxy.golang.org:443/github.com/charmbracelet/harmonica/@v/v0.2.0.mod
+2025-04-14T09:14:35.5469075Z   proxy | 2025/04/14 09:14:35 [074] 200 https://proxy.golang.org:443/github.com/charmbracelet/harmonica/@v/v0.2.0.mod
+2025-04-14T09:14:35.5525580Z   proxy | 2025/04/14 09:14:35 [076] GET https://proxy.golang.org:443/sumdb/sum.golang.org/supported
+2025-04-14T09:14:35.5531028Z   proxy | 2025/04/14 09:14:35 [076] 404 https://proxy.golang.org:443/sumdb/sum.golang.org/supported
+2025-04-14T09:14:35.5566666Z   proxy | 2025/04/14 09:14:35 [078] GET https://proxy.golang.org:443/sumdb/sum.golang.org/supported
+2025-04-14T09:14:35.5569268Z 2025/04/14 09:14:35 [078] 404 https://proxy.golang.org:443/sumdb/sum.golang.org/supported
+2025-04-14T09:14:35.5602150Z   proxy | 2025/04/14 09:14:35 [080] GET https://sum.golang.org:443/lookup/github.com/charmbracelet/harmonica@v0.2.0
+2025-04-14T09:14:35.5701986Z   proxy | 2025/04/14 09:14:35 [080] 200 https://sum.golang.org:443/lookup/github.com/charmbracelet/harmonica@v0.2.0
+2025-04-14T09:14:35.5735340Z   proxy | 2025/04/14 09:14:35 [082] GET https://sum.golang.org:443/tile/8/0/x142/054
+2025-04-14T09:14:35.5838602Z   proxy | 2025/04/14 09:14:35 [082] 200 https://sum.golang.org:443/tile/8/0/x142/054
+2025-04-14T09:14:35.5908093Z   proxy | 2025/04/14 09:14:35 [085] GET https://sum.golang.org:443/tile/8/0/x039/911
+2025-04-14T09:14:35.5912054Z   proxy | 2025/04/14 09:14:35 [086] GET https://sum.golang.org:443/tile/8/1/155
+2025-04-14T09:14:35.6014616Z   proxy | 2025/04/14 09:14:35 [085] 200 https://sum.golang.org:443/tile/8/0/x039/911
+2025-04-14T09:14:35.6015423Z   proxy | 2025/04/14 09:14:35 [086] 200 https://sum.golang.org:443/tile/8/1/155
+2025-04-14T09:14:35.6054051Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Process PID: 1581 completed with status: pid 1581 exit 0
+2025-04-14T09:14:35.6054944Z 2025/04/14 09:14:35 INFO <job_997896517> Total execution time: 0.16 seconds
+2025-04-14T09:14:35.6060631Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Latest version is 0.2.0
+2025-04-14T09:14:35.6061479Z updater | 2025/04/14 09:14:35 INFO <job_997896517> No update needed for github.com/charmbracelet/harmonica 0.2.0
+2025-04-14T09:14:35.6512307Z   proxy | 2025/04/14 09:14:35 [088] POST /update_jobs/997896517/record_ecosystem_meta
+2025-04-14T09:14:35.6514304Z 2025/04/14 09:14:35 [088] 204 /update_jobs/997896517/record_ecosystem_meta
+2025-04-14T09:14:35.6521618Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Checking if github.com/charmbracelet/bubbles 0.20.0 needs updating
+2025-04-14T09:14:35.6569239Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Started process PID: 1596 with command: {} git config --global credential.helper '!/home/dependabot/common/lib/dependabot/../../bin/git-credential-store-immutable --file /home/dependabot/dependabot-updater/tmp/20250414-1298-1lkqpr/dependabot_20250414-1298-j6a50i/git.store' {}
+2025-04-14T09:14:35.6614249Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Process PID: 1596 completed with status: pid 1596 exit 0
+2025-04-14T09:14:35.6614894Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Total execution time: 0.01 seconds
+2025-04-14T09:14:35.6622962Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Started process PID: 1604 with command: {} git config --global --replace-all url.https://github.com/.insteadOf ssh://git@github.com/ {}
+2025-04-14T09:14:35.6662264Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Process PID: 1604 completed with status: pid 1604 exit 0
+2025-04-14T09:14:35.6662861Z 2025/04/14 09:14:35 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:35.6667750Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Started process PID: 1611 with command: {} git config --global --add url.https://github.com/.insteadOf ssh://git@github.com: {}
+2025-04-14T09:14:35.6707771Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Process PID: 1611 completed with status: pid 1611 exit 0
+2025-04-14T09:14:35.6708343Z 2025/04/14 09:14:35 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:35.6715448Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Started process PID: 1618 with command: {} git config --global --add url.https://github.com/.insteadOf git@github.com: {}
+2025-04-14T09:14:35.6754589Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Process PID: 1618 completed with status: pid 1618 exit 0
+2025-04-14T09:14:35.6755495Z 2025/04/14 09:14:35 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:35.6763276Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Started process PID: 1625 with command: {} git config --global --add url.https://github.com/.insteadOf git@github.com/ {}
+2025-04-14T09:14:35.6801669Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Process PID: 1625 completed with status: pid 1625 exit 0
+2025-04-14T09:14:35.6802428Z 2025/04/14 09:14:35 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:35.6807225Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Started process PID: 1632 with command: {} git config --global --add url.https://github.com/.insteadOf git://github.com/ {}
+2025-04-14T09:14:35.6846150Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Process PID: 1632 completed with status: pid 1632 exit 0
+2025-04-14T09:14:35.6847184Z 2025/04/14 09:14:35 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:35.6855336Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Started process PID: 1639 with command: {} go mod edit -json {}
+2025-04-14T09:14:35.6892468Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Process PID: 1639 completed with status: pid 1639 exit 0
+2025-04-14T09:14:35.6893349Z 2025/04/14 09:14:35 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:35.6904386Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Started process PID: 1645 with command: {"GOPRIVATE"=>""} go list -m -versions -json github.com/charmbracelet/bubbles {}
+2025-04-14T09:14:35.7099764Z   proxy | 2025/04/14 09:14:35 [091] GET https://proxy.golang.org:443/github.com/charmbracelet/bubbles/@v/list
+2025-04-14T09:14:35.7818560Z   proxy | 2025/04/14 09:14:35 [091] 200 https://proxy.golang.org:443/github.com/charmbracelet/bubbles/@v/list
+2025-04-14T09:14:35.7864502Z   proxy | 2025/04/14 09:14:35 [093] GET https://proxy.golang.org:443/github.com/charmbracelet/bubbles/@v/v0.21.0.info
+2025-04-14T09:14:35.7965508Z   proxy | 2025/04/14 09:14:35 [093] 200 https://proxy.golang.org:443/github.com/charmbracelet/bubbles/@v/v0.21.0.info
+2025-04-14T09:14:35.8011167Z   proxy | 2025/04/14 09:14:35 [095] GET https://proxy.golang.org:443/github.com/charmbracelet/bubbles/@v/v0.21.0.mod
+2025-04-14T09:14:35.8112527Z   proxy | 2025/04/14 09:14:35 [095] 200 https://proxy.golang.org:443/github.com/charmbracelet/bubbles/@v/v0.21.0.mod
+2025-04-14T09:14:35.8167232Z   proxy | 2025/04/14 09:14:35 [097] GET https://proxy.golang.org:443/sumdb/sum.golang.org/supported
+2025-04-14T09:14:35.8169035Z 2025/04/14 09:14:35 [097] 404 https://proxy.golang.org:443/sumdb/sum.golang.org/supported
+2025-04-14T09:14:35.8205988Z   proxy | 2025/04/14 09:14:35 [099] GET https://proxy.golang.org:443/sumdb/sum.golang.org/supported
+2025-04-14T09:14:35.8207275Z   proxy | 2025/04/14 09:14:35 [099] 404 https://proxy.golang.org:443/sumdb/sum.golang.org/supported
+2025-04-14T09:14:35.8232361Z   proxy | 2025/04/14 09:14:35 [101] GET https://sum.golang.org:443/lookup/github.com/charmbracelet/bubbles@v0.21.0
+2025-04-14T09:14:35.8331946Z   proxy | 2025/04/14 09:14:35 [101] 200 https://sum.golang.org:443/lookup/github.com/charmbracelet/bubbles@v0.21.0
+2025-04-14T09:14:35.8383785Z   proxy | 2025/04/14 09:14:35 [103] GET https://sum.golang.org:443/tile/8/0/x142/055
+2025-04-14T09:14:35.8480323Z   proxy | 2025/04/14 09:14:35 [103] 200 https://sum.golang.org:443/tile/8/0/x142/055
+2025-04-14T09:14:35.8543676Z   proxy | 2025/04/14 09:14:35 [106] GET https://sum.golang.org:443/tile/8/0/x141/637
+2025-04-14T09:14:35.8546545Z   proxy | 2025/04/14 09:14:35 [107] GET https://sum.golang.org:443/tile/8/1/553
+2025-04-14T09:14:35.8639680Z   proxy | 2025/04/14 09:14:35 [106] 200 https://sum.golang.org:443/tile/8/0/x141/637
+2025-04-14T09:14:35.8645071Z   proxy | 2025/04/14 09:14:35 [107] 200 https://sum.golang.org:443/tile/8/1/553
+2025-04-14T09:14:35.8691125Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Process PID: 1645 completed with status: pid 1645 exit 0
+2025-04-14T09:14:35.8692302Z 2025/04/14 09:14:35 INFO <job_997896517> Total execution time: 0.18 seconds
+2025-04-14T09:14:35.8705788Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Latest version is 0.21.0
+2025-04-14T09:14:35.8720721Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Requirements to unlock own
+2025-04-14T09:14:35.8721837Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Requirements update strategy 
+2025-04-14T09:14:35.8733734Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Updating github.com/charmbracelet/bubbles from 0.20.0 to 0.21.0
+2025-04-14T09:14:35.8753305Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Started process PID: 1652 with command: {} git reset HEAD --hard {}
+2025-04-14T09:14:35.9023585Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Process PID: 1652 completed with status: pid 1652 exit 0
+2025-04-14T09:14:35.9024821Z 2025/04/14 09:14:35 INFO <job_997896517> Total execution time: 0.03 seconds
+2025-04-14T09:14:35.9028661Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Started process PID: 1658 with command: {} git clean -fx {}
+2025-04-14T09:14:35.9080974Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Process PID: 1658 completed with status: pid 1658 exit 0
+2025-04-14T09:14:35.9081624Z 2025/04/14 09:14:35 INFO <job_997896517> Total execution time: 0.01 seconds
+2025-04-14T09:14:35.9124522Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Started process PID: 1673 with command: {} git config --global credential.helper '!/home/dependabot/common/lib/dependabot/../../bin/git-credential-store-immutable --file /home/dependabot/dependabot-updater/repo/examples/git.store' {}
+2025-04-14T09:14:35.9169801Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Process PID: 1673 completed with status: pid 1673 exit 0
+2025-04-14T09:14:35.9170709Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:35.9180296Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Started process PID: 1681 with command: {} git config --global --replace-all url.https://github.com/.insteadOf ssh://git@github.com/ {}
+2025-04-14T09:14:35.9217835Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Process PID: 1681 completed with status: pid 1681 exit 0
+2025-04-14T09:14:35.9218523Z 2025/04/14 09:14:35 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:35.9224541Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Started process PID: 1689 with command: {} git config --global --add url.https://github.com/.insteadOf ssh://git@github.com: {}
+2025-04-14T09:14:35.9270537Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Process PID: 1689 completed with status: pid 1689 exit 0
+2025-04-14T09:14:35.9271463Z 2025/04/14 09:14:35 INFO <job_997896517> Total execution time: 0.01 seconds
+2025-04-14T09:14:35.9277152Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Started process PID: 1696 with command: {} git config --global --add url.https://github.com/.insteadOf git@github.com: {}
+2025-04-14T09:14:35.9311471Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Process PID: 1696 completed with status: pid 1696 exit 0
+2025-04-14T09:14:35.9312295Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:35.9317671Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Started process PID: 1703 with command: {} git config --global --add url.https://github.com/.insteadOf git@github.com/ {}
+2025-04-14T09:14:35.9353611Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Process PID: 1703 completed with status: pid 1703 exit 0
+2025-04-14T09:14:35.9354415Z 2025/04/14 09:14:35 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:35.9359580Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Started process PID: 1710 with command: {} git config --global --add url.https://github.com/.insteadOf git://github.com/ {}
+2025-04-14T09:14:35.9394776Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Process PID: 1710 completed with status: pid 1710 exit 0
+2025-04-14T09:14:35.9395714Z updater | 2025/04/14 09:14:35 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:35.9654770Z   proxy | 2025/04/14 09:14:35 [113] GET https://proxy.golang.org:443/github.com/atotto/clipboard/@v/v0.1.4.mod
+2025-04-14T09:14:35.9656089Z 2025/04/14 09:14:35 [114] GET https://proxy.golang.org:443/github.com/aymanbagabas/go-udiff/@v/v0.2.0.mod
+2025-04-14T09:14:35.9657306Z 2025/04/14 09:14:35 [112] GET https://proxy.golang.org:443/github.com/alecthomas/chroma/v2/@v/v2.14.0.mod
+2025-04-14T09:14:35.9658122Z   proxy | 2025/04/14 09:14:35 [115] GET https://proxy.golang.org:443/github.com/aymanbagabas/go-osc52/v2/@v/v2.0.1.mod
+2025-04-14T09:14:35.9753488Z   proxy | 2025/04/14 09:14:35 [114] 200 https://proxy.golang.org:443/github.com/aymanbagabas/go-udiff/@v/v0.2.0.mod
+2025-04-14T09:14:35.9801788Z   proxy | 2025/04/14 09:14:35 [117] GET https://proxy.golang.org:443/github.com/aymerick/douceur/@v/v0.2.0.mod
+2025-04-14T09:14:35.9868207Z   proxy | 2025/04/14 09:14:35 [113] 200 https://proxy.golang.org:443/github.com/atotto/clipboard/@v/v0.1.4.mod
+2025-04-14T09:14:35.9913695Z   proxy | 2025/04/14 09:14:35 [119] GET https://proxy.golang.org:443/github.com/charmbracelet/bubbles/@v/v0.20.0.mod
+2025-04-14T09:14:35.9989325Z   proxy | 2025/04/14 09:14:35 [112] 200 https://proxy.golang.org:443/github.com/alecthomas/chroma/v2/@v/v2.14.0.mod
+2025-04-14T09:14:36.0032930Z   proxy | 2025/04/14 09:14:36 [115] 200 https://proxy.golang.org:443/github.com/aymanbagabas/go-osc52/v2/@v/v2.0.1.mod
+2025-04-14T09:14:36.0040020Z   proxy | 2025/04/14 09:14:36 [121] GET https://proxy.golang.org:443/github.com/charmbracelet/colorprofile/@v/v0.2.3-0.20250311203215-f60798e515dc.mod
+2025-04-14T09:14:36.0053108Z   proxy | 2025/04/14 09:14:36 [117] 200 https://proxy.golang.org:443/github.com/aymerick/douceur/@v/v0.2.0.mod
+2025-04-14T09:14:36.0054281Z   proxy | 2025/04/14 09:14:36 [119] 200 https://proxy.golang.org:443/github.com/charmbracelet/bubbles/@v/v0.20.0.mod
+2025-04-14T09:14:36.0102079Z   proxy | 2025/04/14 09:14:36 [125] GET https://proxy.golang.org:443/github.com/charmbracelet/lipgloss/@v/v1.1.0.mod
+2025-04-14T09:14:36.0106131Z   proxy | 2025/04/14 09:14:36 [126] GET https://proxy.golang.org:443/github.com/charmbracelet/x/cellbuf/@v/v0.0.13-0.20250311204145-2c3ea96c31dd.mod
+2025-04-14T09:14:36.0116286Z   proxy | 2025/04/14 09:14:36 [127] GET https://proxy.golang.org:443/github.com/charmbracelet/x/ansi/@v/v0.8.0.mod
+2025-04-14T09:14:36.0199745Z   proxy | 2025/04/14 09:14:36 [125] 200 https://proxy.golang.org:443/github.com/charmbracelet/lipgloss/@v/v1.1.0.mod
+2025-04-14T09:14:36.0216565Z   proxy | 2025/04/14 09:14:36 [126] 200 https://proxy.golang.org:443/github.com/charmbracelet/x/cellbuf/@v/v0.0.13-0.20250311204145-2c3ea96c31dd.mod
+2025-04-14T09:14:36.0246062Z   proxy | 2025/04/14 09:14:36 [130] GET https://proxy.golang.org:443/github.com/charmbracelet/x/exp/golden/@v/v0.0.0-20241011142426-46044092ad91.mod
+2025-04-14T09:14:36.0268441Z   proxy | 2025/04/14 09:14:36 [131] GET https://proxy.golang.org:443/github.com/charmbracelet/x/exp/teatest/@v/v0.0.0-20240521184646-23081fb03b28.mod
+2025-04-14T09:14:36.0271562Z   proxy | 2025/04/14 09:14:36 [127] 200 https://proxy.golang.org:443/github.com/charmbracelet/x/ansi/@v/v0.8.0.mod
+2025-04-14T09:14:36.0314426Z   proxy | 2025/04/14 09:14:36 [133] GET https://proxy.golang.org:443/github.com/charmbracelet/x/term/@v/v0.2.1.mod
+2025-04-14T09:14:36.0345954Z   proxy | 2025/04/14 09:14:36 [130] 200 https://proxy.golang.org:443/github.com/charmbracelet/x/exp/golden/@v/v0.0.0-20241011142426-46044092ad91.mod
+2025-04-14T09:14:36.0393916Z   proxy | 2025/04/14 09:14:36 [135] GET https://proxy.golang.org:443/github.com/dlclark/regexp2/@v/v1.11.0.mod
+2025-04-14T09:14:36.0409189Z   proxy | 2025/04/14 09:14:36 [133] 200 https://proxy.golang.org:443/github.com/charmbracelet/x/term/@v/v0.2.1.mod
+2025-04-14T09:14:36.0451486Z   proxy | 2025/04/14 09:14:36 [137] GET https://proxy.golang.org:443/github.com/dustin/go-humanize/@v/v1.0.1.mod
+2025-04-14T09:14:36.0497219Z   proxy | 2025/04/14 09:14:36 [135] 200 https://proxy.golang.org:443/github.com/dlclark/regexp2/@v/v1.11.0.mod
+2025-04-14T09:14:36.0536427Z   proxy | 2025/04/14 09:14:36 [139] GET https://proxy.golang.org:443/github.com/erikgeiser/coninput/@v/v0.0.0-20211004153227-1c3628e74d0f.mod
+2025-04-14T09:14:36.0547657Z   proxy | 2025/04/14 09:14:36 [137] 200 https://proxy.golang.org:443/github.com/dustin/go-humanize/@v/v1.0.1.mod
+2025-04-14T09:14:36.0587135Z   proxy | 2025/04/14 09:14:36 [141] GET https://proxy.golang.org:443/github.com/fogleman/ease/@v/v0.0.0-20170301025033-8da417bf1776.mod
+2025-04-14T09:14:36.0637096Z   proxy | 2025/04/14 09:14:36 [139] 200 https://proxy.golang.org:443/github.com/erikgeiser/coninput/@v/v0.0.0-20211004153227-1c3628e74d0f.mod
+2025-04-14T09:14:36.0676594Z   proxy | 2025/04/14 09:14:36 [143] GET https://proxy.golang.org:443/github.com/gorilla/css/@v/v1.0.1.mod
+2025-04-14T09:14:36.0682091Z   proxy | 2025/04/14 09:14:36 [141] 200 https://proxy.golang.org:443/github.com/fogleman/ease/@v/v0.0.0-20170301025033-8da417bf1776.mod
+2025-04-14T09:14:36.0724985Z   proxy | 2025/04/14 09:14:36 [145] GET https://proxy.golang.org:443/github.com/mattn/go-isatty/@v/v0.0.20.mod
+2025-04-14T09:14:36.0789007Z   proxy | 2025/04/14 09:14:36 [143] 200 https://proxy.golang.org:443/github.com/gorilla/css/@v/v1.0.1.mod
+2025-04-14T09:14:36.0831064Z   proxy | 2025/04/14 09:14:36 [145] 200 https://proxy.golang.org:443/github.com/mattn/go-isatty/@v/v0.0.20.mod
+2025-04-14T09:14:36.0836411Z   proxy | 2025/04/14 09:14:36 [147] GET https://proxy.golang.org:443/github.com/mattn/go-localereader/@v/v0.0.1.mod
+2025-04-14T09:14:36.0866100Z   proxy | 2025/04/14 09:14:36 [149] GET https://proxy.golang.org:443/github.com/mattn/go-runewidth/@v/v0.0.16.mod
+2025-04-14T09:14:36.0933177Z   proxy | 2025/04/14 09:14:36 [147] 200 https://proxy.golang.org:443/github.com/mattn/go-localereader/@v/v0.0.1.mod
+2025-04-14T09:14:36.0970667Z   proxy | 2025/04/14 09:14:36 [149] 200 https://proxy.golang.org:443/github.com/mattn/go-runewidth/@v/v0.0.16.mod
+2025-04-14T09:14:36.0976113Z   proxy | 2025/04/14 09:14:36 [151] GET https://proxy.golang.org:443/github.com/microcosm-cc/bluemonday/@v/v1.0.27.mod
+2025-04-14T09:14:36.1013214Z   proxy | 2025/04/14 09:14:36 [153] GET https://proxy.golang.org:443/github.com/muesli/ansi/@v/v0.0.0-20230316100256-276c6243b2f6.mod
+2025-04-14T09:14:36.1072307Z   proxy | 2025/04/14 09:14:36 [151] 200 https://proxy.golang.org:443/github.com/microcosm-cc/bluemonday/@v/v1.0.27.mod
+2025-04-14T09:14:36.1113949Z   proxy | 2025/04/14 09:14:36 [153] 200 https://proxy.golang.org:443/github.com/muesli/ansi/@v/v0.0.0-20230316100256-276c6243b2f6.mod
+2025-04-14T09:14:36.1115961Z   proxy | 2025/04/14 09:14:36 [155] GET https://proxy.golang.org:443/github.com/muesli/cancelreader/@v/v0.2.2.mod
+2025-04-14T09:14:36.1153497Z   proxy | 2025/04/14 09:14:36 [157] GET https://proxy.golang.org:443/github.com/muesli/reflow/@v/v0.3.0.mod
+2025-04-14T09:14:36.1213161Z   proxy | 2025/04/14 09:14:36 [155] 200 https://proxy.golang.org:443/github.com/muesli/cancelreader/@v/v0.2.2.mod
+2025-04-14T09:14:36.1257626Z   proxy | 2025/04/14 09:14:36 [157] 200 https://proxy.golang.org:443/github.com/muesli/reflow/@v/v0.3.0.mod
+2025-04-14T09:14:36.1261683Z   proxy | 2025/04/14 09:14:36 [159] GET https://proxy.golang.org:443/github.com/muesli/termenv/@v/v0.16.0.mod
+2025-04-14T09:14:36.1295957Z   proxy | 2025/04/14 09:14:36 [161] GET https://proxy.golang.org:443/github.com/rivo/uniseg/@v/v0.4.7.mod
+2025-04-14T09:14:36.1360368Z   proxy | 2025/04/14 09:14:36 [159] 200 https://proxy.golang.org:443/github.com/muesli/termenv/@v/v0.16.0.mod
+2025-04-14T09:14:36.1399900Z   proxy | 2025/04/14 09:14:36 [161] 200 https://proxy.golang.org:443/github.com/rivo/uniseg/@v/v0.4.7.mod
+2025-04-14T09:14:36.1404826Z   proxy | 2025/04/14 09:14:36 [163] GET https://proxy.golang.org:443/github.com/sahilm/fuzzy/@v/v0.1.1.mod
+2025-04-14T09:14:36.1437444Z   proxy | 2025/04/14 09:14:36 [165] GET https://proxy.golang.org:443/github.com/xo/terminfo/@v/v0.0.0-20220910002029-abceb7e1c41e.mod
+2025-04-14T09:14:36.1500506Z   proxy | 2025/04/14 09:14:36 [163] 200 https://proxy.golang.org:443/github.com/sahilm/fuzzy/@v/v0.1.1.mod
+2025-04-14T09:14:36.1541044Z   proxy | 2025/04/14 09:14:36 [165] 200 https://proxy.golang.org:443/github.com/xo/terminfo/@v/v0.0.0-20220910002029-abceb7e1c41e.mod
+2025-04-14T09:14:36.1545579Z   proxy | 2025/04/14 09:14:36 [167] GET https://proxy.golang.org:443/github.com/yuin/goldmark/@v/v1.7.8.mod
+2025-04-14T09:14:36.1578349Z   proxy | 2025/04/14 09:14:36 [169] GET https://proxy.golang.org:443/github.com/yuin/goldmark-emoji/@v/v1.0.5.mod
+2025-04-14T09:14:36.1644025Z   proxy | 2025/04/14 09:14:36 [167] 200 https://proxy.golang.org:443/github.com/yuin/goldmark/@v/v1.7.8.mod
+2025-04-14T09:14:36.1685239Z   proxy | 2025/04/14 09:14:36 [169] 200 https://proxy.golang.org:443/github.com/yuin/goldmark-emoji/@v/v1.0.5.mod
+2025-04-14T09:14:36.1690414Z   proxy | 2025/04/14 09:14:36 [171] GET https://proxy.golang.org:443/golang.org/x/net/@v/v0.36.0.mod
+2025-04-14T09:14:36.1723541Z   proxy | 2025/04/14 09:14:36 [173] GET https://proxy.golang.org:443/golang.org/x/sync/@v/v0.13.0.mod
+2025-04-14T09:14:36.1787393Z   proxy | 2025/04/14 09:14:36 [171] 200 https://proxy.golang.org:443/golang.org/x/net/@v/v0.36.0.mod
+2025-04-14T09:14:36.1828630Z   proxy | 2025/04/14 09:14:36 [173] 200 https://proxy.golang.org:443/golang.org/x/sync/@v/v0.13.0.mod
+2025-04-14T09:14:36.1833642Z   proxy | 2025/04/14 09:14:36 [175] GET https://proxy.golang.org:443/golang.org/x/sys/@v/v0.32.0.mod
+2025-04-14T09:14:36.1865629Z   proxy | 2025/04/14 09:14:36 [177] GET https://proxy.golang.org:443/golang.org/x/term/@v/v0.30.0.mod
+2025-04-14T09:14:36.1932640Z   proxy | 2025/04/14 09:14:36 [175] 200 https://proxy.golang.org:443/golang.org/x/sys/@v/v0.32.0.mod
+2025-04-14T09:14:36.1976284Z   proxy | 2025/04/14 09:14:36 [177] 200 https://proxy.golang.org:443/golang.org/x/term/@v/v0.30.0.mod
+2025-04-14T09:14:36.1981429Z   proxy | 2025/04/14 09:14:36 [179] GET https://proxy.golang.org:443/golang.org/x/text/@v/v0.23.0.mod
+2025-04-14T09:14:36.2012360Z   proxy | 2025/04/14 09:14:36 [181] GET https://proxy.golang.org:443/golang.org/x/sys/@v/v0.0.0-20210809222454-d867a43fc93e.mod
+2025-04-14T09:14:36.2082433Z   proxy | 2025/04/14 09:14:36 [179] 200 https://proxy.golang.org:443/golang.org/x/text/@v/v0.23.0.mod
+2025-04-14T09:14:36.2121935Z   proxy | 2025/04/14 09:14:36 [181] 200 https://proxy.golang.org:443/golang.org/x/sys/@v/v0.0.0-20210809222454-d867a43fc93e.mod
+2025-04-14T09:14:36.2125775Z   proxy | 2025/04/14 09:14:36 [183] GET https://proxy.golang.org:443/golang.org/x/sys/@v/v0.6.0.mod
+2025-04-14T09:14:36.2156344Z   proxy | 2025/04/14 09:14:36 [185] GET https://proxy.golang.org:443/github.com/rivo/uniseg/@v/v0.2.0.mod
+2025-04-14T09:14:36.2223754Z   proxy | 2025/04/14 09:14:36 [183] 200 https://proxy.golang.org:443/golang.org/x/sys/@v/v0.6.0.mod
+2025-04-14T09:14:36.2262889Z   proxy | 2025/04/14 09:14:36 [185] 200 https://proxy.golang.org:443/github.com/rivo/uniseg/@v/v0.2.0.mod
+2025-04-14T09:14:36.2268156Z   proxy | 2025/04/14 09:14:36 [187] GET https://proxy.golang.org:443/github.com/mattn/go-runewidth/@v/v0.0.12.mod
+2025-04-14T09:14:36.2298527Z   proxy | 2025/04/14 09:14:36 [189] GET https://proxy.golang.org:443/github.com/yuin/goldmark/@v/v1.7.1.mod
+2025-04-14T09:14:36.2365118Z   proxy | 2025/04/14 09:14:36 [187] 200 https://proxy.golang.org:443/github.com/mattn/go-runewidth/@v/v0.0.12.mod
+2025-04-14T09:14:36.2380784Z   proxy | 2025/04/14 09:14:36 [121] 200 https://proxy.golang.org:443/github.com/charmbracelet/colorprofile/@v/v0.2.3-0.20250311203215-f60798e515dc.mod
+2025-04-14T09:14:36.2400256Z   proxy | 2025/04/14 09:14:36 [189] 200 https://proxy.golang.org:443/github.com/yuin/goldmark/@v/v1.7.1.mod
+2025-04-14T09:14:36.2413176Z   proxy | 2025/04/14 09:14:36 [191] GET https://proxy.golang.org:443/github.com/rivo/uniseg/@v/v0.1.0.mod
+2025-04-14T09:14:36.2517405Z   proxy | 2025/04/14 09:14:36 [131] 200 https://proxy.golang.org:443/github.com/charmbracelet/x/exp/teatest/@v/v0.0.0-20240521184646-23081fb03b28.mod
+2025-04-14T09:14:36.2520002Z 2025/04/14 09:14:36 [191] 200 https://proxy.golang.org:443/github.com/rivo/uniseg/@v/v0.1.0.mod
+2025-04-14T09:14:36.2567897Z   proxy | 2025/04/14 09:14:36 [195] GET https://proxy.golang.org:443/github.com/@v/v0.21.0.info
+2025-04-14T09:14:36.2574380Z   proxy | 2025/04/14 09:14:36 [196] GET https://proxy.golang.org:443/github.com/charmbracelet/@v/v0.21.0.info
+2025-04-14T09:14:36.2578703Z   proxy | 2025/04/14 09:14:36 [197] GET https://proxy.golang.org:443/github.com/charmbracelet/bubbles/@v/v0.21.0.zip
+2025-04-14T09:14:36.2941126Z   proxy | 2025/04/14 09:14:36 [197] 200 https://proxy.golang.org:443/github.com/charmbracelet/bubbles/@v/v0.21.0.zip
+2025-04-14T09:14:36.3066027Z   proxy | 2025/04/14 09:14:36 [195] 404 https://proxy.golang.org:443/github.com/@v/v0.21.0.info
+2025-04-14T09:14:36.3096856Z   proxy | 2025/04/14 09:14:36 [199] GET https://proxy.golang.org:443/github.com/@v/v0.21.0.info
+2025-04-14T09:14:36.3097775Z 2025/04/14 09:14:36 [199] 404 https://proxy.golang.org:443/github.com/@v/v0.21.0.info
+2025-04-14T09:14:36.4658587Z   proxy | 2025/04/14 09:14:36 [196] 404 https://proxy.golang.org:443/github.com/charmbracelet/@v/v0.21.0.info
+2025-04-14T09:14:36.4669955Z   proxy | 2025/04/14 09:14:36 [196] WARN: Cannot write TLS response body from mitm'd client: write tcp 172.19.0.2:1080->172.19.0.3:56002: write: broken pipe
+2025-04-14T09:14:36.4693998Z   proxy | 2025/04/14 09:14:36 [201] GET https://proxy.golang.org:443/github.com/charmbracelet/@v/v0.21.0.info
+2025-04-14T09:14:36.4695063Z 2025/04/14 09:14:36 [201] 404 https://proxy.golang.org:443/github.com/charmbracelet/@v/v0.21.0.info
+2025-04-14T09:14:36.4739295Z   proxy | 2025/04/14 09:14:36 [203] GET https://proxy.golang.org:443/github.com/charmbracelet/bubbles/@v/list
+2025-04-14T09:14:36.4740376Z 2025/04/14 09:14:36 [203] 200 https://proxy.golang.org:443/github.com/charmbracelet/bubbles/@v/list
+2025-04-14T09:14:36.5370143Z   proxy | 2025/04/14 09:14:36 [207] GET https://proxy.golang.org:443/github.com/charmbracelet/lipgloss/@v/v1.1.0.zip
+2025-04-14T09:14:36.5371912Z   proxy | 2025/04/14 09:14:36 [208] GET https://proxy.golang.org:443/github.com/charmbracelet/harmonica/@v/v0.2.0.zip
+2025-04-14T09:14:36.5372693Z 2025/04/14 09:14:36 [209] GET https://proxy.golang.org:443/github.com/charmbracelet/glamour/@v/v0.9.1.zip
+2025-04-14T09:14:36.5416249Z   proxy | 2025/04/14 09:14:36 [211] GET https://proxy.golang.org:443/github.com/charmbracelet/x/exp/teatest/@v/v0.0.0-20240521184646-23081fb03b28.zip
+2025-04-14T09:14:36.5471759Z   proxy | 2025/04/14 09:14:36 [208] 200 https://proxy.golang.org:443/github.com/charmbracelet/harmonica/@v/v0.2.0.zip
+2025-04-14T09:14:36.5487704Z   proxy | 2025/04/14 09:14:36 [207] 200 https://proxy.golang.org:443/github.com/charmbracelet/lipgloss/@v/v1.1.0.zip
+2025-04-14T09:14:36.5604241Z   proxy | 2025/04/14 09:14:36 [209] 200 https://proxy.golang.org:443/github.com/charmbracelet/glamour/@v/v0.9.1.zip
+2025-04-14T09:14:36.5807979Z   proxy | 2025/04/14 09:14:36 [214] GET https://proxy.golang.org:443/github.com/mattn/go-isatty/@v/v0.0.20.zip
+2025-04-14T09:14:36.5824668Z   proxy | 2025/04/14 09:14:36 [215] GET https://proxy.golang.org:443/github.com/fogleman/ease/@v/v0.0.0-20170301025033-8da417bf1776.zip
+2025-04-14T09:14:36.5915833Z   proxy | 2025/04/14 09:14:36 [214] 200 https://proxy.golang.org:443/github.com/mattn/go-isatty/@v/v0.0.20.zip
+2025-04-14T09:14:36.5933728Z   proxy | 2025/04/14 09:14:36 [215] 200 https://proxy.golang.org:443/github.com/fogleman/ease/@v/v0.0.0-20170301025033-8da417bf1776.zip
+2025-04-14T09:14:36.6004723Z   proxy | 2025/04/14 09:14:36 [217] GET https://proxy.golang.org:443/github.com/lucasb-eyer/go-colorful/@v/v1.2.0.zip
+2025-04-14T09:14:36.6113763Z   proxy | 2025/04/14 09:14:36 [217] 200 https://proxy.golang.org:443/github.com/lucasb-eyer/go-colorful/@v/v1.2.0.zip
+2025-04-14T09:14:36.6232557Z   proxy | 2025/04/14 09:14:36 [219] GET https://proxy.golang.org:443/github.com/charmbracelet/x/ansi/@v/v0.8.0.zip
+2025-04-14T09:14:36.6293467Z   proxy | 2025/04/14 09:14:36 [221] GET https://proxy.golang.org:443/github.com/charmbracelet/x/term/@v/v0.2.1.zip
+2025-04-14T09:14:36.6337490Z   proxy | 2025/04/14 09:14:36 [219] 200 https://proxy.golang.org:443/github.com/charmbracelet/x/ansi/@v/v0.8.0.zip
+2025-04-14T09:14:36.6497797Z   proxy | 2025/04/14 09:14:36 [221] 200 https://proxy.golang.org:443/github.com/charmbracelet/x/term/@v/v0.2.1.zip
+2025-04-14T09:14:36.6613878Z   proxy | 2025/04/14 09:14:36 [223] GET https://proxy.golang.org:443/github.com/erikgeiser/coninput/@v/v0.0.0-20211004153227-1c3628e74d0f.zip
+2025-04-14T09:14:36.6701589Z   proxy | 2025/04/14 09:14:36 [225] GET https://proxy.golang.org:443/github.com/mattn/go-localereader/@v/v0.0.1.zip
+2025-04-14T09:14:36.6715542Z   proxy | 2025/04/14 09:14:36 [223] 200 https://proxy.golang.org:443/github.com/erikgeiser/coninput/@v/v0.0.0-20211004153227-1c3628e74d0f.zip
+2025-04-14T09:14:36.6799767Z   proxy | 2025/04/14 09:14:36 [227] GET https://proxy.golang.org:443/github.com/muesli/ansi/@v/v0.0.0-20230316100256-276c6243b2f6.zip
+2025-04-14T09:14:36.6804721Z   proxy | 2025/04/14 09:14:36 [225] 200 https://proxy.golang.org:443/github.com/mattn/go-localereader/@v/v0.0.1.zip
+2025-04-14T09:14:36.6871701Z   proxy | 2025/04/14 09:14:36 [229] GET https://proxy.golang.org:443/github.com/muesli/cancelreader/@v/v0.2.2.zip
+2025-04-14T09:14:36.6904876Z   proxy | 2025/04/14 09:14:36 [227] 200 https://proxy.golang.org:443/github.com/muesli/ansi/@v/v0.0.0-20230316100256-276c6243b2f6.zip
+2025-04-14T09:14:36.6971905Z   proxy | 2025/04/14 09:14:36 [229] 200 https://proxy.golang.org:443/github.com/muesli/cancelreader/@v/v0.2.2.zip
+2025-04-14T09:14:36.7001186Z   proxy | 2025/04/14 09:14:36 [231] GET https://proxy.golang.org:443/golang.org/x/sync/@v/v0.13.0.zip
+2025-04-14T09:14:36.7080227Z   proxy | 2025/04/14 09:14:36 [233] GET https://proxy.golang.org:443/golang.org/x/sys/@v/v0.32.0.zip
+2025-04-14T09:14:36.7106110Z   proxy | 2025/04/14 09:14:36 [231] 200 https://proxy.golang.org:443/golang.org/x/sync/@v/v0.13.0.zip
+2025-04-14T09:14:36.7207491Z   proxy | 2025/04/14 09:14:36 [233] 200 https://proxy.golang.org:443/golang.org/x/sys/@v/v0.32.0.zip
+2025-04-14T09:14:36.7612782Z   proxy | 2025/04/14 09:14:36 [235] GET https://proxy.golang.org:443/github.com/charmbracelet/x/exp/golden/@v/v0.0.0-20241011142426-46044092ad91.zip
+2025-04-14T09:14:36.7713019Z   proxy | 2025/04/14 09:14:36 [235] 200 https://proxy.golang.org:443/github.com/charmbracelet/x/exp/golden/@v/v0.0.0-20241011142426-46044092ad91.zip
+2025-04-14T09:14:36.7741116Z   proxy | 2025/04/14 09:14:36 [237] GET https://proxy.golang.org:443/github.com/atotto/clipboard/@v/v0.1.4.zip
+2025-04-14T09:14:36.7794416Z   proxy | 2025/04/14 09:14:36 [239] GET https://proxy.golang.org:443/github.com/mattn/go-runewidth/@v/v0.0.16.zip
+2025-04-14T09:14:36.7826160Z   proxy | 2025/04/14 09:14:36 [211] 200 https://proxy.golang.org:443/github.com/charmbracelet/x/exp/teatest/@v/v0.0.0-20240521184646-23081fb03b28.zip
+2025-04-14T09:14:36.7841079Z   proxy | 2025/04/14 09:14:36 [237] 200 https://proxy.golang.org:443/github.com/atotto/clipboard/@v/v0.1.4.zip
+2025-04-14T09:14:36.7899556Z   proxy | 2025/04/14 09:14:36 [239] 200 https://proxy.golang.org:443/github.com/mattn/go-runewidth/@v/v0.0.16.zip
+2025-04-14T09:14:36.7952262Z   proxy | 2025/04/14 09:14:36 [241] GET https://proxy.golang.org:443/github.com/rivo/uniseg/@v/v0.4.7.zip
+2025-04-14T09:14:36.8045926Z   proxy | 2025/04/14 09:14:36 [241] 200 https://proxy.golang.org:443/github.com/rivo/uniseg/@v/v0.4.7.zip
+2025-04-14T09:14:36.8458252Z   proxy | 2025/04/14 09:14:36 [244] GET https://proxy.golang.org:443/github.com/aymanbagabas/go-udiff/@v/v0.2.0.zip
+2025-04-14T09:14:36.8482600Z   proxy | 2025/04/14 09:14:36 [245] GET https://proxy.golang.org:443/github.com/%21make%21now%21just/heredoc/@v/v1.0.0.zip
+2025-04-14T09:14:36.8561972Z   proxy | 2025/04/14 09:14:36 [244] 200 https://proxy.golang.org:443/github.com/aymanbagabas/go-udiff/@v/v0.2.0.zip
+2025-04-14T09:14:36.8585091Z   proxy | 2025/04/14 09:14:36 [245] 200 https://proxy.golang.org:443/github.com/%21make%21now%21just/heredoc/@v/v1.0.0.zip
+2025-04-14T09:14:36.8682427Z   proxy | 2025/04/14 09:14:36 [247] GET https://proxy.golang.org:443/github.com/%21make%21now%21just/heredoc/@v/v1.0.0.mod
+2025-04-14T09:14:36.8783672Z   proxy | 2025/04/14 09:14:36 [247] 200 https://proxy.golang.org:443/github.com/%21make%21now%21just/heredoc/@v/v1.0.0.mod
+2025-04-14T09:14:36.8829068Z   proxy | 2025/04/14 09:14:36 [250] GET https://proxy.golang.org:443/github.com/dustin/go-humanize/@v/v1.0.1.zip
+2025-04-14T09:14:36.8851947Z   proxy | 2025/04/14 09:14:36 [251] GET https://proxy.golang.org:443/github.com/sahilm/fuzzy/@v/v0.1.1.zip
+2025-04-14T09:14:36.8910803Z   proxy | 2025/04/14 09:14:36 [253] GET https://proxy.golang.org:443/github.com/muesli/termenv/@v/v0.16.0.zip
+2025-04-14T09:14:36.8935761Z   proxy | 2025/04/14 09:14:36 [250] 200 https://proxy.golang.org:443/github.com/dustin/go-humanize/@v/v1.0.1.zip
+2025-04-14T09:14:36.8966637Z   proxy | 2025/04/14 09:14:36 [251] 200 https://proxy.golang.org:443/github.com/sahilm/fuzzy/@v/v0.1.1.zip
+2025-04-14T09:14:36.9060766Z   proxy | 2025/04/14 09:14:36 [253] 200 https://proxy.golang.org:443/github.com/muesli/termenv/@v/v0.16.0.zip
+2025-04-14T09:14:36.9217776Z   proxy | 2025/04/14 09:14:36 [255] GET https://proxy.golang.org:443/github.com/charmbracelet/x/cellbuf/@v/v0.0.13-0.20250311204145-2c3ea96c31dd.zip
+2025-04-14T09:14:36.9336072Z   proxy | 2025/04/14 09:14:36 [255] 200 https://proxy.golang.org:443/github.com/charmbracelet/x/cellbuf/@v/v0.0.13-0.20250311204145-2c3ea96c31dd.zip
+2025-04-14T09:14:36.9655857Z   proxy | 2025/04/14 09:14:36 [257] GET https://proxy.golang.org:443/github.com/yuin/goldmark/@v/v1.7.8.zip
+2025-04-14T09:14:36.9778285Z   proxy | 2025/04/14 09:14:36 [257] 200 https://proxy.golang.org:443/github.com/yuin/goldmark/@v/v1.7.8.zip
+2025-04-14T09:14:37.0005799Z   proxy | 2025/04/14 09:14:37 [259] GET https://proxy.golang.org:443/github.com/yuin/goldmark-emoji/@v/v1.0.5.zip
+2025-04-14T09:14:37.0135247Z   proxy | 2025/04/14 09:14:37 [259] 200 https://proxy.golang.org:443/github.com/yuin/goldmark-emoji/@v/v1.0.5.zip
+2025-04-14T09:14:37.0136368Z 2025/04/14 09:14:37 [262] GET https://proxy.golang.org:443/golang.org/x/term/@v/v0.30.0.zip
+2025-04-14T09:14:37.0160421Z   proxy | 2025/04/14 09:14:37 [263] GET https://proxy.golang.org:443/golang.org/x/text/@v/v0.23.0.zip
+2025-04-14T09:14:37.0239430Z   proxy | 2025/04/14 09:14:37 [262] 200 https://proxy.golang.org:443/golang.org/x/term/@v/v0.30.0.zip
+2025-04-14T09:14:37.0297502Z   proxy | 2025/04/14 09:14:37 [263] 200 https://proxy.golang.org:443/golang.org/x/text/@v/v0.23.0.zip
+2025-04-14T09:14:37.0671024Z   proxy | 2025/04/14 09:14:37 [267] GET https://proxy.golang.org:443/github.com/alecthomas/chroma/v2/@v/v2.14.0.zip
+2025-04-14T09:14:37.0672428Z   proxy | 2025/04/14 09:14:37 [268] GET https://proxy.golang.org:443/github.com/charmbracelet/colorprofile/@v/v0.2.3-0.20250311203215-f60798e515dc.zip
+2025-04-14T09:14:37.0673782Z   proxy | 2025/04/14 09:14:37 [269] GET https://proxy.golang.org:443/github.com/aymanbagabas/go-osc52/v2/@v/v2.0.1.zip
+2025-04-14T09:14:37.0779022Z   proxy | 2025/04/14 09:14:37 [267] 200 https://proxy.golang.org:443/github.com/alecthomas/chroma/v2/@v/v2.14.0.zip
+2025-04-14T09:14:37.0955657Z   proxy | 2025/04/14 09:14:37 [268] 200 https://proxy.golang.org:443/github.com/charmbracelet/colorprofile/@v/v0.2.3-0.20250311203215-f60798e515dc.zip
+2025-04-14T09:14:37.0981221Z   proxy | 2025/04/14 09:14:37 [269] 200 https://proxy.golang.org:443/github.com/aymanbagabas/go-osc52/v2/@v/v2.0.1.zip
+2025-04-14T09:14:37.2738315Z   proxy | 2025/04/14 09:14:37 [272] GET https://proxy.golang.org:443/github.com/microcosm-cc/bluemonday/@v/v1.0.27.zip
+2025-04-14T09:14:37.2739414Z 2025/04/14 09:14:37 [273] GET https://proxy.golang.org:443/github.com/muesli/reflow/@v/v0.3.0.zip
+2025-04-14T09:14:37.2841737Z   proxy | 2025/04/14 09:14:37 [273] 200 https://proxy.golang.org:443/github.com/muesli/reflow/@v/v0.3.0.zip
+2025-04-14T09:14:37.5184542Z   proxy | 2025/04/14 09:14:37 [272] 200 https://proxy.golang.org:443/github.com/microcosm-cc/bluemonday/@v/v1.0.27.zip
+2025-04-14T09:14:37.5651241Z   proxy | 2025/04/14 09:14:37 [275] GET https://proxy.golang.org:443/github.com/kylelemons/godebug/@v/v1.1.0.zip
+2025-04-14T09:14:37.5754234Z   proxy | 2025/04/14 09:14:37 [275] 200 https://proxy.golang.org:443/github.com/kylelemons/godebug/@v/v1.1.0.zip
+2025-04-14T09:14:37.5831006Z   proxy | 2025/04/14 09:14:37 [277] GET https://proxy.golang.org:443/github.com/kylelemons/godebug/@v/v1.1.0.mod
+2025-04-14T09:14:37.5932428Z   proxy | 2025/04/14 09:14:37 [277] 200 https://proxy.golang.org:443/github.com/kylelemons/godebug/@v/v1.1.0.mod
+2025-04-14T09:14:37.6243943Z   proxy | 2025/04/14 09:14:37 [279] GET https://proxy.golang.org:443/github.com/xo/terminfo/@v/v0.0.0-20220910002029-abceb7e1c41e.zip
+2025-04-14T09:14:37.6349520Z   proxy | 2025/04/14 09:14:37 [279] 200 https://proxy.golang.org:443/github.com/xo/terminfo/@v/v0.0.0-20220910002029-abceb7e1c41e.zip
+2025-04-14T09:14:37.6473204Z   proxy | 2025/04/14 09:14:37 [281] GET https://proxy.golang.org:443/github.com/dlclark/regexp2/@v/v1.11.0.zip
+2025-04-14T09:14:37.6583440Z   proxy | 2025/04/14 09:14:37 [281] 200 https://proxy.golang.org:443/github.com/dlclark/regexp2/@v/v1.11.0.zip
+2025-04-14T09:14:37.6853631Z   proxy | 2025/04/14 09:14:37 [285] GET https://proxy.golang.org:443/github.com/alecthomas/assert/v2/@v/v2.7.0.zip
+2025-04-14T09:14:37.6865677Z   proxy | 2025/04/14 09:14:37 [286] GET https://proxy.golang.org:443/golang.org/x/net/@v/v0.36.0.zip
+2025-04-14T09:14:37.6883652Z   proxy | 2025/04/14 09:14:37 [287] GET https://proxy.golang.org:443/github.com/aymerick/douceur/@v/v0.2.0.zip
+2025-04-14T09:14:37.6959086Z   proxy | 2025/04/14 09:14:37 [285] 200 https://proxy.golang.org:443/github.com/alecthomas/assert/v2/@v/v2.7.0.zip
+2025-04-14T09:14:37.7023405Z   proxy | 2025/04/14 09:14:37 [289] GET https://proxy.golang.org:443/github.com/alecthomas/assert/v2/@v/v2.7.0.mod
+2025-04-14T09:14:37.7055486Z   proxy | 2025/04/14 09:14:37 [287] 200 https://proxy.golang.org:443/github.com/aymerick/douceur/@v/v0.2.0.zip
+2025-04-14T09:14:37.7067611Z   proxy | 2025/04/14 09:14:37 [286] 200 https://proxy.golang.org:443/golang.org/x/net/@v/v0.36.0.zip
+2025-04-14T09:14:37.7188610Z   proxy | 2025/04/14 09:14:37 [289] 200 https://proxy.golang.org:443/github.com/alecthomas/assert/v2/@v/v2.7.0.mod
+2025-04-14T09:14:37.7289219Z   proxy | 2025/04/14 09:14:37 [291] GET https://proxy.golang.org:443/golang.org/x/exp/@v/v0.0.0-20220909182711-5c715a9e8561.zip
+2025-04-14T09:14:37.9287130Z   proxy | 2025/04/14 09:14:37 [293] GET https://proxy.golang.org:443/github.com/alecthomas/repr/@v/v0.4.0.zip
+2025-04-14T09:14:37.9410618Z   proxy | 2025/04/14 09:14:37 [293] 200 https://proxy.golang.org:443/github.com/alecthomas/repr/@v/v0.4.0.zip
+2025-04-14T09:14:37.9496953Z   proxy | 2025/04/14 09:14:37 [295] GET https://proxy.golang.org:443/github.com/alecthomas/repr/@v/v0.4.0.mod
+2025-04-14T09:14:37.9541598Z   proxy | 2025/04/14 09:14:37 [297] GET https://proxy.golang.org:443/github.com/gorilla/css/@v/v1.0.1.zip
+2025-04-14T09:14:37.9600352Z   proxy | 2025/04/14 09:14:37 [295] 200 https://proxy.golang.org:443/github.com/alecthomas/repr/@v/v0.4.0.mod
+2025-04-14T09:14:37.9641701Z   proxy | 2025/04/14 09:14:37 [297] 200 https://proxy.golang.org:443/github.com/gorilla/css/@v/v1.0.1.zip
+2025-04-14T09:14:37.9647364Z   proxy | 2025/04/14 09:14:37 [299] GET https://proxy.golang.org:443/github.com/hexops/gotextdiff/@v/v1.0.3.zip
+2025-04-14T09:14:37.9728526Z   proxy | 2025/04/14 09:14:37 [291] 200 https://proxy.golang.org:443/golang.org/x/exp/@v/v0.0.0-20220909182711-5c715a9e8561.zip
+2025-04-14T09:14:37.9750376Z   proxy | 2025/04/14 09:14:37 [299] 200 https://proxy.golang.org:443/github.com/hexops/gotextdiff/@v/v1.0.3.zip
+2025-04-14T09:14:37.9932951Z   proxy | 2025/04/14 09:14:37 [301] GET https://proxy.golang.org:443/github.com/hexops/gotextdiff/@v/v1.0.3.mod
+2025-04-14T09:14:38.0036423Z   proxy | 2025/04/14 09:14:38 [301] 200 https://proxy.golang.org:443/github.com/hexops/gotextdiff/@v/v1.0.3.mod
+2025-04-14T09:14:38.0890160Z   proxy | 2025/04/14 09:14:38 [303] GET https://proxy.golang.org:443/golang.org/x/exp/@v/v0.0.0-20220909182711-5c715a9e8561.mod
+2025-04-14T09:14:38.0996610Z   proxy | 2025/04/14 09:14:38 [303] 200 https://proxy.golang.org:443/golang.org/x/exp/@v/v0.0.0-20220909182711-5c715a9e8561.mod
+2025-04-14T09:14:38.1054586Z updater | 2025/04/14 09:14:38 INFO <job_997896517> `go mod tidy` succeeded
+2025-04-14T09:14:38.1070209Z updater | 2025/04/14 09:14:38 INFO <job_997896517> Started process PID: 1753 with command: {} git status --untracked-files all --porcelain v1 /home/dependabot/dependabot-updater/repo/examples/vendor {}
+2025-04-14T09:14:38.1115816Z updater | 2025/04/14 09:14:38 INFO <job_997896517> Process PID: 1753 completed with status: pid 1753 exit 0
+2025-04-14T09:14:38.1116900Z updater | 2025/04/14 09:14:38 INFO <job_997896517> Total execution time: 0.01 seconds
+2025-04-14T09:14:38.1121966Z updater | 2025/04/14 09:14:38 INFO <job_997896517> Submitting github.com/charmbracelet/bubbles pull request for creation
+2025-04-14T09:14:38.3754224Z   proxy | 2025/04/14 09:14:38 [305] GET https://api.github.com:443/repos/charmbracelet/bubbletea/commits?per_page=100
+2025-04-14T09:14:38.3755327Z 2025/04/14 09:14:38 [305] * authenticating github api request with token for api.github.com
+2025-04-14T09:14:38.8919782Z   proxy | 2025/04/14 09:14:38 [305] 200 https://api.github.com:443/repos/charmbracelet/bubbletea/commits?per_page=100
+2025-04-14T09:14:39.0744433Z updater | 2025/04/14 09:14:39 INFO <job_997896517> Started process PID: 1761 with command: /opt/go_modules/bin/helper
+2025-04-14T09:14:39.0774927Z updater | 2025/04/14 09:14:39 INFO <job_997896517> Process PID: 1761 completed with status: pid 1761 exit 0
+2025-04-14T09:14:39.0775836Z 2025/04/14 09:14:39 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:39.1123535Z   proxy | 2025/04/14 09:14:39 [307] GET https://api.github.com:443/repos/charmbracelet/bubbles/releases?per_page=100
+2025-04-14T09:14:39.1124300Z 2025/04/14 09:14:39 [307] * authenticating github api request with token for api.github.com
+2025-04-14T09:14:39.3732214Z   proxy | 2025/04/14 09:14:39 [307] 200 https://api.github.com:443/repos/charmbracelet/bubbles/releases?per_page=100
+2025-04-14T09:14:39.4641371Z   proxy | 2025/04/14 09:14:39 [309] GET https://api.github.com:443/repos/charmbracelet/bubbles/contents/
+2025-04-14T09:14:39.4642371Z 2025/04/14 09:14:39 [309] * authenticating github api request with token for api.github.com
+2025-04-14T09:14:39.6094249Z   proxy | 2025/04/14 09:14:39 [309] 200 https://api.github.com:443/repos/charmbracelet/bubbles/contents/
+2025-04-14T09:14:39.6450539Z   proxy | 2025/04/14 09:14:39 [311] GET https://api.github.com:443/repos/charmbracelet/bubbles/contents/.goreleaser.yml?ref=master
+2025-04-14T09:14:39.6451362Z 2025/04/14 09:14:39 [311] * authenticating github api request with token for api.github.com
+2025-04-14T09:14:39.8085204Z   proxy | 2025/04/14 09:14:39 [311] 200 https://api.github.com:443/repos/charmbracelet/bubbles/contents/.goreleaser.yml?ref=master
+2025-04-14T09:14:39.9103602Z   proxy | 2025/04/14 09:14:39 [313] GET https://github.com:443/charmbracelet/bubbles.git/info/refs?service=git-upload-pack
+2025-04-14T09:14:39.9104446Z 2025/04/14 09:14:39 [313] * authenticating git server request (host: github.com)
+2025-04-14T09:14:40.0168058Z   proxy | 2025/04/14 09:14:40 [313] 200 https://github.com:443/charmbracelet/bubbles.git/info/refs?service=git-upload-pack
+2025-04-14T09:14:40.0413303Z   proxy | 2025/04/14 09:14:40 [315] GET https://api.github.com:443/repos/charmbracelet/bubbles/contents/?ref=v0.21.0
+2025-04-14T09:14:40.0414049Z 2025/04/14 09:14:40 [315] * authenticating github api request with token for api.github.com
+2025-04-14T09:14:40.1780851Z   proxy | 2025/04/14 09:14:40 [315] 200 https://api.github.com:443/repos/charmbracelet/bubbles/contents/?ref=v0.21.0
+2025-04-14T09:14:40.2518437Z   proxy | 2025/04/14 09:14:40 [317] GET https://api.github.com:443/repos/charmbracelet/bubbles/contents/.goreleaser.yml?ref=v0.21.0
+2025-04-14T09:14:40.2519200Z 2025/04/14 09:14:40 [317] * authenticating github api request with token for api.github.com
+2025-04-14T09:14:40.3961257Z   proxy | 2025/04/14 09:14:40 [317] 200 https://api.github.com:443/repos/charmbracelet/bubbles/contents/.goreleaser.yml?ref=v0.21.0
+2025-04-14T09:14:40.4973299Z   proxy | 2025/04/14 09:14:40 [319] GET https://github.com:443/charmbracelet/bubbles.git/info/refs?service=git-upload-pack
+2025-04-14T09:14:40.4975752Z 2025/04/14 09:14:40 [319] 200 https://github.com:443/charmbracelet/bubbles.git/info/refs?service=git-upload-pack
+2025-04-14T09:14:40.5858928Z   proxy | 2025/04/14 09:14:40 [321] GET https://api.github.com:443/repos/charmbracelet/bubbles/commits?sha=v0.20.0
+2025-04-14T09:14:40.5859599Z 2025/04/14 09:14:40 [321] * authenticating github api request with token for api.github.com
+2025-04-14T09:14:40.7894063Z   proxy | 2025/04/14 09:14:40 [321] 200 https://api.github.com:443/repos/charmbracelet/bubbles/commits?sha=v0.20.0
+2025-04-14T09:14:40.8134928Z   proxy | 2025/04/14 09:14:40 [323] GET https://api.github.com:443/repos/charmbracelet/bubbles/commits?sha=v0.21.0
+2025-04-14T09:14:40.8135759Z 2025/04/14 09:14:40 [323] * authenticating github api request with token for api.github.com
+2025-04-14T09:14:41.0555226Z   proxy | 2025/04/14 09:14:41 [323] 200 https://api.github.com:443/repos/charmbracelet/bubbles/commits?sha=v0.21.0
+2025-04-14T09:14:41.0835797Z   proxy | 2025/04/14 09:14:41 [325] GET https://api.github.com:443/repos/charmbracelet/bubbles/commits?sha=v0.20.0
+2025-04-14T09:14:41.0837324Z 2025/04/14 09:14:41 [325] 200 https://api.github.com:443/repos/charmbracelet/bubbles/commits?sha=v0.20.0
+2025-04-14T09:14:41.1083603Z   proxy | 2025/04/14 09:14:41 [327] GET https://api.github.com:443/repos/charmbracelet/bubbles/commits?sha=v0.21.0
+2025-04-14T09:14:41.1084838Z 2025/04/14 09:14:41 [327] 200 https://api.github.com:443/repos/charmbracelet/bubbles/commits?sha=v0.21.0
+2025-04-14T09:14:41.1426627Z   proxy | 2025/04/14 09:14:41 [329] GET https://api.github.com:443/repos/charmbracelet/bubbles/commits?sha=v0.20.0
+2025-04-14T09:14:41.1427774Z 2025/04/14 09:14:41 [329] 200 https://api.github.com:443/repos/charmbracelet/bubbles/commits?sha=v0.20.0
+2025-04-14T09:14:41.1663932Z   proxy | 2025/04/14 09:14:41 [331] GET https://api.github.com:443/repos/charmbracelet/bubbles/commits?sha=v0.21.0
+2025-04-14T09:14:41.1664933Z 2025/04/14 09:14:41 [331] 200 https://api.github.com:443/repos/charmbracelet/bubbles/commits?sha=v0.21.0
+2025-04-14T09:14:41.2019166Z   proxy | 2025/04/14 09:14:41 [333] POST /update_jobs/997896517/create_pull_request
+2025-04-14T09:14:41.5533509Z   proxy | 2025/04/14 09:14:41 [333] 204 /update_jobs/997896517/create_pull_request
+2025-04-14T09:14:41.5992686Z   proxy | 2025/04/14 09:14:41 [335] POST /update_jobs/997896517/record_ecosystem_meta
+2025-04-14T09:14:41.5994763Z 2025/04/14 09:14:41 [335] 204 /update_jobs/997896517/record_ecosystem_meta
+2025-04-14T09:14:41.6002637Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Checking if github.com/mattn/go-isatty 0.0.20 needs updating
+2025-04-14T09:14:41.6050833Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Started process PID: 1780 with command: {} git config --global credential.helper '!/home/dependabot/common/lib/dependabot/../../bin/git-credential-store-immutable --file /home/dependabot/dependabot-updater/tmp/20250414-1298-1lkqpr/dependabot_20250414-1298-ybjg7r/git.store' {}
+2025-04-14T09:14:41.6093410Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Process PID: 1780 completed with status: pid 1780 exit 0
+2025-04-14T09:14:41.6094136Z 2025/04/14 09:14:41 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:41.6099452Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Started process PID: 1788 with command: {} git config --global --replace-all url.https://github.com/.insteadOf ssh://git@github.com/ {}
+2025-04-14T09:14:41.6134415Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Process PID: 1788 completed with status: pid 1788 exit 0
+2025-04-14T09:14:41.6135135Z 2025/04/14 09:14:41 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:41.6139861Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Started process PID: 1795 with command: {} git config --global --add url.https://github.com/.insteadOf ssh://git@github.com: {}
+2025-04-14T09:14:41.6218500Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Process PID: 1795 completed with status: pid 1795 exit 0
+2025-04-14T09:14:41.6219415Z 2025/04/14 09:14:41 INFO <job_997896517> Total execution time: 0.01 seconds
+2025-04-14T09:14:41.6224267Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Started process PID: 1802 with command: {} git config --global --add url.https://github.com/.insteadOf git@github.com: {}
+2025-04-14T09:14:41.6260476Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Process PID: 1802 completed with status: pid 1802 exit 0
+2025-04-14T09:14:41.6261258Z 2025/04/14 09:14:41 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:41.6266378Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Started process PID: 1809 with command: {} git config --global --add url.https://github.com/.insteadOf git@github.com/ {}
+2025-04-14T09:14:41.6307411Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Process PID: 1809 completed with status: pid 1809 exit 0
+2025-04-14T09:14:41.6308952Z 2025/04/14 09:14:41 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:41.6313802Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Started process PID: 1816 with command: {} git config --global --add url.https://github.com/.insteadOf git://github.com/ {}
+2025-04-14T09:14:41.6354917Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Process PID: 1816 completed with status: pid 1816 exit 0
+2025-04-14T09:14:41.6355806Z 2025/04/14 09:14:41 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:41.6363254Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Started process PID: 1823 with command: {} go mod edit -json {}
+2025-04-14T09:14:41.6404811Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Process PID: 1823 completed with status: pid 1823 exit 0
+2025-04-14T09:14:41.6405646Z 2025/04/14 09:14:41 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:41.6413823Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Started process PID: 1829 with command: {"GOPRIVATE"=>""} go list -m -versions -json github.com/mattn/go-isatty {}
+2025-04-14T09:14:41.6655888Z   proxy | 2025/04/14 09:14:41 [337] GET https://proxy.golang.org:443/github.com/mattn/go-isatty/@v/list
+2025-04-14T09:14:41.6766622Z   proxy | 2025/04/14 09:14:41 [337] 200 https://proxy.golang.org:443/github.com/mattn/go-isatty/@v/list
+2025-04-14T09:14:41.6808371Z   proxy | 2025/04/14 09:14:41 [341] GET https://proxy.golang.org:443/github.com/mattn/go-isatty/@v/v0.0.20.info
+2025-04-14T09:14:41.6914193Z   proxy | 2025/04/14 09:14:41 [341] 200 https://proxy.golang.org:443/github.com/mattn/go-isatty/@v/v0.0.20.info
+2025-04-14T09:14:41.6967468Z   proxy | 2025/04/14 09:14:41 [343] GET https://proxy.golang.org:443/sumdb/sum.golang.org/supported
+2025-04-14T09:14:41.6970110Z 2025/04/14 09:14:41 [343] 404 https://proxy.golang.org:443/sumdb/sum.golang.org/supported
+2025-04-14T09:14:41.6978023Z   proxy | 2025/04/14 09:14:41 [087] WARN: Cannot write TLS response chunked trailer from mitm'd client: write tcp 172.19.0.2:1080->172.19.0.3:55634: write: connection reset by peer
+2025-04-14T09:14:41.7005934Z   proxy | 2025/04/14 09:14:41 [345] GET https://proxy.golang.org:443/sumdb/sum.golang.org/supported
+2025-04-14T09:14:41.7007027Z 2025/04/14 09:14:41 [345] 404 https://proxy.golang.org:443/sumdb/sum.golang.org/supported
+2025-04-14T09:14:41.7042041Z   proxy | 2025/04/14 09:14:41 [347] GET https://sum.golang.org:443/lookup/github.com/mattn/go-isatty@v0.0.20
+2025-04-14T09:14:41.7143299Z   proxy | 2025/04/14 09:14:41 [347] 200 https://sum.golang.org:443/lookup/github.com/mattn/go-isatty@v0.0.20
+2025-04-14T09:14:41.7181291Z   proxy | 2025/04/14 09:14:41 [349] GET https://sum.golang.org:443/tile/8/0/x142/056
+2025-04-14T09:14:41.7281254Z   proxy | 2025/04/14 09:14:41 [349] 200 https://sum.golang.org:443/tile/8/0/x142/056
+2025-04-14T09:14:41.7348993Z   proxy | 2025/04/14 09:14:41 [352] GET https://sum.golang.org:443/tile/8/0/x078/530
+2025-04-14T09:14:41.7354696Z   proxy | 2025/04/14 09:14:41 [353] GET https://sum.golang.org:443/tile/8/1/306
+2025-04-14T09:14:41.7455514Z   proxy | 2025/04/14 09:14:41 [352] 200 https://sum.golang.org:443/tile/8/0/x078/530
+2025-04-14T09:14:41.7470188Z   proxy | 2025/04/14 09:14:41 [353] 200 https://sum.golang.org:443/tile/8/1/306
+2025-04-14T09:14:41.7505864Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Process PID: 1829 completed with status: pid 1829 exit 0
+2025-04-14T09:14:41.7506450Z 2025/04/14 09:14:41 INFO <job_997896517> Total execution time: 0.11 seconds
+2025-04-14T09:14:41.7517141Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Latest version is 0.0.20
+2025-04-14T09:14:41.7517808Z updater | 2025/04/14 09:14:41 INFO <job_997896517> No update needed for github.com/mattn/go-isatty 0.0.20
+2025-04-14T09:14:41.7971695Z   proxy | 2025/04/14 09:14:41 [355] POST /update_jobs/997896517/record_ecosystem_meta
+2025-04-14T09:14:41.7972739Z 2025/04/14 09:14:41 [355] 204 /update_jobs/997896517/record_ecosystem_meta
+2025-04-14T09:14:41.7982146Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Checking if github.com/charmbracelet/x/exp/teatest 0.0.0-20240521184646-23081fb03b28 needs updating
+2025-04-14T09:14:41.8028557Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Started process PID: 1844 with command: {} git config --global credential.helper '!/home/dependabot/common/lib/dependabot/../../bin/git-credential-store-immutable --file /home/dependabot/dependabot-updater/tmp/20250414-1298-1lkqpr/dependabot_20250414-1298-4i341n/git.store' {}
+2025-04-14T09:14:41.8069367Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Process PID: 1844 completed with status: pid 1844 exit 0
+2025-04-14T09:14:41.8070292Z 2025/04/14 09:14:41 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:41.8076275Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Started process PID: 1852 with command: {} git config --global --replace-all url.https://github.com/.insteadOf ssh://git@github.com/ {}
+2025-04-14T09:14:41.8116269Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Process PID: 1852 completed with status: pid 1852 exit 0
+2025-04-14T09:14:41.8117219Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:41.8122380Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Started process PID: 1859 with command: {} git config --global --add url.https://github.com/.insteadOf ssh://git@github.com: {}
+2025-04-14T09:14:41.8181597Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Process PID: 1859 completed with status: pid 1859 exit 0
+2025-04-14T09:14:41.8182522Z 2025/04/14 09:14:41 INFO <job_997896517> Total execution time: 0.01 seconds
+2025-04-14T09:14:41.8188857Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Started process PID: 1866 with command: {} git config --global --add url.https://github.com/.insteadOf git@github.com: {}
+2025-04-14T09:14:41.8227994Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Process PID: 1866 completed with status: pid 1866 exit 0
+2025-04-14T09:14:41.8228865Z 2025/04/14 09:14:41 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:41.8233238Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Started process PID: 1873 with command: {} git config --global --add url.https://github.com/.insteadOf git@github.com/ {}
+2025-04-14T09:14:41.8275027Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Process PID: 1873 completed with status: pid 1873 exit 0
+2025-04-14T09:14:41.8275846Z 2025/04/14 09:14:41 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:41.8279703Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Started process PID: 1880 with command: {} git config --global --add url.https://github.com/.insteadOf git://github.com/ {}
+2025-04-14T09:14:41.8320497Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Process PID: 1880 completed with status: pid 1880 exit 0
+2025-04-14T09:14:41.8321388Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:41.8328432Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Started process PID: 1887 with command: {} go mod edit -json {}
+2025-04-14T09:14:41.8363336Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Process PID: 1887 completed with status: pid 1887 exit 0
+2025-04-14T09:14:41.8364572Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:41.8372315Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Started process PID: 1893 with command: {"GOPRIVATE"=>""} go list -m -versions -json github.com/charmbracelet/x/exp/teatest {}
+2025-04-14T09:14:41.8619782Z   proxy | 2025/04/14 09:14:41 [357] GET https://proxy.golang.org:443/github.com/charmbracelet/x/exp/teatest/@v/list
+2025-04-14T09:14:41.9309793Z   proxy | 2025/04/14 09:14:41 [357] 200 https://proxy.golang.org:443/github.com/charmbracelet/x/exp/teatest/@v/list
+2025-04-14T09:14:41.9338575Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Process PID: 1893 completed with status: pid 1893 exit 0
+2025-04-14T09:14:41.9339401Z 2025/04/14 09:14:41 INFO <job_997896517> Total execution time: 0.1 seconds
+2025-04-14T09:14:41.9344485Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Latest version is 0.0.0-20240521184646-23081fb03b28
+2025-04-14T09:14:41.9345603Z updater | 2025/04/14 09:14:41 INFO <job_997896517> No update needed for github.com/charmbracelet/x/exp/teatest 0.0.0-20240521184646-23081fb03b28
+2025-04-14T09:14:41.9798110Z   proxy | 2025/04/14 09:14:41 [360] POST /update_jobs/997896517/record_ecosystem_meta
+2025-04-14T09:14:41.9799492Z   proxy | 2025/04/14 09:14:41 [360] 204 /update_jobs/997896517/record_ecosystem_meta
+2025-04-14T09:14:41.9804735Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Checking if github.com/charmbracelet/lipgloss 1.1.0 needs updating
+2025-04-14T09:14:41.9851926Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Started process PID: 1908 with command: {} git config --global credential.helper '!/home/dependabot/common/lib/dependabot/../../bin/git-credential-store-immutable --file /home/dependabot/dependabot-updater/tmp/20250414-1298-1lkqpr/dependabot_20250414-1298-m2udng/git.store' {}
+2025-04-14T09:14:41.9898785Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Process PID: 1908 completed with status: pid 1908 exit 0
+2025-04-14T09:14:41.9899819Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Total execution time: 0.01 seconds
+2025-04-14T09:14:41.9904882Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Started process PID: 1916 with command: {} git config --global --replace-all url.https://github.com/.insteadOf ssh://git@github.com/ {}
+2025-04-14T09:14:41.9938972Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Process PID: 1916 completed with status: pid 1916 exit 0
+2025-04-14T09:14:41.9941915Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:41.9949283Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Started process PID: 1923 with command: {} git config --global --add url.https://github.com/.insteadOf ssh://git@github.com: {}
+2025-04-14T09:14:41.9982734Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Process PID: 1923 completed with status: pid 1923 exit 0
+2025-04-14T09:14:41.9983607Z 2025/04/14 09:14:41 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:41.9993386Z updater | 2025/04/14 09:14:41 INFO <job_997896517> Started process PID: 1930 with command: {} git config --global --add url.https://github.com/.insteadOf git@github.com: {}
+2025-04-14T09:14:42.0030106Z updater | 2025/04/14 09:14:42 INFO <job_997896517> Process PID: 1930 completed with status: pid 1930 exit 0
+2025-04-14T09:14:42.0031022Z 2025/04/14 09:14:42 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:42.0036457Z updater | 2025/04/14 09:14:42 INFO <job_997896517> Started process PID: 1937 with command: {} git config --global --add url.https://github.com/.insteadOf git@github.com/ {}
+2025-04-14T09:14:42.0068853Z updater | 2025/04/14 09:14:42 INFO <job_997896517> Process PID: 1937 completed with status: pid 1937 exit 0
+2025-04-14T09:14:42.0069736Z updater | 2025/04/14 09:14:42 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:42.0077024Z updater | 2025/04/14 09:14:42 INFO <job_997896517> Started process PID: 1944 with command: {} git config --global --add url.https://github.com/.insteadOf git://github.com/ {}
+2025-04-14T09:14:42.0110327Z updater | 2025/04/14 09:14:42 INFO <job_997896517> Process PID: 1944 completed with status: pid 1944 exit 0
+2025-04-14T09:14:42.0110877Z 2025/04/14 09:14:42 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:42.0118909Z updater | 2025/04/14 09:14:42 INFO <job_997896517> Started process PID: 1951 with command: {} go mod edit -json {}
+2025-04-14T09:14:42.0154024Z updater | 2025/04/14 09:14:42 INFO <job_997896517> Process PID: 1951 completed with status: pid 1951 exit 0
+2025-04-14T09:14:42.0154833Z updater | 2025/04/14 09:14:42 INFO <job_997896517> Total execution time: 0.0 seconds
+2025-04-14T09:14:42.0163028Z updater | 2025/04/14 09:14:42 INFO <job_997896517> Started process PID: 1957 with command: {"GOPRIVATE"=>""} go list -m -versions -json github.com/charmbracelet/lipgloss {}
+2025-04-14T09:14:42.0353277Z   proxy | 2025/04/14 09:14:42 [362] GET https://proxy.golang.org:443/github.com/charmbracelet/lipgloss/@v/list
+2025-04-14T09:14:42.1046454Z   proxy | 2025/04/14 09:14:42 [362] 200 https://proxy.golang.org:443/github.com/charmbracelet/lipgloss/@v/list
+2025-04-14T09:14:42.1088335Z   proxy | 2025/04/14 09:14:42 [365] GET https://proxy.golang.org:443/github.com/charmbracelet/lipgloss/@v/v1.1.0.info
+2025-04-14T09:14:42.1192786Z   proxy | 2025/04/14 09:14:42 [365] 200 https://proxy.golang.org:443/github.com/charmbracelet/lipgloss/@v/v1.1.0.info
+2025-04-14T09:14:42.1248610Z   proxy | 2025/04/14 09:14:42 [367] GET https://proxy.golang.org:443/sumdb/sum.golang.org/supported
+2025-04-14T09:14:42.1249864Z   proxy | 2025/04/14 09:14:42 [367] 404 https://proxy.golang.org:443/sumdb/sum.golang.org/supported
+2025-04-14T09:14:42.1282776Z   proxy | 2025/04/14 09:14:42 [369] GET https://proxy.golang.org:443/sumdb/sum.golang.org/supported
+2025-04-14T09:14:42.1286128Z   proxy | 2025/04/14 09:14:42 [369] 404 https://proxy.golang.org:443/sumdb/sum.golang.org/supported
+2025-04-14T09:14:42.1326526Z   proxy | 2025/04/14 09:14:42 [371] GET https://sum.golang.org:443/lookup/github.com/charmbracelet/lipgloss@v1.1.0
+2025-04-14T09:14:42.1422487Z   proxy | 2025/04/14 09:14:42 [371] 200 https://sum.golang.org:443/lookup/github.com/charmbracelet/lipgloss@v1.1.0
+2025-04-14T09:14:42.1469998Z   proxy | 2025/04/14 09:14:42 [374] GET https://sum.golang.org:443/tile/8/1/538
+2025-04-14T09:14:42.1473588Z   proxy | 2025/04/14 09:14:42 [375] GET https://sum.golang.org:443/tile/8/0/x137/736
+2025-04-14T09:14:42.1570230Z   proxy | 2025/04/14 09:14:42 [374] 200 https://sum.golang.org:443/tile/8/1/538
+2025-04-14T09:14:42.1575234Z   proxy | 2025/04/14 09:14:42 [375] 200 https://sum.golang.org:443/tile/8/0/x137/736
+2025-04-14T09:14:42.1622401Z updater | 2025/04/14 09:14:42 INFO <job_997896517> Process PID: 1957 completed with status: pid 1957 exit 0
+2025-04-14T09:14:42.1623304Z 2025/04/14 09:14:42 INFO <job_997896517> Total execution time: 0.15 seconds
+2025-04-14T09:14:42.1633469Z updater | 2025/04/14 09:14:42 INFO <job_997896517> Latest version is 1.1.0
+2025-04-14T09:14:42.1634408Z updater | 2025/04/14 09:14:42 INFO <job_997896517> No update needed for github.com/charmbracelet/lipgloss 1.1.0
+2025-04-14T09:14:42.2082497Z   proxy | 2025/04/14 09:14:42 [377] POST /update_jobs/997896517/record_ecosystem_meta
+2025-04-14T09:14:42.2083810Z 2025/04/14 09:14:42 [377] 204 /update_jobs/997896517/record_ecosystem_meta
+2025-04-14T09:14:42.2531919Z   proxy | 2025/04/14 09:14:42 [379] PATCH /update_jobs/997896517/mark_as_processed
+2025-04-14T09:14:42.3497042Z   proxy | 2025/04/14 09:14:42 [379] 204 /update_jobs/997896517/mark_as_processed
+2025-04-14T09:14:42.3504424Z updater | 2025/04/14 09:14:42 INFO <job_997896517> Finished job processing
+2025-04-14T09:14:42.3514505Z updater | 2025/04/14 09:14:42 INFO Results:
+2025-04-14T09:14:42.3515051Z +----------------------------------------------------------------------+
+2025-04-14T09:14:42.3515585Z |                 Changes to Dependabot Pull Requests                  |
+2025-04-14T09:14:42.3516178Z +---------+------------------------------------------------------------+
+2025-04-14T09:14:42.3517008Z | created | github.com/charmbracelet/bubbles ( from 0.20.0 to 0.21.0 ) |
+2025-04-14T09:14:42.3517597Z +---------+------------------------------------------------------------+
+2025-04-14T09:14:42.8012033Z Cleaned up container 90dfc27af1fd226422b92ddb1b03d4c419c144e6f7b2f2082221e1a077734bc6
+2025-04-14T09:14:42.8142421Z   proxy | 2025/04/14 09:14:42 26/184 calls cached (14%)
+2025-04-14T09:14:42.8143066Z 2025/04/14 09:14:42 Posting metrics to remote API endpoint
+2025-04-14T09:14:43.1219125Z 🤖 ~ finished ~

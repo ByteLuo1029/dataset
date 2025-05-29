@@ -1,0 +1,287 @@
+﻿2025-04-15T09:31:42.2133685Z ##[group]Run export AWS_ACCESS_KEY_ID=minioadmin
+[36;1mexport AWS_ACCESS_KEY_ID=minioadmin[0m
+[36;1mexport AWS_SECRET_ACCESS_KEY=minioadmin[0m
+[36;1msleep 30 && kubectl -n ns-vllm logs -f "$(kubectl -n ns-vllm get pods | awk '/deployment/ {print $1;exit}')" &[0m
+[36;1mhelm install --wait --wait-for-jobs --timeout 5m0s --debug --create-namespace --namespace=ns-vllm test-vllm examples/online_serving/chart-helm -f examples/online_serving/chart-helm/values.yaml --set secrets.s3endpoint=http://minio:9000 --set secrets.s3bucketname=testbucket --set secrets.s3accesskeyid=$AWS_ACCESS_KEY_ID --set secrets.s3accesskey=$AWS_SECRET_ACCESS_KEY --set resources.requests.cpu=1 --set resources.requests.memory=4Gi --set resources.limits.cpu=2 --set resources.limits.memory=5Gi --set image.env[0].name=VLLM_CPU_KVCACHE_SPACE --set image.env[1].name=VLLM_LOGGING_LEVEL --set-string image.env[0].value="1" --set-string image.env[1].value="DEBUG" --set-string extraInit.s3modelpath="opt-125m/" --set-string 'resources.limits.nvidia\.com/gpu=0' --set-string 'resources.requests.nvidia\.com/gpu=0' --set-string image.repository="vllm-cpu-env"[0m
+shell: /usr/bin/bash -e {<:NUM:>}
+env:
+pythonLocation: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+PKG CONFIG PATH: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64/lib/pkgconfig
+Python ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+<:*:> ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+<:*:> ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+LD LIBRARY PATH: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64/lib
+CT_CONFIG_DIR: /opt/hostedtoolcache/ct/3.10.1/amd64/etc
+VIRTUAL_ENV: /opt/hostedtoolcache/ct/3.10.1/amd64/venv
+##[endgroup]
+install.go:218: [debug] Original chart version: ""
+install.go:235: [debug] CHART PATH: /home/runner/work/vllm/vllm/examples/online_serving/chart-helm
+2025-04-15T09:31:42.2639266Z
+client.go:142: [debug] creating 1 resource(s)
+client.go:142: [debug] creating 6 resource(s)
+wait.go:48: [debug] beginning wait for 6 resources with timeout of 5m0s
+ready.go:284: [debug] PersistentVolumeClaim is not bound: ns-vllm/test-vllm-storage-claim
+ready.go:284: [debug] PersistentVolumeClaim is not bound: ns-vllm/test-vllm-storage-claim
+ready.go:284: [debug] PersistentVolumeClaim is not bound: ns-vllm/test-vllm-storage-claim
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+Defaulted container "vllm" out of: vllm, wait-download-model (init)
+DEBUG 04-15 09:32:11 [__init__.py:28] No plugins for group vllm.platform_plugins found.
+DEBUG 04-15 09:32:11 [__init__.py:34] Checking if TPU platform is available.
+DEBUG 04-15 09:32:11 [__init__.py:44] TPU platform is not available because: No module named 'libtpu'
+DEBUG 04-15 09:32:11 [__init__.py:52] Checking if CUDA platform is available.
+DEBUG 04-15 09:32:11 [__init__.py:76] Exception happens when checking CUDA platform: NVML Shared Library Not Found
+DEBUG 04-15 09:32:11 [__init__.py:93] CUDA platform is not available because: NVML Shared Library Not Found
+DEBUG 04-15 09:32:11 [__init__.py:100] Checking if ROCm platform is available.
+DEBUG 04-15 09:32:11 [__init__.py:114] ROCm platform is not available because: No module named 'amdsmi'
+DEBUG 04-15 09:32:11 [__init__.py:122] Checking if HPU platform is available.
+DEBUG 04-15 09:32:11 [__init__.py:129] HPU platform is not available because habana_frameworks is not found.
+DEBUG 04-15 09:32:11 [__init__.py:140] Checking if XPU platform is available.
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+DEBUG 04-15 09:32:14 [__init__.py:150] XPU platform is not available because: No module named 'oneccl_bindings_for_pytorch'
+DEBUG 04-15 09:32:14 [__init__.py:158] Checking if CPU platform is available.
+DEBUG 04-15 09:32:14 [__init__.py:162] Confirmed CPU platform is available because vLLM is built with CPU.
+DEBUG 04-15 09:32:14 [__init__.py:180] Checking if Neuron platform is available.
+DEBUG 04-15 09:32:14 [__init__.py:187] Neuron platform is not available because: No module named 'transformers_neuronx'
+DEBUG 04-15 09:32:14 [__init__.py:158] Checking if CPU platform is available.
+DEBUG 04-15 09:32:14 [__init__.py:162] Confirmed CPU platform is available because vLLM is built with CPU.
+INFO 04-15 09:32:14 [__init__.py:239] Automatically detected platform cpu.
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+DEBUG 04-15 09:32:16 [utils.py:135] Setting VLLM_WORKER_MULTIPROC_METHOD to 'spawn'
+DEBUG 04-15 09:32:16 [__init__.py:28] No plugins for group vllm.general_plugins found.
+INFO 04-15 09:32:17 [api_server.py:1034] vLLM API server version 0.8.5.dev30+g6e6c80bad
+INFO 04-15 09:32:17 [api_server.py:1035] args: Namespace(subparser='serve', model_tag='/data/', config='', host='0.0.0.0', port=8000, uvicorn_log_level='info', disable_uvicorn_access_log=False, allow_credentials=False, allowed_origins=['*'], allowed_methods=['*'], allowed_headers=['*'], api_key=None, lora_modules=None, prompt_adapters=None, chat_template=None, chat_template_content_format='auto', response_role='assistant', ssl_keyfile=None, ssl_certfile=None, ssl_ca_certs=None, enable_ssl_refresh=False, ssl_cert_reqs=0, root_path=None, middleware=[], return_tokens_as_token_ids=False, disable_frontend_multiprocessing=False, enable_request_id_headers=False, enable_auto_tool_choice=False, tool_call_parser=None, tool_parser_plugin='', model='/data/', task='auto', tokenizer=None, hf_config_path=None, skip_tokenizer_init=False, revision=None, code_revision=None, tokenizer_revision=None, tokenizer_mode='auto', trust_remote_code=False, allowed_local_media_path=None, load_format='auto', download_dir=None, model_loader_extra_config=None, use_tqdm_on_load=True, config_format=<ConfigFormat.AUTO: 'auto'>, dtype='bfloat16', kv_cache_dtype='auto', max_model_len=None, guided_decoding_backend='auto', logits_processor_pattern=None, model_impl='auto', distributed_executor_backend=None, pipeline_parallel_size=1, tensor_parallel_size=1, data_parallel_size=1, enable_expert_parallel=False, max_parallel_loading_workers=None, ray_workers_use_nsight=False, disable_custom_all_reduce=False, block_size=None, enable_prefix_caching=None, prefix_caching_hash_algo='builtin', disable_sliding_window=False, use_v2_block_manager=True, seed=None, swap_space=4, cpu_offload_gb=0, gpu_memory_utilization=0.9, num_gpu_blocks_override=None, max_logprobs=20, disable_log_stats=False, quantization=None, rope_scaling=None, rope_theta=None, hf_token=None, hf_overrides=None, enforce_eager=False, max_seq_len_to_capture=8192, tokenizer_pool_size=0, tokenizer_pool_type='ray', tokenizer_pool_extra_config=None, limit_mm_per_prompt=None, mm_processor_kwargs=None, disable_mm_preprocessor_cache=False, enable_lora=False, enable_lora_bias=False, max_loras=1, max_lora_rank=16, lora_extra_vocab_size=256, lora_dtype='auto', long_lora_scaling_factors=None, max_cpu_loras=None, fully_sharded_loras=False, enable_prompt_adapter=False, max_prompt_adapters=1, max_prompt_adapter_token=0, device='auto', num_scheduler_steps=1, speculative_config=None, ignore_patterns=[], preemption_mode=None, served_model_name=['opt-125m'], qlora_adapter_name_or_path=None, show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, disable_async_output_proc=False, max_num_batched_tokens=None, max_num_seqs=None, max_num_partial_prefills=1, max_long_partial_prefills=1, long_prefill_token_threshold=0, num_lookahead_slots=0, scheduler_delay_factor=0.0, enable_chunked_prefill=None, multi_step_stream_outputs=True, scheduling_policy='fcfs', disable_chunked_mm_input=False, scheduler_cls='vllm.core.scheduler.Scheduler', override_neuron_config=None, override_pooler_config=None, compilation_config=None, kv_transfer_config=None, worker_cls='auto', worker_extension_cls='', generation_config='auto', override_generation_config=None, enable_sleep_mode=False, calculate_kv_scales=False, additional_config=None, enable_reasoning=False, reasoning_parser=None, disable_cascade_attn=False, disable_log_requests=False, max_log_len=None, disable_fastapi_docs=False, enable_prompt_tokens_details=False, enable_server_load_tracking=False, dispatch_function=<function ServeSubcommand.cmd at 0x7f74ecfb8540>)
+Traceback (most recent call last):
+File "/opt/venv/lib/python3.12/site-packages/transformers/configuration_utils.py", line 684, in _get_config_dict
+config_dict = cls._dict_from_json_file(resolved_config_file)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/opt/venv/lib/python3.12/site-packages/transformers/configuration_utils.py", line 791, in _dict_from_json_file
+return json.loads(text)
+^^^^^^^^^^^^^^^^
+File "/opt/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/json/__init__.py", line 346, in loads
+return _default_decoder.decode(s)
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/opt/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/json/decoder.py", line 338, in decode
+obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/opt/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/json/decoder.py", line 356, in raw_decode
+raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-04-15T09:32:17.1915827Z
+During handling of the above exception, another exception occurred:
+2025-04-15T09:32:17.1916461Z
+Traceback (most recent call last):
+File "/opt/venv/bin/vllm", line 10, in <module>
+sys.exit(main())
+^^^^^^
+File "/opt/venv/lib/python3.12/site-packages/vllm/entrypoints/cli/main.py", line 51, in main
+args.dispatch_function(args)
+File "/opt/venv/lib/python3.12/site-packages/vllm/entrypoints/cli/serve.py", line 27, in cmd
+uvloop.run(run_server(args))
+File "/opt/venv/lib/python3.12/site-packages/uvloop/__init__.py", line 109, in run
+return __asyncio.run(
+^^^^^^^^^^^^^^
+File "/opt/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/asyncio/runners.py", line 195, in run
+return runner.run(main)
+^^^^^^^^^^^^^^^^
+File "/opt/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/asyncio/runners.py", line 118, in run
+return self._loop.run_until_complete(task)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+File "/opt/venv/lib/python3.12/site-packages/uvloop/__init__.py", line 61, in wrapper
+return await main
+^^^^^^^^^^
+File "/opt/venv/lib/python3.12/site-packages/vllm/entrypoints/openai/api_server.py", line 1069, in run_server
+async with build_async_engine_client(args) as engine_client:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/opt/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/contextlib.py", line 210, in __aenter__
+return await anext(self.gen)
+^^^^^^^^^^^^^^^^^^^^^
+File "/opt/venv/lib/python3.12/site-packages/vllm/entrypoints/openai/api_server.py", line 146, in build_async_engine_client
+async with build_async_engine_client_from_engine_args(
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/opt/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/contextlib.py", line 210, in __aenter__
+return await anext(self.gen)
+^^^^^^^^^^^^^^^^^^^^^
+File "/opt/venv/lib/python3.12/site-packages/vllm/entrypoints/openai/api_server.py", line 166, in build_async_engine_client_from_engine_args
+vllm_config = engine_args.create_engine_config(usage_context=usage_context)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/opt/venv/lib/python3.12/site-packages/vllm/engine/arg_utils.py", line 1168, in create_engine_config
+model_config = self.create_model_config()
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/opt/venv/lib/python3.12/site-packages/vllm/engine/arg_utils.py", line 1056, in create_model_config
+return ModelConfig(
+^^^^^^^^^^^^
+File "/opt/venv/lib/python3.12/site-packages/vllm/config.py", line 431, in __init__
+hf_config = get_config(self.hf_config_path or self.model,
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/opt/venv/lib/python3.12/site-packages/vllm/transformers_utils/config.py", line 288, in get_config
+config_dict, _ = PretrainedConfig.get_config_dict(
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/opt/venv/lib/python3.12/site-packages/transformers/configuration_utils.py", line 590, in get_config_dict
+config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/opt/venv/lib/python3.12/site-packages/transformers/configuration_utils.py", line 688, in _get_config_dict
+raise OSError(f"It looks like the config file at '{resolved_config_file}' is not a valid JSON file.")
+OSError: It looks like the config file at '/data/config.json' is not a valid JSON file.
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+ready.go:303: [debug] Deployment is not ready: ns-vllm/test-vllm-deployment-vllm. 0 out of 1 expected pods are ready
+Error: INSTALLATION FAILED: client rate limiter Wait returned an error: context deadline exceeded
+helm.go:84: [debug] client rate limiter Wait returned an error: context deadline exceeded
+INSTALLATION FAILED
+main.newInstallCmd.func2
+helm.sh/helm/v3/cmd/helm/install.go:158
+github.com/spf13/cobra.(*Command).execute
+github.com/spf13/cobra@v1.8.0/command.go:983
+github.com/spf13/cobra.(*Command).ExecuteC
+github.com/spf13/cobra@v1.8.0/command.go:1115
+github.com/spf13/cobra.(*Command).Execute
+github.com/spf13/cobra@v1.8.0/command.go:1039
+main.main
+helm.sh/helm/v3/cmd/helm/helm.go:83
+runtime.main
+runtime/proc.go:267
+runtime.goexit
+runtime/asm_amd64.s:1650
+##[error]Process completed with exit code 1.

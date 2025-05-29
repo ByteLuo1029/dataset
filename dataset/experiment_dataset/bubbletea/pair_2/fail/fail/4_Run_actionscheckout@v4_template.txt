@@ -1,0 +1,62 @@
+##[group]Run <:*:>
+with:
+repository: <:*:>
+path: <:*:>
+token: ***
+ssh-strict: true
+ssh-user: git
+persist-credentials: <:*:>
+clean: true
+sparse-checkout-cone-mode: true
+fetch-depth: <:NUM:>
+fetch-tags: false
+show-progress: true
+lfs: false
+submodules: <:*:>
+set-safe-directory: true
+##[endgroup]
+Syncing repository: <:*:>
+##[group]Getting Git version info
+Working directory is <:*:>
+[command]"C:\Program Files\Git\bin\git.exe" version
+git version 2.49.0.windows.1
+##[endgroup]
+Copying 'C:\Users\runneradmin\.gitconfig' to 'D:\a\_temp\f4f169ff-c043-4157-a67d-59873f63af4d\.gitconfig'
+Temporarily overriding HOME='D:\a\_temp\f4f169ff-c043-4157-a67d-59873f63af4d' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+[command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\bubbletea\bubbletea\charmbracelet\meta
+##[group]Initializing the repository
+[command]"C:\Program Files\Git\bin\git.exe" init D:\a\bubbletea\bubbletea\charmbracelet\meta
+Initialized empty Git repository in <:*:>
+[command]"C:\Program Files\Git\bin\git.exe" remote add origin https://github.com/charmbracelet/meta
+##[endgroup]
+##[group]Disabling automatic garbage collection
+[command]"C:\Program Files\Git\bin\git.exe" config --local gc.auto 0
+##[endgroup]
+##[group]Setting up auth
+[command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+[command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+[command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+[command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+[command]"C:\Program Files\Git\bin\git.exe" config --local http.https://github.com/.extraheader "AUTHORIZATION: basic ***"
+##[endgroup]
+##[group]Determining the default branch
+Retrieving the default branch name
+Default branch 'main'
+##[endgroup]
+##[group]Fetching the repository
+[command]"C:\Program Files\Git\bin\git.exe" -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +refs/heads/main:refs/remotes/origin/main
+From <:*:>
+* [new <:*:> <:*:> -> <:*:>
+##[endgroup]
+##[group]Determining the checkout info
+##[endgroup]
+[command]"C:\Program Files\Git\bin\git.exe" sparse-checkout disable
+[command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all extensions.worktreeConfig
+##[group]Checking out the ref
+[command]"C:\Program Files\Git\bin\git.exe" checkout --progress --force -B main refs/remotes/origin/main
+branch <:*:> set up to track <:*:>
+Switched to a new branch 'main'
+##[endgroup]
+[command]"C:\Program Files\Git\bin\git.exe" log -1 --format=%H
+<:SEQ:>

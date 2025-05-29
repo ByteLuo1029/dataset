@@ -1,0 +1,36 @@
+2025-04-15T00:50:48.2944728Z ##[group]Run elastic/docs-builder/.github/actions/aws-auth@main
+2025-04-15T00:50:48.2945081Z with:
+2025-04-15T00:50:48.2945262Z   aws_account_id: 197730964718
+2025-04-15T00:50:48.2945484Z   aws_region: us-east-1
+2025-04-15T00:50:48.2945734Z   aws_role_name_prefix: elastic-docs-v3-preview-
+2025-04-15T00:50:48.2945995Z env:
+2025-04-15T00:50:48.2946239Z   GITHUB_PR_REF_NAME: markjhoy/default_token_pruning_sparse_vector
+2025-04-15T00:50:48.2946594Z   PATH_PREFIX: /elastic/elasticsearch/pull/126739
+2025-04-15T00:50:48.2946870Z ##[endgroup]
+2025-04-15T00:50:48.2961383Z ##[group]Run import hashlib
+2025-04-15T00:50:48.2961629Z [36;1mimport hashlib[0m
+2025-04-15T00:50:48.2961826Z [36;1mimport os[0m
+2025-04-15T00:50:48.2962049Z [36;1mprefix = os.environ["ROLE_NAME_PREFIX"][0m
+2025-04-15T00:50:48.2962329Z [36;1mm = hashlib.sha256()[0m
+2025-04-15T00:50:48.2962632Z [36;1mm.update(os.environ["GITHUB_REPOSITORY"].encode('utf-8'))[0m
+2025-04-15T00:50:48.2962980Z [36;1mhash = m.hexdigest()[:64-len(prefix)][0m
+2025-04-15T00:50:48.2963334Z [36;1mwith open(os.environ["GITHUB_OUTPUT"], "a") as f:[0m
+2025-04-15T00:50:48.2963757Z [36;1m  f.write(f"result=arn:aws:iam::{os.environ["AWS_ACCOUNT_ID"]}:role/{prefix}{hash}")[0m
+2025-04-15T00:50:48.3015309Z shell: /usr/bin/python {0}
+2025-04-15T00:50:48.3015549Z env:
+2025-04-15T00:50:48.3015810Z   GITHUB_PR_REF_NAME: markjhoy/default_token_pruning_sparse_vector
+2025-04-15T00:50:48.3016197Z   PATH_PREFIX: /elastic/elasticsearch/pull/126739
+2025-04-15T00:50:48.3016490Z   AWS_ACCOUNT_ID: 197730964718
+2025-04-15T00:50:48.3016736Z   ROLE_NAME_PREFIX: elastic-docs-v3-preview-
+2025-04-15T00:50:48.3016996Z ##[endgroup]
+2025-04-15T00:50:48.3301815Z ##[group]Run aws-actions/configure-aws-credentials@ececac1a45f3b08a01d2dd070d28d111c5fe6722
+2025-04-15T00:50:48.3302258Z with:
+2025-04-15T00:50:48.3302661Z   role-to-assume: arn:aws:iam::197730964718:role/elastic-docs-v3-preview-15d28e2042b09184f1b1957600e8a99d4bb88e3d
+2025-04-15T00:50:48.3303123Z   aws-region: us-east-1
+2025-04-15T00:50:48.3303359Z   audience: sts.amazonaws.com
+2025-04-15T00:50:48.3303576Z env:
+2025-04-15T00:50:48.3303820Z   GITHUB_PR_REF_NAME: markjhoy/default_token_pruning_sparse_vector
+2025-04-15T00:50:48.3304177Z   PATH_PREFIX: /elastic/elasticsearch/pull/126739
+2025-04-15T00:50:48.3304668Z ##[endgroup]
+2025-04-15T00:50:48.7658600Z Assuming role with OIDC
+2025-04-15T00:50:49.1025249Z Authenticated as assumedRoleId AROAS4CNPCTXHQYQAKTVA:GitHubActions

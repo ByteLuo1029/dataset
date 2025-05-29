@@ -1,0 +1,69 @@
+2025-04-14T20:10:07.8587654Z ##[group]Run elastic/docs-builder/actions/update-link-index@main
+2025-04-14T20:10:07.8588318Z with:
+2025-04-14T20:10:07.8588790Z   link_reference_file: .artifacts/docs/html/links.json
+2025-04-14T20:10:07.8589349Z   aws_account_id: 197730964718
+2025-04-14T20:10:07.8589799Z   aws_region: us-east-1
+2025-04-14T20:10:07.8590255Z   aws_s3_bucket_name: elastic-docs-link-index
+2025-04-14T20:10:07.8590745Z env:
+2025-04-14T20:10:07.8591093Z   GITHUB_PR_REF_NAME: 
+2025-04-14T20:10:07.8591561Z   PATH_PREFIX: /elastic/elasticsearch/tree/main
+2025-04-14T20:10:07.8592104Z   AWS_DEFAULT_REGION: us-east-1
+2025-04-14T20:10:07.8592544Z   AWS_REGION: us-east-1
+2025-04-14T20:10:07.8592910Z   AWS_ACCESS_KEY_ID: ***
+2025-04-14T20:10:07.8593254Z   AWS_SECRET_ACCESS_KEY: ***
+2025-04-14T20:10:07.8598527Z   AWS_SESSION_TOKEN: ***
+2025-04-14T20:10:07.8598975Z ##[endgroup]
+2025-04-14T20:10:07.8623107Z ##[group]Run import hashlib
+2025-04-14T20:10:07.8623586Z [36;1mimport hashlib[0m
+2025-04-14T20:10:07.8623991Z [36;1mimport os[0m
+2025-04-14T20:10:07.8624414Z [36;1m[0m
+2025-04-14T20:10:07.8624915Z [36;1mprefix = "elastic-docs-link-index-uploader-"[0m
+2025-04-14T20:10:07.8625843Z [36;1maws_account_id = os.environ["AWS_ACCOUNT_ID"][0m
+2025-04-14T20:10:07.8626563Z [36;1m[0m
+2025-04-14T20:10:07.8626913Z [36;1mm = hashlib.sha256()[0m
+2025-04-14T20:10:07.8627489Z [36;1mm.update(os.environ["GITHUB_REPOSITORY"].encode('utf-8'))[0m
+2025-04-14T20:10:07.8628145Z [36;1mhash = m.hexdigest()[:64-len(prefix)][0m
+2025-04-14T20:10:07.8628755Z [36;1mwith open(os.environ["GITHUB_OUTPUT"], "a") as f:[0m
+2025-04-14T20:10:07.8629462Z [36;1m  f.write(f"result=arn:aws:iam::{aws_account_id}:role/{prefix}{hash}")[0m
+2025-04-14T20:10:07.8678028Z shell: /usr/bin/python {0}
+2025-04-14T20:10:07.8678287Z env:
+2025-04-14T20:10:07.8678477Z   GITHUB_PR_REF_NAME: 
+2025-04-14T20:10:07.8678742Z   PATH_PREFIX: /elastic/elasticsearch/tree/main
+2025-04-14T20:10:07.8679050Z   AWS_DEFAULT_REGION: us-east-1
+2025-04-14T20:10:07.8679300Z   AWS_REGION: us-east-1
+2025-04-14T20:10:07.8679594Z   AWS_ACCESS_KEY_ID: ***
+2025-04-14T20:10:07.8679921Z   AWS_SECRET_ACCESS_KEY: ***
+2025-04-14T20:10:07.8684559Z   AWS_SESSION_TOKEN: ***
+2025-04-14T20:10:07.8684794Z   AWS_ACCOUNT_ID: 197730964718
+2025-04-14T20:10:07.8685027Z ##[endgroup]
+2025-04-14T20:10:07.8993655Z ##[group]Run aws-actions/configure-aws-credentials@ececac1a45f3b08a01d2dd070d28d111c5fe6722
+2025-04-14T20:10:07.8994108Z with:
+2025-04-14T20:10:07.8994538Z   role-to-assume: arn:aws:iam::197730964718:role/elastic-docs-link-index-uploader-15d28e2042b09184f1b1957600e8a99
+2025-04-14T20:10:07.8995037Z   aws-region: us-east-1
+2025-04-14T20:10:07.8995278Z   audience: sts.amazonaws.com
+2025-04-14T20:10:07.8995526Z env:
+2025-04-14T20:10:07.8995718Z   GITHUB_PR_REF_NAME: 
+2025-04-14T20:10:07.8995986Z   PATH_PREFIX: /elastic/elasticsearch/tree/main
+2025-04-14T20:10:07.8996475Z   AWS_DEFAULT_REGION: us-east-1
+2025-04-14T20:10:07.8996729Z   AWS_REGION: us-east-1
+2025-04-14T20:10:07.8997043Z   AWS_ACCESS_KEY_ID: ***
+2025-04-14T20:10:07.8997394Z   AWS_SECRET_ACCESS_KEY: ***
+2025-04-14T20:10:07.9001997Z   AWS_SESSION_TOKEN: ***
+2025-04-14T20:10:07.9002229Z ##[endgroup]
+2025-04-14T20:10:08.1171341Z Assuming role with OIDC
+2025-04-14T20:10:08.1992133Z Authenticated as assumedRoleId AROAS4CNPCTXB4DVKQS5X:GitHubActions
+2025-04-14T20:10:08.2304308Z ##[group]Run aws s3 cp --checksum-algorithm "SHA256" "${LINK_REFERENCE_FILE}" "s3://elastic-docs-link-index/${GITHUB_REPOSITORY}/${GITHUB_REF_NAME}/links.json"
+2025-04-14T20:10:08.2305333Z [36;1maws s3 cp --checksum-algorithm "SHA256" "${LINK_REFERENCE_FILE}" "s3://elastic-docs-link-index/${GITHUB_REPOSITORY}/${GITHUB_REF_NAME}/links.json"[0m
+2025-04-14T20:10:08.2352528Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-04-14T20:10:08.2352888Z env:
+2025-04-14T20:10:08.2353101Z   GITHUB_PR_REF_NAME: 
+2025-04-14T20:10:08.2353384Z   PATH_PREFIX: /elastic/elasticsearch/tree/main
+2025-04-14T20:10:08.2353714Z   AWS_DEFAULT_REGION: us-east-1
+2025-04-14T20:10:08.2353989Z   AWS_REGION: us-east-1
+2025-04-14T20:10:08.2354549Z   AWS_ACCESS_KEY_ID: ***
+2025-04-14T20:10:08.2354899Z   AWS_SECRET_ACCESS_KEY: ***
+2025-04-14T20:10:08.2359831Z   AWS_SESSION_TOKEN: ***
+2025-04-14T20:10:08.2360133Z   LINK_REFERENCE_FILE: .artifacts/docs/html/links.json
+2025-04-14T20:10:08.2360446Z ##[endgroup]
+2025-04-14T20:10:09.2163746Z Completed 258.4 KiB/258.4 KiB (5.1 MiB/s) with 1 file(s) remaining
+2025-04-14T20:10:09.2164710Z upload: .artifacts/docs/html/links.json to s3://elastic-docs-link-index/elastic/elasticsearch/main/links.json

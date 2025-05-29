@@ -1,0 +1,101 @@
+##[group]Run <:*:>
+with:
+repository: <:*:>
+token: ***
+ssh-strict: true
+persist-credentials: <:*:>
+clean: true
+fetch-depth: <:NUM:>
+lfs: false
+submodules: <:*:>
+set-safe-directory: true
+##[endgroup]
+##[command]/usr/bin/docker exec  a22674922e87e0d0962e2f956706f403d9456d353f40b8411642994284af24b7 sh -c "cat /etc/*release | grep ^ID"
+Syncing repository: <:*:>
+##[group]Getting Git version info
+Working directory is '/__w/ColossalAI/ColossalAI'
+[command]/usr/bin/git version
+git version <:NUM:>.<:NUM:>.<:NUM:>
+##[endgroup]
+Temporarily overriding HOME='/__w/_temp/7f524312-8c4f-4721-8d1a-0bbb6ef8990d' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+[command]/usr/bin/git config --global --add safe.directory /__w/ColossalAI/ColossalAI
+[command]/usr/bin/git config --local --get remote.origin.url
+https://github.com/hpcaitech/ColossalAI
+##[group]Removing previously created refs, to avoid conflicts
+[command]/usr/bin/git rev-parse --symbolic-full-name --verify --quiet HEAD
+HEAD
+[command]/usr/bin/git rev-parse --symbolic-full-name --branches
+##[endgroup]
+##[group]Cleaning the repository
+[command]/usr/bin/git clean -ffdx
+Removing TensorNVMe/
+[command]/usr/bin/git reset --hard HEAD
+HEAD is now at fd69a821 fix
+##[endgroup]
+##[group]Disabling automatic garbage collection
+[command]/usr/bin/git config --local gc.auto 0
+##[endgroup]
+##[group]Setting up auth
+[command]/usr/bin/git config --local --name-only --get-regexp <:*:>
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp <:*:> && git config --local --unset-all <:*:> || :"
+[command]/usr/bin/git config --local --name-only --get-regexp <:*:>
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp <:*:> && git config --local --unset-all <:*:> || :"
+[command]/usr/bin/git config <:*:> http.https://github.com/.extraheader AUTHORIZATION: basic ***
+##[endgroup]
+##[group]Fetching the repository
+[command]/usr/bin/git -c protocol.version=<:NUM:> fetch --no-tags --prune --progress --no-recurse-submodules --depth=<:NUM:> origin +<:SEQ:>:refs/remotes/pull/<:NUM:>/merge
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:NUM:>% (<:NUM:>/<:NUM:>), done.
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:*:> <:*:>
+remote: <:*:> objects: <:NUM:>% (<:NUM:>/<:NUM:>), done.
+remote: Total <:NUM:> (delta <:NUM:>), reused <:NUM:> (delta <:NUM:>), pack-reused <:NUM:> (from <:NUM:>)
+From <:*:>
++ 6f94bf4c...05b5218a 05b5218ac29bf0c179452244096c42c9b4c170e1 -> pull/6254/merge  (forced update)
+##[endgroup]
+##[group]Determining the checkout info
+##[endgroup]
+##[group]Checking out the ref
+[command]/usr/bin/git checkout --progress --force refs/remotes/pull/<:NUM:>/merge
+Warning: you are leaving 43 commits behind, not connected to
+any of your branches:
+2025-04-11T03:22:59.5502410Z
+fd69a821 fix
+db4c73f6 fix
+0950b07a [pre-commit.ci] auto fixes from pre-commit.com hooks
+910433f0 fix
+... and 39 more.
+2025-04-11T03:22:59.5503604Z
+If you want to keep them by creating a new branch, this may be a good time
+to do so with:
+2025-04-11T03:22:59.5504224Z
+git branch <new-branch-name> fd69a821
+2025-04-11T03:22:59.5504522Z
+HEAD is now at <:*:> Merge <:SEQ:> into <:SEQ:>
+##[endgroup]
+[command]/usr/bin/git log <:NUM:> <:*:>
+'<:SEQ:>'

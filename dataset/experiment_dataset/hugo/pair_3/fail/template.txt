@@ -1,0 +1,3051 @@
+Requested labels: ubuntu-latest
+Job defined at: gohugoio/hugo/.github/workflows/test.yml@refs/pull/13597/merge
+Waiting for a runner to pick up this job...
+Job is waiting for a hosted runner to come online.
+Job is about to start running on the hosted runner: GitHub Actions 45 (hosted)
+Current runner version: '2.323.0'
+##[group]Operating System
+Ubuntu
+24.04.2
+LTS
+##[endgroup]
+##[group]Runner Image
+Image: ubuntu-24.04
+Version: 20250406.1.0
+Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250406.1/images/ubuntu/Ubuntu2404-Readme.md
+Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250406.1
+##[endgroup]
+##[group]Runner Image Provisioner
+2.0.422.1
+##[endgroup]
+##[group]GITHUB_TOKEN Permissions
+Contents: <:*:>
+Metadata: read
+##[endgroup]
+Secret source: <:*:>
+Prepare workflow directory
+Prepare all required actions
+Getting action download info
+Download action repository <:*:> (SHA:<:SEQ:>)
+Download action repository <:*:> (SHA:<:SEQ:>)
+Download action repository <:*:> (SHA:<:SEQ:>)
+Download action repository <:*:> (SHA:<:SEQ:>)
+Download action repository <:*:> (SHA:<:SEQ:>)
+Download action repository <:*:> (SHA:<:SEQ:>)
+Complete job name: <:*:> <:*:> <:*:>
+##[group]Run <:*:>
+with:
+<:*:> false
+<:*:> true
+<:*:> true
+<:*:> true
+<:*:> true
+<:*:> true
+<:*:> true
+env:
+GOPROXY: https://proxy.golang.org
+GO111MODULE: on
+SASS_VERSION: 1.80.3
+DART_SASS_SHA_LINUX: 7c933edbad0a7d389192c5b79393485c088bd2c4398e32f5754c32af006a9ffd
+DART_SASS_SHA_MACOS: 79e060b0e131c3bb3c16926bafc371dc33feab122bfa8c01aa337a072097967b
+DART_SASS_SHA_WINDOWS: 0bc4708b37cd1bac4740e83ac5e3176e66b774f77fd5dd364da5b5cfc9bfb469
+##[endgroup]
+##[group]Run # ======
+[36;1m[0m
+[36;1m# ======[0m
+[36;1m# MACROS[0m
+[36;1m# ======[0m
+[36;1m[0m
+[36;1m# macro to print a line of equals[0m
+[36;1m# (silly but works)[0m
+[36;1mprintSeparationLine() {[0m
+[36;1m  str=${1:=}[0m
+[36;1m  num=${2:-80}[0m
+[36;1m  counter=1[0m
+[36;1m  output=""[0m
+[36;1m  while [ $counter -le $num ][0m
+[36;1m  do[0m
+[36;1m     output="${output}${str}"[0m
+[36;1m     counter=$((counter+1))[0m
+[36;1m  done[0m
+[36;1m  echo "${output}"[0m
+[36;1m}[0m
+[36;1m[0m
+[36;1m# macro to compute available space[0m
+[36;1m# REF: https://unix.stackexchange.com/a/42049/60849[0m
+[36;1m# REF: https://stackoverflow.com/a/450821/408734[0m
+[36;1mgetAvailableSpace() { echo $(df -a $1 | awk 'NR > 1 {avail+=$4} END {print avail}'); }[0m
+[36;1m[0m
+[36;1m# macro to make Kb human readable (assume the input is Kb)[0m
+[36;1m# REF: https://unix.stackexchange.com/a/44087/60849[0m
+[36;1mformatByteCount() { echo $(numfmt --to=iec-i --suffix=B --padding=7 $1'000'); }[0m
+[36;1m[0m
+[36;1m# macro to output saved space[0m
+[36;1mprintSavedSpace() {[0m
+[36;1m  saved=${1}[0m
+[36;1m  title=${2:-}[0m
+[36;1m[0m
+[36;1m  echo ""[0m
+[36;1m  printSeparationLine '*' 80[0m
+[36;1m  if [ ! -z "${title}" ]; then[0m
+[36;1m    echo "=> ${title}: Saved $(formatByteCount $saved)"[0m
+[36;1m  else[0m
+[36;1m    echo "=> Saved $(formatByteCount $saved)"[0m
+[36;1m  fi[0m
+[36;1m  printSeparationLine '*' 80[0m
+[36;1m  echo ""[0m
+[36;1m}[0m
+[36;1m[0m
+[36;1m# macro to print output of dh with caption[0m
+[36;1mprintDH() {[0m
+[36;1m  caption=${1:-}[0m
+[36;1m[0m
+[36;1m  printSeparationLine '=' 80[0m
+[36;1m  echo "${caption}"[0m
+[36;1m  echo ""[0m
+[36;1m  echo "$ dh -h /"[0m
+[36;1m  echo ""[0m
+[36;1m  df -h /[0m
+[36;1m  echo "$ dh -a /"[0m
+[36;1m  echo ""[0m
+[36;1m  df -a /[0m
+[36;1m  echo "$ dh -a"[0m
+[36;1m  echo ""[0m
+[36;1m  df -a[0m
+[36;1m  printSeparationLine '=' 80[0m
+[36;1m}[0m
+[36;1m[0m
+[36;1m[0m
+[36;1m[0m
+[36;1m# ======[0m
+[36;1m# SCRIPT[0m
+[36;1m# ======[0m
+[36;1m[0m
+[36;1m# Display initial disk space stats[0m
+[36;1m[0m
+[36;1mAVAILABLE_INITIAL=$(getAvailableSpace)[0m
+[36;1mAVAILABLE_ROOT_INITIAL=$(getAvailableSpace '/')[0m
+[36;1m[0m
+[36;1mprintDH "BEFORE CLEAN-UP:"[0m
+[<:NUM:>;1mecho <:*:>
+[36;1m[0m
+[36;1m[0m
+[36;1m# Option: Remove Android library[0m
+[36;1m[0m
+[36;1mif [[ true == 'true' ]]; then[0m
+[36;1m  BEFORE=$(getAvailableSpace)[0m
+[36;1m  [0m
+[36;1m  sudo rm -rf /usr/local/lib/android || true[0m
+[36;1m[0m
+[36;1m  AFTER=$(getAvailableSpace)[0m
+[36;1m  SAVED=$((AFTER-BEFORE))[0m
+[36;1m  printSavedSpace $SAVED "Android library"[0m
+[<:NUM:>;1mfi[0m
+[36;1m[0m
+[36;1m# Option: Remove .NET runtime[0m
+[36;1m[0m
+[36;1mif [[ true == 'true' ]]; then[0m
+[36;1m  BEFORE=$(getAvailableSpace)[0m
+[36;1m[0m
+[36;1m  # https://github.community/t/bigger-github-hosted-runners-disk-space/17267/11[0m
+[36;1m  sudo rm -rf /usr/share/dotnet || true[0m
+[36;1m  [0m
+[36;1m  AFTER=$(getAvailableSpace)[0m
+[36;1m  SAVED=$((AFTER-BEFORE))[0m
+[36;1m  printSavedSpace $SAVED ".NET runtime"[0m
+[<:NUM:>;1mfi[0m
+[36;1m[0m
+[36;1m# Option: Remove Haskell runtime[0m
+[36;1m[0m
+[36;1mif [[ true == 'true' ]]; then[0m
+[36;1m  BEFORE=$(getAvailableSpace)[0m
+[36;1m[0m
+[36;1m  sudo rm -rf /opt/ghc || true[0m
+[36;1m  sudo rm -rf /usr/local/.ghcup || true[0m
+[36;1m  [0m
+[36;1m  AFTER=$(getAvailableSpace)[0m
+[36;1m  SAVED=$((AFTER-BEFORE))[0m
+[36;1m  printSavedSpace $SAVED "Haskell runtime"[0m
+[<:NUM:>;1mfi[0m
+[36;1m[0m
+[36;1m# Option: Remove large packages[0m
+[36;1m# REF: https://github.com/apache/flink/blob/master/tools/azure-pipelines/free_disk_space.sh[0m
+[36;1m[0m
+[36;1mif [[ true == 'true' ]]; then[0m
+[36;1m  BEFORE=$(getAvailableSpace)[0m
+[36;1m  [0m
+[36;1m  sudo apt-get remove -y '^aspnetcore-.*' || echo "::warning::The command [sudo apt-get remove -y '^aspnetcore-.*'] failed to complete successfully. Proceeding..."[0m
+[36;1m  sudo apt-get remove -y '^dotnet-.*' --fix-missing || echo "::warning::The command [sudo apt-get remove -y '^dotnet-.*' --fix-missing] failed to complete successfully. Proceeding..."[0m
+[36;1m  sudo apt-get remove -y '^llvm-.*' --fix-missing || echo "::warning::The command [sudo apt-get remove -y '^llvm-.*' --fix-missing] failed to complete successfully. Proceeding..."[0m
+[36;1m  sudo apt-get remove -y 'php.*' --fix-missing || echo "::warning::The command [sudo apt-get remove -y 'php.*' --fix-missing] failed to complete successfully. Proceeding..."[0m
+[36;1m  sudo apt-get remove -y '^mongodb-.*' --fix-missing || echo "::warning::The command [sudo apt-get remove -y '^mongodb-.*' --fix-missing] failed to complete successfully. Proceeding..."[0m
+[36;1m  sudo apt-get remove -y '^mysql-.*' --fix-missing || echo "::warning::The command [sudo apt-get remove -y '^mysql-.*' --fix-missing] failed to complete successfully. Proceeding..."[0m
+[36;1m  sudo apt-get remove -y azure-cli google-chrome-stable firefox powershell mono-devel libgl1-mesa-dri --fix-missing || echo "::warning::The command [sudo apt-get remove -y azure-cli google-chrome-stable firefox powershell mono-devel libgl1-mesa-dri --fix-missing] failed to complete successfully. Proceeding..."[0m
+[36;1m  sudo apt-get remove -y google-cloud-sdk --fix-missing || echo "::debug::The command [sudo apt-get remove -y google-cloud-sdk --fix-missing] failed to complete successfully. Proceeding..."[0m
+[36;1m  sudo apt-get remove -y google-cloud-cli --fix-missing || echo "::debug::The command [sudo apt-get remove -y google-cloud-cli --fix-missing] failed to complete successfully. Proceeding..."[0m
+[36;1m  sudo apt-get autoremove -y || echo "::warning::The command [sudo apt-get autoremove -y] failed to complete successfully. Proceeding..."[0m
+[36;1m  sudo apt-get clean || echo "::warning::The command [sudo apt-get clean] failed to complete successfully. Proceeding..."[0m
+[36;1m[0m
+[36;1m  AFTER=$(getAvailableSpace)[0m
+[36;1m  SAVED=$((AFTER-BEFORE))[0m
+[36;1m  printSavedSpace $SAVED "Large misc. packages"[0m
+[<:NUM:>;1mfi[0m
+[36;1m[0m
+[36;1m# Option: Remove Docker images[0m
+[36;1m[0m
+[36;1mif [[ true == 'true' ]]; then[0m
+[36;1m  BEFORE=$(getAvailableSpace)[0m
+[36;1m[0m
+[36;1m  sudo docker image prune --all --force || true[0m
+[36;1m[0m
+[36;1m  AFTER=$(getAvailableSpace)[0m
+[36;1m  SAVED=$((AFTER-BEFORE))[0m
+[36;1m  printSavedSpace $SAVED "Docker images"[0m
+[<:NUM:>;1mfi[0m
+[36;1m[0m
+[36;1m# Option: Remove tool cache[0m
+[36;1m# REF: https://github.com/actions/virtual-environments/issues/2875#issuecomment-1163392159[0m
+[36;1m[0m
+[36;1mif [[ false == 'true' ]]; then[0m
+[36;1m  BEFORE=$(getAvailableSpace)[0m
+[36;1m[0m
+[36;1m  sudo rm -rf "$AGENT_TOOLSDIRECTORY" || true[0m
+[36;1m  [0m
+[36;1m  AFTER=$(getAvailableSpace)[0m
+[36;1m  SAVED=$((AFTER-BEFORE))[0m
+[36;1m  printSavedSpace $SAVED "Tool cache"[0m
+[<:NUM:>;1mfi[0m
+[36;1m[0m
+[36;1m# Option: Remove Swap storage[0m
+[36;1m[0m
+[36;1mif [[ true == 'true' ]]; then[0m
+[36;1m  BEFORE=$(getAvailableSpace)[0m
+[36;1m[0m
+[36;1m  sudo swapoff -a || true[0m
+[36;1m  sudo rm -f /mnt/swapfile || true[0m
+[36;1m  free -h[0m
+[36;1m  [0m
+[36;1m  AFTER=$(getAvailableSpace)[0m
+[36;1m  SAVED=$((AFTER-BEFORE))[0m
+[36;1m  printSavedSpace $SAVED "Swap storage"[0m
+[<:NUM:>;1mfi[0m
+[36;1m[0m
+[36;1m[0m
+[36;1m[0m
+[36;1m# Output saved space statistic[0m
+[36;1m[0m
+[36;1mAVAILABLE_END=$(getAvailableSpace)[0m
+[36;1mAVAILABLE_ROOT_END=$(getAvailableSpace '/')[0m
+[36;1m[0m
+[<:NUM:>;1mecho <:*:>
+[36;1mprintDH "AFTER CLEAN-UP:"[0m
+[36;1m[0m
+[<:NUM:>;1mecho <:*:>
+[<:NUM:>;1mecho <:*:>
+[36;1m[0m
+[<:NUM:>;1mecho <:*:>
+[36;1mprintSavedSpace $((AVAILABLE_ROOT_END - AVAILABLE_ROOT_INITIAL))[0m
+[<:NUM:>;1mecho <:*:>
+[36;1mprintSavedSpace $((AVAILABLE_END - AVAILABLE_INITIAL))[0m
+shell: /usr/bin/bash --noprofile --norc -e -o pipefail {<:NUM:>}
+env:
+GOPROXY: https://proxy.golang.org
+GO111MODULE: on
+SASS_VERSION: 1.80.3
+DART_SASS_SHA_LINUX: 7c933edbad0a7d389192c5b79393485c088bd2c4398e32f5754c32af006a9ffd
+DART_SASS_SHA_MACOS: 79e060b0e131c3bb3c16926bafc371dc33feab122bfa8c01aa337a072097967b
+DART_SASS_SHA_WINDOWS: 0bc4708b37cd1bac4740e83ac5e3176e66b774f77fd5dd364da5b5cfc9bfb469
+##[endgroup]
+================================================================================
+BEFORE CLEAN-UP:
+2025-04-12T15:49:25.7565501Z
+$ dh -h /
+2025-04-12T15:49:25.7566463Z
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/root        72G   48G   25G  67% /
+$ dh -a /
+2025-04-12T15:49:25.7569385Z
+Filesystem     1K-blocks     Used Available Use% Mounted on
+/dev/root       75085112 49674980  25393748  67% /
+$ dh -a
+2025-04-12T15:49:25.7578439Z
+Filesystem     1K-blocks     Used Available Use% Mounted on
+/dev/root       75085112 49674980  25393748  67% /
+devtmpfs         8184112        0   8184112   0% /dev
+proc                   0        0         0    - /proc
+sysfs                  0        0         0    - /sys
+securityfs             0        0         0    - /sys/kernel/security
+tmpfs            8186896       84   8186812   1% /dev/shm
+devpts                 0        0         0    - /dev/pts
+tmpfs            3274760     1100   3273660   1% /run
+tmpfs               5120        0      5120   0% /run/lock
+cgroup2                0        0         0    - /sys/fs/cgroup
+pstore                 0        0         0    - /sys/fs/pstore
+bpf                    0        0         0    - /sys/fs/bpf
+systemd-1              -        -         -    - /proc/sys/fs/binfmt_misc
+hugetlbfs              0        0         0    - /dev/hugepages
+mqueue                 0        0         0    - /dev/mqueue
+debugfs                0        0         0    - /sys/kernel/debug
+tracefs                0        0         0    - /sys/kernel/tracing
+fusectl                0        0         0    - /sys/fs/fuse/connections
+configfs               0        0         0    - /sys/kernel/config
+/dev/sdb16        901520    59928    778464   8% /boot
+/dev/sdb15        106832     6246    100586   6% /boot/efi
+binfmt_misc            0        0         0    - /proc/sys/fs/binfmt_misc
+/dev/sda1       76829444  4194336  68686668   6% /mnt
+tmpfs            1637376       12   1637364   1% /run/user/1001
+================================================================================
+2025-04-12T15:49:25.7632163Z
+2025-04-12T15:50:12.4368505Z
+********************************************************************************
+=> Android library: Saved 9.0GiB
+********************************************************************************
+2025-04-12T15:50:12.4445894Z
+2025-04-12T15:50:12.4578505Z
+********************************************************************************
+=> .NET runtime: Saved 0B
+********************************************************************************
+2025-04-12T15:50:12.4609086Z
+2025-04-12T15:50:15.6166493Z
+********************************************************************************
+=> Haskell runtime: Saved 6.2GiB
+********************************************************************************
+2025-04-12T15:50:15.6198903Z
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Package 'aspnetcore-runtime-6.0' is not installed, so not removed
+Package 'aspnetcore-targeting-pack-6.0' is not installed, so not removed
+Package 'aspnetcore-runtime-dbg-8.0' is not installed, so not removed
+The following packages will be REMOVED:
+aspnetcore-runtime-8.0 aspnetcore-targeting-pack-8.0 dotnet-sdk-8.0
+0 upgraded, 0 newly installed, 3 to remove and 90 not upgraded.
+After this operation, 350 MB disk space will be freed.
+(Reading database ...
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 221799 files and directories currently installed.)
+Removing dotnet-sdk-8.0 (8.0.114-0ubuntu1~24.04.1) ...
+Removing aspnetcore-runtime-8.0 (8.0.14-0ubuntu1~24.04.1) ...
+Removing aspnetcore-targeting-pack-8.0 (8.0.14-0ubuntu1~24.04.1) ...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Package 'dotnet-hostfxr-6.0' is not installed, so not removed
+Package 'dotnet-runtime-6.0' is not installed, so not removed
+Package 'dotnet-sdk-6.0' is not installed, so not removed
+Package 'dotnet-targeting-pack-6.0' is not installed, so not removed
+Package 'dotnet-templates-6.0' is not installed, so not removed
+Package 'dotnet-apphost-pack-6.0' is not installed, so not removed
+Package 'dotnet-sdk-8.0' is not installed, so not removed
+Package 'dotnet-runtime-dbg-8.0' is not installed, so not removed
+Package 'dotnet-sdk-8.0-source-built-artifacts' is not installed, so not removed
+Package 'dotnet-sdk-dbg-8.0' is not installed, so not removed
+The following packages will be REMOVED:
+dotnet-apphost-pack-8.0 dotnet-host-8.0 dotnet-hostfxr-8.0
+dotnet-runtime-8.0 dotnet-targeting-pack-8.0 dotnet-templates-8.0
+0 upgraded, 0 newly installed, 6 to remove and 84 not upgraded.
+After this operation, 125 MB disk space will be freed.
+(Reading database ...
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 217922 files and directories currently installed.)
+Removing dotnet-apphost-pack-8.0 (8.0.14-0ubuntu1~24.04.1) ...
+Removing dotnet-runtime-8.0 (8.0.14-0ubuntu1~24.04.1) ...
+Removing dotnet-hostfxr-8.0 (8.0.14-0ubuntu1~24.04.1) ...
+Removing dotnet-templates-8.0 (8.0.114-0ubuntu1~24.04.1) ...
+Removing dotnet-host-8.0 (8.0.14-0ubuntu1~24.04.1) ...
+Removing dotnet-targeting-pack-8.0 (8.0.14-0ubuntu1~24.04.1) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Package 'llvm-14-linker-tools' is not installed, so not removed
+Package 'llvm-14-dev' is not installed, so not removed
+Package 'llvm-15-linker-tools' is not installed, so not removed
+Package 'llvm-15-dev' is not installed, so not removed
+Package 'llvm-15' is not installed, so not removed
+Package 'llvm-dev' is not installed, so not removed
+Package 'llvm-14-doc' is not installed, so not removed
+Package 'llvm-15-doc' is not installed, so not removed
+Package 'llvm-16-doc' is not installed, so not removed
+Package 'llvm-17-doc' is not installed, so not removed
+Package 'llvm-18-doc' is not installed, so not removed
+Package 'llvm-runtime' is not installed, so not removed
+Package 'llvm-14' is not installed, so not removed
+Package 'llvm-14-runtime' is not installed, so not removed
+Package 'llvm-14-tools' is not installed, so not removed
+Package 'llvm-14-examples' is not installed, so not removed
+Package 'llvm-15-runtime' is not installed, so not removed
+Package 'llvm-15-tools' is not installed, so not removed
+Package 'llvm-15-examples' is not installed, so not removed
+Package 'llvm-16-examples' is not installed, so not removed
+Package 'llvm-17-examples' is not installed, so not removed
+Package 'llvm-18-examples' is not installed, so not removed
+Package 'llvm-bolt' is not installed, so not removed
+Package 'llvm-spirv-14' is not installed, so not removed
+Package 'llvm-spirv-15' is not installed, so not removed
+Package 'llvm-spirv-16' is not installed, so not removed
+Package 'llvm-spirv-17' is not installed, so not removed
+Package 'llvm-spirv-18' is not installed, so not removed
+Package 'llvm-19-dev' is not installed, so not removed
+Package 'llvm-19-linker-tools' is not installed, so not removed
+Package 'llvm-19-doc' is not installed, so not removed
+Package 'llvm-19' is not installed, so not removed
+Package 'llvm-19-runtime' is not installed, so not removed
+Package 'llvm-19-tools' is not installed, so not removed
+Package 'llvm-19-examples' is not installed, so not removed
+Package 'llvm-spirv-19' is not installed, so not removed
+The following packages will be REMOVED:
+clang-16 clang-17 clang-18 clang-tidy-16 clang-tidy-17 clang-tidy-18
+clang-tools-16 clang-tools-17 clang-tools-18 llvm-16 llvm-16-dev
+llvm-16-linker-tools llvm-16-runtime llvm-16-tools llvm-17 llvm-17-dev
+llvm-17-linker-tools llvm-17-runtime llvm-17-tools llvm-18 llvm-18-dev
+llvm-18-linker-tools llvm-18-runtime llvm-18-tools
+0 upgraded, 0 newly installed, 24 to remove and 84 not upgraded.
+After this operation, 1575 MB disk space will be freed.
+(Reading database ...
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 217267 files and directories currently installed.)
+Removing clang-tidy-16 (1:16.0.6-23ubuntu4) ...
+Removing clang-tools-16 (1:16.0.6-23ubuntu4) ...
+Removing clang-16 (1:16.0.6-23ubuntu4) ...
+Removing clang-tidy-17 (1:17.0.6-9ubuntu1) ...
+Removing clang-tools-17 (1:17.0.6-9ubuntu1) ...
+Removing clang-17 (1:17.0.6-9ubuntu1) ...
+Removing clang-tidy-18 (1:18.1.3-1ubuntu1) ...
+Removing clang-tools-18 (1:18.1.3-1ubuntu1) ...
+Removing clang-18 (1:18.1.3-1ubuntu1) ...
+Removing llvm-16-dev (1:16.0.6-23ubuntu4) ...
+Removing llvm-16 (1:16.0.6-23ubuntu4) ...
+Removing llvm-16-linker-tools (1:16.0.6-23ubuntu4) ...
+Removing llvm-16-runtime (1:16.0.6-23ubuntu4) ...
+Removing llvm-16-tools (1:16.0.6-23ubuntu4) ...
+Removing llvm-17-dev (1:17.0.6-9ubuntu1) ...
+Removing llvm-17 (1:17.0.6-9ubuntu1) ...
+Removing llvm-17-linker-tools (1:17.0.6-9ubuntu1) ...
+Removing llvm-17-runtime (1:17.0.6-9ubuntu1) ...
+Removing llvm-17-tools (1:17.0.6-9ubuntu1) ...
+Removing llvm-18-dev (1:18.1.3-1ubuntu1) ...
+Removing llvm-18 (1:18.1.3-1ubuntu1) ...
+Removing llvm-18-linker-tools (1:18.1.3-1ubuntu1) ...
+Removing llvm-18-runtime (1:18.1.3-1ubuntu1) ...
+Removing llvm-18-tools (1:18.1.3-1ubuntu1) ...
+Processing triggers for systemd (255.4-1ubuntu8.6) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.4) ...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Package 'php-lua' is not installed, so not removed
+Package 'php-mysqlnd-ms' is not installed, so not removed
+Package 'php-radius' is not installed, so not removed
+Package 'php5.6-common' is not installed, so not removed
+Package 'php5.6-json' is not installed, so not removed
+Package 'php7.0-common' is not installed, so not removed
+Package 'php7.1-common' is not installed, so not removed
+Package 'php7.2-common' is not installed, so not removed
+Package 'php7.3-common' is not installed, so not removed
+Package 'php7.4-common' is not installed, so not removed
+Package 'php8.0-common' is not installed, so not removed
+Package 'php8.1-common' is not installed, so not removed
+Package 'php8.2-common' is not installed, so not removed
+Package 'php-pear-frontend-gtk' is not installed, so not removed
+Package 'php-pear-frontend-web' is not installed, so not removed
+Package 'php7.0-curl' is not installed, so not removed
+Package 'php7.2-sodium' is not installed, so not removed
+Package 'php5' is not installed, so not removed
+Package 'php5-cli' is not installed, so not removed
+Package 'php5-pgsql' is not installed, so not removed
+Package 'php5-curl' is not installed, so not removed
+Package 'php5-ldap' is not installed, so not removed
+Package 'gosa-plugin-phpgw' is not installed, so not removed
+Package 'gosa-plugin-phpgw-schema' is not installed, so not removed
+Package 'gosa-plugin-phpscheduleit' is not installed, so not removed
+Package 'gosa-plugin-phpscheduleit-schema' is not installed, so not removed
+Package 'php-apc' is not installed, so not removed
+Package 'php-suhosin' is not installed, so not removed
+Package 'php5-mysql' is not installed, so not removed
+Package 'libsparkline-php' is not installed, so not removed
+Package 'libapache2-mod-php5' is not installed, so not removed
+Package 'php5-fpm' is not installed, so not removed
+Package 'libgv-php5' is not installed, so not removed
+Package 'php-greew-oauth2-azure-provider' is not installed, so not removed
+Package 'php-hayageek-oauth2-yahoo' is not installed, so not removed
+Package 'php-league-oauth2-google' is not installed, so not removed
+Package 'php-thenetworg-oauth2-azure' is not installed, so not removed
+Package 'phpphylotree' is not installed, so not removed
+Package 'php-http-request2' is not installed, so not removed
+Package 'php-xcache' is not installed, so not removed
+Package 'php-async-aws-s3' is not installed, so not removed
+Package 'php-paragonie-random-compat' is not installed, so not removed
+Package 'php-console-color2' is not installed, so not removed
+Package 'php-doctrine-phpcr-odm' is not installed, so not removed
+Package 'php-alcaeus-mongo-php-adapter' is not installed, so not removed
+Package 'php-doctrine-mongodb-odm' is not installed, so not removed
+Package 'php-mtdowling-cron-expression' is not installed, so not removed
+Package 'php-semsol-arc2' is not installed, so not removed
+Package 'php-fzaninotto-faker' is not installed, so not removed
+Package 'php7.4' is not installed, so not removed
+Package 'php7.4-cli' is not installed, so not removed
+Package 'php-com-dotnet' is not installed, so not removed
+Package 'php-rar' is not installed, so not removed
+Package 'php-laminas-httphandlerrunner' is not installed, so not removed
+Package 'php-cordoval-hamcrest-php' is not installed, so not removed
+Package 'php-davedevelopment-hamcrest-php' is not installed, so not removed
+Package 'php-kodova-hamcrest-php' is not installed, so not removed
+Package 'php-league-flysystem-sftp' is not installed, so not removed
+Package 'php-league-flysystem-eventable-filesystem' is not installed, so not removed
+Package 'php-league-flysystem-rackspace' is not installed, so not removed
+Package 'php-league-flysystem-azure' is not installed, so not removed
+Package 'php-league-flysystem-webdav' is not installed, so not removed
+Package 'php-league-flysystem-aws-s3-v2' is not installed, so not removed
+Package 'php-league-flysystem-aws-s3-v3' is not installed, so not removed
+Package 'php-spatie-flysystem-dropbox' is not installed, so not removed
+Package 'php-srmklive-flysystem-dropbox-v2' is not installed, so not removed
+Package 'php-league-flysystem-cached-adapter' is not installed, so not removed
+Package 'php-league-flysystem-ziparchive' is not installed, so not removed
+Package 'php-league-uri-schemes' is not installed, so not removed
+Package 'php-jeremykendall-php-domain-parser' is not installed, so not removed
+Package 'php-php-64bit' is not installed, so not removed
+Package 'php-sqlite' is not installed, so not removed
+Package 'php-lzf' is not installed, so not removed
+Package 'php-pnctl' is not installed, so not removed
+Package 'php-mdb2-driver-fbsql' is not installed, so not removed
+Package 'php-mdb2-driver-ibase' is not installed, so not removed
+Package 'php-mdb2-driver-mssql' is not installed, so not removed
+Package 'php-mdb2-driver-mysqli' is not installed, so not removed
+Package 'php-mdb2-driver-oci8' is not installed, so not removed
+Package 'php-mdb2-driver-odbc' is not installed, so not removed
+Package 'php-mdb2-driver-querysim' is not installed, so not removed
+Package 'php-mdb2-driver-sqlite' is not installed, so not removed
+Package 'php-mdb2-driver-sqlsrv' is not installed, so not removed
+Package 'php-barnabywalters-mf-cleaner' is not installed, so not removed
+Package 'php-graylog2-gelf-php' is not installed, so not removed
+Package 'php-doctrine-couchdb' is not installed, so not removed
+Package 'php-ruflin-elastica' is not installed, so not removed
+Package 'php-elasticsearch' is not installed, so not removed
+Package 'php-aws-sdk-php' is not installed, so not removed
+Package 'php-rollbar' is not installed, so not removed
+Package 'php-nette-finder' is not installed, so not removed
+Package 'php-dbase' is not installed, so not removed
+Package 'php-libsodium' is not installed, so not removed
+Package 'php-relay' is not installed, so not removed
+Package 'php-ocramius-proxy-manager' is not installed, so not removed
+Package 'php-zendframework-zend-stdlib' is not installed, so not removed
+Package 'php-rhumsaa-uuid' is not installed, so not removed
+Package 'php-paragonie-random-lib' is not installed, so not removed
+Package 'php-ramsey-uuid-doctrine' is not installed, so not removed
+Package 'php-crypt-blowfish' is not installed, so not removed
+Package 'php-compat' is not installed, so not removed
+Package 'libssh2-php' is not installed, so not removed
+Package 'php-php-http-discovery' is not installed, so not removed
+Package 'php-symfony-security-guard' is not installed, so not removed
+Package 'php-numbers-words' is not installed, so not removed
+Package 'php7.0-thrift' is not installed, so not removed
+Package 'php7.2-thrift' is not installed, so not removed
+Package 'php-net-idna' is not installed, so not removed
+Package 'php-phpstan' is not installed, so not removed
+Package 'php-vimeo-psalm' is not installed, so not removed
+Package 'php-container-interop' is not installed, so not removed
+Package 'php-zendframework-zend-eventmanager' is not installed, so not removed
+Package 'php-recode' is not installed, so not removed
+Package 'php-gd2' is not installed, so not removed
+Package 'php-pragmarx-google2fa-qrcode' is not installed, so not removed
+Package 'php-bjeavons-zxcvbn-php' is not installed, so not removed
+Package 'php-pimlie-php-dkim' is not installed, so not removed
+Package 'libapache2-mod-php7.4' is not installed, so not removed
+Package 'php7.4-fpm' is not installed, so not removed
+Package 'php-crypt-gpg' is not installed, so not removed
+Package 'libapache2-mod-php' is not installed, so not removed
+Package 'libapache2-mod-php8.3' is not installed, so not removed
+Package 'php-json' is not installed, so not removed
+Package 'php' is not installed, so not removed
+Package 'php-all-dev' is not installed, so not removed
+Package 'php-cgi' is not installed, so not removed
+Package 'php-cli' is not installed, so not removed
+Package 'php-amqp' is not installed, so not removed
+Package 'php-apcu' is not installed, so not removed
+Package 'php-ast' is not installed, so not removed
+Package 'php-ds' is not installed, so not removed
+Package 'php-facedetect' is not installed, so not removed
+Package 'php-gearman' is not installed, so not removed
+Package 'php-gmagick' is not installed, so not removed
+Package 'php-gnupg' is not installed, so not removed
+Package 'php-igbinary' is not installed, so not removed
+Package 'php-imagick' is not installed, so not removed
+Package 'php-libvirt-php' is not installed, so not removed
+Package 'php-mailparse' is not installed, so not removed
+Package 'php-memcache' is not installed, so not removed
+Package 'php-memcached' is not installed, so not removed
+Package 'php-mongodb' is not installed, so not removed
+Package 'php-msgpack' is not installed, so not removed
+Package 'php-oauth' is not installed, so not removed
+Package 'php-pcov' is not installed, so not removed
+Package 'php-ps' is not installed, so not removed
+Package 'php-psr' is not installed, so not removed
+Package 'php-raphf' is not installed, so not removed
+Package 'php-redis' is not installed, so not removed
+Package 'php-rrd' is not installed, so not removed
+Package 'php-smbclient' is not installed, so not removed
+Package 'php-ssh2' is not installed, so not removed
+Package 'php-stomp' is not installed, so not removed
+Package 'php-tideways' is not installed, so not removed
+Package 'php-uopz' is not installed, so not removed
+Package 'php-uploadprogress' is not installed, so not removed
+Package 'php-uuid' is not installed, so not removed
+Package 'php-xdebug' is not installed, so not removed
+Package 'php-xmlrpc' is not installed, so not removed
+Package 'php-yac' is not installed, so not removed
+Package 'php-yaml' is not installed, so not removed
+Package 'php-zmq' is not installed, so not removed
+Package 'php-curl' is not installed, so not removed
+Package 'php-dev' is not installed, so not removed
+Package 'php-gd' is not installed, so not removed
+Package 'php-gmp' is not installed, so not removed
+Package 'php-ldap' is not installed, so not removed
+Package 'php-mysql' is not installed, so not removed
+Package 'php-odbc' is not installed, so not removed
+Package 'php-xml' is not installed, so not removed
+Package 'php-pgsql' is not installed, so not removed
+Package 'php-pspell' is not installed, so not removed
+Package 'php-snmp' is not installed, so not removed
+Package 'php-sqlite3' is not installed, so not removed
+Package 'php-tidy' is not installed, so not removed
+Package 'php-tokenizer' is not installed, so not removed
+Package 'pkg-php-tools' is not installed, so not removed
+Package 'dh-php' is not installed, so not removed
+Package 'php-mbstring' is not installed, so not removed
+Package 'php-readline' is not installed, so not removed
+Package 'php-fpm' is not installed, so not removed
+Package 'php-codesniffer' is not installed, so not removed
+Package 'libphp-phpmailer' is not installed, so not removed
+Package 'php-phpmyadmin-motranslator' is not installed, so not removed
+Package 'php-phpseclib' is not installed, so not removed
+Package 'php-twig' is not installed, so not removed
+Package 'php-mapscript-ng' is not installed, so not removed
+Package 'php-composer-ca-bundle' is not installed, so not removed
+Package 'php-composer-class-map-generator' is not installed, so not removed
+Package 'php-composer-metadata-minifier' is not installed, so not removed
+Package 'php-composer-semver' is not installed, so not removed
+Package 'php-composer-spdx-licenses' is not installed, so not removed
+Package 'php-composer-xdebug-handler' is not installed, so not removed
+Package 'php-json-schema' is not installed, so not removed
+Package 'php-psr-log' is not installed, so not removed
+Package 'php-symfony-console' is not installed, so not removed
+Package 'php-symfony-filesystem' is not installed, so not removed
+Package 'php-symfony-finder' is not installed, so not removed
+Package 'php-symfony-process' is not installed, so not removed
+Package 'php-react-promise' is not installed, so not removed
+Package 'php-composer-pcre' is not installed, so not removed
+Package 'php-seld-signal-handler' is not installed, so not removed
+Package 'php-intl' is not installed, so not removed
+Package 'php-zip' is not installed, so not removed
+Package 'libawl-php' is not installed, so not removed
+Package 'libphp-simplepie' is not installed, so not removed
+Package 'php-geshi' is not installed, so not removed
+Package 'php-random-compat' is not installed, so not removed
+Package 'elpa-php-mode' is not installed, so not removed
+Package 'phpunit' is not installed, so not removed
+Package 'php-geos' is not installed, so not removed
+Package 'golang-github-phpdave11-gofpdi-dev' is not installed, so not removed
+Package 'php-imap' is not installed, so not removed
+Package 'php-fpdf' is not installed, so not removed
+Package 'icinga-php-library' is not installed, so not removed
+Package 'icinga-php-thirdparty' is not installed, so not removed
+Package 'php-soap' is not installed, so not removed
+Package 'php-icinga' is not installed, so not removed
+Package 'php-tcpdf' is not installed, so not removed
+Package 'kdevelop-php' is not installed, so not removed
+Package 'kdevelop-php-l10n' is not installed, so not removed
+Package 'php-mcrypt' is not installed, so not removed
+Package 'less.php' is not installed, so not removed
+Package 'libphp-serialization-perl' is not installed, so not removed
+Package 'libhtml-wikiconverter-phpwiki-perl' is not installed, so not removed
+Package 'libjs-php-date-formatter' is not installed, so not removed
+Package 'libmarkdown-php' is not installed, so not removed
+Package 'libnusoap-php' is not installed, so not removed
+Package 'php-econea-nusoap' is not installed, so not removed
+Package 'libow-php7t64' is not installed, so not removed
+Package 'libownet-php' is not installed, so not removed
+Package 'libphp-adodb' is not installed, so not removed
+Package 'php-sybase' is not installed, so not removed
+Package 'libphp-embed' is not installed, so not removed
+Package 'libphp8.3-embed' is not installed, so not removed
+Package 'libphp-jabber' is not installed, so not removed
+Package 'libphp-snoopy' is not installed, so not removed
+Package 'libphpy-dev' is not installed, so not removed
+Package 'libphpy1' is not installed, so not removed
+Package 'libxrdcephposix0' is not installed, so not removed
+Package 'php-spyc' is not installed, so not removed
+Package 'matomo-php-tracker' is not installed, so not removed
+Package 'php-wikidiff2' is not installed, so not removed
+Package 'php-luasandbox' is not installed, so not removed
+Package 'mlmmj-php-web' is not installed, so not removed
+Package 'mlmmj-php-web-admin' is not installed, so not removed
+Package 'php-net-socket' is not installed, so not removed
+Package 'node-codemirror-lang-php' is not installed, so not removed
+Package 'node-lezer-php' is not installed, so not removed
+Package 'phpmyadmin' is not installed, so not removed
+Package 'php-cas' is not installed, so not removed
+Package 'php-pclzip' is not installed, so not removed
+Package 'phpqrcode' is not installed, so not removed
+Package 'php-symfony-config' is not installed, so not removed
+Package 'php-symfony-dependency-injection' is not installed, so not removed
+Package 'phpmd' is not installed, so not removed
+Package 'php-algo26-idna-convert' is not installed, so not removed
+Package 'php-jakeasmith-http-build-url' is not installed, so not removed
+Package 'php-amphp-amp' is not installed, so not removed
+Package 'php-amqp-all-dev' is not installed, so not removed
+Package 'php-amqplib' is not installed, so not removed
+Package 'php-apcu-all-dev' is not installed, so not removed
+Package 'php-arthurhoaro-web-thumbnailer' is not installed, so not removed
+Package 'php-text-template' is not installed, so not removed
+Package 'php8.3-ast' is not installed, so not removed
+Package 'php-ast-all-dev' is not installed, so not removed
+Package 'php-async-aws-core' is not installed, so not removed
+Package 'php-psr-cache' is not installed, so not removed
+Package 'php-symfony-deprecation-contracts' is not installed, so not removed
+Package 'php-symfony-http-client' is not installed, so not removed
+Package 'php-symfony-http-client-contracts' is not installed, so not removed
+Package 'php-symfony-service-contracts' is not installed, so not removed
+Package 'php-async-aws-ses' is not installed, so not removed
+Package 'php-async-aws-sns' is not installed, so not removed
+Package 'php-async-aws-sqs' is not installed, so not removed
+Package 'php-auth-sasl' is not installed, so not removed
+Package 'php-bacon-qr-code' is not installed, so not removed
+Package 'php-dasprid-enum' is not installed, so not removed
+Package 'php-bcmath' is not installed, so not removed
+Package 'php-brick-math' is not installed, so not removed
+Package 'php-brick-varexporter' is not installed, so not removed
+Package 'php-parser' is not installed, so not removed
+Package 'php-bz2' is not installed, so not removed
+Package 'php-cache-integration-tests' is not installed, so not removed
+Package 'php-cache-tag-interop' is not installed, so not removed
+Package 'php-christianriesen-base32' is not installed, so not removed
+Package 'php-christianriesen-otp' is not installed, so not removed
+Package 'php-code-lts-u2f-php-server' is not installed, so not removed
+Package 'php-codecoverage' is not installed, so not removed
+Package 'php-file-iterator' is not installed, so not removed
+Package 'phpunit-code-unit-reverse-lookup' is not installed, so not removed
+Package 'phpunit-complexity' is not installed, so not removed
+Package 'phpunit-environment' is not installed, so not removed
+Package 'phpunit-lines-of-code' is not installed, so not removed
+Package 'phpunit-version' is not installed, so not removed
+Package 'php-codeigniter-framework' is not installed, so not removed
+Package 'php-codeigniter-framework-doc' is not installed, so not removed
+Package 'php-console-commandline' is not installed, so not removed
+Package 'php-console-table' is not installed, so not removed
+Package 'php-constant-time' is not installed, so not removed
+Package 'php-dapphp-radius' is not installed, so not removed
+Package 'php-date' is not installed, so not removed
+Package 'php-datto-json-rpc' is not installed, so not removed
+Package 'php-datto-json-rpc-http' is not installed, so not removed
+Package 'php-db' is not installed, so not removed
+Package 'php-deepcopy' is not installed, so not removed
+Package 'php-dflydev-dot-access-data' is not installed, so not removed
+Package 'php-di' is not installed, so not removed
+Package 'php-psr-container' is not installed, so not removed
+Package 'php-di-invoker' is not installed, so not removed
+Package 'php-laravel-serializable-closure' is not installed, so not removed
+Package 'php-directory-scanner' is not installed, so not removed
+Package 'php-doc' is not installed, so not removed
+Package 'php-doctrine-annotations' is not installed, so not removed
+Package 'php-doctrine-lexer' is not installed, so not removed
+Package 'php-doctrine-cache' is not installed, so not removed
+Package 'php-doctrine-collections' is not installed, so not removed
+Package 'php-doctrine-deprecations' is not installed, so not removed
+Package 'php-doctrine-common' is not installed, so not removed
+Package 'php-doctrine-persistence' is not installed, so not removed
+Package 'php-doctrine-data-fixtures' is not installed, so not removed
+Package 'php-doctrine-dbal' is not installed, so not removed
+Package 'php-doctrine-orm' is not installed, so not removed
+Package 'php-doctrine-event-manager' is not installed, so not removed
+Package 'php-doctrine-inflector' is not installed, so not removed
+Package 'php-doctrine-instantiator' is not installed, so not removed
+Package 'php-symfony-cache' is not installed, so not removed
+Package 'php-symfony-yaml' is not installed, so not removed
+Package 'php-dragonmantank-cron-expression' is not installed, so not removed
+Package 'php-webmozart-assert' is not installed, so not removed
+Package 'php8.3-ds' is not installed, so not removed
+Package 'php-ds-all-dev' is not installed, so not removed
+Package 'php-easyrdf' is not installed, so not removed
+Package 'php-ml-json-ld' is not installed, so not removed
+Package 'php-eluceo-ical' is not installed, so not removed
+Package 'php-email-validator' is not installed, so not removed
+Package 'php-embed' is not installed, so not removed
+Package 'php-oscarotero-html-parser' is not installed, so not removed
+Package 'php-psr-http-message' is not installed, so not removed
+Package 'php-psr-http-client' is not installed, so not removed
+Package 'php-psr-http-factory' is not installed, so not removed
+Package 'php-symfony-css-selector' is not installed, so not removed
+Package 'php-enchant' is not installed, so not removed
+Package 'php-excimer' is not installed, so not removed
+Package 'php8.3-facedetect' is not installed, so not removed
+Package 'php-facedetect-all-dev' is not installed, so not removed
+Package 'php-faker' is not installed, so not removed
+Package 'php-fdomdocument' is not installed, so not removed
+Package 'php-fig-http-message-util' is not installed, so not removed
+Package 'php-fig-link-util' is not installed, so not removed
+Package 'php-psr-link' is not installed, so not removed
+Package 'php-font-lib' is not installed, so not removed
+Package 'php-fruitcake-php-cors' is not installed, so not removed
+Package 'php-symfony-http-foundation' is not installed, so not removed
+Package 'php-fxsl' is not installed, so not removed
+Package 'php8.3-gearman' is not installed, so not removed
+Package 'php-gearman-all-dev' is not installed, so not removed
+Package 'php-getallheaders' is not installed, so not removed
+Package 'php-getid3' is not installed, so not removed
+Package 'php-gettext-languages' is not installed, so not removed
+Package 'php-oscarotero-gettext' is not installed, so not removed
+Package 'php-giggsey-libphonenumber' is not installed, so not removed
+Package 'php-giggsey-locale' is not installed, so not removed
+Package 'php8.3-gmagick' is not installed, so not removed
+Package 'php-gmagick-all-dev' is not installed, so not removed
+Package 'php8.3-gnupg' is not installed, so not removed
+Package 'php-gnupg-all-dev' is not installed, so not removed
+Package 'php-google-protobuf' is not installed, so not removed
+Package 'php-google-recaptcha' is not installed, so not removed
+Package 'php-graham-campbell-result-type' is not installed, so not removed
+Package 'php-phpoption' is not installed, so not removed
+Package 'php-gregwar-captcha' is not installed, so not removed
+Package 'php-guestfs' is not installed, so not removed
+Package 'php-guzzlehttp-guzzle' is not installed, so not removed
+Package 'php-guzzlehttp-promises' is not installed, so not removed
+Package 'php-guzzlehttp-psr7' is not installed, so not removed
+Package 'php-hamcrest' is not installed, so not removed
+Package 'php-htmlawed' is not installed, so not removed
+Package 'php-htmlpurifier' is not installed, so not removed
+Package 'php-http' is not installed, so not removed
+Package 'php8.3-http' is not installed, so not removed
+Package 'php-http-all-dev' is not installed, so not removed
+Package 'php-http-httplug' is not installed, so not removed
+Package 'php-http-promise' is not installed, so not removed
+Package 'php-http-interop-http-factory-tests' is not installed, so not removed
+Package 'php-http-message-factory' is not installed, so not removed
+Package 'php-http-psr7-integration-tests' is not installed, so not removed
+Package 'php-http-webdav-server' is not installed, so not removed
+Package 'php-httpful' is not installed, so not removed
+Package 'php-igbinary-all-dev' is not installed, so not removed
+Package 'php-image-text' is not installed, so not removed
+Package 'php-imagick-all-dev' is not installed, so not removed
+Package 'php-interbase' is not installed, so not removed
+Package 'php-invoker' is not installed, so not removed
+Package 'php-jshrink' is not installed, so not removed
+Package 'php-kissifrot-php-ixr' is not installed, so not removed
+Package 'php-klogger' is not installed, so not removed
+Package 'php-lcobucci-clock' is not installed, so not removed
+Package 'php-psr-clock' is not installed, so not removed
+Package 'php-lcobucci-jwt' is not installed, so not removed
+Package 'php-league-commonmark' is not installed, so not removed
+Package 'php-league-config' is not installed, so not removed
+Package 'php-psr-event-dispatcher' is not installed, so not removed
+Package 'php-nette-schema' is not installed, so not removed
+Package 'php-league-csv' is not installed, so not removed
+Package 'php-league-flysystem' is not installed, so not removed
+Package 'php-league-mime-type-detection' is not installed, so not removed
+Package 'php-league-html-to-markdown' is not installed, so not removed
+Package 'php-league-uri' is not installed, so not removed
+Package 'php-league-uri-interfaces' is not installed, so not removed
+Package 'php-league-uri-components' is not installed, so not removed
+Package 'php-letodms-core' is not installed, so not removed
+Package 'php-libvirt-php-all-dev' is not installed, so not removed
+Package 'php-log' is not installed, so not removed
+Package 'php-mdb2' is not installed, so not removed
+Package 'php-mail' is not installed, so not removed
+Package 'php-lorenzo-pinky' is not installed, so not removed
+Package 'php-net-smtp' is not installed, so not removed
+Package 'php-mail-mime' is not installed, so not removed
+Package 'php8.3-mailparse' is not installed, so not removed
+Package 'php-mailparse-all-dev' is not installed, so not removed
+Package 'php-malkusch-lock' is not installed, so not removed
+Package 'php-predis' is not installed, so not removed
+Package 'php-mariadb-mysql-kbs' is not installed, so not removed
+Package 'php-masterminds-html5' is not installed, so not removed
+Package 'php-matthiasmullie-minify' is not installed, so not removed
+Package 'php-matthiasmullie-path-converter' is not installed, so not removed
+Package 'php-maxmind-web-service-common' is not installed, so not removed
+Package 'php-maxminddb' is not installed, so not removed
+Package 'php8.3-maxminddb' is not installed, so not removed
+Package 'php-maxminddb-all-dev' is not installed, so not removed
+Package 'php8.3-mcrypt' is not installed, so not removed
+Package 'php-mcrypt-all-dev' is not installed, so not removed
+Package 'php-mdb2-driver-mysql' is not installed, so not removed
+Package 'php-mdb2-driver-pgsql' is not installed, so not removed
+Package 'php-memcache-all-dev' is not installed, so not removed
+Package 'php-memcached-all-dev' is not installed, so not removed
+Package 'php-msgpack-all-dev' is not installed, so not removed
+Package 'php-mf2' is not installed, so not removed
+Package 'php-mikey179-vfsstream' is not installed, so not removed
+Package 'php-ml-iri' is not installed, so not removed
+Package 'php-mock' is not installed, so not removed
+Package 'php-mock-phpunit' is not installed, so not removed
+Package 'php-mock-integration' is not installed, so not removed
+Package 'php-mockery' is not installed, so not removed
+Package 'php-mockery-doc' is not installed, so not removed
+Package 'php-mongodb-all-dev' is not installed, so not removed
+Package 'php-monolog' is not installed, so not removed
+Package 'php-net-dime' is not installed, so not removed
+Package 'php-net-dns2' is not installed, so not removed
+Package 'php-net-ftp' is not installed, so not removed
+Package 'php-net-imap' is not installed, so not removed
+Package 'php-net-ipv6' is not installed, so not removed
+Package 'php-net-ldap2' is not installed, so not removed
+Package 'php-net-ldap3' is not installed, so not removed
+Package 'php-net-nntp' is not installed, so not removed
+Package 'php-net-publicsuffix' is not installed, so not removed
+Package 'php-net-sieve' is not installed, so not removed
+Package 'php-net-url' is not installed, so not removed
+Package 'php-net-url2' is not installed, so not removed
+Package 'php-net-whois' is not installed, so not removed
+Package 'php-netscape-bookmark-parser' is not installed, so not removed
+Package 'php-nette-utils' is not installed, so not removed
+Package 'php-nikic-fast-route' is not installed, so not removed
+Package 'php-nyholm-psr7' is not installed, so not removed
+Package 'php8.3-oauth' is not installed, so not removed
+Package 'php-oauth-all-dev' is not installed, so not removed
+Package 'php-opis-closure' is not installed, so not removed
+Package 'php-parsedown' is not installed, so not removed
+Package 'php-parsedown-extra' is not installed, so not removed
+Package 'php-pcov-all-dev' is not installed, so not removed
+Package 'php-pda-pheanstalk' is not installed, so not removed
+Package 'php-phar-io-manifest' is not installed, so not removed
+Package 'php-phar-io-version' is not installed, so not removed
+Package 'php-php-gettext' is not installed, so not removed
+Package 'php-phpdbg' is not installed, so not removed
+Package 'php-phpdocumentor-reflection-common' is not installed, so not removed
+Package 'php-phpdocumentor-reflection-docblock' is not installed, so not removed
+Package 'php-phpdocumentor-type-resolver' is not installed, so not removed
+Package 'php-phpstan-phpdoc-parser' is not installed, so not removed
+Package 'php-symfony-expression-language' is not installed, so not removed
+Package 'php-phpmyadmin-shapefile' is not installed, so not removed
+Package 'php-phpmyadmin-sql-parser' is not installed, so not removed
+Package 'php-symfony-polyfill-php80' is not installed, so not removed
+Package 'php-seclib' is not installed, so not removed
+Package 'php-phpseclib3' is not installed, so not removed
+Package 'php-phpspec-prophecy' is not installed, so not removed
+Package 'phpunit-comparator' is not installed, so not removed
+Package 'phpunit-recursion-context' is not installed, so not removed
+Package 'php-phpspec-prophecy-phpunit' is not installed, so not removed
+Package 'php-pinba' is not installed, so not removed
+Package 'php8.3-pinba' is not installed, so not removed
+Package 'php-pinba-all-dev' is not installed, so not removed
+Package 'php-proxy-manager' is not installed, so not removed
+Package 'php8.3-ps' is not installed, so not removed
+Package 'php-ps-all-dev' is not installed, so not removed
+Package 'php8.3-psr' is not installed, so not removed
+Package 'php-psr-all-dev' is not installed, so not removed
+Package 'php-psr-simple-cache' is not installed, so not removed
+Package 'php-pubsubhubbub-publisher' is not installed, so not removed
+Package 'php-ramsey-collection' is not installed, so not removed
+Package 'php-ramsey-uuid' is not installed, so not removed
+Package 'php8.3-raphf' is not installed, so not removed
+Package 'php-raphf-all-dev' is not installed, so not removed
+Package 'php-redis-all-dev' is not installed, so not removed
+Package 'php-remctl' is not installed, so not removed
+Package 'php-roundcube-rtf-html-php' is not installed, so not removed
+Package 'php8.3-rrd' is not installed, so not removed
+Package 'php-rrd-all-dev' is not installed, so not removed
+Package 'php-sabre-dav' is not installed, so not removed
+Package 'php-sabre-vobject' is not installed, so not removed
+Package 'php-sass' is not installed, so not removed
+Package 'php8.3-sass' is not installed, so not removed
+Package 'php-sass-all-dev' is not installed, so not removed
+Package 'php-shellcommand' is not installed, so not removed
+Package 'php-slim-psr7' is not installed, so not removed
+Package 'php8.3-smbclient' is not installed, so not removed
+Package 'php-smbclient-all-dev' is not installed, so not removed
+Package 'php-solr' is not installed, so not removed
+Package 'php8.3-solr' is not installed, so not removed
+Package 'php-solr-all-dev' is not installed, so not removed
+Package 'php-sparkline' is not installed, so not removed
+Package 'php-sql-formatter' is not installed, so not removed
+Package 'php8.3-ssh2' is not installed, so not removed
+Package 'php-ssh2-all-dev' is not installed, so not removed
+Package 'php8.3-stomp' is not installed, so not removed
+Package 'php-stomp-all-dev' is not installed, so not removed
+Package 'php-swiftmailer' is not installed, so not removed
+Package 'php-symfony' is not installed, so not removed
+Package 'php-symfony-asset' is not installed, so not removed
+Package 'php-symfony-asset-mapper' is not installed, so not removed
+Package 'php-symfony-browser-kit' is not installed, so not removed
+Package 'php-symfony-clock' is not installed, so not removed
+Package 'php-symfony-debug-bundle' is not installed, so not removed
+Package 'php-symfony-doctrine-bridge' is not installed, so not removed
+Package 'php-symfony-dom-crawler' is not installed, so not removed
+Package 'php-symfony-dotenv' is not installed, so not removed
+Package 'php-symfony-error-handler' is not installed, so not removed
+Package 'php-symfony-event-dispatcher' is not installed, so not removed
+Package 'php-symfony-form' is not installed, so not removed
+Package 'php-symfony-framework-bundle' is not installed, so not removed
+Package 'php-symfony-http-kernel' is not installed, so not removed
+Package 'php-symfony-intl' is not installed, so not removed
+Package 'php-symfony-ldap' is not installed, so not removed
+Package 'php-symfony-lock' is not installed, so not removed
+Package 'php-symfony-mailer' is not installed, so not removed
+Package 'php-symfony-messenger' is not installed, so not removed
+Package 'php-symfony-mime' is not installed, so not removed
+Package 'php-symfony-monolog-bridge' is not installed, so not removed
+Package 'php-symfony-notifier' is not installed, so not removed
+Package 'php-symfony-options-resolver' is not installed, so not removed
+Package 'php-symfony-password-hasher' is not installed, so not removed
+Package 'php-symfony-property-access' is not installed, so not removed
+Package 'php-symfony-property-info' is not installed, so not removed
+Package 'php-symfony-proxy-manager-bridge' is not installed, so not removed
+Package 'php-symfony-rate-limiter' is not installed, so not removed
+Package 'php-symfony-remote-event' is not installed, so not removed
+Package 'php-symfony-routing' is not installed, so not removed
+Package 'php-symfony-scheduler' is not installed, so not removed
+Package 'php-symfony-security-bundle' is not installed, so not removed
+Package 'php-symfony-security-core' is not installed, so not removed
+Package 'php-symfony-security-csrf' is not installed, so not removed
+Package 'php-symfony-security-http' is not installed, so not removed
+Package 'php-symfony-semaphore' is not installed, so not removed
+Package 'php-symfony-serializer' is not installed, so not removed
+Package 'php-symfony-stopwatch' is not installed, so not removed
+Package 'php-symfony-string' is not installed, so not removed
+Package 'php-symfony-templating' is not installed, so not removed
+Package 'php-symfony-translation' is not installed, so not removed
+Package 'php-symfony-twig-bridge' is not installed, so not removed
+Package 'php-symfony-twig-bundle' is not installed, so not removed
+Package 'php-symfony-uid' is not installed, so not removed
+Package 'php-symfony-validator' is not installed, so not removed
+Package 'php-symfony-var-dumper' is not installed, so not removed
+Package 'php-symfony-var-exporter' is not installed, so not removed
+Package 'php-symfony-web-link' is not installed, so not removed
+Package 'php-symfony-web-profiler-bundle' is not installed, so not removed
+Package 'php-symfony-webhook' is not installed, so not removed
+Package 'php-symfony-workflow' is not installed, so not removed
+Package 'php-symfony-contracts' is not installed, so not removed
+Package 'php-symfony-polyfill-php83' is not installed, so not removed
+Package 'php-symfony-all-my-sms-notifier' is not installed, so not removed
+Package 'php-symfony-amazon-mailer' is not installed, so not removed
+Package 'php-symfony-amazon-sns-notifier' is not installed, so not removed
+Package 'php-symfony-amazon-sqs-messenger' is not installed, so not removed
+Package 'php-symfony-amqp-messenger' is not installed, so not removed
+Package 'php-symfony-bandwidth-notifier' is not installed, so not removed
+Package 'php-symfony-beanstalkd-messenger' is not installed, so not removed
+Package 'php-symfony-brevo-mailer' is not installed, so not removed
+Package 'php-symfony-brevo-notifier' is not installed, so not removed
+Package 'php-symfony-cache-contracts' is not installed, so not removed
+Package 'php-symfony-chatwork-notifier' is not installed, so not removed
+Package 'php-symfony-click-send-notifier' is not installed, so not removed
+Package 'php-symfony-clickatell-notifier' is not installed, so not removed
+Package 'php-symfony-contact-everyone-notifier' is not installed, so not removed
+Package 'php-symfony-event-dispatcher-contracts' is not installed, so not removed
+Package 'php-symfony-translation-contracts' is not installed, so not removed
+Package 'php-symfony-crowdin-translation-provider' is not installed, so not removed
+Package 'php-symfony-discord-notifier' is not installed, so not removed
+Package 'php-symfony-doctrine-messenger' is not installed, so not removed
+Package 'php-symfony-engagespot-notifier' is not installed, so not removed
+Package 'php-symfony-esendex-notifier' is not installed, so not removed
+Package 'php-symfony-expo-notifier' is not installed, so not removed
+Package 'php-symfony-fake-chat-notifier' is not installed, so not removed
+Package 'php-symfony-fake-sms-notifier' is not installed, so not removed
+Package 'php-symfony-firebase-notifier' is not installed, so not removed
+Package 'php-symfony-forty-six-elks-notifier' is not installed, so not removed
+Package 'php-symfony-free-mobile-notifier' is not installed, so not removed
+Package 'php-symfony-gateway-api-notifier' is not installed, so not removed
+Package 'php-symfony-gitter-notifier' is not installed, so not removed
+Package 'php-symfony-go-ip-notifier' is not installed, so not removed
+Package 'php-symfony-google-chat-notifier' is not installed, so not removed
+Package 'php-symfony-google-mailer' is not installed, so not removed
+Package 'php-symfony-html-sanitizer' is not installed, so not removed
+Package 'php-symfony-infobip-mailer' is not installed, so not removed
+Package 'php-symfony-infobip-notifier' is not installed, so not removed
+Package 'php-symfony-iqsms-notifier' is not installed, so not removed
+Package 'php-symfony-isendpro-notifier' is not installed, so not removed
+Package 'php-symfony-kaz-info-teh-notifier' is not installed, so not removed
+Package 'php-symfony-light-sms-notifier' is not installed, so not removed
+Package 'php-symfony-line-notify-notifier' is not installed, so not removed
+Package 'php-symfony-linked-in-notifier' is not installed, so not removed
+Package 'php-symfony-loco-translation-provider' is not installed, so not removed
+Package 'php-symfony-lokalise-translation-provider' is not installed, so not removed
+Package 'php-symfony-mail-pace-mailer' is not installed, so not removed
+Package 'php-symfony-mailchimp-mailer' is not installed, so not removed
+Package 'php-symfony-mailer-send-mailer' is not installed, so not removed
+Package 'php-symfony-mailgun-mailer' is not installed, so not removed
+Package 'php-symfony-mailjet-mailer' is not installed, so not removed
+Package 'php-symfony-mailjet-notifier' is not installed, so not removed
+Package 'php-symfony-mastodon-notifier' is not installed, so not removed
+Package 'php-symfony-mattermost-notifier' is not installed, so not removed
+Package 'php-symfony-mercure' is not installed, so not removed
+Package 'php-symfony-mercure-bundle' is not installed, so not removed
+Package 'php-symfony-mercure-notifier' is not installed, so not removed
+Package 'php-symfony-message-bird-notifier' is not installed, so not removed
+Package 'php-symfony-message-media-notifier' is not installed, so not removed
+Package 'php-symfony-microsoft-teams-notifier' is not installed, so not removed
+Package 'php-symfony-mobyt-notifier' is not installed, so not removed
+Package 'php-symfony-novu-notifier' is not installed, so not removed
+Package 'php-symfony-ntfy-notifier' is not installed, so not removed
+Package 'php-symfony-octopush-notifier' is not installed, so not removed
+Package 'php-symfony-oh-my-smtp-mailer' is not installed, so not removed
+Package 'php-symfony-one-signal-notifier' is not installed, so not removed
+Package 'php-symfony-orange-sms-notifier' is not installed, so not removed
+Package 'php-symfony-ovh-cloud-notifier' is not installed, so not removed
+Package 'php-symfony-pager-duty-notifier' is not installed, so not removed
+Package 'php-symfony-phpunit-bridge' is not installed, so not removed
+Package 'php-symfony-phrase-translation-provider' is not installed, so not removed
+Package 'php-symfony-plivo-notifier' is not installed, so not removed
+Package 'php-symfony-polyfill' is not installed, so not removed
+Package 'php-symfony-polyfill-apcu' is not installed, so not removed
+Package 'php-symfony-polyfill-ctype' is not installed, so not removed
+Package 'php-symfony-polyfill-php72' is not installed, so not removed
+Package 'php-symfony-polyfill-php73' is not installed, so not removed
+Package 'php-symfony-polyfill-php74' is not installed, so not removed
+Package 'php-symfony-polyfill-php81' is not installed, so not removed
+Package 'php-symfony-polyfill-php82' is not installed, so not removed
+Package 'php-symfony-polyfill-iconv' is not installed, so not removed
+Package 'php-symfony-polyfill-intl-grapheme' is not installed, so not removed
+Package 'php-symfony-polyfill-intl-icu' is not installed, so not removed
+Package 'php-symfony-polyfill-intl-messageformatter' is not installed, so not removed
+Package 'php-symfony-polyfill-intl-idn' is not installed, so not removed
+Package 'php-symfony-polyfill-intl-normalizer' is not installed, so not removed
+Package 'php-symfony-polyfill-mbstring' is not installed, so not removed
+Package 'php-symfony-polyfill-util' is not installed, so not removed
+Package 'php-symfony-polyfill-xml' is not installed, so not removed
+Package 'php-symfony-polyfill-uuid' is not installed, so not removed
+Package 'php-symfony-postmark-mailer' is not installed, so not removed
+Package 'php-symfony-psr-http-message-bridge' is not installed, so not removed
+Package 'php-symfony-pushover-notifier' is not installed, so not removed
+Package 'php-symfony-redis-messenger' is not installed, so not removed
+Package 'php-symfony-redlink-notifier' is not installed, so not removed
+Package 'php-symfony-ring-central-notifier' is not installed, so not removed
+Package 'php-symfony-rocket-chat-notifier' is not installed, so not removed
+Package 'php-symfony-runtime' is not installed, so not removed
+Package 'php-symfony-scaleway-mailer' is not installed, so not removed
+Package 'php-symfony-security-acl' is not installed, so not removed
+Package 'php-symfony-sendberry-notifier' is not installed, so not removed
+Package 'php-symfony-sendgrid-mailer' is not installed, so not removed
+Package 'php-symfony-sendinblue-mailer' is not installed, so not removed
+Package 'php-symfony-sendinblue-notifier' is not installed, so not removed
+Package 'php-symfony-simple-textin-notifier' is not installed, so not removed
+Package 'php-symfony-sinch-notifier' is not installed, so not removed
+Package 'php-symfony-slack-notifier' is not installed, so not removed
+Package 'php-symfony-sms-biuras-notifier' is not installed, so not removed
+Package 'php-symfony-sms-factor-notifier' is not installed, so not removed
+Package 'php-symfony-sms77-notifier' is not installed, so not removed
+Package 'php-symfony-smsapi-notifier' is not installed, so not removed
+Package 'php-symfony-smsc-notifier' is not installed, so not removed
+Package 'php-symfony-smsmode-notifier' is not installed, so not removed
+Package 'php-symfony-spot-hit-notifier' is not installed, so not removed
+Package 'php-symfony-telegram-notifier' is not installed, so not removed
+Package 'php-symfony-telnyx-notifier' is not installed, so not removed
+Package 'php-symfony-termii-notifier' is not installed, so not removed
+Package 'php-symfony-turbo-sms-notifier' is not installed, so not removed
+Package 'php-symfony-twilio-notifier' is not installed, so not removed
+Package 'php-symfony-twitter-notifier' is not installed, so not removed
+Package 'php-symfony-vonage-notifier' is not installed, so not removed
+Package 'php-symfony-yunpian-notifier' is not installed, so not removed
+Package 'php-symfony-zendesk-notifier' is not installed, so not removed
+Package 'php-symfony-zulip-notifier' is not installed, so not removed
+Package 'php-text-captcha' is not installed, so not removed
+Package 'php-text-password' is not installed, so not removed
+Package 'php-text-figlet' is not installed, so not removed
+Package 'php-text-languagedetect' is not installed, so not removed
+Package 'php-text-wiki' is not installed, so not removed
+Package 'php-thrift' is not installed, so not removed
+Package 'php8.3-tideways' is not installed, so not removed
+Package 'php-tideways-all-dev' is not installed, so not removed
+Package 'php-tijsverkoyen-css-to-inline-styles' is not installed, so not removed
+Package 'php-timer' is not installed, so not removed
+Package 'php-twig-doc' is not installed, so not removed
+Package 'php-twig-cache-extra' is not installed, so not removed
+Package 'php-twig-cssinliner-extra' is not installed, so not removed
+Package 'php-twig-extra-bundle' is not installed, so not removed
+Package 'php-twig-html-extra' is not installed, so not removed
+Package 'php-twig-i18n-extension' is not installed, so not removed
+Package 'php-twig-inky-extra' is not installed, so not removed
+Package 'php-twig-intl-extra' is not installed, so not removed
+Package 'php-twig-markdown-extra' is not installed, so not removed
+Package 'php-twig-string-extra' is not installed, so not removed
+Package 'php8.3-uopz' is not installed, so not removed
+Package 'php-uopz-all-dev' is not installed, so not removed
+Package 'php8.3-uploadprogress' is not installed, so not removed
+Package 'php-uploadprogress-all-dev' is not installed, so not removed
+Package 'php8.3-uuid' is not installed, so not removed
+Package 'php-uuid-all-dev' is not installed, so not removed
+Package 'php-validate' is not installed, so not removed
+Package 'php-vlucas-phpdotenv' is not installed, so not removed
+Package 'php-voku-portable-ascii' is not installed, so not removed
+Package 'php-wmerrors' is not installed, so not removed
+Package 'php-xdebug-all-dev' is not installed, so not removed
+Package 'php-xml-svg' is not installed, so not removed
+Package 'php8.3-xmlrpc' is not installed, so not removed
+Package 'php-xmlrpc-all-dev' is not installed, so not removed
+Package 'php8.3-yac' is not installed, so not removed
+Package 'php-yac-all-dev' is not installed, so not removed
+Package 'php-yaml-all-dev' is not installed, so not removed
+Package 'php-zend-code' is not installed, so not removed
+Package 'php-zend-eventmanager' is not installed, so not removed
+Package 'php-zend-stdlib' is not installed, so not removed
+Package 'php-zeroc-ice' is not installed, so not removed
+Package 'php-zeta-base' is not installed, so not removed
+Package 'php-zeta-console-tools' is not installed, so not removed
+Package 'php-zeta-unit-test' is not installed, so not removed
+Package 'php-zmq-all-dev' is not installed, so not removed
+Package 'php-zumba-json-serializer' is not installed, so not removed
+Package 'php8.3-libvirt-php' is not installed, so not removed
+Package 'phpab' is not installed, so not removed
+Package 'phpcpd' is not installed, so not removed
+Package 'phpunit-cli-parser' is not installed, so not removed
+Package 'phpldapadmin' is not installed, so not removed
+Package 'phpliteadmin' is not installed, so not removed
+Package 'phpliteadmin-themes' is not installed, so not removed
+Package 'phploc' is not installed, so not removed
+Package 'phppgadmin' is not installed, so not removed
+Package 'phpsysinfo' is not installed, so not removed
+Package 'phpunit-code-unit' is not installed, so not removed
+Package 'phpunit-diff' is not installed, so not removed
+Package 'phpunit-exporter' is not installed, so not removed
+Package 'phpunit-global-state' is not installed, so not removed
+Package 'phpunit-object-enumerator' is not installed, so not removed
+Package 'phpunit-resource-operations' is not installed, so not removed
+Package 'phpunit-type' is not installed, so not removed
+Package 'phpunit-object-reflector' is not installed, so not removed
+Package 'phpwebcounter' is not installed, so not removed
+Package 'phpwebcounter-extra' is not installed, so not removed
+Package 'python3-phply' is not installed, so not removed
+Package 'python3-phpserialize' is not installed, so not removed
+Package 'python3-sphinxcontrib.phpdomain' is not installed, so not removed
+Package 'simplesamlphp' is not installed, so not removed
+Package 'slbackup-php' is not installed, so not removed
+Package 'uwsgi-plugin-php' is not installed, so not removed
+Package 'weechat-php' is not installed, so not removed
+Package 'php-mythtv' is not installed, so not removed
+The following packages will be REMOVED:
+php-common php-pear php8.3 php8.3-amqp php8.3-apcu php8.3-bcmath php8.3-bz2
+php8.3-cgi php8.3-cli php8.3-common php8.3-curl php8.3-dba php8.3-dev
+php8.3-enchant php8.3-fpm php8.3-gd php8.3-gmp php8.3-igbinary
+php8.3-imagick php8.3-imap php8.3-interbase php8.3-intl php8.3-ldap
+php8.3-mbstring php8.3-memcache php8.3-memcached php8.3-mongodb
+php8.3-msgpack php8.3-mysql php8.3-odbc php8.3-opcache php8.3-pcov
+php8.3-pgsql php8.3-phpdbg php8.3-pspell php8.3-readline php8.3-redis
+php8.3-snmp php8.3-soap php8.3-sqlite3 php8.3-sybase php8.3-tidy
+php8.3-xdebug php8.3-xml php8.3-xsl php8.3-yaml php8.3-zip php8.3-zmq
+0 upgraded, 0 newly installed, 48 to remove and 84 not upgraded.
+After this operation, 58.9 MB disk space will be freed.
+(Reading database ...
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 207223 files and directories currently installed.)
+Removing php8.3-zip (8.3.6-0ubuntu0.24.04.4) ...
+Removing php8.3-sybase (8.3.6-0ubuntu0.24.04.4) ...
+Removing php-pear (1:1.10.13+submodules+notgz+2022032202-2build1) ...
+Removing php8.3 (8.3.6-0ubuntu0.24.04.4) ...
+Removing php8.3-amqp (1.11.0-5ubuntu1) ...
+Removing php8.3-apcu (5.1.22+4.0.11-2ubuntu1) ...
+Removing php8.3-bcmath (8.3.6-0ubuntu0.24.04.4) ...
+Removing php8.3-bz2 (8.3.6-0ubuntu0.24.04.4) ...
+Removing php8.3-zmq (1.1.3-24ubuntu1) ...
+Removing php8.3-yaml (2.2.2+2.1.0+2.0.4+1.3.2-6ubuntu1) ...
+Removing php8.3-cgi (8.3.6-0ubuntu0.24.04.4) ...
+apache2_invoke php8.3-cgi prerm: No action required
+Removing php8.3-dev (8.3.6-0ubuntu0.24.04.4) ...
+Removing php8.3-xdebug (3.2.0+3.1.6+2.9.8+2.8.1+2.5.5-3ubuntu1) ...
+Removing php8.3-phpdbg (8.3.6-0ubuntu0.24.04.4) ...
+Removing php8.3-redis (5.3.7+4.3.0-3ubuntu1) ...
+Removing php8.3-xsl (8.3.6-0ubuntu0.24.04.4) ...
+Removing php8.3-soap (8.3.6-0ubuntu0.24.04.4) ...
+Removing php8.3-curl (8.3.6-0ubuntu0.24.04.4) ...
+Removing php8.3-dba (8.3.6-0ubuntu0.24.04.4) ...
+Removing php8.3-enchant (8.3.6-0ubuntu0.24.04.4) ...
+Removing php8.3-pcov (1.0.11-5ubuntu1) ...
+Removing php8.3-fpm (8.3.6-0ubuntu0.24.04.4) ...
+apache2_invoke php8.3-fpm prerm: No action required
+Removing php8.3-gd (8.3.6-0ubuntu0.24.04.4) ...
+Removing php8.3-gmp (8.3.6-0ubuntu0.24.04.4) ...
+Removing php8.3-memcached (3.2.0+2.2.0-4ubuntu3) ...
+Removing php8.3-igbinary (3.2.13-1ubuntu3) ...
+Removing php8.3-imagick (3.7.0-4ubuntu3) ...
+Removing php8.3-imap (8.3.6-0ubuntu0.24.04.4) ...
+Removing php8.3-interbase (8.3.6-0ubuntu0.24.04.4) ...
+Removing php8.3-intl (8.3.6-0ubuntu0.24.04.4) ...
+Removing php8.3-ldap (8.3.6-0ubuntu0.24.04.4) ...
+Removing php8.3-mbstring (8.3.6-0ubuntu0.24.04.4) ...
+Removing php8.3-memcache (8.0+4.0.5.2+3.0.9~20170802.e702b5f9+-8ubuntu1) ...
+Removing php8.3-mongodb (1.15.0+1.11.1+1.9.2+1.7.5-1ubuntu3) ...
+Removing php8.3-msgpack (1:2.2.0~rc2-3ubuntu1) ...
+Removing php8.3-mysql (8.3.6-0ubuntu0.24.04.4) ...
+Removing php8.3-odbc (8.3.6-0ubuntu0.24.04.4) ...
+Removing php8.3-pgsql (8.3.6-0ubuntu0.24.04.4) ...
+Removing php8.3-pspell (8.3.6-0ubuntu0.24.04.4) ...
+Removing php8.3-snmp (8.3.6-0ubuntu0.24.04.4) ...
+Removing php8.3-sqlite3 (8.3.6-0ubuntu0.24.04.4) ...
+Removing php8.3-tidy (8.3.6-0ubuntu0.24.04.4) ...
+Removing php8.3-xml (8.3.6-0ubuntu0.24.04.4) ...
+Removing php8.3-cli (8.3.6-0ubuntu0.24.04.4) ...
+Removing php8.3-opcache (8.3.6-0ubuntu0.24.04.4) ...
+Removing php8.3-readline (8.3.6-0ubuntu0.24.04.4) ...
+Removing php8.3-common (8.3.6-0ubuntu0.24.04.4) ...
+Removing php-common (2:93ubuntu2) ...
+Stopping 'phpsessionclean.service', but its triggering units are still active:
+2025-04-12T15:50:46.1198084Z
+phpsessionclean.timer
+2025-04-12T15:50:46.1198548Z
+Processing triggers for man-db (2.12.0-4build2) ...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Package 'mongodb-dev' is not installed, so not removed
+Package 'mongodb-server' is not installed, so not removed
+0 upgraded, 0 newly installed, 0 to remove and 84 not upgraded.
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Package 'mysql-client-5.7' is not installed, so not removed
+Package 'mysql-client-core-5.7' is not installed, so not removed
+Package 'mysql-server-5.5' is not installed, so not removed
+Package 'mysql-server-5.7' is not installed, so not removed
+Package 'mysql-server-core-5.7' is not installed, so not removed
+Package 'mysql-client-core-5.5' is not installed, so not removed
+Package 'mysql-client-core-5.6' is not installed, so not removed
+Package 'mysql-client-5.5' is not installed, so not removed
+Package 'mysql-client-5.6' is not installed, so not removed
+Package 'mysql-cluster-community-client-plugins' is not installed, so not removed
+Package 'mysql-server-core-5.5' is not installed, so not removed
+Package 'mysql-server-core-5.6' is not installed, so not removed
+Package 'mysql-server-5.6' is not installed, so not removed
+Package 'mysql-testsuite-5.5' is not installed, so not removed
+Package 'mysql-testsuite-5.6' is not installed, so not removed
+Package 'mysql-testsuite-5.7' is not installed, so not removed
+Package 'mysql-testsuite' is not installed, so not removed
+Package 'mysql-testsuite-8.0' is not installed, so not removed
+Package 'mysql-router' is not installed, so not removed
+Package 'mysql-sandbox' is not installed, so not removed
+Package 'mysql-shell' is not installed, so not removed
+Package 'mysql-source-8.0' is not installed, so not removed
+The following packages will be REMOVED:
+libmysqlclient-dev libmysqlclient21 mysql-client mysql-client-8.0
+mysql-client-core-8.0 mysql-common mysql-server mysql-server-8.0
+mysql-server-core-8.0 sphinxsearch
+0 upgraded, 0 newly installed, 10 to remove and 84 not upgraded.
+After this operation, 208 MB disk space will be freed.
+(Reading database ...
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 206228 files and directories currently installed.)
+Removing libmysqlclient-dev (8.0.41-0ubuntu0.24.04.1) ...
+Removing sphinxsearch (2.2.11-8build1) ...
+Removing libmysqlclient21:amd64 (8.0.41-0ubuntu0.24.04.1) ...
+Removing mysql-client (8.0.41-0ubuntu0.24.04.1) ...
+Removing mysql-server (8.0.41-0ubuntu0.24.04.1) ...
+Removing mysql-server-8.0 (8.0.41-0ubuntu0.24.04.1) ...
+update-alternatives: using /etc/mysql/my.cnf.fallback to provide /etc/mysql/my.cnf (my.cnf) in auto mode
+Removing mysql-client-8.0 (8.0.41-0ubuntu0.24.04.1) ...
+Removing mysql-client-core-8.0 (8.0.41-0ubuntu0.24.04.1) ...
+Removing mysql-common (5.8+1.1.0build1) ...
+Removing mysql-server-core-8.0 (8.0.41-0ubuntu0.24.04.1) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.4) ...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Package 'mono-devel' is not installed, so not removed
+The following packages will be REMOVED:
+azure-cli firefox google-chrome-stable libgl1 libgl1-mesa-dri libglx-mesa0
+libglx0 powershell xvfb
+0 upgraded, 0 newly installed, 9 to remove and 82 not upgraded.
+After this operation, 1541 MB disk space will be freed.
+(Reading database ...
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 205953 files and directories currently installed.)
+Removing azure-cli (2.71.0-1~noble) ...
+Removing firefox (136.0.4+build1-0ubuntu0.24.04.1~mt1) ...
+Removing google-chrome-stable (135.0.7049.52-1) ...
+Removing xvfb (2:21.1.12-1ubuntu1.3) ...
+Removing libgl1:amd64 (1.7.0-1build1) ...
+Removing libglx0:amd64 (1.7.0-1build1) ...
+Removing libglx-mesa0:amd64 (24.2.8-1ubuntu1~24.04.1) ...
+Removing libgl1-mesa-dri:amd64 (24.2.8-1ubuntu1~24.04.1) ...
+Removing powershell (7.4.7-1.deb) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.4) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+Processing triggers for hicolor-icon-theme (0.17-2) ...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Package 'google-cloud-sdk' is not installed, so not removed
+0 upgraded, 0 newly installed, 0 to remove and 82 not upgraded.
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following packages will be REMOVED:
+google-cloud-cli google-cloud-cli-anthoscli
+0 upgraded, 0 newly installed, 2 to remove and 82 not upgraded.
+After this operation, 647 MB disk space will be freed.
+(Reading database ...
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 169701 files and directories currently installed.)
+Removing google-cloud-cli-anthoscli (517.0.0-0) ...
+Removing google-cloud-cli (517.0.0-0) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.4) ...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following packages will be REMOVED:
+dictionaries-common emacsen-common firebird3.0-common firebird3.0-common-doc
+freetds-common hunspell-en-us icu-devtools imagemagick-6-common lib32gcc-s1
+lib32stdc++6 libaom3 libaspell15 libc-client2007e libc6-i386 libcanberra0t64
+libcgi-fast-perl libcgi-pm-perl libclang-common-16-dev
+libclang-common-17-dev libclang-common-18-dev libclang-rt-16-dev
+libclang-rt-17-dev libclang-rt-18-dev libclang1-16t64 libclang1-17t64
+libclone-perl libdbusmenu-glib4 libdbusmenu-gtk3-4 libde265-0 libenchant-2-2
+libencode-locale-perl libevent-pthreads-2.1-7t64 libfbclient2 libfcgi-bin
+libfcgi-perl libfcgi0t64 libffi-dev libfftw3-double3 libfontenc1 libgc1
+libgd3 libglvnd0 libhashkit2t64 libheif-plugin-aomdec
+libheif-plugin-libde265 libheif1 libhtml-parser-perl libhtml-tagset-perl
+libhtml-template-perl libhttp-date-perl libhttp-message-perl
+libhunspell-1.7-0 libice6 libicu-dev libio-html-perl liblldb-16t64
+liblldb-17t64 liblqr-1-0 liblttng-ust-common1t64 liblttng-ust-ctl5t64
+liblttng-ust1t64 liblwp-mediatypes-perl libmagickcore-6.q16-7t64
+libmagickwand-6.q16-7t64 libmecab2 libmemcached11t64 libncurses-dev
+libnorm1t64 libobjc-13-dev libobjc4 libodbc2 libogg0 libopenjp2-7
+libpcre2-16-0 libpcre2-32-0 libpcre2-dev libpcre2-posix3 libpfm4
+libpgm-5.3-0t64 libprotobuf-lite32t64 libqdbm14t64 librabbitmq4 libraw23t64
+libre2-10 libsm6 libsnappy1v5 libsybdb5 libtdb1 libtidy5deb1
+libtimedate-perl libtommath1 liburi-perl libvorbis0a libvorbisfile3
+libwebpdemux2 libwebpmux3 libxaw7 libxcb-glx0 libxfont2 libxkbfile1
+libxml2-dev libxmu6 libxpm4 libxt6t64 libxxf86vm1 libz3-4 libz3-dev
+libzip4t64 libzmq5 libzstd-dev mecab-ipadic mecab-ipadic-utf8 mecab-utils
+mlock netstandard-targeting-pack-2.1-8.0 shtool sound-theme-freedesktop
+x11-xkb-utils xserver-common xul-ext-ubufox
+0 upgraded, 0 newly installed, 120 to remove and 81 not upgraded.
+After this operation, 472 MB disk space will be freed.
+(Reading database ...
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 119965 files and directories currently installed.)
+Removing libenchant-2-2:amd64 (2.3.3-2build2) ...
+Removing hunspell-en-us (1:2020.12.07-2) ...
+Removing dictionaries-common (1.29.7) ...
+Removing 'diversion of /usr/share/dict/words to /usr/share/dict/words.pre-dictionaries-common by dictionaries-common'
+Removing emacsen-common (3.0.5) ...
+Removing libfbclient2:amd64 (3.0.11.33703.ds4-2ubuntu2) ...
+Removing firebird3.0-common (3.0.11.33703.ds4-2ubuntu2) ...
+Removing firebird3.0-common-doc (3.0.11.33703.ds4-2ubuntu2) ...
+Removing libsybdb5:amd64 (1.3.17+ds-2build3) ...
+Removing freetds-common (1.3.17+ds-2build3) ...
+Removing libxml2-dev:amd64 (2.9.14+dfsg-1.3ubuntu3.2) ...
+Removing libicu-dev:amd64 (74.2-1ubuntu3.1) ...
+Removing icu-devtools (74.2-1ubuntu3.1) ...
+Removing libmagickwand-6.q16-7t64:amd64 (8:6.9.12.98+dfsg1-5.2build2) ...
+Removing libmagickcore-6.q16-7t64:amd64 (8:6.9.12.98+dfsg1-5.2build2) ...
+Removing imagemagick-6-common (8:6.9.12.98+dfsg1-5.2build2) ...
+Removing libclang-rt-18-dev:amd64 (1:18.1.3-1ubuntu1) ...
+Removing libclang-rt-16-dev:amd64 (1:16.0.6-23ubuntu4) ...
+Removing lib32stdc++6 (14.2.0-4ubuntu2~24.04) ...
+Removing lib32gcc-s1 (14.2.0-4ubuntu2~24.04) ...
+Removing libaspell15:amd64 (0.60.8.1-1build1) ...
+Removing libc-client2007e (8:2007f~dfsg-7build3) ...
+Removing libc6-i386 (2.39-0ubuntu8.4) ...
+Removing libcanberra0t64:amd64 (0.30-10ubuntu10) ...
+Removing libcgi-fast-perl (1:2.17-1) ...
+Removing libhtml-template-perl (2.97-2) ...
+Removing libcgi-pm-perl (4.63-1) ...
+Removing libclang-common-16-dev (1:16.0.6-23ubuntu4) ...
+Removing libclang-common-17-dev:amd64 (1:17.0.6-9ubuntu1) ...
+Removing libclang-common-18-dev:amd64 (1:18.1.3-1ubuntu1) ...
+Removing libclang-rt-17-dev:amd64 (1:17.0.6-9ubuntu1) ...
+Removing libclang1-16t64 (1:16.0.6-23ubuntu4) ...
+Removing libclang1-17t64 (1:17.0.6-9ubuntu1) ...
+Removing libhttp-message-perl (6.45-1ubuntu1) ...
+Removing libclone-perl:amd64 (0.46-1build3) ...
+Removing libdbusmenu-gtk3-4:amd64 (18.10.20180917~bzr492+repack1-3.1ubuntu5) ...
+Removing libdbusmenu-glib4:amd64 (18.10.20180917~bzr492+repack1-3.1ubuntu5) ...
+Removing libencode-locale-perl (1.05-3) ...
+Removing libevent-pthreads-2.1-7t64:amd64 (2.1.12-stable-9ubuntu2) ...
+Removing libfcgi-bin (2.4.2-2.1build1) ...
+Removing libfcgi-perl (0.82+ds-3build2) ...
+Removing libfcgi0t64:amd64 (2.4.2-2.1build1) ...
+Removing libffi-dev:amd64 (3.4.6-1build1) ...
+Removing libfftw3-double3:amd64 (3.3.10-1ubuntu3) ...
+Removing libxfont2:amd64 (1:2.0.6-1build1) ...
+Removing libfontenc1:amd64 (1:1.1.8-1build1) ...
+Removing libobjc-13-dev:amd64 (13.3.0-6ubuntu2~24.04) ...
+Removing libobjc4:amd64 (14.2.0-4ubuntu2~24.04) ...
+Removing libgc1:amd64 (1:8.2.6-1build1) ...
+Removing libgd3:amd64 (2.3.3-9ubuntu5) ...
+Removing libglvnd0:amd64 (1.7.0-1build1) ...
+Removing libmemcached11t64:amd64 (1.1.4-1.1build3) ...
+Removing libhashkit2t64:amd64 (1.1.4-1.1build3) ...
+Removing libhtml-parser-perl:amd64 (3.81-1build3) ...
+Removing libhtml-tagset-perl (3.20-6) ...
+Removing libhttp-date-perl (6.06-1) ...
+Removing libhunspell-1.7-0:amd64 (1.7.2+really1.7.2-10build3) ...
+Removing xserver-common (2:21.1.12-1ubuntu1.3) ...
+Removing x11-xkb-utils (7.7+8build2) ...
+Removing libxaw7:amd64 (2:1.0.14-1build2) ...
+Removing libxmu6:amd64 (2:1.1.3-3build2) ...
+Removing libxt6t64:amd64 (1:1.2.1-1.2build1) ...
+Removing libsm6:amd64 (2:1.2.3-1build3) ...
+Removing libice6:amd64 (2:1.0.10-1build3) ...
+Removing libio-html-perl (1.004-3) ...
+Removing liblldb-16t64 (1:16.0.6-23ubuntu4) ...
+Removing liblldb-17t64 (1:17.0.6-9ubuntu1) ...
+Removing liblqr-1-0:amd64 (0.4.2-2.1build2) ...
+Removing liblttng-ust1t64:amd64 (2.13.7-1.1ubuntu2) ...
+Removing liblttng-ust-ctl5t64:amd64 (2.13.7-1.1ubuntu2) ...
+Removing liblttng-ust-common1t64:amd64 (2.13.7-1.1ubuntu2) ...
+Removing liblwp-mediatypes-perl (6.04-2) ...
+Removing mecab-ipadic-utf8 (2.7.0-20070801+main-3) ...
+update-alternatives: using /var/lib/mecab/dic/ipadic to provide /var/lib/mecab/dic/debian (mecab-dictionary) in auto mode
+Removing mecab-ipadic (2.7.0-20070801+main-3) ...
+Removing mecab-utils (0.996-14ubuntu4) ...
+Removing libmecab2:amd64 (0.996-14ubuntu4) ...
+Removing libncurses-dev:amd64 (6.4+20240113-1ubuntu2) ...
+Removing libzmq5:amd64 (4.3.5-1build2) ...
+Removing libnorm1t64:amd64 (1.5.9+dfsg-3.1build1) ...
+Removing libodbc2:amd64 (2.3.12-1ubuntu0.24.04.1) ...
+Removing libvorbisfile3:amd64 (1.3.7-1build3) ...
+Removing libvorbis0a:amd64 (1.3.7-1build3) ...
+Removing libogg0:amd64 (1.3.5-3build1) ...
+Removing libopenjp2-7:amd64 (2.5.0-2ubuntu0.3) ...
+Removing libpcre2-dev:amd64 (10.42-4ubuntu2.1) ...
+Removing libpcre2-16-0:amd64 (10.42-4ubuntu2.1) ...
+Removing libpcre2-32-0:amd64 (10.42-4ubuntu2.1) ...
+Removing libpcre2-posix3:amd64 (10.42-4ubuntu2.1) ...
+Removing libpfm4:amd64 (4.13.0+git32-g0d4ed0e-1) ...
+Removing libpgm-5.3-0t64:amd64 (5.3.128~dfsg-2.1build1) ...
+Removing libprotobuf-lite32t64:amd64 (3.21.12-8.2build1) ...
+Removing libqdbm14t64 (1.8.78-12.1build2) ...
+Removing librabbitmq4:amd64 (0.11.0-1build2) ...
+Removing libraw23t64:amd64 (0.21.2-2.1build1) ...
+Removing libre2-10:amd64 (20230301-3build1) ...
+Removing libsnappy1v5:amd64 (1.1.10-1build1) ...
+Removing libtdb1:amd64 (1.4.10-1build1) ...
+Removing libtidy5deb1:amd64 (2:5.6.0-11ubuntu2) ...
+Removing libtimedate-perl (2.3300-2) ...
+Removing libtommath1:amd64 (1.2.1-2build1) ...
+Removing liburi-perl (5.27-1) ...
+Removing libwebpdemux2:amd64 (1.3.2-0.4build3) ...
+Removing libwebpmux3:amd64 (1.3.2-0.4build3) ...
+Removing libxcb-glx0:amd64 (1.15-1ubuntu2) ...
+Removing libxkbfile1:amd64 (1:1.1.0-1build4) ...
+Removing libxpm4:amd64 (1:3.5.17-1build2) ...
+Removing libxxf86vm1:amd64 (1:1.1.4-1build4) ...
+Removing libz3-dev:amd64 (4.8.12-3.1build1) ...
+Removing libz3-4:amd64 (4.8.12-3.1build1) ...
+Removing libzip4t64:amd64 (1.7.3-1.1ubuntu2) ...
+Removing libzstd-dev:amd64 (1.5.5+dfsg2-2build1.1) ...
+Removing mlock (8:2007f~dfsg-7build3) ...
+Removing netstandard-targeting-pack-2.1-8.0 (8.0.114-0ubuntu1~24.04.1) ...
+Removing shtool (2.0.8-10) ...
+Removing sound-theme-freedesktop (0.8-2ubuntu1) ...
+Removing xul-ext-ubufox (3.4-0ubuntu1.17.10.4) ...
+Removing libheif1:amd64 (1.17.6-1ubuntu4.1) ...
+Removing libheif-plugin-libde265:amd64 (1.17.6-1ubuntu4.1) ...
+Removing libde265-0:amd64 (1.0.15-1build3) ...
+Removing libheif-plugin-aomdec:amd64 (1.17.6-1ubuntu4.1) ...
+Removing libaom3:amd64 (3.8.2-2ubuntu0.1) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+Processing triggers for postgresql-common (274.pgdg24.04+1) ...
+Building PostgreSQL dictionaries from installed myspell/hunspell packages...
+Removing obsolete dictionary files:
+/var/cache/postgresql/dicts/en_us.affix
+/var/cache/postgresql/dicts/en_us.dict
+/usr/share/postgresql/16/tsearch_data/en_us.affix
+/usr/share/postgresql/16/tsearch_data/en_us.dict
+Processing triggers for install-info (7.1-3build2) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.4) ...
+2025-04-12T15:52:30.1401348Z
+********************************************************************************
+=> Large misc. packages: Saved 5.2GiB
+********************************************************************************
+2025-04-12T15:52:30.1430355Z
+Total reclaimed space: 0B
+2025-04-12T15:52:30.2478105Z
+********************************************************************************
+=> Docker images: Saved 0B
+********************************************************************************
+2025-04-12T15:52:30.2508615Z
+total        used        free      shared  buff/cache   available
+Mem:            15Gi       982Mi        13Gi        65Mi       1.5Gi        14Gi
+Swap:             0B          0B          0B
+2025-04-12T15:52:30.9959621Z
+********************************************************************************
+=> Swap storage: Saved 4.0GiB
+********************************************************************************
+2025-04-12T15:52:30.9989426Z
+2025-04-12T15:52:31.0048650Z
+================================================================================
+AFTER CLEAN-UP:
+2025-04-12T15:52:31.0055136Z
+$ dh -h /
+2025-04-12T15:52:31.0055329Z
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/root        72G   27G   46G  38% /
+$ dh -a /
+2025-04-12T15:52:31.0066916Z
+Filesystem     1K-blocks     Used Available Use% Mounted on
+/dev/root       75085112 27872576  47196152  38% /
+$ dh -a
+2025-04-12T15:52:31.0079169Z
+Filesystem     1K-blocks     Used Available Use% Mounted on
+/dev/root       75085112 27872576  47196152  38% /
+devtmpfs         8184112        0   8184112   0% /dev
+proc                   0        0         0    - /proc
+sysfs                  0        0         0    - /sys
+securityfs             0        0         0    - /sys/kernel/security
+tmpfs            8186896       84   8186812   1% /dev/shm
+devpts                 0        0         0    - /dev/pts
+tmpfs            3274760     1096   3273664   1% /run
+tmpfs               5120        0      5120   0% /run/lock
+cgroup2                0        0         0    - /sys/fs/cgroup
+pstore                 0        0         0    - /sys/fs/pstore
+bpf                    0        0         0    - /sys/fs/bpf
+systemd-1              -        -         -    - /proc/sys/fs/binfmt_misc
+hugetlbfs              0        0         0    - /dev/hugepages
+mqueue                 0        0         0    - /dev/mqueue
+debugfs                0        0         0    - /sys/kernel/debug
+tracefs                0        0         0    - /sys/kernel/tracing
+fusectl                0        0         0    - /sys/fs/fuse/connections
+configfs               0        0         0    - /sys/kernel/config
+/dev/sdb16        901520    59928    778464   8% /boot
+/dev/sdb15        106832     6246    100586   6% /boot/efi
+binfmt_misc            0        0         0    - /proc/sys/fs/binfmt_misc
+/dev/sda1       76829444       28  72880976   1% /mnt
+tmpfs            1637376       12   1637364   1% /run/user/1001
+================================================================================
+2025-04-12T15:52:31.0101268Z
+2025-04-12T15:52:31.0101272Z
+/dev/root:
+2025-04-12T15:52:31.0101451Z
+********************************************************************************
+=> Saved 21GiB
+********************************************************************************
+2025-04-12T15:52:31.0128785Z
+overall:
+2025-04-12T15:52:31.0129039Z
+********************************************************************************
+=> Saved 25GiB
+********************************************************************************
+2025-04-12T15:52:31.0157802Z
+##[group]Run <:*:>
+with:
+repository: <:*:>
+token: ***
+ssh-strict: true
+ssh-user: git
+persist-credentials: <:*:>
+clean: true
+sparse-checkout-cone-mode: true
+fetch-depth: <:NUM:>
+fetch-tags: false
+show-progress: true
+lfs: false
+submodules: <:*:>
+set-safe-directory: true
+env:
+GOPROXY: https://proxy.golang.org
+GO111MODULE: on
+SASS_VERSION: 1.80.3
+DART_SASS_SHA_LINUX: 7c933edbad0a7d389192c5b79393485c088bd2c4398e32f5754c32af006a9ffd
+DART_SASS_SHA_MACOS: 79e060b0e131c3bb3c16926bafc371dc33feab122bfa8c01aa337a072097967b
+DART_SASS_SHA_WINDOWS: 0bc4708b37cd1bac4740e83ac5e3176e66b774f77fd5dd364da5b5cfc9bfb469
+##[endgroup]
+Syncing repository: <:*:>
+##[group]Getting Git version info
+Working directory is <:*:>
+[command]/usr/bin/git version
+git version <:NUM:>.<:NUM:>.<:NUM:>
+##[endgroup]
+Temporarily overriding HOME='/home/runner/work/_temp/b31c7f4f-bdb2-4829-917b-d11ac063d648' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+[command]/usr/bin/git config --global --add safe.directory /home/runner/work/hugo/hugo
+Deleting the contents of <:*:>
+##[group]Initializing the repository
+[command]/usr/bin/git init <:*:>
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint:
+hint: git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint: git branch -m <name>
+Initialized empty Git repository in <:*:>
+[command]/usr/bin/git remote add origin <:*:>
+##[endgroup]
+##[group]Disabling automatic garbage collection
+[command]/usr/bin/git config --local gc.auto 0
+##[endgroup]
+##[group]Setting up auth
+[command]/usr/bin/git config --local --name-only --get-regexp <:*:>
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp <:*:> && git config --local --unset-all <:*:> || :"
+[command]/usr/bin/git config --local --name-only --get-regexp <:*:>
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp <:*:> && git config --local --unset-all <:*:> || :"
+[command]/usr/bin/git config <:*:> http.https://github.com/.extraheader AUTHORIZATION: basic ***
+##[endgroup]
+##[group]Fetching the repository
+[command]/usr/bin/git -c protocol.version=<:NUM:> fetch <:*:> <:*:> <:*:> <:*:> <:*:> <:*:>
+From <:*:>
+* [new ref] <:SEQ:>-> <:*:>
+##[endgroup]
+##[group]Determining the checkout info
+##[endgroup]
+[command]/usr/bin/git sparse-checkout disable
+[command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+##[group]Checking out the ref
+[command]/usr/bin/git checkout --progress --force refs/remotes/pull/<:NUM:>/merge
+Note: switching to 'refs/remotes/pull/<:NUM:>/merge'.
+2025-04-12T15:52:32.7908147Z
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+2025-04-12T15:52:32.7910408Z
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+2025-04-12T15:52:32.7911717Z
+git switch -c <new-branch-name>
+2025-04-12T15:52:32.7912170Z
+Or undo this operation with:
+2025-04-12T15:52:32.7912562Z
+git switch -
+2025-04-12T15:52:32.7912922Z
+Turn off this advice by setting config variable advice.detachedHead to false
+2025-04-12T15:52:32.7913724Z
+HEAD is now at <:*:> Merge <:SEQ:> into <:SEQ:>
+##[endgroup]
+[command]/usr/bin/git log <:NUM:> <:*:>
+'<:SEQ:>'
+##[group]Run <:*:>
+with:
+go-version: 1.24.x
+check-latest: true
+cache: true
+cache-dependency-path: **/go.sum
+**/go.mod
+token: ***
+env:
+GOPROXY: https://proxy.golang.org
+GO111MODULE: on
+SASS_VERSION: 1.80.3
+DART_SASS_SHA_LINUX: 7c933edbad0a7d389192c5b79393485c088bd2c4398e32f5754c32af006a9ffd
+DART_SASS_SHA_MACOS: 79e060b0e131c3bb3c16926bafc371dc33feab122bfa8c01aa337a072097967b
+DART_SASS_SHA_WINDOWS: 0bc4708b37cd1bac4740e83ac5e3176e66b774f77fd5dd364da5b5cfc9bfb469
+##[endgroup]
+Setup go version spec 1.24.x
+Attempting to resolve the latest version from the manifest...
+matching 1.24.x...
+Resolved as '1.24.2'
+Attempting to download 1.24.2...
+matching 1.24.2...
+Acquiring 1.24.2 from https://github.com/actions/go-versions/releases/download/1.24.2-14210955142/go-1.24.2-linux-x64.tar.gz
+Extracting Go...
+[command]/usr/bin/tar xz --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/aa6bb3d5-7739-4ef0-a47f-7036a55b26ee -f /home/runner/work/_temp/db7f2fa0-b6c0-4b97-b316-d5b1727a21c4
+Successfully extracted go to /home/runner/work/_temp/aa6bb3d5-7739-4ef0-a47f-7036a55b26ee
+Adding to the cache ...
+Successfully cached go to /opt/hostedtoolcache/go/1.24.2/x64
+Added go to the path
+Successfully set up Go version 1.24.x
+[command]/opt/hostedtoolcache/go/1.24.2/x64/bin/go env GOMODCACHE
+[command]/opt/hostedtoolcache/go/1.24.2/x64/bin/go env GOCACHE
+/home/runner/go/pkg/mod
+/home/runner/.cache/go-build
+Received 0 of 3656662708 (0.0%), 0.0 MBs/sec
+Received 113246208 of 3656662708 (3.1%), 54.0 MBs/sec
+Received 255852544 of 3656662708 (7.0%), 81.3 MBs/sec
+Received 406847488 of 3656662708 (11.1%), 97.0 MBs/sec
+Received 524288000 of 3656662708 (14.3%), 100.0 MBs/sec
+Received 645922816 of 3656662708 (17.7%), 102.6 MBs/sec
+Received 767557632 of 3656662708 (21.0%), 104.6 MBs/sec
+Received 889192448 of 3656662708 (24.3%), 106.0 MBs/sec
+Received 1015021568 of 3656662708 (27.8%), 107.5 MBs/sec
+Received 1119879168 of 3656662708 (30.6%), 106.8 MBs/sec
+Received 1241513984 of 3656662708 (34.0%), 107.6 MBs/sec
+Received 1354760192 of 3656662708 (37.0%), 107.6 MBs/sec
+Received 1480589312 of 3656662708 (40.5%), 108.6 MBs/sec
+Received 1606418432 of 3656662708 (43.9%), 109.4 MBs/sec
+Received 1723858944 of 3656662708 (47.1%), 109.6 MBs/sec
+Received 1845493760 of 3656662708 (50.5%), 110.0 MBs/sec
+Received 1971322880 of 3656662708 (53.9%), 110.6 MBs/sec
+Received 2084569088 of 3656662708 (57.0%), 110.4 MBs/sec
+Received 2202009600 of 3656662708 (60.2%), 110.5 MBs/sec
+Received 2327838720 of 3656662708 (63.7%), 111.0 MBs/sec
+Received 2462056448 of 3656662708 (67.3%), 111.8 MBs/sec
+Received 2579496960 of 3656662708 (70.5%), 111.8 MBs/sec
+Received 2713714688 of 3656662708 (74.2%), 112.5 MBs/sec
+Received 2839543808 of 3656662708 (77.7%), 112.8 MBs/sec
+Received 2965372928 of 3656662708 (81.1%), 113.1 MBs/sec
+Received 3087007744 of 3656662708 (84.4%), 113.2 MBs/sec
+Received 3212836864 of 3656662708 (87.9%), 113.5 MBs/sec
+Received 3338665984 of 3656662708 (91.3%), 113.7 MBs/sec
+Received 3472883712 of 3656662708 (95.0%), 114.2 MBs/sec
+Received 3602907136 of 3656662708 (98.5%), 114.5 MBs/sec
+Cache Size: ~3487 MB (3656662708 B)
+[command]/usr/bin/tar -xf /home/runner/work/_temp/d00c2916-fdf5-4d9a-8ccb-3dac55a6e316/cache.tzst -P -C /home/runner/work/hugo/hugo --use-compress-program unzstd
+Received 3656662708 of 3656662708 (100.0%), 112.5 MBs/sec
+Cache restored successfully
+Cache restored from key: setup-go-Linux-ubuntu24-go-1.24.2-4f673fc8dc2def91b68476138233bd7af3cfdacacdcc2fd04a6d2547cf84eb84
+go version go1.24.2 linux/amd64
+2025-04-12T15:54:08.9747014Z
+##[group]go env
+AR='ar'
+CC='gcc'
+CGO_CFLAGS='-O2 -g'
+CGO_CPPFLAGS=''
+CGO_CXXFLAGS='-O2 -g'
+CGO_ENABLED='1'
+CGO_FFLAGS='-O2 -g'
+CGO_LDFLAGS='-O2 -g'
+CXX='g++'
+GCCGO='gccgo'
+GO111MODULE='on'
+GOAMD64='v1'
+GOARCH='amd64'
+GOAUTH='netrc'
+GOBIN=''
+GOCACHE='/home/runner/.cache/go-build'
+GOCACHEPROG=''
+GODEBUG=''
+GOENV='/home/runner/.config/go/env'
+GOEXE=''
+GOEXPERIMENT=''
+GOFIPS140='off'
+GOFLAGS=''
+GOGCCFLAGS='-fPIC -m64 -pthread -Wl,--no-gc-sections -fmessage-length=0 -ffile-prefix-map=/tmp/go-build2277424533=/tmp/go-build -gno-record-gcc-switches'
+GOHOSTARCH='amd64'
+GOHOSTOS='linux'
+GOINSECURE=''
+GOMOD='/home/runner/work/hugo/hugo/go.mod'
+GOMODCACHE='/home/runner/go/pkg/mod'
+GONOPROXY=''
+GONOSUMDB=''
+GOOS='linux'
+GOPATH='/home/runner/go'
+GOPRIVATE=''
+GOPROXY='https://proxy.golang.org'
+GOROOT='/opt/hostedtoolcache/go/1.24.2/x64'
+GOSUMDB='sum.golang.org'
+GOTELEMETRY='local'
+GOTELEMETRYDIR='/home/runner/.config/go/telemetry'
+GOTMPDIR=''
+GOTOOLCHAIN='auto'
+GOTOOLDIR='/opt/hostedtoolcache/go/1.24.2/x64/pkg/tool/linux_amd64'
+GOVCS=''
+GOVERSION='go1.24.2'
+GOWORK=''
+PKG_CONFIG='pkg-config'
+2025-04-12T15:54:08.9968027Z
+##[endgroup]
+##[group]Run <:*:>
+with:
+ruby-version: 2.7
+<:*:> true
+env:
+GOPROXY: https://proxy.golang.org
+GO111MODULE: on
+SASS_VERSION: 1.80.3
+DART_SASS_SHA_LINUX: 7c933edbad0a7d389192c5b79393485c088bd2c4398e32f5754c32af006a9ffd
+DART_SASS_SHA_MACOS: 79e060b0e131c3bb3c16926bafc371dc33feab122bfa8c01aa337a072097967b
+DART_SASS_SHA_WINDOWS: 0bc4708b37cd1bac4740e83ac5e3176e66b774f77fd5dd364da5b5cfc9bfb469
+##[endgroup]
+##[group]Modifying PATH
+Entries added to PATH to use selected Ruby:
+/opt/hostedtoolcache/Ruby/2.7.8/x64/bin
+##[endgroup]
+##[group]Downloading Ruby
+https://github.com/ruby/ruby-builder/releases/download/toolcache/ruby-2.7.8-ubuntu-24.04.tar.gz
+Took   0.56 seconds
+##[endgroup]
+##[group]Extracting  Ruby
+[command]/usr/bin/tar -xz -C /opt/hostedtoolcache/Ruby/2.7.8 -f /home/runner/work/_temp/f47af37b-8892-42a7-9f5d-5f6182367862
+Took   0.30 seconds
+##[endgroup]
+##[group]Print Ruby version
+[command]/opt/hostedtoolcache/Ruby/2.7.8/x64/bin/ruby --version
+ruby 2.7.8p225 (2023-03-30 revision 1f4d455848) [x86_64-linux]
+Took   0.02 seconds
+##[endgroup]
+##[group]Installing Bundler
+Using latest Bundler for ruby-2.7.8 because the default Bundler gem is too old for that Ruby version
+Ruby 2.6-2.7 only works with Bundler 2.4
+[command]/opt/hostedtoolcache/Ruby/2.7.8/x64/bin/gem install bundler -v ~> 2.4.0
+Successfully installed bundler-2.4.22
+1 gem installed
+Took  14.51 seconds
+##[endgroup]
+> bundle install
+Could not determine gemfile path, skipping "bundle install" and caching
+Took   0.00 seconds
+##[group]Run <:*:>
+with:
+python-version: <:*:>
+check-latest: false
+token: ***
+<:*:> true
+<:*:> false
+env:
+GOPROXY: https://proxy.golang.org
+GO111MODULE: on
+SASS_VERSION: 1.80.3
+DART_SASS_SHA_LINUX: 7c933edbad0a7d389192c5b79393485c088bd2c4398e32f5754c32af006a9ffd
+DART_SASS_SHA_MACOS: 79e060b0e131c3bb3c16926bafc371dc33feab122bfa8c01aa337a072097967b
+DART_SASS_SHA_WINDOWS: 0bc4708b37cd1bac4740e83ac5e3176e66b774f77fd5dd364da5b5cfc9bfb469
+##[endgroup]
+##[group]Installed versions
+Successfully set up CPython (<:NUM:>.<:NUM:>.<:NUM:>)
+##[endgroup]
+##[group]Run go install github.com/magefile/mage@v1.15.0
+[36;1mgo install github.com/magefile/mage@v1.15.0[0m
+shell: /usr/bin/bash -e {<:NUM:>}
+env:
+GOPROXY: https://proxy.golang.org
+GO111MODULE: on
+SASS_VERSION: 1.80.3
+DART_SASS_SHA_LINUX: 7c933edbad0a7d389192c5b79393485c088bd2c4398e32f5754c32af006a9ffd
+DART_SASS_SHA_MACOS: 79e060b0e131c3bb3c16926bafc371dc33feab122bfa8c01aa337a072097967b
+DART_SASS_SHA_WINDOWS: 0bc4708b37cd1bac4740e83ac5e3176e66b774f77fd5dd364da5b5cfc9bfb469
+pythonLocation: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+PKG CONFIG PATH: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64/lib/pkgconfig
+Python ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+<:*:> ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+<:*:> ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+LD LIBRARY PATH: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64/lib
+##[endgroup]
+##[group]Run <:*:>
+with:
+version: ~>2.0
+env:
+GOPROXY: https://proxy.golang.org
+GO111MODULE: on
+SASS_VERSION: 1.80.3
+DART_SASS_SHA_LINUX: 7c933edbad0a7d389192c5b79393485c088bd2c4398e32f5754c32af006a9ffd
+DART_SASS_SHA_MACOS: 79e060b0e131c3bb3c16926bafc371dc33feab122bfa8c01aa337a072097967b
+DART_SASS_SHA_WINDOWS: 0bc4708b37cd1bac4740e83ac5e3176e66b774f77fd5dd364da5b5cfc9bfb469
+pythonLocation: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+PKG CONFIG PATH: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64/lib/pkgconfig
+Python ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+<:*:> ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+<:*:> ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+LD LIBRARY PATH: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64/lib
+##[endgroup]
+##[group]Install asciidoctor
+Created actions_asciidoctor/Gemfile
+[command]/opt/hostedtoolcache/Ruby/2.7.8/x64/bin/bundle install
+Fetching gem metadata from https://rubygems.org/........
+Resolving dependencies...
+Fetching asciidoctor 2.0.23
+Installing asciidoctor 2.0.23
+Bundle complete! 1 Gemfile dependency, 2 gems now installed.
+Use `bundle info [gemname]` to see where a bundled gem is installed.
+[command]/opt/hostedtoolcache/Ruby/2.7.8/x64/bin/asciidoctor --version
+Asciidoctor 2.0.23 [https://asciidoctor.org]
+Runtime Environment (ruby 2.7.8p225 (2023-03-30 revision 1f4d455848) [x86_64-linux]) (lc:UTF-8 fs:UTF-8 in:UTF-8 ex:UTF-8)
+##[endgroup]
+##[group]Run pip install docutils
+[<:NUM:>;1mpip install <:*:>
+[36;1mrst2html --version[0m
+shell: /usr/bin/bash -e {<:NUM:>}
+env:
+GOPROXY: https://proxy.golang.org
+GO111MODULE: on
+SASS_VERSION: 1.80.3
+DART_SASS_SHA_LINUX: 7c933edbad0a7d389192c5b79393485c088bd2c4398e32f5754c32af006a9ffd
+DART_SASS_SHA_MACOS: 79e060b0e131c3bb3c16926bafc371dc33feab122bfa8c01aa337a072097967b
+DART_SASS_SHA_WINDOWS: 0bc4708b37cd1bac4740e83ac5e3176e66b774f77fd5dd364da5b5cfc9bfb469
+pythonLocation: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+PKG CONFIG PATH: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64/lib/pkgconfig
+Python ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+<:*:> ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+<:*:> ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+LD LIBRARY PATH: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64/lib
+##[endgroup]
+Collecting <:*:>
+Downloading <:*:> <:*:> kB)
+Downloading <:*:> <:*:> kB)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <:NUM:>.<:NUM:>/<:NUM:>.<:NUM:> <:*:> <:NUM:>.<:NUM:> MB/s eta <:NUM:>:<:NUM:>:<:NUM:>
+Installing collected packages: docutils
+Successfully installed docutils-0.21.2
+rst2html (Docutils 0.21.2, Python 3.13.2, on linux)
+##[group]Run sudo apt-get update -y
+[36;1msudo apt-get update -y[0m
+[36;1msudo apt-get install -y pandoc[0m
+shell: /usr/bin/bash -e {<:NUM:>}
+env:
+GOPROXY: https://proxy.golang.org
+GO111MODULE: on
+SASS_VERSION: 1.80.3
+DART_SASS_SHA_LINUX: 7c933edbad0a7d389192c5b79393485c088bd2c4398e32f5754c32af006a9ffd
+DART_SASS_SHA_MACOS: 79e060b0e131c3bb3c16926bafc371dc33feab122bfa8c01aa337a072097967b
+DART_SASS_SHA_WINDOWS: 0bc4708b37cd1bac4740e83ac5e3176e66b774f77fd5dd364da5b5cfc9bfb469
+pythonLocation: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+PKG CONFIG PATH: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64/lib/pkgconfig
+Python ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+<:*:> ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+<:*:> ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+LD LIBRARY PATH: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64/lib
+##[endgroup]
+Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [142 B]
+Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+Hit:6 https://packages.microsoft.com/repos/azure-cli noble InRelease
+Hit:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease
+Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+Get:7 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
+Get:8 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [991 kB]
+Get:9 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [219 kB]
+Get:10 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1052 kB]
+Get:11 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [182 kB]
+Get:12 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [17.1 kB]
+Get:13 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [27.2 kB]
+Get:14 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [741 kB]
+Get:15 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [829 kB]
+Get:16 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [180 kB]
+Fetched 4494 kB in 1s (7115 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+pandoc-data
+Suggested packages:
+texlive-latex-recommended texlive-xetex texlive-luatex pandoc-citeproc
+texlive-latex-extra context wkhtmltopdf librsvg2-bin groff ghc nodejs php
+python r-base-core libjs-mathjax libjs-katex citation-style-language-styles
+The following NEW packages will be installed:
+pandoc pandoc-data
+0 upgraded, 2 newly installed, 0 to remove and 81 not upgraded.
+Need to get 26.9 MB of archives.
+After this operation, 200 MB of additional disk space will be used.
+Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [142 B]
+Get:2 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 pandoc-data all 3.1.3-1 [92.4 kB]
+Get:3 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 pandoc amd64 3.1.3+ds-2 [26.9 MB]
+Fetched 26.9 MB in 1s (19.7 MB/s)
+Selecting previously unselected package pandoc-data.
+(Reading database ...
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 116436 files and directories currently installed.)
+Preparing to unpack .../pandoc-data_3.1.3-1_all.deb ...
+Unpacking pandoc-data (3.1.3-1) ...
+Selecting previously unselected package pandoc.
+Preparing to unpack .../pandoc_3.1.3+ds-2_amd64.deb ...
+Unpacking pandoc (3.1.3+ds-2) ...
+Setting up pandoc-data (3.1.3-1) ...
+Setting up pandoc (3.1.3+ds-2) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+2025-04-12T15:54:39.6599762Z
+Running kernel seems to be up-to-date.
+2025-04-12T15:54:39.6600722Z
+No services need to be restarted.
+2025-04-12T15:54:39.6601112Z
+No containers need to be restarted.
+2025-04-12T15:54:39.6601465Z
+No user sessions are running outdated binaries.
+2025-04-12T15:54:39.6601895Z
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+##[group]Run pandoc -v
+[36;1mpandoc -v[0m
+shell: /usr/bin/bash -e {<:NUM:>}
+env:
+GOPROXY: https://proxy.golang.org
+GO111MODULE: on
+SASS_VERSION: 1.80.3
+DART_SASS_SHA_LINUX: 7c933edbad0a7d389192c5b79393485c088bd2c4398e32f5754c32af006a9ffd
+DART_SASS_SHA_MACOS: 79e060b0e131c3bb3c16926bafc371dc33feab122bfa8c01aa337a072097967b
+DART_SASS_SHA_WINDOWS: 0bc4708b37cd1bac4740e83ac5e3176e66b774f77fd5dd364da5b5cfc9bfb469
+pythonLocation: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+PKG CONFIG PATH: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64/lib/pkgconfig
+Python ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+<:*:> ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+<:*:> ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+LD LIBRARY PATH: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64/lib
+##[endgroup]
+pandoc 3.1.3
+Features: -server +lua
+Scripting engine: Lua 5.4
+User data directory: /home/runner/.local/share/pandoc
+Copyright (C) 2006-2023 John MacFarlane. Web: https://pandoc.org
+This is free software; see the source for copying conditions. There is no
+warranty, not even for merchantability or fitness for a particular purpose.
+##[group]Run echo "Install Dart Sass version ${SASS_VERSION} ..."
+[36;1mecho "Install Dart Sass version ${SASS_VERSION} ..."[0m
+[36;1mcurl -LJO "https://github.com/sass/dart-sass/releases/download/${SASS_VERSION}/dart-sass-${SASS_VERSION}-linux-x64.tar.gz";[0m
+[36;1mecho "${DART_SASS_SHA_LINUX}  dart-sass-${SASS_VERSION}-linux-x64.tar.gz" | sha256sum -c;[0m
+[36;1mtar -xvf "dart-sass-${SASS_VERSION}-linux-x64.tar.gz";[0m
+[<:NUM:>;1mecho <:*:>
+[36;1mecho "$GITHUB_WORKSPACE/dart-sass/" >> $GITHUB_PATH[0m
+shell: /usr/bin/bash -e {<:NUM:>}
+env:
+GOPROXY: https://proxy.golang.org
+GO111MODULE: on
+SASS_VERSION: 1.80.3
+DART_SASS_SHA_LINUX: 7c933edbad0a7d389192c5b79393485c088bd2c4398e32f5754c32af006a9ffd
+DART_SASS_SHA_MACOS: 79e060b0e131c3bb3c16926bafc371dc33feab122bfa8c01aa337a072097967b
+DART_SASS_SHA_WINDOWS: 0bc4708b37cd1bac4740e83ac5e3176e66b774f77fd5dd364da5b5cfc9bfb469
+pythonLocation: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+PKG CONFIG PATH: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64/lib/pkgconfig
+Python ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+<:*:> ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+<:*:> ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+LD LIBRARY PATH: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64/lib
+##[endgroup]
+Install Dart Sass version 1.80.3 ...
+% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+Dload  Upload   Total   Spent    Left  Speed
+2025-04-12T15:54:40.6237965Z
+0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2025-04-12T15:54:41.1394824Z
+0 3751k    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100 3751k  100 3751k    0     0  7041k      0 --:--:-- --:--:-- --:--:--  229M
+dart-sass-1.80.3-linux-x64.tar.gz: OK
+dart-sass/src/LICENSE
+dart-sass/src/dart
+dart-sass/src/sass.snapshot
+dart-sass/sass
+2025-04-12T15:54:41.2401322Z
+##[group]Run go install honnef.co/go/tools/cmd/staticcheck@latest
+[36;1mgo install honnef.co/go/tools/cmd/staticcheck@latest[0m
+shell: /usr/bin/bash -e {<:NUM:>}
+env:
+GOPROXY: https://proxy.golang.org
+GO111MODULE: on
+SASS_VERSION: 1.80.3
+DART_SASS_SHA_LINUX: 7c933edbad0a7d389192c5b79393485c088bd2c4398e32f5754c32af006a9ffd
+DART_SASS_SHA_MACOS: 79e060b0e131c3bb3c16926bafc371dc33feab122bfa8c01aa337a072097967b
+DART_SASS_SHA_WINDOWS: 0bc4708b37cd1bac4740e83ac5e3176e66b774f77fd5dd364da5b5cfc9bfb469
+pythonLocation: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+PKG CONFIG PATH: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64/lib/pkgconfig
+Python ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+<:*:> ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+<:*:> ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+LD LIBRARY PATH: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64/lib
+##[endgroup]
+##[group]Run staticcheck ./...
+[36;1mstaticcheck ./...[0m
+shell: /usr/bin/bash -e {<:NUM:>}
+env:
+GOPROXY: https://proxy.golang.org
+GO111MODULE: on
+SASS_VERSION: 1.80.3
+DART_SASS_SHA_LINUX: 7c933edbad0a7d389192c5b79393485c088bd2c4398e32f5754c32af006a9ffd
+DART_SASS_SHA_MACOS: 79e060b0e131c3bb3c16926bafc371dc33feab122bfa8c01aa337a072097967b
+DART_SASS_SHA_WINDOWS: 0bc4708b37cd1bac4740e83ac5e3176e66b774f77fd5dd364da5b5cfc9bfb469
+pythonLocation: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+PKG CONFIG PATH: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64/lib/pkgconfig
+Python ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+<:*:> ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+<:*:> ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+LD LIBRARY PATH: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64/lib
+##[endgroup]
+##[group]Run sass --version;
+[36;1msass --version;[0m
+[36;1mmage -v check;[0m
+shell: /usr/bin/bash -e {<:NUM:>}
+env:
+GOPROXY: https://proxy.golang.org
+GO111MODULE: on
+SASS_VERSION: 1.80.3
+DART_SASS_SHA_LINUX: 7c933edbad0a7d389192c5b79393485c088bd2c4398e32f5754c32af006a9ffd
+DART_SASS_SHA_MACOS: 79e060b0e131c3bb3c16926bafc371dc33feab122bfa8c01aa337a072097967b
+DART_SASS_SHA_WINDOWS: 0bc4708b37cd1bac4740e83ac5e3176e66b774f77fd5dd364da5b5cfc9bfb469
+pythonLocation: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+PKG CONFIG PATH: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64/lib/pkgconfig
+Python ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+<:*:> ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+<:*:> ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+LD LIBRARY PATH: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64/lib
+HUGO_BUILD_TAGS: extended,withdeploy
+##[endgroup]
+1.80.3
+Running target: Check
+Running dependency: Test386
+exec: go "test" "-p" "2" "./..."
+ok  	github.com/gohugoio/hugo	20.535s
+ok  	github.com/gohugoio/hugo/bufferpool	(cached)
+?   	github.com/gohugoio/hugo/cache	[no test files]
+ok  	github.com/gohugoio/hugo/cache/dynacache	(cached)
+ok  	github.com/gohugoio/hugo/cache/filecache	1.069s
+ok  	github.com/gohugoio/hugo/cache/httpcache	0.056s
+ok  	github.com/gohugoio/hugo/codegen	0.005s
+?   	github.com/gohugoio/hugo/commands	[no test files]
+?   	github.com/gohugoio/hugo/common	[no test files]
+ok  	github.com/gohugoio/hugo/common/collections	(cached)
+?   	github.com/gohugoio/hugo/common/constants	[no test files]
+ok  	github.com/gohugoio/hugo/common/hashing	(cached)
+?   	github.com/gohugoio/hugo/common/hcontext	[no test files]
+ok  	github.com/gohugoio/hugo/common/herrors	(cached)
+?   	github.com/gohugoio/hugo/common/hexec	[no test files]
+ok  	github.com/gohugoio/hugo/common/hreflect	0.003s
+ok  	github.com/gohugoio/hugo/common/hstrings	(cached)
+ok  	github.com/gohugoio/hugo/common/htime	0.039s
+ok  	github.com/gohugoio/hugo/common/hugio	(cached)
+ok  	github.com/gohugoio/hugo/common/hugo	0.087s
+ok  	github.com/gohugoio/hugo/common/loggers	(cached)
+ok  	github.com/gohugoio/hugo/common/maps	(cached)
+ok  	github.com/gohugoio/hugo/common/math	(cached)
+ok  	github.com/gohugoio/hugo/common/para	(cached)
+ok  	github.com/gohugoio/hugo/common/paths	0.059s
+ok  	github.com/gohugoio/hugo/common/predicate	(cached)
+ok  	github.com/gohugoio/hugo/common/rungroup	(cached)
+?   	github.com/gohugoio/hugo/common/tasks	[no test files]
+?   	github.com/gohugoio/hugo/common/terminal	[no test files]
+ok  	github.com/gohugoio/hugo/common/text	(cached)
+ok  	github.com/gohugoio/hugo/common/types	(cached)
+?   	github.com/gohugoio/hugo/common/types/css	[no test files]
+ok  	github.com/gohugoio/hugo/common/types/hstring	(cached)
+ok  	github.com/gohugoio/hugo/common/urls	(cached)
+ok  	github.com/gohugoio/hugo/compare	(cached)
+ok  	github.com/gohugoio/hugo/config	(cached)
+ok  	github.com/gohugoio/hugo/config/allconfig	0.161s
+ok  	github.com/gohugoio/hugo/config/privacy	(cached)
+ok  	github.com/gohugoio/hugo/config/security	(cached)
+ok  	github.com/gohugoio/hugo/config/services	(cached)
+?   	github.com/gohugoio/hugo/config/testconfig	[no test files]
+ok  	github.com/gohugoio/hugo/create	0.268s
+?   	github.com/gohugoio/hugo/create/skeletons	[no test files]
+?   	github.com/gohugoio/hugo/deploy/deployconfig	[no test files]
+ok  	github.com/gohugoio/hugo/deps	0.020s
+?   	github.com/gohugoio/hugo/docshelper	[no test files]
+ok  	github.com/gohugoio/hugo/helpers	0.746s
+ok  	github.com/gohugoio/hugo/htesting	(cached)
+?   	github.com/gohugoio/hugo/htesting/hqt	[no test files]
+ok  	github.com/gohugoio/hugo/hugofs	(cached)
+ok  	github.com/gohugoio/hugo/hugofs/files	(cached)
+ok  	github.com/gohugoio/hugo/hugofs/glob	(cached)
+WARN  found no layout file for "html" for layout "postlayout" for kind "section": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for layout "postlayout" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for layout "postlayout" for kind "section": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for layout "postlayout" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+Source changed /post/_index.md
+Source changed /post/_index.md
+WARN  found no layout file for "html" for layout "postlayout" for kind "section": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for layout "postlayout" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for layout "postlayout" for kind "section": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for layout "postlayout" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for layout "postlayout" for kind "section": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for layout "postlayout" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+--- FAIL: TestCascadeEdit (0.00s)
+--- FAIL: TestCascadeEdit/Edit_descendant (0.06s)
+cascade_test.go:262: Failed to read file: open public/post/dir/p1/index.html: file does not exist
+--- FAIL: TestCascadeEdit/Edit_ancestor,_content_only (0.06s)
+cascade_test.go:332:
+error:
+values are not equal
+got:
+int(0)
+want:
+int(1)
+stack:
+/home/runner/work/hugo/hugo/hugolib/cascade_test.go:332
+b.Assert(int(counters.contentRenderCounter.Load()), qt.Equals, 1)
+2025-04-12T16:03:28.6622484Z
+--- FAIL: TestCascadeEdit/Edit_ancestor,_add_cascade (0.05s)
+cascade_test.go:296: Failed to read file: open public/post/dir/p1/index.html: file does not exist
+--- FAIL: TestCascadeEdit/Edit_ancestor (0.02s)
+cascade_test.go:280: Failed to read file: open public/post/dir/p1/index.html: file does not exist
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "section": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+go: no module dependencies to download
+go: downloading github.com/gohugoio/hugoTestModule2 v0.0.0-20240915095228-bbe586b1c18a
+hugo: downloading modules …
+go: added github.com/gohugoio/hugoTestModule2 v0.0.0-20240915095228-bbe586b1c18a
+hugo: collected modules in 5255 msWARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+go: no module dependencies to download
+go: added github.com/gohugoio/hugoTestModule2 v0.0.0-20240915095228-bbe586b1c18a
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+go: no module dependencies to download
+go: added github.com/gohugoio/hugoTestModule2 v0.0.0-20240915095228-bbe586b1c18a
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+go: no module dependencies to download
+go: added github.com/gohugoio/hugoTestModule2 v0.0.0-20240915095228-bbe586b1c18a
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+go: no module dependencies to download
+go: added github.com/gohugoio/hugoTestModule2 v0.0.0-20240915095228-bbe586b1c18a
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+go: no module dependencies to download
+go: added github.com/gohugoio/hugoTestModule2 v0.0.0-20240915095228-bbe586b1c18a
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "json" for kind "home": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "json" for kind "section": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+Asset changed /data.json
+WARN  found no layout file for "csv" for kind "home": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "json" for kind "home": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "json" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "home": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+Asset changed /data/foo.yaml
+Asset changed /data/foo.yaml
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "section": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "section": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "json" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "json" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+Source changed /mysection/mysectionbundle/mysectionbundletext.txt
+Source changed /mybundle/mydata.yml
+Source changed /hometext.txt
+Source changed /mysection/mysectiontext.txt
+Source changed /mysection/mysectionbundle/mysectionbundletext.txt
+Source changed /mysection/mysectionbundle/mysectionbundletext2.txt
+Source changed /mysection/mysectionbundle/mysectionbundletext.txt
+Source changed /mysection/mysectionbundle/mysectionbundletext2.txt
+Source changed /mysection/mysectionbundle/mysectionbundlecontent.md
+Source changed /mysection/mysectionbundle/mysectionbundlecontent.md
+Source changed /myothersection/myothersectionpage.md
+Source changed /mysection/mysectiontext.txt
+Source changed /mysection/mysectiontext2.txt
+Source changed /hometext.txt
+Source changed /hometext2.txt
+Source changed /mysection/mysectionbundle/_index.md
+Source changed /mysection/mysectionbundlerenamed/index.md
+Source changed /mysection/mysectionbundlerenamed/mysectionbundlecontent.md
+Source changed /mysection/mysectionbundlerenamed/mysectionbundletext.txt
+Source changed /mysection/_index.md
+Source changed /mysectionrenamed/_index.md
+Source changed /mysectionrenamed/mysectionbundle/index.md
+Source changed /mysectionrenamed/mysectionbundle/mysectionbundlecontent.md
+Source changed /mysectionrenamed/mysectionbundle/mysectionbundletext.txt
+Source changed /mysectionrenamed/mysectiontext.txt
+Source changed /foo/_index.md
+Source changed /bar/p1.md
+Source changed /foo/p2.md
+Source changed /foo/p2.fr.md
+Source changed /foo/p2.i.md
+Source changed /mysection/_index.md
+Source changed /mysectionrenamed/_index.md
+Source changed /mysectionrenamed/mysectionbundle/index.md
+Source changed /mysectionrenamed/mysectionbundle/mysectionbundlecontent.md
+Source changed /mysectionrenamed/mysectionbundle/mysectionbundletext.txt
+Source changed /mysectionrenamed/mysectiontext.txt
+Source changed /mysection/mysectionbundle/index.md
+Source changed /mysection/mysectionbundle/index.md
+Source changed /p2.md
+Source changed /test-test/index.md
+Template changed /_default/single.html
+Template changed /shortcodes/myshort.html
+Template changed /_default/baseof.html
+Template changed /_default/baseof.html
+Asset changed /mytext.txt
+Source changed /mysect/p1/index.md
+Source changed /mysect/p2/index.md
+Source changed /mysect/p3/index.md
+Source changed /mysect/sub/p4/index.md
+Source changed /translations/p7.nn.md
+Source changed /translations/p7rename.nn.md
+Template changed /shortcodes/include.html
+Template changed /_default/_markup/render-codeblock.html
+Template changed /partials/p1.html
+Template changed /partials/pcached.html
+Source changed /mysect/sub/p5/index.md
+Source changed /mysect/sub/p5/index.md
+Source changed /myothersect/_index.md
+Source changed /myothersect/_index.md
+Source changed /myothersect/_index.md
+Asset changed /css/lib/foo.css
+Asset changed /css/lib/foo.scss
+Asset changed /common/c2.css
+Asset changed /common/c3.css
+Source changed /posts/p1.adoc
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+Source changed /_index.md
+WARN  found no layout file for "html" for kind "home": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+Source changed /section/section/section/bundle1/index.md
+WARN  found no layout file for "json" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "calendar" for kind "home": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "calendar" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "json" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "home": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "humans" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "section": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "term": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "section": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "term": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "section": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+Source changed /p1.md
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "home": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "section": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  deprecated: the ":filename" permalink token was deprecated in Hugo 0.144.0 and will be removed in a future release. Use ":contentbasename" instead.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "home": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "term": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "section": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+Source changed /mybundle/data.json
+Source changed /_index.md
+WARN  deprecated: the ":filename" permalink token was deprecated in Hugo 0.144.0 and will be removed in a future release. Use ":contentbasename" instead.
+WARN  deprecated: the ":filename" permalink token was deprecated in Hugo 0.144.0 and will be removed in a future release. Use ":contentbasename" instead.
+Source changed /b1/index.md
+WARN  found no layout file for "html" for kind "home": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "term": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "section": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+Source changed /second/p2.md
+Template changed /shortcodes/myhthml.html
+Source changed /p2.md
+Source changed /p1.md
+Source changed /mysection/_index.md
+Source changed /p2.md
+Source changed /p3.md
+Source changed /p2.md
+Template changed /shortcodes/myshort.html
+Source changed /_index.md
+Source changed /p1/index.md
+Source changed /p2.md
+Template added /partials/mytemplate.html
+Source changed /p1nn/index.md
+Source changed /p1/index.nn.md
+Source changed /p1/f1.nn.txt
+i18n changed /en.toml
+Source changed /p1/b.nn.md
+Asset changed /js/lib/foo.js
+Data changed /mydata.yaml
+Source changed /_index.md
+Template added /_default/index.searchindex.txt
+Source changed /main.js
+Source changed /foo.js
+Source changed /p2/index.md
+Source changed /p3/index.md
+Asset changed /main.css
+Asset changed /js/main.js
+Source changed /s/p7.md
+Asset changed /js/main.js
+===============
+Template changed /_default/baseof.html
+Template changed /_default/_markup/render-link.html
+Template changed /_default/single.html
+Template changed /single.html
+Asset changed /myothertext.txt
+Source changed /mysection/mysectionbundle/index.md
+Asset changed /myshortcodetext.txt
+2025-04-12T16:03:28.6895041Z
+Asset changed /myothertext.txt
+Source changed /mysection/mysectionbundle/index.md
+Asset changed /myshortcodetext.txt
+2025-04-12T16:03:28.6896777Z
+Asset changed /myothertext.txt
+Asset changed /myshortcodetext.txt
+2025-04-12T16:03:28.6897701Z
+WARN  deprecated: the ":filename" permalink token was deprecated in Hugo 0.144.0 and will be removed in a future release. Use ":contentbasename" instead.
+WARN  deprecated: the ":filename" permalink token was deprecated in Hugo 0.144.0 and will be removed in a future release. Use ":contentbasename" instead.
+Source changed /mysection/mysectionbundle/index.md
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  Failed to read module config for "incompat3" in "/site/themes/incompat3/theme.toml": "_stream.toml:2:19": unmarshal failed: toml: float can have at most one decimal point
+WARN  Module "incompat1" is not compatible with this Hugo version: 0.33.2/0.45.0; run "hugo mod graph" for more information.
+WARN  Module "incompat2" is not compatible with this Hugo version: Min 5.0.0; run "hugo mod graph" for more information.
+Template changed /404.html
+Rebuilding
+go: no module dependencies to download
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "section": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "section": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "section": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "section": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  deprecated: the ":filename" permalink token was deprecated in Hugo 0.144.0 and will be removed in a future release. Use ":contentbasename" instead.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "term": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "term": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "term": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "home": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "home": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "section": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "amp" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "home": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "term": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "section": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "section": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "home": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "section": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "section": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "home": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "section": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "home": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "section": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "home": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "section": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "home": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "section": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "home": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "section": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "home": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "section": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "home": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "section": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "home": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "section": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "home": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "section": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+2025-04-12T16:03:28.6986337Z
+PageMap for site "en"
+2025-04-12T16:03:28.6986574Z
+lm: 0001-01-01 (home)
+/404 lm: 0001-01-01 (404)
+/_sitemap lm: 0001-01-01 (sitemap)
+/p1 lm: 0001-01-01 (page)
+2025-04-12T16:03:28.6987478Z
+2025-04-12T16:03:28.6987483Z
+PageMap for site "en"
+2025-04-12T16:03:28.6987694Z
+lm: 0001-01-01 (home)
+/404 lm: 0001-01-01 (404)
+/_sitemap lm: 0001-01-01 (sitemap)
+/p1 lm: 0001-01-01 (page)
+2025-04-12T16:03:28.6988537Z
+2025-04-12T16:03:28.6988541Z
+PageMap for site "en"
+2025-04-12T16:03:28.6988754Z
+lm: 0001-01-01 (home)
+/404 lm: 0001-01-01 (404)
+/_sitemap lm: 0001-01-01 (sitemap)
+/categories lm: 0001-01-01 (taxonomy)
+/p1 lm: 0001-01-01 (page)
+/tags lm: 0001-01-01 (taxonomy)
+2025-04-12T16:03:28.6990090Z
+2025-04-12T16:03:28.6990095Z
+PageMap for site "en"
+2025-04-12T16:03:28.6990303Z
+lm: 0001-01-01 (home)
+/404 lm: 0001-01-01 (404)
+/_sitemap lm: 0001-01-01 (sitemap)
+/_sitemapindex lm: 0001-01-01 (sitemapindex)
+/categories lm: 0001-01-01 (taxonomy)
+/p1 lm: 0001-01-01 (page)
+/tags lm: 0001-01-01 (taxonomy)
+2025-04-12T16:03:28.6991940Z
+PageMap for site "fr"
+2025-04-12T16:03:28.6992151Z
+lm: 0001-01-01 (home)
+/404 lm: 0001-01-01 (404)
+/_sitemap lm: 0001-01-01 (sitemap)
+/categories lm: 0001-01-01 (taxonomy)
+/p2 lm: 0001-01-01 (page)
+/tags lm: 0001-01-01 (taxonomy)
+2025-04-12T16:03:28.6993628Z
+WARN  found no layout file for "html" for kind "home": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "home": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "home": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "home": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "home": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  Module "n1" is not compatible with this Hugo version: 0.40.0/0.50.0 extended; run "hugo mod graph" for more information.
+go: downloading github.com/gohugoio/hugoTestModules1_linux/modh2_1_2 v1.4.0
+go: downloading github.com/gohugoio/hugoTestModules1_linux v0.0.0-20220819184536-1b7420d720a3
+go: added github.com/gohugoio/hugoTestModules1_linux/modh2_1_2 v1.4.0
+hugo: collected modules in 1909 msWARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+go: no module dependencies to download
+go: downloading github.com/gohugoio/hugoTestModules1_linux/modh1_1v v1.4.0
+Source changed /mysect/_index.md
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "section": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+Source changed /mysect/_index.md
+Source changed /mysect/_index.md
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "section": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "section": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "home": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "section": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+lm: 0001-01-01 (home)
+/404 lm: 0001-01-01 (404)
+/_sitemap lm: 0001-01-01 (sitemap)
+/blog lm: 0001-01-01 (section)
+/page lm: 0001-01-01 (page)
+/categories lm: 0001-01-01 (taxonomy)
+/tags lm: 0001-01-01 (taxonomy)
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "section": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "section": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "home": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+go: added github.com/gohugoio/hugoTestModules1_linux/modh1_1v v1.4.0
+WARN  found no layout file for "html" for kind "home": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+hugo: downloading modules …
+hugo: collected modules in 2125 msWARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+WARN  found no layout file for "html" for kind "page": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+FAIL
+FAIL	github.com/gohugoio/hugo/hugolib	46.448s
+ok  	github.com/gohugoio/hugo/hugolib/doctree	(cached)
+ok  	github.com/gohugoio/hugo/hugolib/filesystems	0.146s
+Asset changed /mydata.yaml
+Asset changed /mydata.yaml
+Source changed /docs/_content.gotmpl
+Source changed /docs/_content.gotmpl
+Source changed /docs/_content.gotmpl
+Template changed /partials/get-value.html
+Source changed /docs/_content.gotmpl
+Source changed /docs/_content.gotmpl
+Asset changed /mydata.yaml
+--- FAIL: TestPagesFromGoTmplEditPartial (0.07s)
+pagesfromgotmpl_integration_test.go:275:
+error:
+no substring match found
+comment:
+File: public/docs/p1/index.html Match Single: p1:p1edited|
+Content:
+Baseof:
+2025-04-12T16:03:28.7060541Z
+Single: p1:
+|<p><strong>Hello World</strong></p>
+|Params: param1v|Path: /docs/p1|
+Dates: Date: 2023-03-01|Lastmod: 2023-03-01|PublishDate: 2023-03-01|ExpiryDate: 0001-01-01|
+Len Resources: 7
+Resources: RelPermalink: /mydata.yaml|Name: data1.yaml|Title: data1.yaml|Params: map[]|RelPermalink: /mydata.yaml|Name: data2.yaml|Title: My data 2|Params: map[data2param1:data2Param1v]|RelPermalink: /mydata.yaml|Name: sub/data1.yaml|Title: Sub data|Params: map[]|RelPermalink: /a/pixel.png|Name: featured.png|Title: My Featured Image|Params: map[data2param1:data2Param1v]|RelPermalink: /docs/p1/sub/mymixcasetext2.txt|Name: sub/mymixcasetext2.txt|Title: My Text Sub Mixed Case Path Resource|Params: map[]|RelPermalink: /docs/p1/sub/mytex2.txt|Name: sub/mytex2.txt|Title: My Text Sub Resource|Params: map[]|RelPermalink: /docs/p1/mytext.txt|Name: textresource|Title: My Text Resource|Params: map[param1:param1v]|$
+2025-04-12T16:03:28.7069330Z
+Featured Image: /a/pixel.png|featured.png|
+2025-04-12T16:03:28.7069937Z
+Resized Featured Image: /a/pixel_hu_a32b3e361d55df1.png|10|
+container:
+"Baseof:\n\nSingle: p1:\n|<p><strong>Hello World</strong></p>\n|Params: param1v|Path: /docs/p1|\nDates: Date: 2023-03-01|Lastmod: 2023-03-01|PublishDate: 2023-03-01|ExpiryDate: 0001-01-01|\nLen Resources: 7\nResources: RelPermalink: /mydata.yaml|Name: data1.yaml|Title: data1.yaml|Params: map[]|RelPermalink: /mydata.yaml|Name: data2.yaml|Title: My data 2|Params: map[data2param1:data2Param1v]|RelPermalink: /mydata.yaml|Name: sub/data1.yaml|Title: Sub data|Params: map[]|RelPermalink: /a/pixel.png|Name: featured.png|Title: My Featured Image|Params: map[data2param1:data2Param1v]|RelPermalink: /docs/p1/sub/mymixcasetext2.txt|Name: sub/mymixcasetext2.txt|Title: My Text Sub Mixed Case Path Resource|Params: map[]|RelPermalink: /docs/p1/sub/mytex2.txt|Name: sub/mytex2.txt|Title: My Text Sub Resource|Params: map[]|RelPermalink: /docs/p1/mytext.txt|Name: textresource|Title: My Text Resource|Params: map[param1:param1v]|$\n\nFeatured Image: /a/pixel.png|featured.png|\n\nResized Featured Image: /a/pixel_hu_a32b3e361d55df1.png|10|"
+want:
+"Single: p1:p1edited|"
+stack:
+/home/runner/work/hugo/hugo/hugolib/integrationtest_builder.go:335
+s.Assert(content, qt.Contains, match, cm)
+/home/runner/work/hugo/hugo/hugolib/pagesfromdata/pagesfromgotmpl_integration_test.go:275
+b.AssertFileContent("public/docs/p1/index.html", "Single: p1:p1edited|")
+2025-04-12T16:03:28.7083067Z
+Source changed /docs/_content.gotmpl
+FAIL
+FAIL	github.com/gohugoio/hugo/hugolib/pagesfromdata	0.648s
+?   	github.com/gohugoio/hugo/hugolib/paths	[no test files]
+ok  	github.com/gohugoio/hugo/hugolib/segments	0.042s
+ok  	github.com/gohugoio/hugo/identity	(cached)
+?   	github.com/gohugoio/hugo/identity/identitytesting	[no test files]
+?   	github.com/gohugoio/hugo/internal/js	[no test files]
+ok  	github.com/gohugoio/hugo/internal/js/esbuild	2.002s
+ok  	github.com/gohugoio/hugo/internal/warpc	(cached)
+?   	github.com/gohugoio/hugo/internal/warpc/gen	[no test files]
+ok  	github.com/gohugoio/hugo/langs	(cached)
+ok  	github.com/gohugoio/hugo/langs/i18n	0.255s
+ok  	github.com/gohugoio/hugo/lazy	(cached)
+?   	github.com/gohugoio/hugo/livereload	[no test files]
+?   	github.com/gohugoio/hugo/livereload/gen	[no test files]
+ok  	github.com/gohugoio/hugo/markup	0.039s
+ok  	github.com/gohugoio/hugo/markup/asciidocext	0.742s
+?   	github.com/gohugoio/hugo/markup/asciidocext/asciidocext_config	[no test files]
+?   	github.com/gohugoio/hugo/markup/asciidocext/internal	[no test files]
+?   	github.com/gohugoio/hugo/markup/blackfriday	[no test files]
+?   	github.com/gohugoio/hugo/markup/converter	[no test files]
+?   	github.com/gohugoio/hugo/markup/converter/hooks	[no test files]
+ok  	github.com/gohugoio/hugo/markup/goldmark	0.575s
+ok  	github.com/gohugoio/hugo/markup/goldmark/blockquotes	0.071s
+ok  	github.com/gohugoio/hugo/markup/goldmark/codeblocks	0.179s
+?   	github.com/gohugoio/hugo/markup/goldmark/goldmark_config	[no test files]
+ok  	github.com/gohugoio/hugo/markup/goldmark/hugocontext	(cached)
+ok  	github.com/gohugoio/hugo/markup/goldmark/images	0.090s
+ok  	github.com/gohugoio/hugo/markup/goldmark/internal/extensions/attributes	0.048s
+?   	github.com/gohugoio/hugo/markup/goldmark/internal/render	[no test files]
+ok  	github.com/gohugoio/hugo/markup/goldmark/passthrough	0.077s
+ok  	github.com/gohugoio/hugo/markup/goldmark/tables	0.088s
+ok  	github.com/gohugoio/hugo/markup/highlight	0.093s
+?   	github.com/gohugoio/hugo/markup/highlight/chromalexers	[no test files]
+?   	github.com/gohugoio/hugo/markup/internal	[no test files]
+?   	github.com/gohugoio/hugo/markup/internal/attributes	[no test files]
+ok  	github.com/gohugoio/hugo/markup/markup_config	(cached)
+ok  	github.com/gohugoio/hugo/markup/org	0.022s
+ok  	github.com/gohugoio/hugo/markup/pandoc	0.032s
+ok  	github.com/gohugoio/hugo/markup/rst	0.177s
+ok  	github.com/gohugoio/hugo/markup/tableofcontents	0.076s
+ok  	github.com/gohugoio/hugo/media	0.012s
+ok  	github.com/gohugoio/hugo/metrics	0.018s
+ok  	github.com/gohugoio/hugo/minifiers	0.033s
+ok  	github.com/gohugoio/hugo/modules	14.675s
+ok  	github.com/gohugoio/hugo/modules/npm	(cached)
+ok  	github.com/gohugoio/hugo/navigation	(cached)
+ok  	github.com/gohugoio/hugo/output	(cached)
+ok  	github.com/gohugoio/hugo/parser	(cached)
+ok  	github.com/gohugoio/hugo/parser/metadecoders	(cached)
+ok  	github.com/gohugoio/hugo/parser/pageparser	(cached)
+ok  	github.com/gohugoio/hugo/publisher	0.056s
+ok  	github.com/gohugoio/hugo/related	0.065s
+?   	github.com/gohugoio/hugo/releaser	[no test files]
+ok  	github.com/gohugoio/hugo/resources	3.858s
+ok  	github.com/gohugoio/hugo/resources/images	3.797s
+ok  	github.com/gohugoio/hugo/resources/images/exif	0.011s
+?   	github.com/gohugoio/hugo/resources/images/imagetesting	[no test files]
+?   	github.com/gohugoio/hugo/resources/images/webp	[no test files]
+ok  	github.com/gohugoio/hugo/resources/internal	(cached)
+ok  	github.com/gohugoio/hugo/resources/jsconfig	(cached)
+ok  	github.com/gohugoio/hugo/resources/kinds	(cached)
+ok  	github.com/gohugoio/hugo/resources/page	0.712s
+?   	github.com/gohugoio/hugo/resources/page/page_generate	[no test files]
+ok  	github.com/gohugoio/hugo/resources/page/pagemeta	0.200s
+?   	github.com/gohugoio/hugo/resources/page/siteidentities	[no test files]
+ok  	github.com/gohugoio/hugo/resources/postpub	(cached)
+ok  	github.com/gohugoio/hugo/resources/resource	0.057s
+ok  	github.com/gohugoio/hugo/resources/resource_factories/bundler	0.021s
+ok  	github.com/gohugoio/hugo/resources/resource_factories/create	15.098s
+ok  	github.com/gohugoio/hugo/resources/resource_transformers/babel	8.146s
+ok  	github.com/gohugoio/hugo/resources/resource_transformers/cssjs	27.652s
+?   	github.com/gohugoio/hugo/resources/resource_transformers/htesting	[no test files]
+ok  	github.com/gohugoio/hugo/resources/resource_transformers/integrity	0.023s
+ok  	github.com/gohugoio/hugo/resources/resource_transformers/js	12.989s
+ok  	github.com/gohugoio/hugo/resources/resource_transformers/minifier	0.041s
+ok  	github.com/gohugoio/hugo/resources/resource_transformers/templates	0.043s
+ok  	github.com/gohugoio/hugo/resources/resource_transformers/tocss/dartsass	11.522s
+ok  	github.com/gohugoio/hugo/resources/resource_transformers/tocss/sass	(cached)
+ok  	github.com/gohugoio/hugo/resources/resource_transformers/tocss/scss	0.024s
+?   	github.com/gohugoio/hugo/scripts/fork_go_templates	[no test files]
+ok  	github.com/gohugoio/hugo/source	0.029s
+ok  	github.com/gohugoio/hugo/tpl	(cached)
+ok  	github.com/gohugoio/hugo/tpl/cast	0.021s
+ok  	github.com/gohugoio/hugo/tpl/collections	0.214s
+ok  	github.com/gohugoio/hugo/tpl/compare	0.036s
+ok  	github.com/gohugoio/hugo/tpl/crypto	0.021s
+?   	github.com/gohugoio/hugo/tpl/css	[no test files]
+ok  	github.com/gohugoio/hugo/tpl/data	4.049s
+ok  	github.com/gohugoio/hugo/tpl/debug	0.052s
+?   	github.com/gohugoio/hugo/tpl/diagrams	[no test files]
+ok  	github.com/gohugoio/hugo/tpl/encoding	0.018s
+ok  	github.com/gohugoio/hugo/tpl/fmt	0.041s
+ok  	github.com/gohugoio/hugo/tpl/hash	0.018s
+?   	github.com/gohugoio/hugo/tpl/hugo	[no test files]
+ok  	github.com/gohugoio/hugo/tpl/images	0.094s
+ok  	github.com/gohugoio/hugo/tpl/inflect	0.030s
+ok  	github.com/gohugoio/hugo/tpl/internal	0.020s
+?   	github.com/gohugoio/hugo/tpl/internal/go_templates/cfg	[no test files]
+ok  	github.com/gohugoio/hugo/tpl/internal/go_templates/fmtsort	(cached)
+ok  	github.com/gohugoio/hugo/tpl/internal/go_templates/htmltemplate	0.122s
+ok  	github.com/gohugoio/hugo/tpl/internal/go_templates/testenv	(cached)
+ok  	github.com/gohugoio/hugo/tpl/internal/go_templates/texttemplate	0.119s
+ok  	github.com/gohugoio/hugo/tpl/internal/go_templates/texttemplate/parse	(cached)
+?   	github.com/gohugoio/hugo/tpl/internal/resourcehelpers	[no test files]
+?   	github.com/gohugoio/hugo/tpl/js	[no test files]
+ok  	github.com/gohugoio/hugo/tpl/lang	0.027s
+ok  	github.com/gohugoio/hugo/tpl/math	0.020s
+?   	github.com/gohugoio/hugo/tpl/openapi	[no test files]
+ok  	github.com/gohugoio/hugo/tpl/openapi/openapi3	0.047s
+ok  	github.com/gohugoio/hugo/tpl/os	0.076s
+ok  	github.com/gohugoio/hugo/tpl/page	0.126s
+ok  	github.com/gohugoio/hugo/tpl/partials	0.317s
+ok  	github.com/gohugoio/hugo/tpl/path	0.034s
+ok  	github.com/gohugoio/hugo/tpl/reflect	0.021s
+ok  	github.com/gohugoio/hugo/tpl/resources	0.085s
+ok  	github.com/gohugoio/hugo/tpl/safe	0.023s
+?   	github.com/gohugoio/hugo/tpl/site	[no test files]
+ok  	github.com/gohugoio/hugo/tpl/strings	0.030s
+ok  	github.com/gohugoio/hugo/tpl/templates	0.332s
+ok  	github.com/gohugoio/hugo/tpl/time	0.096s
+Template changed /_default/baseof.html
+--- FAIL: TestLayoutsLookupVariants (0.07s)
+templatestore_integration_test.go:651:
+error:
+unexpected success
+container:
+"WARN  found no layout file for \"amp\" for layout \"mylayout\" for kind \"page\": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.\n"
+want:
+"WARN"
+stack:
+/home/runner/work/hugo/hugo/hugolib/integrationtest_builder.go:262
+s.Assert(s.lastBuildLog, check, el)
+/home/runner/work/hugo/hugo/tpl/tplimpl/templatestore_integration_test.go:651
+b.AssertLogContains("! WARN")
+2025-04-12T16:08:03.8489821Z
+FAIL
+FAIL	github.com/gohugoio/hugo/tpl/tplimpl	2.182s
+?   	github.com/gohugoio/hugo/tpl/tplimplinit	[no test files]
+ok  	github.com/gohugoio/hugo/tpl/transform	65.093s
+ok  	github.com/gohugoio/hugo/tpl/urls	0.062s
+ok  	github.com/gohugoio/hugo/transform	(cached)
+ok  	github.com/gohugoio/hugo/transform/livereloadinject	(cached)
+ok  	github.com/gohugoio/hugo/transform/metainject	0.005s
+ok  	github.com/gohugoio/hugo/transform/urlreplacers	(cached)
+?   	github.com/gohugoio/hugo/watcher	[no test files]
+ok  	github.com/gohugoio/hugo/watcher/filenotify	(cached)
+FAIL
+Error: running "go test -p 2 ./..." failed with exit code 1
+##[error]Process completed with exit code 1.
+Post job cleanup.
+[command]/usr/bin/git version
+git version <:NUM:>.<:NUM:>.<:NUM:>
+Temporarily overriding HOME='/home/runner/work/_temp/88504ea8-fbc4-4bf0-8057-99d257e475d0' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+[command]/usr/bin/git config --global --add safe.directory /home/runner/work/hugo/hugo
+[command]/usr/bin/git config --local --name-only --get-regexp <:*:>
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp <:*:> && git config --local --unset-all <:*:> || :"
+[command]/usr/bin/git config --local --name-only --get-regexp <:*:>
+http.https://github.com/.extraheader
+[command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+[command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp <:*:> && git config --local --unset-all <:*:> || :"
+Cleaning up orphan processes

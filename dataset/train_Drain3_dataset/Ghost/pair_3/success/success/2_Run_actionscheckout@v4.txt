@@ -1,0 +1,80 @@
+2025-04-14T13:08:33.2764296Z ##[group]Run actions/checkout@v4
+2025-04-14T13:08:33.2765714Z with:
+2025-04-14T13:08:33.2766558Z   repository: TryGhost/Ghost
+2025-04-14T13:08:33.2768039Z   token: ***
+2025-04-14T13:08:33.2768874Z   ssh-strict: true
+2025-04-14T13:08:33.2769723Z   ssh-user: git
+2025-04-14T13:08:33.2770594Z   persist-credentials: true
+2025-04-14T13:08:33.2771577Z   clean: true
+2025-04-14T13:08:33.2772485Z   sparse-checkout-cone-mode: true
+2025-04-14T13:08:33.2773551Z   fetch-depth: 1
+2025-04-14T13:08:33.2774678Z   fetch-tags: false
+2025-04-14T13:08:33.2775550Z   show-progress: true
+2025-04-14T13:08:33.2776431Z   lfs: false
+2025-04-14T13:08:33.2856072Z   submodules: false
+2025-04-14T13:08:33.2857802Z   set-safe-directory: true
+2025-04-14T13:08:33.2860974Z env:
+2025-04-14T13:08:33.2862258Z   FORCE_COLOR: 1
+2025-04-14T13:08:33.2863300Z   HEAD_COMMIT: 2d8511b9704d8106a522b294a044fbdc42669271
+2025-04-14T13:08:33.2866583Z   CACHED_DEPENDENCY_PATHS: /home/runner/work/Ghost/Ghost/node_modules
+/home/runner/work/Ghost/Ghost/apps/*/node_modules
+/home/runner/work/Ghost/Ghost/ghost/*/node_modules
+~/.cache/ms-playwright/
+
+2025-04-14T13:08:33.2870320Z   CACHED_BUILD_PATHS: /home/runner/work/Ghost/Ghost/ghost/*/build
+
+2025-04-14T13:08:33.2871728Z   NX_REJECT_UNKNOWN_LOCAL_CACHE: 0
+2025-04-14T13:08:33.2872764Z   NODE_VERSION: 20.11.1
+2025-04-14T13:08:33.2873656Z   CI: true
+2025-04-14T13:08:33.2874436Z ##[endgroup]
+2025-04-14T13:08:33.5439599Z Syncing repository: TryGhost/Ghost
+2025-04-14T13:08:33.5444257Z ##[group]Getting Git version info
+2025-04-14T13:08:33.5446509Z Working directory is '/home/runner/work/Ghost/Ghost'
+2025-04-14T13:08:33.5450118Z [command]/usr/bin/git version
+2025-04-14T13:08:33.5542341Z git version 2.49.0
+2025-04-14T13:08:33.5573029Z ##[endgroup]
+2025-04-14T13:08:33.5594234Z Temporarily overriding HOME='/home/runner/work/_temp/078c6e01-7e29-4a66-aae9-566def5ba294' before making global git config changes
+2025-04-14T13:08:33.5597295Z Adding repository directory to the temporary git global config as a safe directory
+2025-04-14T13:08:33.5600553Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Ghost/Ghost
+2025-04-14T13:08:33.5641506Z Deleting the contents of '/home/runner/work/Ghost/Ghost'
+2025-04-14T13:08:33.5645557Z ##[group]Initializing the repository
+2025-04-14T13:08:33.5651111Z [command]/usr/bin/git init /home/runner/work/Ghost/Ghost
+2025-04-14T13:08:33.5740141Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-04-14T13:08:33.5742258Z hint: is subject to change. To configure the initial branch name to use in all
+2025-04-14T13:08:33.5744254Z hint: of your new repositories, which will suppress this warning, call:
+2025-04-14T13:08:33.5745691Z hint:
+2025-04-14T13:08:33.5746730Z hint: 	git config --global init.defaultBranch <name>
+2025-04-14T13:08:33.5748151Z hint:
+2025-04-14T13:08:33.5749868Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-04-14T13:08:33.5752669Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-04-14T13:08:33.5755425Z hint:
+2025-04-14T13:08:33.5757124Z hint: 	git branch -m <name>
+2025-04-14T13:08:33.5759566Z Initialized empty Git repository in /home/runner/work/Ghost/Ghost/.git/
+2025-04-14T13:08:33.5764960Z [command]/usr/bin/git remote add origin https://github.com/TryGhost/Ghost
+2025-04-14T13:08:33.5801014Z ##[endgroup]
+2025-04-14T13:08:33.5803639Z ##[group]Disabling automatic garbage collection
+2025-04-14T13:08:33.5806017Z [command]/usr/bin/git config --local gc.auto 0
+2025-04-14T13:08:33.5836523Z ##[endgroup]
+2025-04-14T13:08:33.5839227Z ##[group]Setting up auth
+2025-04-14T13:08:33.5844499Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-04-14T13:08:33.5877866Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-04-14T13:08:33.6228782Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-14T13:08:33.6258934Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-04-14T13:08:33.6490659Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-04-14T13:08:33.6540528Z ##[endgroup]
+2025-04-14T13:08:33.6542447Z ##[group]Fetching the repository
+2025-04-14T13:08:33.6558034Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +2d8511b9704d8106a522b294a044fbdc42669271:refs/remotes/origin/main
+2025-04-14T13:08:35.7966070Z From https://github.com/TryGhost/Ghost
+2025-04-14T13:08:35.7967111Z  * [new ref]         2d8511b9704d8106a522b294a044fbdc42669271 -> origin/main
+2025-04-14T13:08:35.8026624Z ##[endgroup]
+2025-04-14T13:08:35.8027402Z ##[group]Determining the checkout info
+2025-04-14T13:08:35.8029265Z ##[endgroup]
+2025-04-14T13:08:35.8034443Z [command]/usr/bin/git sparse-checkout disable
+2025-04-14T13:08:35.8075001Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-04-14T13:08:35.8103235Z ##[group]Checking out the ref
+2025-04-14T13:08:35.8107760Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2025-04-14T13:08:36.2229044Z Switched to a new branch 'main'
+2025-04-14T13:08:36.2229926Z branch 'main' set up to track 'origin/main'.
+2025-04-14T13:08:36.2256360Z ##[endgroup]
+2025-04-14T13:08:36.2292608Z [command]/usr/bin/git log -1 --format=%H
+2025-04-14T13:08:36.2316218Z 2d8511b9704d8106a522b294a044fbdc42669271

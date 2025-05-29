@@ -1,0 +1,86 @@
+##[group]Run export DISTUTILS_C_COMPILER_LAUNCHER=ccache
+[36;1mexport DISTUTILS_C_COMPILER_LAUNCHER=ccache[0m
+[36;1m# TODO: Use ccache inside container, see https://github.com/pypa/cibuildwheel/issues/1030[0m
+[36;1mcibuildwheel --output-dir wheelhouse --config-file pyproject.toml duckdb_tarball[0m
+shell: /usr/bin/bash --noprofile --norc -e -o pipefail {<:NUM:>}
+env:
+GH_TOKEN:
+OVERRIDE_GIT_DESCRIBE:
+CIBW_TEST_SKIP: {cp37,cp38}-*
+CIBW_BUILD: cp310-manylinux_2_28_x86_64
+CIBW_TEST_COMMAND: python -m pytest {project}/tests --verbose && USE_ACTUAL_SPARK=true JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java)))) SPARK_HOME={project}/spark_installation/spark python -m pytest {project}/tests/fast/spark --verbose
+PYTEST_TIMEOUT: 600
+CIBW_ENVIRONMENT: OVERRIDE_GIT_DESCRIBE=
+CIBW_BEFORE_ALL: cd {project} && ./scripts/install_spark_in_cibuildwheels_linux_container.sh
+pythonLocation: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+PKG CONFIG PATH: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64/lib/pkgconfig
+Python ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+<:*:> ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+<:*:> ROOT DIR: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64
+LD LIBRARY PATH: /opt/hostedtoolcache/Python/<:NUM:>.<:NUM:>.<:NUM:>/x64/lib
+##[endgroup]
+2025-04-14T13:26:27.4557031Z
+_ _       _ _   _       _           _
+___|_| |_ _ _|_| |_| |_ _ _| |_ ___ ___| |
+|  _| | . | | | | | . | | | |   | -_| -_| |
+|___|_|___|___|_|_|___|_____|_|_|___|___|_|
+2025-04-14T13:26:27.4558473Z
+cibuildwheel version 2.23.2
+2025-04-14T13:26:27.4558750Z
+Build options:
+platform: linux
+[38;5;244mallow_empty: False[0m
+[38;5;244marchitectures: i686, x86_64[0m
+build_selector:
+build_config: cp310-manylinux_2_28_x86_64
+skip_config:
+requires_python: >=3.7.0
+enable: ['pypy'][0m
+output_dir: /home/runner/work/duckdb/duckdb/tools/pythonpkg/wheelhouse[0m
+package_dir: /home/runner/work/duckdb/duckdb/tools/pythonpkg/duckdb_tarball[0m
+test_selector:
+skip_config: {cp37,cp38}-*[0m
+before_all: cd {project} && ./scripts/install_spark_in_cibuildwheels_linux_container.sh[0m
+before_build: pip install numpy>=2.0[0m
+before_test: python scripts/optional_requirements.py[0m
+[38;5;244mbuild_frontend: None[0m
+[38;5;244mbuild_verbosity: 0[0m
+[38;5;244mconfig_settings: [0m
+[38;5;244mcontainer_engine: docker[0m
+dependency_constraints: None[0m
+environment:
+OVERRIDE_GIT_DESCRIBE=[0m
+[38;5;244mmanylinux_images:
+[38;5;244m    x86_64: quay.io/pypa/manylinux2014_x86_64:2025.03.23-1
+[38;5;244m    i686: quay.io/pypa/manylinux2014_i686:2025.03.23-1
+[38;5;244m    pypy_x86_64: quay.io/pypa/manylinux2014_x86_64:2025.03.23-1
+[38;5;244m    aarch64: quay.io/pypa/manylinux2014_aarch64:2025.03.23-1
+[38;5;244m    ppc64le: quay.io/pypa/manylinux2014_ppc64le:2025.03.23-1
+[38;5;244m    s390x: quay.io/pypa/manylinux2014_s390x:2025.03.23-1
+[38;5;244m    armv7l: quay.io/pypa/manylinux_2_31_armv7l:2025.03.23-1
+[38;5;244m    pypy_aarch64: quay.io/pypa/manylinux2014_aarch64:2025.03.23-1
+[38;5;244m    pypy_i686: quay.io/pypa/manylinux2014_i686:2025.03.23-1[0m
+[38;5;244mmusllinux_images:
+[38;5;244m    x86_64: quay.io/pypa/musllinux_1_2_x86_64:2025.03.23-1
+[38;5;244m    i686: quay.io/pypa/musllinux_1_2_i686:2025.03.23-1
+[38;5;244m    aarch64: quay.io/pypa/musllinux_1_2_aarch64:2025.03.23-1
+[38;5;244m    ppc64le: quay.io/pypa/musllinux_1_2_ppc64le:2025.03.23-1
+[38;5;244m    s390x: quay.io/pypa/musllinux_1_2_s390x:2025.03.23-1
+[38;5;244m    armv7l: quay.io/pypa/musllinux_1_2_armv7l:2025.03.23-1[0m
+[38;5;244mrepair_command: auditwheel repair -w {dest_dir} {wheel}[0m
+test_command: python -m pytest {project}/tests --verbose && USE_ACTUAL_SPARK=true JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java)))) SPARK_HOME={project}/spark_installation/spark python -m pytest {project}/tests/fast/spark --verbose[0m
+##[warning]cibuildwheel 3 will require Python 3.11+, please upgrade the Python version used to run cibuildwheel. This does not affect the versions you can target when building wheels. See: https://cibuildwheel.pypa.io/en/stable/#what-does-it-do
+2025-04-14T13:26:27.4665404Z
+cibuildwheel: No build identifiers selected: BuildSelector(build_config='cp310-manylinux_2_28_x86_64', skip_config='', requires_python=<SpecifierSet('>=3.7.0')>, enable=frozenset({<EnableGroups.PyPy: 'pypy'>}))
+[38;5;244mtest_extras: [0m
+[38;5;244mtest_groups: [0m
+test_requires:
+pytest
+google-cloud-storage
+mypy[0m
+2025-04-14T13:26:27.4668013Z
+Cache folder: /home/runner/.cache/cibuildwheel
+2025-04-14T13:26:27.4668324Z
+Here we go!
+2025-04-14T13:26:27.4668504Z
+##[error]Process completed with exit code 3.

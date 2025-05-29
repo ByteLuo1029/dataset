@@ -1,0 +1,69 @@
+2025-04-14T17:54:00.6968720Z ##[group]Run actions/checkout@v4
+2025-04-14T17:54:00.6969990Z with:
+2025-04-14T17:54:00.6970620Z   repository: Kong/insomnia
+2025-04-14T17:54:00.6971520Z   token: ***
+2025-04-14T17:54:00.6972120Z   ssh-strict: true
+2025-04-14T17:54:00.6972740Z   ssh-user: git
+2025-04-14T17:54:00.6973370Z   persist-credentials: true
+2025-04-14T17:54:00.6974090Z   clean: true
+2025-04-14T17:54:00.6974720Z   sparse-checkout-cone-mode: true
+2025-04-14T17:54:00.6975510Z   fetch-depth: 1
+2025-04-14T17:54:00.6976180Z   fetch-tags: false
+2025-04-14T17:54:00.6976820Z   show-progress: true
+2025-04-14T17:54:00.6977460Z   lfs: false
+2025-04-14T17:54:00.6978050Z   submodules: false
+2025-04-14T17:54:00.6978690Z   set-safe-directory: true
+2025-04-14T17:54:00.7000450Z env:
+2025-04-14T17:54:00.7001140Z   PR_NUMBER: 8614
+2025-04-14T17:54:00.7001770Z ##[endgroup]
+2025-04-14T17:54:01.1074490Z Syncing repository: Kong/insomnia
+2025-04-14T17:54:01.1077010Z ##[group]Getting Git version info
+2025-04-14T17:54:01.1079270Z Working directory is '/Users/runner/work/insomnia/insomnia'
+2025-04-14T17:54:01.1081270Z [command]/usr/local/bin/git version
+2025-04-14T17:54:01.1398930Z git version 2.49.0
+2025-04-14T17:54:01.1440640Z ##[endgroup]
+2025-04-14T17:54:01.1454210Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/3a5c8c84-af24-4fd8-b0bd-866c70173df6/.gitconfig'
+2025-04-14T17:54:01.1469330Z Temporarily overriding HOME='/Users/runner/work/_temp/3a5c8c84-af24-4fd8-b0bd-866c70173df6' before making global git config changes
+2025-04-14T17:54:01.1471910Z Adding repository directory to the temporary git global config as a safe directory
+2025-04-14T17:54:01.1475490Z [command]/usr/local/bin/git config --global --add safe.directory /Users/runner/work/insomnia/insomnia
+2025-04-14T17:54:01.1605190Z Deleting the contents of '/Users/runner/work/insomnia/insomnia'
+2025-04-14T17:54:01.1610640Z ##[group]Initializing the repository
+2025-04-14T17:54:01.1616920Z [command]/usr/local/bin/git init /Users/runner/work/insomnia/insomnia
+2025-04-14T17:54:01.1914960Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-04-14T17:54:01.1916630Z hint: is subject to change. To configure the initial branch name to use in all
+2025-04-14T17:54:01.1918130Z hint: of your new repositories, which will suppress this warning, call:
+2025-04-14T17:54:01.1919310Z hint:
+2025-04-14T17:54:01.1920260Z hint: 	git config --global init.defaultBranch <name>
+2025-04-14T17:54:01.1921340Z hint:
+2025-04-14T17:54:01.1922300Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-04-14T17:54:01.1923840Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-04-14T17:54:01.1925060Z hint:
+2025-04-14T17:54:01.1925740Z hint: 	git branch -m <name>
+2025-04-14T17:54:01.1926900Z Initialized empty Git repository in /Users/runner/work/insomnia/insomnia/.git/
+2025-04-14T17:54:01.1931550Z [command]/usr/local/bin/git remote add origin https://github.com/Kong/insomnia
+2025-04-14T17:54:01.2030450Z ##[endgroup]
+2025-04-14T17:54:01.2031770Z ##[group]Disabling automatic garbage collection
+2025-04-14T17:54:01.2035970Z [command]/usr/local/bin/git config --local gc.auto 0
+2025-04-14T17:54:01.2117750Z ##[endgroup]
+2025-04-14T17:54:01.2118920Z ##[group]Setting up auth
+2025-04-14T17:54:01.2125390Z [command]/usr/local/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-04-14T17:54:01.2207050Z [command]/usr/local/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-04-14T17:54:01.3380670Z [command]/usr/local/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-14T17:54:01.3462160Z [command]/usr/local/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-04-14T17:54:01.4488370Z [command]/usr/local/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-04-14T17:54:01.4588360Z ##[endgroup]
+2025-04-14T17:54:01.4589870Z ##[group]Fetching the repository
+2025-04-14T17:54:01.4598620Z [command]/usr/local/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +b5e172e97c4f76830d4f72814aa9d5527808c2d2:refs/remotes/pull/8614/merge
+2025-04-14T17:54:03.2069090Z From https://github.com/Kong/insomnia
+2025-04-14T17:54:03.2070130Z  * [new ref]         b5e172e97c4f76830d4f72814aa9d5527808c2d2 -> pull/8614/merge
+2025-04-14T17:54:03.2169340Z ##[endgroup]
+2025-04-14T17:54:03.2170230Z ##[group]Determining the checkout info
+2025-04-14T17:54:03.2171140Z ##[endgroup]
+2025-04-14T17:54:03.2175370Z [command]/usr/local/bin/git sparse-checkout disable
+2025-04-14T17:54:03.2274690Z [command]/usr/local/bin/git config --local --unset-all extensions.worktreeConfig
+2025-04-14T17:54:03.2350900Z ##[group]Checking out the ref
+2025-04-14T17:54:03.2355270Z [command]/usr/local/bin/git checkout --progress --force refs/remotes/pull/8614/merge
+2025-04-14T17:54:03.6589600Z HEAD is now at b5e172e Merge 9b9eebc029059dc5fdba1104c7ec416edb92bffb into 7417aa7d60b8eae37a313323386d5f72240a8f16
+2025-04-14T17:54:03.6604170Z ##[endgroup]
+2025-04-14T17:54:03.6710760Z [command]/usr/local/bin/git log -1 --format=%H
+2025-04-14T17:54:03.6790720Z b5e172e97c4f76830d4f72814aa9d5527808c2d2

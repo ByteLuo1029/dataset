@@ -1,0 +1,57 @@
+2025-04-15T00:16:51.0538927Z ##[debug]Evaluating condition for step: 'Archive TSAN logs'
+2025-04-15T00:16:51.0540039Z ##[debug]Evaluating: always()
+2025-04-15T00:16:51.0540386Z ##[debug]Evaluating always:
+2025-04-15T00:16:51.0540704Z ##[debug]=> true
+2025-04-15T00:16:51.0541039Z ##[debug]Result: true
+2025-04-15T00:16:51.0541523Z ##[debug]Starting: Archive TSAN logs
+2025-04-15T00:16:51.0560254Z ##[debug]Loading inputs
+2025-04-15T00:16:51.0561775Z ##[debug]Evaluating: format('tsan-logs-{0}', ((fromJSON(inputs.free-threading) && 'free-threading') || 'default'))
+2025-04-15T00:16:51.0562292Z ##[debug]Evaluating format:
+2025-04-15T00:16:51.0562542Z ##[debug]..Evaluating String:
+2025-04-15T00:16:51.0562802Z ##[debug]..=> 'tsan-logs-{0}'
+2025-04-15T00:16:51.0563161Z ##[debug]..Evaluating Or:
+2025-04-15T00:16:51.0563588Z ##[debug]....Evaluating And:
+2025-04-15T00:16:51.0563833Z ##[debug]......Evaluating fromJSON:
+2025-04-15T00:16:51.0564103Z ##[debug]........Evaluating Index:
+2025-04-15T00:16:51.0564356Z ##[debug]..........Evaluating inputs:
+2025-04-15T00:16:51.0564648Z ##[debug]..........=> Object
+2025-04-15T00:16:51.0564901Z ##[debug]..........Evaluating String:
+2025-04-15T00:16:51.0565162Z ##[debug]..........=> 'free-threading'
+2025-04-15T00:16:51.0565471Z ##[debug]........=> true
+2025-04-15T00:16:51.0565936Z ##[debug]......=> true
+2025-04-15T00:16:51.0566162Z ##[debug]......Evaluating String:
+2025-04-15T00:16:51.0566430Z ##[debug]......=> 'free-threading'
+2025-04-15T00:16:51.0566689Z ##[debug]....=> 'free-threading'
+2025-04-15T00:16:51.0566935Z ##[debug]..=> 'free-threading'
+2025-04-15T00:16:51.0567222Z ##[debug]=> 'tsan-logs-free-threading'
+2025-04-15T00:16:51.0567518Z ##[debug]Result: 'tsan-logs-free-threading'
+2025-04-15T00:16:51.0570413Z ##[debug]Loading env
+2025-04-15T00:16:51.0573863Z ##[group]Run actions/upload-artifact@v4
+2025-04-15T00:16:51.0574113Z with:
+2025-04-15T00:16:51.0574310Z   name: tsan-logs-free-threading
+2025-04-15T00:16:51.0574545Z   path: tsan_log.*
+2025-04-15T00:16:51.0574744Z   if-no-files-found: ignore
+2025-04-15T00:16:51.0574977Z   compression-level: 6
+2025-04-15T00:16:51.0575180Z   overwrite: false
+2025-04-15T00:16:51.0575383Z   include-hidden-files: false
+2025-04-15T00:16:51.0575599Z env:
+2025-04-15T00:16:51.0575762Z   FORCE_COLOR: 1
+2025-04-15T00:16:51.0575963Z   IMAGE_OS_VERSION: ubuntu24-20250406.1.0
+2025-04-15T00:16:51.0576674Z   TSAN_OPTIONS: log_path=/home/runner/work/cpython/cpython/tsan_log suppressions=/home/runner/work/cpython/cpython/Tools/tsan/suppressions_free_threading.txt handle_segv=0
+2025-04-15T00:16:51.0577371Z   CC: clang
+2025-04-15T00:16:51.0577538Z   CXX: clang++
+2025-04-15T00:16:51.0578699Z   PATH: /usr/lib/ccache:/snap/bin:/home/runner/.local/bin:/opt/pipx_bin:/home/runner/.cargo/bin:/home/runner/.config/composer/vendor/bin:/usr/local/.ghcup/bin:/home/runner/.dotnet/tools:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+2025-04-15T00:16:51.0579717Z ##[endgroup]
+2025-04-15T00:16:51.2672238Z ##[debug]followSymbolicLinks 'true'
+2025-04-15T00:16:51.2673557Z ##[debug]implicitDescendants 'true'
+2025-04-15T00:16:51.2674361Z ##[debug]omitBrokenSymbolicLinks 'true'
+2025-04-15T00:16:51.2675643Z ##[debug]excludeHiddenFiles 'true'
+2025-04-15T00:16:51.2696909Z ##[debug]followSymbolicLinks 'true'
+2025-04-15T00:16:51.2697682Z ##[debug]implicitDescendants 'true'
+2025-04-15T00:16:51.2698375Z ##[debug]matchDirectories 'true'
+2025-04-15T00:16:51.2699298Z ##[debug]omitBrokenSymbolicLinks 'true'
+2025-04-15T00:16:51.2700097Z ##[debug]excludeHiddenFiles 'true'
+2025-04-15T00:16:51.2704941Z ##[debug]Search path '/home/runner/work/cpython/cpython'
+2025-04-15T00:16:51.2749925Z No files were found with the provided path: tsan_log.*. No artifacts will be uploaded.
+2025-04-15T00:16:51.2820478Z ##[debug]Node Action run completed with exit code 0
+2025-04-15T00:16:51.2822577Z ##[debug]Finishing: Archive TSAN logs

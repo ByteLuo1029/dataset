@@ -1,0 +1,254 @@
+##[group]Run <:*:>
+with:
+toolchain: stable
+env:
+GH_TOKEN:
+OVERRIDE_GIT_DESCRIBE:
+AZURE_CODESIGN_ENDPOINT: https://eus.codesigning.azure.net/
+AZURE_CODESIGN_ACCOUNT: duckdb-signing-2
+AZURE_CODESIGN_PROFILE: duckdb-certificate-profile
+pythonLocation: C:\hostedtoolcache\windows\Python\3.12.9\x64
+PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.9\x64/lib/pkgconfig
+Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.9\x64
+Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.9\x64
+Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.9\x64
+##[endgroup]
+##[group]Run : parse toolchain version
+[36;1m: parse toolchain version[0m
+[36;1mif [[ $toolchain =~ ^stable' '[0-9]+' '(year|month|week|day)s?' 'ago$ ]]; then[0m
+[36;1m  if [[ Windows == macOS ]]; then[0m
+[36;1m    echo "toolchain=1.$((($(date -v-$(sed 's/stable \([0-9]*\) \(.\).*/\1\2/' <<< $toolchain) +%s)/60/60/24-16569)/7/6))" >> $GITHUB_OUTPUT[0m
+[36;1m  else[0m
+[36;1m    echo "toolchain=1.$((($(date --date "${toolchain#stable }" +%s)/60/60/24-16569)/7/6))" >> $GITHUB_OUTPUT[0m
+[36;1m  fi[0m
+[36;1melif [[ $toolchain =~ ^stable' 'minus' '[0-9]+' 'releases?$ ]]; then[0m
+[36;1m  echo "toolchain=1.$((($(date +%s)/60/60/24-16569)/7/6-${toolchain//[^0-9]/}))" >> $GITHUB_OUTPUT[0m
+[36;1melif [[ $toolchain =~ ^1\.[0-9]+$ ]]; then[0m
+[36;1m  echo "toolchain=1.$((i=${toolchain#1.}, c=($(date +%s)/60/60/24-16569)/7/6, i+9*i*(10*i<=c)+90*i*(100*i<=c)))" >> $GITHUB_OUTPUT[0m
+[<:NUM:>;1melse[0m
+[36;1m  echo "toolchain=$toolchain" >> $GITHUB_OUTPUT[0m
+[<:NUM:>;1mfi[0m
+shell: C:\Program Files\Git\bin\bash.EXE --noprofile --norc -e -o pipefail {0}
+env:
+GH_TOKEN:
+OVERRIDE_GIT_DESCRIBE:
+AZURE_CODESIGN_ENDPOINT: https://eus.codesigning.azure.net/
+AZURE_CODESIGN_ACCOUNT: duckdb-signing-2
+AZURE_CODESIGN_PROFILE: duckdb-certificate-profile
+pythonLocation: C:\hostedtoolcache\windows\Python\3.12.9\x64
+PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.9\x64/lib/pkgconfig
+Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.9\x64
+Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.9\x64
+Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.9\x64
+toolchain: stable
+##[endgroup]
+##[group]Run : construct rustup command line
+[36;1m: construct rustup command line[0m
+[36;1mecho "targets=$(for t in ${targets//,/ }; do echo -n ' --target' $t; done)" >> $GITHUB_OUTPUT[0m
+[36;1mecho "components=$(for c in ${components//,/ }; do echo -n ' --component' $c; done)" >> $GITHUB_OUTPUT[0m
+[36;1mecho "downgrade=" >> $GITHUB_OUTPUT[0m
+shell: C:\Program Files\Git\bin\bash.EXE --noprofile --norc -e -o pipefail {0}
+env:
+GH_TOKEN:
+OVERRIDE_GIT_DESCRIBE:
+AZURE_CODESIGN_ENDPOINT: https://eus.codesigning.azure.net/
+AZURE_CODESIGN_ACCOUNT: duckdb-signing-2
+AZURE_CODESIGN_PROFILE: duckdb-certificate-profile
+pythonLocation: C:\hostedtoolcache\windows\Python\3.12.9\x64
+PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.9\x64/lib/pkgconfig
+Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.9\x64
+Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.9\x64
+Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.9\x64
+targets:
+components:
+##[endgroup]
+##[group]Run : set $CARGO_HOME
+[36;1m: set $CARGO_HOME[0m
+[36;1mecho CARGO_HOME=${CARGO_HOME:-$USERPROFILE/.cargo} >> $GITHUB_ENV[0m
+shell: C:\Program Files\Git\bin\bash.EXE --noprofile --norc -e -o pipefail {0}
+env:
+GH_TOKEN:
+OVERRIDE_GIT_DESCRIBE:
+AZURE_CODESIGN_ENDPOINT: https://eus.codesigning.azure.net/
+AZURE_CODESIGN_ACCOUNT: duckdb-signing-2
+AZURE_CODESIGN_PROFILE: duckdb-certificate-profile
+pythonLocation: C:\hostedtoolcache\windows\Python\3.12.9\x64
+PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.9\x64/lib/pkgconfig
+Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.9\x64
+Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.9\x64
+Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.9\x64
+##[endgroup]
+##[group]Run rustup toolchain install stable --profile minimal --no-self-update
+[36;1mrustup toolchain install stable --profile minimal --no-self-update[0m
+shell: C:\Program Files\Git\bin\bash.EXE --noprofile --norc -e -o pipefail {0}
+env:
+GH_TOKEN:
+OVERRIDE_GIT_DESCRIBE:
+AZURE_CODESIGN_ENDPOINT: https://eus.codesigning.azure.net/
+AZURE_CODESIGN_ACCOUNT: duckdb-signing-2
+AZURE_CODESIGN_PROFILE: duckdb-certificate-profile
+pythonLocation: C:\hostedtoolcache\windows\Python\3.12.9\x64
+PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.9\x64/lib/pkgconfig
+Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.9\x64
+Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.9\x64
+Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.9\x64
+CARGO_HOME: C:\Users\runneradmin/.cargo
+##[endgroup]
+info: syncing channel updates for 'stable-x86_64-pc-windows-msvc'
+2025-04-15T07:52:48.5942667Z
+stable-x86_64-pc-windows-msvc unchanged - rustc 1.86.0 (05f9846f8 2025-03-31)
+2025-04-15T07:52:48.6110934Z
+##[group]Run rustup default stable
+[36;1mrustup default stable[0m
+shell: C:\Program Files\Git\bin\bash.EXE --noprofile --norc -e -o pipefail {0}
+env:
+GH_TOKEN:
+OVERRIDE_GIT_DESCRIBE:
+AZURE_CODESIGN_ENDPOINT: https://eus.codesigning.azure.net/
+AZURE_CODESIGN_ACCOUNT: duckdb-signing-2
+AZURE_CODESIGN_PROFILE: duckdb-certificate-profile
+pythonLocation: C:\hostedtoolcache\windows\Python\3.12.9\x64
+PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.9\x64/lib/pkgconfig
+Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.9\x64
+Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.9\x64
+Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.9\x64
+CARGO_HOME: C:\Users\runneradmin/.cargo
+##[endgroup]
+info: using existing install for 'stable-x86_64-pc-windows-msvc'
+info: default toolchain set to 'stable-x86_64-pc-windows-msvc'
+2025-04-15T07:52:48.7410594Z
+stable-x86_64-pc-windows-msvc unchanged - rustc 1.86.0 (05f9846f8 2025-03-31)
+2025-04-15T07:52:48.7581831Z
+##[group]Run : create cachekey
+[36;1m: create cachekey[0m
+[36;1mDATE=$(rustc +stable --version --verbose | sed -ne 's/^commit-date: \(20[0-9][0-9]\)-\([01][0-9]\)-\([0-3][0-9]\)$/\1\2\3/p')[0m
+[36;1mHASH=$(rustc +stable --version --verbose | sed -ne 's/^commit-hash: //p')[0m
+[36;1mecho "cachekey=$(echo $DATE$HASH | head -c12)" >> $GITHUB_OUTPUT[0m
+shell: C:\Program Files\Git\bin\bash.EXE --noprofile --norc -e -o pipefail {0}
+env:
+GH_TOKEN:
+OVERRIDE_GIT_DESCRIBE:
+AZURE_CODESIGN_ENDPOINT: https://eus.codesigning.azure.net/
+AZURE_CODESIGN_ACCOUNT: duckdb-signing-2
+AZURE_CODESIGN_PROFILE: duckdb-certificate-profile
+pythonLocation: C:\hostedtoolcache\windows\Python\3.12.9\x64
+PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.9\x64/lib/pkgconfig
+Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.9\x64
+Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.9\x64
+Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.9\x64
+CARGO_HOME: C:\Users\runneradmin/.cargo
+##[endgroup]
+##[group]Run : disable incremental compilation
+[36;1m: disable incremental compilation[0m
+[36;1mif [ -z "${CARGO_INCREMENTAL+set}" ]; then[0m
+[36;1m  echo CARGO_INCREMENTAL=0 >> $GITHUB_ENV[0m
+[<:NUM:>;1mfi[0m
+shell: C:\Program Files\Git\bin\bash.EXE --noprofile --norc -e -o pipefail {0}
+env:
+GH_TOKEN:
+OVERRIDE_GIT_DESCRIBE:
+AZURE_CODESIGN_ENDPOINT: https://eus.codesigning.azure.net/
+AZURE_CODESIGN_ACCOUNT: duckdb-signing-2
+AZURE_CODESIGN_PROFILE: duckdb-certificate-profile
+pythonLocation: C:\hostedtoolcache\windows\Python\3.12.9\x64
+PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.9\x64/lib/pkgconfig
+Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.9\x64
+Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.9\x64
+Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.9\x64
+CARGO_HOME: C:\Users\runneradmin/.cargo
+##[endgroup]
+##[group]Run : enable colors in Cargo output
+[36;1m: enable colors in Cargo output[0m
+[36;1mif [ -z "${CARGO_TERM_COLOR+set}" ]; then[0m
+[36;1m  echo CARGO_TERM_COLOR=always >> $GITHUB_ENV[0m
+[<:NUM:>;1mfi[0m
+shell: C:\Program Files\Git\bin\bash.EXE --noprofile --norc -e -o pipefail {0}
+env:
+GH_TOKEN:
+OVERRIDE_GIT_DESCRIBE:
+AZURE_CODESIGN_ENDPOINT: https://eus.codesigning.azure.net/
+AZURE_CODESIGN_ACCOUNT: duckdb-signing-2
+AZURE_CODESIGN_PROFILE: duckdb-certificate-profile
+pythonLocation: C:\hostedtoolcache\windows\Python\3.12.9\x64
+PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.9\x64/lib/pkgconfig
+Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.9\x64
+Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.9\x64
+Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.9\x64
+CARGO_HOME: C:\Users\runneradmin/.cargo
+CARGO_INCREMENTAL: 0
+##[endgroup]
+##[group]Run : enable Cargo sparse registry
+[36;1m: enable Cargo sparse registry[0m
+[36;1m# implemented in 1.66, stabilized in 1.68, made default in 1.70[0m
+[36;1mif [ -z "${CARGO_REGISTRIES_CRATES_IO_PROTOCOL+set}" -o -f "D:\a\_temp"/.implicit_cargo_registries_crates_io_protocol ]; then[0m
+[36;1m  if rustc +stable --version --verbose | grep -q '^release: 1\.6[89]\.'; then[0m
+[36;1m    touch "D:\a\_temp"/.implicit_cargo_registries_crates_io_protocol || true[0m
+[36;1m    echo CARGO_REGISTRIES_CRATES_IO_PROTOCOL=sparse >> $GITHUB_ENV[0m
+[36;1m  elif rustc +stable --version --verbose | grep -q '^release: 1\.6[67]\.'; then[0m
+[36;1m    touch "D:\a\_temp"/.implicit_cargo_registries_crates_io_protocol || true[0m
+[36;1m    echo CARGO_REGISTRIES_CRATES_IO_PROTOCOL=git >> $GITHUB_ENV[0m
+[36;1m  fi[0m
+[<:NUM:>;1mfi[0m
+shell: C:\Program Files\Git\bin\bash.EXE --noprofile --norc -e -o pipefail {0}
+env:
+GH_TOKEN:
+OVERRIDE_GIT_DESCRIBE:
+AZURE_CODESIGN_ENDPOINT: https://eus.codesigning.azure.net/
+AZURE_CODESIGN_ACCOUNT: duckdb-signing-2
+AZURE_CODESIGN_PROFILE: duckdb-certificate-profile
+pythonLocation: C:\hostedtoolcache\windows\Python\3.12.9\x64
+PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.9\x64/lib/pkgconfig
+Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.9\x64
+Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.9\x64
+Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.9\x64
+CARGO_HOME: C:\Users\runneradmin/.cargo
+CARGO_INCREMENTAL: 0
+CARGO_TERM_COLOR: always
+##[endgroup]
+##[group]Run : work around spurious network errors in curl 8.0
+[36;1m: work around spurious network errors in curl 8.0[0m
+[36;1m# https://rust-lang.zulipchat.com/#narrow/stream/246057-t-cargo/topic/timeout.20investigation[0m
+[36;1mif rustc +stable --version --verbose | grep -q '^release: 1\.7[01]\.'; then[0m
+[36;1m  echo CARGO_HTTP_MULTIPLEXING=false >> $GITHUB_ENV[0m
+[<:NUM:>;1mfi[0m
+shell: C:\Program Files\Git\bin\bash.EXE --noprofile --norc -e -o pipefail {0}
+env:
+GH_TOKEN:
+OVERRIDE_GIT_DESCRIBE:
+AZURE_CODESIGN_ENDPOINT: https://eus.codesigning.azure.net/
+AZURE_CODESIGN_ACCOUNT: duckdb-signing-2
+AZURE_CODESIGN_PROFILE: duckdb-certificate-profile
+pythonLocation: C:\hostedtoolcache\windows\Python\3.12.9\x64
+PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.9\x64/lib/pkgconfig
+Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.9\x64
+Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.9\x64
+Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.9\x64
+CARGO_HOME: C:\Users\runneradmin/.cargo
+CARGO_INCREMENTAL: 0
+CARGO_TERM_COLOR: always
+##[endgroup]
+##[group]Run rustc +stable --version --verbose
+[36;1mrustc +stable --version --verbose[0m
+shell: C:\Program Files\Git\bin\bash.EXE --noprofile --norc -e -o pipefail {0}
+env:
+GH_TOKEN:
+OVERRIDE_GIT_DESCRIBE:
+AZURE_CODESIGN_ENDPOINT: https://eus.codesigning.azure.net/
+AZURE_CODESIGN_ACCOUNT: duckdb-signing-2
+AZURE_CODESIGN_PROFILE: duckdb-certificate-profile
+pythonLocation: C:\hostedtoolcache\windows\Python\3.12.9\x64
+PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.9\x64/lib/pkgconfig
+Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.9\x64
+Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.9\x64
+Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.9\x64
+CARGO_HOME: C:\Users\runneradmin/.cargo
+CARGO_INCREMENTAL: 0
+CARGO_TERM_COLOR: always
+##[endgroup]
+rustc 1.86.0 (05f9846f8 2025-03-31)
+binary: rustc
+commit-hash: 05f9846f893b09a1be1fc8560e33fc3c815cfecb
+commit-date: 2025-03-31
+host: x86_64-pc-windows-msvc
+release: 1.86.0
+LLVM version: 19.1.7

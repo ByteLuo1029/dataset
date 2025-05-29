@@ -1,0 +1,266 @@
+Requested labels: ubuntu-latest
+Job defined at: hashicorp/terraform/.github/workflows/changelog.yml@refs/heads/v1.12
+Waiting for a runner to pick up this job...
+Job is waiting for a hosted runner to come online.
+Job is about to start running on the hosted runner: GitHub Actions 1443 (hosted)
+Current runner version: '2.323.0'
+##[group]Operating System
+Ubuntu
+24.04.2
+LTS
+##[endgroup]
+##[group]Runner Image
+Image: ubuntu-24.04
+Version: 20250406.1.0
+Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250406.1/images/ubuntu/Ubuntu2404-Readme.md
+Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250406.1
+##[endgroup]
+##[group]Runner Image Provisioner
+2.0.422.1
+##[endgroup]
+##[group]GITHUB_TOKEN Permissions
+read
+
+write
+##[endgroup]
+Actions
+
+
+
+'dorny/paths-filter@de90cc6fb38fc0963ad72b210f1f284cd68cea36' de90cc6fb38fc0963ad72b210f1f284cd68cea36
+'actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683' 11bd71901bbe5b1630ceea73d27597364c9af683
+'actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea' 60a0d83039c74a4aee543508d2ffcb1c3799cdea
+'miniscruff/changie-action@6dcc2533cac0495148ed4046c438487e4dceaa23' 6dcc2533cac0495148ed4046c438487e4dceaa23
+Check Changelog Entry
+dorny/paths-filter@de90cc6fb38fc0963ad72b210f1f284cd68cea36
+
+filters: changes:
+    - '.changes/*/*.yaml'
+changelog:
+  - 'CHANGELOG.md'
+version:
+  - 'version/VERSION'
+list-files: json
+
+initial-fetch-depth: 100
+##[endgroup]
+##[group]Fetching list of changed files for PR#36879 from Github API
+Invoking listFiles(pull_number: 36879, per_page: 100)
+Received 2 items
+[modified] website/docs/cli/commands/state/pull.mdx
+[modified] website/docs/cli/commands/state/push.mdx
+##[endgroup]
+Detected 2 changed files
+Results:
+##[group]Filter changes = false
+Matching files: none
+##[endgroup]
+##[group]Filter changelog = false
+Matching files: none
+##[endgroup]
+##[group]Filter version = false
+Matching files: none
+##[endgroup]
+Cannot set changes output variable - name already used by filter output
+actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+
+sparse-checkout: version/VERSION
+.changie.yaml
+.changes/
+sparse-checkout-cone-mode: false
+ref: refs/heads/v1.12
+hashicorp/terraform
+
+
+
+true
+
+1
+
+
+
+false
+
+##[endgroup]
+hashicorp/terraform
+
+'/home/runner/work/terraform/terraform'
+
+2 49 0
+##[endgroup]
+Temporarily overriding HOME='/home/runner/work/_temp/f6c9a25c-c7f6-4fca-bc3d-cc0af8a2959c' before making global git config changes
+
+[command]/usr/bin/git config --global --add safe.directory /home/runner/work/terraform/terraform
+'/home/runner/work/terraform/terraform'
+
+/home/runner/work/terraform/terraform
+
+
+
+
+
+
+
+
+
+
+/home/runner/work/terraform/terraform/.git/
+https://github.com/hashicorp/terraform
+##[endgroup]
+
+[command]/usr/bin/git config --local gc.auto 0
+##[endgroup]
+
+core\.sshCommand
+'core\.sshCommand' 'core.sshCommand'
+http\.https\:\/\/github\.com\/\.extraheader
+'http\.https\:\/\/github\.com\/\.extraheader' 'http.https://github.com/.extraheader'
+--local
+##[endgroup]
+
+[command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --filter=blob:none --depth=1 origin +refs/heads/v1.12:refs/remotes/origin/v1.12
+https://github.com/hashicorp/terraform
+branch] v1.12 origin/v1.12
+##[endgroup]
+
+##[endgroup]
+##[group]Setting up sparse checkout
+[command]/usr/bin/git config core.sparseCheckout true
+[command]/usr/bin/git rev-parse --git-path info/sparse-checkout
+.git/info/sparse-checkout
+##[endgroup]
+
+v1.12 refs/remotes/origin/v1.12
+Switched to a new branch 'v1.12'
+'v1.12' 'origin/v1.12'.
+##[endgroup]
+-1 --format=%H
+e98b6ed01350d1d127a43bd0ccd4741ccf415ace
+actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea
+
+script: const fs = require("fs");
+async function createOrUpdateChangelogComment(commentDetails, deleteComment) {
+    const commentStart = "## Changelog Warning"
+    const body = commentStart + "\n\n" + commentDetails;
+issue_number } = context.issue;
+    const { owner, repo } = context.repo;
+    // List all comments
+    const allComments = (await github.rest.issues.listComments({
+        issue_number,
+        owner,
+        repo,
+    })).data;
+    const existingComment = allComments.find(c => c.body.startsWith(commentStart));
+    const comment_id = existingComment?.id;
+    if (deleteComment) {
+        if (existingComment) {
+            await github.rest.issues.deleteComment({
+                owner,
+                repo,
+                comment_id,
+            });
+        }
+        return;
+    }
+    core.setFailed(commentDetails);
+    if (existingComment) {
+        await github.rest.issues.updateComment({
+            owner,
+            repo,
+            comment_id,
+            body,
+        });
+    } else {
+        await github.rest.issues.createComment({
+            owner,
+            repo,
+            issue_number,
+            body,
+        });
+    }
+}
+const changesPresent = false;
+const changedChangesFiles = [];
+const changelogChangesPresent = false;
+const versionChangesPresent = false;
+const prLabels = await github.rest.issues.listLabelsOnIssue({
+context.issue.number,
+context.repo.owner,
+context.repo.repo
+});
+const backportLabels = prLabels.data.filter(label => label.name.endsWith("-backport"));
+const backportVersions = backportLabels.map(label => label.name.split("-")[0]);
+const currentVersionFile = fs.readFileSync("./version/VERSION", "utf-8");
+const currentVersionParts = currentVersionFile.split(".");
+currentVersionParts.pop();
+const currentVersion = currentVersionParts.join(".");
+const allVersions = [currentVersion, ...backportVersions]
+allVersions.sort((a, b) => {
+  const as = a.split(".").map(Number);
+  const bs = b.split(".").map(Number);
+  if (as[0] !== bs[0]) {
+    return as[0] - bs[0];
+  }
+  if (as[1] !== bs[1]) {
+    return as[1] - bs[1];
+  }
+});
+const noChangelogNeededLabel = prLabels.data.find(label => label.name === 'no-changelog-needed');
+const dependenciesLabel = prLabels.data.find(label => label.name === 'dependencies');
+// We want to prohibit contributors from directly changing the CHANGELOG.md, it's
+// generated so all changes will be lost during the release process.
+// Therefore we only allow the changelog to change together with the version.
+// In very rare cases where we generate changes in the changelog without changing the
+// version we will just ignore this failing check.
+if (changelogChangesPresent && !versionChangesPresent) {
+    await createOrUpdateChangelogComment("Please don't edit the CHANGELOG.md manually. We use changie to control the Changelog generation, please use `npx changie new` to create a new changelog entry.");
+    return;
+}
+if (dependenciesLabel) {
+    return;
+}
+if (noChangelogNeededLabel) {
+    if (changesPresent) {
+        await createOrUpdateChangelogComment("Please remove either the 'no-changelog-needed' label or the changelog entry from this PR.");
+        return;
+    }
+    // Nothing to complain about, so delete any existing comment
+    await createOrUpdateChangelogComment("", true);
+    return;
+}
+// We only want to have a changelog entry for the oldest version this PR will
+// land in.
+const onlyExpectedChangeVersion = allVersions[0]
+const missingChangelogEntry = !changedChangesFiles.some(filePath => filePath.includes("/v"+onlyExpectedChangeVersion+"/"))
+const unexpectedChangelogEntry = changedChangesFiles.filter(filePath => !filePath.includes("/v"+onlyExpectedChangeVersion+"/"))
+if (missingChangelogEntry) {
+    await createOrUpdateChangelogComment(`Currently this PR would target a v${onlyExpectedChangeVersion} release. Please add a changelog entry for in the .changes/v${onlyExpectedChangeVersion} folder, or discuss which release you'd like to target with your reviewer. If you believe this change does not need a changelog entry, please add the 'no-changelog-needed' label.`);
+    return;
+}
+if (unexpectedChangelogEntry.length > 0) {
+${unexpectedChangelogEntry.join(", ")}. If you believe this change does not need a changelog entry, please add the 'no-changelog-needed' label.`);
+    return;
+}
+// Nothing to complain about, so delete any existing comment
+await createOrUpdateChangelogComment("", true);
+github-token: ***
+debug: false
+user-agent: actions/github-script
+result-encoding: json
+retries: 0
+retry-exempt-status-codes: 400,401,403,404,422
+##[endgroup]
+##[error]Currently this PR would target a v1.12 release. Please add a changelog entry for in the .changes/v1.12 folder, or discuss which release you'd like to target with your reviewer. If you believe this change does not need a changelog entry, please add the 'no-changelog-needed' label.
+
+
+2 49 0
+Temporarily overriding HOME='/home/runner/work/_temp/d1d43615-8d55-4480-8415-a780b8b36500' before making global git config changes
+
+[command]/usr/bin/git config --global --add safe.directory /home/runner/work/terraform/terraform
+core\.sshCommand
+'core\.sshCommand' 'core.sshCommand'
+http\.https\:\/\/github\.com\/\.extraheader
+
+
+'http\.https\:\/\/github\.com\/\.extraheader' 'http.https://github.com/.extraheader'
+

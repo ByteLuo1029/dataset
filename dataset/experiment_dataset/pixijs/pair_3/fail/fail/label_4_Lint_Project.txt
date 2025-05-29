@@ -1,0 +1,33 @@
+2025-03-27T11:48:12.1175498Z Prepare all required actions
+2025-03-27T11:48:12.1200125Z ##[group]Run ./.github/actions/lint
+2025-03-27T11:48:12.1200462Z env:
+2025-03-27T11:48:12.1200858Z   NPM_CONFIG_USERCONFIG: /home/runner/work/_temp/.npmrc
+2025-03-27T11:48:12.1201300Z   NODE_AUTH_TOKEN: XXXXX-XXXXX-XXXXX-XXXXX
+2025-03-27T11:48:12.1201684Z ##[endgroup]
+2025-03-27T11:48:12.1221080Z ##[group]Run npm run ci:lint
+2025-03-27T11:48:12.1221540Z [36;1mnpm run ci:lint[0m
+2025-03-27T11:48:12.1279920Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2025-03-27T11:48:12.1280345Z env:
+2025-03-27T11:48:12.1280682Z   NPM_CONFIG_USERCONFIG: /home/runner/work/_temp/.npmrc
+2025-03-27T11:48:12.1281163Z   NODE_AUTH_TOKEN: XXXXX-XXXXX-XXXXX-XXXXX
+2025-03-27T11:48:12.1281536Z ##[endgroup]
+2025-03-27T11:48:12.3586697Z 
+2025-03-27T11:48:12.3587605Z > pixi.js@8.9.0 ci:lint
+2025-03-27T11:48:12.3588310Z > run-s lint test:types test:index prune
+2025-03-27T11:48:12.3588662Z 
+2025-03-27T11:48:12.6957736Z 
+2025-03-27T11:48:12.6959034Z > pixi.js@8.9.0 lint
+2025-03-27T11:48:12.6960452Z > eslint ./ --cache --max-warnings 0
+2025-03-27T11:48:12.6960861Z 
+2025-03-27T11:48:46.6811610Z 
+2025-03-27T11:48:46.6812346Z > pixi.js@8.9.0 test:types
+2025-03-27T11:48:46.6813194Z > tsc --noEmit
+2025-03-27T11:48:46.6813425Z 
+2025-03-27T11:48:53.4736378Z ##[error]tests/visual/scenes/mesh/culling-texture.scene.ts(23,13): error TS2322: Type 'Uint16Array' is not assignable to type 'Uint32Array'.
+2025-03-27T11:48:53.4737485Z   Types of property 'findLast' are incompatible.
+2025-03-27T11:48:53.4739187Z     Type '{ <S extends number>(predicate: (value: number, index: number, array: Uint16Array) => value is S, thisArg?: any): S; (predicate: (value: number, index: number, array: Uint16Array) => unknown, thisArg?: any): number; }' is not assignable to type '{ <S extends number>(predicate: (value: number, index: number, array: Uint32Array) => value is S, thisArg?: any): S; (predicate: (value: number, index: number, array: Uint32Array) => unknown, thisArg?: any): number; }'.
+2025-03-27T11:48:53.4740700Z       Types of parameters 'predicate' and 'predicate' are incompatible.
+2025-03-27T11:48:53.4741479Z         Type '(value: number, index: number, array: Uint32Array) => unknown' is not assignable to type '(value: number, index: number, array: Uint16Array) => value is any'.
+2025-03-27T11:48:53.4742304Z           Signature '(value: number, index: number, array: Uint32Array): unknown' must be a type predicate.
+2025-03-27T11:48:53.5202180Z ERROR: "test:types" exited with 2.
+2025-03-27T11:48:53.5292804Z ##[error]Process completed with exit code 1.

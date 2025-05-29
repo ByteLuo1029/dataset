@@ -1,0 +1,260 @@
+##[group]Run CURL_CA_BUNDLE="" PYTHONPATH=$PWD FAST_TEST=1 pytest \
+[36;1mCURL_CA_BUNDLE="" PYTHONPATH=$PWD FAST_TEST=1 pytest \[0m
+[36;1m-m "not largedist" \[0m
+[36;1m--durations=0 \[0m
+[36;1m--ignore tests/test_analyzer \[0m
+[36;1m--ignore tests/test_auto_parallel \[0m
+[36;1m--ignore tests/test_fx \[0m
+[36;1m--ignore tests/test_autochunk \[0m
+[36;1m--ignore tests/test_gptq \[0m
+[36;1m--ignore tests/test_infer_ops \[0m
+[36;1m--ignore tests/test_legacy \[0m
+[36;1m--ignore tests/test_smoothquant \[0m
+[36;1mtests/test_booster/test_mixed_precision/test_fp16_torch.py[0m
+shell: bash --noprofile --norc -e -o pipefail {0}
+env:
+LD_LIBRARY_PATH: /github/home/.tensornvme/lib:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+LLAMA_PATH: /data/scratch/llama-tiny
+MOE_TENSOR_PATH: /data/scratch/moe_tensors
+HF_ENDPOINT: https://hf-mirror.com
+##[endgroup]
+============================= test session starts ==============================
+platform linux -- Python 3.10.14, pytest-7.4.4, pluggy-1.5.0
+rootdir: /__w/ColossalAI/ColossalAI
+configfile: pytest.ini
+plugins: hypothesis-6.131.0, anyio-4.9.0, testmon-2.0.7b1
+collected 1 item
+2025-04-11T03:03:49.0705049Z
+tests/test_booster/test_mixed_precision/test_fp16_torch.py F             [100%]
+2025-04-11T03:03:55.1255990Z
+=================================== FAILURES ===================================
+____________________________ test_torch_ddp_plugin _____________________________
+2025-04-11T03:03:55.1256630Z
+args = (), kwargs = {}, try_count = 1
+error_lines = ['', '', '-- Process 0 terminated with the following error:', 'Traceback (most recent call last):', '  File "/opt/conda/envs/pytorch/lib/python3.10/site-packages/torch/multiprocessing/spawn.py", line 68, in _wrap', '    fn(i, *args)', ...]
+2025-04-11T03:03:55.1258201Z
+def _run_until_success(*args, **kwargs):
+try_count = 0
+assert max_try is None or isinstance(
+max_try, int
+), f"Expected max_try to be None or int, but got {type(max_try)}"
+2025-04-11T03:03:55.1259612Z
+while max_try is None or try_count < max_try:
+try:
+try_count += 1
+ret = func(*args, **kwargs)
+return ret
+except exception_type as e:
+error_lines = str(e).split("\n")
+if try_count < max_try and (pattern is None or _match_lines(error_lines, pattern)):
+print("Exception is caught, retrying...")
+# when pattern is not specified, we always skip the exception
+# when pattern is specified, we only skip when pattern is matched
+continue
+else:
+print("Maximum number of attempts is reached or pattern is not matched, no more retrying...")
+>                   raise e
+2025-04-11T03:03:55.1264373Z
+colossalai/testing/utils.py:144:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+colossalai/testing/utils.py:133: in _run_until_success
+ret = func(*args, **kwargs)
+tests/test_booster/test_mixed_precision/test_fp16_torch.py:40: in test_torch_ddp_plugin
+spawn(run_torch_amp, 1)
+colossalai/testing/utils.py:252: in spawn
+mp.spawn(wrapped_func, nprocs=nprocs)
+/opt/conda/envs/pytorch/lib/python3.10/site-packages/torch/multiprocessing/spawn.py:241: in spawn
+return start_processes(fn, args, nprocs, join, daemon, start_method="spawn")
+/opt/conda/envs/pytorch/lib/python3.10/site-packages/torch/multiprocessing/spawn.py:197: in start_processes
+while not context.join():
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+2025-04-11T03:03:55.1268965Z
+self = <torch.multiprocessing.spawn.ProcessContext object at 0x7f1c7ce77f70>
+timeout = None
+2025-04-11T03:03:55.1269651Z
+def join(self, timeout=None):
+r"""Join one or more processes within spawn context.
+2025-04-11T03:03:55.1270269Z
+Attempt to join one or more processes in this spawn context.
+If one of them exited with a non-zero exit status, this function
+kills the remaining processes and raises an exception with the cause
+of the first process exiting.
+2025-04-11T03:03:55.1271918Z
+Returns ``True`` if all processes have been joined successfully,
+``False`` if there are more processes that need to be joined.
+2025-04-11T03:03:55.1272766Z
+Args:
+timeout (float): Wait this long before giving up on waiting.
+"""
+# Ensure this function can be called even when we're done.
+if len(self.sentinels) == 0:
+return True
+2025-04-11T03:03:55.1274398Z
+# Wait for any process to fail or all of them to succeed.
+ready = multiprocessing.connection.wait(
+self.sentinels.keys(),
+timeout=timeout,
+)
+2025-04-11T03:03:55.1275792Z
+error_index = None
+for sentinel in ready:
+index = self.sentinels.pop(sentinel)
+process = self.processes[index]
+process.join()
+if process.exitcode != 0:
+error_index = index
+break
+2025-04-11T03:03:55.1277789Z
+# Return if there was no error.
+if error_index is None:
+# Return whether or not all processes have been joined.
+return len(self.sentinels) == 0
+2025-04-11T03:03:55.1279097Z
+# Assume failure. Terminate processes that are still alive.
+for process in self.processes:
+if process.is_alive():
+process.terminate()
+process.join()
+2025-04-11T03:03:55.1280544Z
+# There won't be an error on the queue if the process crashed.
+failed_process = self.processes[error_index]
+if self.error_queues[error_index].empty():
+exitcode = self.processes[error_index].exitcode
+if exitcode < 0:
+name = signal.Signals(-exitcode).name
+raise ProcessExitedException(
+"process %d terminated with signal %s" % (error_index, name),
+error_index=error_index,
+error_pid=failed_process.pid,
+exit_code=exitcode,
+signal_name=name,
+)
+else:
+raise ProcessExitedException(
+"process %d terminated with exit code %d" % (error_index, exitcode),
+error_index=error_index,
+error_pid=failed_process.pid,
+exit_code=exitcode,
+)
+2025-04-11T03:03:55.1286000Z
+original_trace = self.error_queues[error_index].get()
+msg = "\n\n-- Process %d terminated with the following error:\n" % error_index
+msg += original_trace
+>       raise ProcessRaisedException(msg, error_index, failed_process.pid)
+E       torch.multiprocessing.spawn.ProcessRaisedException:
+E
+E       -- Process 0 terminated with the following error:
+E       Traceback (most recent call last):
+E         File "/opt/conda/envs/pytorch/lib/python3.10/site-packages/torch/multiprocessing/spawn.py", line 68, in _wrap
+E           fn(i, *args)
+E         File "/__w/ColossalAI/ColossalAI/tests/test_booster/test_mixed_precision/test_fp16_torch.py", line 19, in run_torch_amp
+E           model = model_fn().cuda()
+E         File "/opt/conda/envs/pytorch/lib/python3.10/site-packages/torch/nn/modules/module.py", line 911, in cuda
+E           return self._apply(lambda t: t.cuda(device))
+E         File "/opt/conda/envs/pytorch/lib/python3.10/site-packages/torch/nn/modules/module.py", line 802, in _apply
+E           module._apply(fn)
+E         File "/opt/conda/envs/pytorch/lib/python3.10/site-packages/torch/nn/modules/module.py", line 802, in _apply
+E           module._apply(fn)
+E         File "/opt/conda/envs/pytorch/lib/python3.10/site-packages/torch/nn/modules/module.py", line 825, in _apply
+E           param_applied = fn(param)
+E         File "/opt/conda/envs/pytorch/lib/python3.10/site-packages/torch/nn/modules/module.py", line 911, in <lambda>
+E           return self._apply(lambda t: t.cuda(device))
+E       RuntimeError: CUDA error: out of memory
+E       CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+E       For debugging consider passing CUDA_LAUNCH_BLOCKING=1.
+E       Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+2025-04-11T03:03:55.1296364Z
+/opt/conda/envs/pytorch/lib/python3.10/site-packages/torch/multiprocessing/spawn.py:158: ProcessRaisedException
+----------------------------- Captured stdout call -----------------------------
+[04/11/25 03:03:54] INFO     colossalai - colossalai - INFO:
+/__w/ColossalAI/ColossalAI/colossalai/initialize.py
+:75 launch
+INFO     colossalai - colossalai - INFO: Distributed
+environment is initialized, world size: 1
+Maximum number of attempts is reached or pattern is not matched, no more retrying...
+----------------------------- Captured stderr call -----------------------------
+/opt/conda/envs/pytorch/lib/python3.10/site-packages/diffusers/models/transformers/transformer_2d.py:34: FutureWarning: `Transformer2DModelOutput` is deprecated and will be removed in version 1.0.0. Importing `Transformer2DModelOutput` from `diffusers.models.transformer_2d` is deprecated and this will be removed in a future version. Please use `from diffusers.models.modeling_outputs import Transformer2DModelOutput`, instead.
+deprecate("Transformer2DModelOutput", "1.0.0", deprecation_message)
+/opt/conda/envs/pytorch/lib/python3.10/site-packages/huggingface_hub/file_download.py:896: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+warnings.warn(
+/opt/conda/envs/pytorch/lib/python3.10/site-packages/urllib3/connectionpool.py:1064: InsecureRequestWarning: Unverified HTTPS request is being made to host 'vpn.luchentech.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+warnings.warn(
+/opt/conda/envs/pytorch/lib/python3.10/site-packages/urllib3/connectionpool.py:1064: InsecureRequestWarning: Unverified HTTPS request is being made to host 'vpn.luchentech.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+warnings.warn(
+/opt/conda/envs/pytorch/lib/python3.10/site-packages/urllib3/connectionpool.py:1064: InsecureRequestWarning: Unverified HTTPS request is being made to host 'vpn.luchentech.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+warnings.warn(
+=============================== warnings summary ===============================
+colossalai/interface/model.py:45
+/__w/ColossalAI/ColossalAI/colossalai/interface/model.py:45: DeprecationWarning: invalid escape sequence '\S'
+to_return = {re.sub(f"lora_\S\.{adapter_name}\.(weight|bias)", "base_layer", k) for k in to_return}
+2025-04-11T03:03:55.6266539Z
+colossalai/interface/model.py:45
+/__w/ColossalAI/ColossalAI/colossalai/interface/model.py:45: DeprecationWarning: invalid escape sequence '\.'
+to_return = {re.sub(f"lora_\S\.{adapter_name}\.(weight|bias)", "base_layer", k) for k in to_return}
+2025-04-11T03:03:55.6267978Z
+colossalai/checkpoint_io/utils.py:862
+/__w/ColossalAI/ColossalAI/colossalai/checkpoint_io/utils.py:862: DeprecationWarning: invalid escape sequence '\.'
+reg = re.compile("(.*?).index((\..*)?).json")
+2025-04-11T03:03:55.6269224Z
+colossalai/nn/optimizer/cpu_adam.py:12
+/__w/ColossalAI/ColossalAI/colossalai/nn/optimizer/cpu_adam.py:12: DeprecationWarning: invalid escape sequence '\:'
+"""
+2025-04-11T03:03:55.6270312Z
+colossalai/nn/optimizer/fused_adam.py:15
+/__w/ColossalAI/ColossalAI/colossalai/nn/optimizer/fused_adam.py:15: DeprecationWarning: invalid escape sequence '\:'
+"""Implements Adam algorithm.
+2025-04-11T03:03:55.6271491Z
+colossalai/nn/optimizer/hybrid_adam.py:12
+/__w/ColossalAI/ColossalAI/colossalai/nn/optimizer/hybrid_adam.py:12: DeprecationWarning: invalid escape sequence '\:'
+"""Implements Adam algorithm.
+2025-04-11T03:03:55.6272671Z
+../../../opt/conda/envs/pytorch/lib/python3.10/site-packages/diffusers/models/transformers/transformer_2d.py:34
+/opt/conda/envs/pytorch/lib/python3.10/site-packages/diffusers/models/transformers/transformer_2d.py:34: FutureWarning: `Transformer2DModelOutput` is deprecated and will be removed in version 1.0.0. Importing `Transformer2DModelOutput` from `diffusers.models.transformer_2d` is deprecated and this will be removed in a future version. Please use `from diffusers.models.modeling_outputs import Transformer2DModelOutput`, instead.
+deprecate("Transformer2DModelOutput", "1.0.0", deprecation_message)
+2025-04-11T03:03:55.6276121Z
+../../../opt/conda/envs/pytorch/lib/python3.10/site-packages/huggingface_hub/file_download.py:896
+/opt/conda/envs/pytorch/lib/python3.10/site-packages/huggingface_hub/file_download.py:896: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+warnings.warn(
+2025-04-11T03:03:55.6278313Z
+../../../opt/conda/envs/pytorch/lib/python3.10/site-packages/urllib3/connectionpool.py:1064
+../../../opt/conda/envs/pytorch/lib/python3.10/site-packages/urllib3/connectionpool.py:1064
+../../../opt/conda/envs/pytorch/lib/python3.10/site-packages/urllib3/connectionpool.py:1064
+../../../opt/conda/envs/pytorch/lib/python3.10/site-packages/urllib3/connectionpool.py:1064
+../../../opt/conda/envs/pytorch/lib/python3.10/site-packages/urllib3/connectionpool.py:1064
+/opt/conda/envs/pytorch/lib/python3.10/site-packages/urllib3/connectionpool.py:1064: InsecureRequestWarning: Unverified HTTPS request is being made to host 'vpn.luchentech.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+warnings.warn(
+2025-04-11T03:03:55.6282743Z
+<frozen importlib._bootstrap>:283
+<frozen importlib._bootstrap>:283: DeprecationWarning: the load_module() method is deprecated and slated for removal in Python 3.12; use exec_module() instead
+2025-04-11T03:03:55.6283899Z
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+============================== slowest durations ===============================
+5.95s call     tests/test_booster/test_mixed_precision/test_fp16_torch.py::test_torch_ddp_plugin
+0.09s setup    tests/test_booster/test_mixed_precision/test_fp16_torch.py::test_torch_ddp_plugin
+2025-04-11T03:03:55.6285651Z
+(1 durations < 0.005s hidden.  Use -vv to show these durations.)
+=========================== short test summary info ============================
+FAILED tests/test_booster/test_mixed_precision/test_fp16_torch.py::test_torch_ddp_plugin - torch.multiprocessing.spawn.ProcessRaisedException:
+2025-04-11T03:03:55.6287118Z
+-- Process 0 terminated with the following error:
+Traceback (most recent call last):
+File "/opt/conda/envs/pytorch/lib/python3.10/site-packages/torch/multiprocessing/spawn.py", line 68, in _wrap
+fn(i, *args)
+File "/__w/ColossalAI/ColossalAI/tests/test_booster/test_mixed_precision/test_fp16_torch.py", line 19, in run_torch_amp
+model = model_fn().cuda()
+File "/opt/conda/envs/pytorch/lib/python3.10/site-packages/torch/nn/modules/module.py", line 911, in cuda
+return self._apply(lambda t: t.cuda(device))
+File "/opt/conda/envs/pytorch/lib/python3.10/site-packages/torch/nn/modules/module.py", line 802, in _apply
+module._apply(fn)
+File "/opt/conda/envs/pytorch/lib/python3.10/site-packages/torch/nn/modules/module.py", line 802, in _apply
+module._apply(fn)
+File "/opt/conda/envs/pytorch/lib/python3.10/site-packages/torch/nn/modules/module.py", line 825, in _apply
+param_applied = fn(param)
+File "/opt/conda/envs/pytorch/lib/python3.10/site-packages/torch/nn/modules/module.py", line 911, in <lambda>
+return self._apply(lambda t: t.cuda(device))
+RuntimeError: CUDA error: out of memory
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1.
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+======================= 1 failed, 14 warnings in 13.81s ========================
+##[error]Process completed with exit code 1.

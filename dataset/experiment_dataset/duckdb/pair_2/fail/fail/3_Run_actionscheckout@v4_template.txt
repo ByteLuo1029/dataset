@@ -1,0 +1,211 @@
+##[group]Run <:*:>
+with:
+fetch-depth: <:NUM:>
+repository: <:*:>
+token: ***
+ssh-strict: true
+ssh-user: git
+persist-credentials: <:*:>
+clean: true
+sparse-checkout-cone-mode: true
+fetch-tags: false
+show-progress: true
+lfs: false
+submodules: <:*:>
+set-safe-directory: true
+env:
+GH_TOKEN:
+OVERRIDE_GIT_DESCRIBE:
+AZURE_CODESIGN_ENDPOINT: https://eus.codesigning.azure.net/
+AZURE_CODESIGN_ACCOUNT: duckdb-signing-2
+AZURE_CODESIGN_PROFILE: duckdb-certificate-profile
+##[endgroup]
+Syncing repository: <:*:>
+##[group]Getting Git version info
+Working directory is <:*:>
+[command]"C:\Program Files\Git\bin\git.exe" version
+git version 2.49.0.windows.1
+##[endgroup]
+Copying 'C:\Users\runneradmin\.gitconfig' to 'D:\a\_temp\85f1f5fd-bc4e-4633-a27e-6071c448bb06\.gitconfig'
+Temporarily overriding HOME='D:\a\_temp\85f1f5fd-bc4e-4633-a27e-6071c448bb06' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+[command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\duckdb\duckdb
+Deleting the contents of <:*:>
+##[group]Initializing the repository
+[command]"C:\Program Files\Git\bin\git.exe" init D:\a\duckdb\duckdb
+Initialized empty Git repository in <:*:>
+[command]"C:\Program Files\Git\bin\git.exe" remote add origin https://github.com/duckdb/duckdb
+##[endgroup]
+##[group]Disabling automatic garbage collection
+[command]"C:\Program Files\Git\bin\git.exe" config --local gc.auto 0
+##[endgroup]
+##[group]Setting up auth
+[command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+[command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+[command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+[command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+[command]"C:\Program Files\Git\bin\git.exe" config --local http.https://github.com/.extraheader "AUTHORIZATION: basic ***"
+##[endgroup]
+##[group]Fetching the repository
+[command]"C:\Program Files\Git\bin\git.exe" -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/* +fda7348133e774730991802dc50fe1a23b3d0727:refs/remotes/pull/16463/merge
+From <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new <:*:> <:*:> -> <:*:>
+* [new ref] <:SEQ:>-> <:*:>
+##[endgroup]
+##[group]Determining the checkout info
+##[endgroup]
+[command]"C:\Program Files\Git\bin\git.exe" sparse-checkout disable
+[command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all extensions.worktreeConfig
+##[group]Checking out the ref
+[command]"C:\Program Files\Git\bin\git.exe" checkout --progress --force refs/remotes/pull/16463/merge
+Updating files:  25% (3547/13791)
+Updating files:  26% (3586/13791)
+Updating files:  27% (3724/13791)
+Updating files:  28% (3862/13791)
+Updating files:  29% (4000/13791)
+Updating files:  30% (4138/13791)
+Updating files:  31% (4276/13791)
+Updating files:  32% (4414/13791)
+Updating files:  33% (4552/13791)
+Updating files:  34% (4689/13791)
+Updating files:  35% (4827/13791)
+Updating files:  36% (4965/13791)
+Updating files:  37% (5103/13791)
+Updating files:  38% (5241/13791)
+Updating files:  39% (5379/13791)
+Updating files:  40% (5517/13791)
+Updating files:  41% (5655/13791)
+Updating files:  42% (5793/13791)
+Updating files:  43% (5931/13791)
+Updating files:  44% (6069/13791)
+Updating files:  45% (6206/13791)
+Updating files:  46% (6344/13791)
+Updating files:  47% (6482/13791)
+Updating files:  48% (6620/13791)
+Updating files:  49% (6758/13791)
+Updating files:  50% (6896/13791)
+Updating files:  51% (7034/13791)
+Updating files:  52% (7172/13791)
+Updating files:  53% (7310/13791)
+Updating files:  54% (7448/13791)
+Updating files:  55% (7586/13791)
+Updating files:  55% (7677/13791)
+Updating files:  56% (7723/13791)
+Updating files:  57% (7861/13791)
+Updating files:  58% (7999/13791)
+Updating files:  59% (8137/13791)
+Updating files:  60% (8275/13791)
+Updating files:  61% (8413/13791)
+Updating files:  62% (8551/13791)
+Updating files:  63% (8689/13791)
+Updating files:  64% (8827/13791)
+Updating files:  65% (8965/13791)
+Updating files:  66% (9103/13791)
+Updating files:  67% (9240/13791)
+Updating files:  68% (9378/13791)
+Updating files:  69% (9516/13791)
+Updating files:  70% (9654/13791)
+Updating files:  71% (9792/13791)
+Updating files:  72% (9930/13791)
+Updating files:  73% (10068/13791)
+Updating files:  74% (10206/13791)
+Updating files:  75% (10344/13791)
+Updating files:  76% (10482/13791)
+Updating files:  77% (10620/13791)
+Updating files:  78% (10757/13791)
+Updating files:  79% (10895/13791)
+Updating files:  80% (11033/13791)
+Updating files:  81% (11171/13791)
+Updating files:  82% (11309/13791)
+Updating files:  83% (11447/13791)
+Updating files:  84% (11585/13791)
+Updating files:  85% (11723/13791)
+Updating files:  86% (11861/13791)
+Updating files:  87% (11999/13791)
+Updating files:  88% (12137/13791)
+Updating files:  89% (12274/13791)
+Updating files:  90% (12412/13791)
+Updating files:  91% (12550/13791)
+Updating files:  91% (12660/13791)
+Updating files:  92% (12688/13791)
+Updating files:  93% (12826/13791)
+Updating files:  94% (12964/13791)
+Updating files:  95% (13102/13791)
+Updating files:  96% (13240/13791)
+Updating files:  97% (13378/13791)
+Updating files:  98% (13516/13791)
+Updating files:  99% (13654/13791)
+Updating files: 100% (13791/13791)
+Updating files: 100% (13791/13791), done.
+Note: switching to 'refs/remotes/pull/<:NUM:>/merge'.
+2025-04-15T07:52:38.9840691Z
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+2025-04-15T07:52:38.9842912Z
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+2025-04-15T07:52:38.9844158Z
+git switch -c <new-branch-name>
+2025-04-15T07:52:38.9844585Z
+Or undo this operation with:
+2025-04-15T07:52:38.9844974Z
+git switch -
+2025-04-15T07:52:38.9845277Z
+Turn off this advice by setting config variable advice.detachedHead to false
+2025-04-15T07:52:38.9846460Z
+HEAD is now at <:*:> Merge <:SEQ:> into <:SEQ:>
+##[endgroup]
+[command]"C:\Program Files\Git\bin\git.exe" log -1 --format=%H
+<:SEQ:>

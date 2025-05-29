@@ -1,0 +1,136 @@
+2025-04-15T01:52:19.6233515Z Prepare all required actions
+2025-04-15T01:52:19.6234048Z Getting action download info
+2025-04-15T01:52:19.8077989Z ##[group]Download immutable action package 'actions/github-script@v7.0.1'
+2025-04-15T01:52:19.8078515Z Version: 7.0.1
+2025-04-15T01:52:19.8078943Z Digest: sha256:bce02966afe3a75123f766b765abe432fac5464b74976015dc06b811ac9054c7
+2025-04-15T01:52:19.8079864Z Source commit SHA: 60a0d83039c74a4aee543508d2ffcb1c3799cdea
+2025-04-15T01:52:19.8080263Z ##[endgroup]
+2025-04-15T01:52:20.0543632Z ##[group]Run ./.github/actions/infrastructure/path-filters
+2025-04-15T01:52:20.0544007Z with:
+2025-04-15T01:52:20.0544369Z   GITHUB_TOKEN: ***
+2025-04-15T01:52:20.0544579Z env:
+2025-04-15T01:52:20.0544758Z   DOTNET_CLI_TELEMETRY_OPTOUT: 1
+2025-04-15T01:52:20.0545002Z   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
+2025-04-15T01:52:20.0545248Z   FORCE_FEATURE: False
+2025-04-15T01:52:20.0545445Z   FORCE_PACKAGE: False
+2025-04-15T01:52:20.0545645Z   NUGET_KEY: none
+2025-04-15T01:52:20.0545844Z   POWERSHELL_TELEMETRY_OPTOUT: 1
+2025-04-15T01:52:20.0546137Z   __SuppressAnsiEscapeSequences: 1
+2025-04-15T01:52:20.0546387Z   nugetMultiFeedWarnLevel: none
+2025-04-15T01:52:20.0546608Z   system_debug: false
+2025-04-15T01:52:20.0546799Z ##[endgroup]
+2025-04-15T01:52:20.0647934Z ##[group]Run actions/github-script@v7.0.1
+2025-04-15T01:52:20.0648223Z with:
+2025-04-15T01:52:20.0648546Z   github-token: ***
+2025-04-15T01:52:20.0653803Z   script: // Fetch the list of files changed in the PR
+let files = [];
+let page = 1;
+let fetchedFiles;
+do {
+  fetchedFiles = await github.rest.pulls.listFiles({
+    owner: context.repo.owner,
+    repo: context.repo.repo,
+    pull_number: context.issue.number,
+    per_page: 100,
+    page: page++
+  });
+  files = files.concat(fetchedFiles.data);
+} while (fetchedFiles.data.length > 0);
+
+const actionsChanged = files.some(file => file.filename.startsWith('.github/actions'));
+const workflowsChanged = files.some(file => file.filename.startsWith('.github/workflows'));
+const githubChanged = actionsChanged || workflowsChanged;
+
+const toolsCiPsm1Changed = files.some(file => file.filename.startsWith('tools/ci.psm1'));
+const toolsBuildCommonChanged = files.some(file => file.filename.startsWith('tools/buildCommon/'));
+const toolsChanged = toolsCiPsm1Changed || toolsBuildCommonChanged;
+
+const propsChanged = files.some(file => file.filename.endsWith('.props'));
+
+const testsChanged = files.some(file => file.filename.startsWith('test/powershell/') || file.filename.startsWith('test/tools/') || file.filename.startsWith('test/xUnit/'));
+
+const mainSourceChanged = files.some(file => file.filename.startsWith('src/'));
+
+const buildModuleChanged = files.some(file => file.filename.startsWith('build.psm1'));
+
+const source = mainSourceChanged || toolsChanged || githubChanged || propsChanged || testsChanged;
+
+core.setOutput('toolsChanged', toolsChanged);
+core.setOutput('githubChanged', githubChanged);
+core.setOutput('propsChanged', propsChanged);
+core.setOutput('testsChanged', testsChanged);
+core.setOutput('mainSourceChanged', mainSourceChanged);
+core.setOutput('buildModuleChanged', buildModuleChanged);
+core.setOutput('source', source);
+
+2025-04-15T01:52:20.0659454Z   debug: false
+2025-04-15T01:52:20.0659661Z   user-agent: actions/github-script
+2025-04-15T01:52:20.0659904Z   result-encoding: json
+2025-04-15T01:52:20.0660093Z   retries: 0
+2025-04-15T01:52:20.0660300Z   retry-exempt-status-codes: 400,401,403,404,422
+2025-04-15T01:52:20.0660559Z env:
+2025-04-15T01:52:20.0660736Z   DOTNET_CLI_TELEMETRY_OPTOUT: 1
+2025-04-15T01:52:20.0660978Z   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
+2025-04-15T01:52:20.0661214Z   FORCE_FEATURE: False
+2025-04-15T01:52:20.0661408Z   FORCE_PACKAGE: False
+2025-04-15T01:52:20.0661777Z   NUGET_KEY: none
+2025-04-15T01:52:20.0661971Z   POWERSHELL_TELEMETRY_OPTOUT: 1
+2025-04-15T01:52:20.0662215Z   __SuppressAnsiEscapeSequences: 1
+2025-04-15T01:52:20.0662460Z   nugetMultiFeedWarnLevel: none
+2025-04-15T01:52:20.0662680Z   system_debug: false
+2025-04-15T01:52:20.0662866Z ##[endgroup]
+2025-04-15T01:52:20.4236757Z RequestError [HttpError]: Not Found
+2025-04-15T01:52:20.4238134Z     at /home/runner/work/_actions/actions/github-script/v7.0.1/dist/index.js:9537:21
+2025-04-15T01:52:20.4239107Z     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-04-15T01:52:20.4240631Z     at async eval (eval at callAsyncFunction (/home/runner/work/_actions/actions/github-script/v7.0.1/dist/index.js:35424:16), <anonymous>:8:18)
+2025-04-15T01:52:20.4241955Z     at async main (/home/runner/work/_actions/actions/github-script/v7.0.1/dist/index.js:35522:20) {
+2025-04-15T01:52:20.4242572Z   status: 404,
+2025-04-15T01:52:20.4242882Z   response: {
+2025-04-15T01:52:20.4243489Z     url: 'https://api.github.com/repos/PowerShell/PowerShell/pulls//files?per_page=100&page=1',
+2025-04-15T01:52:20.4243935Z     status: 404,
+2025-04-15T01:52:20.4244115Z     headers: {
+2025-04-15T01:52:20.4244314Z       'access-control-allow-origin': '*',
+2025-04-15T01:52:20.4245526Z       'access-control-expose-headers': 'ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset',
+2025-04-15T01:52:20.4246713Z       'content-encoding': 'gzip',
+2025-04-15T01:52:20.4247003Z       'content-security-policy': "default-src 'none'",
+2025-04-15T01:52:20.4247347Z       'content-type': 'application/json; charset=utf-8',
+2025-04-15T01:52:20.4247643Z       date: 'Tue, 15 Apr 2025 01:52:20 GMT',
+2025-04-15T01:52:20.4248026Z       'referrer-policy': 'origin-when-cross-origin, strict-origin-when-cross-origin',
+2025-04-15T01:52:20.4248427Z       server: 'github.com',
+2025-04-15T01:52:20.4248771Z       'strict-transport-security': 'max-age=31536000; includeSubdomains; preload',
+2025-04-15T01:52:20.4249151Z       'transfer-encoding': 'chunked',
+2025-04-15T01:52:20.4249671Z       vary: 'Accept-Encoding, Accept, X-Requested-With',
+2025-04-15T01:52:20.4249972Z       'x-content-type-options': 'nosniff',
+2025-04-15T01:52:20.4250232Z       'x-frame-options': 'deny',
+2025-04-15T01:52:20.4250512Z       'x-github-api-version-selected': '2022-11-28',
+2025-04-15T01:52:20.4250819Z       'x-github-media-type': 'github.v3; format=json',
+2025-04-15T01:52:20.4251154Z       'x-github-request-id': '8A01:1B7CE3:6A4254C:6DC4843:67FDBBD4',
+2025-04-15T01:52:20.4251466Z       'x-ratelimit-limit': '15000',
+2025-04-15T01:52:20.4251720Z       'x-ratelimit-remaining': '14995',
+2025-04-15T01:52:20.4251971Z       'x-ratelimit-reset': '1744682855',
+2025-04-15T01:52:20.4252247Z       'x-ratelimit-resource': 'core',
+2025-04-15T01:52:20.4252499Z       'x-ratelimit-used': '5',
+2025-04-15T01:52:20.4252729Z       'x-xss-protection': '0'
+2025-04-15T01:52:20.4252929Z     },
+2025-04-15T01:52:20.4253087Z     data: {
+2025-04-15T01:52:20.4253257Z       message: 'Not Found',
+2025-04-15T01:52:20.4253521Z       documentation_url: 'https://docs.github.com/rest',
+2025-04-15T01:52:20.4253802Z       status: '404'
+2025-04-15T01:52:20.4253975Z     }
+2025-04-15T01:52:20.4254125Z   },
+2025-04-15T01:52:20.4254280Z   request: {
+2025-04-15T01:52:20.4254447Z     method: 'GET',
+2025-04-15T01:52:20.4254809Z     url: 'https://api.github.com/repos/PowerShell/PowerShell/pulls//files?per_page=100&page=1',
+2025-04-15T01:52:20.4255214Z     headers: {
+2025-04-15T01:52:20.4255439Z       accept: 'application/vnd.github.v3+json',
+2025-04-15T01:52:20.4255857Z       'user-agent': 'actions/github-script octokit-core.js/5.0.1 Node.js/20.19.0 (linux; x64)',
+2025-04-15T01:52:20.4256262Z       authorization: 'token [REDACTED]'
+2025-04-15T01:52:20.4256494Z     },
+2025-04-15T01:52:20.4256891Z     request: {
+2025-04-15T01:52:20.4257070Z       agent: [Agent],
+2025-04-15T01:52:20.4257282Z       fetch: [Function: proxyFetch],
+2025-04-15T01:52:20.4257538Z       hook: [Function: bound bound register]
+2025-04-15T01:52:20.4257774Z     }
+2025-04-15T01:52:20.4257927Z   }
+2025-04-15T01:52:20.4258079Z }
+2025-04-15T01:52:20.4274725Z ##[error]Unhandled error: HttpError: Not Found

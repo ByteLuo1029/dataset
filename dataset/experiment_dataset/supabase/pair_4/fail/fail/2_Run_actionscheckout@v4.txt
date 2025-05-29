@@ -1,0 +1,747 @@
+2025-04-15T07:13:47.9073708Z ##[group]Run actions/checkout@v4
+2025-04-15T07:13:47.9075324Z with:
+2025-04-15T07:13:47.9076139Z   fetch-depth: 0
+2025-04-15T07:13:47.9077503Z   sparse-checkout: supa-mdx-lint.config.toml
+supa-mdx-lint
+apps/docs/content
+
+2025-04-15T07:13:47.9079186Z   repository: supabase/supabase
+2025-04-15T07:13:47.9080600Z   token: ***
+2025-04-15T07:13:47.9081433Z   ssh-strict: true
+2025-04-15T07:13:47.9082291Z   ssh-user: git
+2025-04-15T07:13:47.9083170Z   persist-credentials: true
+2025-04-15T07:13:47.9084299Z   clean: true
+2025-04-15T07:13:47.9085201Z   sparse-checkout-cone-mode: true
+2025-04-15T07:13:47.9086277Z   fetch-tags: false
+2025-04-15T07:13:47.9087181Z   show-progress: true
+2025-04-15T07:13:47.9088075Z   lfs: false
+2025-04-15T07:13:47.9088888Z   submodules: false
+2025-04-15T07:13:47.9089793Z   set-safe-directory: true
+2025-04-15T07:13:47.9091043Z env:
+2025-04-15T07:13:47.9091899Z   CARGO_NET_GIT_FETCH_WITH_CLI: true
+2025-04-15T07:13:47.9092968Z ##[endgroup]
+2025-04-15T07:13:48.0869102Z Syncing repository: supabase/supabase
+2025-04-15T07:13:48.0872593Z ##[group]Getting Git version info
+2025-04-15T07:13:48.0874287Z Working directory is '/home/runner/work/supabase/supabase'
+2025-04-15T07:13:48.0876244Z [command]/usr/bin/git version
+2025-04-15T07:13:48.0877704Z git version 2.49.0
+2025-04-15T07:13:48.0880728Z ##[endgroup]
+2025-04-15T07:13:48.0886666Z Temporarily overriding HOME='/home/runner/work/_temp/07aa53dd-f536-4218-b30a-dd4094afe6be' before making global git config changes
+2025-04-15T07:13:48.0889378Z Adding repository directory to the temporary git global config as a safe directory
+2025-04-15T07:13:48.0891565Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/supabase/supabase
+2025-04-15T07:13:48.0913214Z Deleting the contents of '/home/runner/work/supabase/supabase'
+2025-04-15T07:13:48.0917424Z ##[group]Initializing the repository
+2025-04-15T07:13:48.0921127Z [command]/usr/bin/git init /home/runner/work/supabase/supabase
+2025-04-15T07:13:48.0980664Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-04-15T07:13:48.0983633Z hint: is subject to change. To configure the initial branch name to use in all
+2025-04-15T07:13:48.0987046Z hint: of your new repositories, which will suppress this warning, call:
+2025-04-15T07:13:48.0988473Z hint:
+2025-04-15T07:13:48.0989431Z hint: 	git config --global init.defaultBranch <name>
+2025-04-15T07:13:48.0990712Z hint:
+2025-04-15T07:13:48.0992185Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-04-15T07:13:48.0994324Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-04-15T07:13:48.0995810Z hint:
+2025-04-15T07:13:48.0996999Z hint: 	git branch -m <name>
+2025-04-15T07:13:48.0998453Z Initialized empty Git repository in /home/runner/work/supabase/supabase/.git/
+2025-04-15T07:13:48.1001531Z [command]/usr/bin/git remote add origin https://github.com/supabase/supabase
+2025-04-15T07:13:48.1033135Z ##[endgroup]
+2025-04-15T07:13:48.1034960Z ##[group]Disabling automatic garbage collection
+2025-04-15T07:13:48.1036724Z [command]/usr/bin/git config --local gc.auto 0
+2025-04-15T07:13:48.1066526Z ##[endgroup]
+2025-04-15T07:13:48.1068732Z ##[group]Setting up auth
+2025-04-15T07:13:48.1072393Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-04-15T07:13:48.1102653Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-04-15T07:13:48.1378279Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-15T07:13:48.1410548Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-04-15T07:13:48.1640906Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-04-15T07:13:48.1678147Z ##[endgroup]
+2025-04-15T07:13:48.1679635Z ##[group]Fetching the repository
+2025-04-15T07:13:48.1688576Z [command]/usr/bin/git -c protocol.version=2 fetch --prune --no-recurse-submodules --filter=blob:none origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/* +ed95dd62d7ff8e9ecce5056f8f949e2a96c21e5d:refs/remotes/pull/27087/merge
+2025-04-15T07:13:51.2130331Z From https://github.com/supabase/supabase
+2025-04-15T07:13:51.2131459Z  * [new branch]          GiantPineappleStatue/master -> origin/GiantPineappleStatue/master
+2025-04-15T07:13:51.2132778Z  * [new branch]          TheOtherBrian1-patch-1  -> origin/TheOtherBrian1-patch-1
+2025-04-15T07:13:51.2134058Z  * [new branch]          TheOtherBrian1-patch-2  -> origin/TheOtherBrian1-patch-2
+2025-04-15T07:13:51.2135107Z  * [new branch]          TheOtherBrian1-patch-3  -> origin/TheOtherBrian1-patch-3
+2025-04-15T07:13:51.2136162Z  * [new branch]          TheOtherBrian1-patch-5  -> origin/TheOtherBrian1-patch-5
+2025-04-15T07:13:51.2137429Z  * [new branch]          YuriCodes-patch-1       -> origin/YuriCodes-patch-1
+2025-04-15T07:13:51.2139224Z  * [new branch]          add-new-author          -> origin/add-new-author
+2025-04-15T07:13:51.2141645Z  * [new branch]          advanced-mfa-web-authn  -> origin/advanced-mfa-web-authn
+2025-04-15T07:13:51.2143696Z  * [new branch]          ai-hackathon-at-y-combinator-post -> origin/ai-hackathon-at-y-combinator-post
+2025-04-15T07:13:51.2145949Z  * [new branch]          analytics-postgres-backend -> origin/analytics-postgres-backend
+2025-04-15T07:13:51.2147704Z  * [new branch]          annual-plans            -> origin/annual-plans
+2025-04-15T07:13:51.2149802Z  * [new branch]          auth-users-uid-search   -> origin/auth-users-uid-search
+2025-04-15T07:13:51.2152183Z  * [new branch]          autofix-job-stuck       -> origin/autofix-job-stuck
+2025-04-15T07:13:51.2156147Z  * [new branch]          avallete/devwf-367-fix-studio-disable-branching-delete-branches -> origin/avallete/devwf-367-fix-studio-disable-branching-delete-branches
+2025-04-15T07:13:51.2157918Z  * [new branch]          blog/assistant          -> origin/blog/assistant
+2025-04-15T07:13:51.2160343Z  * [new branch]          blog/lwx-branching-post -> origin/blog/lwx-branching-post
+2025-04-15T07:13:51.2162252Z  * [new branch]          blog/lwx-how-design-works-at-supabase -> origin/blog/lwx-how-design-works-at-supabase
+2025-04-15T07:13:51.2164360Z  * [new branch]          blog/magic-link-python-auth -> origin/blog/magic-link-python-auth
+2025-04-15T07:13:51.2166325Z  * [new branch]          blog/whale-hack         -> origin/blog/whale-hack
+2025-04-15T07:13:51.2170163Z  * [new branch]          bo/fix/wrapeprs-secret  -> origin/bo/fix/wrapeprs-secret
+2025-04-15T07:13:51.2173031Z  * [new branch]          bot/docs-lint-fixes     -> origin/bot/docs-lint-fixes
+2025-04-15T07:13:51.2175056Z  * [new branch]          bot/docs-lint-fixes-20241216210722 -> origin/bot/docs-lint-fixes-20241216210722
+2025-04-15T07:13:51.2177068Z  * [new branch]          bot/docs-lint-fixes-20241216211023 -> origin/bot/docs-lint-fixes-20241216211023
+2025-04-15T07:13:51.2179121Z  * [new branch]          bot/docs-sync-troubleshooting -> origin/bot/docs-sync-troubleshooting
+2025-04-15T07:13:51.2181280Z  * [new branch]          bot/docs-sync-troubleshooting-spbxyka -> origin/bot/docs-sync-troubleshooting-spbxyka
+2025-04-15T07:13:51.2184296Z  * [new branch]          bs/jsr                  -> origin/bs/jsr
+2025-04-15T07:13:51.2187396Z  * [new branch]          burggraf-patch-1-note-to-ignore-circular-constraint-warning -> origin/burggraf-patch-1-note-to-ignore-circular-constraint-warning
+2025-04-15T07:13:51.2189486Z  * [new branch]          charis/anon-read-troubleshooting -> origin/charis/anon-read-troubleshooting
+2025-04-15T07:13:51.2192458Z  * [new branch]          chore(docs)-activate-admonition-type-lint-rule -> origin/chore(docs)-activate-admonition-type-lint-rule
+2025-04-15T07:13:51.2194238Z  * [new branch]          chore-Update-regions.ts -> origin/chore-Update-regions.ts
+2025-04-15T07:13:51.2197398Z  * [new branch]          chore/add-NEXT_PUBLIC_UI_LIBRARY_URL-to-www-env -> origin/chore/add-NEXT_PUBLIC_UI_LIBRARY_URL-to-www-env
+2025-04-15T07:13:51.2198738Z  * [new branch]          chore/add-cmdk-docs     -> origin/chore/add-cmdk-docs
+2025-04-15T07:13:51.2202508Z  * [new branch]          chore/add-guard-to-not-trigger-content-save-if-sql-id-is-new -> origin/chore/add-guard-to-not-trigger-content-save-if-sql-id-is-new
+2025-04-15T07:13:51.2204173Z  * [new branch]          chore/add-hero          -> origin/chore/add-hero
+2025-04-15T07:13:51.2205163Z  * [new branch]          chore/add-invite-user-docs -> origin/chore/add-invite-user-docs
+2025-04-15T07:13:51.2206905Z  * [new branch]          chore/add-lint-2        -> origin/chore/add-lint-2
+2025-04-15T07:13:51.2210308Z  * [new branch]          chore/add-policies-to-schema-visualizer -> origin/chore/add-policies-to-schema-visualizer
+2025-04-15T07:13:51.2211853Z  * [new branch]          chore/add-reliable-referrer -> origin/chore/add-reliable-referrer
+2025-04-15T07:13:51.2213316Z  * [new branch]          chore/add-replace-code-to-ai-assist -> origin/chore/add-replace-code-to-ai-assist
+2025-04-15T07:13:51.2215603Z  * [new branch]          chore/add-sql-editor-tests -> origin/chore/add-sql-editor-tests
+2025-04-15T07:13:51.2217482Z  * [new branch]          chore/add-studio-version-in-header-for-local-self-host -> origin/chore/add-studio-version-in-header-for-local-self-host
+2025-04-15T07:13:51.2219507Z  * [new branch]          chore/add-validation-for-pool-size-based-on-compute -> origin/chore/add-validation-for-pool-size-based-on-compute
+2025-04-15T07:13:51.2221200Z  * [new branch]          chore/add-web-context-to-assistant -> origin/chore/add-web-context-to-assistant
+2025-04-15T07:13:51.2223673Z  * [new branch]          chore/adding-one-more-human -> origin/chore/adding-one-more-human
+2025-04-15T07:13:51.2225354Z  * [new branch]          chore/ai_links          -> origin/chore/ai_links
+2025-04-15T07:13:51.2227666Z  * [new branch]          chore/allow-disabling-public-schema--hide-api-menu-items -> origin/chore/allow-disabling-public-schema--hide-api-menu-items
+2025-04-15T07:13:51.2229211Z  * [new branch]          chore/app-migration     -> origin/chore/app-migration
+2025-04-15T07:13:51.2230908Z  * [new branch]          chore/attempt-to-fix-docs-troubleshooting -> origin/chore/attempt-to-fix-docs-troubleshooting
+2025-04-15T07:13:51.2232280Z  * [new branch]          chore/billing-address   -> origin/chore/billing-address
+2025-04-15T07:13:51.2234303Z  * [new branch]          chore/bump-babel        -> origin/chore/bump-babel
+2025-04-15T07:13:51.2236186Z  * [new branch]          chore/bump-logflare-version -> origin/chore/bump-logflare-version
+2025-04-15T07:13:51.2237774Z  * [new branch]          chore/bump-node         -> origin/chore/bump-node
+2025-04-15T07:13:51.2239467Z  * [new branch]          chore/cleanup           -> origin/chore/cleanup
+2025-04-15T07:13:51.2241400Z  * [new branch]          chore/cleanup-feature-flags-140224 -> origin/chore/cleanup-feature-flags-140224
+2025-04-15T07:13:51.2242891Z  * [new branch]          chore/cleanup-menu-expand -> origin/chore/cleanup-menu-expand
+2025-04-15T07:13:51.2244970Z  * [new branch]          chore/clear-history-on-close -> origin/chore/clear-history-on-close
+2025-04-15T07:13:51.2246858Z  * [new branch]          chore/combobox-for-rls-table-selector -> origin/chore/combobox-for-rls-table-selector
+2025-04-15T07:13:51.2248423Z  * [new branch]          chore/combobox-for-rls-table-selector-2 -> origin/chore/combobox-for-rls-table-selector-2
+2025-04-15T07:13:51.2250083Z  * [new branch]          chore/convert-next.config-to-mjs -> origin/chore/convert-next.config-to-mjs
+2025-04-15T07:13:51.2251713Z  * [new branch]          chore/cron-ui-data-table -> origin/chore/cron-ui-data-table
+2025-04-15T07:13:51.2253423Z  * [new branch]          chore/db-design-layout  -> origin/chore/db-design-layout
+2025-04-15T07:13:51.2255425Z  * [new branch]          chore/db-visualiser-3   -> origin/chore/db-visualiser-3
+2025-04-15T07:13:51.2257046Z  * [new branch]          chore/dbnew-rls         -> origin/chore/dbnew-rls
+2025-04-15T07:13:51.2258866Z  * [new branch]          chore/deprecate-autodocs -> origin/chore/deprecate-autodocs
+2025-04-15T07:13:51.2260750Z  * [new branch]          chore/disable-scroll-zoom-for-RR-ui -> origin/chore/disable-scroll-zoom-for-RR-ui
+2025-04-15T07:13:51.2262555Z  * [new branch]          chore/docs-add-docenvx-branching-example -> origin/chore/docs-add-docenvx-branching-example
+2025-04-15T07:13:51.2264335Z  * [new branch]          chore/docs-refactor-testing-docs -> origin/chore/docs-refactor-testing-docs
+2025-04-15T07:13:51.2265974Z  * [new branch]          chore/exclude-pw-chars  -> origin/chore/exclude-pw-chars
+2025-04-15T07:13:51.2268077Z  * [new branch]          chore/experiment-tree-view-sql-editor -> origin/chore/experiment-tree-view-sql-editor
+2025-04-15T07:13:51.2269555Z  * [new branch]          chore/expose-radix-toggle -> origin/chore/expose-radix-toggle
+2025-04-15T07:13:51.2271184Z  * [new branch]          chore/feeds             -> origin/chore/feeds
+2025-04-15T07:13:51.2273311Z  * [new branch]          chore/fix-alert-in-schema-dropdown -> origin/chore/fix-alert-in-schema-dropdown
+2025-04-15T07:13:51.2274969Z  * [new branch]          chore/fix-auth-link     -> origin/chore/fix-auth-link
+2025-04-15T07:13:51.2277060Z  * [new branch]          chore/fix-csp-websocket -> origin/chore/fix-csp-websocket
+2025-04-15T07:13:51.2279245Z  * [new branch]          chore/fix-database-dot-new-redirect -> origin/chore/fix-database-dot-new-redirect
+2025-04-15T07:13:51.2280978Z  * [new branch]          chore/fix-db-page-table-actions -> origin/chore/fix-db-page-table-actions
+2025-04-15T07:13:51.2283003Z  * [new branch]          chore/fix-db-pooler-settings-error -> origin/chore/fix-db-pooler-settings-error
+2025-04-15T07:13:51.2285196Z  * [new branch]          chore/fix-debug-error   -> origin/chore/fix-debug-error
+2025-04-15T07:13:51.2287310Z  * [new branch]          chore/fix-dependabot-warnings -> origin/chore/fix-dependabot-warnings
+2025-04-15T07:13:51.2289360Z  * [new branch]          chore/fix-enum-column-editor -> origin/chore/fix-enum-column-editor
+2025-04-15T07:13:51.2291509Z  * [new branch]          chore/fix-flakiness-in-logs-tests -> origin/chore/fix-flakiness-in-logs-tests
+2025-04-15T07:13:51.2293132Z  * [new branch]          chore/fix-https         -> origin/chore/fix-https
+2025-04-15T07:13:51.2295927Z  * [new branch]          chore/fix-input-error-icon-sizes -> origin/chore/fix-input-error-icon-sizes
+2025-04-15T07:13:51.2297810Z  * [new branch]          chore/fix-listbox-colours -> origin/chore/fix-listbox-colours
+2025-04-15T07:13:51.2300175Z  * [new branch]          chore/fix-main-tag      -> origin/chore/fix-main-tag
+2025-04-15T07:13:51.2302269Z  * [new branch]          chore/fix-main-tag-2    -> origin/chore/fix-main-tag-2
+2025-04-15T07:13:51.2304458Z  * [new branch]          chore/fix-more-dropdowns -> origin/chore/fix-more-dropdowns
+2025-04-15T07:13:51.2306531Z  * [new branch]          chore/fix-move-folder   -> origin/chore/fix-move-folder
+2025-04-15T07:13:51.2308564Z  * [new branch]          chore/fix-nav-bar-layout -> origin/chore/fix-nav-bar-layout
+2025-04-15T07:13:51.2310657Z  * [new branch]          chore/fix-pg-number-autofill -> origin/chore/fix-pg-number-autofill
+2025-04-15T07:13:51.2312644Z  * [new branch]          chore/fix-sql-editor-charts -> origin/chore/fix-sql-editor-charts
+2025-04-15T07:13:51.2314865Z  * [new branch]          chore/fix-studio-unit-tests -> origin/chore/fix-studio-unit-tests
+2025-04-15T07:13:51.2316970Z  * [new branch]          chore/fix-table-picker  -> origin/chore/fix-table-picker
+2025-04-15T07:13:51.2318926Z  * [new branch]          chore/fix-telemetry-docs -> origin/chore/fix-telemetry-docs
+2025-04-15T07:13:51.2320876Z  * [new branch]          chore/fix-theme-switcher -> origin/chore/fix-theme-switcher
+2025-04-15T07:13:51.2323027Z  * [new branch]          chore/fix-trigger-toggle -> origin/chore/fix-trigger-toggle
+2025-04-15T07:13:51.2325431Z  * [new branch]          chore/get-lint-results-from-api -> origin/chore/get-lint-results-from-api
+2025-04-15T07:13:51.2327206Z  * [new branch]          chore/git-depth-vercel  -> origin/chore/git-depth-vercel
+2025-04-15T07:13:51.2329497Z  * [new branch]          chore/img-previews-in-table-editor -> origin/chore/img-previews-in-table-editor
+2025-04-15T07:13:51.2331822Z  * [new branch]          chore/improve-search-input-sql-editor -> origin/chore/improve-search-input-sql-editor
+2025-04-15T07:13:51.2334164Z  * [new branch]          chore/improve-search-input-table-editor -> origin/chore/improve-search-input-table-editor
+2025-04-15T07:13:51.2336171Z  * [new branch]          chore/increase-staleTime -> origin/chore/increase-staleTime
+2025-04-15T07:13:51.2338429Z  * [new branch]          chore/index-recent-changelog -> origin/chore/index-recent-changelog
+2025-04-15T07:13:51.2340539Z  * [new branch]          chore/inline-env-vars-for-efs -> origin/chore/inline-env-vars-for-efs
+2025-04-15T07:13:51.2342662Z  * [new branch]          chore/integrations-tabs-padding -> origin/chore/integrations-tabs-padding
+2025-04-15T07:13:51.2344507Z  * [new branch]          chore/jordi-test-checkbox -> origin/chore/jordi-test-checkbox
+2025-04-15T07:13:51.2346758Z  * [new branch]          chore/joshen-check      -> origin/chore/joshen-check
+2025-04-15T07:13:51.2348837Z  * [new branch]          chore/joshen-check2     -> origin/chore/joshen-check2
+2025-04-15T07:13:51.2351109Z  * [new branch]          chore/light-grey-adjustments-on-blog -> origin/chore/light-grey-adjustments-on-blog
+2025-04-15T07:13:51.2353075Z  * [new branch]          chore/load-foreign-keys -> origin/chore/load-foreign-keys
+2025-04-15T07:13:51.2355381Z  * [new branch]          chore/mark-pm-as-default -> origin/chore/mark-pm-as-default
+2025-04-15T07:13:51.2357382Z  * [new branch]          chore/migrate-dialog    -> origin/chore/migrate-dialog
+2025-04-15T07:13:51.2359459Z  * [new branch]          chore/migrate-dialogs   -> origin/chore/migrate-dialogs
+2025-04-15T07:13:51.2361579Z  * [new branch]          chore/migrate-popover   -> origin/chore/migrate-popover
+2025-04-15T07:13:51.2363996Z  * [new branch]          chore/move-components-to-patterns -> origin/chore/move-components-to-patterns
+2025-04-15T07:13:51.2366036Z  * [new branch]          chore/move-cookiestore  -> origin/chore/move-cookiestore
+2025-04-15T07:13:51.2368108Z  * [new branch]          chore/move-copybutton   -> origin/chore/move-copybutton
+2025-04-15T07:13:51.2370156Z  * [new branch]          chore/move-icons        -> origin/chore/move-icons
+2025-04-15T07:13:51.2372446Z  * [new branch]          chore/move-main-out-of-root-layout -> origin/chore/move-main-out-of-root-layout
+2025-04-15T07:13:51.2374752Z  * [new branch]          chore/move-security-advisor -> origin/chore/move-security-advisor
+2025-04-15T07:13:51.2376966Z  * [new branch]          chore/move-sort-out-by-itself -> origin/chore/move-sort-out-by-itself
+2025-04-15T07:13:51.2379056Z  * [new branch]          chore/multilingual_demo -> origin/chore/multilingual_demo
+2025-04-15T07:13:51.2381196Z  * [new branch]          chore/nav-menu-rethink  -> origin/chore/nav-menu-rethink
+2025-04-15T07:13:51.2383570Z  * [new branch]          chore/on-demand-revalidation-graphql -> origin/chore/on-demand-revalidation-graphql
+2025-04-15T07:13:51.2385772Z  * [new branch]          chore/pnpm              -> origin/chore/pnpm
+2025-04-15T07:13:51.2388131Z  * [new branch]          chore/prefetch-project  -> origin/chore/prefetch-project
+2025-04-15T07:13:51.2390691Z  * [new branch]          chore/prevent-creating-projects-in-west-us -> origin/chore/prevent-creating-projects-in-west-us
+2025-04-15T07:13:51.2392923Z  * [new branch]          chore/prevent-input-scroll -> origin/chore/prevent-input-scroll
+2025-04-15T07:13:51.2395499Z  * [new branch]          chore/pricing-constants -> origin/chore/pricing-constants
+2025-04-15T07:13:51.2397886Z  * [new branch]          chore/redirect-subdomain-studio -> origin/chore/redirect-subdomain-studio
+2025-04-15T07:13:51.2400222Z  * [new branch]          chore/redo-column-type-dropdown -> origin/chore/redo-column-type-dropdown
+2025-04-15T07:13:51.2402705Z  * [new branch]          chore/redo-column-type-dropdown-2 -> origin/chore/redo-column-type-dropdown-2
+2025-04-15T07:13:51.2405199Z  * [new branch]          chore/refactor-pooler-form -> origin/chore/refactor-pooler-form
+2025-04-15T07:13:51.2407802Z  * [new branch]          chore/refactor-telemetry-event-and-update-for-PH -> origin/chore/refactor-telemetry-event-and-update-for-PH
+2025-04-15T07:13:51.2410013Z  * [new branch]          chore/remove-feat-preview-toggle -> origin/chore/remove-feat-preview-toggle
+2025-04-15T07:13:51.2413490Z  * [new branch]          chore/remove-incorrect-description-label-on-rate-limits-for-sign-ups/ins -> origin/chore/remove-incorrect-description-label-on-rate-limits-for-sign-ups/ins
+2025-04-15T07:13:51.2415827Z  * [new branch]          chore/remove-jwt-secret-from-db -> origin/chore/remove-jwt-secret-from-db
+2025-04-15T07:13:51.2418241Z  * [new branch]          chore/remove-new-label-reports-menu -> origin/chore/remove-new-label-reports-menu
+2025-04-15T07:13:51.2420569Z  * [new branch]          chore/remove-playwright-tests -> origin/chore/remove-playwright-tests
+2025-04-15T07:13:51.2422961Z  * [new branch]          chore/remove-rq-from-message-title -> origin/chore/remove-rq-from-message-title
+2025-04-15T07:13:51.2425734Z  * [new branch]          chore/replace-ui-setNotification-with-toast-080324-04 -> origin/chore/replace-ui-setNotification-with-toast-080324-04
+2025-04-15T07:13:51.2427852Z  * [new branch]          chore/rls-ai-help-text  -> origin/chore/rls-ai-help-text
+2025-04-15T07:13:51.2430247Z  * [new branch]          chore/rss-feeds         -> origin/chore/rss-feeds
+2025-04-15T07:13:51.2432944Z  * [new branch]          chore/save-results-and-not-run-select-queries-in-assistant -> origin/chore/save-results-and-not-run-select-queries-in-assistant
+2025-04-15T07:13:51.2435320Z  * [new branch]          chore/scroll-to-current-table -> origin/chore/scroll-to-current-table
+2025-04-15T07:13:51.2437722Z  * [new branch]          chore/send-pr-on-publish -> origin/chore/send-pr-on-publish
+2025-04-15T07:13:51.2440215Z  * [new branch]          chore/service-role-key-leak-notification -> origin/chore/service-role-key-leak-notification
+2025-04-15T07:13:51.2442577Z  * [new branch]          chore/service-role-keys -> origin/chore/service-role-keys
+2025-04-15T07:13:51.2446116Z  * [new branch]          chore/services-required-supportForm -> origin/chore/services-required-supportForm
+2025-04-15T07:13:51.2448532Z  * [new branch]          chore/shadcn-prep       -> origin/chore/shadcn-prep
+2025-04-15T07:13:51.2450932Z  * [new branch]          chore/sitemaps          -> origin/chore/sitemaps
+2025-04-15T07:13:51.2453317Z  * [new branch]          chore/spam-scores       -> origin/chore/spam-scores
+2025-04-15T07:13:51.2456155Z  * [new branch]          chore/speed-up-studio-builds -> origin/chore/speed-up-studio-builds
+2025-04-15T07:13:51.2459139Z  * [new branch]          chore/splinter-notifications-issue -> origin/chore/splinter-notifications-issue
+2025-04-15T07:13:51.2461391Z  * [new branch]          chore/split-ui-components -> origin/chore/split-ui-components
+2025-04-15T07:13:51.2463659Z  * [new branch]          chore/sql-action-bar-1.5 -> origin/chore/sql-action-bar-1.5
+2025-04-15T07:13:51.2466268Z  * [new branch]          chore/sql-editor-rerenders -> origin/chore/sql-editor-rerenders
+2025-04-15T07:13:51.2469090Z  * [new branch]          chore/sql-hover-card-round-2 -> origin/chore/sql-hover-card-round-2
+2025-04-15T07:13:51.2471435Z  * [new branch]          chore/store-last-schema-used -> origin/chore/store-last-schema-used
+2025-04-15T07:13:51.2473743Z  * [new branch]          chore/studio-v3-blog-post -> origin/chore/studio-v3-blog-post
+2025-04-15T07:13:51.2476309Z  * [new branch]          chore/supavisor-connections -> origin/chore/supavisor-connections
+2025-04-15T07:13:51.2478985Z  * [new branch]          chore/support-downloading-storage-objects-in-project-paused-state -> origin/chore/support-downloading-storage-objects-in-project-paused-state
+2025-04-15T07:13:51.2480863Z  * [new branch]          chore/tag-based-revalidation -> origin/chore/tag-based-revalidation
+2025-04-15T07:13:51.2483345Z  * [new branch]          chore/tanstack-query-v5 -> origin/chore/tanstack-query-v5
+2025-04-15T07:13:51.2486112Z  * [new branch]          chore/temp-fix-jwt-update-status-response -> origin/chore/temp-fix-jwt-update-status-response
+2025-04-15T07:13:51.2488287Z  * [new branch]          chore/test-api-route    -> origin/chore/test-api-route
+2025-04-15T07:13:51.2490814Z  * [new branch]          chore/test-incremental-static-regeneration -> origin/chore/test-incremental-static-regeneration
+2025-04-15T07:13:51.2492945Z  * [new branch]          chore/test-joshen       -> origin/chore/test-joshen
+2025-04-15T07:13:51.2495395Z  * [new branch]          chore/test-joshen-2     -> origin/chore/test-joshen-2
+2025-04-15T07:13:51.2497717Z  * [new branch]          chore/test-node-20      -> origin/chore/test-node-20
+2025-04-15T07:13:51.2500069Z  * [new branch]          chore/test-playwright   -> origin/chore/test-playwright
+2025-04-15T07:13:51.2502464Z  * [new branch]          chore/test-restore-failed-status -> origin/chore/test-restore-failed-status
+2025-04-15T07:13:51.2504915Z  * [new branch]          chore/test-task         -> origin/chore/test-task
+2025-04-15T07:13:51.2507317Z  * [new branch]          chore/tests-on-prod-deploy -> origin/chore/tests-on-prod-deploy
+2025-04-15T07:13:51.2509687Z  * [new branch]          chore/try-vertical-layout-split -> origin/chore/try-vertical-layout-split
+2025-04-15T07:13:51.2512030Z  * [new branch]          chore/update-admonition-colors -> origin/chore/update-admonition-colors
+2025-04-15T07:13:51.2514709Z  * [new branch]          chore/update-auth-hooks-endpoint-and-perms -> origin/chore/update-auth-hooks-endpoint-and-perms
+2025-04-15T07:13:51.2516980Z  * [new branch]          chore/update-branching-docs-1 -> origin/chore/update-branching-docs-1
+2025-04-15T07:13:51.2519457Z  * [new branch]          chore/update-connecting-to-postgres-docs -> origin/chore/update-connecting-to-postgres-docs
+2025-04-15T07:13:51.2521744Z  * [new branch]          chore/update-docs-connecting-to-postgres -> origin/chore/update-docs-connecting-to-postgres
+2025-04-15T07:13:51.2524192Z  * [new branch]          chore/update-fair-usage-doc-links -> origin/chore/update-fair-usage-doc-links
+2025-04-15T07:13:51.2526523Z  * [new branch]          chore/update-jwt-regen-modal -> origin/chore/update-jwt-regen-modal
+2025-04-15T07:13:51.2528929Z  * [new branch]          chore/update-migrating-docs -> origin/chore/update-migrating-docs
+2025-04-15T07:13:51.2531261Z  * [new branch]          chore/update-next-config-www -> origin/chore/update-next-config-www
+2025-04-15T07:13:51.2533553Z  * [new branch]          chore/update-prettier   -> origin/chore/update-prettier
+2025-04-15T07:13:51.2536378Z  * [new branch]          chore/update-roles-to-use-pooler-example -> origin/chore/update-roles-to-use-pooler-example
+2025-04-15T07:13:51.2538691Z  * [new branch]          chore/update-ruby-on-rails-docs -> origin/chore/update-ruby-on-rails-docs
+2025-04-15T07:13:51.2540978Z  * [new branch]          chore/update-tokens     -> origin/chore/update-tokens
+2025-04-15T07:13:51.2543324Z  * [new branch]          chore/update-turbo      -> origin/chore/update-turbo
+2025-04-15T07:13:51.2545938Z  * [new branch]          chore/update-xmls       -> origin/chore/update-xmls
+2025-04-15T07:13:51.2548449Z  * [new branch]          chore/user-management-v2-part-3 -> origin/chore/user-management-v2-part-3
+2025-04-15T07:13:51.2550742Z  * [new branch]          chore/validate-pg-version -> origin/chore/validate-pg-version
+2025-04-15T07:13:51.2553102Z  * [new branch]          chore/vercel-toolbar-prod -> origin/chore/vercel-toolbar-prod
+2025-04-15T07:13:51.2555574Z  * [new branch]          chore/vite              -> origin/chore/vite
+2025-04-15T07:13:51.2558136Z  * [new branch]          chore/warn-about-user-snippet-deleting -> origin/chore/warn-about-user-snippet-deleting
+2025-04-15T07:13:51.2560392Z  * [new branch]          chore/website-changes   -> origin/chore/website-changes
+2025-04-15T07:13:51.2562566Z  * [new branch]          chore_update_storage_migration_script -> origin/chore_update_storage_migration_script
+2025-04-15T07:13:51.2564930Z  * [new branch]          choreinvocation-billing-copy -> origin/choreinvocation-billing-copy
+2025-04-15T07:13:51.2567046Z  * [new branch]          cl-branch-2             -> origin/cl-branch-2
+2025-04-15T07:13:51.2569493Z  * [new branch]          clarify-costs-project-creation -> origin/clarify-costs-project-creation
+2025-04-15T07:13:51.2572121Z  * [new branch]          cleanup/deps            -> origin/cleanup/deps
+2025-04-15T07:13:51.2575171Z  * [new branch]          cli/latest              -> origin/cli/latest
+2025-04-15T07:13:51.2577237Z  * [new branch]          client-libs             -> origin/client-libs
+2025-04-15T07:13:51.2579485Z  * [new branch]          craigcannon-patch-1     -> origin/craigcannon-patch-1
+2025-04-15T07:13:51.2581730Z  * [new branch]          create_role_sidebar_enable_form_actions -> origin/create_role_sidebar_enable_form_actions
+2025-04-15T07:13:51.2584503Z  * [new branch]          da/clarify-r2np         -> origin/da/clarify-r2np
+2025-04-15T07:13:51.2586725Z  * [new branch]          da/rr-lb-endpoint       -> origin/da/rr-lb-endpoint
+2025-04-15T07:13:51.2588788Z  * [new branch]          da/rr-workaround        -> origin/da/rr-workaround
+2025-04-15T07:13:51.2590878Z  * [new branch]          da/update-pooler        -> origin/da/update-pooler
+2025-04-15T07:13:51.2597168Z  * [new branch]          dependabot/npm_and_yarn/examples/user-management/sveltekit-user-management/sveltejs/kit-2.20.6 -> origin/dependabot/npm_and_yarn/examples/user-management/sveltekit-user-management/sveltejs/kit-2.20.6
+2025-04-15T07:13:51.2598730Z  * [new branch]          dependabot/npm_and_yarn/vite-6.2.6 -> origin/dependabot/npm_and_yarn/vite-6.2.6
+2025-04-15T07:13:51.2601584Z  * [new branch]          dev/type-issues         -> origin/dev/type-issues
+2025-04-15T07:13:51.2604840Z  * [new branch]          devin/1734372890-update-sveltekit-v5 -> origin/devin/1734372890-update-sveltekit-v5
+2025-04-15T07:13:51.2606998Z  * [new branch]          devin/1738025751-enable-strict-null-checks -> origin/devin/1738025751-enable-strict-null-checks
+2025-04-15T07:13:51.2609602Z  * [new branch]          docs/add-cost-optimising -> origin/docs/add-cost-optimising
+2025-04-15T07:13:51.2611767Z  * [new branch]          docs/add-guide-for-server-side-otp -> origin/docs/add-guide-for-server-side-otp
+2025-04-15T07:13:51.2614041Z  * [new branch]          docs/add-js-sdk-ref-listfactors-method -> origin/docs/add-js-sdk-ref-listfactors-method
+2025-04-15T07:13:51.2616224Z  * [new branch]          docs/add-replication-section -> origin/docs/add-replication-section
+2025-04-15T07:13:51.2618376Z  * [new branch]          docs/branching-cli-config -> origin/docs/branching-cli-config
+2025-04-15T07:13:51.2620377Z  * [new branch]          docs/conn-mgmt          -> origin/docs/conn-mgmt
+2025-04-15T07:13:51.2622470Z  * [new branch]          docs/connections        -> origin/docs/connections
+2025-04-15T07:13:51.2624831Z  * [new branch]          docs/datadog-log-drains-guide -> origin/docs/datadog-log-drains-guide
+2025-04-15T07:13:51.2626874Z  * [new branch]          docs/deno_clippy        -> origin/docs/deno_clippy
+2025-04-15T07:13:51.2629092Z  * [new branch]          docs/disk-resize-greater-1tb -> origin/docs/disk-resize-greater-1tb
+2025-04-15T07:13:51.2631137Z  * [new branch]          docs/edge-auth-update   -> origin/docs/edge-auth-update
+2025-04-15T07:13:51.2633235Z  * [new branch]          docs/feature-flag-expt  -> origin/docs/feature-flag-expt
+2025-04-15T07:13:51.2635689Z  * [new branch]          docs/fix-site-url-config-links -> origin/docs/fix-site-url-config-links
+2025-04-15T07:13:51.2637767Z  * [new branch]          docs/flutter-upgrade-hive -> origin/docs/flutter-upgrade-hive
+2025-04-15T07:13:51.2639843Z  * [new branch]          docs/logflare-db-encryption -> origin/docs/logflare-db-encryption
+2025-04-15T07:13:51.2641996Z  * [new branch]          docs/multi-r2np         -> origin/docs/multi-r2np
+2025-04-15T07:13:51.2644377Z  * [new branch]          docs/pg-safeupdate-amendments -> origin/docs/pg-safeupdate-amendments
+2025-04-15T07:13:51.2646555Z  * [new branch]          docs/raised-logs        -> origin/docs/raised-logs
+2025-04-15T07:13:51.2648647Z  * [new branch]          docs/s3-support         -> origin/docs/s3-support
+2025-04-15T07:13:51.2650879Z  * [new branch]          docs/self-hosted-data-api -> origin/docs/self-hosted-data-api
+2025-04-15T07:13:51.2653128Z  * [new branch]          docs/sql-examples-federation -> origin/docs/sql-examples-federation
+2025-04-15T07:13:51.2655442Z  * [new branch]          docs/storage-custom-roles -> origin/docs/storage-custom-roles
+2025-04-15T07:13:51.2658249Z  * [new branch]          docs/troubleshooting/migration-32 -> origin/docs/troubleshooting/migration-32
+2025-04-15T07:13:51.2660236Z  * [new branch]          docs/type-parsing       -> origin/docs/type-parsing
+2025-04-15T07:13:51.2662447Z  * [new branch]          docs/update-auth-with-faqs -> origin/docs/update-auth-with-faqs
+2025-04-15T07:13:51.2665683Z  * [new branch]          docs/update-replication-and-perms -> origin/docs/update-replication-and-perms
+2025-04-15T07:13:51.2666842Z  * [new branch]          docs/warehouse          -> origin/docs/warehouse
+2025-04-15T07:13:51.2669037Z  * [new branch]          download-backup-follow-up -> origin/download-backup-follow-up
+2025-04-15T07:13:51.2671668Z  * [new branch]          drag/change_is_aws_logic -> origin/drag/change_is_aws_logic
+2025-04-15T07:13:51.2673391Z  * [new branch]          drag/rr_marketing_fix   -> origin/drag/rr_marketing_fix
+2025-04-15T07:13:51.2675685Z  * [new branch]          es5-target              -> origin/es5-target
+2025-04-15T07:13:51.2678620Z  * [new branch]          etienne/sec-145-enforce-mfa-on-organization -> origin/etienne/sec-145-enforce-mfa-on-organization
+2025-04-15T07:13:51.2680331Z  * [new branch]          etienne/sec-282-list-security-docs-page -> origin/etienne/sec-282-list-security-docs-page
+2025-04-15T07:13:51.2682835Z  * [new branch]          examples/schema-rules   -> origin/examples/schema-rules
+2025-04-15T07:13:51.2685126Z  * [new branch]          feat-add-retries-to-webhooks -> origin/feat-add-retries-to-webhooks
+2025-04-15T07:13:51.2687889Z  * [new branch]          feat/add-etl-replication-docs -> origin/feat/add-etl-replication-docs
+2025-04-15T07:13:51.2689518Z  * [new branch]          feat/add-git-sha-header -> origin/feat/add-git-sha-header
+2025-04-15T07:13:51.2691838Z  * [new branch]          feat/add-invoice-check-on-project-resuming -> origin/feat/add-invoice-check-on-project-resuming
+2025-04-15T07:13:51.2693507Z  * [new branch]          feat/add-preview-commit-banner -> origin/feat/add-preview-commit-banner
+2025-04-15T07:13:51.2695816Z  * [new branch]          feat/add-related-issues-bot -> origin/feat/add-related-issues-bot
+2025-04-15T07:13:51.2697602Z  * [new branch]          feat/add-remix-quickstart-guide -> origin/feat/add-remix-quickstart-guide
+2025-04-15T07:13:51.2699515Z  * [new branch]          feat/add-storybook-app  -> origin/feat/add-storybook-app
+2025-04-15T07:13:51.2701568Z  * [new branch]          feat/add-unverified-email-sign-ins -> origin/feat/add-unverified-email-sign-ins
+2025-04-15T07:13:51.2703137Z  * [new branch]          feat/advisor-assistant  -> origin/feat/advisor-assistant
+2025-04-15T07:13:51.2705291Z  * [new branch]          feat/ai-edge-function   -> origin/feat/ai-edge-function
+2025-04-15T07:13:51.2707145Z  * [new branch]          feat/ai-postgrest       -> origin/feat/ai-postgrest
+2025-04-15T07:13:51.2709040Z  * [new branch]          feat/ai-sandbox         -> origin/feat/ai-sandbox
+2025-04-15T07:13:51.2710967Z  * [new branch]          feat/api-keys           -> origin/feat/api-keys
+2025-04-15T07:13:51.2713047Z  * [new branch]          feat/api-keys-and-asymmetric-keys -> origin/feat/api-keys-and-asymmetric-keys
+2025-04-15T07:13:51.2714880Z  * [new branch]          feat/app-router         -> origin/feat/app-router
+2025-04-15T07:13:51.2716876Z  * [new branch]          feat/aprilfools-themes  -> origin/feat/aprilfools-themes
+2025-04-15T07:13:51.2718846Z  * [new branch]          feat/assistant-convert-js -> origin/feat/assistant-convert-js
+2025-04-15T07:13:51.2720652Z  * [new branch]          feat/assistant-logs     -> origin/feat/assistant-logs
+2025-04-15T07:13:51.2722728Z  * [new branch]          feat/assistant-prototype-fixes -> origin/feat/assistant-prototype-fixes
+2025-04-15T07:13:51.2724472Z  * [new branch]          feat/assistant-refine-again -> origin/feat/assistant-refine-again
+2025-04-15T07:13:51.2726586Z  * [new branch]          feat/astro-temp         -> origin/feat/astro-temp
+2025-04-15T07:13:51.2728501Z  * [new branch]          feat/auth-import-jwt    -> origin/feat/auth-import-jwt
+2025-04-15T07:13:51.2730374Z  * [new branch]          feat/blocks-docs        -> origin/feat/blocks-docs
+2025-04-15T07:13:51.2732457Z  * [new branch]          feat/branch-deploy-logs-page -> origin/feat/branch-deploy-logs-page
+2025-04-15T07:13:51.2734172Z  * [new branch]          feat/byob               -> origin/feat/byob
+2025-04-15T07:13:51.2736357Z  * [new branch]          feat/command            -> origin/feat/command
+2025-04-15T07:13:51.2738435Z  * [new branch]          feat/command-menu-v2    -> origin/feat/command-menu-v2
+2025-04-15T07:13:51.2740677Z  * [new branch]          feat/command-menu-v2-pt-ivelosttrack-drawer -> origin/feat/command-menu-v2-pt-ivelosttrack-drawer
+2025-04-15T07:13:51.2742161Z  * [new branch]          feat/command-v2         -> origin/feat/command-v2
+2025-04-15T07:13:51.2744413Z  * [new branch]          feat/compute-and-disk   -> origin/feat/compute-and-disk
+2025-04-15T07:13:51.2746581Z  * [new branch]          feat/conslidate-sql-and-table -> origin/feat/conslidate-sql-and-table
+2025-04-15T07:13:51.2748195Z  * [new branch]          feat/copy-basic-schema  -> origin/feat/copy-basic-schema
+2025-04-15T07:13:51.2750287Z  * [new branch]          feat/cron-jobs-events   -> origin/feat/cron-jobs-events
+2025-04-15T07:13:51.2752325Z  * [new branch]          feat/database-new       -> origin/feat/database-new
+2025-04-15T07:13:51.2754386Z  * [new branch]          feat/database-report-local -> origin/feat/database-report-local
+2025-04-15T07:13:51.2756338Z  * [new branch]          feat/db-new-login       -> origin/feat/db-new-login
+2025-04-15T07:13:51.2758349Z  * [new branch]          feat/db-playground      -> origin/feat/db-playground
+2025-04-15T07:13:51.2760263Z  * [new branch]          feat/deep-dark          -> origin/feat/deep-dark
+2025-04-15T07:13:51.2762329Z  * [new branch]          feat/design-tokens-upgrade -> origin/feat/design-tokens-upgrade
+2025-04-15T07:13:51.2764383Z  * [new branch]          feat/docker-healthchecks -> origin/feat/docker-healthchecks
+2025-04-15T07:13:51.2766435Z  * [new branch]          feat/docs-add-alert-example -> origin/feat/docs-add-alert-example
+2025-04-15T07:13:51.2768215Z  * [new branch]          feat/docs-ia            -> origin/feat/docs-ia
+2025-04-15T07:13:51.2770334Z  * [new branch]          feat/docs-scaling-section -> origin/feat/docs-scaling-section
+2025-04-15T07:13:51.2772227Z  * [new branch]          feat/docs-tooling       -> origin/feat/docs-tooling
+2025-04-15T07:13:51.2774310Z  * [new branch]          feat/eagle-2            -> origin/feat/eagle-2
+2025-04-15T07:13:51.2776493Z  * [new branch]          feat/edge-functions-ui  -> origin/feat/edge-functions-ui
+2025-04-15T07:13:51.2778361Z  * [new branch]          feat/embedded           -> origin/feat/embedded
+2025-04-15T07:13:51.2780365Z  * [new branch]          feat/event-collections  -> origin/feat/event-collections
+2025-04-15T07:13:51.2782393Z  * [new branch]          feat/filter-bar-component -> origin/feat/filter-bar-component
+2025-04-15T07:13:51.2784718Z  * [new branch]          feat/filter-case-studies -> origin/feat/filter-case-studies
+2025-04-15T07:13:51.2787111Z  * [new branch]          feat/floating-command   -> origin/feat/floating-command
+2025-04-15T07:13:51.2789300Z  * [new branch]          feat/font               -> origin/feat/font
+2025-04-15T07:13:51.2791425Z  * [new branch]          feat/font-local         -> origin/feat/font-local
+2025-04-15T07:13:51.2793697Z  * [new branch]          feat/font-mono-table-editor -> origin/feat/font-mono-table-editor
+2025-04-15T07:13:51.2796215Z  * [new branch]          feat/functions-lw13-features -> origin/feat/functions-lw13-features
+2025-04-15T07:13:51.2798385Z  * [new branch]          feat/github-action-deploy -> origin/feat/github-action-deploy
+2025-04-15T07:13:51.2800745Z  * [new branch]          feat/highlight-enterprise-security -> origin/feat/highlight-enterprise-security
+2025-04-15T07:13:51.2802893Z  * [new branch]          feat/homepage-connect-modal -> origin/feat/homepage-connect-modal
+2025-04-15T07:13:51.2805637Z  * [new branch]          feat/homepage-connect-modal-combined--styling-update -> origin/feat/homepage-connect-modal-combined--styling-update
+2025-04-15T07:13:51.2807702Z  * [new branch]          feat/homepage-integrations-section -> origin/feat/homepage-integrations-section
+2025-04-15T07:13:51.2809899Z  * [new branch]          feat/infinite-list-block -> origin/feat/infinite-list-block
+2025-04-15T07:13:51.2812134Z  * [new branch]          feat/inline-editor      -> origin/feat/inline-editor
+2025-04-15T07:13:51.2814385Z  * [new branch]          feat/input-pattern      -> origin/feat/input-pattern
+2025-04-15T07:13:51.2816793Z  * [new branch]          feat/integrated-nav     -> origin/feat/integrated-nav
+2025-04-15T07:13:51.2819088Z  * [new branch]          feat/integration-text-area -> origin/feat/integration-text-area
+2025-04-15T07:13:51.2821272Z  * [new branch]          feat/jp-top             -> origin/feat/jp-top
+2025-04-15T07:13:51.2823539Z  * [new branch]          feat/links-in-design-system -> origin/feat/links-in-design-system
+2025-04-15T07:13:51.2825893Z  * [new branch]          feat/llama3             -> origin/feat/llama3
+2025-04-15T07:13:51.2828314Z  * [new branch]          feat/local-docs-search  -> origin/feat/local-docs-search
+2025-04-15T07:13:51.2830553Z  * [new branch]          feat/log-drains-local   -> origin/feat/log-drains-local
+2025-04-15T07:13:51.2832825Z  * [new branch]          feat/logdrainspricing   -> origin/feat/logdrainspricing
+2025-04-15T07:13:51.2835508Z  * [new branch]          feat/logflare-workflow-run-logs -> origin/feat/logflare-workflow-run-logs
+2025-04-15T07:13:51.2837764Z  * [new branch]          feat/logs-ai-assistant-shortcut -> origin/feat/logs-ai-assistant-shortcut
+2025-04-15T07:13:51.2839946Z  * [new branch]          feat/logs-chart-errors  -> origin/feat/logs-chart-errors
+2025-04-15T07:13:51.2842289Z  * [new branch]          feat/lw14-ticket        -> origin/feat/lw14-ticket
+2025-04-15T07:13:51.2844871Z  * [new branch]          feat/mamba-d1-light-mode-imgs -> origin/feat/mamba-d1-light-mode-imgs
+2025-04-15T07:13:51.2847127Z  * [new branch]          feat/mamba-init         -> origin/feat/mamba-init
+2025-04-15T07:13:51.2849398Z  * [new branch]          feat/mamba-version-2    -> origin/feat/mamba-version-2
+2025-04-15T07:13:51.2851670Z  * [new branch]          feat/managed-pg         -> origin/feat/managed-pg
+2025-04-15T07:13:51.2854122Z  * [new branch]          feat/meetups-cms-poc    -> origin/feat/meetups-cms-poc
+2025-04-15T07:13:51.2856486Z  * [new branch]          feat/mendable-ai        -> origin/feat/mendable-ai
+2025-04-15T07:13:51.2858788Z  * [new branch]          feat/move-autodocs-p1   -> origin/feat/move-autodocs-p1
+2025-04-15T07:13:51.2861490Z  * [new branch]          feat/move-realtime-publications -> origin/feat/move-realtime-publications
+2025-04-15T07:13:51.2863697Z  * [new branch]          feat/multi-select       -> origin/feat/multi-select
+2025-04-15T07:13:51.2866253Z  * [new branch]          feat/mutation-terminal  -> origin/feat/mutation-terminal
+2025-04-15T07:13:51.2868582Z  * [new branch]          feat/nano-pricing       -> origin/feat/nano-pricing
+2025-04-15T07:13:51.2870889Z  * [new branch]          feat/nav-auth-ui        -> origin/feat/nav-auth-ui
+2025-04-15T07:13:51.2873204Z  * [new branch]          feat/nav-layout         -> origin/feat/nav-layout
+2025-04-15T07:13:51.2875804Z  * [new branch]          feat/nav-layout-sidebar -> origin/feat/nav-layout-sidebar
+2025-04-15T07:13:51.2878162Z  * [new branch]          feat/nav-layout-sidebar-with-tabs -> origin/feat/nav-layout-sidebar-with-tabs
+2025-04-15T07:13:51.2880382Z  * [new branch]          feat/nav-layout-v2      -> origin/feat/nav-layout-v2
+2025-04-15T07:13:51.2882677Z  * [new branch]          feat/new-auth-ia        -> origin/feat/new-auth-ia
+2025-04-15T07:13:51.2885364Z  * [new branch]          feat/new-dev-cycle-ia   -> origin/feat/new-dev-cycle-ia
+2025-04-15T07:13:51.2887645Z  * [new branch]          feat/next-15            -> origin/feat/next-15
+2025-04-15T07:13:51.2889972Z  * [new branch]          feat/notion-to-events   -> origin/feat/notion-to-events
+2025-04-15T07:13:51.2892330Z  * [new branch]          feat/openai-plugin      -> origin/feat/openai-plugin
+2025-04-15T07:13:51.2894812Z  * [new branch]          feat/opensearch         -> origin/feat/opensearch
+2025-04-15T07:13:51.2897189Z  * [new branch]          feat/org-upgrade-dialog -> origin/feat/org-upgrade-dialog
+2025-04-15T07:13:51.2899686Z  * [new branch]          feat/overhaul-logs-datepicker -> origin/feat/overhaul-logs-datepicker
+2025-04-15T07:13:51.2901940Z  * [new branch]          feat/partials           -> origin/feat/partials
+2025-04-15T07:13:51.2904674Z  * [new branch]          feat/peek-row           -> origin/feat/peek-row
+2025-04-15T07:13:51.2907010Z  * [new branch]          feat/pg-paper-dump      -> origin/feat/pg-paper-dump
+2025-04-15T07:13:51.2909353Z  * [new branch]          feat/pglite             -> origin/feat/pglite
+2025-04-15T07:13:51.2911705Z  * [new branch]          feat/poc-canvas         -> origin/feat/poc-canvas
+2025-04-15T07:13:51.2914226Z  * [new branch]          feat/poc-recipes        -> origin/feat/poc-recipes
+2025-04-15T07:13:51.2916693Z  * [new branch]          feat/postgres-integrations -> origin/feat/postgres-integrations
+2025-04-15T07:13:51.2919011Z  * [new branch]          feat/pr-issue-management -> origin/feat/pr-issue-management
+2025-04-15T07:13:51.2921365Z  * [new branch]          feat/products-submenu   -> origin/feat/products-submenu
+2025-04-15T07:13:51.2924073Z  * [new branch]          feat/project-level-permissions -> origin/feat/project-level-permissions
+2025-04-15T07:13:51.2926415Z  * [new branch]          feat/promo-toast        -> origin/feat/promo-toast
+2025-04-15T07:13:51.2928778Z  * [new branch]          feat/react-email        -> origin/feat/react-email
+2025-04-15T07:13:51.2931194Z  * [new branch]          feat/realtime-examples-fs -> origin/feat/realtime-examples-fs
+2025-04-15T07:13:51.2933548Z  * [new branch]          feat/report-v2          -> origin/feat/report-v2
+2025-04-15T07:13:51.2936928Z  * [new branch]          feat/reports-v2/create-query-block-component -> origin/feat/reports-v2/create-query-block-component
+2025-04-15T07:13:51.2939142Z  * [new branch]          feat/rls-ai             -> origin/feat/rls-ai
+2025-04-15T07:13:51.2941629Z  * [new branch]          feat/search-improvements -> origin/feat/search-improvements
+2025-04-15T07:13:51.2944164Z  * [new branch]          feat/self-hosting-nav-links -> origin/feat/self-hosting-nav-links
+2025-04-15T07:13:51.2946699Z  * [new branch]          feat/self-hosting-pwd-docs -> origin/feat/self-hosting-pwd-docs
+2025-04-15T07:13:51.2949106Z  * [new branch]          feat/shadcn-blocks-supabase -> origin/feat/shadcn-blocks-supabase
+2025-04-15T07:13:51.2951435Z  * [new branch]          feat/side-panel         -> origin/feat/side-panel
+2025-04-15T07:13:51.2953959Z  * [new branch]          feat/site-cookbook      -> origin/feat/site-cookbook
+2025-04-15T07:13:51.2956492Z  * [new branch]          feat/snapshot-tests     -> origin/feat/snapshot-tests
+2025-04-15T07:13:51.2958882Z  * [new branch]          feat/snippet-commands   -> origin/feat/snippet-commands
+2025-04-15T07:13:51.2961290Z  * [new branch]          feat/sql-folders        -> origin/feat/sql-folders
+2025-04-15T07:13:51.2963992Z  * [new branch]          feat/sql-statement-stream -> origin/feat/sql-statement-stream
+2025-04-15T07:13:51.2966490Z  * [new branch]          feat/stale-issues-prs   -> origin/feat/stale-issues-prs
+2025-04-15T07:13:51.2968902Z  * [new branch]          feat/sticky-nav-bar     -> origin/feat/sticky-nav-bar
+2025-04-15T07:13:51.2971306Z  * [new branch]          feat/studio-log-errors  -> origin/feat/studio-log-errors
+2025-04-15T07:13:51.2973714Z  * [new branch]          feat/supabase-js-editor -> origin/feat/supabase-js-editor
+2025-04-15T07:13:51.2976692Z  * [new branch]          feat/support-postgres-custom-access-token-hooks -> origin/feat/support-postgres-custom-access-token-hooks
+2025-04-15T07:13:51.2978914Z  * [new branch]          feat/system-page-components -> origin/feat/system-page-components
+2025-04-15T07:13:51.2981369Z  * [new branch]          feat/test-bright-editor -> origin/feat/test-bright-editor
+2025-04-15T07:13:51.2983750Z  * [new branch]          feat/tiger-d1           -> origin/feat/tiger-d1
+2025-04-15T07:13:51.2986408Z  * [new branch]          feat/tiger-poc-1        -> origin/feat/tiger-poc-1
+2025-04-15T07:13:51.2988967Z  * [new branch]          feat/time-series-queries -> origin/feat/time-series-queries
+2025-04-15T07:13:51.2991412Z  * [new branch]          feat/timestamp-info-fn-logs -> origin/feat/timestamp-info-fn-logs
+2025-04-15T07:13:51.2993934Z  * [new branch]          feat/tocs-component     -> origin/feat/tocs-component
+2025-04-15T07:13:51.2996450Z  * [new branch]          feat/troubleshooting    -> origin/feat/troubleshooting
+2025-04-15T07:13:51.2998875Z  * [new branch]          feat/typesafe-forms     -> origin/feat/typesafe-forms
+2025-04-15T07:13:51.3001451Z  * [new branch]          feat/ui-library--terry  -> origin/feat/ui-library--terry
+2025-04-15T07:13:51.3003919Z  * [new branch]          feat/unified-logs       -> origin/feat/unified-logs
+2025-04-15T07:13:51.3006497Z  * [new branch]          feat/update-auth-settings -> origin/feat/update-auth-settings
+2025-04-15T07:13:51.3008891Z  * [new branch]          feat/update-filter-buttons -> origin/feat/update-filter-buttons
+2025-04-15T07:13:51.3011357Z  * [new branch]          feat/update-functions-fetching -> origin/feat/update-functions-fetching
+2025-04-15T07:13:51.3013760Z  * [new branch]          feat/update-hp-examples -> origin/feat/update-hp-examples
+2025-04-15T07:13:51.3016414Z  * [new branch]          feat/useEditLinks       -> origin/feat/useEditLinks
+2025-04-15T07:13:51.3018827Z  * [new branch]          feat/wh-schemas         -> origin/feat/wh-schemas
+2025-04-15T07:13:51.3021379Z  * [new branch]          feat/www-spellcheck     -> origin/feat/www-spellcheck
+2025-04-15T07:13:51.3024319Z  * [new branch]          feature/policy-tester   -> origin/feature/policy-tester
+2025-04-15T07:13:51.3026674Z  * [new branch]          fix-all-the-dependency-shenanigans -> origin/fix-all-the-dependency-shenanigans
+2025-04-15T07:13:51.3028933Z  * [new branch]          fix-empty-import-maps   -> origin/fix-empty-import-maps
+2025-04-15T07:13:51.3031109Z  * [new branch]          fix-pgrst-12.2          -> origin/fix-pgrst-12.2
+2025-04-15T07:13:51.3034251Z  * [new branch]          fix/add-details-on-conn-pool-with-supavisor -> origin/fix/add-details-on-conn-pool-with-supavisor
+2025-04-15T07:13:51.3036229Z  * [new branch]          fix/add-prisma-docs     -> origin/fix/add-prisma-docs
+2025-04-15T07:13:51.3038479Z  * [new branch]          fix/add-query-timeout-and-cta -> origin/fix/add-query-timeout-and-cta
+2025-04-15T07:13:51.3040438Z  * [new branch]          fix/add-redirect-urls   -> origin/fix/add-redirect-urls
+2025-04-15T07:13:51.3042491Z  * [new branch]          fix/baseline-disk       -> origin/fix/baseline-disk
+2025-04-15T07:13:51.3044772Z  * [new branch]          fix/better-unpausing-state -> origin/fix/better-unpausing-state
+2025-04-15T07:13:51.3046800Z  * [new branch]          fix/branch-dropdown-offset -> origin/fix/branch-dropdown-offset
+2025-04-15T07:13:51.3048839Z  * [new branch]          fix/cleanup-rollback    -> origin/fix/cleanup-rollback
+2025-04-15T07:13:51.3050952Z  * [new branch]          fix/code-block-styling  -> origin/fix/code-block-styling
+2025-04-15T07:13:51.3053109Z  * [new branch]          fix/code-style          -> origin/fix/code-style
+2025-04-15T07:13:51.3055396Z  * [new branch]          fix/compute-badge-paused -> origin/fix/compute-badge-paused
+2025-04-15T07:13:51.3057425Z  * [new branch]          fix/cron-pagination     -> origin/fix/cron-pagination
+2025-04-15T07:13:51.3059492Z  * [new branch]          fix/docs-ref-nav        -> origin/fix/docs-ref-nav
+2025-04-15T07:13:51.3061587Z  * [new branch]          fix/docs-returning-count -> origin/fix/docs-returning-count
+2025-04-15T07:13:51.3063656Z  * [new branch]          fix/docs-ssr            -> origin/fix/docs-ssr
+2025-04-15T07:13:51.3066058Z  * [new branch]          fix/docs-ssr-build      -> origin/fix/docs-ssr-build
+2025-04-15T07:13:51.3068275Z  * [new branch]          fix/dont-reload-versions-on-focus -> origin/fix/dont-reload-versions-on-focus
+2025-04-15T07:13:51.3070286Z  * [new branch]          fix/event-dates         -> origin/fix/event-dates
+2025-04-15T07:13:51.3072537Z  * [new branch]          fix/federated-docs      -> origin/fix/federated-docs
+2025-04-15T07:13:51.3074857Z  * [new branch]          fix/handle-missing-pgsodium -> origin/fix/handle-missing-pgsodium
+2025-04-15T07:13:51.3077095Z  * [new branch]          fix/improve-table-editor-rows-queyr -> origin/fix/improve-table-editor-rows-queyr
+2025-04-15T07:13:51.3079343Z  * [new branch]          fix/infra-monitoring-queries-negative-value -> origin/fix/infra-monitoring-queries-negative-value
+2025-04-15T07:13:51.3081342Z  * [new branch]          fix/input-fields        -> origin/fix/input-fields
+2025-04-15T07:13:51.3083503Z  * [new branch]          fix/ipv4-billing-period -> origin/fix/ipv4-billing-period
+2025-04-15T07:13:51.3085953Z  * [new branch]          fix/jwt-generator       -> origin/fix/jwt-generator
+2025-04-15T07:13:51.3088063Z  * [new branch]          fix/lint-command        -> origin/fix/lint-command
+2025-04-15T07:13:51.3090253Z  * [new branch]          fix/lodash-template-issue -> origin/fix/lodash-template-issue
+2025-04-15T07:13:51.3092378Z  * [new branch]          fix/log-explorer-timestamp -> origin/fix/log-explorer-timestamp
+2025-04-15T07:13:51.3094791Z  * [new branch]          fix/logs-layout-render-bug -> origin/fix/logs-layout-render-bug
+2025-04-15T07:13:51.3096912Z  * [new branch]          fix/make-compute-more-visible -> origin/fix/make-compute-more-visible
+2025-04-15T07:13:51.3099159Z  * [new branch]          fix/notifications-button-position -> origin/fix/notifications-button-position
+2025-04-15T07:13:51.3101253Z  * [new branch]          fix/openai-function-template -> origin/fix/openai-function-template
+2025-04-15T07:13:51.3103322Z  * [new branch]          fix/partners-page       -> origin/fix/partners-page
+2025-04-15T07:13:51.3105965Z  * [new branch]          fix/passwordless-login-redirect -> origin/fix/passwordless-login-redirect
+2025-04-15T07:13:51.3107970Z  * [new branch]          fix/prettier            -> origin/fix/prettier
+2025-04-15T07:13:51.3110243Z  * [new branch]          fix/project-create-region-selector -> origin/fix/project-create-region-selector
+2025-04-15T07:13:51.3112272Z  * [new branch]          fix/realtime            -> origin/fix/realtime
+2025-04-15T07:13:51.3114715Z  * [new branch]          fix/realtime-selfhost-rlimit -> origin/fix/realtime-selfhost-rlimit
+2025-04-15T07:13:51.3116894Z  * [new branch]          fix/redirects           -> origin/fix/redirects
+2025-04-15T07:13:51.3119050Z  * [new branch]          fix/ref-path            -> origin/fix/ref-path
+2025-04-15T07:13:51.3121332Z  * [new branch]          fix/response-error-code-docs -> origin/fix/response-error-code-docs
+2025-04-15T07:13:51.3123474Z  * [new branch]          fix/rls-loading         -> origin/fix/rls-loading
+2025-04-15T07:13:51.3125869Z  * [new branch]          fix/schema-enums        -> origin/fix/schema-enums
+2025-04-15T07:13:51.3128049Z  * [new branch]          fix/sentry-csp-rules    -> origin/fix/sentry-csp-rules
+2025-04-15T07:13:51.3130313Z  * [new branch]          fix/serverless-missing-file -> origin/fix/serverless-missing-file
+2025-04-15T07:13:51.3132447Z  * [new branch]          fix/serverless-missing-folder -> origin/fix/serverless-missing-folder
+2025-04-15T07:13:51.3135117Z  * [new branch]          fix/sign-in-wrapper-not-expected-in-client -> origin/fix/sign-in-wrapper-not-expected-in-client
+2025-04-15T07:13:51.3137158Z  * [new branch]          fix/skip-build-static-gen -> origin/fix/skip-build-static-gen
+2025-04-15T07:13:51.3139565Z  * [new branch]          fix/sonner-close-buttons -> origin/fix/sonner-close-buttons
+2025-04-15T07:13:51.3142064Z  * [new branch]          fix/specify-dynamic-route-in-nextjs-quickstart -> origin/fix/specify-dynamic-route-in-nextjs-quickstart
+2025-04-15T07:13:51.3144209Z  * [new branch]          fix/sql-chart-downsample -> origin/fix/sql-chart-downsample
+2025-04-15T07:13:51.3146563Z  * [new branch]          fix/sql-error-exception -> origin/fix/sql-error-exception
+2025-04-15T07:13:51.3148799Z  * [new branch]          fix/studio-styling-bugs -> origin/fix/studio-styling-bugs
+2025-04-15T07:13:51.3151030Z  * [new branch]          fix/support-form        -> origin/fix/support-form
+2025-04-15T07:13:51.3153268Z  * [new branch]          fix/table-editor-link   -> origin/fix/table-editor-link
+2025-04-15T07:13:51.3155754Z  * [new branch]          fix/table-editor-read-only -> origin/fix/table-editor-read-only
+2025-04-15T07:13:51.3157963Z  * [new branch]          fix/timestamp-info-utc-format -> origin/fix/timestamp-info-utc-format
+2025-04-15T07:13:51.3160182Z  * [new branch]          fix/users-fetch-more-on-scroll -> origin/fix/users-fetch-more-on-scroll
+2025-04-15T07:13:51.3162384Z  * [new branch]          fix/various-fixes       -> origin/fix/various-fixes
+2025-04-15T07:13:51.3164800Z  * [new branch]          fix/vercel-integration-flow -> origin/fix/vercel-integration-flow
+2025-04-15T07:13:51.3166945Z  * [new branch]          fix/wait-fetch-snippet  -> origin/fix/wait-fetch-snippet
+2025-04-15T07:13:51.3169178Z  * [new branch]          fix/wrappers-og         -> origin/fix/wrappers-og
+2025-04-15T07:13:51.3171370Z  * [new branch]          fix/year-footer         -> origin/fix/year-footer
+2025-04-15T07:13:51.3174464Z  * [new branch]          fs/hero-poc-3           -> origin/fs/hero-poc-3
+2025-04-15T07:13:51.3176682Z  * [new branch]          fs/homepage-v2          -> origin/fs/homepage-v2
+2025-04-15T07:13:51.3178814Z  * [new branch]          fu-lodash               -> origin/fu-lodash
+2025-04-15T07:13:51.3181608Z  * [new branch]          fubits1/master          -> origin/fubits1/master
+2025-04-15T07:13:51.3184018Z  * [new branch]          github-repos-note       -> origin/github-repos-note
+2025-04-15T07:13:51.3186332Z  * [new branch]          graphiql-fetcher-sync   -> origin/graphiql-fetcher-sync
+2025-04-15T07:13:51.3188420Z  * [new branch]          graphql                 -> origin/graphql
+2025-04-15T07:13:51.3190678Z  * [new branch]          grdsdev-patch-1         -> origin/grdsdev-patch-1
+2025-04-15T07:13:51.3193640Z  * [new branch]          guilherme/add-official-libs-newproject -> origin/guilherme/add-official-libs-newproject
+2025-04-15T07:13:51.3195798Z  * [new branch]          guilherme/python-ref-async -> origin/guilherme/python-ref-async
+2025-04-15T07:13:51.3198565Z  * [new branch]          hf/add-siws-ui          -> origin/hf/add-siws-ui
+2025-04-15T07:13:51.3200689Z  * [new branch]          hf/api-key-fixes        -> origin/hf/api-key-fixes
+2025-04-15T07:13:51.3202761Z  * [new branch]          hf/basic-api-keys       -> origin/hf/basic-api-keys
+2025-04-15T07:13:51.3205041Z  * [new branch]          hf/deprecate-slack-provider -> origin/hf/deprecate-slack-provider
+2025-04-15T07:13:51.3207112Z  * [new branch]          hf/faq-twitter          -> origin/hf/faq-twitter
+2025-04-15T07:13:51.3209338Z  * [new branch]          hf/fix-express-cookies-example-ssr -> origin/hf/fix-express-cookies-example-ssr
+2025-04-15T07:13:51.3211350Z  * [new branch]          hf/fix-saml-external-url -> origin/hf/fix-saml-external-url
+2025-04-15T07:13:51.3213583Z  * [new branch]          hf/test-split-session-user-storage -> origin/hf/test-split-session-user-storage
+2025-04-15T07:13:51.3215801Z  * [new branch]          hf/use-sign-up-not-with-password -> origin/hf/use-sign-up-not-with-password
+2025-04-15T07:13:51.3218454Z  * [new branch]          hi/custom-role-ui       -> origin/hi/custom-role-ui
+2025-04-15T07:13:51.3220589Z  * [new branch]          hi/feat-project-level-role -> origin/hi/feat-project-level-role
+2025-04-15T07:13:51.3223501Z  * [new branch]          hotfix/add-special-chars-warning -> origin/hotfix/add-special-chars-warning
+2025-04-15T07:13:51.3226604Z  * [new branch]          improve/reports-permissions-tooltip -> origin/improve/reports-permissions-tooltip
+2025-04-15T07:13:51.3228684Z  * [new branch]          inian-patch-1           -> origin/inian-patch-1
+2025-04-15T07:13:51.3231119Z  * [new branch]          instance-size-selector-nano-support-addons -> origin/instance-size-selector-nano-support-addons
+2025-04-15T07:13:51.3233147Z  * [new branch]          integrations-directory  -> origin/integrations-directory
+2025-04-15T07:13:51.3236219Z  * [new branch]          ip/clarify-bandwidth    -> origin/ip/clarify-bandwidth
+2025-04-15T07:13:51.3238266Z  * [new branch]          ip/ipv4-address         -> origin/ip/ipv4-address
+2025-04-15T07:13:51.3240443Z  * [new branch]          ip/replication-publication -> origin/ip/replication-publication
+2025-04-15T07:13:51.3242545Z  * [new branch]          issue-14323             -> origin/issue-14323
+2025-04-15T07:13:51.3245731Z  * [new branch]          j0/add_cognito_migration_guide -> origin/j0/add_cognito_migration_guide
+2025-04-15T07:13:51.3248008Z  * [new branch]          j0/add_mfa_webauthn_ui  -> origin/j0/add_mfa_webauthn_ui
+2025-04-15T07:13:51.3250131Z  * [new branch]          j0/add_webauthn_docs    -> origin/j0/add_webauthn_docs
+2025-04-15T07:13:51.3252408Z  * [new branch]          j0/add_webauthn_reference_spec -> origin/j0/add_webauthn_reference_spec
+2025-04-15T07:13:51.3254483Z  * [new branch]          j0/allow_limit_editing_when_hook_enabled -> origin/j0/allow_limit_editing_when_hook_enabled
+2025-04-15T07:13:51.3256825Z  * [new branch]          j0/update_auth_autoconfirm_docs -> origin/j0/update_auth_autoconfirm_docs
+2025-04-15T07:13:51.3259005Z  * [new branch]          j0/update_custom_access_token -> origin/j0/update_custom_access_token
+2025-04-15T07:13:51.3261018Z  * [new branch]          j0/update_react_guide   -> origin/j0/update_react_guide
+2025-04-15T07:13:51.3264227Z  * [new branch]          jgoux/feat-gitlab-integration-step-1 -> origin/jgoux/feat-gitlab-integration-step-1
+2025-04-15T07:13:51.3266945Z  * [new branch]          jordi/e2e-test-staging  -> origin/jordi/e2e-test-staging
+2025-04-15T07:13:51.3269471Z  * [new branch]          jordi/fe-1408-remove-non-existent-pg_cron_logs-table-from-log-explorer -> origin/jordi/fe-1408-remove-non-existent-pg_cron_logs-table-from-log-explorer
+2025-04-15T07:13:51.3271456Z  * [new branch]          jordi/fe-1457-postgres-logs-add-additional-fields-to-the-details-panel -> origin/jordi/fe-1457-postgres-logs-add-additional-fields-to-the-details-panel
+2025-04-15T07:13:51.3273185Z  * [new branch]          jordi/fix-logs-previewer-refresh -> origin/jordi/fix-logs-previewer-refresh
+2025-04-15T07:13:51.3275550Z  * [new branch]          jordi/fix-prettier      -> origin/jordi/fix-prettier
+2025-04-15T07:13:51.3277545Z  * [new branch]          jordi/fixes-1           -> origin/jordi/fixes-1
+2025-04-15T07:13:51.3279766Z  * [new branch]          jordi/realtime-tiptap-editor -> origin/jordi/realtime-tiptap-editor
+2025-04-15T07:13:51.3281734Z  * [new branch]          jordi/test-comments     -> origin/jordi/test-comments
+2025-04-15T07:13:51.3284084Z  * [new branch]          jordi/test-prettier     -> origin/jordi/test-prettier
+2025-04-15T07:13:51.3286259Z  * [new branch]          jordi/trying-fix        -> origin/jordi/trying-fix
+2025-04-15T07:13:51.3288377Z  * [new branch]          jordi/use-realtime-state-hook -> origin/jordi/use-realtime-state-hook
+2025-04-15T07:13:51.3291198Z  * [new branch]          jsm/before-after-unit-label -> origin/jsm/before-after-unit-label
+2025-04-15T07:13:51.3293198Z  * [new branch]          jsm/expand-on-j0-tables -> origin/jsm/expand-on-j0-tables
+2025-04-15T07:13:51.3295447Z  * [new branch]          jsm/fix-storage-height  -> origin/jsm/fix-storage-height
+2025-04-15T07:13:51.3297501Z  * [new branch]          jsm/meganav-suggestions -> origin/jsm/meganav-suggestions
+2025-04-15T07:13:51.3299657Z  * [new branch]          jsm/prototype-nav-approach-2 -> origin/jsm/prototype-nav-approach-2
+2025-04-15T07:13:51.3301693Z  * [new branch]          jsm/test-git            -> origin/jsm/test-git
+2025-04-15T07:13:51.3303767Z  * [new branch]          jsm/test-tests          -> origin/jsm/test-tests
+2025-04-15T07:13:51.3307414Z  * [new branch]          kevin/billing-1262-make-extra-compute-costs-stand-out-more-on-project-creation -> origin/kevin/billing-1262-make-extra-compute-costs-stand-out-more-on-project-creation
+2025-04-15T07:13:51.3309284Z  * [new branch]          kevin/billing-1266-add-billing-tab-to-new-org-nav-merge-invoices-to-same-page -> origin/kevin/billing-1266-add-billing-tab-to-new-org-nav-merge-invoices-to-same-page
+2025-04-15T07:13:51.3312727Z  * [new branch]          kevin/billing-1268-expose-project-scoped-roles-to-team-plankevin/billing-1268-expose-project-scoped-roles-to-team-plan -> origin/kevin/billing-1268-expose-project-scoped-roles-to-team-plankevin/billing-1268-expose-project-scoped-roles-to-team-plan
+2025-04-15T07:13:51.3314598Z  * [new branch]          kiwicopple-patch-1      -> origin/kiwicopple-patch-1
+2025-04-15T07:13:51.3316877Z  * [new branch]          kiwicopple-patch-2      -> origin/kiwicopple-patch-2
+2025-04-15T07:13:51.3319199Z  * [new branch]          kiwicopple-patch-3      -> origin/kiwicopple-patch-3
+2025-04-15T07:13:51.3322110Z  * [new branch]          km/add-sso-slack-clone  -> origin/km/add-sso-slack-clone
+2025-04-15T07:13:51.3324319Z  * [new branch]          km/bump-supabase-js     -> origin/km/bump-supabase-js
+2025-04-15T07:13:51.3326509Z  * [new branch]          km/docs-update-api-keys -> origin/km/docs-update-api-keys
+2025-04-15T07:13:51.3328531Z  * [new branch]          km/starbuck-main-stage  -> origin/km/starbuck-main-stage
+2025-04-15T07:13:51.3330821Z  * [new branch]          laktek-patch-1          -> origin/laktek-patch-1
+2025-04-15T07:13:51.3333642Z  * [new branch]          lw13/day2               -> origin/lw13/day2
+2025-04-15T07:13:51.3336174Z  * [new branch]          lwx-studio-blog-post    -> origin/lwx-studio-blog-post
+2025-04-15T07:13:51.3338535Z  * [new branch]          mansueli-patch-1        -> origin/mansueli-patch-1
+2025-04-15T07:13:51.3340766Z  * [new branch]          maps                    -> origin/maps
+2025-04-15T07:13:51.3343087Z  * [new branch]          master                  -> origin/master
+2025-04-15T07:13:51.3345590Z  * [new branch]          maybe-it-is-just-terry  -> origin/maybe-it-is-just-terry
+2025-04-15T07:13:51.3348532Z  * [new branch]          monicakh/add-path-feedback -> origin/monicakh/add-path-feedback
+2025-04-15T07:13:51.3350519Z  * [new branch]          monicakh/ai-support     -> origin/monicakh/ai-support
+2025-04-15T07:13:51.3352544Z  * [new branch]          monicakh/banned-ips     -> origin/monicakh/banned-ips
+2025-04-15T07:13:51.3354836Z  * [new branch]          monicakh/exit-survey-wording -> origin/monicakh/exit-survey-wording
+2025-04-15T07:13:51.3356947Z  * [new branch]          monicakh/fix-link-langchain-doc -> origin/monicakh/fix-link-langchain-doc
+2025-04-15T07:13:51.3359033Z  * [new branch]          monicakh/fix-org-name-validation -> origin/monicakh/fix-org-name-validation
+2025-04-15T07:13:51.3361236Z  * [new branch]          monicakh/fix-trigger-name-length-limit -> origin/monicakh/fix-trigger-name-length-limit
+2025-04-15T07:13:51.3363321Z  * [new branch]          monicakh/fix-twitter-logo -> origin/monicakh/fix-twitter-logo
+2025-04-15T07:13:51.3365600Z  * [new branch]          monicakh/fix-typo-roles -> origin/monicakh/fix-typo-roles
+2025-04-15T07:13:51.3367737Z  * [new branch]          monicakh/fix-warning-conn-limit -> origin/monicakh/fix-warning-conn-limit
+2025-04-15T07:13:51.3369755Z  * [new branch]          monicakh/fix-wrappers-null-bug -> origin/monicakh/fix-wrappers-null-bug
+2025-04-15T07:13:51.3372098Z  * [new branch]          monicakh/generic-import-large-dataset-doc -> origin/monicakh/generic-import-large-dataset-doc
+2025-04-15T07:13:51.3374237Z  * [new branch]          monicakh/highlight-user-banned-ip -> origin/monicakh/highlight-user-banned-ip
+2025-04-15T07:13:51.3376236Z  * [new branch]          monicakh/support-ai     -> origin/monicakh/support-ai
+2025-04-15T07:13:51.3378497Z  * [new branch]          monicakh/table-editor-menu-design-iteration -> origin/monicakh/table-editor-menu-design-iteration
+2025-04-15T07:13:51.3380626Z  * [new branch]          move-replication-page   -> origin/move-replication-page
+2025-04-15T07:13:51.3382856Z  * [new branch]          nano-enabled-f-lag      -> origin/nano-enabled-f-lag
+2025-04-15T07:13:51.3385311Z  * [new branch]          next-14-dep-upgrades    -> origin/next-14-dep-upgrades
+2025-04-15T07:13:51.3387488Z  * [new branch]          notify                  -> origin/notify
+2025-04-15T07:13:51.3389876Z  * [new branch]          og-test                 -> origin/og-test
+2025-04-15T07:13:51.3392737Z  * [new branch]          or/pgmq-rm-apis         -> origin/or/pgmq-rm-apis
+2025-04-15T07:13:51.3394916Z  * [new branch]          or/separate-api         -> origin/or/separate-api
+2025-04-15T07:13:51.3397284Z  * [new branch]          patch-1                 -> origin/patch-1
+2025-04-15T07:13:51.3400243Z  * [new branch]          pcnc/disable-counts     -> origin/pcnc/disable-counts
+2025-04-15T07:13:51.3402283Z  * [new branch]          pcnc/fix-migration-inserts -> origin/pcnc/fix-migration-inserts
+2025-04-15T07:13:51.3404580Z  * [new branch]          pcnc/introduce-pg_upgrade--logs -> origin/pcnc/introduce-pg_upgrade--logs
+2025-04-15T07:13:51.3406523Z  * [new branch]          pcnc/reuse-project-version -> origin/pcnc/reuse-project-version
+2025-04-15T07:13:51.3409342Z  * [new branch]          pjc/rr-lb-docs-update   -> origin/pjc/rr-lb-docs-update
+2025-04-15T07:13:51.3411641Z  * [new branch]          playwright-fixtures     -> origin/playwright-fixtures
+2025-04-15T07:13:51.3414140Z  * [new branch]          plyn-fix-lints-flutter  -> origin/plyn-fix-lints-flutter
+2025-04-15T07:13:51.3417055Z  * [new branch]          plyn/paused-guide-button -> origin/plyn/paused-guide-button
+2025-04-15T07:13:51.3419777Z  * [new branch]          poc/react-scan          -> origin/poc/react-scan
+2025-04-15T07:13:51.3421824Z  * [new branch]          poc/supanotebooks       -> origin/poc/supanotebooks
+2025-04-15T07:13:51.3424238Z  * [new branch]          pooling                 -> origin/pooling
+2025-04-15T07:13:51.3427202Z  * [new branch]          pr/20781                -> origin/pr/20781
+2025-04-15T07:13:51.3429562Z  * [new branch]          prism-fix-maybe         -> origin/prism-fix-maybe
+2025-04-15T07:13:51.3432425Z  * [new branch]          refactor/app-router-pt-1 -> origin/refactor/app-router-pt-1
+2025-04-15T07:13:51.3434719Z  * [new branch]          refactor/docs-nav       -> origin/refactor/docs-nav
+2025-04-15T07:13:51.3436740Z  * [new branch]          refactor/docs-reference -> origin/refactor/docs-reference
+2025-04-15T07:13:51.3438869Z  * [new branch]          refactor/pages          -> origin/refactor/pages
+2025-04-15T07:13:51.3441267Z  * [new branch]          remove-nano-enabled-flag -> origin/remove-nano-enabled-flag
+2025-04-15T07:13:51.3443514Z  * [new branch]          replicator              -> origin/replicator
+2025-04-15T07:13:51.3446121Z  * [new branch]          resend                  -> origin/resend
+2025-04-15T07:13:51.3449417Z  * [new branch]          revert-31209-chore/toggle-for-storage-client-connection-s3 -> origin/revert-31209-chore/toggle-for-storage-client-connection-s3
+2025-04-15T07:13:51.3451496Z  * [new branch]          saltcod-patch-1         -> origin/saltcod-patch-1
+2025-04-15T07:13:51.3454526Z  * [new branch]          storage/image-transformation-toggle -> origin/storage/image-transformation-toggle
+2025-04-15T07:13:51.3456732Z  * [new branch]          storage/metadata-doc    -> origin/storage/metadata-doc
+2025-04-15T07:13:51.3459063Z  * [new branch]          streaming-backup        -> origin/streaming-backup
+2025-04-15T07:13:51.3485744Z  * [new branch]          streamline-prettier-commadn -> origin/streamline-prettier-commadn
+2025-04-15T07:13:51.3487345Z  * [new branch]          studio                  -> origin/studio
+2025-04-15T07:13:51.3488315Z  * [new branch]          sudayavarman-patch-1    -> origin/sudayavarman-patch-1
+2025-04-15T07:13:51.3489477Z  * [new branch]          supavisor-egress-ingress-reports -> origin/supavisor-egress-ingress-reports
+2025-04-15T07:13:51.3490591Z  * [new branch]          support-static-files    -> origin/support-static-files
+2025-04-15T07:13:51.3491653Z  * [new branch]          temp/next-request-react-query -> origin/temp/next-request-react-query
+2025-04-15T07:13:51.3492721Z  * [new branch]          test-prettier-changes   -> origin/test-prettier-changes
+2025-04-15T07:13:51.3493607Z  * [new branch]          test-speed              -> origin/test-speed
+2025-04-15T07:13:51.3494643Z  * [new branch]          test/force-deploy       -> origin/test/force-deploy
+2025-04-15T07:13:51.3495649Z  * [new branch]          tests/clean-and-fix-some-tests -> origin/tests/clean-and-fix-some-tests
+2025-04-15T07:13:51.3496707Z  * [new branch]          text/build-issue-staging -> origin/text/build-issue-staging
+2025-04-15T07:13:51.3498366Z  * [new branch]          thomas/billing-1144-billing-docs-revamp-pricing-on-feature-pages -> origin/thomas/billing-1144-billing-docs-revamp-pricing-on-feature-pages
+2025-04-15T07:13:51.3500201Z  * [new branch]          thor/nuxt3-updates      -> origin/thor/nuxt3-updates
+2025-04-15T07:13:51.3501207Z  * [new branch]          thorwebdev-patch-1      -> origin/thorwebdev-patch-1
+2025-04-15T07:13:51.3502108Z  * [new branch]          tim-blog-post           -> origin/tim-blog-post
+2025-04-15T07:13:51.3503041Z  * [new branch]          tom/docs/custom-warning -> origin/tom/docs/custom-warning
+2025-04-15T07:13:51.3504256Z  * [new branch]          try-contentlayer2-upgrade -> origin/try-contentlayer2-upgrade
+2025-04-15T07:13:51.3507232Z  * [new branch]          ui-lib/copy-message     -> origin/ui-lib/copy-message
+2025-04-15T07:13:51.3508748Z  * [new branch]          ui-lib/mobile-fixes-2   -> origin/ui-lib/mobile-fixes-2
+2025-04-15T07:13:51.3510867Z  * [new branch]          ui-lib/quickstart       -> origin/ui-lib/quickstart
+2025-04-15T07:13:51.3514371Z  * [new branch]          ui/add-social-login     -> origin/ui/add-social-login
+2025-04-15T07:13:51.3516701Z  * [new branch]          update-example-card     -> origin/update-example-card
+2025-04-15T07:13:51.3519417Z  * [new branch]          update-latest-announcements -> origin/update-latest-announcements
+2025-04-15T07:13:51.3521624Z  * [new branch]          updating-docs           -> origin/updating-docs
+2025-04-15T07:13:51.3524407Z  * [new branch]          vercel-marketplace      -> origin/vercel-marketplace
+2025-04-15T07:13:51.3526804Z  * [new branch]          views                   -> origin/views
+2025-04-15T07:13:51.3529548Z  * [new branch]          wasm-modules-guide      -> origin/wasm-modules-guide
+2025-04-15T07:13:51.3530457Z  * [new tag]             0.0.4                   -> 0.0.4
+2025-04-15T07:13:51.3531734Z  * [new tag]             0.0.7                   -> 0.0.7
+2025-04-15T07:13:51.3533130Z  * [new tag]             0.0.8                   -> 0.0.8
+2025-04-15T07:13:51.3534498Z  * [new tag]             0.0.9                   -> 0.0.9
+2025-04-15T07:13:51.3535873Z  * [new tag]             0.21.03                 -> 0.21.03
+2025-04-15T07:13:51.3537170Z  * [new tag]             0.21.04                 -> 0.21.04
+2025-04-15T07:13:51.3538538Z  * [new tag]             0.21.05                 -> 0.21.05
+2025-04-15T07:13:51.3539873Z  * [new tag]             0.21.06                 -> 0.21.06
+2025-04-15T07:13:51.3541294Z  * [new tag]             0.21.07                 -> 0.21.07
+2025-04-15T07:13:51.3542630Z  * [new tag]             0.21.08                 -> 0.21.08
+2025-04-15T07:13:51.3544215Z  * [new tag]             0.21.09                 -> 0.21.09
+2025-04-15T07:13:51.3545712Z  * [new tag]             0.21.10                 -> 0.21.10
+2025-04-15T07:13:51.3547105Z  * [new tag]             0.21.11.30              -> 0.21.11.30
+2025-04-15T07:13:51.3548180Z  * [new tag]             0.22.03                 -> 0.22.03
+2025-04-15T07:13:51.3549564Z  * [new tag]             0.22.08                 -> 0.22.08
+2025-04-15T07:13:51.3550911Z  * [new tag]             0.22.09                 -> 0.22.09
+2025-04-15T07:13:51.3552288Z  * [new tag]             0.22.11                 -> 0.22.11
+2025-04-15T07:13:51.3553700Z  * [new tag]             0.23.01                 -> 0.23.01
+2025-04-15T07:13:51.3555407Z  * [new tag]             0.23.05                 -> 0.23.05
+2025-04-15T07:13:51.3556775Z  * [new tag]             1.24.07                 -> 1.24.07
+2025-04-15T07:13:51.3558199Z  * [new tag]             1.24.08                 -> 1.24.08
+2025-04-15T07:13:51.3559619Z  * [new tag]             1.24.12                 -> 1.24.12
+2025-04-15T07:13:51.3560923Z  * [new tag]             1.25.01                 -> 1.25.01
+2025-04-15T07:13:51.3562273Z  * [new tag]             1.25.02                 -> 1.25.02
+2025-04-15T07:13:51.3563658Z  * [new tag]             1.25.03                 -> 1.25.03
+2025-04-15T07:13:51.3565340Z  * [new tag]             v.0.23.10               -> v.0.23.10
+2025-04-15T07:13:51.3566656Z  * [new tag]             v0.0.10                 -> v0.0.10
+2025-04-15T07:13:51.3567884Z  * [new tag]             v0.0.11                 -> v0.0.11
+2025-04-15T07:13:51.3569383Z  * [new tag]             v0.0.12                 -> v0.0.12
+2025-04-15T07:13:51.3570588Z  * [new tag]             v0.21.01                -> v0.21.01
+2025-04-15T07:13:51.3571925Z  * [new tag]             v0.21.02                -> v0.21.02
+2025-04-15T07:13:51.3573416Z  * [new tag]             v0.22.10                -> v0.22.10
+2025-04-15T07:13:51.3575012Z  * [new tag]             v0.23.02                -> v0.23.02
+2025-04-15T07:13:51.3576429Z  * [new tag]             v0.23.04                -> v0.23.04
+2025-04-15T07:13:51.3577898Z  * [new tag]             v0.23.06                -> v0.23.06
+2025-04-15T07:13:51.3579282Z  * [new tag]             v0.23.08                -> v0.23.08
+2025-04-15T07:13:51.3580733Z  * [new tag]             v0.23.09                -> v0.23.09
+2025-04-15T07:13:51.3582116Z  * [new tag]             v0.23.10                -> v0.23.10
+2025-04-15T07:13:51.3583491Z  * [new tag]             v0.23.11                -> v0.23.11
+2025-04-15T07:13:51.3585097Z  * [new tag]             v0.24.02                -> v0.24.02
+2025-04-15T07:13:51.3586480Z  * [new tag]             v0.24.03                -> v0.24.03
+2025-04-15T07:13:51.3587845Z  * [new tag]             v1.24.04                -> v1.24.04
+2025-04-15T07:13:51.3589285Z  * [new tag]             v1.24.05                -> v1.24.05
+2025-04-15T07:13:51.3590658Z  * [new tag]             v1.24.09                -> v1.24.09
+2025-04-15T07:13:51.3594633Z  * [new ref]             ed95dd62d7ff8e9ecce5056f8f949e2a96c21e5d -> pull/27087/merge
+2025-04-15T07:13:51.3714318Z ##[endgroup]
+2025-04-15T07:13:51.3714965Z ##[group]Determining the checkout info
+2025-04-15T07:13:51.3715889Z ##[endgroup]
+2025-04-15T07:13:51.3716488Z ##[group]Setting up sparse checkout
+2025-04-15T07:13:51.3721556Z [command]/usr/bin/git sparse-checkout set supa-mdx-lint.config.toml supa-mdx-lint apps/docs/content
+2025-04-15T07:13:51.3754862Z ##[endgroup]
+2025-04-15T07:13:51.3755349Z ##[group]Checking out the ref
+2025-04-15T07:13:51.3759012Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/27087/merge
+2025-04-15T07:13:52.0543155Z Note: switching to 'refs/remotes/pull/27087/merge'.
+2025-04-15T07:13:52.0543697Z 
+2025-04-15T07:13:52.0545353Z You are in 'detached HEAD' state. You can look around, make experimental
+2025-04-15T07:13:52.0546474Z changes and commit them, and you can discard any commits you make in this
+2025-04-15T07:13:52.0547265Z state without impacting any branches by switching back to a branch.
+2025-04-15T07:13:52.0547739Z 
+2025-04-15T07:13:52.0548034Z If you want to create a new branch to retain commits you create, you may
+2025-04-15T07:13:52.0548741Z do so (now or later) by using -c with the switch command. Example:
+2025-04-15T07:13:52.0549150Z 
+2025-04-15T07:13:52.0549316Z   git switch -c <new-branch-name>
+2025-04-15T07:13:52.0549703Z 
+2025-04-15T07:13:52.0549868Z Or undo this operation with:
+2025-04-15T07:13:52.0550145Z 
+2025-04-15T07:13:52.0550284Z   git switch -
+2025-04-15T07:13:52.0550475Z 
+2025-04-15T07:13:52.0550819Z Turn off this advice by setting config variable advice.detachedHead to false
+2025-04-15T07:13:52.0551317Z 
+2025-04-15T07:13:52.0551881Z HEAD is now at ed95dd62d Merge ea3372f73f199c8ad76edca4390d46c3c3382189 into 62ed8e1e72a6a8bca87298235b3678a03af26e29
+2025-04-15T07:13:52.0557590Z ##[endgroup]
+2025-04-15T07:13:52.0599575Z [command]/usr/bin/git log -1 --format=%H
+2025-04-15T07:13:52.0621520Z ed95dd62d7ff8e9ecce5056f8f949e2a96c21e5d

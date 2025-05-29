@@ -1,0 +1,106 @@
+awalsh128/cache-apt-pkgs-action@latest
+
+packages: quilt
+version: 1
+execute_install_scripts: false
+debug: false
+
+CODECOV_TOKEN:
+DISABLE_V8_COMPILE_CACHE: 1
+##[endgroup]
+##[group]Run ${GITHUB_ACTION_PATH}/pre_cache_action.sh \
+[36;1m${GITHUB_ACTION_PATH}/pre_cache_action.sh \[0m
+[36;1m  ~/cache-apt-pkgs \[0m
+[36;1m  "$VERSION" \[0m
+[36;1m  "$EXEC_INSTALL_SCRIPTS" \[0m
+[36;1m  "$DEBUG" \[0m
+[36;1m  "$PACKAGES"[0m
+[36;1mecho "CACHE_KEY=$(cat ~/cache-apt-pkgs/cache_key.md5)" >> $GITHUB_ENV[0m
+0
+
+CODECOV_TOKEN:
+DISABLE_V8_COMPILE_CACHE: 1
+VERSION: 1
+EXEC_INSTALL_SCRIPTS: false
+DEBUG:
+PACKAGES: quilt
+##[endgroup]
+20:05:41.898 Normalizing package list...
+20:05:42.103 done
+20:05:42.106 Validating action arguments (version='1', packages='quilt=0.66-2.1')...
+20:05:42.108 done
+2025-04-14T20:05:42.1091165Z
+20:05:42.110 Creating cache key...
+20:05:42.111 - Value to hash is 'quilt=0.66-2.1 @ 1 3'.
+20:05:42.115 - Value hashed as '87445ee6748e7bbe458c1ccd051ba936'.
+20:05:42.116 done
+20:05:42.117 Hash value written to /home/runner/cache-apt-pkgs/cache_key.md5
+actions/cache/restore@v4
+
+~/cache-apt-pkgs
+key: cache-apt-pkgs_87445ee6748e7bbe458c1ccd051ba936
+
+
+
+
+CODECOV_TOKEN:
+DISABLE_V8_COMPILE_CACHE: 1
+CACHE_KEY: 87445ee6748e7bbe458c1ccd051ba936
+##[endgroup]
+Cache hit for: cache-apt-pkgs_87445ee6748e7bbe458c1ccd051ba936
+Received 1318148 of 1318148 (100.0%), 1.6 MBs/sec
+Cache Size: ~1 MB (1318148 B)
+[command]/usr/bin/tar -xf /home/runner/work/_temp/920c48c1-0d37-4c66-9fee-01d66cdaa91d/cache.tzst -P -C /home/runner/work/code-server/code-server --use-compress-program unzstd
+Cache restored successfully
+Cache restored from key: cache-apt-pkgs_87445ee6748e7bbe458c1ccd051ba936
+##[group]Run ${GITHUB_ACTION_PATH}/post_cache_action.sh \
+[36;1m${GITHUB_ACTION_PATH}/post_cache_action.sh \[0m
+[36;1m  ~/cache-apt-pkgs \[0m
+[36;1m  / \[0m
+[36;1m  "$CACHE_HIT" \[0m
+[36;1m  "$EXEC_INSTALL_SCRIPTS" \[0m
+[36;1m  "$DEBUG" \[0m
+[36;1m  "$PACKAGES"[0m
+[36;1mfunction create_list { local list=$(cat ~/cache-apt-pkgs/manifest_${1}.log | tr '\n' ','); echo ${list:0:-1}; };[0m
+[36;1mecho "package-version-list=$(create_list main)" >> $GITHUB_OUTPUT[0m
+[36;1mecho "all-package-version-list=$(create_list all)" >> $GITHUB_OUTPUT[0m
+0
+
+CODECOV_TOKEN:
+DISABLE_V8_COMPILE_CACHE: 1
+CACHE_KEY: 87445ee6748e7bbe458c1ccd051ba936
+CACHE_HIT: true
+EXEC_INSTALL_SCRIPTS: false
+DEBUG:
+PACKAGES: quilt
+##[endgroup]
+20:05:43.713 Found 7 files in the cache.
+20:05:43.716 - cache_key.md5
+20:05:43.718 - diffstat=1.64-1build2.tar
+20:05:43.720 - gettext=0.21-4ubuntu4.tar
+20:05:43.722 - install.log
+20:05:43.725 - manifest_all.log
+20:05:43.727 - manifest_main.log
+20:05:43.729 - quilt=0.66-2.1.tar
+2025-04-14T20:05:43.7300803Z
+20:05:43.731 Reading from main requested packages manifest...
+20:05:43.735 - quilt=0.66-2.1
+20:05:43.736 done
+2025-04-14T20:05:43.7369217Z
+20:05:43.741 Restoring 3 packages from cache...
+20:05:43.743 - diffstat=1.64-1build2.tar restoring...
+20:05:43.753   done
+20:05:43.755 - gettext=0.21-4ubuntu4.tar restoring...
+20:05:43.770   done
+20:05:43.773 - quilt=0.66-2.1.tar restoring...
+20:05:43.788   done
+20:05:43.789 done
+2025-04-14T20:05:43.7902631Z
+##[group]Run rm -rf ~/cache-apt-pkgs
+[36;1mrm -rf ~/cache-apt-pkgs[0m
+0
+
+CODECOV_TOKEN:
+DISABLE_V8_COMPILE_CACHE: 1
+CACHE_KEY: 87445ee6748e7bbe458c1ccd051ba936
+##[endgroup]
